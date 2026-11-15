@@ -1,5 +1,5 @@
 import { getModel } from './data/model.js';
-import { languages } from '../i18n/languages.js';
+import { published as languages } from './published.js';
 import { routeWords } from '../i18n/routes.js';
 import { tr } from './i18n.js';
 import { slugify } from './slug.js';

@@ -1,4 +1,4 @@
-import { languages } from '../../../i18n/languages.js';
+import { published as languages } from '../../../lib/published.js';
 import { getModel } from '../../../lib/data/model.js';
 import { links } from '../../../lib/routes.js';
 import { translator } from '../../../lib/i18n.js';
@@ -6,7 +6,7 @@ import { translator } from '../../../lib/i18n.js';
 export const getStaticPaths = () => languages.map(({ code }) => ({ params: { lang: code } }));
 
 const normalise = (text) =>
-  text.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 
 const entry = (type, name, url, detail, keywords = []) => ({
   t: type,
@@ -44,7 +44,7 @@ export function GET({ params: { lang } }) {
       }), [category.name]),
     ),
     ...glossary.map((term) =>
-      entry('g', tr(term.term), to.term(term), t('nav.glossary'), [term.term, ...(term.aka ?? [])]),
+      entry('g', tr(term.term), to.term(term), t('nav.glossary'), [term.term, ...(term.aka ?? []), ...(term.aka ?? []).map(tr)]),
     ),
   ];
   return new Response(JSON.stringify(items), { headers: { 'Content-Type': 'application/json' } });

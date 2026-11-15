@@ -1,4 +1,4 @@
-import { languages } from '../i18n/languages.js';
+import { published as languages } from '../lib/published.js';
 import { alternates, pagesFor } from '../lib/routes.js';
 import { site } from '../lib/site.js';
 

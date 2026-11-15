@@ -31,7 +31,7 @@ const jsonLd = [
   <dl class="terms">
     {terms.map((term) => (
       <div>
-        <dt><a href={to.term(term)}>{tr(term.term)}</a>{term.aka?.length > 0 && <span> ({term.aka.join(', ')})</span>}</dt>
+        <dt><a href={to.term(term)}>{tr(term.term)}</a>{term.aka?.length > 0 && <span> ({term.aka.map(tr).join(', ')})</span>}</dt>
         <dd>{tr(term.short)}</dd>
       </div>
     ))}

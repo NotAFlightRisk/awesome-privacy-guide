@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { kinds, protector } from '../../scripts/lib/jobs.js';
+import { kinds, protector } from '../../src/lib/jobs.js';
 
 test('links go out as short placeholders and come back with their real URLs', () => {
   const { markdown } = kinds();

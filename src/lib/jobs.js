@@ -1,7 +1,7 @@
 // Turns every string on the site into a translation job: what to send, and how to read it back
-import { getModel } from '../../src/lib/data/model.js';
-import { hash, ui } from '../../src/lib/i18n.js';
-import { renderMarkdown } from '../../src/lib/markdown.js';
+import { getModel } from './data/model.js';
+import { hash, ui } from './i18n.js';
+import { renderMarkdown } from './markdown.js';
 
 const escapeRe = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const keep = (text) => `<span class="notranslate">${text}</span>`;
@@ -40,10 +40,12 @@ export const kinds = (protect = (html) => html) => ({
       text,
       type: 'html',
       payload: protect(html),
-      read: (out) =>
-        unkeep(out).replace(/<a href="(\d+)">/g, (tag, i) =>
+      read(out) {
+        const html = unkeep(out).replace(/<a href=["'](\d+)["']>/g, (tag, i) =>
           links[i] ? `<a href="${links[i]}" rel="noopener">` : tag,
-        ),
+        );
+        return /<a href=["']\d+["']/.test(html) ? undefined : html;
+      },
     };
   },
 
@@ -70,7 +72,7 @@ export function jobs() {
   const all = [
     ...categories.map((category) => plain(category.name)),
     ...sections.map((section) => plain(section.name)),
-    ...glossary.flatMap((entry) => [plain(entry.term), plain(entry.short)]),
+    ...glossary.flatMap((entry) => [entry.term, entry.short, ...(entry.aka ?? [])].map(plain)),
     ...Object.values(ui).map(template),
     ...sections.flatMap((section) =>
       [section.intro, section.warning, section.more, section.mentionsText]

@@ -1,4 +1,4 @@
-import { languages } from '../i18n/languages.js';
+import { published as languages } from '../lib/published.js';
 import { site } from '../lib/site.js';
 import { getModel } from '../lib/data/model.js';
 

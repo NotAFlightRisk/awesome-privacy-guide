@@ -5,7 +5,7 @@ import { dataPath, readCache } from '../src/lib/data/load.js';
 import { hash } from '../src/lib/i18n.js';
 import { translated } from '../src/i18n/languages.js';
 import { log, summary } from './lib/log.js';
-import { jobs } from './lib/jobs.js';
+import { jobs } from '../src/lib/jobs.js';
 
 const ENDPOINT = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en';
 const BATCH_CHARS = 6000;
@@ -67,6 +67,7 @@ async function main() {
   const wanted = args.langs?.split(',') ?? translated.map((lang) => lang.code);
   const langs = translated.filter((lang) => wanted.includes(lang.code));
   let budget = Number(args.budget);
+  if (!Number.isInteger(budget) || budget < 0) throw new Error(`--budget wants a whole number, not "${args.budget}"`);
   let used = 0;
   const report = [];
 
@@ -93,7 +94,11 @@ async function main() {
         return finish(report, used);
       }
       const { results, used: metered } = await send(batch, lang, key);
-      batch.forEach((job, i) => (cache[hash(job.text)] = job.read(results[i]).trim()));
+      batch.forEach((job, i) => {
+        const value = job.read(results[i]);
+        if (value) cache[hash(job.text)] = value.trim();
+        else log.warn(`${lang.code}: a link came back mangled, so that one stays in English`);
+      });
       budget -= size;
       used += metered || size;
       save(lang.code, cache);

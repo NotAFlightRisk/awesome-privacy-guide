@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { languages } from '../../src/i18n/languages.js';
+import { published as languages } from '../../src/lib/published.js';
 import { alternates, pagesFor } from '../../src/lib/routes.js';
 
 test('no two pages share a URL, in any language', () => {

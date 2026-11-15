@@ -2,7 +2,7 @@
 export const slugify = (text) =>
   text
     .normalize('NFKD')
-    .replace(/[̀-ͯ]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replaceAll('&', ' ')
     .replace(/[^a-z0-9]+/g, '-')

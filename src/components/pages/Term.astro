@@ -18,7 +18,7 @@ const jsonLd = [
   {
     '@type': 'DefinedTerm',
     name,
-    ...(term.aka?.length && { alternateName: term.aka }),
+    ...(term.aka?.length && { alternateName: term.aka.map(tr) }),
     description: tr(term.short),
     inDefinedTermSet: new URL(to.page('glossary'), Astro.site).href,
   },
@@ -39,7 +39,7 @@ const jsonLd = [
 >
   <article class="term">
     <h1>{name}</h1>
-    {term.aka?.length > 0 && <p class="aka">{t('term.aka', { names: term.aka.join(', ') })}</p>}
+    {term.aka?.length > 0 && <p class="aka">{t('term.aka', { names: term.aka.map(tr).join(', ') })}</p>}
     <p class="lead">{tr(term.short)}</p>
     <div class="prose" set:html={md(term.body)} />
   </article>
