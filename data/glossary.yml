@@ -1,0 +1,953 @@
+- slug: 2fa
+  term: Two-factor authentication
+  aka: [2FA, MFA, multi-factor authentication, two-step verification]
+  short: Logging in with your password plus a second thing, like a code from your phone or a security key, so a stolen password isn't enough.
+  body: |
+    With two-factor authentication, someone who steals your password still can't get in without your
+    second factor. That might be a code texted to you, a code from an authenticator app, a prompt on
+    your phone or a hardware security key. Turn it on for anything that matters, starting with your
+    email, since that's where most password resets go.
+
+    The options aren't equal. SMS codes are the weakest, because attackers can talk your mobile
+    network into moving your number to their SIM (a SIM swap), but they still beat nothing.
+    Authenticator apps are better. Phone prompts can be abused by attackers who spam you with
+    requests until you tap "approve". Passkeys and hardware security keys are the strongest, since
+    they won't work on a fake site.
+
+    Whatever you use, save the backup codes somewhere safe, or a lost phone can mean a lost account.
+    Keeping your 2FA codes in the same password manager as your passwords is convenient, but if that
+    one vault is ever compromised, both factors go with it.
+  sections: [2-Factor Authentication, Password Managers]
+  related: [totp, passkeys, hardware-security-key, phishing]
+
+- slug: anonymity
+  term: Anonymity, pseudonymity and privacy
+  short: Privacy hides what you do, anonymity hides who you are, and pseudonymity puts a consistent made-up name between you and what you do.
+  body: |
+    These get mixed up all the time. Privacy is keeping what you do between you and the people you
+    choose, like your messages, files and browsing. Anonymity is nobody knowing who did something,
+    even if what was done is public. Pseudonymity sits in between: you act under a consistent name
+    that isn't your real one, like a username, so people can recognise you without knowing who you
+    are.
+
+    You can have one without the others. An end-to-end encrypted chat with a friend is private but
+    not anonymous, since you both know who's on the other end. A post made through Tor on a public
+    forum can be anonymous but not private. Most online accounts are pseudonymous, and a pseudonym
+    is only as good as the weakest link back to you, like a reused email address, a payment or a
+    slip in something you post.
+
+    Real anonymity is hard, and usually takes several tools plus careful habits - a VPN or a "no
+    sign-up" app won't get you there alone. Work out which of the three you actually need, as it
+    changes which tools make sense.
+  sections: [Anonymity Networks, Virtual Phone Numbers, Cryptocurrencies, Social Networks]
+  related: [tor, threat-model, vpn, kyc]
+
+- slug: browser-fingerprinting
+  term: Browser fingerprinting
+  aka: [device fingerprinting]
+  short: Identifying you by combining lots of small details about your browser and device, which works without cookies and survives clearing them.
+  body: |
+    Any page you load can read dozens of small details about your browser: screen size, time zone,
+    language, installed fonts, tiny differences in how your hardware draws graphics (canvas
+    fingerprinting) and plenty more. None of them identifies you on its own, but together they're
+    often close to unique, so trackers can recognise you across sites and visits without storing
+    anything on your device.
+
+    That's what makes it awkward. Clearing cookies or opening a private window doesn't change your
+    fingerprint, and a VPN only changes your IP address. Piling on extensions and unusual settings
+    can make you stand out more, not less.
+
+    There are two main defences. One is to look like everyone else, which is what Tor Browser does
+    by making its users as alike as possible. The other is to randomise some of those details so
+    your fingerprint keeps changing. You can see how your own browser does with the EFF's
+    [Cover Your Tracks](https://coveryourtracks.eff.org/).
+  sections: [Browsers, Browser Extensions, Online Tools]
+  related: [tracker, third-party-cookies, webrtc-leak, tor]
+
+- slug: custom-rom
+  term: Custom ROM
+  aka: [de-Googled phone, de-Googled Android]
+  short: A replacement version of Android you install yourself, often with Google's apps and services stripped out to cut down on tracking.
+  body: |
+    A custom ROM is an alternative version of Android, built from Google's open source code but put
+    together by someone else. Many are "de-Googled", meaning they leave out Google Play Services,
+    the background layer that runs with deep access on most Android phones. Installing one usually
+    wipes your phone and means switching off its bootloader lock, which normally only lets the
+    maker's own software start up.
+
+    There are trade-offs. Some apps lean on Play Services for notifications, maps or payments and
+    break or complain without it, though some ROMs offer workarounds like an open source stand-in or
+    a sandboxed copy of Google's own. Banking and payment apps may refuse to run at all. Not every
+    ROM is as secure as the stock software, either - some can't turn the bootloader lock back on,
+    which makes it easier for someone who gets hold of your phone to tamper with it.
+
+    Device support matters most. Check that your exact model is officially supported, how quickly
+    security updates arrive and whether the project's still active, since a ROM that stops getting
+    updates can leave you worse off than the stock software it replaced.
+  sections: [Mobile Operating Systems, Mobile Apps]
+  related: [sandboxing, open-source, telemetry]
+
+- slug: data-broker
+  term: Data broker
+  aka: [information broker, data aggregator]
+  short: A company that collects personal information about you from lots of sources and sells or rents it to whoever's buying.
+  body: |
+    Data brokers build profiles on people without ever dealing with them directly. They pull from
+    public records, loyalty schemes, apps, online tracking, purchase histories and other companies'
+    databases, then piece it all together: your name, addresses, phone numbers, age, likely income,
+    interests and sometimes where you go.
+
+    Those profiles get sold to advertisers, people-search sites, insurers and sometimes police or
+    government agencies. You've almost certainly never heard of most of the companies involved,
+    which is rather the point.
+
+    You can ask brokers to delete your data - in the UK and EU you've got a legal right to, and some
+    US states have similar laws - but there are hundreds of them and your details tend to reappear.
+    Paid removal services send the requests for you, though they can't reach every broker. The
+    longer-term fix is giving out less in the first place, with email aliases, virtual phone numbers
+    and virtual cards.
+  sections: [Mail Forwarding, Virtual Phone Numbers, Virtual Credit Cards]
+  related: [tracker, email-alias, third-party-cookies, kyc]
+
+- slug: dns
+  term: Domain Name System
+  aka: [DNS]
+  short: The internet's phone book, which turns names like example.com into the IP addresses your device actually connects to.
+  body: |
+    Before your device can load a site, it asks a DNS resolver for the site's IP address. By default
+    that's usually your ISP's resolver, handed out by your router. Ordinary DNS isn't encrypted, so
+    your ISP and anyone else on the network can see every domain you look up, even when the site
+    itself uses HTTPS. Whoever runs the resolver can also log your lookups, block them or send you
+    somewhere else.
+
+    That's why your choice of resolver matters. Switching to a privacy-focused one (ideally over
+    encrypted DNS) means your ISP isn't the one keeping a list, and many also block ads, trackers or
+    malware for you. The new provider sees your lookups instead, so check its logging policy and
+    where it's based.
+
+    Running DNS for your own domain is a separate job, called DNS hosting. That's about publishing
+    records so other people can find your website and email, rather than looking things up for
+    yourself.
+  sections: [DNS Providers, DNS Clients, DNS Hosting, Host Block Lists]
+  related: [encrypted-dns, dns-leak, vpn, tracker]
+
+- slug: dns-leak
+  term: DNS leak
+  short: When your DNS lookups go around your VPN, usually to your ISP, giving away the sites you visit while you think you're covered.
+  body: |
+    On a VPN, your DNS lookups should go through the tunnel to the resolver your VPN uses. A DNS
+    leak is when some of them go out the normal way instead, usually to your ISP. Your traffic's
+    still encrypted, but your ISP gets a running list of the domains you're visiting, which is a
+    good chunk of what you were trying to hide.
+
+    Leaks usually come from your operating system doing its own thing: sending lookups out over
+    every network connection it has, using IPv6 when the VPN only handles IPv4, or sticking with a
+    DNS server you set by hand.
+
+    Good VPN apps have leak protection built in and switched on. To check, connect to your VPN and
+    run a DNS leak test - if any of the servers it lists belong to your ISP, you've got a leak. A
+    kill switch that blocks everything outside the tunnel usually stops it too.
+  sections: [Virtual Private Networks, Online Tools, DNS Clients]
+  related: [dns, vpn, kill-switch, webrtc-leak]
+
+- slug: e2ee
+  term: End-to-end encryption
+  aka: [E2EE, E2E encryption]
+  short: Encryption where only the people at each end hold the keys, so the company in the middle can't read your messages or files.
+  body: |
+    With end-to-end encryption, your message is encrypted on your device and only decrypted on the
+    recipient's. The service in between just passes along scrambled data it has no key for, so
+    anything it leaks in a breach or is forced to hand over is gibberish. The Signal Protocol is the
+    best-known way of doing it, and plenty of apps use it.
+
+    What it doesn't hide is metadata - who you talked to, when and how often. It can't help if
+    someone gets into your phone, and it won't stop the person you're talking to from taking
+    screenshots. Backups are a common gap too: if your chat history goes to the cloud without the
+    same encryption, that copy isn't protected.
+
+    In a closed source app you're taking the company's word that it's really end-to-end, so look for
+    open source apps, a published security audit and a way to check you're talking to the right
+    person (usually by comparing a safety number or scanning a QR code). Be wary of "encrypted" on
+    its own, as it often only means encrypted in transit, which the company can still read.
+  sections: [Encrypted Messaging, Encrypted Email, Encrypted Cloud Storage, Secure Conference Calls]
+  related: [zero-knowledge, metadata, forward-secrecy, encryption-in-transit]
+
+- slug: email-alias
+  term: Email alias
+  aka: [masked email, forwarding address, email aliasing]
+  short: A separate email address that forwards to your real inbox, so each site gets its own address and you can switch it off if it gets spammed.
+  body: |
+    An alias is an address that just forwards mail to your real inbox. Use a different one for every
+    site and your real address never gets out. If one starts getting spam, you'll know exactly who
+    leaked or sold it, and you can turn that alias off without touching anything else. Many alias
+    services also let you reply from the alias, so the other side never sees your real address.
+
+    Aliases make it much harder for data brokers and marketers to join up your accounts by email
+    address, and they limit the fallout when a site gets breached. Plus addressing
+    (`yourname+shop@example.com`) is a weaker version of the same trick, as your real address is
+    right there for anyone who strips off the plus bit.
+
+    The alias provider sees every email that passes through, so pick one you'd trust with your
+    inbox. Using your own domain means you can switch providers later without losing your aliases,
+    and some services will encrypt forwarded mail with your PGP key. Aliases aren't the same as
+    disposable inboxes, which are often public and short-lived.
+  sections: [Mail Forwarding, Encrypted Email]
+  related: [data-broker, phishing, tracker, pgp]
+
+- slug: encrypted-dns
+  term: DNS over HTTPS and DNS over TLS
+  aka: [DoH, DoT, encrypted DNS]
+  short: Ways of encrypting your DNS lookups, so your ISP or the network you're on can't read or tamper with them on the way to the resolver.
+  body: |
+    Both protect your lookups between your device and the resolver. DNS over HTTPS (DoH) sends them
+    as ordinary web traffic, which makes it harder to spot or block. DNS over TLS (DoT) uses its own
+    port, which is tidier but easier for a network to block. DNSCrypt is an older protocol that does
+    a similar job. Most browsers and operating systems support at least one of them, and on Android
+    it's the "Private DNS" setting.
+
+    They only hide your lookups from the network in between. The resolver still sees every one, so
+    you need to trust whoever runs it. Your ISP can also still see the IP addresses you connect to,
+    and often the site's name too, which goes out unencrypted at the start of most secure
+    connections. It's a sensible upgrade, but it won't hide your browsing on its own.
+
+    If you use a VPN, your lookups already travel inside the tunnel, so the VPN's own resolver is
+    usually the simplest choice.
+  sections: [DNS Providers, DNS Clients, Browsers]
+  related: [dns, dns-leak, encryption-in-transit, vpn]
+
+- slug: encryption-at-rest
+  term: Encryption at rest
+  aka: [storage encryption, full-disk encryption]
+  short: Encrypting data while it's stored on a disk, phone or server, so it's unreadable if the hardware is lost, stolen or thrown out.
+  body: |
+    Encryption at rest protects stored data. On your own devices that means full-disk encryption: if
+    your laptop's nicked or your phone goes missing, nobody can read what's on it without your
+    password or PIN. Phones do it by default these days, and the main desktop operating systems have
+    it built in, though it isn't always switched on.
+
+    It does most of its work while the device is off or locked. Once you've logged in, your data is
+    readable to you and to any malware you've picked up. For online services, "encrypted at rest"
+    usually means the company encrypts its disks and keeps the keys itself. That stops someone
+    walking out of a data centre with a hard drive, but the company can still read your data, and so
+    can anyone with a court order.
+
+    If you want a provider that can't read your stuff, you need zero-knowledge or end-to-end
+    encryption instead, or to encrypt files yourself before you upload them.
+  sections: [File Encryption, Encrypted Cloud Storage, Backup and Sync]
+  related: [zero-knowledge, e2ee, encryption-in-transit]
+
+- slug: encryption-in-transit
+  term: Encryption in transit
+  aka: [TLS encryption, SSL encryption, transport encryption]
+  short: Encrypting data while it travels between your device and a server, so people on the network can't read it, though the server still can.
+  body: |
+    Encryption in transit protects data on its way from A to B. It's what the S in HTTPS is about:
+    TLS (the successor to SSL) encrypts the connection, so your ISP, the coffee shop Wi-Fi or anyone
+    else in the middle can't read or change what you send. Almost every site and app uses it now,
+    and one that doesn't is a red flag.
+
+    But it stops at the server. The company decrypts your data when it arrives and can read, scan or
+    store it, or be made to hand it over. So when a service says your data is "encrypted", that
+    often just means this, maybe with encryption at rest on top. For a provider that can't read your
+    stuff, you need end-to-end or zero-knowledge encryption.
+
+    Email is a special case. Mail between providers is usually encrypted in transit too, but only
+    when both servers support it, so some messages still cross the internet in plain text. Even when
+    it's encrypted, every server that handles it can read it.
+  sections: [Encrypted Email, Email Security Tools, Browsers]
+  related: [e2ee, encryption-at-rest, zero-knowledge, encrypted-dns]
+
+- slug: federation
+  term: Federation
+  aka: [federated networks]
+  short: Lots of independently run servers that talk to each other, so you can pick (or run) your own server and still reach everyone else.
+  body: |
+    Email is the classic example of federation: you can be with one provider and email someone with
+    another, and neither of them is in charge. Matrix (for chat) and Mastodon (for social media)
+    work the same way, each made up of thousands of servers that speak a shared protocol. Mastodon
+    and everything else built on ActivityPub are known together as the fediverse.
+
+    No single company owns the network, so nobody can sell it, fill it with ads or lock you in, and
+    if you don't like your server's rules you can move. The flip side is that your server's admins
+    can see anything it stores unencrypted, and whatever you send to people on other servers gets
+    copied there too. Deleting it later asks those servers to delete their copies, but nothing
+    forces them to.
+
+    So pick a server run by people you trust, or run your own. And check what's end-to-end
+    encrypted - on some federated platforms private messages are, and on others the admins of both
+    servers can read them.
+  sections: [Social Networks, Encrypted Messaging, Team Collaboration, Video Platforms]
+  related: [self-hosting, peer-to-peer, e2ee, metadata]
+
+- slug: five-eyes
+  term: Five Eyes and Fourteen Eyes
+  aka: [FVEY, 5 Eyes, 14 Eyes]
+  short: An intelligence-sharing alliance between the UK, US, Canada, Australia and New Zealand, plus wider groups known as the Nine and Fourteen Eyes.
+  body: |
+    The [Five Eyes](https://en.wikipedia.org/wiki/Five_Eyes) grew out of the UKUSA Agreement of
+    1946, and today the UK, US, Canada, Australia and New Zealand share signals intelligence through
+    it. Wider, looser groups have been reported too. The Nine Eyes adds Denmark, France, the
+    Netherlands and Norway, and the Fourteen Eyes adds Belgium, Germany, Italy, Spain and Sweden.
+
+    You'll see it all over VPN marketing, usually as "based outside the 14 Eyes". These countries do
+    work closely together, and some have sweeping surveillance laws. But it isn't a magic line.
+    Intelligence agencies spy on foreign communications anyway, and every country has some way of
+    making a business on its own soil cooperate.
+
+    What a provider can be forced to hand over, and what it actually keeps, matter far more than
+    which list its country is on. A service that only ever holds encrypted data it can't read is in
+    a much better spot wherever it's based.
+  sections: [Virtual Private Networks, Cloud Hosting, Encrypted Email]
+  related: [jurisdiction, no-logs-policy, warrant-canary]
+
+- slug: forward-secrecy
+  term: Forward secrecy
+  aka: [perfect forward secrecy, PFS]
+  short: Giving each session or message its own short-lived keys, so a key stolen later can't decrypt all your old conversations.
+  body: |
+    Without forward secrecy, everything encrypted with a long-term key is only as safe as that key.
+    If someone records your encrypted traffic today and steals the key in five years, they can go
+    back and decrypt all of it. With forward secrecy, each session (or, in good messaging apps, each
+    message) uses short-lived keys that get thrown away, so old traffic stays scrambled even if a
+    long-term key leaks.
+
+    Modern HTTPS (TLS 1.3) has it built in, and so does the Signal Protocol, which goes a step
+    further and can recover after a key's been stolen, so future messages become safe again. PGP
+    email doesn't have forward secrecy, which is one of the main criticisms of it.
+
+    It's not something you can usually switch on yourself, as it's down to the protocol an app uses.
+    When you're comparing messaging apps, having it is a good sign the encryption is modern and well
+    designed.
+  sections: [Encrypted Messaging, Encrypted Email]
+  related: [e2ee, pgp, encryption-in-transit]
+
+- slug: foss
+  term: Free and open source software
+  aka: [FOSS, FLOSS, free software, libre software]
+  short: Software that's free as in freedom - you can run, study, change and share it - which in practice nearly always means open source too.
+  body: |
+    The "free" in FOSS is about freedom, not price, or as the old line goes, "free as in speech, not
+    as in beer". The Free Software Foundation
+    [defines it](https://www.gnu.org/philosophy/free-sw.html) as four freedoms: to run the program
+    however you like, to study and change how it works, to share copies, and to share your changed
+    versions. FLOSS (free/libre and open source software) means the same thing, with "libre" added
+    to dodge the price confusion.
+
+    In practice, nearly all free software is open source and the other way round. The difference is
+    mostly philosophy: free software folk see it as an ethical issue, open source folk as a better
+    way to build software. Licences split along a different line. Copyleft licences like the GPL
+    make anyone who distributes a changed version share their code on the same terms, while
+    permissive ones like MIT let people make closed versions.
+
+    The AGPL goes a step further and covers software run as an online service, so anyone hosting a
+    modified version has to offer its users the source. On Android, the F-Droid app store only lists
+    FOSS apps, and flags the ones with tracking or other anti-features.
+  sections: [Mobile Apps, Desktop Operating Systems, Code Hosting]
+  related: [open-source, source-available, self-hosting]
+
+- slug: hardware-security-key
+  term: Hardware security key
+  aka: [security key, FIDO key, U2F key]
+  short: A small USB or NFC device you tap to log in, which proves it's really you and won't work on phishing sites.
+  body: |
+    A hardware security key is a small device, usually on your keyring, that plugs into a USB port
+    or taps against your phone over NFC. It holds cryptographic keys that never leave it, so malware
+    on your computer can't copy them. You can use it as a second factor alongside your password, or
+    on newer keys to hold passkeys and skip the password entirely.
+
+    Like passkeys, security keys check the website's real address before they'll sign you in, so
+    they're one of the few logins that phishing can't easily beat. That's why they're the usual
+    advice for anyone likely to be targeted, like journalists, activists or people with money or
+    access worth stealing. Some can also generate TOTP codes, hold PGP keys or work as a smart card.
+
+    Buy two and register both, and keep the spare somewhere safe, because losing your only key means
+    relying on recovery codes (or getting locked out). Check that the services you care about
+    support them and let you add more than one. Keys only have room for a limited number of
+    passkeys, so check the spec if you plan to store a lot.
+  sections: [2-Factor Authentication, Password Managers, PGP Managers]
+  related: [passkeys, 2fa, phishing, totp]
+
+- slug: jurisdiction
+  term: Jurisdiction
+  short: The country whose laws a service has to follow, which decides who can demand your data and what the company can be made to do.
+  body: |
+    A service's jurisdiction is the country (or countries) whose laws it has to follow, usually
+    where it's registered plus wherever it has servers or staff. Those laws decide whether it can be
+    made to hand over your data, keep logs it otherwise wouldn't, monitor a particular user, or keep
+    quiet about any of it. They also set your rights - in the UK and EU, for example, you can ask
+    for a copy of your data or have it deleted.
+
+    Privacy-focused companies often base themselves somewhere with strong privacy laws, and say so
+    loudly. That's a real plus, but it has limits. Providers in privacy-friendly countries have
+    still been ordered to log specific users, and police in one country can ask another to get data
+    on their behalf.
+
+    Jurisdiction matters most when a company holds data it can read. If your data's end-to-end
+    encrypted and the provider keeps little else, there's much less for any court to get hold of.
+  sections: [Virtual Private Networks, Cloud Hosting, Encrypted Email, Domain Registrars]
+  related: [five-eyes, warrant-canary, no-logs-policy, kyc]
+
+- slug: kill-switch
+  term: Kill switch
+  aka: [VPN kill switch]
+  short: A VPN setting that cuts off your internet if the VPN connection drops, so nothing gets sent outside the tunnel.
+  body: |
+    VPN connections drop more often than you'd think, like when you switch networks, wake your
+    laptop or a server goes down. Without a kill switch your device just carries on over your normal
+    connection, often without telling you, and your real IP address and browsing are out in the
+    open. A kill switch blocks all traffic until the VPN's back.
+
+    They're not all equal. Some only work while the VPN app's running, so if the app crashes, your
+    protection goes with it. Better ones set firewall rules in your operating system that stay in
+    place even if the app doesn't, and some block traffic from the moment your device starts up. On
+    Android, look for the built-in "Always-on VPN" and "Block connections without VPN" settings.
+
+    Check whether it's on by default, since it isn't always. Some apps also have a stricter mode
+    that blocks everything unless the VPN's connected, even after you've switched the VPN off
+    yourself.
+  sections: [Virtual Private Networks]
+  related: [vpn, dns-leak, webrtc-leak]
+
+- slug: kyc
+  term: Know your customer
+  aka: [KYC, ID verification]
+  short: The identity checks that banks, card providers and crypto exchanges have to run before you can use them, usually with a photo ID.
+  body: |
+    KYC rules are there to fight fraud and money laundering, and they apply to most regulated
+    financial services, including banks, card issuers, payment apps and big crypto exchanges.
+    Signing up means handing over your name, address and date of birth, often with a photo of your
+    ID and a selfie, and the company has to keep those records for years.
+
+    For privacy, that means your real identity is tied to everything you do on the service, and
+    copies of your ID are stored in a database that could leak (and some have). Some services
+    outside finance ask for ID too, like phone number providers in countries where the law requires
+    it.
+
+    Doing without KYC, legally, usually means smaller amounts and fewer features: cash, prepaid
+    cards with low limits, peer-to-peer crypto trading or services that don't ask. The rules vary a
+    lot by country, so check what applies where you are.
+  sections: [Crypto Exchanges, Virtual Credit Cards, Virtual Phone Numbers, Other Payment Methods]
+  related: [anonymity, data-broker, jurisdiction]
+
+- slug: metadata
+  term: Metadata
+  short: Data about your data - who you contacted, when, from where and on what device - rather than what you actually said or saved.
+  body: |
+    Metadata is everything around the content. For a message, that's who sent it to whom, when, how
+    often and from which IP address. For a photo, it's often baked into the file as EXIF data: the
+    phone or camera model, the time it was taken and sometimes the exact GPS location. Office
+    documents can carry your name, your organisation and leftover comments or tracked changes.
+
+    It's easy to shrug off, but it adds up fast. Who you talk to and where you go can reveal more
+    than the messages themselves, which is why so much surveillance collects it. Michael Hayden, a
+    former head of the NSA, once said "we kill people based on metadata", and he wasn't joking.
+
+    End-to-end encryption protects the content, not usually the metadata, so messaging apps vary a
+    lot in how much of it they can see or keep. With email, the servers always see who it's from,
+    who it's to and when, encrypted or not. For files, strip the metadata before you share them -
+    some sites remove EXIF data from uploads, but they may keep it for themselves.
+  sections: [Metadata Removal, Encrypted Messaging, Encrypted Email, P2P Messaging]
+  related: [e2ee, browser-fingerprinting, tor, pgp]
+
+- slug: no-logs-policy
+  term: No-logs policy
+  aka: [no-log policy, zero-logs policy]
+  short: A provider's promise not to keep records of what you do on its service, most often made by VPNs and DNS providers.
+  body: |
+    A no-logs policy is a promise not to record what you get up to, like the sites you visit, the IP
+    address you connect from, and when and for how long you're connected. It's most common with
+    VPNs, where the provider can see all your traffic and says it won't keep any of it. It never
+    means no data at all - they'll usually still have your account details and payment records, so
+    read what the policy actually covers.
+
+    The problem is you can't check it from the outside, and providers that advertised no logs have
+    handed records to the police before. The best signs are independent audits (repeated, ideally),
+    servers that run from memory so nothing survives a reboot, and real-world tests: court cases or
+    server seizures where the provider had nothing to hand over.
+
+    Even a perfect policy only covers the provider. Your ISP can still see that you're connected to
+    a VPN, and the sites you visit can still log what you do once you get there.
+  sections: [Virtual Private Networks, DNS Providers, Encrypted Email]
+  related: [vpn, security-audit, warrant-canary, jurisdiction]
+
+- slug: open-source
+  term: Open source
+  aka: [open-source software, OSS]
+  short: Software whose source code is public, under a licence that lets anyone read, use, change and share it.
+  body: |
+    Open source means the code is published under a licence that meets the
+    [Open Source Definition](https://opensource.org/osd), so anyone can read it, use it, change it
+    and pass it on. It doesn't have to be free of charge. For privacy tools that's the main draw,
+    because people outside the company can check what the app really does with your data instead of
+    taking the marketing's word for it.
+
+    It's no guarantee, mind. Published code doesn't mean anyone's checked it, and serious bugs have
+    gone unnoticed in popular open source projects for years. The app you download might not be
+    built from exactly the code you can see, unless the project has reproducible builds that let
+    people confirm it. With online services you also can't see what's running on their servers,
+    which matters less if the app on your device encrypts everything before it leaves.
+
+    When you're choosing, check which parts are actually open (the app, the server or both), what
+    the licence is, and whether the project's still active. "Open source" in marketing sometimes
+    means "some of it", so have a look at the code repository yourself.
+  sections: [Encrypted Messaging, Password Managers, Code Hosting]
+  related: [foss, source-available, security-audit]
+
+- slug: passkeys
+  term: Passkeys
+  short: A login that uses a cryptographic key stored on your device or in your password manager instead of a password, and resists phishing.
+  body: |
+    A passkey is a pair of keys made when you set one up for a site. The site keeps the public half,
+    and the private half stays on your phone, computer, password manager or security key. To sign
+    in, you confirm it's you with your fingerprint, face or PIN, and your device proves it has the
+    private key without ever sending it. Your fingerprint never leaves your device either, and the
+    whole thing runs on standards called FIDO2 and WebAuthn.
+
+    The big win is phishing. A passkey is tied to the real website's address, so it just won't work
+    on a lookalike site, however convincing it is. There's no password to reuse or to leak in a
+    breach, because the site only stores the public key, which is no use to an attacker. Since you
+    need both the device and your fingerprint or PIN, many sites also treat a passkey as two factors
+    in one.
+
+    Synced passkeys live in a password manager (including the one built into your phone) and get
+    backed up with it, which is convenient but means trusting that provider. Device-bound ones stay
+    on a single device or security key and can't be copied, so you'll want a backup way in. Before
+    you go all in, check how your provider lets you move passkeys elsewhere.
+  sections: [Password Managers, 2-Factor Authentication]
+  related: [hardware-security-key, 2fa, phishing, password-manager]
+
+- slug: password-manager
+  term: Password manager
+  aka: [password vault]
+  short: An app that creates, stores and fills in a different strong password for every account, all locked behind one master password.
+  body: |
+    Reusing passwords is how one breach turns into ten. A password manager fixes that by making a
+    long random password for every site and remembering them all, so you only need one strong master
+    password (a long passphrase works well). Most also fill in logins for you, sync across your
+    devices, and can store passkeys, 2FA codes and notes.
+
+    There are two main types. Cloud-based ones sync your vault through the provider's servers, which
+    is convenient, and the good ones encrypt everything on your device first so the provider can't
+    read it. Offline ones, like those using the KeePass format, keep your vault in a file you sync
+    or back up yourself - more control, more faff.
+
+    Whichever you go for, look for zero-knowledge encryption, a published security audit, open
+    source code and an easy way to export everything if you ever want to leave. Turn on 2FA for the
+    account itself. And remember the vault is only as strong as your master password - if it's weak
+    and the encrypted vault ever gets stolen, it can be cracked offline.
+  sections: [Password Managers, 2-Factor Authentication, Browser Sync]
+  related: [zero-knowledge, passkeys, 2fa, phishing]
+
+- slug: peer-to-peer
+  term: Peer-to-peer
+  aka: [P2P]
+  short: Devices connecting straight to each other to share data, rather than going through a company's central server.
+  body: |
+    In a peer-to-peer (P2P) network, devices talk to each other directly. There's no central server
+    holding everyone's messages or files, so there's nothing for a company to scan, lose in a
+    breach, hand over or shut down. BitTorrent is the famous example, and some messengers and file
+    sync tools work the same way.
+
+    The downside is that peers can usually see each other's IP addresses. With torrents the whole
+    swarm can, which is how copyright firms find people. Some P2P messengers get round this by
+    routing everything over Tor. Pure P2P can also mean both devices need to be online at once,
+    which is why many apps also use servers for finding each other, notifications or relaying
+    traffic when a direct connection fails.
+
+    When an app says it's P2P, check what happens when a direct connection isn't possible, whether
+    your IP address is shown to the people you talk to, and whether it's end-to-end encrypted.
+  sections: [P2P Messaging, Torrent Downloaders, Backup and Sync, File Drop]
+  related: [federation, tor, self-hosting, metadata]
+
+- slug: pgp
+  term: PGP and OpenPGP
+  aka: [Pretty Good Privacy, GPG, GnuPG]
+  short: An encryption standard for email and files that uses a public key you share and a private key you keep, and can sign things too.
+  body: |
+    PGP (Pretty Good Privacy) dates back to 1991, and OpenPGP is the open standard that grew out of
+    it. GnuPG, or GPG, is the most widely used free implementation, and lots of PGP tools are built
+    on it. It works with a key pair: you share your public key so people can encrypt things to you,
+    and keep your private key to decrypt them. You can also sign messages and files, which proves
+    they came from you and haven't been changed.
+
+    It's still used for encrypted email, and it's how many software projects sign their downloads so
+    you can check you've got the real thing. But it has well-known gaps. With email, the sender,
+    recipient and date stay visible, and depending on your app, so might the subject line. There's
+    no forward secrecy, so if your private key is ever stolen, anyone holding copies of your old
+    messages can read every one. And it's easy to get wrong - one unencrypted reply that quotes the
+    whole thread gives the game away.
+
+    Look for tools that make key management easy, keep your private key under your control (ideally
+    on a hardware key for anything important), and help you check other people's key fingerprints.
+    For chatting rather than email, a modern end-to-end encrypted messenger is usually a better fit.
+  sections: [PGP Managers, Encrypted Email, Email Clients]
+  related: [e2ee, forward-secrecy, hardware-security-key, metadata]
+
+- slug: phishing
+  term: Phishing
+  short: Tricking you into handing over passwords, codes, money or personal details with a fake email, text, call or website.
+  body: |
+    Phishing is one of the commonest ways accounts get broken into. You get an email, text or call
+    that looks like it's from your bank, a delivery firm or your boss, with a reason to act right
+    now and a link to a page that looks like the real thing. Anything you type there goes straight
+    to the attacker. Phishing by text is called smishing, by phone it's vishing, and attacks
+    tailored to one person are spear phishing.
+
+    Modern phishing kits can pass what you type to the real site as you go, so they can grab SMS and
+    authenticator codes as well as your password. The logins that resist it are passkeys and
+    hardware security keys, which check the site's real address and refuse to work on a fake one.
+
+    A password manager helps too, as it only fills in your login on the site it was saved for - if
+    it doesn't offer to fill, treat that as a warning. Beyond that, be suspicious of urgency, go to
+    sites directly rather than through links in messages, and check where a link really goes before
+    you click.
+  sections: [Email Security Tools, Password Managers, 2-Factor Authentication, Online Tools]
+  related: [passkeys, hardware-security-key, password-manager, 2fa]
+
+- slug: proxy
+  term: Proxy
+  aka: [proxy server, web proxy]
+  short: A server that passes your requests on to the internet for you, so the sites you visit see the proxy's address instead of yours.
+  body: |
+    A proxy sits between you and the sites you visit and fetches things on your behalf. Unlike a
+    VPN, it usually only covers the apps you point at it, like your browser, and many don't add any
+    encryption of their own. That makes proxies handy for specific jobs, like getting round a block,
+    and a poor choice for hiding everything you do.
+
+    The proxy operator can see where you're going and, for anything not on HTTPS, what you're doing,
+    and can tamper with it. That's why free public proxies are such a bad idea: you've no idea who
+    runs them, and some exist to collect data or inject ads and malware.
+
+    Privacy front-ends work in a similar way. They're sites that load content from big platforms
+    like YouTube or Reddit for you, so the platform sees the front-end's server rather than you.
+    They cut out a lot of tracking, but whoever runs the instance can see what you look at, and they
+    tend to break when the platform changes things.
+  sections: [Proxies, Proxy Sites, Virtual Private Networks]
+  related: [vpn, tor, webrtc-leak]
+
+- slug: sandboxing
+  term: Sandboxing
+  aka: [sandbox, app sandbox]
+  short: Running an app in a walled-off space with limited access to the rest of your system, so a bad or hacked app can only do so much damage.
+  body: |
+    A sandbox limits what an app can touch, like your files, other apps, your camera or the network.
+    If something inside it is malicious or gets hacked, the damage should stay inside the box. You
+    use sandboxes all the time without noticing: phone apps each run in one, and browsers sandbox
+    the code that runs web pages so a malicious site can't read your files.
+
+    On a desktop you can go further. Linux has tools that sandbox individual programs, and app
+    formats like Flatpak come with a permission system, though plenty of apps ask for far more
+    access than they need. Virtual machines go further still by running a whole separate operating
+    system, which is why they're popular for opening suspicious files or keeping different parts of
+    your life in separate compartments.
+
+    A sandbox is only as good as its rules. Broad permissions make it close to pointless, and bugs
+    that let code escape do turn up, so keep things updated. It also can't protect anything you hand
+    to the app inside it.
+  sections: [Virtual Machines, Linux Defenses, Desktop Operating Systems, Browsers]
+  related: [threat-model, custom-rom, open-source]
+
+- slug: security-audit
+  term: Security audit
+  aka: [independent audit, third-party audit]
+  short: An outside firm checking an app's code, systems or policies for security holes and false claims, ideally with a public report.
+  body: |
+    In a security audit, a company pays an independent firm to go through its code or systems
+    looking for weaknesses, then (ideally) publishes the report. There are a few kinds: code
+    reviews, penetration tests where the auditors actively try to break in, reviews of the
+    cryptography, and policy audits like the no-logs audits VPN providers use to back up their
+    claims.
+
+    An audit is a snapshot. It only covers what was in scope at the time, and the app may have
+    changed a lot since. It's also paid for by the company being audited, which doesn't make it
+    worthless, but it's a good reason to read the details rather than trust a badge on the homepage.
+
+    Good signs are a full public report rather than a summary, a well-known auditing firm, a recent
+    date, a clear scope and a note of which issues got fixed. Regular audits over several years
+    count for more than a single one from 2019. No audit doesn't mean unsafe - plenty of small open
+    source projects can't afford one - but it does mean you're relying on whoever's read the code.
+  sections: [Virtual Private Networks, Password Managers, Encrypted Messaging, Encrypted Cloud Storage]
+  related: [no-logs-policy, open-source, threat-model]
+
+- slug: self-hosting
+  term: Self-hosting
+  aka: [self-hosted]
+  short: Running an app or service on hardware you control, at home or on a rented server, instead of relying on someone else's.
+  body: |
+    Self-hosting means running the server side of something yourself, like your own cloud storage,
+    password manager server, chat server or media library. It might live on an old laptop, a
+    Raspberry Pi or a rented server. Your data stays somewhere you control, and no company can scan
+    it, sell it, change the terms or shut the service down on you.
+
+    The trade-off is that you're now the IT department. Updates, backups, security and fixing it at
+    2am are all on you, and a neglected server is easy pickings. On a rented server the hosting
+    company can get at your disk in principle, so encryption still matters. Email is notoriously
+    hard to self-host well, since the big providers are quick to treat mail from small servers as
+    spam.
+
+    Stick to open source apps with clear docs, an active project and an easy way to update. If you'd
+    rather not run it all yourself, plenty of privacy-focused services offer both - a hosted
+    version, and the code to run your own.
+  sections: [Self-Hosted Network Security, Mail Servers, Backup and Sync, Media Servers]
+  related: [federation, open-source, peer-to-peer, encryption-at-rest]
+
+- slug: source-available
+  term: Source-available software
+  short: Software whose code you can read, but under a licence that limits what you can do with it, so it doesn't count as open source.
+  body: |
+    Source-available code is public, but the licence holds back some of the freedoms open source
+    gives you. It might ban commercial use, stop you running it as a competing service, or forbid
+    sharing changed versions. The Business Source License and the Server Side Public License are
+    well-known examples, and neither is approved by the Open Source Initiative.
+
+    For privacy, it gets you most of the way. You (or anyone) can still read the code and check what
+    it does with your data, which is the main reason to care. What you lose is the safety net: if
+    the company goes bust or goes bad, usually nobody else is allowed to pick up the code and carry
+    on.
+
+    Watch the wording. Some projects call themselves open source when the licence says otherwise,
+    and code published with no licence at all is technically all rights reserved, even on GitHub. A
+    few source-available licences turn into proper open source ones after a set number of years.
+  sections: []
+  related: [open-source, foss, security-audit]
+
+- slug: telemetry
+  term: Telemetry
+  aka: [diagnostic data, usage data]
+  short: Data an app or operating system sends back to its maker about how you use it, what device you're on and what went wrong.
+  body: |
+    Telemetry ranges from harmless to nosy. A crash report that helps someone fix a bug is one
+    thing. A steady stream of which buttons you click and what hardware you're on, tied to an ID
+    that follows you around, is another. Most of it's on by default and buried a few menus deep, if
+    it can be turned off at all.
+
+    Even "anonymous" telemetry has to be sent from somewhere, so the server receiving it sees your
+    IP address unless it goes through a proxy first. Windows, for one, lets you turn diagnostic data
+    down but not off unless you're on an Enterprise or Education edition, which is why so many tools
+    exist to block it.
+
+    The better apps make telemetry opt-in, list exactly what gets sent, and publish code you (or
+    someone else) can check. Open source apps can collect telemetry too, it's just harder to hide.
+    Blocking it with a firewall or a DNS blocklist works for plenty of apps, though some break or
+    nag you when they can't phone home.
+  sections: [Windows Defences, Desktop Operating Systems, Office Suites, IDEs]
+  related: [tracker, open-source, metadata]
+
+- slug: third-party-cookies
+  term: Third-party cookies
+  aka: [tracking cookies, cross-site cookies]
+  short: Cookies set by a company other than the site you're on, usually an ad network, so it can recognise you on every site it's embedded in.
+  body: |
+    A cookie is a small bit of data a website stores in your browser. First-party cookies come from
+    the site you're actually on and do useful things like keep you logged in. Third-party cookies
+    come from something embedded in the page, like an ad, a share button or an analytics script, and
+    because the same company is embedded on thousands of sites, it can follow you from one to the
+    next.
+
+    Browsers have been clamping down on them. Safari blocks them by default, and Firefox gives every
+    site its own separate cookie jar so they can't follow you around. Chrome still allows them
+    unless you change the setting, after Google dropped its plan to phase them out.
+
+    Blocking them doesn't stop tracking on its own, since fingerprinting, tracking from a site's own
+    domain and being logged in to accounts all still work. In the UK and EU, sites need your consent
+    for non-essential cookies, which is what those banners are for. "Reject all" turns most of them
+    off, at least on sites that respect your choice.
+  sections: [Browsers, Browser Extensions]
+  related: [tracker, browser-fingerprinting, data-broker]
+
+- slug: threat-model
+  term: Threat model
+  aka: [threat modelling]
+  short: Working out what you're protecting, who from and how much hassle it's worth, so you pick tools that fit your real risks.
+  body: |
+    A threat model is just a plan. You work out what you want to protect (your messages, your
+    location, your identity), who you're protecting it from (advertisers, a nosy ex, scammers, a
+    government), how likely that is, how bad it'd be if it went wrong, and how much effort you're
+    prepared to put in. The EFF's Surveillance Self-Defense guide has a
+    [good walk-through](https://ssd.eff.org/module/your-security-plan).
+
+    Your answers decide what you need. Someone avoiding ad tracking needs a decent browser and an ad
+    blocker. A journalist protecting sources needs a lot more, and shouldn't rely on any one tool.
+    Most people are somewhere in between.
+
+    It also stops you overdoing it. Every extra tool is something else to maintain and something
+    else to break, and a setup that's a pain to live with tends to get abandoned. Pick protections
+    that match the threats you actually face, and look at them again when your situation changes.
+  sections: [Desktop Operating Systems, Anonymity Networks, Mobile Operating Systems]
+  related: [anonymity, security-audit, sandboxing]
+
+- slug: tor
+  term: Tor and onion routing
+  aka: [The Onion Router]
+  short: A free network that bounces your traffic through three volunteer-run relays, so no single one knows both who you are and where you're going.
+  body: |
+    Tor wraps your traffic in three layers of encryption and sends it through three relays run by
+    volunteers. Each relay peels off one layer (hence "onion"), so the first knows your IP address
+    but not where you're going, and the last knows where you're going but not who you are.
+    [Tor Browser](https://www.torproject.org/) is the easiest way in, and it also makes its users
+    look as alike as possible, so you're harder to fingerprint.
+
+    Onion services (the .onion addresses) never leave the Tor network, so both sides stay hidden.
+    For ordinary sites, the last relay can see your traffic if the site doesn't use HTTPS. Tor is
+    also slower than a normal connection, and some sites block it or pile on the CAPTCHAs.
+
+    Your ISP can see that you're using Tor, though not what for, unless you connect through a bridge
+    that disguises it. Tor can't protect you from yourself either - logging into your usual
+    accounts, or opening a downloaded file outside Tor Browser, can give you away. Someone who can
+    watch both ends of your connection at once may also be able to match up the traffic.
+  sections: [Anonymity Networks, Browsers, File Drop, P2P Messaging]
+  related: [anonymity, vpn, proxy, browser-fingerprinting]
+
+- slug: tosdr
+  term: Terms of Service; Didn't Read
+  aka: [ToS;DR, TOSDR]
+  short: A community project that reads the terms and privacy policies of websites and apps, and grades them from A (very good) to E (very bad).
+  body: |
+    Hardly anyone reads the terms they agree to, so [ToS;DR](https://tosdr.org/) reads them for you.
+    Since 2012 its contributors have been going through the terms of service and privacy policies of
+    sites and apps, picking out the parts that matter, like whether you can delete your account or
+    whether your data gets shared with advertisers. Each point is labelled good, neutral, bad or,
+    for the worst ones, a blocker.
+
+    Those points add up to a grade from A, for very good, down to E, for very bad. Services with no
+    reviewed points don't get one. It's a quick way to spot terms that let a company do things you'd
+    object to.
+
+    Treat it as a starting point. Reviews come from a community of contributors, so smaller services
+    are often missing, and a company can change its terms after they've been reviewed. A grade is
+    also about what the terms say, not how secure the service is or whether the company sticks to
+    its word.
+  sections: []
+  related: [data-broker, telemetry, security-audit]
+
+- slug: totp
+  term: Time-based one-time password
+  aka: [TOTP, authenticator codes]
+  short: The short-lived codes from an authenticator app, worked out from a secret shared with the site and the current time.
+  body: |
+    When you turn on app-based 2FA, the site shows you a QR code containing a secret key, which your
+    authenticator app saves. From then on, the app and the site both combine that secret with the
+    current time to work out the same short code, which usually changes every 30 seconds. It's all
+    done offline, so your phone doesn't need signal and the app doesn't need an account.
+
+    It's a big step up from SMS codes, since there's nothing for a SIM swap to intercept. It's not
+    phishing-proof, though. If you type a code into a convincing fake login page, the attacker can
+    pass it straight on to the real site while it's still valid. Anyone who gets hold of the secret
+    (from a backup, say, or a screenshot of the QR code) can also make your codes until you reset
+    2FA.
+
+    Pick an authenticator app that lets you back up or export your accounts, ideally encrypted, so a
+    lost or broken phone isn't a disaster. Some apps make it hard to get your secrets out, which
+    feels secure right up until you change phones.
+  sections: [2-Factor Authentication, Password Managers]
+  related: [2fa, phishing, passkeys, hardware-security-key]
+
+- slug: tracker
+  term: Tracker
+  aka: [web tracker, ad tracker]
+  short: Code in a website, app or email that records what you do and reports it to another company, usually for advertising.
+  body: |
+    Trackers come in a few shapes. On websites, they're scripts and invisible images from ad
+    networks and analytics firms, sometimes dozens on a single page. In apps, they're bits of code
+    from those same companies that the developer has bundled in, and they get whatever access the
+    app has. In emails, a tiny invisible image (a tracking pixel) tells the sender when you opened
+    it, roughly where you were and what device you used.
+
+    Because the same few companies are on so many sites and apps, they can follow you between them
+    and build up a profile of your interests, habits and whereabouts. That profile is used for
+    targeted ads, and some of it gets sold on to data brokers.
+
+    Blocking them is one of the easier wins. Content blockers in your browser use filter lists of
+    known trackers, DNS-level blockers do the same for every device on your network, and most email
+    apps can stop remote images loading. Blockers only catch trackers they know about, and some
+    sites now serve tracking from their own domain to get round them.
+  sections: [Ad Blockers, Browser Extensions, Host Block Lists, Mobile Apps]
+  related: [third-party-cookies, browser-fingerprinting, data-broker, telemetry]
+
+- slug: vpn
+  term: Virtual private network
+  aka: [VPN]
+  short: An encrypted tunnel from your device to a VPN provider's server, which hides your traffic from your network and your IP address from sites.
+  body: |
+    A VPN sends all your traffic through an encrypted tunnel to a server run by the VPN provider,
+    and from there out to the internet. Your ISP, or the Wi-Fi network you're on, can see that
+    you're using a VPN but not which sites you visit. The sites see the VPN server's IP address
+    instead of yours.
+
+    It doesn't make you anonymous. It moves your trust from your ISP to the VPN provider, who can
+    now see everything your ISP used to. It won't stop cookies, browser fingerprinting or a site
+    recognising you the moment you log in. It's good for hiding your IP address, using dodgy public
+    Wi-Fi, getting round blocks and geo-restrictions, and keeping your browsing away from your ISP,
+    and not much else.
+
+    The provider matters more than the tech. Look for an audited no-logs policy, open source apps, a
+    kill switch and leak protection, and a way to pay that doesn't tie the account to your name if
+    that matters to you. Be wary of free VPNs, which have to pay for their servers somehow, often
+    with your data.
+  sections: [Virtual Private Networks, Self-Hosted Network Security, Proxies]
+  related: [no-logs-policy, kill-switch, dns-leak, jurisdiction]
+
+- slug: warrant-canary
+  term: Warrant canary
+  short: A regularly updated statement that a company hasn't received a secret government order, which it stops updating if it ever does.
+  body: |
+    Some government orders, like US National Security Letters, come with a gag order that stops the
+    company telling anyone. A warrant canary is the workaround, named after the canaries miners used
+    to take underground. The company regularly publishes a statement saying it hasn't received any
+    such order, and if the statement disappears or stops being updated on schedule, you're meant to
+    assume it has.
+
+    It relies on the idea that a government can stop you saying something, but can't force you to
+    keep saying something false. That's never really been tested in court, and some lawyers think
+    pulling a canary could land a company in just as much trouble as speaking out.
+
+    So treat a canary as a hint. Check that it's updated on a regular schedule and signed (often
+    with PGP) so you know it's genuine. A lapsed canary can also just mean someone forgot to update
+    it, so look for an explanation before you panic.
+  sections: [Virtual Private Networks, Cloud Hosting, Encrypted Email]
+  related: [jurisdiction, five-eyes, no-logs-policy, pgp]
+
+- slug: webrtc-leak
+  term: WebRTC leak
+  aka: [WebRTC IP leak]
+  short: When a website uses your browser's built-in calling tech to find your real IP address, even though you're on a VPN or proxy.
+  body: |
+    WebRTC is the browser tech behind video calls and other live connections that work without a
+    plugin. To connect people directly, it has to work out their IP addresses, and any website can
+    ask it to do that with a few lines of code. A WebRTC leak is when that reveals an address you
+    were hoping to hide.
+
+    It mostly bites with browser proxy extensions and VPN setups that don't send everything through
+    the tunnel, since WebRTC can go around them and expose your real public IP. A VPN app that
+    routes all your traffic usually isn't affected. Most major browsers now hide your local network
+    address from it by default, too.
+
+    To check, visit a WebRTC leak test page while you're connected. If it shows your real IP, you
+    can turn WebRTC off in some browsers (which breaks video calls in the browser), limit it with an
+    extension, or fix the VPN so it covers everything.
+  sections: [Browser Extensions, Browsers, Online Tools, Virtual Private Networks]
+  related: [vpn, dns-leak, proxy, browser-fingerprinting]
+
+- slug: zero-knowledge
+  term: Zero-knowledge encryption
+  aka: [client-side encryption, zero-access encryption]
+  short: Encryption done on your device before anything's uploaded, so the provider can store and sync your data but has no way to read it.
+  body: |
+    Zero-knowledge is mostly a marketing term, but a useful one. Your files, notes or passwords are
+    encrypted on your device with a key that comes from your password (or a key only you hold), and
+    only the encrypted version is ever sent to the provider. They can store and sync it, but they
+    can't read it, and neither can anyone who breaches them.
+
+    Check what's actually covered, as your email address, file sizes, timestamps and sometimes file
+    names can still be readable. Forget your password and there's usually no way to get your data
+    back - that's the point, but it catches people out. And if you use the web app, the provider
+    sends you fresh code every time you load it, so a provider that went bad (or was forced to)
+    could serve a version that grabs your password. Desktop and mobile apps make that harder to pull
+    off.
+
+    You'll also see "zero-access encryption", which some providers use for data that arrives
+    readable (an ordinary incoming email, say) and is encrypted with your key as soon as it lands.
+    Don't confuse any of it with zero-knowledge proofs, the maths behind some privacy coins - same
+    name, different idea.
+  sections: [Encrypted Cloud Storage, Password Managers, Digital Notes, Encrypted Email]
+  related: [e2ee, encryption-at-rest, password-manager, metadata]
