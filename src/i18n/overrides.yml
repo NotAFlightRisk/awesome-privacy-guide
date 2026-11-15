@@ -2,14 +2,26 @@
 de:
   Essentials: Grundlagen
   Utilities: Dienstprogramme
+  Social: Soziales
 es:
   Utilities: Utilidades
   Media: Multimedia
+  File Drop: Envío de archivos
+  Host Block Lists: Listas de bloqueo de hosts
+  Scheduling: Planificación de citas
+  Data Erasers: Borrado de datos
 fr:
   Utilities: Utilitaires
   Networking: Réseau
+  Music Players: Lecteurs de musique
+  Host Block Lists: Listes de blocage d'hôtes
+pt:
+  File Drop: Envio de arquivos
+  Music Players: Reprodutores de música
 it:
   Utilities: Utilità
+  Office Suites: Suite per ufficio
+  Scheduling: Pianificazione
 ru:
   Utilities: Утилиты
   Networking: Сеть
