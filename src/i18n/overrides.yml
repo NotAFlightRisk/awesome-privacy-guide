@@ -1,0 +1,21 @@
+# Hand fixes for short names machine translation gets wrong out of context, by language
+de:
+  Essentials: Grundlagen
+  Utilities: Dienstprogramme
+es:
+  Utilities: Utilidades
+  Media: Multimedia
+fr:
+  Utilities: Utilitaires
+  Networking: Réseau
+it:
+  Utilities: Utilità
+ru:
+  Utilities: Утилиты
+  Networking: Сеть
+  Social: Соцсети
+  Media: Медиа
+ja:
+  Essentials: 必須ツール
+  Smart Home & IoT: スマートホームとIoT
+  Social: ソーシャル

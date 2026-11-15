@@ -25,3 +25,11 @@ test('UI placeholders survive translation untouched', () => {
   assert.equal(job.payload, '<span class="notranslate">{count}</span> picks &amp; more');
   assert.equal(job.read('<span class="notranslate">{count}</span> Empfehlungen &amp; mehr'), '{count} Empfehlungen & mehr');
 });
+
+test('topic names go out inside a sentence and come back on their own', () => {
+  const { name } = kinds();
+  const job = name('Music Players');
+  assert.match(job.payload, /<b>Music Players<\/b>/);
+  assert.equal(job.read('Catégories de logiciels : <b>Lecteurs de musique</b>'), 'Lecteurs de musique');
+  assert.equal(job.read('no tags at all'), undefined);
+});

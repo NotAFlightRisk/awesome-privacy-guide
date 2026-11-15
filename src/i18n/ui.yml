@@ -14,7 +14,7 @@ nav.skip: Skip to content
 nav.crumbs: Breadcrumbs
 nav.alternatives: alternatives
 nav.glossary: glossary
-nav.stack: stack builder
+nav.stack: toolkit builder
 nav.discover: discover
 nav.changes: what's new
 nav.about: about
@@ -139,7 +139,7 @@ facts.payment.crypto: Takes cryptocurrency
 facts.payment.none: Crypto payments not listed
 facts.platforms: Platforms
 facts.via: per {source}
-facts.note: Only what Awesome Privacy, GitHub and ToS;DR have on record. Nothing here is a guess, so a blank means nobody's recorded it, not that it's bad.
+facts.note: Only what Awesome Privacy, GitHub and ToS;DR have on record. Nothing here is a guess, and anything missing just means nobody's recorded it yet.
 
 badge.open: open source
 badge.public: public code
@@ -147,7 +147,7 @@ badge.audited: audited
 badge.tosdr: ToS;DR {grade}
 badge.crypto: takes crypto
 badge.archived: archived
-badge.quiet: quiet since {year}
+badge.quiet: no commits since {year}
 
 apps.android: Google Play
 apps.ios: App Store
@@ -202,10 +202,10 @@ about.translations.body: English is the original. The other languages are machin
 about.privacy.title: your privacy here
 about.privacy.body: No cookies, no accounts and nothing stored about you. Visits are counted with a self-hosted, cookie-free Plausible, and if a page crashes, the error report goes to our own server with nothing personal in it.
 
-stack.title: Build your privacy stack
-stack.description: Pick a private browser, email, messenger, password manager, VPN and more from the Awesome Privacy list, then share or export your whole setup.
+stack.title: Build your privacy toolkit
+stack.description: Pick a private browser, email, messenger, password manager, VPN and more from the Awesome Privacy list, then share or export your whole toolkit.
 stack.lead: Pick one app for each job, then share the link or copy it as Markdown. Your picks live in the link itself, so nothing gets saved anywhere.
-stack.mine: my privacy stack
+stack.mine: my privacy toolkit
 stack.none: Skip
 stack.empty: Nothing picked yet. Choose from the lists and it'll show up here.
 stack.share: Copy link

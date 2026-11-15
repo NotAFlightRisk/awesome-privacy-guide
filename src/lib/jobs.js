@@ -27,8 +27,22 @@ export function protector(names) {
 }
 
 /** The three shapes of job: plain names, markdown with links, and UI copy with {placeholders} */
+const BRANDS = ['ToS;DR', 'Awesome Privacy', 'awesome-privacy.xyz', 'GitHub', 'Plausible', 'Azure Translator', 'Markdown', 'JSON'];
+const brands = protector(BRANDS);
+
 export const kinds = (protect = (html) => html) => ({
   plain: (text) => ({ text, type: 'plain', payload: text, read: (out) => out }),
+
+  // A topic name on its own comes back as "musicians" for Music Players, so it goes in a sentence
+  name: (text) => ({
+    text,
+    type: 'html',
+    payload: `Categories of privacy software: <b>${text.replaceAll('&', '&amp;')}</b>`,
+    read: (out) => {
+      const name = out.match(/<b>(.*?)<\/b>/)?.[1];
+      return name && decode(name);
+    },
+  }),
 
   markdown(text) {
     const links = [];
@@ -52,10 +66,12 @@ export const kinds = (protect = (html) => html) => ({
   template: (text) => ({
     text,
     type: 'html',
-    payload: text
-      .replaceAll('&', '&amp;')
-      .replaceAll('<', '&lt;')
-      .replace(/\{\w+\}/g, (name) => keep(name)),
+    payload: brands(
+      text
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replace(/\{\w+\}/g, (name) => keep(name)),
+    ),
     read: (out) => decode(unkeep(out)),
   }),
 });
@@ -63,15 +79,15 @@ export const kinds = (protect = (html) => html) => ({
 /** Every string the site shows, deduplicated by what gets cached */
 export function jobs() {
   const { categories, sections, services, glossary, products } = getModel();
-  const { plain, markdown, template } = kinds(
+  const { plain, name, markdown, template } = kinds(
     protector([
       ...services.map((svc) => svc.name),
       ...sections.flatMap((section) => section.mentions.map((mention) => mention.name)),
     ]),
   );
   const all = [
-    ...categories.map((category) => plain(category.name)),
-    ...sections.map((section) => plain(section.name)),
+    ...categories.map((category) => name(category.name)),
+    ...sections.map((section) => name(section.name)),
     ...glossary.flatMap((entry) => [entry.term, entry.short, ...(entry.aka ?? [])].map(plain)),
     ...Object.values(ui).map(template),
     ...sections.flatMap((section) =>

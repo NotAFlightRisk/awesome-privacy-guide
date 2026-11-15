@@ -8,7 +8,10 @@ import { byCode } from '../i18n/languages.js';
 
 export const hash = (text) => createHash('sha1').update(text.trim()).digest('hex').slice(0, 16);
 
-export const ui = parse(readFileSync(resolve(process.cwd(), 'src/i18n/ui.yml'), 'utf8'));
+const readYaml = (file) => parse(readFileSync(resolve(process.cwd(), file), 'utf8'));
+
+export const ui = readYaml('src/i18n/ui.yml');
+const overrides = readYaml('src/i18n/overrides.yml');
 
 const caches = new Map();
 const cacheFor = (lang) => {
@@ -16,7 +19,8 @@ const cacheFor = (lang) => {
   return caches.get(lang);
 };
 
-const lookup = (lang, text) => (lang === 'en' || !text?.trim() ? undefined : cacheFor(lang)[hash(text)]);
+const lookup = (lang, text) =>
+  lang === 'en' || !text?.trim() ? undefined : (overrides[lang]?.[text] ?? cacheFor(lang)[hash(text)]);
 
 /** A plain string in `lang`, or the English if it hasn't been translated yet */
 export const tr = (lang, text) => lookup(lang, text) ?? text;
