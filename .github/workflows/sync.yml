@@ -8,7 +8,7 @@ on:
       budget:
         description: Most characters to send to Azure Translator
         type: string
-        default: '30000'
+        default: '15000'
 
 permissions:
   contents: read
@@ -40,7 +40,7 @@ jobs:
         env:
           AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
           AZURE_TRANSLATOR_REGION: ${{ vars.AZURE_TRANSLATOR_REGION }}
-          BUDGET: ${{ inputs.budget || '30000' }}
+          BUDGET: ${{ inputs.budget || '15000' }}
       - name: Commit what moved
         run: |
           git add data public/icons
