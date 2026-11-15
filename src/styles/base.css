@@ -77,6 +77,10 @@ svg {
   max-width: 100%;
 }
 
+svg {
+  flex-shrink: 0;
+}
+
 code {
   font: 0.88em var(--font-mono);
   padding: 0.1em 0.35em;
