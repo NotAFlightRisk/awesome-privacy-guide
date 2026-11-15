@@ -1,0 +1,66 @@
+name: 🔄 Sync
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: Most characters to send to Azure Translator
+        type: string
+        default: '30000'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: 🔄 Pull the list and translate what's new
+    if: github.repository_owner == 'NotAFlightRisk'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7 # zizmor: ignore[artipacked] this job pushes the data commit
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: 22
+          check-latest: true
+          cache: npm
+      - run: npm ci
+      - run: npm run sync
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - run: npm run translate -- --budget "$BUDGET"
+        continue-on-error: true
+        env:
+          AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
+          AZURE_TRANSLATOR_REGION: ${{ vars.AZURE_TRANSLATOR_REGION }}
+          BUDGET: ${{ inputs.budget || '30000' }}
+      - name: Commit what moved
+        run: |
+          git add data public/icons
+          if git diff --cached --quiet; then
+            echo "Nothing new upstream" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(data): sync with awesome-privacy"
+          git push origin HEAD:main
+          git diff --stat HEAD~1 | tail -n1 >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    name: 🚀 Deploy
+    needs: sync
+    permissions:
+      contents: read
+    uses: ./.github/workflows/deploy.yml # zizmor: ignore[self-repository] actionlint can't read $/ yet
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}

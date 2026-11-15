@@ -1,4 +1,4 @@
-# Keeps dependencies patched. Trim the ecosystems to match the project.
+# Keeps dependencies patched
 # Docs: https://docs.github.com/code-security/dependabot/working-with-dependabot/dependabot-options-reference
 
 version: 2
@@ -32,11 +32,15 @@ updates:
         update-types:
           - "minor"
           - "patch"
-      svelte:
+      astro:
         patterns:
+          - "astro"
+          - "@astrojs/*"
           - "svelte"
-          - "@sveltejs/*"
-          - "vite"
+      # The SDK and its build plugin, so a major bump moves them together
+      sentry:
+        patterns:
+          - "@sentry/*"
 
   - package-ecosystem: "docker"
     directory: "/"
