@@ -147,6 +147,7 @@ const jsonLd = [
   }
 
   .pitch {
+    container-type: inline-size;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-lg);
@@ -159,7 +160,7 @@ const jsonLd = [
   }
 
   h1 {
-    font-size: clamp(1.5rem, 0.6rem + 4vw, 3.6rem);
+    font-size: clamp(1.5rem, 8cqi, 3.6rem);
     letter-spacing: -0.04em;
     text-transform: lowercase;
   }
@@ -206,7 +207,7 @@ const jsonLd = [
     & a {
       padding: var(--space-3xs) var(--space-sm);
       border: 1px solid var(--border);
-      border-radius: 999px;
+      border-radius: var(--radius);
       color: var(--text-muted);
       text-decoration: none;
 

@@ -8,7 +8,7 @@
   --surface-raised: light-dark(#ffffff, #131218);
   --surface-sunken: light-dark(#f1f0f5, #070609);
   --border: light-dark(#e2e0e9, #25232d);
-  --border-strong: light-dark(#8f8a9e, #5a5668);
+  --border-strong: light-dark(#8f8a9e, #6e6a7d);
   --text: light-dark(#15131b, #ecebf1);
   --text-muted: light-dark(#575265, #a8a4b4);
   --text-faint: light-dark(#6b6679, #8a8698);
@@ -23,7 +23,8 @@
   --bad: light-dark(#b0202f, #ff8796);
   --bad-soft: light-dark(#fbe6e9, #2b0f15);
   --icon-plate: light-dark(#ffffff, #f1f0f5);
-  --shadow: light-dark(0 1px 2px #15131b14, 0 1px 2px #00000066);
+  --shadow-colour: light-dark(#15131b1f, #00000099);
+  --shadow: 0 8px 24px -6px var(--shadow-colour);
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;

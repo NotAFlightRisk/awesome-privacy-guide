@@ -124,8 +124,9 @@ const current = Astro.url.pathname;
     margin-inline: auto;
     min-height: 3.5rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-md);
+    gap: 0 var(--space-md);
   }
 
   .brand {
@@ -149,14 +150,14 @@ const current = Astro.url.pathname;
 
   .links {
     display: flex;
-    gap: var(--space-lg);
+    gap: var(--space-md);
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
   nav a {
-    font: var(--text-sm) var(--font-mono);
+    font: var(--text-xs) var(--font-mono);
     color: var(--text-muted);
     text-decoration: none;
     white-space: nowrap;
@@ -262,7 +263,7 @@ const current = Astro.url.pathname;
     }
   }
 
-  @media (max-width: 62rem) {
+  @media (max-width: 80rem) {
     .links {
       display: none;
     }

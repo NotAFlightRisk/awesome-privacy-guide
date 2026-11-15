@@ -19,6 +19,7 @@ body {
   color: var(--text);
   font: 400 var(--text-md) / 1.6 var(--font-body);
   font-optical-sizing: auto;
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -32,7 +33,7 @@ h4 {
   line-height: 1.2;
   letter-spacing: -0.03em;
   text-wrap: balance;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 h1 {
