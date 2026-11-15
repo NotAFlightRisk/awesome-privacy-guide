@@ -16,10 +16,17 @@ export const day = (date, lang) =>
 export const month = (date, lang) =>
   new Intl.DateTimeFormat(locale(lang), { month: 'short', year: 'numeric' }).format(new Date(date));
 
-/** "Bitwarden, KeePass and 3 more" in whatever the language says for "and" */
+/** "Bitwarden, KeePass and 3 more" in whatever the language says for "and", for prose */
 export const list = (items, lang, max = items.length) => {
   const shown = items.slice(0, max);
   const rest = items.length - shown.length;
   const formatter = new Intl.ListFormat(locale(lang), { type: 'conjunction' });
   return formatter.format(rest ? [...shown, t(lang, 'list.more', { count: rest })] : shown);
+};
+
+/** "Bitwarden, KeePass +3", for tight spots like index rows */
+export const shortList = (items, lang, max = items.length) => {
+  const rest = items.length - max;
+  const shown = new Intl.ListFormat(locale(lang), { type: 'unit', style: 'short' }).format(items.slice(0, max));
+  return rest > 0 ? `${shown}\u00a0+${rest}` : shown;
 };

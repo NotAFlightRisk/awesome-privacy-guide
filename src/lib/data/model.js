@@ -88,11 +88,16 @@ function toSection(raw, category, enrich) {
   return section;
 }
 
+/** One product per mainstream app, with names a note groups together (Outlook, Microsoft Outlook) as one */
 function toProducts(sections, notes) {
+  const keyOf = (slug) => {
+    const note = notes.find(({ match }) => match.some((m) => slugify(m) === slug));
+    return note ? slugify(note.match[0]) : slug;
+  };
   const bySlug = new Map();
   for (const section of sections) {
     for (const name of section.replaces) {
-      const slug = slugify(name);
+      const slug = name && keyOf(slugify(name));
       if (!slug) continue;
       const product = bySlug.get(slug) ?? { kind: 'product', slug, names: new Set(), sections: [] };
       product.names.add(name);
@@ -105,7 +110,8 @@ function toProducts(sections, notes) {
       const note = notes.find(({ match }) => match.some((m) => slugify(m) === product.slug));
       const written = [...names].find((name) => name !== name.toLowerCase()) ?? [...names][0];
       const services = product.sections.flatMap((section) => section.services);
-      return { ...product, name: note?.name ?? brandCase(written), note, services };
+      const aliases = [...names].map(slugify);
+      return { ...product, name: note?.name ?? brandCase(written), note, services, aliases };
     })
     .filter((product) => product.services.length)
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -156,7 +162,10 @@ function buildModel(data) {
   const services = sections.flatMap((section) => section.services);
   const products = toProducts(sections, data.switchFrom);
   for (const section of sections) {
-    section.swaps = products.filter((product) => product.sections.includes(section));
+    const own = section.replaces.map((name) =>
+      products.find((product) => product.sections.includes(section) && product.aliases.includes(slugify(name))),
+    );
+    section.swaps = [...new Set(own.filter(Boolean))];
   }
   return {
     categories,

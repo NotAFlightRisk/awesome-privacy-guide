@@ -10,7 +10,7 @@ import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
 import { finderProps } from '../../lib/finder.js';
 import { site, upstream } from '../../lib/site.js';
-import { day, list, number } from '../../lib/format.js';
+import { day, number, shortList } from '../../lib/format.js';
 import { pickOfTheDay } from '../../lib/discover.js';
 
 const { lang, page } = Astro.props;
@@ -93,7 +93,7 @@ const jsonLd = [
                 <a href={to.section(section)}>{tr(section.name)}</a>
                 <span class="count">{section.services.length}</span>
                 {section.swaps.length > 0 && (
-                  <span class="instead">{t('home.instead', { names: list(section.swaps.map((swap) => swap.name), lang, 2) })}</span>
+                  <span class="instead">{t('home.instead', { names: shortList(section.swaps.map((swap) => swap.name), lang, 2) })}</span>
                 )}
               </li>
             ))}

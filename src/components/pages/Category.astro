@@ -5,7 +5,7 @@ import StarCta from '../ui/StarCta.astro';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
 import { plainText, clip } from '../../lib/markdown.js';
-import { list } from '../../lib/format.js';
+import { list, shortList } from '../../lib/format.js';
 
 const { lang, page } = Astro.props;
 const category = page.entity;
@@ -50,7 +50,7 @@ const jsonLd = [
             ))}
           </ul>
           {section.swaps.length > 0 && (
-            <p class="instead">{t('home.instead', { names: list(section.swaps.map((swap) => swap.name), lang, 3) })}</p>
+            <p class="instead">{t('home.instead', { names: shortList(section.swaps.map((swap) => swap.name), lang, 3) })}</p>
           )}
         </article>
       </li>

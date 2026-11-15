@@ -31,9 +31,8 @@ const gh = service.github;
       </a>
     )}
     <Badges service={service} lang={lang} />
-    {gh && !gh.archived && (
-      <p class="line">{t('facts.activity')}: {month(gh.pushed, lang)} · {t('facts.stars', { count: compact(gh.stars, lang) })}</p>
-    )}
+    {gh && !gh.archived && <p class="line">{t('facts.activity')}: {month(gh.pushed, lang)}</p>}
+    {gh?.stars !== undefined && <p class="line">{t('facts.stars', { count: compact(gh.stars, lang) })}</p>}
     {platforms.length > 0 && <p class="line">{platforms.join(' · ')}</p>}
   </div>
 </article>
