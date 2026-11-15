@@ -1,0 +1,438 @@
+{
+  "157": {
+    "rating": "A",
+    "name": "Tuta"
+  },
+  "188": {
+    "rating": "B",
+    "name": "Firefox Cloud Services"
+  },
+  "222": {
+    "rating": "C",
+    "name": "DuckDuckGo"
+  },
+  "418": {
+    "rating": "B",
+    "name": "Startpage"
+  },
+  "432": {
+    "rating": "C",
+    "name": "eM Client"
+  },
+  "491": {
+    "rating": "D",
+    "name": "Proton AG"
+  },
+  "514": {
+    "rating": "D",
+    "name": "GitLab"
+  },
+  "528": {
+    "rating": "B",
+    "name": "Signal"
+  },
+  "639": {
+    "rating": "C",
+    "name": "Mastodon"
+  },
+  "641": {
+    "rating": "B",
+    "name": "Mullvad"
+  },
+  "682": {
+    "rating": "B",
+    "name": "Electronic Frontier Foundation"
+  },
+  "707": {
+    "rating": "B",
+    "name": "Nextcloud"
+  },
+  "838": {
+    "rating": "D",
+    "name": "10minutemail"
+  },
+  "893": {
+    "rating": "N/A",
+    "name": "1.1.1.1 DNS services [Cloudflare]"
+  },
+  "1340": {
+    "rating": "B",
+    "name": "Discourse"
+  },
+  "1348": {
+    "rating": "B",
+    "name": "Bitwarden"
+  },
+  "1352": {
+    "rating": "D",
+    "name": "Anonyme Labs (MySudo)"
+  },
+  "1487": {
+    "rating": "C",
+    "name": "Brave"
+  },
+  "1517": {
+    "rating": "C",
+    "name": "mailbox.org"
+  },
+  "1596": {
+    "rating": "C",
+    "name": "PeerTube"
+  },
+  "1603": {
+    "rating": "C",
+    "name": "OpenWrt"
+  },
+  "1607": {
+    "rating": "B",
+    "name": "SourceHut"
+  },
+  "1694": {
+    "rating": "B",
+    "name": "Mailfence"
+  },
+  "1696": {
+    "rating": "B",
+    "name": "Tresorit"
+  },
+  "1745": {
+    "rating": "C",
+    "name": "Proton VPN"
+  },
+  "1826": {
+    "rating": "B",
+    "name": "Disroot"
+  },
+  "1886": {
+    "rating": "B",
+    "name": "VirusTotal"
+  },
+  "1959": {
+    "rating": "A",
+    "name": "NextDNS"
+  },
+  "2116": {
+    "rating": "A",
+    "name": "Standard Notes"
+  },
+  "2182": {
+    "rating": "A",
+    "name": "F-Droid"
+  },
+  "2201": {
+    "rating": "B",
+    "name": "Jitsi"
+  },
+  "2220": {
+    "rating": "A",
+    "name": "addy.io"
+  },
+  "2258": {
+    "rating": "D",
+    "name": "Qubes OS"
+  },
+  "2318": {
+    "rating": "N/A",
+    "name": "Zulip"
+  },
+  "2432": {
+    "rating": "B",
+    "name": "Mojeek"
+  },
+  "2455": {
+    "rating": "B",
+    "name": "matrix.org"
+  },
+  "2498": {
+    "rating": "B",
+    "name": "Element"
+  },
+  "2519": {
+    "rating": "N/A",
+    "name": "Unbound"
+  },
+  "2552": {
+    "rating": "B",
+    "name": "SimpleLogin"
+  },
+  "2558": {
+    "rating": "B",
+    "name": "Calyx Institute"
+  },
+  "2559": {
+    "rating": "A",
+    "name": "Briar"
+  },
+  "2571": {
+    "rating": "B",
+    "name": "Windscribe"
+  },
+  "2584": {
+    "rating": "B",
+    "name": "CryptPad"
+  },
+  "2748": {
+    "rating": "B",
+    "name": "IVPN"
+  },
+  "2761": {
+    "rating": "N/A",
+    "name": "Electrum Bitcoin Wallet"
+  },
+  "2776": {
+    "rating": "C",
+    "name": "AdGuard Software Limited"
+  },
+  "2798": {
+    "rating": "N/A",
+    "name": "DTube"
+  },
+  "2845": {
+    "rating": "B",
+    "name": "Tor Project"
+  },
+  "2981": {
+    "rating": "B",
+    "name": "OVPN"
+  },
+  "2994": {
+    "rating": "E",
+    "name": "Mattermost"
+  },
+  "3069": {
+    "rating": "C",
+    "name": "Lulu"
+  },
+  "3118": {
+    "rating": "C",
+    "name": "Icedrive"
+  },
+  "3240": {
+    "rating": "N/A",
+    "name": "Pixlr"
+  },
+  "3262": {
+    "rating": "D",
+    "name": "Privacy.com"
+  },
+  "3276": {
+    "rating": "C",
+    "name": "KeePass"
+  },
+  "3365": {
+    "rating": "C",
+    "name": "Mozilla Thunderbird"
+  },
+  "3370": {
+    "rating": "B",
+    "name": "Codeberg"
+  },
+  "3435": {
+    "rating": "C",
+    "name": "Have I Been Pwned"
+  },
+  "3579": {
+    "rating": "C",
+    "name": "ShareX"
+  },
+  "3624": {
+    "rating": "C",
+    "name": "K-9 Mail"
+  },
+  "3640": {
+    "rating": "N/A",
+    "name": "Mumble"
+  },
+  "3688": {
+    "rating": "C",
+    "name": "Njalla"
+  },
+  "3843": {
+    "rating": "N/A",
+    "name": "Exodus"
+  },
+  "3870": {
+    "rating": "E",
+    "name": "Obsidian"
+  },
+  "4076": {
+    "rating": "A",
+    "name": "Aegis Authenticator"
+  },
+  "4105": {
+    "rating": "C",
+    "name": "Photopea"
+  },
+  "4121": {
+    "rating": "N/A",
+    "name": "Little Snitch"
+  },
+  "4158": {
+    "rating": "C",
+    "name": "Firefox Relay"
+  },
+  "4176": {
+    "rating": "N/A",
+    "name": "Internxt"
+  },
+  "4202": {
+    "rating": "N/A",
+    "name": "AmIUnique "
+  },
+  "4227": {
+    "rating": "C",
+    "name": "Open Broadcaster Software"
+  },
+  "4322": {
+    "rating": "N/A",
+    "name": "Seafile"
+  },
+  "4346": {
+    "rating": "B",
+    "name": "PrivacySpy"
+  },
+  "4403": {
+    "rating": "C",
+    "name": "Cryptomator"
+  },
+  "4516": {
+    "rating": "B",
+    "name": "Audacity"
+  },
+  "4691": {
+    "rating": "A",
+    "name": "RethinkDNS"
+  },
+  "5047": {
+    "rating": "B",
+    "name": "Cryptee"
+  },
+  "5256": {
+    "rating": "D",
+    "name": "Ente"
+  },
+  "5414": {
+    "rating": "N/A",
+    "name": "Tofu Authenticator"
+  },
+  "6150": {
+    "rating": "N/A",
+    "name": "Flagfox "
+  },
+  "6210": {
+    "rating": "N/A",
+    "name": "Mailvelope GmbH "
+  },
+  "6241": {
+    "rating": "N/A",
+    "name": "OONI"
+  },
+  "6291": {
+    "rating": "D",
+    "name": "pfSense"
+  },
+  "6389": {
+    "rating": "C",
+    "name": "LibreWolf"
+  },
+  "6553": {
+    "rating": "N/A",
+    "name": "Rocket.Chat"
+  },
+  "6568": {
+    "rating": "B",
+    "name": "Inkscape"
+  },
+  "6639": {
+    "rating": "C",
+    "name": "AzireVPN"
+  },
+  "6820": {
+    "rating": "C",
+    "name": "Filen"
+  },
+  "7188": {
+    "rating": "C",
+    "name": "LineageOS"
+  },
+  "7192": {
+    "rating": "C",
+    "name": "ClearURLs"
+  },
+  "7378": {
+    "rating": "N/A",
+    "name": "Open Key chain "
+  },
+  "7638": {
+    "rating": "B",
+    "name": "SimpleX Chat"
+  },
+  "7967": {
+    "rating": "N/A",
+    "name": "BrowserLeaks "
+  },
+  "7968": {
+    "rating": "N/A",
+    "name": "IPv6 Leak Test"
+  },
+  "8038": {
+    "rating": "N/A",
+    "name": "UTM"
+  },
+  "8114": {
+    "rating": "B",
+    "name": "Blender"
+  },
+  "8201": {
+    "rating": "C",
+    "name": "2FAS"
+  },
+  "8258": {
+    "rating": "N/A",
+    "name": "Zcash"
+  },
+  "8267": {
+    "rating": "N/A",
+    "name": "Parrot Linux"
+  },
+  "8276": {
+    "rating": "C",
+    "name": "Gpg4win"
+  },
+  "8279": {
+    "rating": "C",
+    "name": "Monero"
+  },
+  "8557": {
+    "rating": "N/A",
+    "name": "Blokada"
+  },
+  "9043": {
+    "rating": "N/A",
+    "name": "NetLimiter "
+  },
+  "9079": {
+    "rating": "C",
+    "name": "Pi-hole"
+  },
+  "9301": {
+    "rating": "N/A",
+    "name": "Unmark"
+  },
+  "9477": {
+    "rating": "C",
+    "name": "Joplin"
+  },
+  "9837": {
+    "rating": "N/A",
+    "name": "Email Privacy Tester"
+  },
+  "9994": {
+    "rating": "C",
+    "name": "JojoYou (PriEco)"
+  },
+  "10033": {
+    "rating": "N/A",
+    "name": "SMSPool"
+  }
+}
