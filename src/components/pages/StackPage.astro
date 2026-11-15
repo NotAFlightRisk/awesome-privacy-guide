@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import Stack from '../islands/Stack.svelte';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { site, upstream } from '../../lib/site.js';
+
+const SLOTS = [
+  'essentials/browsers',
+  'essentials/search-engines',
+  'communication/encrypted-email',
+  'communication/encrypted-messaging',
+  'essentials/password-managers',
+  'essentials/2-factor-authentication',
+  'networking/virtual-private-networks',
+  'networking/dns-providers',
+  'productivity/encrypted-cloud-storage',
+  'productivity/digital-notes',
+  'productivity/office-suites',
+  'operating-systems/mobile-operating-systems',
+];
+
+const { lang, page } = Astro.props;
+const { t, tr } = translator(lang);
+const to = links(lang);
+const { sections } = getModel();
+const slots = SLOTS.map((key) => sections.find((section) => section.key === key))
+  .filter((section) => section?.services.length)
+  .map((section) => ({
+    key: section.slug,
+    name: tr(section.name),
+    url: to.section(section),
+    options: section.services.slice(0, 8).map((svc) => ({
+      slug: svc.slug,
+      name: svc.name,
+      url: to.service(svc),
+      site: svc.url,
+      icon: svc.iconPath,
+    })),
+  }));
+const labels = {
+  mine: t('stack.mine'),
+  none: t('stack.none'),
+  empty: t('stack.empty'),
+  share: t('stack.share'),
+  copied: t('stack.copied'),
+  markdown: t('stack.markdown'),
+  json: t('stack.json'),
+};
+const credit = t('stack.credit', { list: `${upstream.name} (${upstream.repo})`, site: site.name });
+---
+
+<Base lang={lang} id={page.id} title={t('stack.title')} description={t('stack.description')} crumbs={[{ label: t('nav.stack'), url: to.page('stack') }]}>
+  <header class="intro">
+    <h1>{t('stack.title')}</h1>
+    <p class="lead">{t('stack.lead')}</p>
+  </header>
+  <Stack client:visible slots={slots} labels={labels} credit={credit} />
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--measure);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+</style>

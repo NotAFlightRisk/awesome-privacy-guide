@@ -1,0 +1,172 @@
+---
+import Check from '@lucide/astro/icons/check';
+import Minus from '@lucide/astro/icons/minus';
+import TriangleAlert from '@lucide/astro/icons/triangle-exclamation-point';
+import { translator } from '../../lib/i18n.js';
+import { appLinks, gradeOf, quietSince, sourceOf, tosdrUrl } from '../../lib/facts.js';
+import { compact, month } from '../../lib/format.js';
+
+const { service, lang } = Astro.props;
+const { t } = translator(lang);
+const source = sourceOf(service);
+const grade = gradeOf(service);
+const quiet = quietSince(service);
+const gh = service.github;
+const apps = appLinks(service);
+const icons = { good: Check, none: Minus, warn: TriangleAlert, bad: TriangleAlert };
+
+const rows = [
+  {
+    label: t('facts.source'),
+    tone: source.state === 'open' ? 'good' : source.state === 'public' ? 'good' : 'none',
+    value:
+      source.state === 'open'
+        ? source.licence ? t('facts.source.open.licence', { licence: source.licence }) : t('facts.source.open')
+        : source.state === 'public' ? t('facts.source.public') : t('facts.source.none'),
+    link: service.repo && { url: service.repo.url, text: service.repo.name },
+    via: source.licence ? 'GitHub' : 'Awesome Privacy',
+  },
+  {
+    label: t('facts.audit'),
+    tone: service.audited ? 'good' : 'none',
+    value: service.audited ? t('facts.audit.yes') : t('facts.audit.none'),
+    via: 'Awesome Privacy',
+  },
+  service.tosdr && {
+    label: t('facts.tosdr'),
+    tone: grade ? ({ A: 'good', B: 'good', C: 'warn' }[grade] ?? 'bad') : 'none',
+    value: grade ? t('facts.tosdr.grade', { grade }) : t('facts.tosdr.none'),
+    link: { url: tosdrUrl(service.tosdr.id), text: 'tosdr.org' },
+    via: 'ToS;DR',
+  },
+  gh && {
+    label: t('facts.activity'),
+    tone: gh.archived ? 'bad' : quiet ? 'warn' : 'good',
+    value: gh.archived ? t('facts.activity.archived') : month(gh.pushed, lang),
+    extra: gh.stars !== undefined ? t('facts.stars', { count: compact(gh.stars, lang) }) : undefined,
+    via: 'GitHub',
+  },
+  {
+    label: t('facts.payment'),
+    tone: service.crypto ? 'good' : 'none',
+    value: service.crypto ? t('facts.payment.crypto') : t('facts.payment.none'),
+    via: 'Awesome Privacy',
+  },
+].filter(Boolean);
+---
+
+<section class="scorecard" aria-labelledby="facts">
+  <h2 id="facts">{t('facts.title')}</h2>
+  <dl>
+    {rows.map((row) => {
+      const Icon = icons[row.tone];
+      return (
+        <div class={row.tone}>
+          <dt>{row.label}</dt>
+          <dd>
+            <span class="value"><Icon size={16} aria-hidden="true" /> {row.value}</span>
+            {row.extra && <span class="extra">{row.extra}</span>}
+            {row.link && <a href={row.link.url} rel="noopener">{row.link.text}</a>}
+            <span class="via">{t('facts.via', { source: row.via })}</span>
+          </dd>
+        </div>
+      );
+    })}
+    {(service.platforms.length > 0 || apps.length > 0) && (
+      <div class="none">
+        <dt>{t('facts.platforms')}</dt>
+        <dd>
+          <span class="value">{service.platforms.map((key) => t(`platform.${key}`)).join(' · ')}</span>
+          {apps.map((app) => <a href={app.url} rel="noopener">{t(`apps.${app.key}`)}</a>)}
+        </dd>
+      </div>
+    )}
+  </dl>
+  <p class="note">{t('facts.note')}</p>
+</section>
+
+<style>
+  .scorecard {
+    display: grid;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+  }
+
+  h2 {
+    font-size: var(--text-xs);
+    text-transform: lowercase;
+    color: var(--text-faint);
+    letter-spacing: 0;
+  }
+
+  dl {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  dl > div {
+    display: grid;
+    gap: var(--space-3xs);
+    padding-block-end: var(--space-sm);
+    border-block-end: 1px solid var(--border);
+  }
+
+  dt {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  dd {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3xs) var(--space-sm);
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+
+  .value {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    font-weight: 600;
+  }
+
+  .good .value {
+    color: var(--good);
+  }
+
+  .warn .value {
+    color: var(--warn);
+  }
+
+  .bad .value {
+    color: var(--bad);
+  }
+
+  .none .value {
+    color: var(--text-muted);
+  }
+
+  .extra,
+  .via {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  .via {
+    flex-basis: 100%;
+  }
+
+  dd a {
+    font: var(--text-xs) var(--font-mono);
+  }
+
+  .note {
+    font-size: var(--text-xs);
+    color: var(--text-faint);
+  }
+</style>

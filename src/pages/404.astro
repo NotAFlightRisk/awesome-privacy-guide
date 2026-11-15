@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Finder from '../components/islands/Finder.svelte';
+import { links } from '../lib/routes.js';
+import { translator } from '../lib/i18n.js';
+import { finderProps } from '../lib/finder.js';
+
+const lang = 'en';
+const { t } = translator(lang);
+const to = links(lang);
+---
+
+<Base lang={lang} title={t('notfound.title')} description={t('notfound.lead')} noindex>
+  <section class="lost">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>{t('notfound.title')}</h1>
+    <p class="lead">{t('notfound.lead')}</p>
+    <Finder client:load big {...finderProps(lang)} />
+    <p><a href={to.home}>{t('notfound.home')}</a></p>
+  </section>
+</Base>
+
+<style>
+  .lost {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: 40rem;
+    min-height: 50vh;
+    align-content: center;
+  }
+
+  .code {
+    font: 800 var(--text-3xl) var(--font-mono);
+    color: var(--accent);
+  }
+
+  .lead {
+    color: var(--text-muted);
+  }
+</style>

@@ -1,0 +1,136 @@
+---
+import Logo from '../ui/Logo.astro';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { getModel } from '../../lib/data/model.js';
+import { upstream, upstreamLinks } from '../../lib/site.js';
+import { day } from '../../lib/format.js';
+
+const { lang } = Astro.props;
+const { t } = translator(lang);
+const to = links(lang);
+const { updated, categories } = getModel();
+const groups = [
+  {
+    title: t('footer.explore'),
+    items: [
+      [t('nav.alternatives'), to.page('alternatives')],
+      [t('nav.glossary'), to.page('glossary')],
+      [t('nav.stack'), to.page('stack')],
+      [t('nav.discover'), to.page('discover')],
+      [t('nav.changes'), to.page('changes')],
+      [t('nav.about'), to.page('about')],
+    ],
+  },
+  {
+    title: t('footer.categories'),
+    items: categories.map((category) => [translator(lang).tr(category.name), to.category(category)]),
+  },
+  {
+    title: upstream.name,
+    items: [
+      [t('star.long'), upstreamLinks.star],
+      [t('footer.contribute'), upstreamLinks.contribute],
+      [t('footer.official'), upstream.site],
+      [t('footer.source'), upstreamLinks.file],
+    ],
+  },
+];
+---
+
+<footer>
+  <div class="inner">
+    <div class="about">
+      <p class="brand"><Logo /> awesome privacy <span>{t('site.guide')}</span></p>
+      <p>
+        {t('footer.built')}
+        <a href={upstream.repo}>{upstream.slug}</a>
+        {t('footer.by')} <a href={upstream.authorUrl}>{upstream.author}</a>.
+        {t('footer.independent')}
+      </p>
+      {updated && <p class="updated">{t('footer.updated', { date: day(updated, lang) })}</p>}
+    </div>
+    {groups.map((group) => (
+      <nav aria-label={group.title}>
+        <h2>{group.title}</h2>
+        <ul>
+          {group.items.map(([label, url]) => (
+            <li><a href={url}>{label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    ))}
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-block-start: 1px solid var(--border);
+    background: var(--surface-sunken);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .inner {
+    width: min(100% - 2 * var(--gutter), var(--page));
+    margin-inline: auto;
+    padding-block: var(--space-2xl);
+    display: grid;
+    grid-template-columns: minmax(16rem, 1.4fr) repeat(3, minmax(9rem, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .about {
+    display: grid;
+    gap: var(--space-sm);
+    align-content: start;
+    max-width: 30rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--text);
+    font: 700 var(--text-sm) var(--font-mono);
+
+    & span {
+      font-weight: 400;
+      color: var(--text-faint);
+    }
+  }
+
+  .updated {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  h2 {
+    margin-block-end: var(--space-sm);
+    font-size: var(--text-xs);
+    text-transform: lowercase;
+    color: var(--text-faint);
+    letter-spacing: 0;
+  }
+
+  ul {
+    display: grid;
+    gap: var(--space-2xs);
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  @media (max-width: 56rem) {
+    .inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

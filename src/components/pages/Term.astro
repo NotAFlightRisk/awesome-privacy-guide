@@ -1,0 +1,93 @@
+---
+import Base from '../../layouts/Base.astro';
+import Heading from '../ui/Heading.astro';
+import Chips from '../ui/Chips.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+
+const { lang, page } = Astro.props;
+const term = page.entity;
+const { t, tr, md } = translator(lang);
+const to = links(lang);
+const { glossary, sections } = getModel();
+const name = tr(term.term);
+const related = (term.related ?? []).map((slug) => glossary.find((entry) => entry.slug === slug)).filter(Boolean);
+const where = (term.sections ?? []).map((title) => sections.find((section) => section.name === title)).filter(Boolean);
+const jsonLd = [
+  {
+    '@type': 'DefinedTerm',
+    name,
+    ...(term.aka?.length && { alternateName: term.aka }),
+    description: tr(term.short),
+    inDefinedTermSet: new URL(to.page('glossary'), Astro.site).href,
+  },
+];
+---
+
+<Base
+  lang={lang}
+  id={page.id}
+  title={t('term.title', { term: name })}
+  description={tr(term.short)}
+  crumbs={[
+    { label: t('nav.glossary'), url: to.page('glossary') },
+    { label: name, url: to.term(term) },
+  ]}
+  jsonLd={jsonLd}
+  ogType="article"
+>
+  <article class="term">
+    <p class="kicker">// {t('nav.glossary')}</p>
+    <h1>{name}</h1>
+    {term.aka?.length > 0 && <p class="aka">{t('term.aka', { names: term.aka.join(', ') })}</p>}
+    <p class="lead">{tr(term.short)}</p>
+    <div class="prose" set:html={md(term.body)} />
+  </article>
+
+  {where.length > 0 && (
+    <section class="stack" aria-labelledby="where">
+      <Heading id="where">{t('term.where')}</Heading>
+      <Chips items={where.map((section) => ({ url: to.section(section), label: tr(section.name) }))} />
+    </section>
+  )}
+
+  {related.length > 0 && (
+    <section class="stack" aria-labelledby="related">
+      <Heading id="related">{t('term.related')}</Heading>
+      <Chips items={related.map((entry) => ({ url: to.term(entry), label: tr(entry.term) }))} />
+    </section>
+  )}
+</Base>
+
+<style>
+  .term {
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--measure);
+  }
+
+  .kicker,
+  .aka {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--accent);
+  }
+
+  .aka {
+    color: var(--text-faint);
+  }
+
+  .lead {
+    font-size: var(--text-xl);
+    line-height: 1.45;
+  }
+
+  .prose {
+    font-size: var(--text-lg);
+  }
+
+  .stack {
+    display: grid;
+    gap: var(--space-lg);
+  }
+</style>

@@ -1,0 +1,140 @@
+---
+import Shuffle from '@lucide/astro/icons/shuffle';
+import Base from '../../layouts/Base.astro';
+import ServiceCard from '../ui/ServiceCard.astro';
+import ServiceIcon from '../ui/ServiceIcon.astro';
+import Heading from '../ui/Heading.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { lesserKnown, pickOfTheDay } from '../../lib/discover.js';
+
+const { lang, page } = Astro.props;
+const { t, tr } = translator(lang);
+const to = links(lang);
+const { services } = getModel();
+const pick = pickOfTheDay(services);
+const pool = lesserKnown(services).filter((svc) => svc !== pick);
+const start = Math.floor(Date.now() / 864e5) % pool.length;
+const more = Array.from({ length: 12 }, (_, i) => pool[(start + i * 29) % pool.length]);
+---
+
+<Base lang={lang} id={page.id} title={t('discover.title')} description={t('discover.description')} crumbs={[{ label: t('nav.discover'), url: to.page('discover') }]}>
+  <header class="intro">
+    <h1>{t('discover.title')}</h1>
+    <p class="lead">{t('discover.lead')}</p>
+    <button class="surprise" type="button" data-index={to.searchIndex} hidden>
+      <Shuffle size={18} aria-hidden="true" />
+      {t('discover.surprise')}
+    </button>
+  </header>
+
+  {pick && (
+    <section class="stack" aria-labelledby="today">
+      <Heading id="today">{t('discover.today')}</Heading>
+      <ServiceCard service={pick} lang={lang} showSection level={3} />
+    </section>
+  )}
+
+  <section class="stack" aria-labelledby="more">
+    <Heading id="more">{t('discover.more')}</Heading>
+    <ul class="grid">
+      {more.map((svc) => (
+        <li>
+          <a href={to.service(svc)}>
+            <ServiceIcon service={svc} size={40} />
+            <span class="name">{svc.name}</span>
+            <span class="where">{tr(svc.section.name)}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<script>
+  import { track } from '../../scripts/plausible.js';
+
+  const button = document.querySelector<HTMLButtonElement>('.surprise');
+  if (button) {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      const items: { t: string; u: string }[] = await (await fetch(button.dataset.index!)).json();
+      const services = items.filter((item) => item.t === 'v');
+      track('Discover', { action: 'surprise' });
+      location.href = services[Math.floor(Math.random() * services.length)].u;
+    });
+  }
+</script>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--measure);
+    justify-items: start;
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  .surprise {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--on-accent);
+    font: 600 var(--text-sm) var(--font-mono);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--accent-strong);
+    }
+  }
+
+  .stack {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: var(--space-sm);
+    padding: 0;
+    list-style: none;
+
+    & a {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0 var(--space-sm);
+      align-items: center;
+      padding: var(--space-sm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+
+      &:hover {
+        border-color: var(--accent);
+      }
+
+      & :global(.icon) {
+        grid-row: span 2;
+      }
+    }
+  }
+
+  .name {
+    font-weight: 600;
+  }
+
+  .where {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+</style>

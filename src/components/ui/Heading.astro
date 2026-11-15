@@ -1,0 +1,33 @@
+---
+const { level = 2, id, count } = Astro.props;
+const Tag = `h${level}`;
+---
+
+<div class="heading">
+  <Tag id={id}><span class="slashes" aria-hidden="true">//</span> <slot /></Tag>
+  {count !== undefined && <span class="count">{count}</span>}
+  <slot name="aside" />
+</div>
+
+<style>
+  .heading {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+  }
+
+  :is(h2, h3) {
+    font-size: var(--text-xl);
+    text-transform: lowercase;
+  }
+
+  .slashes {
+    color: var(--accent);
+  }
+
+  .count {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+</style>

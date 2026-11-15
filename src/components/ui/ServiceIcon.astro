@@ -1,0 +1,41 @@
+---
+const { service, size = 40 } = Astro.props;
+const letters = service.name.replace(/[^\p{L}\p{N}]/gu, '').slice(0, 2);
+---
+
+{service.iconPath ? (
+  <img class={`icon s${size}`} src={service.iconPath} alt="" width={size} height={size} loading="lazy" decoding="async" />
+) : (
+  <span class={`icon s${size} letters`} aria-hidden="true">{letters}</span>
+)}
+
+<style>
+  .icon {
+    --size: 40px;
+    flex: none;
+    width: var(--size);
+    height: var(--size);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--icon-plate);
+    object-fit: contain;
+    padding: calc(var(--size) * 0.12);
+  }
+
+  .s28 { --size: 28px; }
+  .s32 { --size: 32px; }
+  .s36 { --size: 36px; }
+  .s44 { --size: 44px; }
+  .s56 { --size: 56px; }
+  .s72 { --size: 72px; }
+
+  .letters {
+    display: grid;
+    place-items: center;
+    padding: 0;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font: 700 calc(var(--size) * 0.36) / 1 var(--font-mono);
+    text-transform: lowercase;
+  }
+</style>

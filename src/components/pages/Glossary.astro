@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+
+const { lang, page } = Astro.props;
+const { t, tr } = translator(lang);
+const to = links(lang);
+const terms = [...getModel().glossary].sort((a, b) => tr(a.term).localeCompare(tr(b.term), lang));
+const jsonLd = [
+  {
+    '@type': 'DefinedTermSet',
+    name: t('glossary.title'),
+    hasDefinedTerm: terms.map((term) => ({
+      '@type': 'DefinedTerm',
+      name: tr(term.term),
+      description: tr(term.short),
+      url: new URL(to.term(term), Astro.site).href,
+    })),
+  },
+];
+---
+
+<Base lang={lang} id={page.id} title={t('glossary.title')} description={t('glossary.description', { count: terms.length })} crumbs={[{ label: t('nav.glossary'), url: to.page('glossary') }]} jsonLd={jsonLd}>
+  <header class="intro">
+    <h1>{t('glossary.title')}</h1>
+    <p class="lead">{t('glossary.lead')}</p>
+  </header>
+
+  <dl class="terms">
+    {terms.map((term) => (
+      <div>
+        <dt><a href={to.term(term)}>{tr(term.term)}</a>{term.aka?.length > 0 && <span> ({term.aka.join(', ')})</span>}</dt>
+        <dd>{tr(term.short)}</dd>
+      </div>
+    ))}
+  </dl>
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--measure);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  .terms {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    gap: var(--space-md);
+
+    & div {
+      display: grid;
+      gap: var(--space-2xs);
+      align-content: start;
+      padding: var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    & dt {
+      font: 700 var(--text-md) var(--font-mono);
+      letter-spacing: -0.02em;
+
+      & a {
+        text-decoration: none;
+      }
+
+      & span {
+        font-weight: 400;
+        font-size: var(--text-xs);
+        color: var(--text-faint);
+      }
+    }
+
+    & dd {
+      margin: 0;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+  }
+</style>

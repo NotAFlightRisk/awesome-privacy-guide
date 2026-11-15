@@ -1,0 +1,122 @@
+---
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import ServiceIcon from './ServiceIcon.astro';
+import Badges from './Badges.astro';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+
+const { service, lang, showSection = false, level = 3 } = Astro.props;
+const { t, tr, md } = translator(lang);
+const to = links(lang);
+const Title = `h${level}`;
+const platforms = service.platforms.map((key) => t(`platform.${key}`));
+---
+
+<article class="card">
+  <ServiceIcon service={service} size={44} />
+  <div class="body">
+    <div class="head">
+      <Title><a href={to.service(service)}>{service.name}</a></Title>
+      {showSection && <a class="section" href={to.section(service.section)}>{tr(service.section.name)}</a>}
+    </div>
+    <div class="prose" set:html={md(service.description)} />
+    <div class="facts">
+      <Badges service={service} lang={lang} />
+      {platforms.length > 0 && <p class="platforms">{platforms.join(' · ')}</p>}
+    </div>
+  </div>
+  <a class="visit" href={service.url} rel="noopener" data-cta="visit">
+    {service.host}
+    <ArrowUpRight size={14} aria-hidden="true" />
+  </a>
+</article>
+
+<style>
+  .card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--space-md);
+    align-items: start;
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+    transition: border-color var(--quick) var(--ease);
+
+    &:hover {
+      border-color: var(--border-strong);
+    }
+  }
+
+  .body {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2xs) var(--space-sm);
+  }
+
+  h2,
+  h3 {
+    font-size: var(--text-lg);
+    letter-spacing: -0.02em;
+
+    & a {
+      text-decoration: none;
+    }
+  }
+
+  .section {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  .prose {
+    font-size: var(--text-sm);
+  }
+
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs) var(--space-md);
+  }
+
+  .platforms {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  .visit {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .card {
+      grid-template-columns: auto minmax(0, 1fr);
+      padding: var(--space-md);
+    }
+
+    .visit {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
+</style>

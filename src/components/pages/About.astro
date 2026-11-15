@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import StarCta from '../ui/StarCta.astro';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { upstream } from '../../lib/site.js';
+
+const { lang, page } = Astro.props;
+const { t } = translator(lang);
+const to = links(lang);
+const blocks = ['what', 'data', 'facts', 'translations', 'privacy'];
+---
+
+<Base lang={lang} id={page.id} title={t('about.title')} description={t('about.description')} crumbs={[{ label: t('nav.about'), url: to.page('about') }]}>
+  <article class="about">
+    <h1>{t('about.title')}</h1>
+    <p class="lead">
+      {t('about.lead')} <a href={upstream.repo}>{upstream.slug}</a>{t('about.lead.after')}
+    </p>
+    {blocks.map((block) => (
+      <section aria-labelledby={block}>
+        <h2 id={block}><span aria-hidden="true">//</span> {t(`about.${block}.title`)}</h2>
+        <p>{t(`about.${block}.body`)}</p>
+      </section>
+    ))}
+  </article>
+  <StarCta lang={lang} />
+</Base>
+
+<style>
+  .about {
+    display: grid;
+    gap: var(--space-xl);
+    max-width: var(--measure);
+  }
+
+  .lead {
+    font-size: var(--text-xl);
+    line-height: 1.45;
+  }
+
+  section {
+    display: grid;
+    gap: var(--space-sm);
+    color: var(--text-muted);
+  }
+
+  h2 {
+    font-size: var(--text-lg);
+    text-transform: lowercase;
+    color: var(--text);
+
+    & span {
+      color: var(--accent);
+    }
+  }
+</style>

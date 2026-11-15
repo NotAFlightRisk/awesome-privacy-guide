@@ -1,0 +1,116 @@
+---
+import Base from '../../layouts/Base.astro';
+import Finder from '../islands/Finder.svelte';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { finderProps } from '../../lib/finder.js';
+
+const { lang, page } = Astro.props;
+const { t } = translator(lang);
+const to = links(lang);
+const { products } = getModel();
+const letter = (name) => (/^[a-z]/i.test(name) ? name[0].toUpperCase() : '#');
+const groups = Object.entries(Object.groupBy(products, (product) => letter(product.name))).sort(([a], [b]) =>
+  a.localeCompare(b),
+);
+---
+
+<Base lang={lang} id={page.id} title={t('products.title')} description={t('products.description', { count: products.length })} crumbs={[{ label: t('nav.alternatives'), url: to.page('alternatives') }]}>
+  <header class="intro">
+    <h1>{t('products.title')}</h1>
+    <p class="lead">{t('products.lead', { count: products.length })}</p>
+    <Finder client:idle {...finderProps(lang)} />
+  </header>
+
+  <nav class="letters" aria-label={t('products.jump')}>
+    {groups.map(([key]) => <a href={`#letter-${key}`}>{key}</a>)}
+  </nav>
+
+  <div class="groups">
+    {groups.map(([key, items]) => (
+      <section aria-labelledby={`letter-${key}`}>
+        <h2 id={`letter-${key}`}>{key}</h2>
+        <ul>
+          {items.map((product) => (
+            <li>
+              <a href={to.product(product)}>{product.name}</a>
+              <span>{product.services.length}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-md);
+    max-width: 44rem;
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  .letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+
+    & a {
+      min-width: 2rem;
+      padding: var(--space-3xs) var(--space-xs);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font: var(--text-sm) var(--font-mono);
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        border-color: var(--accent);
+      }
+    }
+  }
+
+  .groups {
+    columns: 4 14rem;
+    column-gap: var(--space-xl);
+
+    & section {
+      break-inside: avoid;
+      margin-block-end: var(--space-xl);
+    }
+
+    & h2 {
+      margin-block-end: var(--space-xs);
+      color: var(--accent);
+      font-size: var(--text-xl);
+    }
+
+    & ul {
+      display: grid;
+      gap: var(--space-3xs);
+      padding: 0;
+      list-style: none;
+    }
+
+    & li {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    & a {
+      text-decoration: none;
+    }
+
+    & span {
+      font: var(--text-xs) var(--font-mono);
+      color: var(--text-faint);
+    }
+  }
+</style>

@@ -1,0 +1,143 @@
+---
+import '@fontsource-variable/onest';
+import '@fontsource-variable/martian-mono';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import onest from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Crumbs from '../components/layout/Crumbs.astro';
+import { site } from '../lib/site.js';
+import { alternates, links } from '../lib/routes.js';
+import { translator } from '../lib/i18n.js';
+import { byCode } from '../i18n/languages.js';
+
+const { lang, id, title, description, crumbs = [], jsonLd = [], noindex = false, ogType = 'website' } =
+  Astro.props;
+const { t } = translator(lang);
+const versions = id ? alternates(id).filter((version) => version.path) : [];
+const absolute = (path) => new URL(path, site.url).href;
+const canonical = absolute(Astro.url.pathname);
+const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
+const trail = [{ label: t('nav.home'), url: links(lang).home }, ...crumbs];
+const graph = [
+  ...(crumbs.length
+    ? [
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: trail.map((crumb, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: crumb.label,
+            item: absolute(crumb.url),
+          })),
+        },
+      ]
+    : []),
+  ...jsonLd,
+];
+const plausible = import.meta.env.PUBLIC_PLAUSIBLE_SCRIPT;
+const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
+---
+
+<html lang={byCode[lang].hreflang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {!noindex && versions.map((version) => (
+      <link rel="alternate" hreflang={version.hreflang} href={absolute(version.path)} />
+    ))}
+    {!noindex && versions[0] && <link rel="alternate" hreflang="x-default" href={absolute(versions[0].path)} />}
+    <link rel="preload" href={onest} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#fafafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0a0e" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={byCode[lang].hreflang.replace('-', '_')} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={absolute('/og.png')} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('theme');
+        if (theme) document.documentElement.dataset.theme = theme;
+      } catch {}
+      document.documentElement.classList.add('js');
+    </script>
+    {graph.length > 0 && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replaceAll('<', '\\u003c')}
+      />
+    )}
+    {plausible && (
+      <script is:inline define:vars={{ src: plausible }}>
+        window.plausible = (...args) => (plausible.q ??= []).push(args);
+        plausible.init = (options) => (plausible.o = options);
+        plausible.init({ endpoint: new URL('/api/event', src).href });
+        document.head.append(Object.assign(document.createElement('script'), { src, async: true }));
+      </script>
+    )}
+    {sentry && (
+      <script>
+        // The SDK only downloads once something's actually broken
+        let sentry;
+        const report = (error) => {
+          sentry ??= import('../scripts/sentry.js').catch(() => ({ captureException() {} }));
+          sentry.then(({ captureException }) => captureException(error));
+        };
+        if (import.meta.env.PUBLIC_SENTRY_DSN) {
+          addEventListener('error', (event) => event.error && report(event.error));
+          addEventListener('unhandledrejection', (event) => report(event.reason));
+        }
+      </script>
+    )}
+  </head>
+  <body>
+    <a class="skip" href="#main">{t('nav.skip')}</a>
+    <Header lang={lang} versions={versions} />
+    <main id="main">
+      {crumbs.length > 0 && <Crumbs trail={trail} label={t('nav.crumbs')} />}
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    inset-block-start: var(--space-xs);
+    inset-inline-start: var(--space-xs);
+    z-index: 20;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius);
+    background: var(--text);
+    color: var(--surface);
+    translate: 0 -200%;
+
+    &:focus {
+      translate: none;
+    }
+  }
+
+  main {
+    width: min(100% - 2 * var(--gutter), var(--page));
+    margin-inline: auto;
+    padding-block: var(--space-xl) var(--space-3xl);
+    display: grid;
+    gap: var(--space-2xl);
+  }
+</style>

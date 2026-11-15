@@ -1,0 +1,386 @@
+---
+import Base from '../../layouts/Base.astro';
+import Finder from '../islands/Finder.svelte';
+import Heading from '../ui/Heading.astro';
+import ServiceIcon from '../ui/ServiceIcon.astro';
+import StarCta from '../ui/StarCta.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { finderProps } from '../../lib/finder.js';
+import { site, upstream } from '../../lib/site.js';
+import { day, list, number } from '../../lib/format.js';
+import { pickOfTheDay } from '../../lib/discover.js';
+
+const { lang, page } = Astro.props;
+const { t, tr } = translator(lang);
+const to = links(lang);
+const { categories, sections, services, products, changes } = getModel();
+const counts = { services: number(services.length, lang), sections: number(sections.length, lang) };
+const tryThese = ['gmail', 'chrome', 'whatsapp', 'google-drive', 'lastpass']
+  .map((slug) => products.find((product) => product.slug === slug))
+  .filter(Boolean);
+const recent = changes.flatMap((change) => change.added.map((svc) => ({ svc, date: change.date }))).slice(0, 6);
+const popular = [...products].sort((a, b) => b.services.length - a.services.length).slice(0, 24);
+const pick = pickOfTheDay(services);
+const jsonLd = [
+  {
+    '@type': 'WebSite',
+    name: site.name,
+    url: new URL(to.home, site.url).href,
+    inLanguage: lang,
+    description: t('site.description', counts),
+    isBasedOn: {
+      '@type': 'Dataset',
+      name: upstream.name,
+      url: upstream.repo,
+      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      creator: { '@type': 'Person', name: upstream.author, url: upstream.authorUrl },
+    },
+  },
+];
+---
+
+<Base lang={lang} id={page.id} title={site.name} description={t('site.description', counts)} jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="pitch">
+      <p class="kicker">// {t('home.kicker', counts)}</p>
+      <h1><span class="accent">{t('home.title.accent')}</span> {t('home.title.rest')}</h1>
+      <p class="lead">{t('home.lead')}</p>
+      <Finder client:idle big {...finderProps(lang)} />
+      {tryThese.length > 0 && (
+        <p class="try">
+          <span>{t('home.try')}</span>
+          {tryThese.map((product) => <a href={to.product(product)}>{product.name}</a>)}
+        </p>
+      )}
+    </div>
+    {recent.length > 0 && (
+      <aside class="recent" aria-labelledby="recent">
+        <div class="recent-head">
+          <h2 id="recent">{t('home.recent')}</h2>
+          <a href={to.page('changes')}>{t('home.recent.all')}</a>
+        </div>
+        <ul>
+          {recent.map(({ svc, date }) => (
+            <li>
+              <ServiceIcon service={svc} size={32} />
+              <a href={to.service(svc)}>{svc.name}</a>
+              <span class="where">{tr(svc.section.name)}</span>
+              <time datetime={date}>{day(date, lang)}</time>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )}
+  </section>
+
+  <section class="browse" aria-labelledby="browse">
+    <Heading id="browse">{t('home.browse')}</Heading>
+    <ol class="categories">
+      {categories.map((category, i) => (
+        <li>
+          <h3>
+            <span class="number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <a href={to.category(category)}>{tr(category.name)}</a>
+          </h3>
+          <ul>
+            {category.sections.filter((section) => section.services.length).map((section) => (
+              <li>
+                <a href={to.section(section)}>{tr(section.name)}</a>
+                <span class="count">{section.services.length}</span>
+                {section.replaces.length > 0 && (
+                  <span class="instead">{t('home.instead', { names: list(section.replaces, lang, 2) })}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <StarCta lang={lang} />
+
+  <section aria-labelledby="swaps">
+    <Heading id="swaps">{t('home.swaps')}</Heading>
+    <ul class="swaps">
+      {popular.map((product) => (
+        <li>
+          <a href={to.product(product)}>
+            <span>{product.name}</span>
+            <span class="count">{product.services.length}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="more"><a href={to.page('alternatives')}>{t('home.swaps.all', { count: products.length })}</a></p>
+  </section>
+
+  {pick && (
+    <section class="pick" aria-labelledby="pick">
+      <Heading id="pick">{t('home.pick')}</Heading>
+      <div class="pick-card">
+        <ServiceIcon service={pick} size={56} />
+        <div>
+          <h3><a href={to.service(pick)}>{pick.name}</a></h3>
+          <p class="where">{tr(pick.section.name)}</p>
+        </div>
+        <a class="button" href={to.page('discover')}>{t('home.pick.more')}</a>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(18rem, 1fr);
+    gap: var(--space-2xl);
+    align-items: start;
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .pitch {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: 44rem;
+  }
+
+  .kicker {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 1.3rem + 3vw, 3.6rem);
+    letter-spacing: -0.05em;
+    text-transform: lowercase;
+  }
+
+  .accent {
+    display: block;
+    color: var(--accent);
+  }
+
+  .lead {
+    max-width: 38rem;
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  .try {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2xs);
+    font-size: var(--text-sm);
+    color: var(--text-faint);
+
+    & a {
+      padding: var(--space-3xs) var(--space-sm);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-muted);
+      text-decoration: none;
+
+      &:hover {
+        border-color: var(--accent);
+      }
+    }
+  }
+
+  .recent {
+    display: grid;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+
+    & ul {
+      display: grid;
+      gap: var(--space-sm);
+      padding: 0;
+      list-style: none;
+    }
+
+    & li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 0 var(--space-sm);
+      align-items: center;
+
+      & :global(.icon) {
+        grid-row: span 2;
+      }
+    }
+
+    & a {
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    & time {
+      grid-row: span 2;
+      font: var(--text-xs) var(--font-mono);
+      color: var(--text-faint);
+    }
+  }
+
+  .recent-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    & h2 {
+      font-size: var(--text-xs);
+      text-transform: lowercase;
+      color: var(--text-faint);
+      letter-spacing: 0;
+    }
+
+    & a {
+      font: var(--text-xs) var(--font-mono);
+      font-weight: 400;
+    }
+  }
+
+  .where {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .browse {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .categories {
+    columns: 4 16rem;
+    column-gap: var(--space-xl);
+    padding: 0;
+    list-style: none;
+
+    & > li {
+      break-inside: avoid;
+      display: grid;
+      gap: var(--space-sm);
+      margin-block-end: var(--space-xl);
+    }
+
+    & h3 {
+      display: flex;
+      gap: var(--space-xs);
+      padding-block-end: var(--space-xs);
+      border-block-end: 1px solid var(--border);
+      font-size: var(--text-md);
+      text-transform: lowercase;
+
+      & a {
+        text-decoration: none;
+      }
+    }
+
+    & ul {
+      display: grid;
+      gap: var(--space-xs);
+      padding: 0;
+      list-style: none;
+    }
+
+    & ul li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0 var(--space-xs);
+
+      & a {
+        font-weight: 500;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .number {
+    color: var(--accent);
+  }
+
+  .count {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  .instead {
+    grid-column: 1 / -1;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .swaps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: var(--space-xs);
+    margin-block-start: var(--space-lg);
+    padding: 0;
+    list-style: none;
+
+    & a {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-raised);
+      text-decoration: none;
+
+      &:hover {
+        border-color: var(--accent);
+      }
+    }
+  }
+
+  .more {
+    margin-block-start: var(--space-md);
+    font: var(--text-sm) var(--font-mono);
+  }
+
+  .pick-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+    margin-block-start: var(--space-lg);
+    padding: var(--space-lg);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+
+    & div {
+      flex: 1;
+    }
+
+    & h3 a {
+      text-decoration: none;
+    }
+  }
+
+  .button {
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--on-accent);
+    font: 600 var(--text-sm) var(--font-mono);
+    text-decoration: none;
+
+    &:hover {
+      background: var(--accent-strong);
+      color: var(--on-accent);
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

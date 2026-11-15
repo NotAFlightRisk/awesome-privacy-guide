@@ -1,0 +1,53 @@
+---
+import { badgesFor } from '../../lib/facts.js';
+import { translator } from '../../lib/i18n.js';
+
+const { service, lang } = Astro.props;
+const { t } = translator(lang);
+const badges = badgesFor(service);
+---
+
+{badges.length > 0 && (
+  <ul class="badges">
+    {badges.map((badge) => (
+      <li class={badge.tone}>{t(badge.key, badge.vars)}</li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3xs);
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: 0.15em 0.55em;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font: 500 0.6875rem / 1.5 var(--font-mono);
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .good {
+    border-color: color-mix(in srgb, var(--good) 35%, transparent);
+    background: var(--good-soft);
+    color: var(--good);
+  }
+
+  .warn {
+    border-color: color-mix(in srgb, var(--warn) 35%, transparent);
+    background: var(--warn-soft);
+    color: var(--warn);
+  }
+
+  .bad {
+    border-color: color-mix(in srgb, var(--bad) 35%, transparent);
+    background: var(--bad-soft);
+    color: var(--bad);
+  }
+</style>

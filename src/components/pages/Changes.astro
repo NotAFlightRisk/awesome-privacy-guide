@@ -1,0 +1,127 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceIcon from '../ui/ServiceIcon.astro';
+import StarCta from '../ui/StarCta.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { day } from '../../lib/format.js';
+import { upstream } from '../../lib/site.js';
+
+const { lang, page } = Astro.props;
+const { t, tr } = translator(lang);
+const to = links(lang);
+const changes = getModel().changes.slice(0, 60);
+---
+
+<Base lang={lang} id={page.id} title={t('changes.title')} description={t('changes.description')} crumbs={[{ label: t('nav.changes'), url: to.page('changes') }]}>
+  <header class="intro">
+    <h1>{t('changes.title')}</h1>
+    <p class="lead">{t('changes.lead')} <a href={`${upstream.repo}/pulls`}>{t('changes.prs')}</a></p>
+  </header>
+
+  <ol class="log">
+    {changes.map((change) => (
+      <li>
+        <time datetime={change.date}>{day(change.date, lang)}</time>
+        <div class="body">
+          <ul class="added">
+            {change.added.map((svc) => (
+              <li>
+                <ServiceIcon service={svc} size={28} />
+                <span><a href={to.service(svc)}>{svc.name}</a> <span class="where">{t('changes.added', { section: tr(svc.section.name) })}</span></span>
+              </li>
+            ))}
+            {change.removed.map((name) => (
+              <li class="removed"><span>{t('changes.removed', { name })}</span></li>
+            ))}
+          </ul>
+          {change.pr && (
+            <p class="pr">
+              <a href={change.pr.url}>#{change.pr.number}</a>
+              {change.pr.author && <span>{t('changes.by', { author: `@${change.pr.author}` })}</span>}
+            </p>
+          )}
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <StarCta lang={lang} compactView />
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--measure);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  .log {
+    display: grid;
+    padding: 0;
+    list-style: none;
+
+    & > li {
+      display: grid;
+      grid-template-columns: 9rem minmax(0, 1fr);
+      gap: var(--space-md);
+      padding-block: var(--space-md);
+      border-block-end: 1px solid var(--border);
+    }
+
+    & time {
+      font: var(--text-xs) var(--font-mono);
+      color: var(--text-faint);
+      padding-block-start: var(--space-2xs);
+    }
+  }
+
+  .body {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  .added {
+    display: grid;
+    gap: var(--space-2xs);
+    padding: 0;
+    list-style: none;
+
+    & li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    & a {
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+
+  .where,
+  .removed {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .pr {
+    display: flex;
+    gap: var(--space-xs);
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 40rem) {
+    .log > li {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xs);
+    }
+  }
+</style>

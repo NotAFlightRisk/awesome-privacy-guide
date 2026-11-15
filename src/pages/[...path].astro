@@ -1,0 +1,48 @@
+---
+import Home from '../components/pages/Home.astro';
+import Category from '../components/pages/Category.astro';
+import Section from '../components/pages/Section.astro';
+import Service from '../components/pages/Service.astro';
+import Product from '../components/pages/Product.astro';
+import Pair from '../components/pages/Pair.astro';
+import Products from '../components/pages/Products.astro';
+import Glossary from '../components/pages/Glossary.astro';
+import Term from '../components/pages/Term.astro';
+import Changes from '../components/pages/Changes.astro';
+import About from '../components/pages/About.astro';
+import SearchPage from '../components/pages/SearchPage.astro';
+import StackPage from '../components/pages/StackPage.astro';
+import Discover from '../components/pages/Discover.astro';
+import { languages } from '../i18n/languages.js';
+import { pagesFor } from '../lib/routes.js';
+
+export function getStaticPaths() {
+  return languages.flatMap(({ code }) =>
+    pagesFor(code).map((page) => ({
+      params: { path: page.path.replace(/^\/|\/$/g, '') || undefined },
+      props: { page, lang: code },
+    })),
+  );
+}
+
+const views = {
+  home: Home,
+  category: Category,
+  section: Section,
+  service: Service,
+  product: Product,
+  pair: Pair,
+  alternatives: Products,
+  glossary: Glossary,
+  term: Term,
+  changes: Changes,
+  about: About,
+  search: SearchPage,
+  stack: StackPage,
+  discover: Discover,
+};
+const { page, lang } = Astro.props;
+const View = views[page.kind];
+---
+
+<View lang={lang} page={page} />

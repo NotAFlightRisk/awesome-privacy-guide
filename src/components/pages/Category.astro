@@ -1,0 +1,126 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceIcon from '../ui/ServiceIcon.astro';
+import StarCta from '../ui/StarCta.astro';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { plainText, clip } from '../../lib/markdown.js';
+import { list } from '../../lib/format.js';
+
+const { lang, page } = Astro.props;
+const category = page.entity;
+const { t, tr, md } = translator(lang);
+const to = links(lang);
+const name = tr(category.name);
+const sections = category.sections.filter((section) => section.services.length);
+const count = sections.reduce((sum, section) => sum + section.services.length, 0);
+const description = clip(
+  t('category.description', { name, count, topics: list(sections.map((s) => tr(s.name)), lang, 4) }),
+);
+const jsonLd = [
+  {
+    '@type': 'ItemList',
+    name,
+    itemListElement: sections.map((section, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: tr(section.name),
+      url: new URL(to.section(section), Astro.site).href,
+    })),
+  },
+];
+---
+
+<Base lang={lang} id={page.id} title={t('category.title', { name })} description={description} crumbs={[{ label: name, url: to.category(category) }]} jsonLd={jsonLd}>
+  <header class="intro">
+    <p class="kicker">// {t('category.kicker', { count, topics: sections.length })}</p>
+    <h1>{name}</h1>
+  </header>
+
+  <ul class="sections">
+    {sections.map((section) => (
+      <li>
+        <article>
+          <h2><a href={to.section(section)}>{tr(section.name)}</a></h2>
+          <p class="count">{t('section.picks', { count: section.services.length })}</p>
+          {section.intro && <p class="excerpt">{clip(plainText(md(section.intro)), 180)}</p>}
+          <ul class="icons" aria-label={t('section.top')}>
+            {section.services.slice(0, 5).map((svc) => (
+              <li><a href={to.service(svc)} title={svc.name}><ServiceIcon service={svc} size={32} /><span class="visually-hidden">{svc.name}</span></a></li>
+            ))}
+          </ul>
+          {section.replaces.length > 0 && (
+            <p class="instead">{t('home.instead', { names: list(section.replaces, lang, 3) })}</p>
+          )}
+        </article>
+      </li>
+    ))}
+  </ul>
+
+  <StarCta lang={lang} compactView />
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .kicker {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  .sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-md);
+    padding: 0;
+    list-style: none;
+  }
+
+  article {
+    display: grid;
+    gap: var(--space-sm);
+    height: 100%;
+    align-content: start;
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+
+    &:hover {
+      border-color: var(--border-strong);
+    }
+  }
+
+  h2 {
+    font-size: var(--text-lg);
+
+    & a {
+      text-decoration: none;
+    }
+  }
+
+  .count {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--accent);
+  }
+
+  .excerpt {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .icons {
+    display: flex;
+    gap: var(--space-2xs);
+    padding: 0;
+    list-style: none;
+  }
+
+  .instead {
+    font-size: var(--text-xs);
+    color: var(--text-faint);
+  }
+</style>

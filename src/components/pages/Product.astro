@@ -1,0 +1,154 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceCard from '../ui/ServiceCard.astro';
+import Heading from '../ui/Heading.astro';
+import Chips from '../ui/Chips.astro';
+import StarCta from '../ui/StarCta.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { clip } from '../../lib/markdown.js';
+import { day, list } from '../../lib/format.js';
+
+const { lang, page } = Astro.props;
+const product = page.entity;
+const { t, tr, md } = translator(lang);
+const to = links(lang);
+const count = product.services.length;
+const topics = list(product.sections.map((section) => tr(section.name)), lang);
+const related = getModel()
+  .products.filter((other) => other !== product && other.sections.some((s) => product.sections.includes(s)))
+  .slice(0, 16);
+const names = list(product.services.map((svc) => svc.name), lang, 4);
+const jsonLd = [
+  {
+    '@type': 'ItemList',
+    name: t('product.title', { name: product.name }),
+    numberOfItems: count,
+    itemListElement: product.services.map((svc, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: new URL(to.service(svc), Astro.site).href,
+      name: svc.name,
+    })),
+  },
+];
+---
+
+<Base
+  lang={lang}
+  id={page.id}
+  title={t('product.title', { name: product.name })}
+  description={clip(t('product.description', { count, name: product.name, names }))}
+  crumbs={[
+    { label: t('nav.alternatives'), url: to.page('alternatives') },
+    { label: product.name, url: to.product(product) },
+  ]}
+  jsonLd={jsonLd}
+>
+  <header class="intro">
+    <p class="kicker">// {t('product.kicker', { count })}</p>
+    <h1>{t('product.title', { name: product.name })}</h1>
+    <p class="lead">{t('product.lead', { count, name: product.name, topics })}</p>
+  </header>
+
+  {product.note && (
+    <aside class="why" aria-labelledby="why">
+      <h2 id="why">{t('product.why', { name: product.name })}</h2>
+      <div class="prose" set:html={md(product.note.why)} />
+      <p class="sources">
+        {t('product.sources')}
+        {product.note.sources.map((url, i) => (
+          <a href={url} rel="noopener">[{i + 1}] {new URL(url).hostname.replace(/^www\./, '')}</a>
+        ))}
+        <span>· {t('product.checked', { date: day(product.note.checked, lang) })}</span>
+      </p>
+    </aside>
+  )}
+
+  {product.sections.map((section) => {
+    const picks = section.services;
+    return (
+      <section class="stack" aria-labelledby={`s-${section.slug}`}>
+        <Heading id={`s-${section.slug}`} count={picks.length}>
+          <a href={to.section(section)}>{tr(section.name)}</a>
+        </Heading>
+        <ol class="cards">
+          {picks.map((svc) => (
+            <li><ServiceCard service={svc} lang={lang} level={3} /></li>
+          ))}
+        </ol>
+      </section>
+    );
+  })}
+
+  <StarCta lang={lang} compactView />
+
+  {related.length > 0 && (
+    <section class="stack" aria-labelledby="related">
+      <Heading id="related">{t('product.related')}</Heading>
+      <Chips items={related.map((other) => ({ url: to.product(other), label: other.name }))} />
+    </section>
+  )}
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--measure);
+  }
+
+  .kicker {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--accent);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  .why {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: var(--measure);
+    padding: var(--space-lg);
+    border-inline-start: 3px solid var(--accent);
+    background: var(--surface-raised);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+
+    & h2 {
+      font-size: var(--text-md);
+      text-transform: lowercase;
+    }
+
+    & .prose {
+      color: var(--text);
+    }
+  }
+
+  .sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3xs) var(--space-sm);
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  .stack {
+    display: grid;
+    gap: var(--space-lg);
+
+    & :global(h2 a) {
+      text-decoration: none;
+    }
+  }
+
+  .cards {
+    display: grid;
+    gap: var(--space-md);
+    padding: 0;
+    list-style: none;
+  }
+</style>

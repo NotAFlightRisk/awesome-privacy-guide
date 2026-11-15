@@ -1,0 +1,226 @@
+# Every bit of UI copy, in English. scripts/translate.js does the rest
+# {name} placeholders are filled in by the page, .one/.other are picked by {count}
+
+site.guide: guide
+site.description: Privacy-respecting alternatives to the apps and services you use every day. {services} picks across {sections} topics, from the Awesome Privacy list.
+
+nav.home: Home
+nav.main: Main
+nav.menu: Menu
+nav.search: Search
+nav.language: Language
+nav.theme: Switch between light and dark
+nav.skip: Skip to content
+nav.crumbs: Breadcrumbs
+nav.alternatives: alternatives
+nav.glossary: glossary
+nav.stack: stack builder
+nav.discover: discover
+nav.changes: what's new
+nav.about: about
+
+star.short: Star
+star.long: Star on GitHub
+
+home.kicker: "{services} privacy-respecting picks, {sections} topics"
+home.title.accent: private alternatives
+home.title.rest: to the apps you use every day
+home.lead: Find something to use instead of Gmail, Chrome, WhatsApp and the rest. Every pick here comes from Awesome Privacy, a free list kept up by its community on GitHub.
+home.try: Try
+home.recent: recently added
+home.recent.all: all changes
+home.browse: browse by topic
+home.instead: Instead of {names}
+home.swaps: popular swaps
+home.swaps.all: All {count} apps with private alternatives
+home.pick: something you might not know about
+home.pick.more: Discover more
+
+cta.body: Every pick on this site comes from this list. It's free and kept up by volunteers, so if it's useful to you, give it a star or suggest something it's missing.
+cta.body.people: Every pick on this site comes from this list, kept up by {count} contributors. If it's useful to you, give it a star or suggest something it's missing.
+cta.contribute: Suggest an addition
+
+upstream.label: Source
+upstream.from: From
+upstream.from.after: ", the community-run list this site is built on."
+upstream.official: See it on awesome-privacy.xyz
+upstream.edit: Suggest a change on GitHub
+
+footer.explore: explore
+footer.categories: topics
+footer.built: An independent guide built on
+footer.by: by
+footer.independent: Not affiliated with the list or its maintainers.
+footer.contribute: Contribute
+footer.official: awesome-privacy.xyz
+footer.source: The data file
+footer.updated: List data from {date}
+
+finder.label: Search apps and alternatives
+finder.placeholder: What do you want to replace? Gmail, Chrome, WhatsApp...
+finder.instead: Instead of {name}
+finder.found.one: 1 result
+finder.found.other: "{count} results"
+finder.none: Nothing found. Try the name of an app you use now, like Gmail or Dropbox.
+
+kind.product: swap
+kind.service: app
+kind.section: topic
+kind.category: category
+kind.term: glossary
+
+search.count.one: 1 pick
+search.count.other: "{count} picks"
+search.title: Search
+search.description: Search every app, topic and alternative on the Awesome Privacy list.
+search.browse: or browse a topic
+
+category.title: "{name}: private apps and services"
+category.description: "Privacy-respecting {name} tools: {count} picks across {topics}, from the Awesome Privacy list."
+category.kicker: "{count} picks across {topics} topics"
+
+section.title: "{name}: privacy-respecting picks"
+section.lead.one: One privacy-respecting pick to use instead of {names}, from the Awesome Privacy list.
+section.lead.other: "{count} privacy-respecting picks to use instead of {names}, from the Awesome Privacy list."
+section.lead.plain.one: One privacy-respecting pick from the Awesome Privacy list.
+section.lead.plain.other: "{count} privacy-respecting picks from the Awesome Privacy list."
+section.picks.one: 1 pick
+section.picks.other: "{count} picks"
+section.list: the picks
+section.top: Top picks
+section.empty: Nothing listed here yet.
+section.warning: word of warning
+section.mentions: also worth a look
+section.more: further reading
+section.compare: compare them
+section.swaps: switching from
+
+product.title: Private alternatives to {name}
+product.kicker.one: 1 alternative
+product.kicker.other: "{count} alternatives"
+product.lead.one: One privacy-respecting alternative to {name} from the Awesome Privacy list, under {topics}.
+product.lead.other: "{count} privacy-respecting alternatives to {name} from the Awesome Privacy list, under {topics}."
+product.description.one: "A privacy-respecting alternative to {name}: {names}. Picked by the Awesome Privacy community."
+product.description.other: "{count} privacy-respecting alternatives to {name}, including {names}. Picked by the Awesome Privacy community."
+product.why: why people switch from {name}
+product.sources: "Sources:"
+product.checked: checked {date}
+product.related: other swaps
+
+products.title: Private alternatives to popular apps
+products.description: "{count} popular apps and services, with privacy-respecting alternatives to each, picked by the Awesome Privacy community."
+products.lead: Pick the app you want to get away from and see what the Awesome Privacy list suggests instead. {count} apps so far.
+products.jump: Jump to a letter
+
+service.title: "{name} - {section}"
+service.visit: Visit {host}
+service.others: more {section}
+service.compare: compare {name}
+service.swaps: "{name} replaces"
+
+facts.title: the evidence
+facts.source: Source code
+facts.source.open: Open source
+facts.source.open.licence: Open source ({licence})
+facts.source.public: Public code
+facts.source.none: No public code listed
+facts.audit: Security audit
+facts.audit.yes: Independently audited
+facts.audit.none: No audit listed
+facts.tosdr: Terms of service
+facts.tosdr.grade: Graded {grade} by ToS;DR
+facts.tosdr.none: Not graded yet
+facts.activity: Last commit
+facts.activity.archived: Repository archived
+facts.stars: "{count} stars on GitHub"
+facts.payment: Payment
+facts.payment.crypto: Takes cryptocurrency
+facts.payment.none: Crypto payments not listed
+facts.platforms: Platforms
+facts.via: per {source}
+facts.note: Only what Awesome Privacy, GitHub and ToS;DR have on record. Nothing here is a guess, so a blank means nobody's recorded it, not that it's bad.
+
+badge.open: open source
+badge.public: public code
+badge.audited: audited
+badge.tosdr: ToS;DR {grade}
+badge.crypto: takes crypto
+badge.archived: archived
+badge.quiet: quiet since {year}
+
+apps.android: Google Play
+apps.ios: App Store
+
+platform.windows: Windows
+platform.macos: macOS
+platform.linux: Linux
+platform.android: Android
+platform.ios: iOS
+platform.web: Web
+platform.extension: Browser extension
+platform.self-hosted: Self-hosted
+platform.desktop: Desktop
+
+compare.title: "{a} vs {b}: privacy compared"
+compare.description: "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms."
+compare.lead: Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.
+compare.yes: "Yes"
+compare.no: "No"
+compare.unknown: Not recorded
+compare.stars: GitHub stars
+compare.more: more {section} comparisons
+
+glossary.title: Privacy glossary
+glossary.description: "{count} privacy and security terms explained in plain English, like end-to-end encryption, metadata and warrant canaries."
+glossary.lead: The jargon you'll bump into when picking privacy tools, in plain English.
+
+term.title: What is {term}?
+term.aka: Also called {names}
+term.where: where it matters
+term.related: related terms
+
+changes.title: What's new on Awesome Privacy
+changes.description: The latest apps and services added to the Awesome Privacy list, with a link to each change on GitHub.
+changes.lead: The latest additions to the list, newest first. Each one went in through a pull request, and you can see them all on GitHub.
+changes.prs: Browse the pull requests
+changes.added: added to {section}
+changes.removed: "{name} removed"
+changes.by: by {author}
+
+about.title: About this guide
+about.description: What this site is, where its data comes from, and how the evidence on each page is put together.
+about.lead: This is an independent, easier-to-browse guide to
+about.lead.after: ", a free list of privacy-respecting software and services curated by Alicia Sykes and the community."
+about.what.title: what this is
+about.what.body: The list is great, but it's one very long page. This site splits it into topics, gives every app its own page, and adds pages for the apps you're trying to leave, side-by-side comparisons and a glossary. It isn't affiliated with the list or its maintainers, and every page links back to the original so you can check it or help improve it.
+about.data.title: where the data comes from
+about.data.body: Everything listed comes from awesome-privacy.yml in the list's GitHub repo, which is public domain (CC0). This site checks it for changes every day and rebuilds when it moves. Nothing gets added here - suggestions go to the list itself, as a pull request.
+about.facts.title: how the evidence works
+about.facts.body: The badges and the evidence panel only show what's on record somewhere you can check - the list's own fields (open source, audited, takes crypto), the repository on GitHub (licence, last commit, archived) and the grade from Terms of Service; Didn't Read. There's no scoring and no opinion, and a blank just means nothing's recorded.
+about.translations.title: translations
+about.translations.body: English is the original. The other languages are machine translated with Azure Translator, so they might read a bit stiffly in places. App names are left as they are.
+about.privacy.title: your privacy here
+about.privacy.body: No cookies, no accounts and nothing stored about you. Visits are counted with a self-hosted, cookie-free Plausible, and if a page crashes, the error report goes to our own server with nothing personal in it.
+
+stack.title: Build your privacy stack
+stack.description: Pick a private browser, email, messenger, password manager, VPN and more from the Awesome Privacy list, then share or export your whole setup.
+stack.lead: Pick one app for each job, then share the link or copy it as Markdown. Your picks live in the link itself, so nothing gets saved anywhere.
+stack.mine: my privacy stack
+stack.none: Skip
+stack.empty: Nothing picked yet. Choose from the lists and it'll show up here.
+stack.share: Copy link
+stack.copied: Copied
+stack.markdown: Copy as Markdown
+stack.json: Download JSON
+stack.credit: "Picked from {list} with {site}:"
+
+discover.title: Discover something new
+discover.description: Lesser-known privacy tools from the Awesome Privacy list, with a new pick every day.
+discover.lead: Further down each topic there's good stuff that rarely gets a mention. Here's a new pick every day, or roll the dice.
+discover.surprise: Surprise me
+discover.today: today's pick
+discover.more: more to explore
+
+notfound.title: Nothing here
+notfound.lead: That page doesn't exist, or it moved when the list changed. Try searching for it.
+notfound.home: Back to the start

@@ -1,0 +1,215 @@
+---
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import Base from '../../layouts/Base.astro';
+import ServiceIcon from '../ui/ServiceIcon.astro';
+import Scorecard from '../ui/Scorecard.astro';
+import Heading from '../ui/Heading.astro';
+import Badges from '../ui/Badges.astro';
+import UpstreamLinks from '../ui/UpstreamLinks.astro';
+import Chips from '../ui/Chips.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { plainText, clip } from '../../lib/markdown.js';
+import { appLinks } from '../../lib/facts.js';
+import { upstreamLinks } from '../../lib/site.js';
+
+const { lang, page } = Astro.props;
+const svc = page.entity;
+const { t, tr, md } = translator(lang);
+const to = links(lang);
+const { pairs, products } = getModel();
+const sectionName = tr(svc.section.name);
+const others = svc.section.services.filter((other) => other !== svc);
+const comparisons = pairs.filter((pair) => pair.a === svc || pair.b === svc);
+const swaps = products.filter((product) => product.sections.includes(svc.section));
+const html = md(svc.description);
+const jsonLd = [
+  {
+    '@type': 'SoftwareApplication',
+    name: svc.name,
+    url: svc.url,
+    description: clip(plainText(html), 300),
+    applicationCategory: svc.section.name,
+    ...(svc.platforms.length && { operatingSystem: svc.platforms.map((key) => t(`platform.${key}`)).join(', ') }),
+    sameAs: [svc.repo?.url, ...appLinks(svc).map((app) => app.url)].filter(Boolean),
+  },
+];
+---
+
+<Base
+  lang={lang}
+  id={page.id}
+  title={t('service.title', { name: svc.name, section: sectionName })}
+  description={clip(`${svc.name}: ${plainText(html)}`)}
+  crumbs={[
+    { label: tr(svc.category.name), url: to.category(svc.category) },
+    { label: sectionName, url: to.section(svc.section) },
+    { label: svc.name, url: to.service(svc) },
+  ]}
+  jsonLd={jsonLd}
+  ogType="article"
+>
+  <div class="layout">
+    <article class="main">
+      <header class="head">
+        <ServiceIcon service={svc} size={72} />
+        <div>
+          <p class="kicker">// <a href={to.section(svc.section)}>{sectionName}</a></p>
+          <h1>{svc.name}</h1>
+        </div>
+      </header>
+      <Badges service={svc} lang={lang} />
+      <div class="prose description" set:html={html} />
+      <div class="actions">
+        <a class="primary" href={svc.url} rel="noopener" data-cta="visit">
+          {t('service.visit', { host: svc.host })}<ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+        <a class="secondary" href={upstreamLinks.official(svc.category.slug, svc.section.slug, svc.slug)} data-cta="official">
+          {t('upstream.official')}<ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+    </article>
+    <Scorecard service={svc} lang={lang} />
+  </div>
+
+  {others.length > 0 && (
+    <section aria-labelledby="others" class="stack">
+      <Heading id="others" count={others.length}>{t('service.others', { section: sectionName })}</Heading>
+      <ul class="others">
+        {others.map((other) => (
+          <li>
+            <a href={to.service(other)}>
+              <ServiceIcon service={other} size={36} />
+              <span>{other.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {comparisons.length > 0 && (
+    <section aria-labelledby="compare" class="stack">
+      <Heading id="compare">{t('service.compare', { name: svc.name })}</Heading>
+      <Chips items={comparisons.map((pair) => ({ url: to.pair(pair), label: `${pair.a.name} vs ${pair.b.name}` }))} />
+    </section>
+  )}
+
+  {swaps.length > 0 && (
+    <section aria-labelledby="swaps" class="stack">
+      <Heading id="swaps">{t('service.swaps', { name: svc.name })}</Heading>
+      <Chips items={swaps.map((product) => ({ url: to.product(product), label: product.name }))} />
+    </section>
+  )}
+
+  <UpstreamLinks lang={lang} slugs={[svc.category.slug, svc.section.slug, svc.slug]} />
+</Base>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(17rem, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .main {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+
+    & h1 {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  .kicker {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--accent);
+    text-transform: lowercase;
+
+    & a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  .description {
+    font-size: var(--text-lg);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+
+    & a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius);
+      font: 600 var(--text-sm) var(--font-mono);
+      text-decoration: none;
+    }
+  }
+
+  .primary {
+    background: var(--accent);
+    color: var(--on-accent);
+
+    &:hover {
+      background: var(--accent-strong);
+      color: var(--on-accent);
+    }
+  }
+
+  .secondary {
+    border: 1px solid var(--border-strong);
+
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+
+  .stack {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .others {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: var(--space-xs);
+    padding: 0;
+    list-style: none;
+
+    & a {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        border-color: var(--accent);
+      }
+    }
+  }
+
+
+  @media (max-width: 56rem) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,109 @@
+---
+import Star from '@lucide/astro/icons/star';
+import GitPullRequest from '@lucide/astro/icons/git-pull-request';
+import { translator } from '../../lib/i18n.js';
+import { getModel } from '../../lib/data/model.js';
+import { upstream, upstreamLinks } from '../../lib/site.js';
+import { compact } from '../../lib/format.js';
+
+const { lang, compactView = false } = Astro.props;
+const { t } = translator(lang);
+const { stars, contributors } = getModel().upstream;
+---
+
+<aside class:list={['cta', { compact: compactView }]} aria-label={upstream.name}>
+  <div class="text">
+    <p class="title">
+      <span class="mono">{upstream.slug}</span>
+    </p>
+    <p>
+      {contributors
+        ? t('cta.body.people', { count: compact(contributors, lang) })
+        : t('cta.body')}
+    </p>
+  </div>
+  <div class="actions">
+    <a class="primary" href={upstreamLinks.star} data-cta="star">
+      <Star size={16} aria-hidden="true" />
+      {t('star.long')}
+      {stars && <span class="count">{compact(stars, lang)}</span>}
+    </a>
+    <a class="secondary" href={upstreamLinks.contribute} data-cta="contribute">
+      <GitPullRequest size={16} aria-hidden="true" />
+      {t('cta.contribute')}
+    </a>
+  </div>
+</aside>
+
+<style>
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(circle at 100% 0, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
+      var(--accent-soft);
+  }
+
+  .compact {
+    padding: var(--space-lg);
+  }
+
+  .text {
+    display: grid;
+    gap: var(--space-2xs);
+    max-width: 40rem;
+    color: var(--text-muted);
+  }
+
+  .title {
+    color: var(--text);
+    font: 700 var(--text-lg) var(--font-mono);
+    letter-spacing: -0.02em;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius);
+    font: 600 var(--text-sm) var(--font-mono);
+    text-decoration: none;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: var(--on-accent);
+
+    &:hover {
+      background: var(--accent-strong);
+      color: var(--on-accent);
+    }
+  }
+
+  .secondary {
+    border: 1px solid var(--border-strong);
+
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+
+  .count {
+    padding-inline-start: var(--space-xs);
+    border-inline-start: 1px solid color-mix(in srgb, var(--on-accent) 35%, transparent);
+    font-weight: 400;
+  }
+</style>

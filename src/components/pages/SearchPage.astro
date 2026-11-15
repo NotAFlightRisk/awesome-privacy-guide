@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import Finder from '../islands/Finder.svelte';
+import Chips from '../ui/Chips.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { finderProps } from '../../lib/finder.js';
+
+const { lang, page } = Astro.props;
+const { t, tr } = translator(lang);
+const to = links(lang);
+const { categories } = getModel();
+---
+
+<Base lang={lang} id={page.id} title={t('search.title')} description={t('search.description')} noindex>
+  <header class="intro">
+    <h1>{t('search.title')}</h1>
+    <Finder client:load big fromUrl {...finderProps(lang)} />
+  </header>
+  <section class="browse" aria-labelledby="browse">
+    <h2 id="browse">{t('search.browse')}</h2>
+    <Chips items={categories.map((category) => ({ url: to.category(category), label: tr(category.name) }))} />
+  </section>
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: 44rem;
+    min-height: 16rem;
+    align-content: start;
+  }
+
+  .browse {
+    display: grid;
+    gap: var(--space-md);
+
+    & h2 {
+      font-size: var(--text-md);
+      text-transform: lowercase;
+      color: var(--text-faint);
+    }
+  }
+</style>

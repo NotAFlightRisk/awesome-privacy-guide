@@ -1,0 +1,322 @@
+---
+import Search from '@lucide/astro/icons/search';
+import Languages from '@lucide/astro/icons/languages';
+import Star from '@lucide/astro/icons/star';
+import Menu from '@lucide/astro/icons/menu';
+import SunMoon from '@lucide/astro/icons/sun-moon';
+import Logo from '../ui/Logo.astro';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { getModel } from '../../lib/data/model.js';
+import { upstream } from '../../lib/site.js';
+import { compact } from '../../lib/format.js';
+
+const { lang, versions = [] } = Astro.props;
+const { t } = translator(lang);
+const to = links(lang);
+const stars = getModel().upstream.stars;
+const nav = ['alternatives', 'glossary', 'stack', 'discover', 'changes'].map((name) => ({
+  label: t(`nav.${name}`),
+  url: to.page(name),
+}));
+const current = Astro.url.pathname;
+---
+
+<header>
+  <div class="bar">
+    <a class="brand" href={to.home}>
+      <Logo />
+      <span>awesome privacy <small>{t('site.guide')}</small></span>
+    </a>
+
+    <nav aria-label={t('nav.main')}>
+      <ul class="links">
+        {nav.map(({ label, url }) => (
+          <li><a href={url} aria-current={current.startsWith(url) ? 'page' : undefined}>{label}</a></li>
+        ))}
+      </ul>
+      <details class="menu">
+        <summary aria-label={t('nav.menu')}><Menu size={20} aria-hidden="true" /></summary>
+        <ul>
+          {nav.map(({ label, url }) => (
+            <li><a href={url} aria-current={current.startsWith(url) ? 'page' : undefined}>{label}</a></li>
+          ))}
+        </ul>
+      </details>
+    </nav>
+
+    <div class="tools">
+      <a class="tool" href={to.page('search')} aria-label={t('nav.search')}>
+        <Search size={18} aria-hidden="true" />
+      </a>
+      {versions.length > 1 && (
+        <details class="langs">
+          <summary class="tool" aria-label={t('nav.language')}>
+            <Languages size={18} aria-hidden="true" />
+            <span>{lang}</span>
+          </summary>
+          <ul>
+            {versions.map((version) => (
+              <li>
+                <a
+                  href={version.path}
+                  hreflang={version.hreflang}
+                  lang={version.hreflang}
+                  aria-current={version.code === lang ? 'true' : undefined}
+                  data-lang={version.code}
+                >
+                  {version.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+      <button class="tool" type="button" data-theme-toggle aria-label={t('nav.theme')} hidden>
+        <SunMoon size={18} aria-hidden="true" />
+      </button>
+      <a class="star" href={upstream.repo} data-cta="star-header">
+        <Star size={16} aria-hidden="true" />
+        <span>{t('star.short')}</span>
+        {stars && <span class="count">{compact(stars, lang)}</span>}
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  if (button) {
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const root = document.documentElement;
+      const dark = root.dataset.theme
+        ? root.dataset.theme === 'dark'
+        : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+      try {
+        localStorage.setItem('theme', root.dataset.theme);
+      } catch {}
+    });
+  }
+  document.querySelectorAll('[data-lang]').forEach((link) =>
+    link.addEventListener('click', () => {
+      try {
+        localStorage.setItem('lang', (link as HTMLElement).dataset.lang ?? '');
+      } catch {}
+    }),
+  );
+</script>
+
+<style>
+  header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 10;
+    border-block-end: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: blur(10px);
+  }
+
+  .bar {
+    width: min(100% - 2 * var(--gutter), var(--page));
+    margin-inline: auto;
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font: 700 var(--text-sm) var(--font-mono);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    white-space: nowrap;
+
+    & small {
+      font-weight: 400;
+      color: var(--text-faint);
+    }
+  }
+
+  nav {
+    margin-inline-start: auto;
+  }
+
+  .links {
+    display: flex;
+    gap: var(--space-lg);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    font: var(--text-sm) var(--font-mono);
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover,
+    &[aria-current] {
+      color: var(--accent);
+    }
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding-inline-start: var(--space-md);
+    border-inline-start: 1px solid var(--border);
+  }
+
+  .tool {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    justify-content: center;
+    padding-inline: var(--space-2xs);
+    border: 0;
+    border-radius: var(--radius);
+    background: none;
+    color: var(--text-muted);
+    font: 600 var(--text-xs) var(--font-mono);
+    text-transform: uppercase;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+  }
+
+  .langs {
+    position: relative;
+
+    & ul {
+      position: absolute;
+      inset-inline-end: 0;
+      inset-block-start: calc(100% + var(--space-2xs));
+      min-width: 10rem;
+      padding: var(--space-2xs);
+      list-style: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-raised);
+      box-shadow: var(--shadow);
+    }
+
+    & a {
+      display: block;
+      padding: var(--space-2xs) var(--space-sm);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+
+      &[aria-current] {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      &:hover {
+        background: var(--accent-soft);
+      }
+    }
+  }
+
+  .star {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    margin-inline-start: var(--space-2xs);
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font: 600 var(--text-xs) var(--font-mono);
+    text-decoration: none;
+    white-space: nowrap;
+
+    & .count {
+      padding-inline-start: var(--space-2xs);
+      border-inline-start: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+
+  @media (max-width: 62rem) {
+    .links {
+      display: none;
+    }
+
+    .menu {
+      display: block;
+      position: relative;
+
+      & summary {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.25rem;
+        padding-inline: var(--space-2xs);
+        color: var(--text-muted);
+        cursor: pointer;
+        list-style: none;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+      }
+
+      & ul {
+        position: absolute;
+        inset-inline-end: 0;
+        inset-block-start: calc(100% + var(--space-2xs));
+        margin: 0;
+        list-style: none;
+        min-width: 12rem;
+        padding: var(--space-2xs);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface-raised);
+        box-shadow: var(--shadow);
+      }
+
+      & a {
+        display: block;
+        padding: var(--space-xs) var(--space-sm);
+      }
+    }
+
+    .star span:not(.count) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .brand small,
+    .star .count {
+      display: none;
+    }
+
+    .tools {
+      padding-inline-start: var(--space-2xs);
+    }
+  }
+</style>

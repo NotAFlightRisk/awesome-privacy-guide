@@ -1,0 +1,32 @@
+---
+const { items } = Astro.props;
+---
+
+<ul class="chips">
+  {items.map((item) => (
+    <li><a href={item.url}>{item.label}</a></li>
+  ))}
+</ul>
+
+<style>
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: inline-block;
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+</style>

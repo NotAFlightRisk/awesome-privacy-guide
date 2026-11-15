@@ -1,0 +1,234 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceIcon from '../ui/ServiceIcon.astro';
+import Heading from '../ui/Heading.astro';
+import Chips from '../ui/Chips.astro';
+import UpstreamLinks from '../ui/UpstreamLinks.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { plainText, clip } from '../../lib/markdown.js';
+import { appLinks, gradeOf, quietSince, sourceOf } from '../../lib/facts.js';
+import { compact, month } from '../../lib/format.js';
+
+const { lang, page } = Astro.props;
+const { a, b, section } = page.entity;
+const { t, tr, md } = translator(lang);
+const to = links(lang);
+const sectionName = tr(section.name);
+const both = [a, b];
+const yes = (on, text = t('compare.yes')) => ({ tone: on ? 'good' : 'none', text: on ? text : t('compare.no') });
+
+const sourceCell = (svc) => {
+  const source = sourceOf(svc);
+  if (source.state === 'open') return { tone: 'good', text: source.licence ?? t('badge.open') };
+  return source.state === 'public' ? { tone: 'good', text: t('badge.public') } : { tone: 'none', text: t('compare.unknown') };
+};
+const gradeCell = (svc) => {
+  const grade = gradeOf(svc);
+  return grade ? { tone: { A: 'good', B: 'good', C: 'warn' }[grade] ?? 'bad', text: grade } : { tone: 'none', text: t('compare.unknown') };
+};
+const activityCell = (svc) => {
+  const gh = svc.github;
+  if (!gh) return { tone: 'none', text: t('compare.unknown') };
+  if (gh.archived) return { tone: 'bad', text: t('badge.archived') };
+  return { tone: quietSince(svc) ? 'warn' : 'good', text: month(gh.pushed, lang) };
+};
+const rows = [
+  [t('facts.source'), sourceCell],
+  [t('facts.audit'), (svc) => yes(svc.audited)],
+  [t('facts.tosdr'), gradeCell],
+  [t('facts.activity'), activityCell],
+  [t('compare.stars'), (svc) => (svc.github?.stars !== undefined ? { tone: 'none', text: compact(svc.github.stars, lang) } : { tone: 'none', text: t('compare.unknown') })],
+  [t('facts.payment'), (svc) => yes(svc.crypto)],
+  [t('apps.android'), (svc) => yes(Boolean(svc.android))],
+  [t('apps.ios'), (svc) => yes(Boolean(svc.ios))],
+  [t('facts.platforms'), (svc) => ({ tone: 'none', text: svc.platforms.map((key) => t(`platform.${key}`)).join(', ') || t('compare.unknown') })],
+];
+const more = getModel().pairs.filter((pair) => pair.section === section && pair !== page.entity);
+const title = `${a.name} vs ${b.name}`;
+---
+
+<Base
+  lang={lang}
+  id={page.id}
+  title={t('compare.title', { a: a.name, b: b.name })}
+  description={clip(t('compare.description', { a: a.name, b: b.name, section: sectionName }))}
+  crumbs={[
+    { label: sectionName, url: to.section(section) },
+    { label: title, url: to.pair(page.entity) },
+  ]}
+>
+  <header class="intro">
+    <p class="kicker">// {sectionName}</p>
+    <h1>{a.name} <span>vs</span> {b.name}</h1>
+    <p class="lead">{t('compare.lead', { section: sectionName })}</p>
+  </header>
+
+  <div class="table-wrap">
+    <table>
+      <caption class="visually-hidden">{title}</caption>
+      <thead>
+        <tr>
+          <td></td>
+          {both.map((svc) => (
+            <th scope="col">
+              <a href={to.service(svc)}><ServiceIcon service={svc} size={40} /> {svc.name}</a>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map(([label, cell]) => (
+          <tr>
+            <th scope="row">{label}</th>
+            {both.map((svc) => {
+              const { tone, text } = cell(svc);
+              return <td class={tone}>{text}</td>;
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sides">
+    {both.map((svc) => (
+      <article>
+        <h2><a href={to.service(svc)}>{svc.name}</a></h2>
+        <div class="prose" set:html={md(svc.description)} />
+        <p class="links">
+          <a href={svc.url} rel="noopener">{svc.host}</a>
+          {svc.repo && <a href={svc.repo.url} rel="noopener">{svc.repo.host}</a>}
+          {appLinks(svc).map((app) => <a href={app.url} rel="noopener">{t(`apps.${app.key}`)}</a>)}
+        </p>
+      </article>
+    ))}
+  </div>
+
+  {more.length > 0 && (
+    <section class="stack" aria-labelledby="more">
+      <Heading id="more">{t('compare.more', { section: sectionName })}</Heading>
+      <Chips items={more.map((pair) => ({ url: to.pair(pair), label: `${pair.a.name} vs ${pair.b.name}` }))} />
+    </section>
+  )}
+
+  <UpstreamLinks lang={lang} slugs={[section.category.slug, section.slug]} />
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .kicker {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--accent);
+    text-transform: lowercase;
+  }
+
+  h1 span {
+    color: var(--accent);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  th,
+  td {
+    padding: var(--space-sm) var(--space-md);
+    border-block-end: 1px solid var(--border);
+    text-align: start;
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child > * {
+    border-block-end: 0;
+  }
+
+  thead th a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font: 700 var(--text-md) var(--font-mono);
+    text-decoration: none;
+  }
+
+  tbody th {
+    font: 400 var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  td {
+    font-weight: 600;
+  }
+
+  .good {
+    color: var(--good);
+  }
+
+  .warn {
+    color: var(--warn);
+  }
+
+  .bad {
+    color: var(--bad);
+  }
+
+  .none {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .sides {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: var(--space-md);
+
+    & article {
+      display: grid;
+      gap: var(--space-sm);
+      align-content: start;
+      padding: var(--space-lg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    & h2 {
+      font-size: var(--text-lg);
+
+      & a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+    font: var(--text-xs) var(--font-mono);
+  }
+
+  .stack {
+    display: grid;
+    gap: var(--space-lg);
+  }
+</style>

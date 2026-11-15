@@ -1,0 +1,53 @@
+---
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import { translator } from '../../lib/i18n.js';
+import { upstream, upstreamLinks } from '../../lib/site.js';
+
+const { lang, slugs = [] } = Astro.props;
+const { t } = translator(lang);
+const items = [
+  [t('upstream.official'), upstreamLinks.official(...slugs), 'official'],
+  [t('upstream.edit'), upstreamLinks.file, 'edit'],
+  [t('star.long'), upstreamLinks.star, 'star'],
+];
+---
+
+<aside class="source" aria-label={t('upstream.label')}>
+  <p>
+    {t('upstream.from')} <a href={upstream.repo}><strong>{upstream.slug}</strong></a>{t('upstream.from.after')}
+  </p>
+  <ul>
+    {items.map(([label, url, cta]) => (
+      <li><a href={url} data-cta={cta}>{label}<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+    ))}
+  </ul>
+</aside>
+
+<style>
+  .source {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm) var(--space-lg);
+    padding-block: var(--space-lg);
+    border-block: 1px dashed var(--border-strong);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-lg);
+    padding: 0;
+    list-style: none;
+  }
+
+  li a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    font: var(--text-xs) var(--font-mono);
+  }
+</style>

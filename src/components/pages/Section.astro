@@ -1,0 +1,198 @@
+---
+import TriangleAlert from '@lucide/astro/icons/triangle-exclamation-point';
+import Base from '../../layouts/Base.astro';
+import ServiceCard from '../ui/ServiceCard.astro';
+import Heading from '../ui/Heading.astro';
+import UpstreamLinks from '../ui/UpstreamLinks.astro';
+import Chips from '../ui/Chips.astro';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { plainText, clip } from '../../lib/markdown.js';
+import { list } from '../../lib/format.js';
+import { upstreamLinks } from '../../lib/site.js';
+
+const { lang, page } = Astro.props;
+const section = page.entity;
+const { t, tr, md } = translator(lang);
+const to = links(lang);
+const { pairs, products } = getModel();
+const name = tr(section.name);
+const count = section.services.length;
+const lead = section.replaces.length
+  ? t('section.lead', { count, names: list(section.replaces, lang, 3) })
+  : t('section.lead.plain', { count });
+const comparisons = pairs.filter((pair) => pair.section === section);
+const swaps = products.filter((product) => product.sections.includes(section));
+const jsonLd = [
+  {
+    '@type': 'ItemList',
+    name,
+    numberOfItems: count,
+    itemListElement: section.services.map((svc, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: new URL(to.service(svc), Astro.site).href,
+      name: svc.name,
+    })),
+  },
+];
+---
+
+<Base
+  lang={lang}
+  id={page.id}
+  title={t('section.title', { name })}
+  description={clip(`${lead} ${section.intro ? plainText(md(section.intro)) : ''}`)}
+  crumbs={[
+    { label: tr(section.category.name), url: to.category(section.category) },
+    { label: name, url: to.section(section) },
+  ]}
+  jsonLd={jsonLd}
+>
+  <header class="intro">
+    <p class="kicker">// {t('section.picks', { count })}</p>
+    <h1>{name}</h1>
+    <p class="lead">{lead}</p>
+    {section.intro && <div class="prose" set:html={md(section.intro)} />}
+  </header>
+
+  <section aria-labelledby="picks" class="stack">
+    <Heading id="picks" count={count}>{t('section.list')}</Heading>
+    {count ? (
+      <ol class="cards">
+        {section.services.map((svc) => (
+          <li><ServiceCard service={svc} lang={lang} level={3} /></li>
+        ))}
+      </ol>
+    ) : (
+      <p class="empty">{t('section.empty')} <a href={upstreamLinks.contribute}>{t('cta.contribute')}</a></p>
+    )}
+  </section>
+
+  {section.warning && (
+    <aside class="warning" aria-labelledby="warning">
+      <h2 id="warning"><TriangleAlert size={18} aria-hidden="true" /> {t('section.warning')}</h2>
+      <div class="prose" set:html={md(section.warning)} />
+    </aside>
+  )}
+
+  {(section.mentions.length > 0 || section.mentionsText) && (
+    <section aria-labelledby="mentions" class="stack">
+      <Heading id="mentions">{t('section.mentions')}</Heading>
+      {section.mentions.length > 0 && (
+        <ul class="mentions">
+          {section.mentions.map((mention) => (
+            <li>
+              <a href={mention.url} rel="noopener"><strong>{mention.name}</strong></a>
+              <div class="prose" set:html={md(mention.description)} />
+            </li>
+          ))}
+        </ul>
+      )}
+      {section.mentionsText && <div class="prose" set:html={md(section.mentionsText)} />}
+    </section>
+  )}
+
+  {section.more && (
+    <section aria-labelledby="more" class="stack">
+      <Heading id="more">{t('section.more')}</Heading>
+      <div class="prose" set:html={md(section.more)} />
+    </section>
+  )}
+
+  {comparisons.length > 0 && (
+    <section aria-labelledby="compare" class="stack">
+      <Heading id="compare">{t('section.compare')}</Heading>
+      <Chips items={comparisons.map((pair) => ({ url: to.pair(pair), label: `${pair.a.name} vs ${pair.b.name}` }))} />
+    </section>
+  )}
+
+  {swaps.length > 0 && (
+    <section aria-labelledby="swaps" class="stack">
+      <Heading id="swaps">{t('section.swaps')}</Heading>
+      <Chips items={swaps.map((product) => ({ url: to.product(product), label: t('finder.instead', { name: product.name }) }))} />
+    </section>
+  )}
+
+  <UpstreamLinks lang={lang} slugs={[section.category.slug, section.slug]} />
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--measure);
+  }
+
+  .kicker {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--accent);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--text);
+  }
+
+  .stack {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .cards {
+    display: grid;
+    gap: var(--space-md);
+    padding: 0;
+    list-style: none;
+  }
+
+  .warning {
+    display: grid;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent);
+    border-inline-start-width: 4px;
+    border-radius: var(--radius-lg);
+    background: var(--warn-soft);
+
+    & h2 {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--text-md);
+      text-transform: lowercase;
+      color: var(--warn);
+    }
+
+    & .prose {
+      color: var(--text);
+    }
+  }
+
+  .mentions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    gap: var(--space-md);
+    padding: 0;
+    list-style: none;
+
+    & li {
+      display: grid;
+      gap: var(--space-2xs);
+      align-content: start;
+      padding: var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    & .prose {
+      font-size: var(--text-sm);
+    }
+  }
+
+
+  .empty {
+    color: var(--text-muted);
+  }
+</style>
