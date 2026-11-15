@@ -1,6 +1,6 @@
 // Pulls the latest list, plus the GitHub facts, ToS;DR grades and icons that go with it
 import { createHash } from 'node:crypto';
-import { mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import sharp from 'sharp';
 import { parse } from 'yaml';
@@ -36,10 +36,25 @@ const save = (file, data) => writeFileSync(dataPath(file), `${JSON.stringify(dat
 const servicesOf = (list) =>
   list.categories.flatMap((category) => category.sections.flatMap((section) => section.services ?? []));
 
+/** Throws on anything the site can't build from, before a byte of it is written */
+function check(list) {
+  const problems = [];
+  if (!list?.categories?.length) problems.push('no categories');
+  for (const category of list?.categories ?? []) {
+    if (!category?.name || !Array.isArray(category.sections)) problems.push(`odd category ${category?.name}`);
+    for (const section of category?.sections ?? []) {
+      if (!section?.name) problems.push(`a section in ${category.name} has no name`);
+      if (section?.services && !Array.isArray(section.services)) problems.push(`${section.name} services`);
+      for (const svc of section?.services ?? []) if (!svc?.name) problems.push(`nameless service in ${section.name}`);
+    }
+  }
+  if (problems.length) throw new Error(`awesome-privacy.yml won't build: ${problems.join(', ')}`);
+}
+
 async function upstream() {
   const yaml = await (await get(`${RAW}/awesome-privacy.yml`)).text();
   const list = parse(yaml);
-  if (!list?.categories?.length) throw new Error('awesome-privacy.yml came back with no categories');
+  check(list);
   const changelog = await (await get(`${RAW}/.github/changelog.json`)).text();
   JSON.parse(changelog);
   writeFileSync(dataPath('upstream/awesome-privacy.yml'), yaml);
@@ -53,13 +68,17 @@ async function graphql(query, token) {
     headers: { Authorization: `Bearer ${token}` },
     body: JSON.stringify({ query }),
   });
-  return (await res.json()).data ?? {};
+  const { data, errors = [] } = await res.json();
+  if (!data) throw new Error(`GitHub GraphQL: ${errors.map((e) => e.message).join('; ') || 'no data'}`);
+  const gone = new Set(errors.filter((e) => e.type === 'NOT_FOUND').flatMap((e) => e.path ?? []));
+  return { data, gone };
 }
 
 async function github(list, token) {
   const repos = [...new Set(servicesOf(list).map((svc) => svc.github?.trim()))].filter((slug) =>
     /^[\w.-]+\/[\w.-]+$/.test(slug ?? ''),
   );
+  const previous = readEnrich('github');
   const facts = {};
   for (let i = 0; i < repos.length; i += 60) {
     const chunk = repos.slice(i, i + 60);
@@ -68,9 +87,11 @@ async function github(list, token) {
       return `r${j}: repository(owner: "${owner}", name: "${name}") {
         stargazerCount pushedAt isArchived licenseInfo { spdxId } }`;
     });
-    const data = await graphql(`query { ${fields.join('\n')} }`, token);
+    const { data, gone } = await graphql(`query { ${fields.join('\n')} }`, token);
     chunk.forEach((slug, j) => {
       const repo = data[`r${j}`];
+      const key = slug.toLowerCase();
+      if (!repo && !gone.has(`r${j}`) && previous[key]) facts[key] = previous[key];
       if (!repo) return log.warn(`GitHub has no ${slug}`);
       facts[slug.toLowerCase()] = {
         stars: repo.stargazerCount,
@@ -82,7 +103,7 @@ async function github(list, token) {
     });
   }
   const [owner, name] = UPSTREAM.split('/');
-  const { repo } = await graphql(`query { repo: repository(owner: "${owner}", name: "${name}") {
+  const { data: { repo } } = await graphql(`query { repo: repository(owner: "${owner}", name: "${name}") {
     stargazerCount forkCount } }`, token);
   const contributors = await get(`https://api.github.com/repos/${UPSTREAM}/contributors?per_page=1&anon=1`, {
     headers: { Authorization: `Bearer ${token}` },
@@ -134,6 +155,7 @@ async function tosdr(list) {
 async function icons(list) {
   mkdirSync(ICON_DIR, { recursive: true });
   const urls = [...new Set(servicesOf(list).map((svc) => svc.icon).filter((url) => URL.canParse(url ?? '')))];
+  const previous = readEnrich('icons');
   const found = {};
   await pool(urls, 8, async (url) => {
     try {
@@ -151,6 +173,8 @@ async function icons(list) {
       found[url] = `/icons/${file}`;
     } catch (error) {
       log.debug(`Icon ${url}: ${error.message}`);
+      const kept = previous[url];
+      if (kept && existsSync(resolve(ICON_DIR, kept.slice('/icons/'.length)))) found[url] = kept;
     }
   });
   const keep = new Set(Object.values(found).map((path) => path.slice('/icons/'.length)));
