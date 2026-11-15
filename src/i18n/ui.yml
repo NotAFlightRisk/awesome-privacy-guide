@@ -22,6 +22,7 @@ nav.about: about
 star.short: Star
 star.long: Star on GitHub
 
+home.title: Private alternatives to everyday apps
 home.kicker: "{services} privacy-respecting picks, {sections} topics"
 home.title.accent: private alternatives
 home.title.rest: to the apps you use every day
