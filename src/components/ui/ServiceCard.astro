@@ -25,10 +25,12 @@ const platforms = service.platforms.map((key) => t(`platform.${key}`));
       {platforms.length > 0 && <p class="platforms">{platforms.join(' · ')}</p>}
     </div>
   </div>
-  <a class="visit" href={service.url} rel="noopener" data-cta="visit">
-    {service.host}
-    <ArrowUpRight size={14} aria-hidden="true" />
-  </a>
+  {service.url && (
+    <a class="visit" href={service.url} rel="noopener" data-cta="visit">
+      {service.host}
+      <ArrowUpRight size={14} aria-hidden="true" />
+    </a>
+  )}
 </article>
 
 <style>

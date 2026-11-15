@@ -17,7 +17,8 @@ const { t, tr, md } = translator(lang);
 const to = links(lang);
 const sectionName = tr(section.name);
 const both = [a, b];
-const yes = (on, text = t('compare.yes')) => ({ tone: on ? 'good' : 'none', text: on ? text : t('compare.no') });
+// Upstream only ever records these when they're true, so false means nobody's said
+const listed = (on) => ({ tone: on ? 'good' : 'none', text: t(on ? 'compare.yes' : 'compare.unknown') });
 
 const sourceCell = (svc) => {
   const source = sourceOf(svc);
@@ -36,13 +37,13 @@ const activityCell = (svc) => {
 };
 const rows = [
   [t('facts.source'), sourceCell],
-  [t('facts.audit'), (svc) => yes(svc.audited)],
+  [t('facts.audit'), (svc) => listed(svc.audited)],
   [t('facts.tosdr'), gradeCell],
   [t('facts.activity'), activityCell],
   [t('compare.stars'), (svc) => (svc.github?.stars !== undefined ? { tone: 'none', text: compact(svc.github.stars, lang) } : { tone: 'none', text: t('compare.unknown') })],
-  [t('facts.payment'), (svc) => yes(svc.crypto)],
-  [t('apps.android'), (svc) => yes(Boolean(svc.android))],
-  [t('apps.ios'), (svc) => yes(Boolean(svc.ios))],
+  [t('facts.payment'), (svc) => listed(svc.crypto)],
+  [t('apps.android'), (svc) => listed(Boolean(svc.android))],
+  [t('apps.ios'), (svc) => listed(Boolean(svc.ios))],
   [t('facts.platforms'), (svc) => ({ tone: 'none', text: svc.platforms.map((key) => t(`platform.${key}`)).join(', ') || t('compare.unknown') })],
 ];
 const more = getModel().pairs.filter((pair) => pair.section === section && pair !== page.entity);
@@ -98,7 +99,7 @@ const title = `${a.name} vs ${b.name}`;
         <h2><a href={to.service(svc)}>{svc.name}</a></h2>
         <div class="prose" set:html={md(svc.description)} />
         <p class="links">
-          <a href={svc.url} rel="noopener">{svc.host}</a>
+          {svc.url && <a href={svc.url} rel="noopener">{svc.host}</a>}
           {svc.repo && <a href={svc.repo.url} rel="noopener">{svc.repo.host}</a>}
           {appLinks(svc).map((app) => <a href={app.url} rel="noopener">{t(`apps.${app.key}`)}</a>)}
         </p>

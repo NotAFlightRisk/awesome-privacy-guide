@@ -9,7 +9,7 @@ nav.main: Main
 nav.menu: Menu
 nav.search: Search
 nav.language: Language
-nav.theme: Switch between light and dark
+nav.theme: Dark theme
 nav.skip: Skip to content
 nav.crumbs: Breadcrumbs
 nav.alternatives: alternatives
@@ -166,7 +166,6 @@ compare.title: "{a} vs {b}: privacy compared"
 compare.description: "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms."
 compare.lead: Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.
 compare.yes: "Yes"
-compare.no: "No"
 compare.unknown: Not recorded
 compare.stars: GitHub stars
 compare.more: more {section} comparisons

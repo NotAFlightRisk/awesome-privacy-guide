@@ -14,6 +14,8 @@ import { plainText, clip } from '../../lib/markdown.js';
 import { appLinks } from '../../lib/facts.js';
 import { upstreamLinks } from '../../lib/site.js';
 
+const OPERATING_SYSTEMS = ['windows', 'macos', 'linux', 'android', 'ios'];
+
 const { lang, page } = Astro.props;
 const svc = page.entity;
 const { t, tr, md } = translator(lang);
@@ -24,14 +26,16 @@ const others = svc.section.services.filter((other) => other !== svc);
 const comparisons = pairs.filter((pair) => pair.a === svc || pair.b === svc);
 const swaps = products.filter((product) => product.sections.includes(svc.section));
 const html = md(svc.description);
+const systems = svc.platforms.filter((key) => OPERATING_SYSTEMS.includes(key));
+const software = Boolean(svc.repo || svc.android || svc.ios || systems.length);
 const jsonLd = [
   {
-    '@type': 'SoftwareApplication',
+    '@type': software ? 'SoftwareApplication' : 'Thing',
     name: svc.name,
-    url: svc.url,
+    ...(svc.url && { url: svc.url }),
     description: clip(plainText(html), 300),
-    applicationCategory: svc.section.name,
-    ...(svc.platforms.length && { operatingSystem: svc.platforms.map((key) => t(`platform.${key}`)).join(', ') }),
+    ...(software && { applicationCategory: svc.section.name }),
+    ...(systems.length && { operatingSystem: systems.map((key) => t(`platform.${key}`)).join(', ') }),
     sameAs: [svc.repo?.url, ...appLinks(svc).map((app) => app.url)].filter(Boolean),
   },
 ];
@@ -62,9 +66,11 @@ const jsonLd = [
       <Badges service={svc} lang={lang} />
       <div class="prose description" set:html={html} />
       <div class="actions">
-        <a class="primary" href={svc.url} rel="noopener" data-cta="visit">
-          {t('service.visit', { host: svc.host })}<ArrowUpRight size={16} aria-hidden="true" />
-        </a>
+        {svc.url && (
+          <a class="primary" href={svc.url} rel="noopener" data-cta="visit">
+            {t('service.visit', { host: svc.host })}<ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        )}
         <a class="secondary" href={upstreamLinks.official(svc.category.slug, svc.section.slug, svc.slug)} data-cta="official">
           {t('upstream.official')}<ArrowUpRight size={16} aria-hidden="true" />
         </a>

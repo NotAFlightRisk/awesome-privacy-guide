@@ -2,7 +2,11 @@ import { Marked } from 'marked';
 
 const safeUrl = (href) => /^(https?:|mailto:)/i.test(href ?? '');
 const escape = (text) =>
-  text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+  text
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
 
 const marked = new Marked({
   gfm: true,
@@ -10,7 +14,7 @@ const marked = new Marked({
     html: ({ text }) => (/^<br\s*\/?>$/i.test(text.trim()) ? '<br>' : escape(text)),
     link({ href, tokens }) {
       const text = this.parser.parseInline(tokens);
-      return safeUrl(href) ? `<a href="${href}" rel="noopener">${text}</a>` : text;
+      return safeUrl(href) ? `<a href="${escape(href)}" rel="noopener">${text}</a>` : text;
     },
     image: ({ text }) => escape(text),
   },

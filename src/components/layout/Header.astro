@@ -86,14 +86,15 @@ const current = Astro.url.pathname;
 
 <script>
   const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const root = document.documentElement;
+  const isDark = () =>
+    root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
   if (button) {
     button.hidden = false;
+    button.setAttribute('aria-pressed', String(isDark()));
     button.addEventListener('click', () => {
-      const root = document.documentElement;
-      const dark = root.dataset.theme
-        ? root.dataset.theme === 'dark'
-        : matchMedia('(prefers-color-scheme: dark)').matches;
-      root.dataset.theme = dark ? 'light' : 'dark';
+      root.dataset.theme = isDark() ? 'light' : 'dark';
+      button.setAttribute('aria-pressed', String(isDark()));
       try {
         localStorage.setItem('theme', root.dataset.theme);
       } catch {}

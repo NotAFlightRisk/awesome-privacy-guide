@@ -7,7 +7,7 @@
   const WEIGHT = { p: 6, v: 4, s: 3, c: 2, g: 1 };
   const id = `finder-${Math.random().toString(36).slice(2, 8)}`;
   const normalise = (text) =>
-    text.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+    text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 
   let query = $state('');
   let items = $state();
@@ -16,8 +16,15 @@
 
   const load = () =>
     (pending ??= fetch(index)
-      .then((res) => res.json())
-      .then((data) => (items = data)));
+      .then((res) => {
+        if (!res.ok) throw new Error(`Search index said ${res.status}`);
+        return res.json();
+      })
+      .then((data) => (items = data))
+      .catch((error) => {
+        pending = undefined;
+        throw error;
+      }));
 
   const score = (item, q) => {
     const base = item.s === q ? 100 : item.s.startsWith(q) ? 60 : item.s.includes(q) ? 40 : 0;
@@ -85,6 +92,8 @@
       spellcheck="false"
       placeholder={labels.placeholder}
       aria-describedby={`${id}-status`}
+      aria-controls={`${id}-results`}
+      aria-expanded={results.length > 0}
       bind:value={query}
       onfocus={load}
       oninput={load}
@@ -96,7 +105,7 @@
       : ''}
   </p>
   {#if results.length}
-    <ul bind:this={list}>
+    <ul id={`${id}-results`} aria-label={labels.label} bind:this={list}>
       {#each results as item (item.u)}
         <li>
           <a href={item.u}>

@@ -35,7 +35,7 @@ const slots = SLOTS.map((key) => sections.find((section) => section.key === key)
       slug: svc.slug,
       name: svc.name,
       url: to.service(svc),
-      site: svc.url,
+      site: svc.url ?? new URL(to.service(svc), Astro.site).href,
       icon: svc.iconPath,
     })),
   }));
