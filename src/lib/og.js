@@ -8,5 +8,5 @@ export const cardPages = () => pagesFor('en').filter((page) => KINDS.has(page.ki
 let ids;
 export const ogImage = (id) => {
   ids ??= new Set(cardPages().map((page) => page.id));
-  return ids.has(id) ? `/og/${id}.png` : '/og.png';
+  return ids.has(id) ? `/og/${id}.jpg` : '/og.jpg';
 };

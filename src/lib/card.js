@@ -1,4 +1,4 @@
-// Social cards drawn at build time: satori lays the divs out as SVG, sharp makes the PNG
+// Social cards drawn at build time: satori lays the divs out as SVG, sharp makes the JPEG
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import satori from 'satori';
@@ -155,8 +155,8 @@ const draw = {
   },
 };
 
-/** One page's card as a PNG */
+/** One page's card as a JPEG */
 export async function drawCard(page) {
   const svg = await satori(await draw[page.kind](page.entity), { ...SIZE, fonts });
-  return sharp(Buffer.from(svg)).png({ palette: true }).toBuffer();
+  return sharp(Buffer.from(svg)).jpeg({ quality: 85 }).toBuffer();
 }
