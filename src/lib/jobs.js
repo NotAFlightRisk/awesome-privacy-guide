@@ -5,7 +5,17 @@ import { renderMarkdown } from './markdown.js';
 
 const escapeRe = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const keep = (text) => `<span class="notranslate">${text}</span>`;
-const unkeep = (html) => html.replace(/<span class="notranslate">([\s\S]*?)<\/span>/g, '$1');
+const UNSPACED = new Set(['ja', 'zh-Hans', 'zh-Hant']);
+const letter = (char) => /\p{L}/u.test(char ?? '');
+
+/** Unwraps kept names, putting back the space Azure sometimes eats next to one */
+const unkeep = (html, lang) =>
+  html.replace(/<span class="notranslate">([\s\S]*?)<\/span>/g, (span, name, at, all) => {
+    if (UNSPACED.has(lang)) return name;
+    const before = letter(all[at - 1]) ? ' ' : '';
+    const after = letter(all[at + span.length]) ? ' ' : '';
+    return `${before}${name}${after}`;
+  });
 const decode = (html) =>
   html
     .replace(/<[^>]+>/g, '')
@@ -54,8 +64,8 @@ export const kinds = (protect = (html) => html) => ({
       text,
       type: 'html',
       payload: protect(html),
-      read(out) {
-        const html = unkeep(out).replace(/<a href=["'](\d+)["']>/g, (tag, i) =>
+      read(out, lang) {
+        const html = unkeep(out, lang).replace(/<a href=["'](\d+)["']>/g, (tag, i) =>
           links[i] ? `<a href="${links[i]}" rel="noopener">` : tag,
         );
         return /<a href=["']\d+["']/.test(html) ? undefined : html;
@@ -72,7 +82,7 @@ export const kinds = (protect = (html) => html) => ({
         .replaceAll('<', '&lt;')
         .replace(/\{\w+\}/g, (name) => keep(name)),
     ),
-    read: (out) => decode(unkeep(out)),
+    read: (out, lang) => decode(unkeep(out, lang)),
   }),
 });
 

@@ -96,7 +96,7 @@ async function main() {
       }
       const { results, used: metered } = await send(batch, lang, key);
       batch.forEach((job, i) => {
-        const value = job.read(results[i]);
+        const value = job.read(results[i], lang.azure);
         if (value) cache[hash(job.text)] = value.trim();
         else log.warn(`${lang.code}: a link came back mangled, so that one stays in English`);
       });

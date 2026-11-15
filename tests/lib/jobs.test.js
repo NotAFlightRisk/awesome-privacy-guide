@@ -33,3 +33,10 @@ test('topic names go out inside a sentence and come back on their own', () => {
   assert.equal(job.read('Catégories de logiciels : <b>Lecteurs de musique</b>'), 'Lecteurs de musique');
   assert.equal(job.read('no tags at all'), undefined);
 });
+
+test('a kept name gets its space back when Azure glues it to the next word', () => {
+  const { template } = kinds();
+  const job = template('Kept up on GitHub by people');
+  assert.equal(job.read('Gepflegt auf <span class="notranslate">GitHub</span>von Leuten', 'de'), 'Gepflegt auf GitHub von Leuten');
+  assert.equal(job.read('<span class="notranslate">GitHub</span>で管理', 'ja'), 'GitHubで管理');
+});
