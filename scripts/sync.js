@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:
 import { resolve } from 'node:path';
 import sharp from 'sharp';
 import { parse } from 'yaml';
+import { iconSources } from '../src/lib/data/icons.js';
 import { dataPath, readEnrich } from '../src/lib/data/load.js';
 import { log, summary } from './lib/log.js';
 
@@ -20,7 +21,7 @@ async function get(url, init = {}) {
     headers: { 'User-Agent': 'awesomeprivacy-sync', ...init.headers },
     signal: AbortSignal.timeout(20_000),
   });
-  if (!res.ok) throw new Error(`${url} said ${res.status}`);
+  if (!res.ok) throw Object.assign(new Error(`${url} said ${res.status}`), { status: res.status });
   return res;
 }
 
@@ -153,14 +154,16 @@ async function tosdr(list) {
   return `${Object.keys(grades).length}/${ids.length}`;
 }
 
+/** Tries each service's icon sources in turn, only moving on for the ones still without */
 async function icons(list) {
   mkdirSync(ICON_DIR, { recursive: true });
-  const urls = [...new Set(servicesOf(list).map((svc) => svc.icon).filter((url) => URL.canParse(url ?? '')))];
+  const sources = servicesOf(list).map(iconSources);
   const previous = readEnrich('icons');
   const found = {};
-  await pool(urls, 8, async (url) => {
+  const fetchIcon = async (url, attempt = 1) => {
     try {
       const res = await get(url);
+      if (res.headers.get('x-icon-fallback') === 'true') throw new Error('no favicon, just a letter');
       const type = res.headers.get('content-type')?.split(';')[0].trim();
       const bytes = Buffer.from(await res.arrayBuffer());
       if (!ICON_TYPES.includes(type) || bytes.length > ICON_MAX_BYTES) {
@@ -173,15 +176,23 @@ async function icons(list) {
         .toFile(resolve(ICON_DIR, file));
       found[url] = `/icons/${file}`;
     } catch (error) {
+      if (error.status === 429 && attempt < 4) {
+        await pause(15_000 * attempt);
+        return fetchIcon(url, attempt + 1);
+      }
       log.debug(`Icon ${url}: ${error.message}`);
       const kept = previous[url];
       if (kept && existsSync(resolve(ICON_DIR, kept.slice('/icons/'.length)))) found[url] = kept;
     }
-  });
+  };
+  const missing = () => sources.filter((urls) => !urls.some((url) => found[url]));
+  for (let i = 0; missing().some((urls) => urls[i]); i++) {
+    await pool([...new Set(missing().map((urls) => urls[i]).filter(Boolean))], 8, fetchIcon);
+  }
   const keep = new Set(Object.values(found).map((path) => path.slice('/icons/'.length)));
   for (const file of readdirSync(ICON_DIR)) if (!keep.has(file)) rmSync(resolve(ICON_DIR, file));
   save('enrich/icons.json', Object.fromEntries(Object.entries(found).sort()));
-  return `${Object.keys(found).length}/${urls.length}`;
+  return `${sources.length - missing().length}/${sources.length}`;
 }
 
 async function main() {

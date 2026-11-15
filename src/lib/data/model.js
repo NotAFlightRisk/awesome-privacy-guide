@@ -1,5 +1,6 @@
 import { loadData } from './load.js';
 import { brandCase } from './brands.js';
+import { iconSources } from './icons.js';
 import { slugify } from '../slug.js';
 
 const PLATFORMS = [
@@ -44,7 +45,7 @@ function toService(raw, section, index, enrich) {
     key: `${section.key}/${slugify(raw.name)}`,
     url: URL.canParse(raw.url ?? '') ? raw.url : undefined,
     host: URL.canParse(raw.url ?? '') ? hostOf(raw.url) : undefined,
-    iconPath: enrich.icons[raw.icon],
+    iconPath: iconSources(raw).map((url) => enrich.icons[url]).find(Boolean),
     description: raw.description ?? '',
     tagline: raw.followWith,
     repo,
