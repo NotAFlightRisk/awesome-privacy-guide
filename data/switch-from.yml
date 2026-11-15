@@ -1,0 +1,419 @@
+- match: [gmail]
+  name: Gmail
+  owner: Google
+  why: |
+    Google stopped using the contents of your email to target ads in 2017. But if you connect Gmail
+    to its AI search tools (not offered in the UK or EU), Google says summaries and inferences from
+    your inbox can be used to show you ads. In 2025 France's privacy regulator fined Google €325m,
+    partly for showing ads between Gmail users' emails without their consent.
+  sources:
+    - https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/
+    - https://support.google.com/websearch/answer/16859283
+    - https://www.cnil.fr/en/cookies-and-advertisements-inserted-between-emails-google-fined-325-million-euros-cnil
+  checked: 2026-11-15
+
+- match: [chrome]
+  name: Google Chrome
+  owner: Google
+  why: |
+    In 2025 Google confirmed it won't phase out third-party cookies in Chrome, which its own help
+    pages say can be used to track your activity across sites. You can block them in settings, and
+    Incognito blocks them by default. In 2024 Google settled a US class action over tracking people
+    in Incognito mode by agreeing to delete billions of records, though it paid no damages and
+    called the case meritless.
+  sources:
+    - https://www.gov.uk/cma-cases/investigation-into-googles-privacy-sandbox-browser-changes
+    - https://support.google.com/chrome/answer/95647
+    - https://www.nbcnewyork.com/news/national-international/google-purge-billions-of-files/
+  checked: 2026-11-15
+
+- match: [google]
+  name: Google Search
+  owner: Google
+  why: |
+    Google logs what you search for and, depending on your settings, uses that activity to
+    personalise ads across its services - its own example is that searching for mountain bikes can
+    get you sports equipment ads on YouTube. If you're not signed in, it still stores what it
+    collects against identifiers tied to your browser or device.
+  sources:
+    - https://policies.google.com/privacy
+  checked: 2026-11-15
+
+- match: [whatsapp]
+  name: WhatsApp
+  owner: Meta
+  why: |
+    Messages and calls are end-to-end encrypted, but WhatsApp still logs when you're online, your IP
+    address and (if you use contact upload) the numbers in your address book, and shares information
+    with other Meta companies. It's also rolling out ads in Status and Channels. Ireland's privacy
+    regulator fined it €225m in 2021 for not being clear enough about how it handled people's data,
+    including what it shared with Facebook.
+  sources:
+    - https://www.whatsapp.com/legal/privacy-policy
+    - https://faq.whatsapp.com/337473702666585
+    - https://dataprotection.ie/en/news-media/press-releases/data-protection-commission-announces-decision-whatsapp-inquiry
+  checked: 2026-11-15
+
+- match: [facebook messenger]
+  name: Facebook Messenger
+  owner: Meta
+  why: |
+    Meta started making personal chats and calls end-to-end encrypted by default in December 2023,
+    so it can't see what you send. But Messenger's App Store privacy label still lists data it may
+    collect and link to you, including your location, contacts, search and browsing history, and
+    purchases.
+  sources:
+    - https://about.fb.com/news/2023/12/default-end-to-end-encryption-on-messenger/
+    - https://apps.apple.com/gb/app/messenger/id454638411
+  checked: 2026-11-15
+
+- match: [google drive]
+  name: Google Drive
+  owner: Google
+  why: |
+    End-to-end encryption, which stops Google decrypting your files, is only offered on certain paid
+    Workspace business and education plans. Otherwise Google's automated systems analyse what you
+    store to catch things like spam, malware and illegal content. Google says Drive content isn't
+    used for ads.
+  sources:
+    - https://knowledge.workspace.google.com/admin/security/about-client-side-encryption
+    - https://policies.google.com/privacy
+    - https://support.google.com/drive/answer/10375054
+  checked: 2026-11-15
+
+- match: [dropbox]
+  name: Dropbox
+  owner: Dropbox
+  why: |
+    Dropbox's terms say it "accesses, stores, and scans" your files to provide features like search
+    and previews. End-to-end encryption, which keeps Dropbox itself out, is only available for team
+    folders on its Business Plus, Advanced and Enterprise plans.
+  sources:
+    - https://www.dropbox.com/terms
+    - https://help.dropbox.com/security/encrypted-team-folders
+  checked: 2026-11-15
+
+- match: [lastpass]
+  name: LastPass
+  owner: LastPass
+  why: |
+    In 2022 hackers copied a backup of customers' password vaults. The passwords and notes in it
+    were encrypted, but the website addresses saved alongside them weren't. In 2025 the UK's ICO
+    fined LastPass £1.2m for not having strong enough security, after the breach affected up to 1.6
+    million UK users.
+  sources:
+    - https://blog.lastpass.com/posts/notice-of-recent-security-incident
+    - https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2025/12/password-manager-provider-fined
+  checked: 2026-11-15
+
+- match: [windows]
+  name: Windows
+  owner: Microsoft
+  why: |
+    Setting up Windows 11 Home, or Pro for personal use, needs an internet connection and a
+    Microsoft account. You can't turn diagnostic data off on either - the minimum "required" level
+    sends Microsoft details about your device, its settings and how it's performing, and "optional"
+    adds things like which apps you run.
+  sources:
+    - https://www.microsoft.com/en-us/windows/windows-11-specifications
+    - https://learn.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization
+  checked: 2026-11-15
+
+- match: [google maps]
+  name: Google Maps
+  owner: Google
+  why: |
+    In 2026 Ireland's privacy regulator fined Google €403m over how it handled location data between
+    2018 and 2020, finding problems with lawfulness, transparency and how long it kept the data.
+    Timeline now keeps your location history on your devices, but Maps still saves the places you
+    search for and the directions you get to your Google account unless you turn that history off.
+  sources:
+    - https://www.dataprotection.ie/en/news-media/latest-news/data-protection-commission-fines-google-eu403-million-following-inquiry-googles-processing-location
+    - https://support.google.com/maps/answer/6258979
+    - https://support.google.com/maps/answer/3137804
+  checked: 2026-11-15
+
+- match: [google photos]
+  name: Google Photos
+  owner: Google
+  why: |
+    Face Groups sorts your photos using face models, which Google says may count as biometric data
+    in some places (you can switch it off, and it isn't offered everywhere). In 2022 Google settled
+    an Illinois class action for $100m over claims that face grouping broke the state's biometric
+    privacy law, without admitting wrongdoing.
+  sources:
+    - https://support.google.com/photos/answer/6128838
+    - https://techxplore.com/news/2022-09-million-google-privacy-illinois-residents.html
+  checked: 2026-11-15
+
+- match: [zoom]
+  name: Zoom
+  owner: Zoom Communications
+  why: |
+    Unless you switch on end-to-end encryption, Zoom's servers generate and manage the keys for your
+    meetings - and switching it on turns off features like cloud recording, live transcription and
+    Zoom's AI tools. In 2020 the US FTC said Zoom had advertised "end-to-end, 256-bit encryption"
+    while keeping keys that let it access customers' meetings, and Zoom settled by agreeing to a
+    security programme.
+  sources:
+    - https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0065408
+    - https://www.ftc.gov/news-events/news/press-releases/2020/11/ftc-requires-zoom-enhance-its-security-practices-part-settlement
+  checked: 2026-11-15
+
+- match: [outlook, microsoft outlook]
+  name: Outlook
+  owner: Microsoft
+  why: |
+    The new Outlook apps copy the email, calendar and contacts from other accounts you add, like
+    Gmail or Yahoo, to Microsoft's data centres. In 2023 China-linked hackers used a stolen
+    Microsoft key to get into the Microsoft-hosted work mailboxes of over 500 people, and a US
+    government review found the break-in "was preventable and should never have occurred".
+  sources:
+    - https://support.microsoft.com/en-us/outlook/getstarted/sync-your-account-in-outlook-to-the-microsoft-cloud
+    - https://www.cisa.gov/sites/default/files/2025-03/CSRBReviewOfTheSummer2023MEOIntrusion508.pdf
+  checked: 2026-11-15
+
+- match: [edge]
+  name: Microsoft Edge
+  owner: Microsoft
+  why: |
+    If you're signed in with a Microsoft account and allow personalisation, Edge sends your browsing
+    history to Microsoft, which keeps it for up to 180 days and uses it to personalise ads and
+    content on Bing, Microsoft News and its other services. If you turn on optional diagnostic data,
+    Edge also sends the addresses of pages you visit.
+  sources:
+    - https://learn.microsoft.com/en-us/legal/microsoft-edge/privacy
+    - https://support.microsoft.com/en-us/edge/microsoft-edge-browsing-activity-for-personalized-advertising-and-experiences
+  checked: 2026-11-15
+
+- match: [icloud, icloud mail]
+  name: iCloud
+  owner: Apple
+  why: |
+    iCloud Mail, Contacts and Calendars aren't end-to-end encrypted, because they have to work with
+    standard email and calendar systems. Backups, photos, notes and more are encrypted with keys
+    Apple holds unless you turn on Advanced Data Protection, which Apple no longer offers to new
+    users in the UK.
+  sources:
+    - https://support.apple.com/en-gb/102651
+    - https://support.apple.com/en-gb/122234
+  checked: 2026-11-15
+
+- match: [evernote]
+  name: Evernote
+  owner: Bending Spoons
+  why: |
+    Your notes are stored on Google Cloud in the US, encrypted with keys Google manages, so apart
+    from any text you lock with a passphrase in the desktop app, they're not end-to-end encrypted.
+    Evernote's privacy policy says staff only look at your notes with your permission or when the
+    law requires it.
+  sources:
+    - https://evernote.com/security
+    - https://evernote.com/security/tips
+    - https://evernote.com/privacy/policy
+  checked: 2026-11-15
+
+- match: [slack]
+  name: Slack
+  owner: Salesforce
+  why: |
+    Slack says it won't train generative AI on your workspace's data without opt-in, but it does
+    analyse messages and files to train the models behind search, channel recommendations and emoji
+    suggestions, unless your workspace owner emails Slack to opt out. On Business+ and Enterprise
+    plans, owners can apply to export everything, private channels and DMs included.
+  sources:
+    - https://slack.com/trust/data-management/privacy-principles
+    - https://slack.com/help/articles/201658943-Export-your-workspace-data
+  checked: 2026-11-15
+
+- match: [discord]
+  name: Discord
+  owner: Discord
+  why: |
+    Voice and video calls are end-to-end encrypted now, apart from Stage channels, but text messages
+    aren't and Discord says it has no plans to change that. In 2025 a breach at one of its customer
+    service providers exposed some users' names, emails and limited billing details, and possibly
+    the ID photos about 70,000 people had sent in to appeal age checks.
+  sources:
+    - https://discord.com/blog/every-voice-and-video-call-on-discord-is-now-end-to-end-encrypted
+    - https://discord.com/press-releases/update-on-security-incident-involving-third-party-customer-service
+  checked: 2026-11-15
+
+- match: [telegram]
+  name: Telegram
+  owner: Telegram
+  why: |
+    Only Secret Chats, which you start with one person on one device, are end-to-end encrypted.
+    Everything else, group chats included, is encrypted between you and Telegram's servers and
+    stored there. Its privacy policy says it may hand your IP address and phone number to the
+    authorities if a valid order from a judicial authority confirms you're a suspect in a criminal
+    case.
+  sources:
+    - https://telegram.org/faq
+    - https://telegram.org/privacy
+  checked: 2026-11-15
+
+- match: [instagram]
+  name: Instagram
+  owner: Meta
+  why: |
+    Meta trains its AI models on adults' public Instagram posts and comments, including in the UK
+    and EU, unless you object using its form. In 2022 Ireland's privacy regulator fined Instagram
+    €405m over children's data, after teenagers' accounts were public by default and some teens with
+    business accounts had their phone numbers and email addresses shown publicly.
+  sources:
+    - https://about.fb.com/news/2024/09/building-ai-technology-for-the-uk-in-a-responsible-and-transparent-way/
+    - https://about.fb.com/news/2025/04/making-ai-work-harder-for-europeans/
+    - https://www.dataprotection.ie/en/news-media/press-releases/data-protection-commission-announces-decision-instagram-inquiry
+  checked: 2026-11-15
+
+- match: [twitter]
+  name: X (formerly Twitter)
+  owner: X Corp.
+  why: |
+    X's privacy policy lets it train its AI models on what it collects, plus public information. It
+    also says that unless you opt out, partners it shares your data with may in some cases train
+    their own AI on it. In 2022 Twitter agreed to pay a $150m penalty after the US FTC said it had
+    used phone numbers and email addresses people gave it for account security to target ads.
+  sources:
+    - https://x.com/en/privacy
+    - https://www.ftc.gov/news-events/news/press-releases/2022/05/ftc-charges-twitter-deceptively-using-account-security-data-sell-targeted-ads
+  checked: 2026-11-15
+
+- match: [facebook]
+  name: Facebook
+  owner: Meta
+  why: |
+    Meta's privacy policy says it uses what it collects to personalise ads, and that it collects
+    some information about people even if they don't have an account. In 2019 Facebook agreed to pay
+    a record $5bn penalty after the US FTC said it had used deceptive settings to undermine users'
+    privacy choices. Ireland's privacy regulator then fined Meta €1.2bn in 2023 for unlawfully
+    transferring European Facebook users' data to the US.
+  sources:
+    - https://www.facebook.com/privacy/policy/
+    - https://www.ftc.gov/news-events/news/press-releases/2019/07/ftc-imposes-5-billion-penalty-sweeping-new-privacy-restrictions-facebook
+    - https://www.dataprotection.ie/en/news-media/press-releases/Data-Protection-Commission-announces-conclusion-of-inquiry-into-Meta-Ireland
+  checked: 2026-11-15
+
+- match: [youtube]
+  name: YouTube
+  owner: Google
+  why: |
+    YouTube uses your watch history to recommend videos and, depending on your Google ad settings,
+    to personalise ads. In 2019 Google and YouTube agreed to pay $170m to settle US FTC and New York
+    claims that YouTube tracked viewers of children's channels without their parents' consent and
+    used that to target ads.
+  sources:
+    - https://support.google.com/youtube/answer/95725
+    - https://support.google.com/youtube/answer/3181017
+    - https://www.ftc.gov/news-events/news/press-releases/2019/09/google-youtube-will-pay-record-170-million-alleged-violations-childrens-privacy-law
+  checked: 2026-11-15
+
+- match: [grammarly for email]
+  name: Grammarly
+  owner: Superhuman
+  why: |
+    Grammarly analyses what you write wherever it's switched on, and stores data on servers in the
+    US. On individual accounts it uses your writing to train and improve its products by default,
+    unless you turn off "Product Improvement and Training" in your account settings. It says it
+    never sells your content.
+  sources:
+    - https://www.grammarly.com/privacy
+    - https://support.grammarly.com/hc/en-us/articles/25555503115277-Product-Improvement-and-Training-Control
+  checked: 2026-11-15
+
+- match: [google authenticator]
+  name: Google Authenticator
+  owner: Google
+  why: |
+    Signed in, Google Authenticator syncs your codes to your Google account so they're on any device
+    you sign in to. When sync arrived in 2023, researchers found it wasn't end-to-end encrypted and
+    Google said that would come later. Its help page still only says codes are encrypted in transit
+    and at rest.
+  sources:
+    - https://support.google.com/accounts/answer/1066447
+    - https://www.malwarebytes.com/blog/news/2023/05/google-will-eventually-add-end-to-end-encryption-to-google-authenticator
+  checked: 2026-11-15
+
+- match: [authy]
+  name: Authy
+  owner: Twilio
+  why: |
+    Authy needs your phone number to create an account and uses it as the account's unique
+    identifier. In 2024 Twilio confirmed that attackers had used an unsecured endpoint to match
+    phone numbers to Authy accounts, and hackers then leaked a list of 33 million numbers (Twilio
+    said the accounts themselves weren't compromised).
+  sources:
+    - https://www.twilio.com/en-us/legal/privacy/archive/authy
+    - https://www.twilio.com/en-us/changelog/Security_Alert_Authy_App_Android_iOS
+    - https://www.securityweek.com/twilio-confirms-data-breach-after-hackers-leak-33m-authy-user-phone-numbers/
+  checked: 2026-11-15
+
+- match: [alexa]
+  name: Alexa
+  owner: Amazon
+  why: |
+    Echo devices send your voice requests to Amazon's cloud to be processed, and in 2025 Amazon
+    dropped a setting that kept them on the device, which only a few US models had. In 2023 Amazon
+    agreed to pay $25m to settle US FTC claims that it kept children's Alexa recordings indefinitely
+    unless parents asked for them to be deleted, and didn't delete all the transcripts when they
+    did.
+  sources:
+    - https://ny1.com/nyc/all-boroughs/ap-top-news/2025/03/19/amazon-ends-little-used-privacy-feature-that-let-echo-users-opt-out-of-sending-recordings-to-company
+    - https://www.ftc.gov/news-events/news/press-releases/2023/05/ftc-doj-charge-amazon-violating-childrens-privacy-law-keeping-kids-alexa-voice-recordings-forever
+  checked: 2026-11-15
+
+- match: [ring]
+  name: Ring
+  owner: Amazon
+  why: |
+    In 2023 Ring agreed to pay $5.8m to settle US FTC charges that it let any employee or contractor
+    watch customers' private videos, and that weak security let hackers take over cameras.
+    End-to-end encryption, which stops Ring itself accessing your videos, is optional and turns off
+    features like shared users, Familiar Faces and video search.
+  sources:
+    - https://www.ftc.gov/news-events/news/press-releases/2023/05/ftc-says-ring-employees-illegally-surveilled-customers-failed-stop-hackers-taking-control-users
+    - https://ring.com/support/articles/myr75/using-video-end-to-end-encryption
+  checked: 2026-11-15
+
+- match: [spotify]
+  name: Spotify
+  owner: Spotify
+  why: |
+    Spotify logs what you search for and stream, and uses it to infer your age, interests and
+    preferences. On the free tier it uses that, and shares data with advertising partners, to tailor
+    the ads you get, though you can turn tailored ads off. In 2023 Sweden's privacy regulator fined
+    it 58 million kronor for not being clear enough about how it used people's data when they asked
+    for a copy.
+  sources:
+    - https://www.spotify.com/uk/legal/privacy-policy/
+    - https://www.imy.se/en/news/administrative-fee-against-spotify/
+  checked: 2026-11-15
+
+- match: [tiktok]
+  name: TikTok
+  owner: ByteDance (outside the US)
+  why: |
+    TikTok tracks how you interact with videos and ads, how long and how often you use it, and your
+    rough location, to decide what to show you. In 2025 Ireland's privacy regulator fined it €530m
+    for letting staff in China access European users' data without showing it was properly
+    protected. The UK's ICO fined it £12.7m in 2023 for using under-13s' data without parental
+    consent, which TikTok accepted in 2026 after dropping its appeal.
+  sources:
+    - https://www.tiktok.com/legal/page/eea/privacy-policy/en
+    - https://dataprotection.ie/en/news-media/latest-news/irish-data-protection-commission-fines-tiktok-eu530-million-and-orders-corrective-measures-following
+    - https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2026/09/tiktok-withdraws-two-appeals-in-children-s-privacy-action-and-accepts-127m-fine/
+  checked: 2026-11-15
+
+- match: [linkedin]
+  name: LinkedIn
+  owner: Microsoft
+  why: |
+    Since November 2025 LinkedIn's privacy notice for the UK and Europe has let it use members'
+    profiles, posts and comments to train its content-generating AI models. You can opt out with the
+    "Data for Generative AI Improvement" setting. In 2024 Ireland's privacy regulator fined it €310m
+    for using members' data for behavioural analysis and targeted ads without a valid legal basis.
+  sources:
+    - https://www.linkedin.com/help/linkedin/answer/a5538339
+    - https://www.dataprotection.ie/en/news-media/press-releases/irish-data-protection-commission-fines-linkedin-ireland-eu310-million
+  checked: 2026-11-15
