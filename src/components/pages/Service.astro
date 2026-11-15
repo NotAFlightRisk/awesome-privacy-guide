@@ -55,8 +55,8 @@ const jsonLd = [
       <header class="head">
         <ServiceIcon service={svc} size={72} />
         <div>
-          <p class="kicker">// <a href={to.section(svc.section)}>{sectionName}</a></p>
           <h1>{svc.name}</h1>
+          <p class="meta"><a href={to.section(svc.section)}>{sectionName}</a></p>
         </div>
       </header>
       <Badges service={svc} lang={lang} />
@@ -129,7 +129,7 @@ const jsonLd = [
     }
   }
 
-  .kicker {
+  .meta {
     font: var(--text-xs) var(--font-mono);
     color: var(--accent);
     text-transform: lowercase;

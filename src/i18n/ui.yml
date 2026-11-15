@@ -105,6 +105,7 @@ product.description.other: "{count} privacy-respecting alternatives to {name}, i
 product.why: why people switch from {name}
 product.sources: "Sources:"
 product.checked: checked {date}
+product.appeal: some fines may still be under appeal
 product.related: other swaps
 
 products.title: Private alternatives to popular apps

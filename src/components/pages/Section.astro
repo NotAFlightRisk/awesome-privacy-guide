@@ -51,8 +51,8 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <header class="intro">
-    <p class="kicker">// {t('section.picks', { count })}</p>
     <h1>{name}</h1>
+    <p class="meta">{t('section.picks', { count })}</p>
     <p class="lead">{lead}</p>
     {section.intro && <div class="prose" set:html={md(section.intro)} />}
   </header>
@@ -125,7 +125,7 @@ const jsonLd = [
     max-width: var(--measure);
   }
 
-  .kicker {
+  .meta {
     font: var(--text-xs) var(--font-mono);
     color: var(--accent);
   }
@@ -152,7 +152,6 @@ const jsonLd = [
     gap: var(--space-sm);
     padding: var(--space-lg);
     border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent);
-    border-inline-start-width: 4px;
     border-radius: var(--radius-lg);
     background: var(--warn-soft);
 

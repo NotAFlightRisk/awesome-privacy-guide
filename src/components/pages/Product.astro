@@ -47,8 +47,8 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <header class="intro">
-    <p class="kicker">// {t('product.kicker', { count })}</p>
     <h1>{t('product.title', { name: product.name })}</h1>
+    <p class="meta">{t('product.kicker', { count })}</p>
     <p class="lead">{t('product.lead', { count, name: product.name, topics })}</p>
   </header>
 
@@ -62,6 +62,7 @@ const jsonLd = [
           <a href={url} rel="noopener">[{i + 1}] {new URL(url).hostname.replace(/^www\./, '')}</a>
         ))}
         <span>· {t('product.checked', { date: day(product.note.checked, lang) })}</span>
+        {/fine[ds]?\b/i.test(product.note.why) && <span>· {t('product.appeal')}</span>}
       </p>
     </aside>
   )}
@@ -99,7 +100,7 @@ const jsonLd = [
     max-width: var(--measure);
   }
 
-  .kicker {
+  .meta {
     font: var(--text-xs) var(--font-mono);
     color: var(--accent);
   }
@@ -114,9 +115,9 @@ const jsonLd = [
     gap: var(--space-sm);
     max-width: var(--measure);
     padding: var(--space-lg);
-    border-inline-start: 3px solid var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
     background: var(--surface-raised);
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    border-radius: var(--radius-lg);
 
     & h2 {
       font-size: var(--text-md);

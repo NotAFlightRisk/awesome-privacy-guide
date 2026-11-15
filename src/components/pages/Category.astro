@@ -33,8 +33,8 @@ const jsonLd = [
 
 <Base lang={lang} id={page.id} title={t('category.title', { name })} description={description} crumbs={[{ label: name, url: to.category(category) }]} jsonLd={jsonLd}>
   <header class="intro">
-    <p class="kicker">// {t('category.kicker', { count, topics: sections.length })}</p>
     <h1>{name}</h1>
+    <p class="meta">{t('category.kicker', { count, topics: sections.length })}</p>
   </header>
 
   <ul class="sections">
@@ -66,7 +66,7 @@ const jsonLd = [
     gap: var(--space-sm);
   }
 
-  .kicker {
+  .meta {
     font: var(--text-xs) var(--font-mono);
     color: var(--text-faint);
   }

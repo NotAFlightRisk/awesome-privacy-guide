@@ -38,7 +38,6 @@ const jsonLd = [
   ogType="article"
 >
   <article class="term">
-    <p class="kicker">// {t('nav.glossary')}</p>
     <h1>{name}</h1>
     {term.aka?.length > 0 && <p class="aka">{t('term.aka', { names: term.aka.join(', ') })}</p>}
     <p class="lead">{tr(term.short)}</p>
@@ -67,13 +66,8 @@ const jsonLd = [
     max-width: var(--measure);
   }
 
-  .kicker,
   .aka {
     font: var(--text-xs) var(--font-mono);
-    color: var(--accent);
-  }
-
-  .aka {
     color: var(--text-faint);
   }
 

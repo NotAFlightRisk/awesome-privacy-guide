@@ -54,10 +54,9 @@
 
 <div class="builder">
   <div class="slots">
-    {#each slots as slot, i (slot.key)}
+    {#each slots as slot (slot.key)}
       <fieldset>
         <legend>
-          <span class="number">{String(i + 1).padStart(2, '0')}</span>
           <a href={slot.url}>{slot.name}</a>
         </legend>
         <div class="options">
@@ -134,10 +133,6 @@
     & a {
       text-decoration: none;
     }
-  }
-
-  .number {
-    color: var(--accent);
   }
 
   .options {

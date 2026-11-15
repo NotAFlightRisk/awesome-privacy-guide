@@ -60,8 +60,8 @@ const title = `${a.name} vs ${b.name}`;
   ]}
 >
   <header class="intro">
-    <p class="kicker">// {sectionName}</p>
     <h1>{a.name} <span>vs</span> {b.name}</h1>
+    <p class="meta">{sectionName}</p>
     <p class="lead">{t('compare.lead', { section: sectionName })}</p>
   </header>
 
@@ -122,7 +122,7 @@ const title = `${a.name} vs ${b.name}`;
     gap: var(--space-md);
   }
 
-  .kicker {
+  .meta {
     font: var(--text-xs) var(--font-mono);
     color: var(--accent);
     text-transform: lowercase;
