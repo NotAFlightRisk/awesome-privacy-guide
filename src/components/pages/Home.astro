@@ -47,7 +47,7 @@ const jsonLd = [
 <Base lang={lang} id={page.id} title={t('home.title')} description={t('site.description', counts)} jsonLd={jsonLd}>
   <section class="hero">
     <div class="pitch">
-      <h1><span class="accent">{t('home.title.accent')}</span> {t('home.title.rest')}</h1>
+      <h1><span class="accent">{t('home.title.accent')}</span> <span class="rest">{t('home.title.rest')}</span></h1>
       <p class="lead">{t('home.lead')}</p>
       <Finder client:idle big {...finderProps(lang)} />
       {tryThese.length > 0 && (
@@ -165,31 +165,26 @@ const jsonLd = [
   }
 
   .accent {
-    position: relative;
-    display: block;
-    width: fit-content;
     color: var(--accent);
+    background: linear-gradient(var(--text), var(--text)) right / 0% 100% no-repeat;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    animation: unredact 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0.1em -0.06em 0.04em;
-      border-radius: var(--radius-sm);
-      background: var(--text);
-      transform: scaleX(0);
-      transform-origin: right;
-      animation: unredact 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
-    }
+  .rest {
+    display: block;
   }
 
   @keyframes unredact {
     from {
-      transform: scaleX(1);
+      color: transparent;
+      background-size: 100% 100%;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .accent::after {
+    .accent {
       animation: none;
     }
   }
