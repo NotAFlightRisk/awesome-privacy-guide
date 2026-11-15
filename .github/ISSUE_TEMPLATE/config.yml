@@ -1,0 +1,22 @@
+# The chooser shown after "New issue". URLs must be absolute, relative paths won't resolve here.
+# Docs: https://docs.github.com/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
+
+# Set to true to also allow free-form issues alongside the templates
+blank_issues_enabled: false
+
+contact_links:
+  - name: 🔒 Report a Security Vulnerability
+    url: https://github.com/NotAFlightRisk/awesomeprivacy/security/policy
+    about: Never report vulnerabilities in a public issue. Read our security policy and disclose privately.
+
+  - name: 📋 Something wrong with a listing?
+    url: https://github.com/lissy93/awesome-privacy/issues/new/choose
+    about: Apps, descriptions and topics come from Awesome Privacy, so report those there.
+
+  - name: 🙋 Support & Troubleshooting
+    url: https://github.com/NotAFlightRisk/awesomeprivacy/blob/main/.github/SUPPORT.md
+    about: Not sure where something belongs? This explains where to ask what.
+
+  - name: 🛠️ Contributing Guide
+    url: https://github.com/NotAFlightRisk/awesomeprivacy/blob/main/.github/CONTRIBUTING.md
+    about: Want to fix it yourself? Start here for setup and the PR workflow.
