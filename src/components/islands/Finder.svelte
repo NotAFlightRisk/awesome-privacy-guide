@@ -92,8 +92,7 @@
       spellcheck="false"
       placeholder={labels.placeholder}
       aria-describedby={`${id}-status`}
-      aria-controls={`${id}-results`}
-      aria-expanded={results.length > 0}
+      aria-controls={results.length ? `${id}-results` : undefined}
       bind:value={query}
       onfocus={load}
       oninput={load}

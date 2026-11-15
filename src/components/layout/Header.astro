@@ -51,7 +51,7 @@ const current = Astro.url.pathname;
       </a>
       {versions.length > 1 && (
         <details class="langs">
-          <summary class="tool" aria-label={t('nav.language')}>
+          <summary class="tool" aria-label={`${t('nav.language')}: ${lang}`}>
             <Languages size={18} aria-hidden="true" />
             <span>{lang}</span>
           </summary>
