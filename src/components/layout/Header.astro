@@ -311,13 +311,29 @@ const current = Astro.url.pathname;
   }
 
   @media (max-width: 30rem) {
+    .bar {
+      gap: var(--space-xs);
+    }
+
     .brand small,
-    .star .count {
+    .star {
       display: none;
     }
 
     .tools {
+      gap: 0;
       padding-inline-start: var(--space-2xs);
+    }
+  }
+
+  @media (max-width: 24rem) {
+    .brand span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
     }
   }
 </style>

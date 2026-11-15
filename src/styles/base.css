@@ -32,6 +32,8 @@ h4 {
   line-height: 1.2;
   letter-spacing: -0.03em;
   text-wrap: balance;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 h1 {
