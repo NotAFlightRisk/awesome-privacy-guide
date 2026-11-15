@@ -154,11 +154,15 @@ function buildModel(data) {
   });
   const sections = categories.flatMap((category) => category.sections);
   const services = sections.flatMap((section) => section.services);
+  const products = toProducts(sections, data.switchFrom);
+  for (const section of sections) {
+    section.swaps = products.filter((product) => product.sections.includes(section));
+  }
   return {
     categories,
     sections,
     services,
-    products: toProducts(sections, data.switchFrom),
+    products,
     pairs: toPairs(sections),
     changes: toChanges(data.changelog, services),
     glossary: data.glossary,

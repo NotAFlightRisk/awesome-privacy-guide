@@ -19,8 +19,8 @@ const to = links(lang);
 const { pairs, products } = getModel();
 const name = tr(section.name);
 const count = section.services.length;
-const lead = section.replaces.length
-  ? t('section.lead', { count, names: list(section.replaces, lang, 3) })
+const lead = section.swaps.length
+  ? t('section.lead', { count, names: list(section.swaps.map((swap) => swap.name), lang, 3) })
   : t('section.lead.plain', { count });
 const comparisons = pairs.filter((pair) => pair.section === section);
 const swaps = products.filter((product) => product.sections.includes(section));
@@ -171,25 +171,20 @@ const jsonLd = [
 
   .mentions {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
     gap: var(--space-md);
+    max-width: var(--measure);
     padding: 0;
     list-style: none;
 
     & li {
       display: grid;
-      gap: var(--space-2xs);
-      align-content: start;
-      padding: var(--space-md);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      gap: var(--space-3xs);
     }
 
     & .prose {
       font-size: var(--text-sm);
     }
   }
-
 
   .empty {
     color: var(--text-muted);

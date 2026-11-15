@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Finder from '../islands/Finder.svelte';
 import Heading from '../ui/Heading.astro';
 import ServiceIcon from '../ui/ServiceIcon.astro';
+import Badges from '../ui/Badges.astro';
 import StarCta from '../ui/StarCta.astro';
 import { getModel } from '../../lib/data/model.js';
 import { links } from '../../lib/routes.js';
@@ -13,7 +14,7 @@ import { day, list, number } from '../../lib/format.js';
 import { pickOfTheDay } from '../../lib/discover.js';
 
 const { lang, page } = Astro.props;
-const { t, tr } = translator(lang);
+const { t, tr, md } = translator(lang);
 const to = links(lang);
 const { categories, sections, services, products, changes } = getModel();
 const counts = { services: number(services.length, lang), sections: number(sections.length, lang) };
@@ -21,7 +22,9 @@ const tryThese = ['gmail', 'chrome', 'whatsapp', 'google-drive', 'lastpass']
   .map((slug) => products.find((product) => product.slug === slug))
   .filter(Boolean);
 const recent = changes.flatMap((change) => change.added.map((svc) => ({ svc, date: change.date }))).slice(0, 6);
-const popular = [...products].sort((a, b) => b.services.length - a.services.length).slice(0, 24);
+const suspects = products
+  .filter((product) => product.note)
+  .sort((a, b) => b.services.length - a.services.length);
 const pick = pickOfTheDay(services);
 const jsonLd = [
   {
@@ -89,8 +92,8 @@ const jsonLd = [
               <li>
                 <a href={to.section(section)}>{tr(section.name)}</a>
                 <span class="count">{section.services.length}</span>
-                {section.replaces.length > 0 && (
-                  <span class="instead">{t('home.instead', { names: list(section.replaces, lang, 2) })}</span>
+                {section.swaps.length > 0 && (
+                  <span class="instead">{t('home.instead', { names: list(section.swaps.map((swap) => swap.name), lang, 2) })}</span>
                 )}
               </li>
             ))}
@@ -105,7 +108,7 @@ const jsonLd = [
   <section aria-labelledby="swaps">
     <Heading id="swaps">{t('home.swaps')}</Heading>
     <ul class="swaps">
-      {popular.map((product) => (
+      {suspects.map((product) => (
         <li>
           <a href={to.product(product)}>
             <span>{product.name}</span>
@@ -122,9 +125,11 @@ const jsonLd = [
       <Heading id="pick">{t('home.pick')}</Heading>
       <div class="pick-card">
         <ServiceIcon service={pick} size={56} />
-        <div>
+        <div class="pick-body">
           <h3><a href={to.service(pick)}>{pick.name}</a></h3>
           <p class="where">{tr(pick.section.name)}</p>
+          <div class="prose" set:html={md(pick.description)} />
+          <Badges service={pick} lang={lang} />
         </div>
         <a class="button" href={to.page('discover')}>{t('home.pick.more')}</a>
       </div>
@@ -155,7 +160,7 @@ const jsonLd = [
 
   h1 {
     font-size: clamp(1.5rem, 0.6rem + 4vw, 3.6rem);
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
     text-transform: lowercase;
   }
 
@@ -180,6 +185,12 @@ const jsonLd = [
   @keyframes unredact {
     from {
       transform: scaleX(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .accent::after {
+      animation: none;
     }
   }
 
@@ -312,6 +323,7 @@ const jsonLd = [
     & ul li {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
+      align-items: baseline;
       gap: 0 var(--space-xs);
 
       & a {
@@ -338,7 +350,7 @@ const jsonLd = [
 
   .swaps {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
     gap: var(--space-xs);
     margin-block-start: var(--space-lg);
     padding: 0;
@@ -347,6 +359,8 @@ const jsonLd = [
     & a {
       display: flex;
       justify-content: space-between;
+      align-items: baseline;
+      height: 100%;
       gap: var(--space-sm);
       padding: var(--space-sm) var(--space-md);
       border: 1px solid var(--border);
@@ -368,33 +382,38 @@ const jsonLd = [
   .pick-card {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-md);
+    align-items: start;
+    gap: var(--space-md) var(--space-lg);
     margin-block-start: var(--space-lg);
     padding: var(--space-lg);
-    border: 1px dashed var(--border-strong);
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-
-    & div {
-      flex: 1;
-    }
+    background: var(--surface-raised);
 
     & h3 a {
       text-decoration: none;
     }
   }
 
+  .pick-body {
+    flex: 1 1 24rem;
+    display: grid;
+    gap: var(--space-xs);
+
+    & .prose {
+      font-size: var(--text-sm);
+    }
+  }
+
   .button {
     padding: var(--space-xs) var(--space-md);
+    border: 1px solid var(--border-strong);
     border-radius: var(--radius);
-    background: var(--accent);
-    color: var(--on-accent);
     font: 600 var(--text-sm) var(--font-mono);
     text-decoration: none;
 
     &:hover {
-      background: var(--accent-strong);
-      color: var(--on-accent);
+      border-color: var(--accent);
     }
   }
 

@@ -49,10 +49,11 @@ const jsonLd = [
   <header class="intro">
     <h1>{t('product.title', { name: product.name })}</h1>
     <p class="meta">{t('product.kicker', { count })}</p>
-    <p class="lead">{t('product.lead', { count, name: product.name, topics })}</p>
   </header>
 
-  {product.note && (
+  <div class="top">
+    <p class="lead">{t('product.lead', { count, name: product.name, topics })}</p>
+    {product.note && (
     <aside class="why" aria-labelledby="why">
       <h2 id="why">{t('product.why', { name: product.name })}</h2>
       <div class="prose" set:html={md(product.note.why)} />
@@ -65,8 +66,10 @@ const jsonLd = [
         {/fine[ds]?\b/i.test(product.note.why) && <span>· {t('product.appeal')}</span>}
       </p>
     </aside>
-  )}
+    )}
+  </div>
 
+  <div class="picks">
   {product.sections.map((section) => {
     const picks = section.services;
     return (
@@ -82,22 +85,36 @@ const jsonLd = [
       </section>
     );
   })}
+  </div>
 
-  <StarCta lang={lang} compactView />
-
-  {related.length > 0 && (
-    <section class="stack" aria-labelledby="related">
-      <Heading id="related">{t('product.related')}</Heading>
-      <Chips items={related.map((other) => ({ url: to.product(other), label: other.name }))} />
-    </section>
-  )}
+  <div class="after">
+    <StarCta lang={lang} compactView />
+    {related.length > 0 && (
+      <section class="stack" aria-labelledby="related">
+        <Heading id="related">{t('product.related')}</Heading>
+        <Chips items={related.map((other) => ({ url: to.product(other), label: other.name }))} />
+      </section>
+    )}
+  </div>
 </Base>
 
 <style>
   .intro {
     display: grid;
-    gap: var(--space-md);
-    max-width: var(--measure);
+    gap: var(--space-sm);
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .picks,
+  .after {
+    display: grid;
+    gap: var(--space-2xl);
   }
 
   .meta {
@@ -113,7 +130,6 @@ const jsonLd = [
   .why {
     display: grid;
     gap: var(--space-sm);
-    max-width: var(--measure);
     padding: var(--space-lg);
     border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
     background: var(--surface-raised);
@@ -121,7 +137,6 @@ const jsonLd = [
 
     & h2 {
       font-size: var(--text-md);
-      text-transform: lowercase;
     }
 
     & .prose {
@@ -151,5 +166,19 @@ const jsonLd = [
     gap: var(--space-md);
     padding: 0;
     list-style: none;
+  }
+
+  @media (max-width: 56rem) {
+    .top {
+      display: contents;
+    }
+
+    .why {
+      order: 1;
+    }
+
+    .after {
+      order: 2;
+    }
   }
 </style>

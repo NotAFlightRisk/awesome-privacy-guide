@@ -67,25 +67,25 @@ const title = `${a.name} vs ${b.name}`;
   </header>
 
   <div class="table-wrap">
-    <table>
+    <table role="table">
       <caption class="visually-hidden">{title}</caption>
-      <thead>
-        <tr>
-          <td></td>
+      <thead role="rowgroup">
+        <tr role="row">
+          <td role="cell"></td>
           {both.map((svc) => (
-            <th scope="col">
+            <th scope="col" role="columnheader">
               <a href={to.service(svc)}><ServiceIcon service={svc} size={40} /> {svc.name}</a>
             </th>
           ))}
         </tr>
       </thead>
-      <tbody>
+      <tbody role="rowgroup">
         {rows.map(([label, cell]) => (
-          <tr>
-            <th scope="row">{label}</th>
+          <tr role="row">
+            <th scope="row" role="rowheader">{label}</th>
             {both.map((svc) => {
               const { tone, text } = cell(svc);
-              return <td class={tone}>{text}</td>;
+              return <td class={tone} role="cell">{text}</td>;
             })}
           </tr>
         ))}
@@ -231,5 +231,32 @@ const title = `${a.name} vs ${b.name}`;
   .stack {
     display: grid;
     gap: var(--space-lg);
+  }
+
+  @media (max-width: 40rem) {
+    table,
+    thead,
+    tbody {
+      display: block;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    thead td {
+      display: none;
+    }
+
+    thead th a {
+      font-size: var(--text-sm);
+    }
+
+    tbody th {
+      grid-column: 1 / -1;
+      padding-block-end: 0;
+      border-block-end: 0;
+    }
   }
 </style>

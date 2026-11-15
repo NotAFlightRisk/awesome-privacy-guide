@@ -49,8 +49,8 @@ const jsonLd = [
               <li><a href={to.service(svc)} title={svc.name}><ServiceIcon service={svc} size={32} /><span class="visually-hidden">{svc.name}</span></a></li>
             ))}
           </ul>
-          {section.replaces.length > 0 && (
-            <p class="instead">{t('home.instead', { names: list(section.replaces, lang, 3) })}</p>
+          {section.swaps.length > 0 && (
+            <p class="instead">{t('home.instead', { names: list(section.swaps.map((swap) => swap.name), lang, 3) })}</p>
           )}
         </article>
       </li>

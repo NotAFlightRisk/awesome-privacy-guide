@@ -2,6 +2,7 @@
 # {name} placeholders are filled in by the page, .one/.other are picked by {count}
 
 site.guide: guide
+list.more: "{count} more"
 site.description: Privacy-respecting alternatives to the apps and services you use every day. {services} picks across {sections} topics, from the Awesome Privacy list.
 
 nav.home: Home
@@ -32,7 +33,7 @@ home.recent: recently added
 home.recent.all: all changes
 home.browse: browse by topic
 home.instead: Instead of {names}
-home.swaps: popular swaps
+home.swaps: the usual suspects
 home.swaps.all: All {count} apps with private alternatives
 home.pick: something you might not know about
 home.pick.more: Discover more
@@ -58,7 +59,7 @@ footer.source: The data file
 footer.updated: List data from {date}
 
 finder.label: Search apps and alternatives
-finder.placeholder: What do you want to replace? Gmail, Chrome, WhatsApp...
+finder.placeholder: What do you want to replace?
 finder.instead: Instead of {name}
 finder.found.one: 1 result
 finder.found.other: "{count} results"

@@ -1,4 +1,5 @@
 import { byCode } from '../i18n/languages.js';
+import { t } from './i18n.js';
 
 const locale = (lang) => byCode[lang]?.hreflang ?? lang;
 
@@ -19,6 +20,6 @@ export const month = (date, lang) =>
 export const list = (items, lang, max = items.length) => {
   const shown = items.slice(0, max);
   const rest = items.length - shown.length;
-  const formatter = new Intl.ListFormat(locale(lang), { type: rest ? 'unit' : 'conjunction' });
-  return formatter.format(rest ? [...shown, `+${rest}`] : shown);
+  const formatter = new Intl.ListFormat(locale(lang), { type: 'conjunction' });
+  return formatter.format(rest ? [...shown, t(lang, 'list.more', { count: rest })] : shown);
 };

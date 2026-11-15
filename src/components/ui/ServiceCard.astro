@@ -4,12 +4,14 @@ import ServiceIcon from './ServiceIcon.astro';
 import Badges from './Badges.astro';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
+import { compact, month } from '../../lib/format.js';
 
 const { service, lang, showSection = false, level = 3 } = Astro.props;
 const { t, tr, md } = translator(lang);
 const to = links(lang);
 const Title = `h${level}`;
 const platforms = service.platforms.map((key) => t(`platform.${key}`));
+const gh = service.github;
 ---
 
 <article class="card">
@@ -20,24 +22,27 @@ const platforms = service.platforms.map((key) => t(`platform.${key}`));
       {showSection && <a class="section" href={to.section(service.section)}>{tr(service.section.name)}</a>}
     </div>
     <div class="prose" set:html={md(service.description)} />
-    <div class="facts">
-      <Badges service={service} lang={lang} />
-      {platforms.length > 0 && <p class="platforms">{platforms.join(' · ')}</p>}
-    </div>
   </div>
-  {service.url && (
-    <a class="visit" href={service.url} rel="noopener" data-cta="visit">
-      {service.host}
-      <ArrowUpRight size={14} aria-hidden="true" />
-    </a>
-  )}
+  <div class="facts">
+    {service.url && (
+      <a class="visit" href={service.url} rel="noopener" data-cta="visit">
+        {service.host}
+        <ArrowUpRight size={14} aria-hidden="true" />
+      </a>
+    )}
+    <Badges service={service} lang={lang} />
+    {gh && !gh.archived && (
+      <p class="line">{t('facts.activity')}: {month(gh.pushed, lang)} · {t('facts.stars', { count: compact(gh.stars, lang) })}</p>
+    )}
+    {platforms.length > 0 && <p class="line">{platforms.join(' · ')}</p>}
+  </div>
 </article>
 
 <style>
   .card {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: var(--space-md);
+    grid-template-columns: auto minmax(0, 1fr) minmax(12rem, 16rem);
+    gap: var(--space-md) var(--space-lg);
     align-items: start;
     padding: var(--space-lg);
     border: 1px solid var(--border);
@@ -82,13 +87,14 @@ const platforms = service.platforms.map((key) => t(`platform.${key}`));
   }
 
   .facts {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-xs) var(--space-md);
+    display: grid;
+    gap: var(--space-xs);
+    justify-items: start;
+    padding-inline-start: var(--space-lg);
+    border-inline-start: 1px solid var(--border);
   }
 
-  .platforms {
+  .line {
     font: var(--text-xs) var(--font-mono);
     color: var(--text-faint);
   }
@@ -103,22 +109,23 @@ const platforms = service.platforms.map((key) => t(`platform.${key}`));
     font: var(--text-xs) var(--font-mono);
     color: var(--text-muted);
     text-decoration: none;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
 
     &:hover {
       border-color: var(--accent);
     }
   }
 
-  @media (max-width: 40rem) {
+  @media (max-width: 48rem) {
     .card {
       grid-template-columns: auto minmax(0, 1fr);
       padding: var(--space-md);
     }
 
-    .visit {
+    .facts {
       grid-column: 2;
-      justify-self: start;
+      padding-inline-start: 0;
+      border-inline-start: 0;
     }
   }
 </style>
