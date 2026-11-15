@@ -1,5 +1,5 @@
 // Fills data/i18n/<lang>.json with whatever hasn't been translated yet, within a budget
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
 import { dataPath, readCache } from '../src/lib/data/load.js';
 import { hash } from '../src/lib/i18n.js';
@@ -62,6 +62,7 @@ const save = (lang, cache) =>
   );
 
 async function main() {
+  mkdirSync(dataPath('i18n'), { recursive: true });
   const key = process.env.AZURE_TRANSLATOR_KEY;
   const all = jobs();
   const wanted = args.langs?.split(',') ?? translated.map((lang) => lang.code);

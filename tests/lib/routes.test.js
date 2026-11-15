@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { published as languages } from '../../src/lib/published.js';
+import { languages } from '../../src/i18n/languages.js';
+import { published } from '../../src/lib/published.js';
 import { alternates, pagesFor } from '../../src/lib/routes.js';
 
 test('no two pages share a URL, in any language', () => {
@@ -16,7 +17,7 @@ test('no two pages share a URL, in any language', () => {
 test('every page exists in every language, so hreflang never points nowhere', () => {
   for (const page of pagesFor('en')) {
     const versions = alternates(page.id);
-    assert.equal(versions.filter((version) => version.path).length, languages.length, page.id);
+    assert.equal(versions.filter((version) => version.path).length, published.length, page.id);
   }
 });
 

@@ -70,7 +70,7 @@ async function graphql(query, token) {
   });
   const { data, errors = [] } = await res.json();
   if (!data) throw new Error(`GitHub GraphQL: ${errors.map((e) => e.message).join('; ') || 'no data'}`);
-  const gone = new Set(errors.filter((e) => e.type === 'NOT_FOUND').flatMap((e) => e.path ?? []));
+  const gone = new Set(errors.filter((e) => e.type === 'NOT_FOUND' && e.path?.[0]).map((e) => e.path[0]));
   return { data, gone };
 }
 
@@ -131,6 +131,7 @@ async function grade(id, attempt = 1) {
   }
   if (!res.ok) throw new Error(`said ${res.status}`);
   const { rating, name } = await res.json();
+  if (!rating || !name) throw new Error('came back without a grade');
   return { rating, name };
 }
 

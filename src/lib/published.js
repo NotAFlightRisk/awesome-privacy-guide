@@ -3,13 +3,15 @@ import { readCache } from './data/load.js';
 import { hash } from './i18n.js';
 import { jobs } from './jobs.js';
 
-const READY = 0.9;
+// Low enough that a week of upstream churn never takes a live language down
+const READY = 0.75;
 
 function coverage(code) {
-  const all = jobs();
   const cache = readCache(code);
-  return all.filter((job) => hash(job.text) in cache).length / all.length;
+  const sizes = jobs().map((job) => [job.payload.length, hash(job.text) in cache]);
+  const total = sizes.reduce((sum, [size]) => sum + size, 0);
+  return sizes.reduce((sum, [size, done]) => sum + (done ? size : 0), 0) / total;
 }
 
-/** English, plus every language that's at least 90% translated, so a half-done one never ships */
+/** English, plus each language with most of its text translated, so an unstarted one never ships */
 export const published = languages.filter(({ code }) => code === 'en' || coverage(code) >= READY);

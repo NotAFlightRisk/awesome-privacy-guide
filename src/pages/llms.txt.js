@@ -1,6 +1,7 @@
 import { getModel } from '../lib/data/model.js';
 import { links } from '../lib/routes.js';
 import { site, upstream } from '../lib/site.js';
+import { published } from '../lib/published.js';
 
 export function GET() {
   const { categories, products, services } = getModel();
@@ -9,7 +10,7 @@ export function GET() {
   const lines = [
     `# ${site.name}`,
     '',
-    `> An independent guide to ${upstream.name} (${upstream.repo}), the community-curated list of privacy-respecting software and services by ${upstream.author}. ${services.length} services, every page links back to its entry on ${upstream.site}. Also in German, Spanish, French, Portuguese, Italian, Russian and Japanese.`,
+    `> An independent guide to ${upstream.name} (${upstream.repo}), the community-curated list of privacy-respecting software and services by ${upstream.author}. ${services.length} services, every page links back to its entry on ${upstream.site}.${published.length > 1 ? ` Also in ${published.slice(1).map((lang) => lang.name).join(', ')}.` : ''}`,
     '',
     '## Topics',
     '',
