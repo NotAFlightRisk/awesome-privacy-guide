@@ -5,12 +5,13 @@ import { site } from '../lib/site.js';
 export const getStaticPaths = () => languages.map(({ code }) => ({ params: { lang: code } }));
 
 const HIDDEN = new Set(['search']);
+const empty = (page) => page.kind === 'section' && !page.entity.services.length;
 const escape = (url) => url.replaceAll('&', '&amp;');
 const absolute = (path) => escape(new URL(path, site.url).href);
 
 export function GET({ params: { lang } }) {
   const urls = pagesFor(lang)
-    .filter((page) => !HIDDEN.has(page.kind))
+    .filter((page) => !HIDDEN.has(page.kind) && !empty(page))
     .map((page) => {
       const versions = alternates(page.id).filter((version) => version.path);
       const links = [...versions, { hreflang: 'x-default', path: versions[0].path }]

@@ -60,7 +60,7 @@ const jsonLd = [
       <p class="sources">
         {t('product.sources')}
         {product.note.sources.map((url, i) => (
-          <a href={url} rel="noopener">[{i + 1}] {new URL(url).hostname.replace(/^www\./, '')}</a>
+          <a href={url} target="_blank" rel="noopener">[{i + 1}] {new URL(url).hostname.replace(/^www\./, '')}</a>
         ))}
         <span>· {t('product.checked', { date: day(product.note.checked, lang) })}</span>
         {/fine[ds]?\b/i.test(product.note.why) && <span>· {t('product.appeal')}</span>}

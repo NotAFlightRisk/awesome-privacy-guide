@@ -19,7 +19,7 @@ It doesn't add apps to the list. Every page links back to the original, and sugg
 ## How the data works
 
 - `data/upstream/` is a copy of `awesome-privacy.yml` and the changelog, pulled by `npm run sync`
-- `data/enrich/` holds GitHub repo facts, ToS;DR grades and resized icons, from the same script
+- `data/enrich/` holds GitHub repo facts, ToS;DR grades and resized icons (the list's own, or the site's favicon if it hasn't got one), from the same script
 - `data/i18n/<lang>.json` caches translations by a hash of the English, so only new or changed text ever gets sent to Azure Translator
 - `data/glossary.yml` and `data/switch-from.yml` are ours - the glossary, and the sourced "why people switch" notes
 

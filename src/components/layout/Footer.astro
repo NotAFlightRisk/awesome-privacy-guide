@@ -43,7 +43,7 @@ const groups = [
     <div class="about">
       <p class="brand"><Logo /> awesome privacy <span>{t('site.guide')}</span></p>
       <p>
-        {t('footer.built')} <a href={upstream.repo}>{upstream.slug}</a> {t('footer.by')} <a href={upstream.authorUrl}>{upstream.author}</a>. {t('footer.independent')}
+        {t('footer.built')} <a href={upstream.repo}>{upstream.slug}</a>{t('footer.independent')}
       </p>
       {updated && <p class="updated">{t('footer.updated', { date: day(updated, lang) })}</p>}
     </div>

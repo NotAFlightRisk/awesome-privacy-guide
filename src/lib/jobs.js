@@ -82,7 +82,7 @@ export const kinds = (protect = (html) => html) => ({
         .replaceAll('<', '&lt;')
         .replace(/\{\w+\}/g, (name) => keep(name)),
     ),
-    read: (out, lang) => decode(unkeep(out, lang)),
+    read: (out, lang) => decode(unkeep(out, lang)).replace(/ ([.,])/g, '$1'),
   }),
 });
 
