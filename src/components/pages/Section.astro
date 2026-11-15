@@ -21,7 +21,7 @@ const name = tr(section.name);
 const count = section.services.length;
 const lead = section.swaps.length
   ? t('section.lead', { count, names: list(section.swaps.map((swap) => swap.name), lang, 3) })
-  : t('section.lead.plain', { count });
+  : t('section.lead.plain', { count, name });
 const comparisons = pairs.filter((pair) => pair.section === section);
 const swaps = products.filter((product) => product.sections.includes(section));
 const jsonLd = [
@@ -43,12 +43,13 @@ const jsonLd = [
   lang={lang}
   id={page.id}
   title={t('section.title', { name })}
-  description={clip(`${lead} ${section.intro ? plainText(md(section.intro)) : ''}`)}
+  description={clip(`${lead} ${section.intro ? plainText(md(section.intro)) : ''}`.trim())}
   crumbs={[
     { label: tr(section.category.name), url: to.category(section.category) },
     { label: name, url: to.section(section) },
   ]}
   jsonLd={jsonLd}
+  noindex={!count}
 >
   <header class="intro">
     <h1>{name}</h1>

@@ -3,7 +3,7 @@
 
 site.guide: guide
 list.more: "{count} more"
-site.description: Privacy-respecting alternatives to the apps and services you use every day. {services} picks across {sections} topics, from the Awesome Privacy list.
+site.description: Privacy-respecting alternatives to the apps and services you use every day. {services} recommendations in {sections} topics, from the Awesome Privacy list.
 
 nav.home: Home
 nav.main: Main
@@ -50,9 +50,8 @@ upstream.edit: Suggest a change on GitHub
 
 footer.explore: explore
 footer.categories: topics
-footer.built: An independent guide built on
-footer.by: by
-footer.independent: Not affiliated with the list or its maintainers.
+footer.built: An independent guide built on the data from
+footer.independent: ", not affiliated with the list."
 footer.contribute: Contribute
 footer.official: awesome-privacy.xyz
 footer.source: The data file
@@ -71,21 +70,21 @@ kind.section: topic
 kind.category: category
 kind.term: glossary
 
-search.count.one: 1 pick
-search.count.other: "{count} picks"
+search.count.one: 1 option
+search.count.other: "{count} options"
 search.title: Search
 search.description: Search every app, topic and alternative on the Awesome Privacy list.
 search.browse: or browse a topic
 
 category.title: "{name}: private apps and services"
-category.description: "Privacy-respecting {name} tools: {count} picks across {topics}, from the Awesome Privacy list."
-category.kicker: "{count} picks across {topics} topics"
+category.description: "Privacy-respecting {name} tools: {count} recommendations for {topics}, from the Awesome Privacy list."
+category.kicker: "{count} recommendations in {topics} topics"
 
 section.title: "{name}: privacy-respecting picks"
 section.lead.one: One privacy-respecting pick to use instead of {names}, from the Awesome Privacy list.
 section.lead.other: "{count} privacy-respecting picks to use instead of {names}, from the Awesome Privacy list."
-section.lead.plain.one: One privacy-respecting pick from the Awesome Privacy list.
-section.lead.plain.other: "{count} privacy-respecting picks from the Awesome Privacy list."
+section.lead.plain.one: One privacy-respecting option for {name}, from the Awesome Privacy list.
+section.lead.plain.other: "{count} privacy-respecting options for {name}, from the Awesome Privacy list."
 section.picks.one: 1 pick
 section.picks.other: "{count} picks"
 section.list: the picks
