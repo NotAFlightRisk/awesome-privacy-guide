@@ -417,3 +417,688 @@
     - https://www.linkedin.com/help/linkedin/answer/a5538339
     - https://www.dataprotection.ie/en/news-media/press-releases/irish-data-protection-commission-fines-linkedin-ireland-eu310-million
   checked: 2026-11-15
+
+- match: [google calendar]
+  name: Google Calendar
+  owner: Google
+  why: |
+    Google's privacy policy says it collects the content you create in its services and uses
+    automated systems to analyse it. Client-side encryption, which stops Google's servers decrypting
+    your data, is only offered on the Enterprise Plus, Frontline Plus and Education Standard and Plus
+    editions of Workspace. Even there it only covers an event's description and attachments, not its
+    title, times or guest list.
+  sources:
+    - https://policies.google.com/privacy
+    - https://knowledge.workspace.google.com/admin/security/protect-your-organizations-data-with-cse
+  checked: 2026-11-16
+
+- match: [google keep]
+  name: Google Keep
+  owner: Google
+  why: |
+    Google's privacy policy says it collects the content you create in its services and uses
+    automated systems to analyse it. Keep isn't one of the apps covered by Google's client-side
+    encryption (Drive, Docs, Gmail, Calendar and Meet), so there's no option, even on Google's top
+    business plans, to encrypt your notes in a way Google's servers can't decrypt.
+  sources:
+    - https://policies.google.com/privacy
+    - https://knowledge.workspace.google.com/admin/security/protect-your-organizations-data-with-cse
+  checked: 2026-11-16
+
+- match: [google meet]
+  name: Google Meet
+  owner: Google
+  why: |
+    Google Meet meetings are "cloud-encrypted", meaning protected in transit and at rest in Google's
+    data centres rather than end to end. Calls between personal accounts can be end-to-end encrypted,
+    but you have to turn on "Additional encryption" before the call, and it switches off things like
+    in-call messages and reactions. Google says it doesn't store meeting audio or video unless
+    recording, transcripts or note-taking is turned on.
+  sources:
+    - https://support.google.com/meet/answer/12387251
+    - https://support.google.com/meet/answer/9852160
+  checked: 2026-11-16
+
+- match: [google voice]
+  name: Google Voice
+  owner: Google
+  why: |
+    Google Voice stores your call history, voicemail greetings and messages, texts and recorded
+    conversations. You can delete them, but Google says some information may be kept on its servers
+    temporarily for billing or other business purposes, residual copies may stay in its backups, and
+    call history for billable calls may remain visible on your account.
+  sources:
+    - https://policies.google.com/technologies/voice
+  checked: 2026-11-16
+
+- match: [google dns, google public dns]
+  name: Google Public DNS
+  owner: Google
+  why: |
+    Google Public DNS logs your IP address alongside the domains you look up. Google says those
+    temporary logs are deleted within 24-48 hours (longer if needed for security and abuse), and a
+    sample is kept permanently with your IP swapped for a city or region-level location. It also says
+    it doesn't use the data to target ads or link it to your other Google activity, except for
+    security and abuse.
+  sources:
+    - https://developers.google.com/speed/public-dns/privacy
+  checked: 2026-11-16
+
+- match: [google workspace]
+  name: Google Workspace
+  owner: Google
+  why: |
+    Google encrypts Workspace data in transit and at rest, but client-side encryption, which stops
+    Google's servers decrypting your files, email and meetings, is only on the Enterprise Plus,
+    Frontline Plus and Education Standard and Plus editions. Even then it leaves out things like email
+    subject lines, timestamps and recipients, file titles and metadata, and calendar event titles and
+    guest lists.
+  sources:
+    - https://knowledge.workspace.google.com/admin/security/protect-your-organizations-data-with-cse
+  checked: 2026-11-16
+
+- match: [microsoft teams]
+  name: Microsoft Teams
+  owner: Microsoft
+  why: |
+    In Microsoft Teams for work and school, end-to-end encryption is opt-in. For one-to-one calls it's
+    off by default until an admin allows it and each user switches it on, and only organisers with a
+    paid Teams Premium licence can schedule end-to-end encrypted meetings. While it's on, features
+    like recording, live captions and transcription stop working.
+  sources:
+    - https://learn.microsoft.com/en-us/microsoftteams/teams-end-to-end-encryption
+  checked: 2026-11-16
+
+- match: [microsoft onedrive]
+  name: Microsoft OneDrive
+  owner: Microsoft
+  why: |
+    OneDrive's People feature groups your photos by face, and Microsoft says it "collects, uses, and
+    stores facial scans and biometric information" from your photos to do it. It turns up on its own,
+    except in regions that require your consent first. You can turn it off in Settings, and Microsoft
+    says the face data is then permanently removed within 30 days.
+  sources:
+    - https://support.microsoft.com/en-us/office/group-photos-by-people-21065f48-c746-48ad-a98a-cbe4631631bc
+  checked: 2026-11-16
+
+- match: [skype]
+  name: Skype
+  owner: Microsoft
+  why: |
+    Microsoft retired Skype on 5 May 2025 and moved users to Microsoft Teams Free. Skype Number
+    subscriptions ended in May 2026, and Microsoft said Skype chat and call history would be
+    completely deleted after 15 June 2026, unless you'd used Skype between December 2024 and February
+    2025 and then moved to Teams Free before 1 December 2025.
+  sources:
+    - https://support.microsoft.com/en-gb/skype
+  checked: 2026-11-16
+
+- match: [bing]
+  name: Bing
+  owner: Microsoft
+  why: |
+    Bing handles each search along with your IP address, location, cookie identifiers, the time and
+    your browser setup, and where permitted Microsoft personalises ads using your searches over time.
+    Clearing your Bing history removes it from your search history but not from Microsoft's search
+    logs, and some de-identified search data is shared with selected third parties. You can opt out
+    of personalised ads, though you'll still see ads.
+  sources:
+    - https://privacy.microsoft.com/en-gb/privacystatement
+  checked: 2026-11-16
+
+- match: [yahoo mail]
+  name: Yahoo Mail
+  owner: Yahoo
+  why: |
+    Yahoo's privacy policy says it analyses your content, including emails and attachments, and uses
+    emails from retailers and other organisations (not personal emails between people) to build
+    advertising interest profiles, which you can opt out of. In 2018 the company formerly known as
+    Yahoo agreed to pay a $35 million penalty after the SEC charged it with failing to disclose, for
+    more than two years, a December 2014 breach of personal data relating to hundreds of millions of
+    accounts.
+  sources:
+    - https://legal.yahoo.com/us/en/yahoo/privacy/index.html
+    - https://www.sec.gov/news/press-release/2018-71
+  checked: 2026-11-16
+
+- match: [yahoo, yahoo search]
+  name: Yahoo Search
+  owner: Yahoo
+  why: |
+    Yahoo collects your search queries and combines them with your activity across its services,
+    other sites and apps, and data from partners, to target ads across your devices. Its privacy
+    policy says it may recognise you or your devices even when you're not signed in. You can opt out
+    of targeted ads, but you'll still see ads.
+  sources:
+    - https://legal.yahoo.com/us/en/yahoo/privacy/index.html
+  checked: 2026-11-16
+
+- match: [opera]
+  name: Opera
+  owner: Opera
+  why: |
+    Opera is ad-supported. If you consent, it serves targeted ads using an install ID, your IP
+    address, rough location and interests drawn from the sites and products you search and visit, and
+    shares some of that data with advertising partners (though it says never your browsing history).
+    Some default Speed Dials are ads too, and the partners behind them can collect cookies and device
+    IDs, though you can delete them.
+  sources:
+    - https://legal.opera.com/privacy/privacy.html
+  checked: 2026-11-16
+
+- match: [snapchat]
+  name: Snapchat
+  owner: Snap Inc.
+  why: |
+    In 2014 Snapchat agreed to settle US FTC charges that snaps it said would "disappear forever"
+    could be saved, that it collected iOS users' contacts without notice or consent, and that a
+    security failure let attackers compile 4.6 million usernames and phone numbers. Snap keeps what
+    you share with its My AI chatbot until you delete it, and uses it (plus your location, if
+    shared) to personalise ads. You can clear My AI data in the privacy settings.
+  sources:
+    - https://www.ftc.gov/news-events/news/press-releases/2014/05/snapchat-settles-ftc-charges-promises-disappearing-messages-were-false
+    - https://values.snap.com/privacy/privacy-by-product/my-ai
+    - https://help.snapchat.com/hc/en-us/articles/15682296562836-Does-Snap-save-content-shared-with-My-AI
+  checked: 2026-11-16
+
+- match: [wechat]
+  name: WeChat
+  owner: Tencent
+  why: |
+    WeChat chats aren't end-to-end encrypted: Citizen Lab's 2024 analysis says WeChat's servers
+    "can and do decrypt and read each transmitted message". Its 2020 research found that even chats
+    entirely between accounts registered outside China are subject to content surveillance, with
+    files deemed politically sensitive used to train WeChat's censorship system in China.
+  sources:
+    - https://citizenlab.ca/research/should-we-chat-too-security-analysis-of-wechats-mmtls-encryption-protocol/should-we-chat-too-faq/
+    - https://citizenlab.ca/2020/05/we-chat-they-watch/
+  checked: 2026-11-16
+
+- match: [line]
+  name: LINE
+  owner: LY Corporation
+  why: |
+    In 2024 Japan's communications ministry issued written guidance to LY Corporation after attackers
+    got in through its contractor NAVER Cloud, in a breach it said led to "leakage of secrecy of
+    communications" of LINE users. Messages are end-to-end encrypted by default (Letter Sealing), but
+    group calls aren't.
+  sources:
+    - https://www.soumu.go.jp/main_sosiki/joho_tsusin/eng/pressrelease/2024/3/5_1.html
+    - https://www.lycorp.co.jp/en/privacy-security/security/transparency/encryption-report/2024/
+  checked: 2026-11-16
+
+- match: [viber]
+  name: Viber
+  owner: Rakuten
+  why: |
+    Viber's messages and one-to-one calls are end-to-end encrypted, but its privacy policy says it
+    may use your Viber activity, plus information from third parties about what you do outside
+    Viber, for personalised ads, and share device identifiers, age range, inferred gender and a
+    reduced IP address with ad partners. Chat backups, which are kept with Google or Apple, lose
+    Viber's end-to-end encryption.
+  sources:
+    - https://www.viber.com/en/terms/viber-privacy-policy/
+  checked: 2026-11-16
+
+- match: [reddit]
+  name: Reddit
+  owner: Reddit
+  why: |
+    In 2024 Google said it now has access to Reddit's Data API and can "display, train on, and
+    otherwise use" Reddit content. Weeks later Reddit told US investors the FTC was running a
+    non-public inquiry into its "sale, licensing, or sharing" of user posts with third parties to
+    train AI models. Reddit said it didn't believe it had done anything unfair or deceptive.
+  sources:
+    - https://blog.google/company-news/inside-google/company-announcements/expanded-reddit-partnership/
+    - https://www.sec.gov/Archives/edgar/data/1713445/000162828024011477/reddit-fwp31524.htm
+  checked: 2026-11-16
+
+- match: [tumblr]
+  name: Tumblr
+  owner: Automattic
+  why: |
+    In 2024 Tumblr's owner Automattic said it was working directly with select AI companies and
+    would share public Tumblr and WordPress.com content from sites that haven't opted out. Tumblr's
+    "Prevent third-party sharing" switch keeps a blog's posts out of its licensed network, which
+    includes partners that train AI models, but you have to turn it on for each blog yourself.
+  sources:
+    - https://automattic.com/2024/02/27/protecting-user-choice/
+    - https://help.tumblr.com/knowledge-base/privacy-options/
+  checked: 2026-11-16
+
+- match: [wordpress]
+  name: WordPress
+  owner: Automattic
+  why: |
+    In 2024 WordPress.com's owner Automattic said it was working directly with select AI companies
+    and would share public content hosted on WordPress.com and Tumblr from sites that haven't opted
+    out. A "Prevent third-party sharing" setting keeps a site out of that partner network and asks
+    known AI bots not to crawl it, though it's up to AI platforms to honour that. Self-hosted
+    WordPress sites aren't included.
+  sources:
+    - https://automattic.com/2024/02/27/protecting-user-choice/
+    - https://wordpress.com/support/privacy-settings/make-your-website-public/
+  checked: 2026-11-16
+
+- match: [notion]
+  name: Notion
+  owner: Notion Labs
+  why: |
+    In November 2026 Notion said a security incident at Fireworks AI, a vendor it used for AI
+    features, affected fewer than 1% of workspaces, and the data accessed included Notion AI chat
+    transcripts. Notion says its own systems weren't breached, most of the chats can't be tied to a
+    person or workspace, and it has disconnected from Fireworks. It told affected customers to rotate
+    any passwords or API keys they'd pasted into Notion AI.
+  sources:
+    - https://www.notion.com/security/advisories/security-incident-involving-a-third-party-ai-vendor-nov9
+  checked: 2026-11-16
+
+- match: [wetransfer]
+  name: WeTransfer
+  owner: Bending Spoons
+  why: |
+    In July 2025 WeTransfer faced a backlash over new terms letting it use uploaded files "to
+    improve performance of machine learning models" for content moderation. It removed that wording
+    and says it doesn't use AI to process files shared through it, but its terms still give it a
+    royalty-free licence to use your content to operate, develop and improve the service.
+  sources:
+    - https://www.theregister.com/2025/07/18/llm_products_terms_of_service/
+    - https://wetransfer.com/explore/legal/terms
+  checked: 2026-11-16
+
+- match: [plex]
+  name: Plex
+  owner: Plex
+  why: |
+    In September 2025 Plex said an unauthorised third party had accessed a limited subset of customer
+    data from one of its databases, including emails, usernames, securely hashed passwords and
+    authentication data, and asked users to reset their passwords. Plex says it doesn't store card
+    details, so those weren't exposed.
+  sources:
+    - https://forums.plex.tv/t/important-notice-of-security-incident/930523
+  checked: 2026-11-16
+
+- match: [nordvpn]
+  name: NordVPN
+  owner: Nord Security
+  why: |
+    In October 2019 NordVPN confirmed that one of the servers it rented in a Finnish data centre had
+    been accessed without authorisation in March 2018, exposing an expired internal private key. It
+    had found out a few months before saying anything. NordVPN said the server held no user activity
+    logs and that usernames and passwords couldn't have been intercepted.
+  sources:
+    - https://techcrunch.com/2019/10/21/nordvpn-confirms-it-was-hacked/
+  checked: 2026-11-16
+
+- match: [expressvpn]
+  name: ExpressVPN
+  owner: Kape Technologies
+  why: |
+    In 2021 ExpressVPN's chief information officer, Daniel Gericke, was one of three former US
+    intelligence and military staff who agreed to pay $1.685 million between them under a deferred
+    prosecution agreement with the US Justice Department, over hacking work they'd done for the UAE
+    government through a UAE company between 2016 and 2019. ExpressVPN, which hired him in December
+    2019, said it hadn't known the details, and promised yearly third-party audits of whether it
+    sticks to its privacy policy.
+  sources:
+    - https://www.justice.gov/usao-dc/pr/three-former-us-intelligence-community-and-military-personnel-agree-pay-more-168-million
+    - https://www.expressvpn.com/go/daniel-gericke
+  checked: 2026-11-16
+
+- match: [hotspot shield]
+  name: Hotspot Shield
+  owner: Point Wild
+  why: |
+    Hotspot Shield's privacy notice says it logs the domain names you visit through the VPN (not full
+    URLs) on an anonymised basis, and uses device hashes to link your device to other data it
+    collects, though not to your browsing. Its free versions may show ads from third-party ad
+    services, which get your device's advertising ID, but it says they can't see your VPN browsing.
+  sources:
+    - https://www.hotspotshield.com/privacy-policy/vpn/
+  checked: 2026-11-16
+
+- match: [ipvanish]
+  name: IPVanish
+  owner: Ziff Davis
+  why: |
+    In 2016, under its then owner Highwinds, IPVanish gave US Homeland Security investigators a
+    user's name, email address and real IP address, plus when he'd connected to an IRC chat network,
+    despite having repeatedly claimed to keep zero logs. It came out in 2018, when StackPath, which
+    bought it in 2017, said it couldn't speak for the former team and that IPVanish doesn't log its
+    users.
+  sources:
+    - https://torrentfreak.com/ipvanish-no-logging-vpn-led-homeland-security-to-comcast-user-180505/
+  checked: 2026-11-16
+
+- match: [avast antivirus]
+  name: Avast Antivirus
+  owner: Gen Digital
+  why: |
+    In 2024 Avast agreed to pay $16.5 million to settle US FTC charges that it collected people's
+    browsing data through its antivirus software and browser extensions and, from 2014 to 2020, sold
+    it to more than 100 third parties through its subsidiary Jumpshot, while claiming its products
+    would block online tracking. The order bans Avast from selling browsing data for advertising.
+  sources:
+    - https://www.ftc.gov/news-events/news/press-releases/2024/02/ftc-order-will-ban-avast-selling-browsing-data-advertising-purposes-require-it-pay-165-million-over
+  checked: 2026-11-16
+
+- match: [kaspersky antivirus]
+  name: Kaspersky Antivirus
+  owner: Kaspersky Lab
+  why: |
+    In June 2024 the US Commerce Department banned Kaspersky from selling its software in the US,
+    saying its continued US operations were a national security risk and that Kaspersky is subject
+    to the jurisdiction of the Russian government. Existing US users could only get updates until 29
+    September 2024. Carrying on using it isn't illegal, but Commerce urged people to move to other
+    vendors.
+  sources:
+    - https://www.bis.gov/press-release/commerce-department-prohibits-russian-kaspersky-software-u.s.-customers
+  checked: 2026-11-16
+
+- match: [coinbase]
+  name: Coinbase
+  owner: Coinbase
+  why: |
+    In May 2025 Coinbase disclosed that criminals had paid contractors and employees in support roles
+    outside the US to copy customer data from its internal systems, including names, addresses,
+    phone numbers, emails, the last four digits of Social Security numbers, masked bank details,
+    government ID images and account balances. It said no passwords, private keys or funds were
+    exposed, and that it would reimburse customers tricked into sending money to the attackers.
+  sources:
+    - https://www.sec.gov/Archives/edgar/data/1679788/000167978825000094/coin-20250514.htm
+  checked: 2026-11-16
+
+- match: [ledger live]
+  name: Ledger Live
+  owner: Ledger
+  why: |
+    In 2020 a breach of Ledger's e-commerce database exposed about 1 million customer email
+    addresses, and in December 2020 a dump posted on a hacker forum included the postal addresses,
+    names and phone numbers of around 272,000 customers. Ledger says the leak had no impact on its
+    hardware wallets, the Ledger Live app or anyone's funds.
+  sources:
+    - https://www.ledger.com/message-ledgers-ceo-data-leak
+  checked: 2026-11-16
+
+- match: [mint]
+  name: Mint
+  owner: Intuit
+  why: |
+    Mint has been shut down. Intuit announced in late 2023 that Mint was going away and moved its
+    users to Credit Karma, another Intuit app, while admitting Credit Karma didn't offer budgeting
+    the way Mint had. Mint's site now just says it "has been reimagined on Credit Karma".
+  sources:
+    - https://www.creditkarma.com/about/releases/intuit-credit-karma-welcomes-all-minters
+    - https://www.cnbc.com/2023/11/07/budgeting-app-mint-is-shutting-down-users-are-disappointed.html
+    - https://mint.intuit.com/
+  checked: 2026-11-16
+
+- match: [wyze]
+  name: Wyze
+  owner: Wyze Labs
+  why: |
+    In February 2024 Wyze said about 13,000 of its users were shown thumbnails from other people's
+    cameras after an outage, and 1,504 of them tapped on them. Wyze blamed a third-party caching
+    library that "mixed up device ID and user ID mapping" as its systems came back online, connecting
+    some data to the wrong accounts.
+  sources:
+    - https://www.cbsnews.com/news/wyze-camera-breach-let-13000-customers-peek-into-others-homes
+  checked: 2026-11-16
+
+- match: [eufy]
+  name: Eufy
+  owner: Anker
+  why: |
+    In 2025 three US distributors of eufy cameras agreed to pay $450,000 to settle a New York
+    Attorney General investigation, which found video streams weren't always securely encrypted and
+    could be reached by anyone with the link, without logging in, despite marketing that promised
+    end-to-end encryption. The companies must now regularly show that eufy's developer encrypts video
+    in storage and in transit.
+  sources:
+    - https://ag.ny.gov/press-release/2025/attorney-general-james-secures-450000-companies-selling-home-security-cameras
+  checked: 2026-11-16
+
+- match: [adblock plus]
+  name: Adblock Plus
+  owner: eyeo
+  why: |
+    Adblock Plus lets "Acceptable Ads" through by default, and charges large platforms that benefit
+    commercially from the programme a licensing fee to take part. You can turn Acceptable Ads off in
+    two clicks. On desktop there's also a separate tick box, which you have to turn on yourself, that
+    only allows ads without third-party tracking.
+  sources:
+    - https://adblockplus.org/about
+    - https://adblockplus.org/acceptable-ads
+    - https://help.adblockplus.org/adblock-plus-help-center/only-allow-ads-without-third-party-tracking
+  checked: 2026-11-16
+
+- match: [adblock]
+  name: AdBlock
+  owner: eyeo
+  why: |
+    AdBlock shows occasional "non-intrusive" ads with its default settings, because it's part of the
+    Acceptable Ads programme. Publishers with more than 10 million monthly ad impressions pay a fee to
+    take part, which goes to eyeo, the company behind both AdBlock and Adblock Plus. You can opt out
+    of Acceptable Ads at any time in the extension's settings.
+  sources:
+    - https://helpcenter.getadblock.com/hc/en-us/articles/9738480686483
+    - https://getadblock.com/acceptable-ads-faq/
+  checked: 2026-11-16
+
+- match: [utorrent]
+  name: uTorrent
+  owner: BitTorrent
+  why: |
+    In 2015 users found some uTorrent installers bundled with Epic Scale, software that uses your
+    computer's idle time for things like cryptocurrency mining. BitTorrent denied any wrongdoing,
+    saying it only installed if you didn't click "decline offer" during setup. In September 2026
+    uTorrent's own blog said some people on older versions of uTorrent Classic had crashes "due to
+    cyberattack", and told everyone to update.
+  sources:
+    - https://www.theregister.com/2015/03/07/utorrent_epic_scale_mining_software/
+    - https://blog.utorrent.com/2026/09/23/important-update-utorrent-classic/
+  checked: 2026-11-16
+
+- match: [bittorrent]
+  name: BitTorrent
+  owner: BitTorrent
+  why: |
+    BitTorrent's privacy policy says it may share your personal information with advertising partners,
+    who can put their own tracking tools in its services to collect things like your IP address and
+    location for personalised ads. In 2018 a Google security researcher found flaws in the Windows
+    BitTorrent and uTorrent apps that could let attackers run code on your computer or grab your
+    downloads, which BitTorrent said it had fixed.
+  sources:
+    - https://www.bittorrent.com/legal/privacy-policy/
+    - https://www.engadget.com/2018/02/21/bittorrent-exploits-let-rogue-websites-control-your-pc/
+  checked: 2026-11-16
+
+- match: [godaddy]
+  name: GoDaddy
+  owner: GoDaddy
+  why: |
+    In 2025 the US FTC finalised an order with GoDaddy settling allegations that it misled customers by
+    failing to put proper data security in place. The FTC said those failures led to several major
+    breaches between 2019 and 2022, in which bad actors got into customers' websites and data. GoDaddy
+    now has to run a comprehensive security programme, reviewed by an independent assessor.
+  sources:
+    - https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-takes-action-against-godaddy-alleged-lax-data-security-its-website-hosting-services
+    - https://www.ftc.gov/news-events/news/press-releases/2025/05/ftc-finalizes-order-godaddy-over-data-security-failures
+  checked: 2026-11-16
+
+- match: [capital one]
+  name: Capital One
+  owner: Capital One
+  why: |
+    In 2019 an outside individual took data on about 100 million people in the US and 6 million in
+    Canada, mostly from credit card applications, including about 140,000 Social Security numbers (it
+    later found about 4,700 more), Capital One said. In 2020 the US bank regulator (the OCC) gave it an
+    $80 million civil money penalty for failing to assess risks properly before moving IT operations to
+    the public cloud. Capital One said no card numbers or log-in credentials were compromised.
+  sources:
+    - https://www.capitalone.com/digital/facts2019/
+    - https://www.occ.gov/news-issuances/news-releases/2020/nr-occ-2020-101.html
+  checked: 2026-11-16
+
+- match: [trello]
+  name: Trello
+  owner: Atlassian
+  why: |
+    In January 2024 someone used an open Trello API to link non-public email addresses to about 15
+    million Trello profiles, then tried to sell the data on a hacking forum. Atlassian, which owns
+    Trello, said its systems weren't breached and the data came from public profiles. It has since
+    changed the API so people who aren't logged in can't look up another user by email.
+  sources:
+    - https://www.bleepingcomputer.com/news/security/trello-api-abused-to-link-email-addresses-to-15-million-accounts/
+  checked: 2026-11-16
+
+- match: [asana]
+  name: Asana
+  owner: Asana
+  why: |
+    In June 2025 Asana took its MCP server, an opt-in feature that lets AI tools connect to your Asana
+    data, offline for nearly two weeks to fix a bug that could have let users see other
+    organisations' data. Asana told customers the bug "could have potentially exposed" information
+    from their domain to other users of the feature, and said it contacted the organisations affected.
+  sources:
+    - https://www.theregister.com/2025/06/18/asana_mcp_server_bug/
+    - https://status.asana.com/incidents/5b9hhtgs3mxs
+  checked: 2026-11-16
+
+- match: [cisco webex]
+  name: Cisco Webex
+  owner: Cisco
+  why: |
+    In May 2024 Cisco found bugs in Webex Meetings that it believes were used, in what it called
+    targeted security research, to get unauthorised access to meeting information and metadata for
+    some customers. Cisco said the fix was in place worldwide by 28 May 2024, notified the customers it
+    could identify as affected, and told customers to check what might have been exposed before then.
+  sources:
+    - https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-webex-june-2024
+  checked: 2026-11-16
+
+- match: [android]
+  name: Android
+  owner: Google
+  why: |
+    In 2021 a Trinity College Dublin study found Google's own Pixel kept sending telemetry to Google
+    even with Usage & Diagnostics switched off, along with identifiers like the IMEI, SIM serial number
+    and phone number. Left idle, the Pixel sent roughly 1MB to Google every 12 hours, about 20 times
+    what an iPhone sent Apple, a comparison Google disputed. The study tested a Pixel 2 running Android
+    10.
+  sources:
+    - https://www.scss.tcd.ie/Doug.Leith/pubs/apple_google2.pdf
+  checked: 2026-11-16
+
+- match: [ios]
+  name: iOS
+  owner: Apple
+  why: |
+    In 2021 a Trinity College Dublin study found an iPhone kept sending telemetry to Apple even with
+    Analytics & Improvements switched off, along with identifiers like the IMEI, serial number and
+    phone number. iOS also sent Apple the Wi-Fi MAC addresses of nearby devices, such as other phones
+    and your home router, tagged with GPS location when location was on, with no way to opt out. The
+    study tested iOS 13.6.1.
+  sources:
+    - https://www.scss.tcd.ie/Doug.Leith/pubs/apple_google2.pdf
+  checked: 2026-11-16
+
+- match: [microsoft office]
+  name: Microsoft Office
+  owner: Microsoft
+  why: |
+    In 2018 an impact assessment for the Dutch government found the business version of Office
+    collected telemetry with no way to see or switch it off, and Microsoft said 23,000 to 25,000 types
+    of event went to its servers. Microsoft has since added a Diagnostic Data Viewer and a "Neither"
+    level for business admins, but required service data is still sent either way. Features that
+    analyse your documents, like Translator, send your text to Microsoft's cloud unless you turn them
+    off in Office's privacy settings.
+  sources:
+    - https://www.privacycompany.eu/en/impact-assessment-shows-privacy-risks-microsoft-office-proplus-enterprise/
+    - https://learn.microsoft.com/en-us/microsoft-365-apps/privacy/overview-privacy-controls
+    - https://support.microsoft.com/en-gb/office/connected-experiences-in-microsoft-365-8d2c04f7-6428-4e6e-ac58-5828d4da5b7c
+  checked: 2026-11-16
+
+- match: [microsoft 365]
+  name: Microsoft 365
+  owner: Microsoft
+  why: |
+    Microsoft's Services Agreement, which covers personal and family Microsoft 365 plans, says it may
+    use "automated systems and humans to review content" to spot spam, malware and other harmful
+    material, and can review your content when looking into a suspected breach of its terms. In 2024
+    the EU's data protection supervisor found the European Commission's use of Microsoft 365 broke EU
+    data protection law, including over transfers outside the EU, though it said in 2025 that the
+    problems had been fixed.
+  sources:
+    - https://www.microsoft.com/en-gb/servicesagreement
+    - https://www.edps.europa.eu/system/files/2024-03/EDPS-2024-05-European-Commission_s-use-of-M365-infringes-data-protection-rules-for-EU-institutions-and-bodies_EN.pdf
+    - https://www.edps.europa.eu/system/files/2025-07/2025-07-28_Press-Release_EDPS_Microsoft_EC_in_compliance_EN.pdf
+  checked: 2026-11-16
+
+- match: [google fit]
+  name: Google Fit
+  owner: Google
+  why: |
+    Google is folding Google Fit into its new Google Health app. In May 2026 it said it would
+    "consolidate our health and fitness offerings" and invite Fit users to move their data across
+    later in the year. The Google Fit APIs, which other apps use to sync with Fit, are being
+    deprecated in 2026 and have been closed to new developers since May 2024.
+  sources:
+    - https://blog.google/products-and-platforms/products/google-health/google-health-app/
+    - https://developers.google.com/fit
+  checked: 2026-11-16
+
+- match: [samsung health]
+  name: Samsung Health
+  owner: Samsung
+  why: |
+    In July 2026 Samsung Health started asking users to let Samsung use their health data, such as
+    steps, sleep, medication and cycle tracking, for AI training and modelling "including human
+    review". It's optional, but the opt-out warning first said health data stored in your account
+    would be deleted. Samsung then said withdrawing consent only removes data collected for AI
+    training, and your existing health data stays.
+  sources:
+    - https://9to5google.com/2026/07/15/samsung-health-ai-training-data-consent/
+    - https://www.digitaltrends.com/phones/refusing-samsung-health-ai-training-will-not-wipe-your-health-history-after-all/
+  checked: 2026-11-16
+
+- match: [nest]
+  name: Nest
+  owner: Google
+  why: |
+    Google has been retiring older Nest hardware. Since 25 October 2025 the first and second
+    generation Nest Learning Thermostats no longer work in the Nest or Home apps and get no more
+    software or security updates, though their schedules keep running on the thermostat itself.
+    Nest Secure alarms and Dropcam cameras stopped working after 8 April 2024.
+  sources:
+    - https://support.google.com/googlenest/answer/16233096?hl=en
+    - https://www.engadget.com/nest-secure-and-dropcam-products-will-stop-working-in-april-2024-172925431.html
+  checked: 2026-11-16
+
+- match: [firefox]
+  name: Firefox
+  owner: Mozilla
+  why: |
+    In 2025 Mozilla added terms of use to Firefox and stepped away from its blanket "we never sell your
+    data" claim, saying the legal definition of selling data is broad (it says it doesn't sell data in
+    the way most people mean). Firefox shows sponsored New Tab content and, in some regions, sponsored
+    search suggestions, sharing data from them with ad partners in aggregated or de-identified form.
+    You can switch both off in settings.
+  sources:
+    - https://blog.mozilla.org/en/products/firefox/update-on-terms-of-use/
+    - https://www.mozilla.org/en-US/privacy/firefox/
+  checked: 2026-11-16
+
+- match: [apple notes]
+  name: Apple Notes
+  owner: Apple
+  why: |
+    Notes synced to iCloud are encrypted on Apple's servers, but by default Apple holds the keys, so
+    they're only end-to-end encrypted if you turn on the optional Advanced Data Protection. Apple no
+    longer offers that to new users in the UK. Locking a note does end-to-end encrypt it, but notes
+    with tags, PDFs, audio or video can't be locked, and neither can notes you share.
+  sources:
+    - https://support.apple.com/en-us/102651
+    - https://support.apple.com/en-gb/122234
+    - https://support.apple.com/en-us/102537
+  checked: 2026-11-16
