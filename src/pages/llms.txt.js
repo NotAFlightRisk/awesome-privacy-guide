@@ -2,6 +2,7 @@ import { getModel } from '../lib/data/model.js';
 import { links } from '../lib/routes.js';
 import { site, upstream } from '../lib/site.js';
 import { published } from '../lib/published.js';
+import { list } from '../lib/format.js';
 
 export function GET() {
   const { categories, products, services } = getModel();
@@ -24,7 +25,10 @@ export function GET() {
     ]),
     '## Private alternatives to popular apps',
     '',
-    ...products.map((product) => `- [Alternatives to ${product.name}](${url(to.product(product))})`),
+    ...products.map((product) => {
+      const names = product.services.map((svc) => svc.name);
+      return `- [Alternatives to ${product.name}](${url(to.product(product))}): ${list(names, 'en', 8)}`;
+    }),
     '',
   ];
   return new Response(lines.join('\n'), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
