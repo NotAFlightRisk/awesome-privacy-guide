@@ -1,9 +1,11 @@
+const repo = 'https://github.com/NotAFlightRisk/awesome-privacy-guide';
+
 export const site = {
   name: 'Awesome Privacy Guide',
   url: 'https://awesomeprivacy.peng.ly',
-  repo: 'https://github.com/NotAFlightRisk/awesomeprivacy',
-  // The correction issue form, like `${repo}/issues/new?template=correction.yml`, or empty for no link
-  corrections: '',
+  repo,
+  // The correction issue form, or empty for no "report a mistake" link
+  corrections: `${repo}/issues/new?template=correction.yml`,
 };
 
 export const upstream = {
