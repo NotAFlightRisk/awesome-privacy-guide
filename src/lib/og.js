@@ -1,6 +1,6 @@
 import { pagesFor } from './routes.js';
 
-const KINDS = new Set(['service', 'product', 'pair']);
+const KINDS = new Set(['service', 'product', 'pair', 'guide']);
 
 /** Pages that get a social card of their own. Names and icons only, so one per page in every language */
 export const cardPages = () => pagesFor('en').filter((page) => KINDS.has(page.kind));

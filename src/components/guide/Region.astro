@@ -1,0 +1,27 @@
+---
+import { langOf, translator } from '../../lib/i18n.js';
+
+const { place } = Astro.props;
+const { t } = translator(langOf(Astro.url));
+---
+
+<div class="box" role="note">
+  <p class="label">{place ? t(`guide.region.${place}`) : t('guide.local')}</p>
+  <slot />
+</div>
+
+<style>
+  .box {
+    display: grid;
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  .label {
+    font: var(--text-xs) var(--font-mono);
+    text-transform: lowercase;
+    color: var(--accent);
+  }
+</style>

@@ -153,6 +153,12 @@ const draw = {
       ),
     );
   },
+
+  guide: ({ versions: { en } }) =>
+    frame(
+      div({ width: INNER, fontSize: en.title.length > 48 ? 60 : 72, fontWeight: 700, lineHeight: 1.15 }, en.title),
+      div({ fontSize: 30, color: colour.muted }, `${en.minutes} min read`),
+    ),
 };
 
 /** One page's card as a JPEG */

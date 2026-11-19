@@ -4,11 +4,14 @@ import StarCta from '../ui/StarCta.astro';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
 import { upstream } from '../../lib/site.js';
+import { getGuides } from '../../lib/data/guides.js';
 
 const { lang, page } = Astro.props;
 const { t } = translator(lang);
 const to = links(lang);
-const blocks = ['what', 'data', 'facts', 'translations', 'privacy'];
+const guides = getGuides().length > 0;
+const blocks = ['what', 'data', 'facts', ...(guides ? ['guides'] : []), 'translations', 'privacy'];
+const body = (block) => t(guides && block === 'translations' ? 'about.translations.guides' : `about.${block}.body`);
 ---
 
 <Base lang={lang} id={page.id} title={t('about.title')} description={t('about.description')} crumbs={[{ label: t('nav.about'), url: to.page('about') }]}>
@@ -20,7 +23,7 @@ const blocks = ['what', 'data', 'facts', 'translations', 'privacy'];
     {blocks.map((block) => (
       <section aria-labelledby={block}>
         <h2 id={block}><span aria-hidden="true">//</span> {t(`about.${block}.title`)}</h2>
-        <p>{t(`about.${block}.body`)}</p>
+        <p>{body(block)}</p>
       </section>
     ))}
   </article>

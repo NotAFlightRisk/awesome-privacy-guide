@@ -62,7 +62,7 @@ Or build it yourself with `docker build -t awesomeprivacy .`
 
 ## Licence
 
-The code is [MIT](../LICENSE). The list data is [CC0](https://github.com/lissy93/awesome-privacy/blob/main/LICENSE) from [Alicia Sykes](https://aliciasykes.com) and the Awesome Privacy contributors.
+The code is [MIT](../LICENSE). The list data is [CC0](https://github.com/lissy93/awesome-privacy/blob/main/LICENSE) from [Alicia Sykes](https://aliciasykes.com) and the Awesome Privacy contributors. The guides' text is [CC BY 4.0](../src/content/guides/LICENSE).
 
 ---
 

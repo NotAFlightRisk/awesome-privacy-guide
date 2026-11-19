@@ -1,0 +1,68 @@
+---
+title: Every guide component on one page
+description: A test fixture that uses every guide component once, so the build and the tests cover them all. It never gets published, since it only builds with GUIDES_FIXTURE set.
+type: tips
+topic: accounts
+sections: [Password Managers]
+products: [lastpass]
+terms: [password-manager, zero-knowledge]
+related: [not-written-yet]
+further:
+  - url: https://digital-defense.io/checklist/authentication
+    label: The full authentication checklist
+published: 2026-11-19
+checked: 2026-11-19
+---
+
+<Short>
+Pick a password manager, move your passwords in, and [delete the export](#delete-the-export) once it's done.
+</Short>
+
+## Pick one
+
+Any of these will do the job, and they're in the list's order.
+
+<Picks section="Password Managers" limit={3} skip={['lesspass']} />
+
+If you're leaving <Swap product="lastpass">LastPass</Swap>, <App name="Bitwarden" /> imports its export directly. A <Term slug="zero-knowledge">zero-knowledge</Term> design means the company can't read your vault.
+
+## Move your passwords in
+
+<Tip id="delete-the-export" priority="essential" effort={1} title="Delete the export file once it's imported">
+Your browser's export is a plain text file with every password you've got in it.[^1]
+
+<Steps>
+1. Open <Path>Settings --> Passwords --> Export</Path> in your browser.
+2. Import the file, then delete it and empty the bin.
+</Steps>
+</Tip>
+
+<Tip id="turn-off-browser-saving" priority="optional" effort={2} title="Turn off your browser's own password saving">
+Otherwise your passwords end up in two places, and you'll change one and forget the other.
+
+<Platforms>
+<Platform name="ios">
+Open <Path>Settings --> Apps --> Passwords</Path>.
+</Platform>
+<Platform name="android">
+Open <Path>Settings --> Google --> Autofill</Path>.
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="check-old-exports" priority="advanced" effort={10} title="Look for old exports you've forgotten about">
+<Note kind="warning">
+An export from years ago is still a list of passwords, and some of them probably still work.
+</Note>
+
+<Region place="uk">
+The NCSC has its own advice on this, which is worth a read.[^2]
+</Region>
+</Tip>
+
+<Note kind="info">
+It's worth doing the five accounts that matter most first --> then the rest as you go.
+</Note>
+
+[^1]: [Chrome Help: Export your passwords](https://support.google.com/chrome/answer/95606)
+[^2]: [NCSC: Password managers](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)

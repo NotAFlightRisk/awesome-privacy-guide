@@ -1,0 +1,70 @@
+---
+import { langOf, translator } from '../../lib/i18n.js';
+import { minutes } from '../../lib/format.js';
+
+const { id, title, priority, effort } = Astro.props;
+const lang = langOf(Astro.url);
+const { t } = translator(lang);
+---
+
+<section class="tip" id={id} aria-labelledby={`${id}-title`}>
+  <div class="head">
+    <h3 id={`${id}-title`}><a href={`#${id}`}>{title}</a></h3>
+    <p class="meta">
+      <span class:list={['priority', priority]}>{t(`guide.priority.${priority}`)}</span>
+      <span>{minutes(effort, lang)}</span>
+    </p>
+  </div>
+  <slot />
+</section>
+
+<style>
+  .tip {
+    display: grid;
+    gap: var(--space-sm);
+    padding-block-start: var(--space-lg);
+    border-block-start: 1px solid var(--border);
+    scroll-margin-block-start: var(--space-xl);
+  }
+
+  .head {
+    display: grid;
+    gap: var(--space-2xs);
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    letter-spacing: -0.02em;
+
+    & a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  .priority {
+    padding: 0.1rem var(--space-2xs);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+
+    &.essential {
+      border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      color: var(--accent);
+    }
+  }
+</style>

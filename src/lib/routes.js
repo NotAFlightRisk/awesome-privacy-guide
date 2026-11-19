@@ -1,4 +1,5 @@
 import { getModel } from './data/model.js';
+import { getGuides, inLanguage } from './data/guides.js';
 import { published as languages } from './published.js';
 import { routeWords } from '../i18n/routes.js';
 import { tr } from './i18n.js';
@@ -44,6 +45,7 @@ export const links = memo((lang) => {
     product: (product) => `${base}/${words.alternatives}/${product.slug}/`,
     pair: (pair) => `${base}/${words.compare}/${pair.slug}/`,
     term: (entry) => `${base}/${words.glossary}/${entry.slug}/`,
+    guide: (guide) => `${base}/${words.guides}/${guide.slug}/`,
     page: (name) => `${base}/${words[name]}/`,
     searchIndex: `/api/search/${lang}.json`,
   };
@@ -54,10 +56,19 @@ const STATIC_PAGES = ['alternatives', 'glossary', 'stack', 'discover', 'changes'
 /** One entry per page in `lang`, with an `id` that's the same page in every language */
 export const pagesFor = memo((lang) => {
   const { categories, sections, services, products, pairs, glossary } = getModel();
+  const guides = getGuides();
   const to = links(lang);
   return [
     { id: 'home', kind: 'home', path: to.home },
     ...STATIC_PAGES.map((name) => ({ id: name, kind: name, path: to.page(name) })),
+    ...(guides.length ? [{ id: 'guides', kind: 'guides', path: to.page('guides') }] : []),
+    ...guides.map((entity) => ({
+      id: `d/${entity.slug}`,
+      kind: 'guide',
+      path: to.guide(entity),
+      entity,
+      fallback: inLanguage(entity, lang).fallback,
+    })),
     ...categories.map((entity) => ({ id: `c/${entity.slug}`, kind: 'category', path: to.category(entity), entity })),
     ...sections.map((entity) => ({ id: `s/${entity.key}`, kind: 'section', path: to.section(entity), entity })),
     ...services.map((entity) => ({ id: `v/${entity.key}`, kind: 'service', path: to.service(entity), entity })),
@@ -67,8 +78,12 @@ export const pagesFor = memo((lang) => {
   ];
 });
 
-const pathsById = memo((lang) => new Map(pagesFor(lang).map((page) => [page.id, page.path])));
+const byId = memo((lang) => new Map(pagesFor(lang).map((page) => [page.id, page])));
 
-/** The same page in every language, for hreflang and the language picker */
+/** The same page in every language, for the language picker */
 export const alternates = (id) =>
-  languages.map((lang) => ({ ...lang, path: pathsById(lang.code).get(id) }));
+  languages.map((lang) => ({ ...lang, path: byId(lang.code).get(id)?.path }));
+
+/** The languages that have a real version of the page, for hreflang and the sitemap */
+export const indexed = (id) =>
+  alternates(id).filter((version) => version.path && !byId(version.code).get(id).fallback);

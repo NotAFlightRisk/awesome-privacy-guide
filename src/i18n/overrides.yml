@@ -3,6 +3,25 @@ de:
   Essentials: Grundlagen
   Utilities: Dienstprogramme
   Social: Soziales
+  # The UI says du, never Sie
+  Privacy-respecting alternatives to the apps and services you use every day. {services} recommendations in {sections} topics, from the Awesome Privacy list.: Privatsphäre-respektierende Alternativen zu den Apps und Diensten, die du jeden Tag nutzt. {services} Empfehlungen zu {sections} Themen aus der Awesome Privacy Liste.
+  discover: Entdecken
+  Discover more: Entdecke mehr
+  Every pick on this site comes from this list. It's free and kept up by volunteers, so if it's useful to you, give it a star or suggest something it's missing.: Jede Empfehlung auf dieser Seite stammt aus dieser Liste. Sie ist kostenlos und wird von Freiwilligen gepflegt. Wenn sie dir also hilft, gib ihr einen Stern oder schlag etwas vor, das ihr noch fehlt.
+  Every pick on this site comes from this list, kept up by {count} contributors. If it's useful to you, give it a star or suggest something it's missing.: Jede Empfehlung auf dieser Seite stammt aus dieser Liste, die von {count} Mitwirkenden gepflegt wird. Wenn sie dir hilft, gib ihr einen Stern oder schlag etwas vor, das ihr noch fehlt.
+  compare them: vergleiche sie
+  Jump to a letter: Spring zu einem Buchstaben
+  Visit {host}: Besuche {host}
+  compare {name}: Vergleiche {name}
+  Browse the pull requests: Stöbere in den Pull Requests
+  Build your privacy toolkit: Stell dein Datenschutz-Toolkit zusammen
+  Pick a private browser, email, messenger, password manager, VPN and more from the Awesome Privacy list, then share or export your whole toolkit.: Wähle einen privaten Browser, E-Mail-Dienst, Messenger, Passwort-Manager, VPN und mehr aus der Awesome Privacy Liste und teile oder exportiere dann dein ganzes Toolkit.
+  Download JSON: JSON herunterladen
+  Pick your platform: Wähl deine Plattform
+  Watch out: Achtung
+  Every tip on this page in one place, so you can tick them off as you go.: Alle Tipps dieser Seite an einem Ort, damit du sie nach und nach abhaken kannst.
+  The text is CC BY 4.0, so feel free to reuse it, just link back.: Der Text steht unter CC BY 4.0. Du darfst ihn also gern weiterverwenden, verlinke einfach zurück.
+  "The guides are our own. They're written and translated with some AI help, then checked against the sources linked at the bottom of each one, and rechecked at least every six months. If you spot a mistake in one, there's a link at the bottom of every guide to report it.": Die Ratgeber sind unsere eigenen. Wir schreiben und übersetzen sie mit etwas KI-Hilfe, gleichen sie mit den Quellen am Ende jedes Ratgebers ab und prüfen sie mindestens alle sechs Monate neu. Wenn dir in einem ein Fehler auffällt, kannst du ihn über den Link am Ende jedes Ratgebers melden.
 es:
   Utilities: Utilidades
   Media: Multimedia

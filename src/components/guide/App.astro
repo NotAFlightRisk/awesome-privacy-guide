@@ -1,0 +1,14 @@
+---
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { langOf } from '../../lib/i18n.js';
+import { slugify } from '../../lib/slug.js';
+import { missing } from './missing.js';
+
+const { name } = Astro.props;
+const service = getModel().services.find((svc) => svc.slug === slugify(name));
+if (!service) missing(Astro.url, 'App', name);
+const text = Astro.slots.has('default') ? await Astro.slots.render('default') : name;
+---
+
+{service ? <a href={links(langOf(Astro.url)).service(service)} set:html={text} /> : <Fragment set:html={text} />}

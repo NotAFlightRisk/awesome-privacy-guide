@@ -19,6 +19,7 @@ nav.stack: toolkit
 nav.discover: discover
 nav.changes: what's new
 nav.about: about
+nav.guides: guides
 
 star.short: Star
 star.long: Star on GitHub
@@ -37,6 +38,7 @@ home.swaps: the usual suspects
 home.swaps.all: All {count} apps with private alternatives
 home.pick: something you might not know about
 home.pick.more: Discover more
+home.guides.all: All the guides
 
 cta.body: Every pick on this site comes from this list. It's free and kept up by volunteers, so if it's useful to you, give it a star or suggest something it's missing.
 cta.body.people: Every pick on this site comes from this list, kept up by {count} contributors. If it's useful to you, give it a star or suggest something it's missing.
@@ -69,6 +71,7 @@ kind.service: app
 kind.section: topic
 kind.category: category
 kind.term: glossary
+kind.guide: guide
 
 search.count.one: 1 option
 search.count.other: "{count} options"
@@ -198,7 +201,10 @@ about.data.title: where the data comes from
 about.data.body: Everything listed comes from awesome-privacy.yml in the list's GitHub repo, which is public domain (CC0). This site checks it for changes every day and rebuilds when it moves. Nothing gets added here - suggestions go to the list itself, as a pull request.
 about.facts.title: how the evidence works
 about.facts.body: The badges and the evidence panel only show what's on record somewhere you can check - the list's own fields (open source, audited, takes crypto), the repository on GitHub (licence, last commit, archived) and the grade from Terms of Service; Didn't Read. There's no scoring and no opinion, and a blank just means nothing's recorded.
+about.guides.title: the guides
+about.guides.body: The guides are our own. They're written and translated with some AI help, then checked against the sources linked at the bottom of each one, and rechecked at least every six months. If you spot a mistake in one, there's a link at the bottom of every guide to report it.
 about.translations.title: translations
+about.translations.guides: Everything else in other languages is machine translated with Azure Translator, so it might read a bit stiffly in places. App names are left as they are.
 about.translations.body: English is the original. The other languages are machine translated with Azure Translator, so they might read a bit stiffly in places. App names are left as they are.
 about.privacy.title: your privacy here
 about.privacy.body: No cookies, no accounts and nothing stored about you. Visits are counted with a self-hosted, cookie-free Plausible, and if a page crashes, the error report goes to our own server with nothing personal in it.
@@ -221,6 +227,43 @@ discover.lead: Further down each topic there's good stuff that rarely gets a men
 discover.surprise: Surprise me
 discover.today: today's pick
 discover.more: more to explore
+
+guides.title: Privacy and security guides
+guides.description: Plain-English guides to the privacy and security jobs worth doing, with the reasoning behind every step and apps from the Awesome Privacy list.
+guides.lead: Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.
+guides.english: English
+guides.topic.accounts: accounts
+
+guide.read: "{time} read"
+guide.checked: Checked {date}
+guide.short: the short answer
+guide.contents: contents
+guide.priority.essential: essential
+guide.priority.optional: optional
+guide.priority.advanced: advanced
+guide.checklist: checklist
+guide.checklist.lead: Every tip on this page in one place, so you can tick them off as you go.
+guide.further: go further
+guide.sources: sources
+guide.back: Back to reference {reference}
+guide.related: related guides
+guide.terms: terms in this guide
+guide.checks: Every claim here links to its source, and the guide gets rechecked at least every six months.
+guide.how: How the guides are written
+guide.report: Report a mistake
+guide.licence: The text is CC BY 4.0, so feel free to reuse it, just link back.
+guide.fallback: This guide isn't in {language} yet, so here it is in English.
+guide.picks: From the {section} picks on Awesome Privacy
+guide.region.uk: In the UK
+guide.region.us: In the US
+guide.region.eu: In the EU
+guide.note.warning: Watch out
+guide.note.info: Good to know
+guide.local: Only in this language
+guide.platforms: Pick your platform
+guide.links: guides
+guide.links.term: guides that cover this
+guide.links.switch: how to switch
 
 notfound.title: Nothing here
 notfound.lead: That page doesn't exist, or it moved when the list changed. Try searching for it.

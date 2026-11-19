@@ -5,6 +5,8 @@ import Heading from '../ui/Heading.astro';
 import ServiceIcon from '../ui/ServiceIcon.astro';
 import Badges from '../ui/Badges.astro';
 import StarCta from '../ui/StarCta.astro';
+import GuideCard from '../ui/GuideCard.astro';
+import { getGuides } from '../../lib/data/guides.js';
 import { getModel } from '../../lib/data/model.js';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
@@ -26,6 +28,9 @@ const suspects = products
   .filter((product) => product.note)
   .sort((a, b) => b.services.length - a.services.length);
 const pick = pickOfTheDay(services);
+const guides = getGuides()
+  .toSorted((a, b) => (b.slug === 'start-here') - (a.slug === 'start-here'))
+  .slice(0, 3);
 const jsonLd = [
   {
     '@type': 'WebSite',
@@ -119,6 +124,16 @@ const jsonLd = [
     </ul>
     <p class="more"><a href={to.page('alternatives')}>{t('home.swaps.all', { count: products.length })}</a></p>
   </section>
+
+  {guides.length > 0 && (
+    <section aria-labelledby="guides">
+      <Heading id="guides">{t('nav.guides')}</Heading>
+      <ul class="guides">
+        {guides.map((guide) => <li><GuideCard guide={guide} lang={lang} /></li>)}
+      </ul>
+      <p class="more"><a href={to.page('guides')}>{t('home.guides.all')}</a></p>
+    </section>
+  )}
 
   {pick && (
     <section class="pick" aria-labelledby="pick">
@@ -368,6 +383,15 @@ const jsonLd = [
         border-color: var(--accent);
       }
     }
+  }
+
+  .guides {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-md);
+    margin-block-start: var(--space-lg);
+    padding: 0;
+    list-style: none;
   }
 
   .more {

@@ -7,6 +7,8 @@ import Heading from '../ui/Heading.astro';
 import Badges from '../ui/Badges.astro';
 import UpstreamLinks from '../ui/UpstreamLinks.astro';
 import Chips from '../ui/Chips.astro';
+import GuideLinks from '../ui/GuideLinks.astro';
+import { guidesNaming } from '../../lib/data/guides.js';
 import { getModel } from '../../lib/data/model.js';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
@@ -25,6 +27,7 @@ const sectionName = tr(svc.section.name);
 const others = svc.section.services.filter((other) => other !== svc);
 const comparisons = pairs.filter((pair) => pair.a === svc || pair.b === svc);
 const swaps = products.filter((product) => product.sections.includes(svc.section));
+const guides = guidesNaming('sections', [svc.section.name]);
 const html = md(svc.description);
 const systems = svc.platforms.filter((key) => OPERATING_SYSTEMS.includes(key));
 const software = Boolean(svc.repo || svc.android || svc.ios || systems.length);
@@ -78,6 +81,8 @@ const jsonLd = [
     </article>
     <Scorecard service={svc} lang={lang} />
   </div>
+
+  <GuideLinks lang={lang} guides={guides} />
 
   {others.length > 0 && (
     <section aria-labelledby="others" class="stack">

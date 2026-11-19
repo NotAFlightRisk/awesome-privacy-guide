@@ -2,6 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import Heading from '../ui/Heading.astro';
 import Chips from '../ui/Chips.astro';
+import GuideLinks from '../ui/GuideLinks.astro';
+import { guidesNaming } from '../../lib/data/guides.js';
 import { getModel } from '../../lib/data/model.js';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
@@ -12,6 +14,7 @@ const { t, tr, md } = translator(lang);
 const to = links(lang);
 const { glossary, sections } = getModel();
 const name = tr(term.term);
+const guides = guidesNaming('terms', [term.slug]);
 const related = (term.related ?? []).map((slug) => glossary.find((entry) => entry.slug === slug)).filter(Boolean);
 const where = (term.sections ?? []).map((title) => sections.find((section) => section.name === title)).filter(Boolean);
 const jsonLd = [
@@ -43,6 +46,8 @@ const jsonLd = [
     <p class="lead">{tr(term.short)}</p>
     <div class="prose" set:html={md(term.body)} />
   </article>
+
+  <GuideLinks lang={lang} guides={guides} title="guide.links.term" />
 
   {where.length > 0 && (
     <section class="stack" aria-labelledby="where">

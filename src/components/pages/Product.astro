@@ -4,6 +4,8 @@ import ServiceCard from '../ui/ServiceCard.astro';
 import Heading from '../ui/Heading.astro';
 import Chips from '../ui/Chips.astro';
 import StarCta from '../ui/StarCta.astro';
+import GuideLinks from '../ui/GuideLinks.astro';
+import { guidesNaming } from '../../lib/data/guides.js';
 import { getModel } from '../../lib/data/model.js';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
@@ -15,6 +17,7 @@ const product = page.entity;
 const { t, tr, md } = translator(lang);
 const to = links(lang);
 const count = product.services.length;
+const guides = guidesNaming('products', [product.slug]);
 const topics = list(product.sections.map((section) => tr(section.name)), lang);
 const related = getModel()
   .products.filter((other) => other !== product && other.sections.some((s) => product.sections.includes(s)))
@@ -68,6 +71,8 @@ const jsonLd = [
     </aside>
     )}
   </div>
+
+  <GuideLinks lang={lang} guides={guides} title="guide.links.switch" callout />
 
   <div class="picks">
   {product.sections.map((section) => {

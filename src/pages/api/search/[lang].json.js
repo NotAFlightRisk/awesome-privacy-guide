@@ -2,6 +2,7 @@ import { published as languages } from '../../../lib/published.js';
 import { getModel } from '../../../lib/data/model.js';
 import { links } from '../../../lib/routes.js';
 import { translator } from '../../../lib/i18n.js';
+import { getGuides, inLanguage } from '../../../lib/data/guides.js';
 
 export const getStaticPaths = () => languages.map(({ code }) => ({ params: { lang: code } }));
 
@@ -22,6 +23,10 @@ export function GET({ params: { lang } }) {
   const { t, tr } = translator(lang);
   const to = links(lang);
   const items = [
+    ...getGuides().map((guide) => {
+      const version = inLanguage(guide, lang);
+      return entry('d', version.title, to.guide(guide), version.fallback ? t('guides.english') : '', [guide.versions.en.title]);
+    }),
     ...products.map((product) =>
       entry('p', product.name, to.product(product), t('search.count', { count: product.services.length })),
     ),

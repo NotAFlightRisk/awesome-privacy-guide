@@ -1,0 +1,35 @@
+name: ✏️ Report a mistake in a guide
+description: Something in one of the guides is wrong, out of date or unclear
+title: "[Correction]: "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for spotting it! This is for the guides only. Apps, descriptions and topics come from the Awesome Privacy list, so report those there.
+
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      description: The link to the guide, and the tip if it's about one in particular.
+      placeholder: https://awesomeprivacy.peng.ly/guides/password-manager/#delete-the-export
+    validations:
+      required: true
+
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What's wrong?
+      description: What the guide says, and what it should say instead.
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: A link that shows the right answer, if you've got one. A vendor's help page is best.
+      placeholder: https://support.google.com/...
+    validations:
+      required: false

@@ -1,0 +1,20 @@
+---
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { langOf, translator } from '../../lib/i18n.js';
+import { missing } from './missing.js';
+
+const { slug } = Astro.props;
+const lang = langOf(Astro.url);
+const entry = getModel().glossary.find((term) => term.slug === slug);
+if (!entry) missing(Astro.url, 'Term', slug);
+const text = Astro.slots.has('default') ? await Astro.slots.render('default') : translator(lang).tr(entry?.term ?? slug);
+---
+
+{entry ? <a class="term" href={links(lang).term(entry)} set:html={text} /> : <Fragment set:html={text} />}
+
+<style>
+  .term {
+    text-decoration-style: dotted;
+  }
+</style>

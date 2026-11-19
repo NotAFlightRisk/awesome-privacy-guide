@@ -20,6 +20,7 @@ export function finderProps(lang) {
         s: t('kind.section'),
         c: t('kind.category'),
         g: t('kind.term'),
+        d: t('kind.guide'),
       },
     },
   };

@@ -1,0 +1,63 @@
+---
+title: Jede Ratgeber-Komponente auf einer Seite
+description: Eine Test-Fixture, die jede Ratgeber-Komponente einmal nutzt, damit Build und Tests sie alle abdecken. Sie wird nie veröffentlicht.
+source: "fc1f9e8b8abe4936"
+sha: "0000000"
+---
+
+<Short>
+Such dir einen Passwort-Manager aus, zieh deine Passwörter um und [lösch den Export](#delete-the-export), sobald alles drin ist.
+</Short>
+
+## Such dir einen aus
+
+Jeder davon erledigt den Job, in der Reihenfolge der Liste.
+
+<Picks section="Password Managers" limit={3} skip={['lesspass']} />
+
+Wenn du <Swap product="lastpass">LastPass</Swap> verlässt, importiert <App name="Bitwarden" /> dessen Export direkt. Bei einem <Term slug="zero-knowledge">Zero-Knowledge</Term>-Design kann die Firma deinen Tresor nicht lesen.
+
+## Zieh deine Passwörter um
+
+<Tip id="delete-the-export" priority="essential" effort={1} title="Lösch die Exportdatei nach dem Import">
+Der Export deines Browsers ist eine reine Textdatei mit jedem Passwort, das du hast.[^1]
+
+<Steps>
+1. Öffne <Path>Einstellungen --> Passwörter --> Exportieren</Path> in deinem Browser.
+2. Importier die Datei, lösch sie dann und leer den Papierkorb.
+</Steps>
+</Tip>
+
+<Tip id="turn-off-browser-saving" priority="optional" effort={2} title="Schalte das Passwortspeichern im Browser aus">
+Sonst landen deine Passwörter an zwei Orten, und du änderst eins und vergisst das andere.
+
+<Platforms>
+<Platform name="ios">
+Öffne <Path>Einstellungen --> Apps --> Passwörter</Path>.
+</Platform>
+<Platform name="android">
+Öffne <Path>Einstellungen --> Google --> Autofill</Path>.
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="check-old-exports" priority="advanced" effort={10} title="Such nach alten Exporten, die du vergessen hast">
+<Note kind="warning">
+Ein Export von vor Jahren ist immer noch eine Liste von Passwörtern, und manche davon funktionieren wahrscheinlich noch.
+</Note>
+
+<Region place="uk">
+Das NCSC hat dazu eigene Tipps, die sich lohnen.[^2]
+</Region>
+
+<Local>
+Das steht nur in der Übersetzung.
+</Local>
+</Tip>
+
+<Note kind="info">
+Mach zuerst die fünf wichtigsten Konten --> dann den Rest nach und nach.
+</Note>
+
+[^1]: [Chrome-Hilfe: Passwörter exportieren](https://support.google.com/chrome/answer/95606?hl=de)
+[^2]: [NCSC: Password managers](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
