@@ -1,6 +1,6 @@
 ---
 title: How to set up a password manager and move your passwords
-description: Pick one from the list, move your saved passwords in without leaving a copy lying around, and change the few that matter most before the rest.
+description: Pick one from the list, move your browser's saved passwords in without leaving a copy lying around, and change your email password before anything else.
 type: switch
 topic: accounts
 sections: [Password Managers]
@@ -17,14 +17,14 @@ checked: 2026-11-19
 ---
 
 <Short>
-Pick a password manager from the list and give it a [long passphrase](#master-passphrase) you've never used anywhere else. Move in what your browser has saved, then [delete the export file](#delete-the-export) and [clear out the browser's copy](#clear-the-browser-copy). [Change your email password first](#email-first), because it can reset everything else, and change the rest as you log in to things. If you're coming from LastPass, [the passwords in it need changing too](#change-what-was-in-lastpass).
+Pick a password manager from the list and give it a [long passphrase](#master-passphrase) you've never used anywhere else. Move in what your browser has saved, check it all came across, then [delete the export file](#delete-the-export) and [clear out the browser's copy](#clear-the-browser-copy). [Change your email password first](#email-first), since most password resets go there, and change the rest as you log in to things. If you had a LastPass account in 2022, [the passwords in it need changing too](#change-what-was-in-lastpass).
 </Short>
 
 ## Pick one
 
-There are two kinds, and the difference is who looks after your vault. <App name="Bitwarden" /> and <App name="ProtonPass" /> sync it through their own servers, but it's encrypted on your device before it leaves, so the company can't read it.[^bw-safari][^pp-import] That's what <Term slug="zero-knowledge">zero-knowledge</Term> means. <App name="KeePass" /> keeps your vault in a file on your own devices, and syncing and backing up that file is your job. If you're not sure, a synced one is the easier start, since a file you forget to back up is a vault you can lose.
+The main choice is who looks after your vault. <App name="Bitwarden" /> and <App name="ProtonPass" /> sync it through their own servers, but encrypt it on your device before it's sent, so the company can't read it.[^bw-safari][^pp-import] That's what <Term slug="zero-knowledge">zero-knowledge</Term> means. <App name="KeePass" /> keeps your vault in an encrypted file on your own devices, and syncing and backing up that file is your job.[^keepass] If you're not sure, start with a synced one, since it's less for you to look after.
 
-If your browser already saves your passwords, you're not doing anything wrong. The NCSC says that's safe on your own devices. The main reason to move is that a separate manager works across a mix of browsers and phones, rather than tying everything to one of them.[^ncsc-pm]
+If your browser already saves your passwords, you're not doing anything wrong. The NCSC says that's safe on your own devices. The main reason to move is that a separate manager syncs across a mix of browsers and devices, so the same passwords work in Chrome on your laptop and Safari on your phone.[^ncsc-pm]
 
 {/* LessPass works passwords out rather than storing them, so it can't import anything. Pass is command line only, and PaperVault and 2of3 split one secret onto paper rather than managing logins. */}
 
@@ -32,21 +32,23 @@ If your browser already saves your passwords, you're not doing anything wrong. T
 
 ## Set it up properly
 
+Create your account, then install the manager's app on your phone and its extension in your browser, since it can only fill passwords in where it's installed.
+
 <Tip id="master-passphrase" priority="essential" effort={5} title="Make the master password a long passphrase of random words">
-This one password protects all the others. If a company's copy of your encrypted vault is ever stolen, whoever has it can try guesses offline for as long as they like, and that's how some LastPass customers lost money years after its breach.[^krebs]
+This one password protects all the others. When LastPass's encrypted vaults were stolen in 2022, the master password was the only thing left protecting each one, and the thieves could keep guessing offline for as long as they liked.[^krebs]
 
-Length does more than symbols. Rules like "add a capital, a number and a symbol" mostly get people to `Password1!`, and attackers know to try that.[^nist] EFF suggests six words picked at random from its list of 7,776, and every word you add makes it 7,776 times harder to guess.[^eff] The words have to be random rather than ones you'd choose, and EFF's page explains how to pick them with dice.
+Don't rely on capitals, numbers and symbols. Rules like that mostly get people to `Password1!`, and attackers know to try that early.[^nist] Go for length instead. EFF recommends six words picked at random from its list of 7,776 words, and as long as they're random, every word you add makes it 7,776 times harder to guess.[^eff] Words you choose yourself aren't random, so EFF's page explains how to pick them with dice.
 
-Don't use it for anything else. Writing it on paper and keeping it at home is fine, because someone would need to be in your house to read it. The NCSC says that can be done safely, as long as you think about who else can get to where you keep it.[^ncsc-pm]
+Don't use it for anything else. Writing it on paper is fine, because someone would need to get to the paper itself, and the NCSC says that can be done safely as long as you think about who else can get to where you keep it.[^ncsc-pm]
 </Tip>
 
 <Tip id="lock-the-manager" priority="essential" effort={5} title="Turn on two-step login for the manager, and print the recovery code">
-The manager's own account needs <Term slug="2fa">two-step login</Term> more than any other, since it holds the rest. Turning it on gives you a recovery code. On Bitwarden, losing both that code and the phone you use for two-step login can lock you out of your vault, so print the code and keep it with your master password.[^bw-recovery] Don't keep it only in the vault, because that's the one place you can't reach when you need it.
+The manager's account needs <Term slug="2fa">two-step login</Term> as much as your email does, since it holds everything else. On Bitwarden, turning it on gives you a recovery code, and losing both that code and the phone you use for two-step login can lock you out of your vault. Bitwarden suggests a printed copy kept somewhere safe.[^bw-recovery] Keep it somewhere other than with your master password, since the two together get past two-step login, and not only in the vault, which is the one place you can't reach when you need it.
 </Tip>
 
 ## Move your passwords in
 
-The import itself takes a few minutes. The bit most people skip is the clean-up afterwards, since the export is a plain text file and your browser still has its own copy. The steps here follow each company's help pages as they were in November 2026.
+The export from your browser is an unencrypted file, and your browser still has its own copy afterwards, so the clean-up matters as much as the import. The steps here come from Apple's, Google's and Bitwarden's help pages as they were in November 2026.
 
 <Tip id="move-without-a-file" priority="optional" effort={2} title="On an iPhone, move them across without a file">
 Since iOS 26, Apple's Passwords app can hand your passwords and passkeys straight to another manager, so there's no file to clean up. It only works when the new manager supports it, which Bitwarden does.[^bw-safari]
@@ -59,7 +61,7 @@ Since iOS 26, Apple's Passwords app can hand your passwords and passkeys straigh
 </Tip>
 
 <Tip id="export-and-import" priority="essential" effort={10} title="Export your browser's passwords, then import them">
-Every major browser can save its passwords to a CSV file, and Bitwarden, ProtonPass and KeePassXC (a KeePass app) can all import one.[^bw-chrome][^pp-import][^kpxc] Only import it once, because Bitwarden doesn't check for duplicates.[^bw-safari]
+Chrome, Edge, Firefox and Safari can all export your passwords to a CSV file, and Bitwarden, ProtonPass and KeePassXC (a KeePass app) can all import them.[^bw-chrome][^bw-firefox][^apple-export][^pp-import][^kpxc] Only import the file once, because Bitwarden doesn't check for duplicates.[^bw-safari]
 
 <Platforms>
 <Platform name="chrome">
@@ -69,99 +71,103 @@ Open <Path>More --> Passwords and autofill --> Google Password Manager --> Setti
 Type `about:logins` in the address bar, open the menu at the top right and pick <Path>Export Passwords</Path>.[^bw-firefox]
 </Platform>
 <Platform name="macos">
-Open the Passwords app and choose <Path>File --> Export All Passwords to File</Path>. Wi-Fi passwords and Sign in with Apple accounts don't come with it.[^apple-export]
+Open the Passwords app and choose <Path>File --> Export All Passwords to File</Path>. Wi-Fi passwords, Sign in with Apple accounts and passwords someone shared with you in a group don't come with it.[^apple-export]
 </Platform>
 <Platform name="ios">
 If you can't use the direct move above, open <Path>Settings --> Apps --> Safari</Path>, tap Export under History and Website Data, choose Passwords and save it to Downloads.[^bw-safari]
 </Platform>
+<Platform name="android">
+In Chrome, tap <Path>More --> Password Manager --> Settings --> Export passwords</Path>, then choose where to save it.[^bw-chrome]
+</Platform>
 </Platforms>
 
-Then use your manager's import option and pick the file. In Bitwarden's web app it's <Path>Tools --> Import</Path>.[^bw-safari]
+Then use your manager's import option and pick the file. In Bitwarden's web app it's <Path>Tools --> Import</Path>.[^bw-safari] Before you delete anything, open the manager on your phone and check that a few of your important logins came across with the right username and password.
 </Tip>
 
 <Tip id="delete-the-export" priority="essential" effort={1} title="Delete the export file once it's imported">
-The file isn't encrypted, so anyone who gets hold of it can read every password in it.[^apple-export] Delete it as soon as the import's worked, and empty the bin. An export from an iPhone gets saved to iCloud Drive, so delete it from there.[^bw-safari]
+The file isn't encrypted, so anyone who gets hold of it can read every password in it.[^apple-export] Delete it once you've checked the import, and empty the bin. An export from an iPhone gets saved to iCloud Drive, so delete it from there.[^bw-safari]
 </Tip>
 
 <Tip id="clear-the-browser-copy" priority="essential" effort={5} title="Turn off your browser's password saving, and clear out what it kept">
-Otherwise you'll have two copies. You'll change a password in your manager, the old one will still be in the browser, and the browser will keep offering to save new ones.
+Otherwise you'll end up with two sets of passwords. You'll change one in your manager, the browser will keep the old one and keep offering to save new ones, and after a while you won't know which is right.
 
 <Platforms>
 <Platform name="chrome">
-In <Path>Google Password Manager --> Settings</Path>, turn off Offer to save passwords and passkeys, and Sign in automatically.[^bw-disable] Delete all Google Password Manager data clears out the rest, but it deletes your passkeys too.[^chrome] If you've saved any there, add new passkeys from your manager on those sites first.
+In <Path>Google Password Manager --> Settings</Path>, turn off Offer to save passwords and passkeys, and Sign in automatically.[^bw-disable] Delete all Google Password Manager data clears out the rest, but it deletes your passkeys too.[^chrome] If you sign in anywhere with a passkey saved there, delete the passwords one at a time instead.
 </Platform>
 <Platform name="firefox">
-In <Path>Settings --> Passwords and autofill</Path>, untick the options that are already ticked, then remove your saved passwords from `about:logins`.[^bw-disable]
+In <Path>Settings --> Passwords and autofill</Path>, untick the options that are already ticked, then remove the saved passwords from `about:logins`.[^bw-disable]
 </Platform>
 <Platform name="macos">
-In <Path>Safari --> Settings --> AutoFill</Path>, untick the options, then delete the passwords you've moved from the Passwords app.[^bw-disable]
+In <Path>Safari --> Settings --> AutoFill</Path>, untick the options, then remove the passwords you've moved from the Passwords app.[^bw-disable]
 </Platform>
 </Platforms>
 </Tip>
 
 <Tip id="phone-autofill" priority="essential" effort={3} title="Make it your phone's autofill">
-Your phone won't fill passwords in from the new manager until you tell it to.
+If the app didn't ask you to do this when you installed it, your phone will carry on filling passwords in from the old place.
 
 <Platforms>
 <Platform name="ios">
 Open <Path>Settings --> General --> AutoFill & Passwords</Path> and turn on your new manager.[^bw-ios]
 </Platform>
 <Platform name="android">
-In Bitwarden, open <Path>Settings --> Autofill --> Autofill services</Path>, and when Android asks for your preferred service, choose Bitwarden.[^bw-android] Other managers have a similar option in their settings.
+In Bitwarden, open <Path>Settings --> Autofill --> Autofill services</Path>, and when Android asks for your preferred service, choose Bitwarden.[^bw-android]
 </Platform>
 </Platforms>
 </Tip>
 
 ## Change the passwords that matter first
 
-You don't need to change a hundred passwords tonight. Change the few that can unlock the rest, then do the others as you log in to things.
+You don't need to change a hundred passwords tonight. Change the ones someone could use to get into everything else, then do the rest as you log in to things.
 
 <Tip id="email-first" priority="essential" effort={10} title="Change your email password first">
-Every "forgot my password" link goes to your email, so whoever gets into it can reset your other accounts. Let your manager make a new random password for it, and turn on two-step login while you're there. After that, do your bank, anywhere your card is saved, and your social media.[^ncsc-email]
+Most "forgot my password" links go to your email, so whoever gets into it can reset your other accounts. Let your manager make a new random password for it, then sign in again with it on your other devices. Turn on two-step login while you're there. After that, do your bank, your shopping and payment accounts, and your social media.[^ncsc-email]
 </Tip>
 
 <Tip id="reused-passwords" priority="optional" effort={15} title="Find the passwords you've used more than once">
-If you've used one password on several sites, a leak from any of them opens the others.[^ncsc-email] On Bitwarden, the data breach report is free, but the reused and weak password reports need the paid plan.[^bw-reports] If you're leaving Chrome, its own check finds breached and weak passwords, so it's worth running before you clear it out.[^chrome] Change what they flag as you go, starting with anything that's turned up in a breach.
+If you've used one password on several sites, a criminal who gets it from one of them can try it on all the others.[^ncsc-email] On Bitwarden, the data breach report is free, but the reused and weak password reports need the paid plan.[^bw-reports] If you're leaving Chrome, its own check finds breached and weak passwords, so run it before you clear Chrome out.[^chrome] Change anything that's turned up in a breach straight away, and the reused ones as you log in.
 </Tip>
 
-## Let it spot fake sites for you
+## Use autofill as a warning sign
 
 <Tip id="autofill-alarm" priority="essential" effort={1} title="If it doesn't offer to fill in, check the address">
-A manager only fills your password in on the site it was saved for, so a copy of your bank's login page at a lookalike address gets nothing.[^ncsc-pm] When it doesn't offer, stop and read the address before you type anything in by hand. <Term slug="phishing">Phishing</Term> pages can copy how a site looks, but not where it is.
+A manager only fills your password in on the site it was saved for, so a copy of your bank's login page at a lookalike address gets nothing.[^ncsc-pm] When it doesn't offer, stop and read the address before you copy or type the password in yourself. A <Term slug="phishing">phishing</Term> page can look exactly like the real one, but its address gives it away.
 
-It's not always a scam. Some real sites use a different address for each country, and Bitwarden lets you add the extra one to the login so it fills there next time.[^bw-uri]
+Sometimes it's a real site on an address the manager hasn't seen, like a shop with a different domain for each country. Bitwarden lets you add the extra address to the login, so it fills there next time.[^bw-uri]
 </Tip>
 
 ## Make sure you can get back in
 
-<Tip id="plan-for-lockout" priority="optional" effort={10} title="Plan for forgetting the master password">
-The NCSC suggests setting up emergency access through someone you trust.[^ncsc-pm] On Bitwarden, the person you pick can ask for access, and gets it once you approve or a waiting period runs out, but adding them needs the paid plan.[^bw-ea] With KeePass, your vault is a file, so keep a copy of it somewhere other than the device you use it on.
+<Tip id="plan-for-lockout" priority="optional" effort={10} title="Set up a way back in if you forget the master password">
+The NCSC mentions emergency access through someone you trust as one way back in.[^ncsc-pm] On Bitwarden, the person you pick can ask for access, and gets it once you approve or a waiting period runs out, but adding them needs the paid plan.[^bw-ea] With KeePass, your vault is a file, so keep a copy of it somewhere other than the device you use it on.
 
-If you'd rather not keep the master password on a single sheet of paper, <App name="2of3 by Ente" /> turns it into three cards, and any two of them get it back. One card on its own is no use to anyone who finds it.[^2of3]
+If you'd rather not keep the master password on a single sheet of paper, <App name="2of3 by Ente" /> turns it into three cards, and any two of them get it back. One card on its own is no use to anyone who finds it, and the password never leaves your browser while it makes them.[^2of3] Try getting it back from two of the cards before you rely on them.
 </Tip>
 
 ## Leaving LastPass
 
-If you used <Swap product="lastpass">LastPass</Swap> before the end of 2022, moving to another manager isn't enough on its own. Bitwarden and ProtonPass can both import a LastPass export.[^bw-lastpass][^pp-import]
+If you had a <Swap product="lastpass">LastPass</Swap> account when it was breached in 2022, moving to another manager isn't enough on its own. Bitwarden and ProtonPass can both import a LastPass export.[^bw-lastpass][^pp-import]
 
 <Tip id="change-what-was-in-lastpass" priority="essential" effort={60} title="Change the passwords that were in your LastPass vault">
-In 2022, attackers took a copy of LastPass customers' encrypted vaults.[^lastpass] Changing your LastPass master password now doesn't change that copy, and it can be attacked offline for as long as anyone likes. In 2025, US federal agents said in a court filing that crypto had been stolen using vaults cracked from it. Many of the people robbed had simpler master passwords, had been with LastPass the longest, and had kept a wallet's seed phrase in a secure note.[^krebs]
+In 2022, attackers took a copy of LastPass customers' encrypted vaults.[^lastpass] Changing your LastPass master password now doesn't change that copy, and it can be attacked offline for as long as anyone likes. In 2025, US federal agents said in a court filing that crypto had been stolen using vaults cracked from it. Many of the people robbed had fairly simple master passwords, were among LastPass's oldest customers, and had kept a wallet's seed phrase in a secure note.[^krebs]
 
-LastPass itself said to consider changing your saved passwords if your master password didn't meet its defaults, like the 12 character minimum it brought in in 2018.[^lastpass] We'd change them either way. Start with the accounts from [the email tip](#email-first), and treat anything else you kept in a secure note, like a card number or a seed phrase, as something a stranger might know.
+LastPass said to consider changing your saved passwords if your master password didn't meet its defaults, like the 12 character minimum it brought in in 2018.[^lastpass] We'd change them even if you think yours did, because researchers found that LastPass never moved many older accounts onto its newer protections.[^krebs] Start with the accounts from [the email tip](#email-first). Anything in a secure note that can't be changed, like a card number or a seed phrase, should be treated as exposed, so replace the card and move whatever the seed phrase protects.
 </Tip>
 
 [^bw-safari]: [Bitwarden: Import from macOS & Safari](https://bitwarden.com/help/import-from-safari/)
 [^pp-import]: [Proton: Import passwords to Proton Pass](https://proton.me/support/pass-import)
+[^keepass]: [KeePass Help: First steps](https://keepass.info/help/base/firststeps.html)
 [^ncsc-pm]: [NCSC: Managing your passwords](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
 [^krebs]: [Krebs on Security: Feds link $150M cyberheist to 2022 LastPass hacks](https://krebsonsecurity.com/2025/03/feds-link-150m-cyberheist-to-2022-lastpass-hacks/)
 [^nist]: [NIST SP 800-63B-4: Strength of passwords](https://pages.nist.gov/800-63-4/sp800-63b/passwords/)
 [^eff]: [EFF: New wordlists for random passphrases](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases)
 [^bw-recovery]: [Bitwarden: Get my recovery code](https://bitwarden.com/help/two-step-recovery-code/)
 [^bw-chrome]: [Bitwarden: Import from Chrome, Edge and Chromium browsers](https://bitwarden.com/help/import-from-chrome/)
-[^kpxc]: [KeePassXC user guide: Importing databases](https://keepassxc.org/docs/KeePassXC_UserGuide)
-[^chrome]: [Chrome Help: Manage passwords in Chrome](https://support.google.com/chrome/answer/95606)
 [^bw-firefox]: [Bitwarden: Import from Firefox](https://bitwarden.com/help/import-from-firefox/)
 [^apple-export]: [Apple Support: Export passwords from your Mac to a file](https://support.apple.com/guide/passwords/export-passwords-mchl35b12625/mac)
+[^kpxc]: [KeePassXC user guide: Importing databases](https://keepassxc.org/docs/KeePassXC_UserGuide)
+[^chrome]: [Chrome Help: Manage passwords in Chrome](https://support.google.com/chrome/answer/95606)
 [^bw-disable]: [Bitwarden: Deactivate your browser's built-in password manager](https://bitwarden.com/help/disable-browser-autofill/)
 [^bw-ios]: [Bitwarden: Autofill from the iOS app](https://bitwarden.com/help/auto-fill-ios/)
 [^bw-android]: [Bitwarden: Autofill from the Android app](https://bitwarden.com/help/auto-fill-android/)
