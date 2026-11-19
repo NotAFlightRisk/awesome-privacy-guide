@@ -61,7 +61,7 @@ Since iOS 26, Apple's Passwords app can hand your passwords and passkeys straigh
 </Tip>
 
 <Tip id="export-and-import" priority="essential" effort={10} title="Export your browser's passwords, then import them">
-Chrome, Edge, Firefox and Safari can all export your passwords to a CSV file, and Bitwarden, ProtonPass and KeePassXC (a KeePass app) can all import them.[^bw-chrome][^bw-firefox][^apple-export][^pp-import][^kpxc] Only import the file once, because Bitwarden doesn't check for duplicates.[^bw-safari]
+Each of the browsers below can export your passwords to a CSV file, and ProtonPass and KeePassXC (a KeePass app) can import them as well as Bitwarden.[^pp-import][^kpxc] Only import the file once, because Bitwarden doesn't check for duplicates.[^bw-safari]
 
 <Platforms>
 <Platform name="chrome">
@@ -149,7 +149,7 @@ If you'd rather not keep the master password on a single sheet of paper, <App na
 
 If you had a <Swap product="lastpass">LastPass</Swap> account when it was breached in 2022, moving to another manager isn't enough on its own. Bitwarden and ProtonPass can both import a LastPass export.[^bw-lastpass][^pp-import]
 
-<Tip id="change-what-was-in-lastpass" priority="essential" effort={60} title="Change the passwords that were in your LastPass vault">
+<Tip id="change-what-was-in-lastpass" priority="advanced" effort={60} title="Change the passwords that were in your LastPass vault">
 In 2022, attackers took a copy of LastPass customers' encrypted vaults.[^lastpass] Changing your LastPass master password now doesn't change that copy, and it can be attacked offline for as long as anyone likes. In 2025, US federal agents said in a court filing that crypto had been stolen using vaults cracked from it. Many of the people robbed had fairly simple master passwords, were among LastPass's oldest customers, and had kept a wallet's seed phrase in a secure note.[^krebs]
 
 LastPass said to consider changing your saved passwords if your master password didn't meet its defaults, like the 12 character minimum it brought in in 2018.[^lastpass] We'd change them even if you think yours did, because researchers found that LastPass never moved many older accounts onto its newer protections.[^krebs] Start with the accounts from [the email tip](#email-first). Anything in a secure note that can't be changed, like a card number or a seed phrase, should be treated as exposed, so replace the card and move whatever the seed phrase protects.

@@ -231,6 +231,10 @@ const jsonLd = [
       color: var(--text);
       scroll-margin-block-start: var(--space-xl);
     }
+
+    & :global(sup + sup)::before {
+      content: ',';
+    }
   }
 
   .stack {
