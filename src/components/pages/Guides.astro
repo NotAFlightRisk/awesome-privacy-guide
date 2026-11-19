@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import Heading from '../ui/Heading.astro';
+import GuideCard from '../ui/GuideCard.astro';
+import { getGuides, inLanguage } from '../../lib/data/guides.js';
+import { links } from '../../lib/routes.js';
+import { translator, ui } from '../../lib/i18n.js';
+import { site } from '../../lib/site.js';
+
+const { lang, page } = Astro.props;
+const { t } = translator(lang);
+const to = links(lang);
+const topicName = (topic) => (`guides.topic.${topic}` in ui ? t(`guides.topic.${topic}`) : topic);
+const guides = getGuides();
+const topics = [...new Set(guides.map((guide) => guide.topic))].map((topic) => ({
+  topic,
+  guides: guides.filter((guide) => guide.topic === topic),
+}));
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    name: t('guides.title'),
+    description: t('guides.description'),
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: guides.map((guide, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: new URL(to.guide(guide), site.url).href,
+        name: inLanguage(guide, lang).title,
+      })),
+    },
+  },
+];
+---
+
+<Base
+  lang={lang}
+  id={page.id}
+  title={t('guides.title')}
+  description={t('guides.description')}
+  crumbs={[{ label: t('nav.guides'), url: to.page('guides') }]}
+  jsonLd={jsonLd}
+>
+  <header class="intro">
+    <h1>{t('guides.title')}</h1>
+    <p class="lead">{t('guides.lead')}</p>
+  </header>
+
+  {topics.map(({ topic, guides }) => (
+    <section class="topic" aria-labelledby={`topic-${topic}`}>
+      <Heading id={`topic-${topic}`} count={guides.length}>{topicName(topic)}</Heading>
+      <ul>
+        {guides.map((guide) => <li><GuideCard guide={guide} lang={lang} /></li>)}
+      </ul>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: var(--measure);
+  }
+
+  .lead {
+    font-size: var(--text-xl);
+    line-height: 1.45;
+    color: var(--text-muted);
+  }
+
+  .topic {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-md);
+    padding: 0;
+    list-style: none;
+  }
+</style>

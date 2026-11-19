@@ -1,5 +1,7 @@
 import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
+import mdx from '@astrojs/mdx';
+import { satteri } from '@astrojs/markdown-satteri';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { site } from './src/lib/site.js';
 
@@ -11,7 +13,8 @@ const oops = originOf(process.env.PUBLIC_SENTRY_DSN);
 export default defineConfig({
   site: site.url,
   trailingSlash: 'always',
-  integrations: [svelte()],
+  integrations: [svelte(), mdx({ processor: satteri({ features: { smartPunctuation: false } }) })],
+  markdown: { syntaxHighlight: false },
   security: {
     csp: {
       directives: [

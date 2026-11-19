@@ -1,0 +1,73 @@
+---
+import BookOpen from '@lucide/astro/icons/book-open';
+import Heading from './Heading.astro';
+import Chips from './Chips.astro';
+import { inLanguage } from '../../lib/data/guides.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+
+const { lang, guides, title = 'guide.links', callout = false } = Astro.props;
+const { t } = translator(lang);
+const to = links(lang);
+const items = guides.map((guide) => ({ url: to.guide(guide), label: inLanguage(guide, lang).title }));
+---
+
+{items.length > 0 && (callout ? (
+  <aside class="callout" aria-labelledby="guides">
+    <BookOpen size={20} aria-hidden="true" />
+    <div>
+      <h2 id="guides">{t(title)}</h2>
+      <ul>
+        {items.map((item) => <li><a href={item.url}>{item.label}</a></li>)}
+      </ul>
+    </div>
+  </aside>
+) : (
+  <section class="stack" aria-labelledby="guides">
+    <Heading id="guides">{t(title)}</Heading>
+    <Chips items={items} />
+  </section>
+))}
+
+<style>
+  .stack {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .callout {
+    display: flex;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+
+    & :global(svg) {
+      flex: none;
+      color: var(--accent);
+    }
+
+    & div {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    & h2 {
+      font-size: var(--text-md);
+      text-transform: lowercase;
+    }
+
+    & ul {
+      display: grid;
+      gap: var(--space-3xs);
+      padding: 0;
+      list-style: none;
+    }
+
+    & a {
+      font-weight: 600;
+      color: var(--text);
+    }
+  }
+</style>

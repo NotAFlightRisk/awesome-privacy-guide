@@ -1,0 +1,14 @@
+<div class="steps"><slot /></div>
+
+<style>
+  .steps :global(ol) {
+    display: grid;
+    gap: var(--space-xs);
+    padding-inline-start: var(--space-lg);
+  }
+
+  .steps :global(li::marker) {
+    font-family: var(--font-mono);
+    color: var(--accent);
+  }
+</style>

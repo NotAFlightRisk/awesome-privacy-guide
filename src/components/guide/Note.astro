@@ -1,0 +1,44 @@
+---
+import TriangleAlert from '@lucide/astro/icons/triangle-exclamation-point';
+import Info from '@lucide/astro/icons/info';
+import { langOf, translator } from '../../lib/i18n.js';
+
+const { kind = 'info' } = Astro.props;
+const { t } = translator(langOf(Astro.url));
+const Icon = kind === 'warning' ? TriangleAlert : Info;
+---
+
+<div class:list={['note', kind]} role="note">
+  <p class="label"><Icon size={18} aria-hidden="true" /> {t(`guide.note.${kind}`)}</p>
+  <slot />
+</div>
+
+<style>
+  .note {
+    display: grid;
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+    color: var(--text);
+
+    &.warning {
+      border-color: color-mix(in srgb, var(--warn) 40%, transparent);
+      background: var(--warn-soft);
+
+      & .label {
+        color: var(--warn);
+      }
+    }
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font: 700 var(--text-md) var(--font-mono);
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+  }
+</style>

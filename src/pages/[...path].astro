@@ -13,6 +13,8 @@ import About from '../components/pages/About.astro';
 import SearchPage from '../components/pages/SearchPage.astro';
 import StackPage from '../components/pages/StackPage.astro';
 import Discover from '../components/pages/Discover.astro';
+import Guide from '../components/pages/Guide.astro';
+import Guides from '../components/pages/Guides.astro';
 import { published as languages } from '../lib/published.js';
 import { pagesFor } from '../lib/routes.js';
 
@@ -40,6 +42,8 @@ const views = {
   search: SearchPage,
   stack: StackPage,
   discover: Discover,
+  guide: Guide,
+  guides: Guides,
 };
 const { page, lang } = Astro.props;
 const View = views[page.kind];

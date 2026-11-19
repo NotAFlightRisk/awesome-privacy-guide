@@ -1,0 +1,68 @@
+---
+import { inLanguage } from '../../lib/data/guides.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { minutes } from '../../lib/format.js';
+
+const { guide, lang, level = 3 } = Astro.props;
+const { t } = translator(lang);
+const version = inLanguage(guide, lang);
+const english = version.fallback ? 'en' : undefined;
+const Title = `h${level}`;
+---
+
+<article class="guide-card">
+  <Title lang={english}><a href={links(lang).guide(guide)}>{version.title}</a></Title>
+  <p lang={english}>{version.description}</p>
+  <p class="meta">
+    <span>{t('guide.read', { time: minutes(version.minutes, lang) })}</span>
+    {version.fallback && <span class="english">{t('guides.english')}</span>}
+  </p>
+</article>
+
+<style>
+  .guide-card {
+    position: relative;
+    display: grid;
+    gap: var(--space-xs);
+    align-content: start;
+    height: 100%;
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+    transition: border-color var(--quick) var(--ease);
+
+    &:hover {
+      border-color: var(--accent);
+    }
+
+    & a {
+      font-size: var(--text-lg);
+      color: var(--text);
+      text-decoration: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+      }
+    }
+
+    & p {
+      color: var(--text-muted);
+    }
+  }
+
+  .meta {
+    display: flex;
+    gap: var(--space-xs);
+    font: var(--text-xs) var(--font-mono);
+  }
+
+  .english {
+    padding-inline: var(--space-2xs);
+    border-radius: var(--radius-sm);
+    background: var(--surface-sunken);
+  }
+</style>

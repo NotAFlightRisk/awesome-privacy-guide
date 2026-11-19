@@ -8,6 +8,7 @@ import Logo from '../ui/Logo.astro';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
 import { getModel } from '../../lib/data/model.js';
+import { getGuides } from '../../lib/data/guides.js';
 import { upstream } from '../../lib/site.js';
 import { compact } from '../../lib/format.js';
 
@@ -15,7 +16,8 @@ const { lang, versions = [] } = Astro.props;
 const { t } = translator(lang);
 const to = links(lang);
 const stars = getModel().upstream.stars;
-const nav = ['alternatives', 'glossary', 'stack', 'discover', 'changes'].map((name) => ({
+const latest = getGuides().length ? 'guides' : 'changes';
+const nav = ['alternatives', 'glossary', 'stack', 'discover', latest].map((name) => ({
   label: t(`nav.${name}`),
   url: to.page(name),
 }));

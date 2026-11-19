@@ -1,0 +1,19 @@
+---
+const html = await Astro.slots.render('default');
+---
+
+<span class="path" set:html={html.trim().replaceAll('--&gt;', '<span class="sep">→</span>')} />
+
+<style>
+  .path {
+    padding: 0.1em var(--space-2xs);
+    border-radius: var(--radius-sm);
+    background: var(--surface-sunken);
+    font-weight: 600;
+  }
+
+  .path :global(.sep) {
+    margin-inline: 0.3em;
+    color: var(--accent);
+  }
+</style>

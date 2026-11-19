@@ -5,6 +5,8 @@ import ServiceCard from '../ui/ServiceCard.astro';
 import Heading from '../ui/Heading.astro';
 import UpstreamLinks from '../ui/UpstreamLinks.astro';
 import Chips from '../ui/Chips.astro';
+import GuideLinks from '../ui/GuideLinks.astro';
+import { guidesNaming } from '../../lib/data/guides.js';
 import { getModel } from '../../lib/data/model.js';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
@@ -24,6 +26,7 @@ const lead = section.swaps.length
   : t('section.lead.plain', { count, name });
 const comparisons = pairs.filter((pair) => pair.section === section);
 const swaps = products.filter((product) => product.sections.includes(section));
+const guides = guidesNaming('sections', [section.name]);
 const jsonLd = [
   {
     '@type': 'ItemList',
@@ -101,6 +104,8 @@ const jsonLd = [
       <div class="prose" set:html={md(section.more)} />
     </section>
   )}
+
+  <GuideLinks lang={lang} guides={guides} />
 
   {comparisons.length > 0 && (
     <section aria-labelledby="compare" class="stack">

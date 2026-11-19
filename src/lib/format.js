@@ -8,6 +8,9 @@ export const number = (value, lang) => new Intl.NumberFormat(locale(lang)).forma
 export const compact = (value, lang) =>
   new Intl.NumberFormat(locale(lang), { notation: 'compact', maximumFractionDigits: 1 }).format(value);
 
+export const minutes = (value, lang) =>
+  new Intl.NumberFormat(locale(lang), { style: 'unit', unit: 'minute', unitDisplay: 'short' }).format(value);
+
 export const day = (date, lang) =>
   new Intl.DateTimeFormat(locale(lang), { day: 'numeric', month: 'short', year: 'numeric' }).format(
     new Date(date),

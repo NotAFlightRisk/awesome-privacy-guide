@@ -45,6 +45,12 @@ export function t(lang, key, vars = {}) {
   return tr(lang, english).replace(/\{(\w+)\}/g, (match, name) => vars[name] ?? match);
 }
 
+/** The language a page is in, from its URL, for components that can't be handed it */
+export const langOf = (url) => {
+  const code = url.pathname.split('/')[1];
+  return code in byCode ? code : 'en';
+};
+
 /** Bound to one language, which is how pages use it */
 export const translator = (lang) => ({
   lang,

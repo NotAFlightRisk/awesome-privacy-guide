@@ -1,0 +1,13 @@
+---
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { langOf } from '../../lib/i18n.js';
+import { missing } from './missing.js';
+
+const { product: slug } = Astro.props;
+const product = getModel().products.find((entry) => entry.slug === slug);
+if (!product) missing(Astro.url, 'Swap', slug);
+const text = Astro.slots.has('default') ? await Astro.slots.render('default') : (product?.name ?? slug);
+---
+
+{product ? <a href={links(langOf(Astro.url)).product(product)} set:html={text} /> : <Fragment set:html={text} />}

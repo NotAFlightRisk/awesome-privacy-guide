@@ -8,7 +8,7 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import Crumbs from '../components/layout/Crumbs.astro';
 import { site } from '../lib/site.js';
-import { alternates, links } from '../lib/routes.js';
+import { alternates, indexed, links } from '../lib/routes.js';
 import { translator } from '../lib/i18n.js';
 import { byCode } from '../i18n/languages.js';
 import { ogImage } from '../lib/og.js';
@@ -17,6 +17,7 @@ const { lang, id, title, description, crumbs = [], jsonLd = [], noindex = false,
   Astro.props;
 const { t } = translator(lang);
 const versions = id ? alternates(id).filter((version) => version.path) : [];
+const hreflangs = id ? indexed(id) : [];
 const absolute = (path) => new URL(path, site.url).href;
 const canonical = absolute(Astro.url.pathname);
 const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
@@ -48,10 +49,10 @@ const sentry = import.meta.env.PUBLIC_SENTRY_DSN;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
-    {!noindex && versions.map((version) => (
+    {!noindex && hreflangs.map((version) => (
       <link rel="alternate" hreflang={version.hreflang} href={absolute(version.path)} />
     ))}
-    {!noindex && versions[0] && <link rel="alternate" hreflang="x-default" href={absolute(versions[0].path)} />}
+    {!noindex && hreflangs[0] && <link rel="alternate" hreflang="x-default" href={absolute(hreflangs[0].path)} />}
     <link rel="preload" href={onest} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />

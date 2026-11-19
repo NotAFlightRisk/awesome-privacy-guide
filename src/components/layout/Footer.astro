@@ -3,6 +3,7 @@ import Logo from '../ui/Logo.astro';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
 import { getModel } from '../../lib/data/model.js';
+import { getGuides } from '../../lib/data/guides.js';
 import { upstream, upstreamLinks } from '../../lib/site.js';
 import { day } from '../../lib/format.js';
 
@@ -19,6 +20,7 @@ const groups = [
       [t('nav.stack'), to.page('stack')],
       [t('nav.discover'), to.page('discover')],
       [t('nav.changes'), to.page('changes')],
+      ...(getGuides().length ? [[t('nav.guides'), to.page('guides')]] : []),
       [t('nav.about'), to.page('about')],
     ],
   },

@@ -8,6 +8,7 @@ const english = {
   changes: 'new',
   about: 'about',
   search: 'search',
+  guides: 'guides',
 };
 
 const words = {
@@ -21,6 +22,7 @@ const words = {
     changes: 'neu',
     about: 'ueber',
     search: 'suche',
+    guides: 'ratgeber',
   },
   es: {
     alternatives: 'alternativas',
@@ -31,6 +33,7 @@ const words = {
     changes: 'novedades',
     about: 'acerca-de',
     search: 'buscar',
+    guides: 'guias',
   },
   fr: {
     alternatives: 'alternatives',
@@ -41,6 +44,7 @@ const words = {
     changes: 'nouveautes',
     about: 'a-propos',
     search: 'recherche',
+    guides: 'guides',
   },
   pt: {
     alternatives: 'alternativas',
@@ -51,6 +55,7 @@ const words = {
     changes: 'novidades',
     about: 'sobre',
     search: 'pesquisa',
+    guides: 'guias',
   },
   it: {
     alternatives: 'alternative',
@@ -61,6 +66,7 @@ const words = {
     changes: 'novita',
     about: 'informazioni',
     search: 'cerca',
+    guides: 'guide',
   },
 };
 

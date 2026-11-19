@@ -1,0 +1,15 @@
+---
+// Renders a guide's body or just its footnotes, in the page's language
+import { translator } from '../../lib/i18n.js';
+
+const { lang, part } = Astro.props;
+const { t } = translator(lang);
+const html = await Astro.slots.render('default');
+const at = html.search(/<section[^>]*data-footnotes/);
+const [body, notes] = at < 0 ? [html, ''] : [html.slice(0, at), html.slice(at)];
+const localised = notes
+  .replace(/<h2[^>]*id="footnote-label"[^>]*>[^<]*/, `<h2 id="footnote-label">${t('guide.sources')}`)
+  .replace(/aria-label="Back to reference ([^"]*)"/g, (_, ref) => `aria-label="${t('guide.back', { reference: ref })}"`);
+---
+
+<Fragment set:html={part === 'notes' ? localised : body} />

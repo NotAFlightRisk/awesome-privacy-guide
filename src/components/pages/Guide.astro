@@ -1,0 +1,322 @@
+---
+import Base from '../../layouts/Base.astro';
+import Heading from '../ui/Heading.astro';
+import Chips from '../ui/Chips.astro';
+import Body from '../guide/Body.astro';
+import { components } from '../guide/index.js';
+import { getGuides, inLanguage, PRIORITIES } from '../../lib/data/guides.js';
+import { getModel } from '../../lib/data/model.js';
+import { links } from '../../lib/routes.js';
+import { translator } from '../../lib/i18n.js';
+import { day, minutes } from '../../lib/format.js';
+import { byCode } from '../../i18n/languages.js';
+import { site } from '../../lib/site.js';
+
+const bodies = import.meta.glob(['/src/content/guides/*/*.mdx', '/tests/fixtures/guides/*/*.mdx']);
+
+const { lang, page } = Astro.props;
+const guide = page.entity;
+const version = inLanguage(guide, lang);
+const { t, tr } = translator(lang);
+const to = links(lang);
+const { Content, getHeadings } = await bodies[version.file]();
+const contents = getHeadings().filter((heading) => heading.depth === 2 && heading.slug !== 'footnote-label');
+const url = new URL(to.guide(guide), site.url).href;
+const checked = day(guide.checked, lang);
+const terms = guide.terms.map((slug) => getModel().glossary.find((entry) => entry.slug === slug)).filter(Boolean);
+const related = guide.related
+  .map((slug) => getGuides().find((other) => other.slug === slug))
+  .filter(Boolean)
+  .map((other) => ({ url: to.guide(other), label: inLanguage(other, lang).title }));
+const checklist = PRIORITIES.map((priority) => ({
+  priority,
+  tips: version.tips.filter((tip) => tip.priority === priority),
+})).filter((group) => group.tips.length);
+const report = site.corrections ? new URL(site.corrections) : undefined;
+report?.searchParams.set('page', url);
+const jsonLd = [
+  {
+    '@type': 'Article',
+    headline: version.title,
+    description: version.description,
+    inLanguage: byCode[version.lang].hreflang,
+    datePublished: guide.published,
+    dateModified: guide.checked,
+    author: { '@type': 'Organization', name: site.name, url: site.url },
+    publisher: { '@type': 'Organization', name: site.name, url: site.url },
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+    url,
+    ...(terms.length && { about: terms.map((entry) => ({ '@type': 'DefinedTerm', name: entry.term })) }),
+  },
+];
+---
+
+<Base
+  lang={lang}
+  id={page.id}
+  title={version.title}
+  description={version.description}
+  crumbs={[
+    { label: t('nav.guides'), url: to.page('guides') },
+    { label: version.title, url: to.guide(guide) },
+  ]}
+  jsonLd={jsonLd}
+  noindex={version.fallback}
+  ogType="article"
+>
+  <article class="guide" lang={version.fallback ? 'en' : undefined}>
+    <header>
+      <h1>{version.title}</h1>
+      <p class="meta" lang={lang}>
+        <span>{t('guide.read', { time: minutes(version.minutes, lang) })}</span>
+        <time datetime={guide.checked}>{t('guide.checked', { date: checked })}</time>
+      </p>
+      <p class="lead">{version.description}</p>
+      {version.fallback && <p class="fallback" lang={lang}>{t('guide.fallback', { language: byCode[lang].name })}</p>}
+    </header>
+
+    {contents.length > 1 && (
+      <nav class="contents" aria-labelledby="contents">
+        <h2 id="contents">{t('guide.contents')}</h2>
+        <ol>
+          {contents.map((heading) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}
+        </ol>
+      </nav>
+    )}
+
+    <div class="prose body">
+      <Body lang={lang} part="body"><Content components={components} /></Body>
+    </div>
+  </article>
+
+  {checklist.length > 0 && (
+    <section class="stack" aria-labelledby="checklist">
+      <Heading id="checklist">{t('guide.checklist')}</Heading>
+      <p class="muted">{t('guide.checklist.lead')}</p>
+      <div class="checklist" data-checklist={guide.slug}>
+        {checklist.map((group) => (
+          <div class="group">
+            <h3>{t(`guide.priority.${group.priority}`)}</h3>
+            <ul lang={version.fallback ? 'en' : undefined}>
+              {group.tips.map((tip) => (
+                <li>
+                  <input type="checkbox" id={`done-${tip.id}`} value={tip.id} />
+                  <label for={`done-${tip.id}`}>{tip.title}</label>
+                  <a href={`#${tip.id}`} aria-label={tip.title}>#</a>
+                  <span class="effort">{minutes(tip.effort, lang)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {guide.further.length > 0 && (
+    <section class="stack" aria-labelledby="further">
+      <Heading id="further">{t('guide.further')}</Heading>
+      <ul class="further" lang={lang === 'en' ? undefined : 'en'}>
+        {guide.further.map((link) => <li><a href={link.url}>{link.label}</a></li>)}
+      </ul>
+    </section>
+  )}
+
+  <section class="stack notes prose" lang={version.fallback ? 'en' : undefined}>
+    <Body lang={lang} part="notes"><Content components={components} /></Body>
+  </section>
+
+  {related.length > 0 && (
+    <section class="stack" aria-labelledby="related">
+      <Heading id="related">{t('guide.related')}</Heading>
+      <Chips items={related} />
+    </section>
+  )}
+
+  {terms.length > 0 && (
+    <section class="stack" aria-labelledby="terms">
+      <Heading id="terms">{t('guide.terms')}</Heading>
+      <Chips items={terms.map((entry) => ({ url: to.term(entry), label: tr(entry.term) }))} />
+    </section>
+  )}
+
+  <footer class="trust">
+    <p>{t('guide.checks')} <a href={to.page('about')}>{t('guide.how')}</a></p>
+    {report && <p><a href={report.href}>{t('guide.report')}</a></p>}
+    <p>{t('guide.licence')}</p>
+  </footer>
+</Base>
+
+<script>
+  // Ticks are a convenience, so a browser that won't store them just forgets
+  for (const list of document.querySelectorAll<HTMLElement>('[data-checklist]')) {
+    const key = `ticked:${list.dataset.checklist}`;
+    const boxes = [...list.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')];
+    try {
+      const ticked = new Set(JSON.parse(localStorage.getItem(key) ?? '[]'));
+      for (const box of boxes) box.checked = ticked.has(box.value);
+    } catch {}
+    list.addEventListener('change', () => {
+      try {
+        localStorage.setItem(key, JSON.stringify(boxes.filter((box) => box.checked).map((box) => box.value)));
+      } catch {}
+    });
+  }
+</script>
+
+<style>
+  .fallback {
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-raised);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .guide {
+    display: grid;
+    gap: var(--space-xl);
+    max-width: var(--measure);
+  }
+
+  header {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+    font: var(--text-xs) var(--font-mono);
+    color: var(--accent);
+  }
+
+  .contents {
+    display: grid;
+    gap: var(--space-xs);
+
+    & h2 {
+      font: 700 var(--text-xs) var(--font-mono);
+      text-transform: lowercase;
+      color: var(--text-faint);
+    }
+
+    & ol {
+      display: grid;
+      gap: var(--space-3xs);
+      padding-inline-start: var(--space-lg);
+    }
+
+    & li::marker {
+      font-family: var(--font-mono);
+      color: var(--accent);
+    }
+  }
+
+  .body {
+    display: grid;
+    gap: var(--space-md);
+
+    & > :global(h2) {
+      margin-block-start: var(--space-lg);
+      font-size: var(--text-2xl);
+      color: var(--text);
+      scroll-margin-block-start: var(--space-xl);
+    }
+  }
+
+  .stack {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: var(--measure);
+  }
+
+  .muted {
+    color: var(--text-muted);
+  }
+
+  .checklist {
+    display: grid;
+    gap: var(--space-md);
+
+    & h3 {
+      font: 700 var(--text-xs) var(--font-mono);
+      text-transform: lowercase;
+      color: var(--text-faint);
+    }
+
+    & ul {
+      display: grid;
+      gap: var(--space-2xs);
+      padding: 0;
+      list-style: none;
+    }
+
+    & li {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-xs);
+    }
+
+    & input {
+      accent-color: var(--accent);
+    }
+
+    & label {
+      flex: 1;
+    }
+
+    & a {
+      text-decoration: none;
+      color: var(--text-faint);
+    }
+  }
+
+  .effort {
+    font: var(--text-xs) var(--font-mono);
+    color: var(--text-faint);
+  }
+
+  .further {
+    display: grid;
+    gap: var(--space-2xs);
+    padding-inline-start: var(--space-lg);
+  }
+
+  .notes {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+
+    & :global(h2) {
+      font-size: var(--text-xl);
+      text-transform: lowercase;
+      color: var(--text);
+    }
+
+    & :global(h2)::before {
+      content: '// ';
+      color: var(--accent);
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .trust {
+    display: grid;
+    gap: var(--space-2xs);
+    padding-block: var(--space-md);
+    border-block: 1px solid var(--border);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+</style>
