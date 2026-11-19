@@ -83,7 +83,7 @@ A language without a stamped translation shows the English instead. Those pages 
 - `npm run guides -- check` lists references the list data can't answer and translations that are stale or missing. With `--strict` it fails on the broken references, and CI runs it that way on pull requests. It never runs in the deploy, so a list change upstream can't block the site
 - `npm run guides -- names <slug>` prints the app and product names in a guide, for the translators' do-not-translate list
 
-`tests/fixtures/guides/kitchen-sink` uses every component, in English, in German, and falling back everywhere else. It only builds with `GUIDES_FIXTURE=1 npm run build`, and `node --test tests/build/` checks what comes out. With no real guides, there's no hub and the header keeps its "what's new" link.
+`tests/fixtures/guides/kitchen-sink` uses every component, in English, in German, and falling back everywhere else. It only builds with `GUIDES_FIXTURE=1 npm run build`, and `node --test "tests/build/*.test.js"` checks what comes out. With no real guides, there's no hub and the header keeps its "what's new" link.
 
 Once a guide's slug is live it stays put. If one really has to move, add a 301 for all eight languages to both `public/_redirects` and `docker/nginx.conf`.
 

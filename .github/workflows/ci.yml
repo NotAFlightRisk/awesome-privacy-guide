@@ -28,7 +28,7 @@ jobs:
             run: npm test
           - label: build
             emoji: 🏗️
-            run: GUIDES_FIXTURE=1 npm run build && node --test tests/build/
+            run: GUIDES_FIXTURE=1 npm run build && node --test "tests/build/*.test.js"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
