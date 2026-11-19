@@ -165,6 +165,8 @@ platform.web: Web
 platform.extension: Browser extension
 platform.self-hosted: Self-hosted
 platform.desktop: Desktop
+platform.chrome: Chrome
+platform.firefox: Firefox
 
 compare.title: "{a} vs {b}: privacy compared"
 compare.description: "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms."
