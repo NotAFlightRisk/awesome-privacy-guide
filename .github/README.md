@@ -32,8 +32,8 @@ The 🔄 Sync workflow runs that every morning, commits whatever moved, and depl
 It's a static [Astro](https://astro.build) site with a couple of [Svelte](https://svelte.dev) islands. You'll need Node 22.23.4 or newer.
 
 ```bash
-git clone git@github.com:NotAFlightRisk/awesomeprivacy.git
-cd awesomeprivacy
+git clone git@github.com:NotAFlightRisk/awesome-privacy-guide.git
+cd awesome-privacy-guide
 npm install
 npm run dev        # dev server on localhost:4321
 npm test           # the tests
@@ -50,10 +50,10 @@ The live site is a Cloudflare Worker serving `dist/` as static assets, deployed 
 
 Every release has the built site attached as `site.zip`, which runs on any static host - just unzip and serve it.
 
-There's also a multi-arch Docker image (nginx, port 8080) on DockerHub ([`notaflightrisk/awesomeprivacy`](https://hub.docker.com/r/notaflightrisk/awesomeprivacy)) and GHCR:
+There's also a multi-arch Docker image (nginx, port 8080) on DockerHub ([`notaflightrisk/awesome-privacy-guide`](https://hub.docker.com/r/notaflightrisk/awesome-privacy-guide)) and GHCR:
 
 ```bash
-docker run -p 8080:8080 notaflightrisk/awesomeprivacy
+docker run -p 8080:8080 notaflightrisk/awesome-privacy-guide
 ```
 
 Or build it yourself with `docker build -t awesomeprivacy .`

@@ -7,8 +7,8 @@ Bug reports, typo fixes and whole features are all welcome. By joining in, you a
 
 ## Ways to contribute
 
-- 🐛 **Report a bug** - open a [bug report](https://github.com/NotAFlightRisk/awesomeprivacy/issues/new?template=bug_report.yml)
-- 💡 **Suggest a feature** - open a [feature request](https://github.com/NotAFlightRisk/awesomeprivacy/issues/new?template=feature_request.yml)
+- 🐛 **Report a bug** - open a [bug report](https://github.com/NotAFlightRisk/awesome-privacy-guide/issues/new?template=bug_report.yml)
+- 💡 **Suggest a feature** - open a [feature request](https://github.com/NotAFlightRisk/awesome-privacy-guide/issues/new?template=feature_request.yml)
 - 📖 **Improve the docs** - typos, unclear wording and missing examples are all fair game
 - 🔧 **Submit a fix** - see below
 - 🔒 **Report a vulnerability** - please *don't* open a public issue, see [SECURITY.md](./SECURITY.md)
@@ -19,8 +19,8 @@ Bug reports, typo fixes and whole features are all welcome. By joining in, you a
 ## Getting started
 
 ```bash
-git clone git@github.com:NotAFlightRisk/awesomeprivacy.git
-cd awesomeprivacy
+git clone git@github.com:NotAFlightRisk/awesome-privacy-guide.git
+cd awesome-privacy-guide
 npm install
 npm run dev
 ```
@@ -87,7 +87,7 @@ A language without a stamped translation shows the English instead. Those pages 
 
 Once a guide's slug is live it stays put. If one really has to move, add a 301 for all eight languages to both `public/_redirects` and `docker/nginx.conf`.
 
-The "report a mistake" link on each guide comes from `corrections` in `src/lib/site.js`, which stays empty until the repo's public.
+The "report a mistake" link on each guide comes from `corrections` in `src/lib/site.js`. Empty it and the link goes.
 
 ---
 

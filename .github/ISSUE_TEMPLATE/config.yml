@@ -6,7 +6,7 @@ blank_issues_enabled: false
 
 contact_links:
   - name: 🔒 Report a Security Vulnerability
-    url: https://github.com/NotAFlightRisk/awesomeprivacy/security/policy
+    url: https://github.com/NotAFlightRisk/awesome-privacy-guide/security/policy
     about: Never report vulnerabilities in a public issue. Read our security policy and disclose privately.
 
   - name: 📋 Something wrong with a listing?
@@ -14,9 +14,9 @@ contact_links:
     about: Apps, descriptions and topics come from Awesome Privacy, so report those there.
 
   - name: 🙋 Support & Troubleshooting
-    url: https://github.com/NotAFlightRisk/awesomeprivacy/blob/main/.github/SUPPORT.md
+    url: https://github.com/NotAFlightRisk/awesome-privacy-guide/blob/main/.github/SUPPORT.md
     about: Not sure where something belongs? This explains where to ask what.
 
   - name: 🛠️ Contributing Guide
-    url: https://github.com/NotAFlightRisk/awesomeprivacy/blob/main/.github/CONTRIBUTING.md
+    url: https://github.com/NotAFlightRisk/awesome-privacy-guide/blob/main/.github/CONTRIBUTING.md
     about: Want to fix it yourself? Start here for setup and the PR workflow.
