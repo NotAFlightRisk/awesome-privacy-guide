@@ -1,15 +1,15 @@
 ---
-title: Welche Zwei-Faktor-Authentifizierung ist am sichersten?
-description: SMS-Codes sind die schwächste Form der Zwei-Faktor-Authentifizierung, Passkeys die stärkste. Warum, wo du anfängst und wie du dich nicht aussperrst.
+title: Welche 2FA am sichersten ist und wo du sie zuerst aktivierst
+description: SMS-Codes sind die schwächste Zwei-Faktor-Authentifizierung, Passkeys die stärkste. Warum, welche Konten zuerst dran sind und wie du dich nicht aussperrst.
 ---
 
 <Short>
-Passkeys und Sicherheitsschlüssel sind die sicherste Form der Zwei-Faktor-Authentifizierung. Danach kommen Codes aus einer Authenticator-App, und SMS-Codes sind am schwächsten, aber immer noch viel besser als gar nichts. [Fang mit deinem E-Mail-Konto an](#email-first), denn wer da reinkommt, kann deine anderen Passwörter zurücksetzen. [Sichere dann deine Handynummer bei deinem Mobilfunkanbieter ab](#lock-your-number), [bewahr die Backup-Codes an einem sicheren Ort auf](#backup-codes) und [gib nie einen Code an jemanden weiter, der sich bei dir gemeldet hat](#never-share-a-code).
+Passkeys und Hardware-Sicherheitsschlüssel sind die sicherste Form der Zwei-Faktor-Authentifizierung. Danach kommen Codes aus einer Authenticator-App, und SMS-Codes sind am schwächsten, aber immer noch viel besser als gar nichts. [Fang mit deinem E-Mail-Konto an](#email-first), denn wer da reinkommt, kann deine anderen Passwörter zurücksetzen. [Sichere dann deine Handynummer bei deinem Mobilfunkanbieter ab](#lock-your-number), [bewahr die Backup-Codes an einem sicheren Ort auf](#backup-codes) und [gib nie einen Code an jemanden weiter, der sich bei dir gemeldet hat](#never-share-a-code).
 </Short>
 
 ## Welche Art von 2FA ist am sichersten?
 
-<Term slug="2fa">Zwei-Faktor-Authentifizierung</Term> sorgt dafür, dass ein gestohlenes Passwort allein nicht reicht. CISA, die Cybersicherheitsbehörde der US-Regierung, sortiert die verschiedenen Arten danach, womit man an ihnen vorbeikommt, und das hier ist ihre Reihenfolge, die schwächste zuerst.[^cisa]
+<Term slug="2fa">Zwei-Faktor-Authentifizierung</Term> sorgt dafür, dass ein gestohlenes Passwort allein nicht reicht. CISA, die Cybersicherheitsbehörde der US-Regierung, sortiert die verschiedenen Arten danach, womit man an ihnen vorbeikommt. Hier ist ihre Reihenfolge, angefangen mit der schwächsten.[^cisa]
 
 SMS-Codes lassen sich abgreifen, ohne dass jemand dein Handy anfasst. Bei einem SIM-Swap überredet ein Krimineller deinen Mobilfunkanbieter, deine Nummer auf eine SIM-Karte zu übertragen, die er besitzt, und ab dann gehen deine SMS an ihn.[^cisa] Cifas, ein britischer Dienst zur Betrugsprävention, hat 2024 fast 3.000 Meldungen über SIM-Swaps bekommen, mehr als zehnmal so viele wie im Jahr davor.[^cifas] Laut dem britischen Cybersicherheitszentrum NCSC ist ein SMS-Code trotzdem eine riesige Verbesserung gegenüber gar keinem zweiten Schritt.[^ncsc-2sv]
 
@@ -17,7 +17,7 @@ Danach kommen einfache „Bist du das?“-Anfragen auf deinem Handy. Angreifer k
 
 Sechsstellige Codes aus einer <Term slug="totp">Authenticator-App</Term> werden auf deinem Handy erzeugt, also kommt man mit einem SIM-Swap nicht an sie heran. Bei manchen Anfragen steht auf dem Anmeldebildschirm eine Zahl, die du auf deinem Handy eintippen musst. Die lassen sich viel schwerer aus Versehen bestätigen, und CISA stellt sie auf eine Stufe mit App-Codes.[^cisa] Microsoft Authenticator macht das inzwischen bei allen Anfragen so.[^ms-number] Einen App-Code kann aber auch eine gefälschte Anmeldeseite abgreifen. Wenn du ihn in eine Kopie der echten Website eintippst, kann sich der Angreifer damit als du anmelden, bevor der Code abläuft.[^cisa]
 
-Passkeys und Sicherheitsschlüssel sind am stärksten. Ein Passkey wird für das Konto bei einer bestimmten Website erstellt, und es gibt keinen Code und kein Geheimnis, das du eintippen müsstest, also kann eine gefälschte Anmeldeseite nichts abgreifen. Apple und CISA stufen sie beide als sicher gegen Phishing ein.[^apple-passkeys][^cisa] Ein <Term slug="hardware-security-key">Sicherheitsschlüssel</Term> ist ein kleines Gerät, etwa ein USB-Stick oder ein Anhänger, das du bei der Anmeldung benutzt.[^apple-keys] Wenn bei einem Google-Konto die Bestätigung in zwei Schritten eingeschaltet ist, zählt die Anmeldung mit einem Passkey als beide Schritte, und du wirst nicht noch zusätzlich nach einem Code gefragt.[^google-passkeys]
+Passkeys und Sicherheitsschlüssel sind am stärksten. Ein Passkey wird für das Konto bei einer bestimmten Website erstellt, und es gibt keinen Code und kein Geheimnis, das du eintippen müsstest, also kann eine gefälschte Anmeldeseite nichts abgreifen. Apple und CISA bezeichnen sie beide als resistent gegen Phishing.[^apple-passkeys][^cisa] Ein <Term slug="hardware-security-key">Hardware-Sicherheitsschlüssel</Term> ist ein kleines Gerät, das du bei der Anmeldung benutzt, etwa in Form eines USB-Sticks oder Anhängers.[^apple-keys] Wenn bei einem Google-Konto die Bestätigung in zwei Schritten eingeschaltet ist, zählt die Anmeldung mit einem Passkey als beide Schritte, und du wirst nicht noch zusätzlich nach einem Code gefragt.[^google-passkeys]
 
 <Tip id="strongest-option" priority="essential" effort={5} title="Nutz bei jedem Konto die stärkste Methode, die es anbietet">
 In den Sicherheitseinstellungen des Kontos heißt das vielleicht „Bestätigung in zwei Schritten“, „Zwei-Faktor-Authentifizierung“ oder „MFA“. Nimm einen Passkey oder einen Sicherheitsschlüssel, wenn es das gibt, sonst eine App, und SMS nur, wenn nichts anderes zur Wahl steht. [2fa.directory](https://2fa.directory/) listet auf, welche Websites 2FA unterstützen, also kannst du dort nachsehen, bevor du dich durch die Einstellungen klickst.[^which]
@@ -30,7 +30,7 @@ Nach dem ersten Mal wirst du meist nur noch nach dem zweiten Schritt gefragt, we
 ## Wenn jemand versucht, daran vorbeizukommen
 
 <Tip id="never-share-a-code" priority="essential" effort={1} title="Bestätige keine Anmeldung und gib keinen Code weiter, wenn du nicht selbst darum gebeten hast">
-Eine Anfrage, die du nicht selbst ausgelöst hast, kann gut bedeuten, dass jemand dein Passwort hat und gerade versucht, sich anzumelden. Lehn sie ab und ändere dann dieses Passwort. Bei Uber kam der Angreifer rein, als der externe Mitarbeiter schließlich eine Anfrage bestätigt hat.[^uber]
+Eine Anfrage, die du nicht selbst ausgelöst hast, kann durchaus bedeuten, dass jemand dein Passwort hat und gerade versucht, sich anzumelden. Lehn sie ab und ändere dann dieses Passwort. Bei Uber kam der Angreifer rein, als der externe Mitarbeiter schließlich eine Anfrage bestätigte.[^uber]
 
 Betrüger rufen auch an und tun so, als wären sie dein Mobilfunkanbieter. Mit den Daten, die sie dir dabei entlocken, geben sie sich dann beim Anbieter als du aus.[^vodafone] Egal, wer sich bei dir gemeldet hat: Lies ihm keinen Code vor und tipp auch keinen für ihn ein. Laut Vodafone solltest du einen Code, der für die Eingabe im Internet gedacht ist, nie am Telefon weitergeben,[^vodafone] und Google sagt, dass es nur auf seiner eigenen Anmeldeseite nach einem Backup-Code fragt.[^google-backup]
 </Tip>
@@ -102,7 +102,7 @@ Nimm eine, die deine Codes auf ein neues Handy bringen kann. Wenn eine App sie n
 <Swap product="authy">Authy</Swap> kann deine Codes nicht exportieren, also musst du beim Wechsel zu einer anderen App die 2FA bei jedem Konto mit der neuen App neu einrichten.[^reg-authy] Die Desktop-Apps von Authy sollten ab März 2024 nicht mehr funktionieren, also mach das am besten auf deinem Handy.[^reg-authy]
 
 <Steps>
-1. Melde dich bei einem Konto an, öffne die 2FA-Einstellungen und richte die Authenticator-App neu ein, diesmal mit deiner neuen App. Vielleicht musst du 2FA dafür aus- und wieder einschalten, also mach das in einem Rutsch.
+1. Melde dich bei einem Konto an, öffne die 2FA-Einstellungen und richte die Anmeldung per Authenticator-App neu ein, diesmal mit deiner neuen App. Vielleicht musst du 2FA dafür aus- und wieder einschalten, also mach das in einem Rutsch.
 2. Gib den Code aus der neuen App ein, wenn die Website danach fragt, und speicher alle neuen Backup-Codes, denn die alten funktionieren dann vielleicht nicht mehr.
 3. Bleib angemeldet, öffne ein privates Fenster, melde dich dort noch einmal mit dem Code aus der neuen App an und lösch das Konto erst dann aus Authy.
 </Steps>
@@ -118,7 +118,7 @@ Behalte die alte App, bis du jeden Code in der neuen geprüft hast.[^ente-import
 [^cifas]: [Cifas: Anstieg nicht autorisierter SIM-Swaps um 1.055 %](https://www.cifas.org.uk/newsroom/huge-surge-see-sim-swaps-hit-telco-and-mobile)
 [^ncsc-2sv]: [NCSC: Bestätigung in zwei Schritten einrichten](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
 [^uber]: [Uber: Sicherheitsupdate](https://www.uber.com/newsroom/security-update/)
-[^ms-number]: [Microsoft Learn: So funktioniert der Nummernabgleich in Push-Benachrichtigungen für MFA für Authenticator](https://learn.microsoft.com/de-de/entra/identity/authentication/how-to-mfa-number-match)
+[^ms-number]: [Microsoft Learn: Nummernabgleich in Push-Benachrichtigungen von Authenticator](https://learn.microsoft.com/de-de/entra/identity/authentication/how-to-mfa-number-match)
 [^apple-passkeys]: [Apple Support: Informationen zur Sicherheit von Passkeys](https://support.apple.com/de-de/102195)
 [^apple-keys]: [Apple Support: Informationen zu Sicherheitsschlüsseln für den Apple Account](https://support.apple.com/de-de/102637)
 [^google-passkeys]: [Google-Konto-Hilfe: Für die Anmeldung Passkeys statt Passwörter verwenden](https://support.google.com/accounts/answer/13548313?hl=de)
