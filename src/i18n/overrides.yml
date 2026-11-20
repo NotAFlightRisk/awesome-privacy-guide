@@ -1070,6 +1070,40 @@ de:
     Außerdem begegnet dir „Zero-Access-Verschlüsselung“. So nennen es manche Anbieter, wenn Daten lesbar ankommen (etwa eine ganz normale eingehende E-Mail) und gleich nach dem Eintreffen mit deinem Schlüssel verschlüsselt werden. Verwechsle das alles nicht mit Zero-Knowledge-Beweisen, der Mathematik hinter manchen Privacy-Coins – gleicher Name, andere Idee.
   client-side encryption: clientseitige Verschlüsselung
   zero-access encryption: Zero-Access-Verschlüsselung
+  # The guide pages, translated by hand
+  guides: Ratgeber
+  All the guides: Alle Ratgeber
+  the guides: Die Ratgeber
+  Everything else in other languages is machine translated with Azure Translator, so it might read a bit stiffly in places. App names are left as they are.: Alles andere wird in den übrigen Sprachen maschinell mit Azure Translator übersetzt und kann sich deshalb stellenweise etwas holprig lesen. App-Namen bleiben, wie sie sind.
+  Privacy and security guides: Ratgeber zu Datenschutz und Sicherheit
+  Plain-English guides to the privacy and security jobs worth doing, with the reasoning behind every step and apps from the Awesome Privacy list.: Verständliche Ratgeber für die Datenschutz- und Sicherheitsaufgaben, die sich lohnen. Zu jedem Schritt steht, warum, und jede App stammt aus der Awesome Privacy Liste.
+  Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Jeder Ratgeber nimmt sich eine Aufgabe gründlich vor oder beantwortet eine Frage, und zu jedem Schritt steht dabei, warum. Jede App, die er vorschlägt, stammt aus der Liste.
+  English: Englisch
+  accounts: Konten
+  "{time} read": "{time} Lesezeit"
+  Checked {date}: Geprüft am {date}
+  the short answer: Kurz gesagt
+  contents: Inhalt
+  essential: unverzichtbar
+  advanced: fortgeschritten
+  checklist: Checkliste
+  go further: Mehr dazu
+  sources: Quellen
+  Back to reference {reference}: Zurück zum Verweis {reference}
+  related guides: Verwandte Ratgeber
+  terms in this guide: Begriffe in diesem Ratgeber
+  Every claim here links to its source, and the guide gets rechecked at least every six months.: Jede Aussage hier ist mit ihrer Quelle verlinkt, und der Ratgeber wird mindestens alle sechs Monate neu geprüft.
+  How the guides are written: So entstehen die Ratgeber
+  Report a mistake: Fehler melden
+  This guide isn't in {language} yet, so here it is in English.: Diesen Ratgeber gibt es noch nicht auf Deutsch, deshalb hier die englische Fassung.
+  From the {section} picks on Awesome Privacy: Aus den Empfehlungen unter „{section}“ bei Awesome Privacy
+  In the UK: Im Vereinigten Königreich
+  In the US: In den USA
+  In the EU: In der EU
+  Good to know: Gut zu wissen
+  Only in this language: Nur in dieser Sprache
+  guides that cover this: Ratgeber, die das behandeln
+  how to switch: So wechselst du
 es:
   Utilities: Utilidades
   Media: Multimedia
@@ -2125,24 +2159,264 @@ es:
     También verás «cifrado de acceso cero», un término que algunos proveedores usan para los datos que llegan legibles (un correo entrante normal, por ejemplo) y se cifran con tu clave en cuanto se reciben. No confundas nada de esto con las pruebas de conocimiento cero, las matemáticas que hay detrás de algunas criptomonedas centradas en la privacidad: mismo nombre, idea distinta.
   client-side encryption: cifrado del lado del cliente
   zero-access encryption: cifrado de acceso cero
+  # The guide pages, translated by hand
+  guides: Guías
+  All the guides: Todas las guías
+  the guides: Las guías
+  The guides are our own. They're written and translated with some AI help, then checked against the sources linked at the bottom of each one, and rechecked at least every six months. If you spot a mistake in one, there's a link at the bottom of every guide to report it.: Las guías son nuestras. Las escribimos y traducimos con algo de ayuda de IA, luego las contrastamos con las fuentes enlazadas al final de cada una y las volvemos a revisar al menos cada seis meses. Si ves un error en alguna, al final de cada guía hay un enlace para avisarnos.
+  Everything else in other languages is machine translated with Azure Translator, so it might read a bit stiffly in places. App names are left as they are.: Todo lo demás en otros idiomas está traducido automáticamente con Azure Translator, así que puede sonar un poco rígido en algunos puntos. Los nombres de las apps se quedan tal cual.
+  Privacy and security guides: Guías de privacidad y seguridad
+  Plain-English guides to the privacy and security jobs worth doing, with the reasoning behind every step and apps from the Awesome Privacy list.: Guías claras y sin jerga para las tareas de privacidad y seguridad que valen la pena, con el porqué de cada paso y apps de la lista de Awesome Privacy.
+  Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Cada guía resuelve bien una tarea o responde a una pregunta, y explica el porqué de cada paso. Las apps que sugiere salen de la lista.
+  English: En inglés
+  accounts: Cuentas
+  "{time} read": "{time} de lectura"
+  Checked {date}: Revisada el {date}
+  the short answer: La respuesta corta
+  contents: Contenido
+  essential: Imprescindible
+  optional: Opcional
+  advanced: Avanzado
+  checklist: Lista de verificación
+  Every tip on this page in one place, so you can tick them off as you go.: Todos los consejos de esta página en un mismo sitio, para que los vayas marcando a medida que avanzas.
+  go further: Para saber más
+  sources: Fuentes
+  Back to reference {reference}: Volver a la referencia {reference}
+  related guides: Guías relacionadas
+  terms in this guide: Términos de esta guía
+  Every claim here links to its source, and the guide gets rechecked at least every six months.: Cada afirmación enlaza a su fuente, y la guía se vuelve a revisar al menos cada seis meses.
+  How the guides are written: Cómo se escriben las guías
+  Report a mistake: Avisar de un error
+  The text is CC BY 4.0, so feel free to reuse it, just link back.: El texto tiene licencia CC BY 4.0, así que puedes reutilizarlo sin problema; solo tienes que enlazar a esta página.
+  This guide isn't in {language} yet, so here it is in English.: Esta guía aún no está en español, así que aquí la tienes en inglés.
+  From the {section} picks on Awesome Privacy: De la sección {section} de Awesome Privacy
+  In the UK: En el Reino Unido
+  In the US: En Estados Unidos
+  In the EU: En la UE
+  Watch out: Cuidado
+  Good to know: Conviene saberlo
+  Only in this language: Solo en este idioma
+  Pick your platform: Elige tu plataforma
+  guides that cover this: Guías que hablan de esto
+  how to switch: Cómo cambiarte
 fr:
   Utilities: Utilitaires
   Networking: Réseau
   Music Players: Lecteurs de musique
   Host Block Lists: Listes de blocage d'hôtes
+  # The guide pages, translated by hand
+  guides: Guides
+  All the guides: Tous les guides
+  the guides: Les guides
+  The guides are our own. They're written and translated with some AI help, then checked against the sources linked at the bottom of each one, and rechecked at least every six months. If you spot a mistake in one, there's a link at the bottom of every guide to report it.: Les guides, eux, sont de notre cru. Nous les rédigeons et les traduisons avec un peu d’aide de l’IA, puis nous les vérifions en les confrontant aux sources citées en bas de chacun, et nous les revérifions au moins tous les six mois. Si vous repérez une erreur, un lien en bas de chaque guide permet de la signaler.
+  Everything else in other languages is machine translated with Azure Translator, so it might read a bit stiffly in places. App names are left as they are.: Dans les langues autres que l’anglais, tout le reste est traduit automatiquement avec Azure Translator, donc le texte peut sembler un peu maladroit par endroits. Les noms des applications restent tels quels.
+  Privacy and security guides: Guides de confidentialité et de sécurité
+  Plain-English guides to the privacy and security jobs worth doing, with the reasoning behind every step and apps from the Awesome Privacy list.: Des guides sans jargon pour protéger votre vie privée et votre sécurité, chaque étape expliquée, avec des applications tirées de la liste Awesome Privacy.
+  Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Chaque guide traite une seule tâche à fond ou répond à une seule question, en expliquant le pourquoi de chaque étape. Toutes les applications qu’il propose viennent de la liste.
+  English: En anglais
+  accounts: Comptes
+  "{time} read": "{time} de lecture"
+  Checked {date}: Vérifié le {date}
+  the short answer: En bref
+  contents: Sommaire
+  essential: Essentiel
+  optional: Facultatif
+  advanced: Avancé
+  checklist: Liste à cocher
+  Every tip on this page in one place, so you can tick them off as you go.: Tous les conseils de cette page au même endroit, pour que vous puissiez les cocher au fur et à mesure.
+  go further: Pour aller plus loin
+  sources: Sources
+  Back to reference {reference}: Retour à l’appel de note {reference}
+  related guides: Guides associés
+  terms in this guide: Termes utilisés dans ce guide
+  Every claim here links to its source, and the guide gets rechecked at least every six months.: Chaque affirmation de ce guide renvoie à sa source, et le guide est revérifié au moins tous les six mois.
+  How the guides are written: Comment les guides sont rédigés
+  Report a mistake: Signaler une erreur
+  The text is CC BY 4.0, so feel free to reuse it, just link back.: "Le texte est sous licence CC BY 4.0 : vous pouvez le réutiliser librement, il suffit de mettre un lien vers l’original."
+  This guide isn't in {language} yet, so here it is in English.: Ce guide n’existe pas encore en français, alors le voici en anglais.
+  From the {section} picks on Awesome Privacy: Tiré de la sélection « {section} » d’Awesome Privacy
+  In the UK: Au Royaume-Uni
+  In the US: Aux États-Unis
+  In the EU: Dans l’UE
+  Watch out: Attention
+  Good to know: Bon à savoir
+  Only in this language: Uniquement en français
+  Pick your platform: Choisissez votre plateforme
+  guides that cover this: Les guides qui en parlent
+  how to switch: Comment en changer
 pt:
   File Drop: Envio de arquivos
   Music Players: Reprodutores de música
+  # The guide pages, translated by hand
+  guides: Guias
+  All the guides: Todos os guias
+  the guides: Os guias
+  The guides are our own. They're written and translated with some AI help, then checked against the sources linked at the bottom of each one, and rechecked at least every six months. If you spot a mistake in one, there's a link at the bottom of every guide to report it.: Os guias são nossos. São escritos e traduzidos com alguma ajuda de IA, depois conferidos com as fontes indicadas no fim de cada um e revisados de novo pelo menos a cada seis meses. Se você encontrar um erro em algum deles, há um link no fim de cada guia para nos avisar.
+  Everything else in other languages is machine translated with Azure Translator, so it might read a bit stiffly in places. App names are left as they are.: Todo o resto, nos outros idiomas, é traduzido por máquina com o Azure Translator, então pode parecer um pouco rígido em alguns pontos. Os nomes dos apps ficam como estão.
+  Privacy and security guides: Guias de privacidade e segurança
+  Plain-English guides to the privacy and security jobs worth doing, with the reasoning behind every step and apps from the Awesome Privacy list.: Guias em linguagem simples para as tarefas de privacidade e segurança que valem a pena, com o porquê de cada passo e apps da lista Awesome Privacy.
+  Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Cada guia resolve uma tarefa direito ou responde a uma pergunta, explicando o porquê de cada passo. Todo app que ele sugere vem da lista.
+  English: Em inglês
+  accounts: Contas
+  "{time} read": "{time} de leitura"
+  Checked {date}: Conferido em {date}
+  the short answer: Em resumo
+  contents: Índice
+  essential: Essencial
+  optional: Opcional
+  advanced: Avançado
+  checklist: Checklist
+  Every tip on this page in one place, so you can tick them off as you go.: Todas as dicas desta página num só lugar, para você ir marcando conforme avança.
+  go further: Para ir além
+  sources: Fontes
+  Back to reference {reference}: Voltar à referência {reference}
+  related guides: Guias relacionados
+  terms in this guide: Termos deste guia
+  Every claim here links to its source, and the guide gets rechecked at least every six months.: Toda afirmação aqui tem link para a fonte, e o guia é revisado de novo pelo menos a cada seis meses.
+  How the guides are written: Como os guias são escritos
+  Report a mistake: Informar um erro
+  The text is CC BY 4.0, so feel free to reuse it, just link back.: O texto está sob CC BY 4.0, então fique à vontade para reutilizá-lo, é só colocar um link para cá.
+  This guide isn't in {language} yet, so here it is in English.: Este guia ainda não está disponível em português, então aqui vai a versão em inglês.
+  From the {section} picks on Awesome Privacy: Escolhas da seção {section} na Awesome Privacy
+  In the UK: No Reino Unido
+  In the US: Nos EUA
+  In the EU: Na UE
+  Watch out: Atenção
+  Good to know: Bom saber
+  Only in this language: Só neste idioma
+  Pick your platform: Escolha sua plataforma
+  guides that cover this: Guias que tratam disso
+  how to switch: Como migrar
 it:
   Utilities: Utilità
   Office Suites: Suite per ufficio
   Scheduling: Pianificazione
+  # The guide pages, translated by hand
+  guides: Guide
+  All the guides: Tutte le guide
+  the guides: Le guide
+  The guides are our own. They're written and translated with some AI help, then checked against the sources linked at the bottom of each one, and rechecked at least every six months. If you spot a mistake in one, there's a link at the bottom of every guide to report it.: Le guide sono nostre. Le scriviamo e le traduciamo con un po' di aiuto dall'IA, poi le verifichiamo sulle fonti indicate in fondo a ognuna e le ricontrolliamo almeno ogni sei mesi. Se trovi un errore, in fondo a ogni guida c'è un link per segnalarlo.
+  Everything else in other languages is machine translated with Azure Translator, so it might read a bit stiffly in places. App names are left as they are.: Nelle lingue diverse dall'inglese, tutto il resto è tradotto automaticamente con Azure Translator, quindi in alcuni punti potrebbe suonare un po' rigido. I nomi delle app restano come sono.
+  Privacy and security guides: Guide alla privacy e alla sicurezza
+  Plain-English guides to the privacy and security jobs worth doing, with the reasoning behind every step and apps from the Awesome Privacy list.: Guide in parole semplici alle cose che vale la pena fare per privacy e sicurezza, con il perché di ogni passaggio e le app della lista Awesome Privacy.
+  Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Ogni guida fa bene una cosa sola o risponde a una domanda, spiegando il perché di ogni passaggio. Le app che suggerisce vengono tutte dalla lista.
+  English: In inglese
+  accounts: Account
+  "{time} read": "{time} di lettura"
+  Checked {date}: Verificata il {date}
+  the short answer: In breve
+  contents: Indice
+  essential: Essenziale
+  optional: Facoltativo
+  advanced: Avanzato
+  checklist: Checklist
+  Every tip on this page in one place, so you can tick them off as you go.: Tutti i consigli di questa pagina in un posto solo, così puoi spuntarli man mano.
+  go further: Per approfondire
+  sources: Fonti
+  Back to reference {reference}: Torna alla nota {reference}
+  related guides: Guide correlate
+  terms in this guide: Termini usati in questa guida
+  Every claim here links to its source, and the guide gets rechecked at least every six months.: Ogni affermazione rimanda alla sua fonte, e la guida viene ricontrollata almeno ogni sei mesi.
+  How the guides are written: Come scriviamo le guide
+  Report a mistake: Segnala un errore
+  The text is CC BY 4.0, so feel free to reuse it, just link back.: "Il testo è sotto licenza CC BY 4.0: puoi riutilizzarlo liberamente, basta un link all'originale."
+  This guide isn't in {language} yet, so here it is in English.: Questa guida non è ancora disponibile in italiano, quindi eccola in inglese.
+  From the {section} picks on Awesome Privacy: Dalla sezione {section} di Awesome Privacy
+  In the UK: Nel Regno Unito
+  In the US: Negli Stati Uniti
+  In the EU: Nell'UE
+  Watch out: Attenzione
+  Good to know: Buono a sapersi
+  Only in this language: Solo nella versione italiana
+  Pick your platform: Scegli la tua piattaforma
+  guides that cover this: Guide che ne parlano
+  how to switch: Come passare a un'alternativa
 ru:
   Utilities: Утилиты
   Networking: Сеть
   Social: Соцсети
   Media: Медиа
+  # The guide pages, translated by hand
+  guides: Руководства
+  All the guides: Все руководства
+  the guides: Руководства
+  The guides are our own. They're written and translated with some AI help, then checked against the sources linked at the bottom of each one, and rechecked at least every six months. If you spot a mistake in one, there's a link at the bottom of every guide to report it.: Руководства у нас свои. Мы пишем и переводим их с небольшой помощью ИИ, потом сверяем с источниками, ссылки на которые есть внизу каждого руководства, и перепроверяем не реже чем раз в полгода. Если заметите ошибку, сообщите о ней по ссылке внизу руководства.
+  Everything else in other languages is machine translated with Azure Translator, so it might read a bit stiffly in places. App names are left as they are.: Всё остальное в языковых версиях сайта переведено автоматически с помощью Azure Translator, так что местами текст может звучать немного неуклюже. Названия приложений мы не переводим.
+  Privacy and security guides: Руководства по приватности и безопасности
+  Plain-English guides to the privacy and security jobs worth doing, with the reasoning behind every step and apps from the Awesome Privacy list.: "Руководства простым языком о том, что стоит сделать для приватности и безопасности: зачем нужен каждый шаг и какие приложения из списка Awesome Privacy для этого подойдут."
+  Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Каждое руководство как следует решает одну задачу или отвечает на один вопрос и объясняет, зачем нужен каждый шаг. Все приложения, которые в нём советуют, взяты из списка.
+  English: На английском
+  accounts: Аккаунты
+  "{time} read": "{time} чтения"
+  Checked {date}: Проверено {date}
+  the short answer: Если коротко
+  contents: Содержание
+  essential: Обязательно
+  optional: По желанию
+  advanced: Для продвинутых
+  checklist: Чек-лист
+  Every tip on this page in one place, so you can tick them off as you go.: Все советы с этой страницы в одном месте, чтобы отмечать их по ходу дела.
+  go further: Что ещё почитать
+  sources: Источники
+  Back to reference {reference}: Вернуться к сноске {reference}
+  related guides: Ещё по теме
+  terms in this guide: Термины из этого руководства
+  Every claim here links to its source, and the guide gets rechecked at least every six months.: Каждое утверждение здесь подкреплено ссылкой на источник, а само руководство перепроверяется не реже чем раз в полгода.
+  How the guides are written: Как пишутся руководства
+  Report a mistake: Сообщить об ошибке
+  The text is CC BY 4.0, so feel free to reuse it, just link back.: Текст распространяется по лицензии CC BY 4.0, так что используйте его как хотите, только поставьте ссылку на нас.
+  This guide isn't in {language} yet, so here it is in English.: Этого руководства пока нет на русском, поэтому оно показано на английском.
+  From the {section} picks on Awesome Privacy: Из подборки «{section}» на Awesome Privacy
+  In the UK: В Великобритании
+  In the US: В США
+  In the EU: В ЕС
+  Watch out: Осторожно
+  Good to know: Полезно знать
+  Only in this language: Только в русской версии
+  Pick your platform: Выберите платформу
+  guides that cover this: Руководства на эту тему
+  how to switch: Как перейти
 ja:
   Essentials: 必須ツール
   Smart Home & IoT: スマートホームとIoT
   Social: ソーシャル
+  # The guide pages, translated by hand
+  guides: ガイド
+  All the guides: すべてのガイド
+  the guides: ガイド記事
+  The guides are our own. They're written and translated with some AI help, then checked against the sources linked at the bottom of each one, and rechecked at least every six months. If you spot a mistake in one, there's a link at the bottom of every guide to report it.: ガイドはこのサイト独自のものです。AIの手も少し借りて執筆と翻訳をしたあと、各ガイドの末尾にある出典と照らし合わせて確認し、少なくとも半年ごとに見直しています。間違いに気づいたら、各ガイドの末尾にあるリンクから報告してください。
+  Everything else in other languages is machine translated with Azure Translator, so it might read a bit stiffly in places. App names are left as they are.: ガイド以外のページの翻訳はAzure Translatorによる機械翻訳なので、ところどころ不自然な表現があるかもしれません。アプリ名はそのままにしています。
+  Privacy and security guides: プライバシーとセキュリティのガイド
+  Plain-English guides to the privacy and security jobs worth doing, with the reasoning behind every step and apps from the Awesome Privacy list.: やっておく価値のあるプライバシーとセキュリティ対策を、わかりやすく説明したガイドです。どの手順にも理由を添え、アプリはAwesome Privacyのリストから紹介します。
+  Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: どのガイドも、1つの作業をきちんと終わらせるか、1つの疑問に答えるもので、どの手順にも理由を添えています。紹介するアプリはすべてリストに載っているものです。
+  English: 英語
+  accounts: アカウント
+  "{time} read": "{time}で読めます"
+  Checked {date}: "{date}に確認"
+  the short answer: 要点
+  contents: 目次
+  essential: 必須
+  optional: 任意
+  advanced: 上級
+  checklist: チェックリスト
+  Every tip on this page in one place, so you can tick them off as you go.: このページの項目をすべてまとめました。終わったものからチェックしていけます。
+  go further: さらに詳しく
+  sources: 出典
+  Back to reference {reference}: 本文の注{reference}に戻る
+  related guides: 関連ガイド
+  terms in this guide: このガイドに出てくる用語
+  Every claim here links to its source, and the guide gets rechecked at least every six months.: 書いてあることにはすべて出典へのリンクを付けていて、ガイドは少なくとも半年ごとに見直しています。
+  How the guides are written: ガイドができるまで
+  Report a mistake: 間違いを報告する
+  The text is CC BY 4.0, so feel free to reuse it, just link back.: 本文はCC BY 4.0で公開しています。リンクを張ってもらえれば、自由に再利用してかまいません。
+  This guide isn't in {language} yet, so here it is in English.: このガイドにはまだ日本語版がないため、英語で表示しています。
+  From the {section} picks on Awesome Privacy: Awesome Privacyの「{section}」のおすすめから
+  In the UK: 英国の場合
+  In the US: 米国の場合
+  In the EU: EUの場合
+  Watch out: 注意
+  Good to know: 知っておくと便利
+  Only in this language: 日本語版のみ
+  Pick your platform: お使いの環境を選んでください
+  guides that cover this: この用語が出てくるガイド
+  how to switch: 乗り換え方
