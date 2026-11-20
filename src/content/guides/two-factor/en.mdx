@@ -1,6 +1,6 @@
 ---
 title: Which 2FA is safest, and where to turn it on first
-description: Text codes, phone prompts, authenticator apps and passkeys ranked by what gets past each one, which accounts to do first, and how not to lock yourself out.
+description: Text codes are the weakest kind of two-factor authentication and passkeys the strongest. Why, which accounts to do first, and how not to get locked out.
 type: explainer
 topic: accounts
 sections: [2-Factor Authentication]
@@ -17,112 +17,114 @@ checked: 2026-11-20
 ---
 
 <Short>
-A passkey or a security key is the safest kind of two-factor authentication, an authenticator app comes next, and a text message is the weakest, though it's still much better than nothing. [Start with your email](#email-first), since most password resets go there. [Print the backup codes](#backup-codes), [never approve a login or read out a code you didn't ask for](#never-share-a-code), and [lock your phone number with your network](#lock-your-number), because a text code is only as safe as the number it's sent to.
+Passkeys and security keys are the safest kind of two-factor authentication. Codes from an authenticator app come next, and text messages are the weakest, though they're still far better than nothing. [Start with your email](#email-first), because anyone who gets into it can reset your other passwords. Then [lock your phone number with your network](#lock-your-number), [keep the backup codes somewhere safe](#backup-codes), and [never hand a code to someone who contacted you](#never-share-a-code).
 </Short>
 
 ## Which kind of 2FA is safest?
 
-<Term slug="2fa">Two-factor authentication</Term> means a stolen password isn't enough on its own. They don't all stop the same things, though, and CISA, the US cyber security agency, ranks them by what can get past each one.[^cisa] Here they are, weakest first.
+<Term slug="2fa">Two-factor authentication</Term> means a stolen password isn't enough on its own. CISA, the US government's cyber security agency, ranks the different kinds by what can get past each one, and this is its order, weakest first.[^cisa]
 
-Text message codes can be taken without anyone touching your phone. In a SIM swap, a criminal talks your mobile network into moving your number to a SIM they hold, and from then on your texts go to them.[^cisa] Cifas, a UK fraud prevention service, had nearly 3,000 reported to it in 2024, more than ten times as many as the year before.[^cifas] Even so, the NCSC says a text code is still a huge improvement on no second step at all.[^ncsc-2sv]
+Text message codes can be taken without anyone touching your phone. In a SIM swap, a criminal talks your mobile network into moving your number to a SIM they hold, and from then on your texts go to them.[^cisa] Cifas, a UK fraud prevention service, had nearly 3,000 reported to it in 2024, more than ten times as many as the year before.[^cifas] The NCSC still says a text code is a huge improvement on no second step at all.[^ncsc-2sv]
 
-Prompts that ask "Is this you?" on your phone can be sent again and again until you tap yes to make them stop. That's how Uber was broken into in 2022. The attacker had probably bought a contractor's password, kept trying to log in, and the contractor eventually approved one of the prompts.[^uber] Some prompts now make you type in a number shown on the login screen, which stops a tired tap from letting anyone in. Microsoft Authenticator does this for every prompt on work and school accounts.[^cisa][^ms-number]
+Plain "Is this you?" prompts on your phone are next. Attackers can keep sending them in the hope that you'll eventually accept one. In 2022, that's how someone got into Uber. They'd probably bought a contractor's password, kept trying to log in, and the contractor accepted one of the prompts in the end.[^uber]
 
-Codes from an <Term slug="totp">authenticator app</Term> are made on your phone, so there's nothing for a SIM swap to steal. A fake login page can still ask you for the code, though, and pass it on to the real site while it's still valid.[^cisa]
+Six-digit codes from an <Term slug="totp">authenticator app</Term> are made on your phone, so a SIM swap gets nothing. CISA puts prompts that make you type in a number from the login screen at the same level, since that's much harder to accept by accident.[^cisa] Microsoft Authenticator works that way for every prompt now.[^ms-number] Both can still be caught by a fake login page, though. If you type the code into a copy of the real site, the attacker can use it to log in as you before it runs out.[^cisa]
 
-Passkeys and security keys only work on the real site they were set up for, so a fake page gets nothing it can use, however convincing it looks.[^cisa][^fido] Google treats signing in with a passkey as both steps at once, because it proves you have your device.[^google-passkeys] A <Term slug="hardware-security-key">security key</Term> is the same idea on a small device you plug in or tap.
+Passkeys and security keys are the strongest. A passkey is made for one particular site's account, and there's no code or secret for you to type, so a fake login page has nothing to collect. Apple and CISA both call them phishing-resistant.[^apple-passkeys][^cisa] A <Term slug="hardware-security-key">security key</Term> is a small device, like a USB stick or a tag, that you use when you sign in.[^apple-keys] On a Google Account with 2-step verification on, signing in with a passkey counts as both steps, so it doesn't ask you for a code as well.[^google-passkeys]
 
 <Tip id="strongest-option" priority="essential" effort={5} title="Use the strongest kind each account offers">
-Look in the account's security settings, where it might be called 2-step verification or two-factor authentication. Pick a passkey or a security key if it's offered, an app if not, and texts only if that's all there is. [2fa.directory](https://2fa.directory/) lists which sites support which kinds, so you can check before you go looking.
+It might be called 2-step verification, two-factor authentication or MFA in the account's security settings. Pick a passkey or a security key if it's offered, an app if not, and texts if that's the only choice. [2fa.directory](https://2fa.directory/) lists which sites support 2FA, so you can check before you go hunting.[^which]
 
-Once you're asked for the second step, you usually only get asked again on a new device or for something risky, like a password change.[^ncsc-2sv]
+When you add a passkey to a Google Account, your other ways of signing in and getting back in stay as they were.[^google-passkeys] Leave them alone until you've signed in with the passkey on each device you use.
+
+After the first time, you're usually only asked for the second step on a new device or when you change something important, like your password.[^ncsc-2sv]
 </Tip>
 
 ## When someone tries to get past it
 
-<Tip id="never-share-a-code" priority="essential" effort={1} title="Never approve a login or read out a code you didn't ask for">
-A prompt you didn't start means someone else has your password and is trying it right now. Tap no, then change that password. The Uber attacker only got in because someone eventually said yes.[^uber]
+<Tip id="never-share-a-code" priority="essential" effort={1} title="Never approve a login or hand over a code you didn't ask for">
+A prompt you didn't start usually means someone has your password and is trying to log in. Say no, then change that password. Uber's attacker got in when the contractor finally accepted one.[^uber]
 
-Codes are the same. Scammers ring people pretending to be their mobile network, get them to hand over details, and then use those to pretend to be them to the network. Vodafone's advice is that a code meant for typing in online should never be read out over the phone.[^vodafone] Google says it never asks for a backup code anywhere except the sign-in page.[^google-backup]
+Scammers also ring people pretending to be their mobile network, get details out of them, and then pretend to be them to the network.[^vodafone] Whoever contacted you, don't read out or type in a code for them. Vodafone says a code meant for using online should never be given over the phone,[^vodafone] and Google says it never asks for a backup code anywhere except its own sign-in page.[^google-backup]
 </Tip>
 
 ## Where to turn it on first
 
 <Tip id="email-first" priority="essential" effort={10} title="Do your email first">
-Whoever gets into your email can reset the passwords on your other accounts.[^ncsc-2sv] It's often the first step in taking your phone number too. In one case Which? looked into, criminals got into someone's email, used it to reset the password on his Vodafone account, and then had the code to move his number emailed to them.[^which]
+Criminals who get into your email can use it to reset the passwords on your other accounts.[^ncsc-2sv] It can be the way in to your phone number too. In one case Which? looked into, criminals got into a man's email, used it to reset the password on his Vodafone account, and then used that to move his number to another network.[^which]
 </Tip>
 
-<Tip id="then-the-rest" priority="essential" effort={30} title="Then work through the accounts that could hurt most">
-The NCSC's list of important accounts is email, banking, social media and online shopping.[^ncsc-tips] In order, we'd go with:
+<Tip id="then-the-rest" priority="essential" effort={30} title="Then do the accounts that would hurt most to lose">
+The NCSC's list of important accounts is email, banking, social media and online shopping.[^ncsc-tips] After your email, this is the order we'd go in:
 
 <Steps>
-1. Your password manager, since it holds everything else (the [password manager guide](/guides/password-manager/#lock-the-manager) covers it).
-2. Your mobile network account, which is what a SIM swapper goes after (see [the next tip](#lock-your-number)).
+1. Your password manager, if you use one, since it holds your other passwords. The [password manager guide](/guides/password-manager/#lock-the-manager) covers it.
+2. Your mobile network account, since it controls where your texts go (see [the next tip](#lock-your-number)).
 3. Your bank.
-4. Your Apple, Google or Microsoft account, the one your phone or computer signs in to.
+4. The Apple, Google or Microsoft account that your phone or computer signs in to.
 5. Shops that have your card saved.
-6. Social media, where someone can pretend to be you to your friends.
+6. Social media, where someone could message your friends as you.
 </Steps>
 </Tip>
 
 ## Keep your phone number yours
 
 <Tip id="lock-your-number" priority="essential" effort={10} title="Lock your number with your mobile network">
-If your texts can be moved to someone else's SIM, every text code you get goes with them, and getting your number back can take a while. One Vodafone customer waited ten days, and the scammers used her bank's and her email's codes in the meantime.[^which]
+While someone else has your number, your text codes go to them, and getting it back can take a while. One Vodafone customer waited ten days, and the scammers used the codes her bank and her email provider sent in the meantime.[^which]
 
 <Region place="uk">
-Give your mobile network's online account a strong password and turn on its own 2-step verification. Then ask the network whether it can add an extra PIN or password for big changes like a new SIM. Which? found most SIM swaps are now done online rather than in shops or over the phone.[^which]
+Give your mobile network's online account a strong password and turn on its own 2-step verification. Then ask the network whether it can add an extra PIN or password for big changes like a new SIM. Which? found that most SIM swaps are now done online rather than in shops or over the phone.[^which]
 </Region>
 
 <Region place="us">
-FCC rules make every carrier offer a free lock that stops SIM changes, and tell you straight away when someone asks to move your number to another carrier. Carriers have to comply from mid-December 2026, so ask yours for the lock and turn it on.[^fcc-sim][^fcc-port]
+FCC rules make every mobile provider offer a free lock that stops anyone changing your SIM, and tell you straight away when someone asks to move your number to another provider. The deadline for providers is mid-December 2026, so yours may not offer the lock yet. Ask, and turn it on once it's there.[^fcc-sim][^fcc-port]
 </Region>
 </Tip>
 
 <Tip id="changing-number" priority="optional" effort={20} title="If you change your number, move your 2FA first">
-Old numbers get given to someone else. In the US, about 35 million numbers are disconnected every year and passed on to new customers, and when Princeton researchers took 200 recycled numbers for a week, 19 of them were still getting the old owners' sensitive messages, like login codes.[^recycled] Before you give up a number, switch each account's texts to the new one, or better, move it onto an app.
+Old numbers get given to new people. In the US, about 35 million numbers are disconnected every year and passed on, and when Princeton researchers took 200 recycled numbers for a week, 19 were still getting the old owners' sensitive messages, like login codes.[^recycled] Before you give a number up, switch each account to the new one, or better, onto an app.
 </Tip>
 
-<Tip id="text-recovery" priority="advanced" effort={15} title="Check that a text can't get round it all">
-Some sites will let you reset your password with nothing more than a code texted to your phone, which means a SIM swap gets past your password and your 2FA together. The same Princeton study found recycled numbers that could have been used to take over accounts through account recovery at Amazon, Facebook, Google, PayPal and Yahoo.[^recycled]
+<Tip id="text-recovery" priority="advanced" effort={15} title="Check whether a text can reset the account">
+Some accounts let you reset the password with just a code texted to you, so whoever has your number gets past the password and the 2FA together. In the same Princeton study, two thirds of the 259 numbers they checked could have been used to take over someone's account at Amazon, Facebook, Google, PayPal or Yahoo through its account recovery.[^recycled]
 
-Once you've got an app or a passkey set up and your backup codes printed, look at each important account's recovery options. If a phone number alone gets you back in and you can remove it, do. The cost is one fewer way back in for you as well, so only do this once the other ways are sorted. Security questions are weak too, and the NCSC says they don't give the same protection as 2FA.[^ncsc-2sv]
+Look at the recovery options on your most important accounts. If a text can get you back in and the account lets you remove your number, you can, but it's one fewer way back in for you too. Before you remove it, sign out and check that another way back in actually works. Security questions don't count, since the NCSC says they don't give the same protection.[^ncsc-2sv]
 </Tip>
 
 ## Don't lock yourself out
 
-<Tip id="backup-codes" priority="essential" effort={5} title="Print the backup codes and keep them with your passport">
-Many accounts give you a set of backup codes when you turn on 2FA. Each one works once, and they're the way back in if your phone is lost or broken.[^ncsc-2sv] Google suggests printing them and keeping them wherever you keep your passport.[^google-backup] Don't keep them in the same password manager as the password, or one stolen vault gives up both (the <Term slug="2fa">2FA glossary entry</Term> has more on that).
+<Tip id="backup-codes" priority="essential" effort={5} title="Keep the backup codes on paper, away from your phone">
+When an account gives you backup codes, each one works once, and they get you in when your phone doesn't.[^ncsc-2sv] Google suggests printing its codes and keeping them wherever you keep your passport. Making a new set stops the old ones working, so throw the old printout away.[^google-backup]
+
+Don't keep them in the same password manager as the password, or anyone who gets into the vault has both (the <Term slug="2fa">2FA glossary entry</Term> has more on that).
 </Tip>
 
-<Tip id="second-key" priority="optional" effort={10} title="If you use security keys, have two">
-A security key can be lost like any other key. Apple won't let you turn on security keys for an Apple Account without at least two, and warns that losing all of them, along with your trusted devices, could lock you out for good.[^apple-keys] Add both keys to every account, and keep the spare at home.
+<Tip id="second-key" priority="optional" effort={10} title="If you use security keys, have a spare">
+Apple won't let you turn on security keys for an Apple Account without at least two, and warns that losing all of them, along with your trusted devices, could lock you out for good.[^apple-keys] Where an account lets you add more than one key, add the spare too, and keep it somewhere other than your keyring.
 </Tip>
 
 ## Picking an authenticator app
 
-The most important thing is a way to get your codes out. If an app only keeps them on one phone, a lost or broken phone means setting up 2FA again on every account, so look for encrypted backups, sync between devices, or an export. These are the apps in the list that say they do at least one of those.
+Pick one that can get your codes onto a new phone. If an app only keeps them on the phone you've got, losing that phone means using backup codes and setting up 2FA again on every account. These are the apps whose list entries mention backups or syncing between devices.
 
-{/* The section's other apps don't say they back up or sync, so they're left out. */}
+{/* The section's other apps don't mention backups or sync in the list, so they're left out. */}
 
-<Picks section="2-Factor Authentication" only={['2fas', 'aegis', 'stratum', 'ente-auth', 'bitwarden-authenticator', 'chronos-authenticator', 'autheris']} />
+<Picks section="2-Factor Authentication" skip={['tofu', 'authenticator', 'authenticator-gnome', 'authenticator-cc', 'proton-authenticator']} />
 
 <Tip id="leave-authy" priority="optional" effort={30} title="Leaving Authy means setting up each account again">
-<Swap product="authy">Authy</Swap> can't export your codes, so moving to another app means turning 2FA back on for each account and adding it to the new app as you go.[^reg-authy] Its desktop apps reached the end of their life in March 2024, so expect to do this on your phone.[^reg-authy]
+<Swap product="authy">Authy</Swap> can't export your codes, so moving to another app means setting up 2FA again on each account with the new app.[^reg-authy] Its desktop apps were due to stop working in March 2024, so plan to do this on your phone.[^reg-authy]
 
 <Steps>
-1. Sign in to one account, open its 2FA settings and set up an authenticator app again, scanning the QR code with your new app this time. Some sites make you turn 2FA off and back on to do this.
-2. Check that the code from the new app works, and save the new backup codes if you're given any.
-3. Delete that account from Authy, and move on to the next one.
+1. Sign in to an account, open its 2FA settings and set up an authenticator app again, this time with your new app. You might have to turn 2FA off and back on to do it.
+2. Type in the code from the new app when the site asks, and save any new backup codes, since the old ones may stop working.
+3. Sign out, sign back in with the new app's code, and only then delete that account from Authy.
 </Steps>
-
-Keep Authy until the last account has moved.
 </Tip>
 
 <Tip id="leave-google-authenticator" priority="optional" effort={10} title="Leaving Google Authenticator">
-<Swap product="google-authenticator">Google Authenticator</Swap> can move your codes to another app with QR codes. In the app, tap <Path>Menu --> Transfer codes --> Export codes</Path>, pick the accounts and scan the QR codes it shows with your new app's import option.[^google-auth] Ente Auth, for one, imports them directly.[^ente-import] Those QR codes hold everything needed to make your codes, so don't take a screenshot of them.
+<Swap product="google-authenticator">Google Authenticator</Swap> moves codes with QR codes. In the app, tap <Path>Menu --> Transfer codes --> Export codes</Path>, pick the accounts, and scan every QR code it shows (there may be more than one) with your new app's import option.[^google-auth] Ente Auth, for one, can import them.[^ente-import] A phone can't scan its own screen, so if both apps are on the same phone, check the new app's import help first. Those QR codes hold everything needed to make your codes, so don't take a screenshot of them.
 
-Keep the old app until you've checked that each code works in the new one.[^ente-import] If your codes were synced to your Google Account, deleting them in the app deletes them from every device they were synced to.[^google-auth]
+Keep the old app until you've checked each code in the new one.[^ente-import] If your codes were synced to your Google Account, deleting one in the app deletes it from every device it was synced to.[^google-auth]
 </Tip>
 
 [^cisa]: [CISA: Implementing phishing-resistant MFA](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
@@ -130,16 +132,16 @@ Keep the old app until you've checked that each code works in the new one.[^ente
 [^ncsc-2sv]: [NCSC: Setting up 2-Step Verification](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
 [^uber]: [Uber: Security update](https://www.uber.com/newsroom/security-update/)
 [^ms-number]: [Microsoft Learn: Number matching in Authenticator push notifications](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-mfa-number-match)
-[^fido]: [FIDO Alliance: Passkeys](https://fidoalliance.org/passkeys/)
+[^apple-passkeys]: [Apple Support: About the security of passkeys](https://support.apple.com/en-us/102195)
+[^apple-keys]: [Apple Support: About Security Keys for Apple Account](https://support.apple.com/en-us/102637)
 [^google-passkeys]: [Google Account Help: Sign in with a passkey instead of a password](https://support.google.com/accounts/answer/13548313)
+[^which]: [Which?: How weak security checks leave the door unlocked for sim-swap scammers](https://www.which.co.uk/news/article/mobile-networks-must-step-up-to-prevent-sim-swap-fraud-aSsLN6p0CMRq)
 [^vodafone]: [Vodafone UK: How to protect yourself from SIM swap fraud](https://www.vodafone.co.uk/newscentre/features/how-to-protect-yourself-from-sim-swap-fraud/)
 [^google-backup]: [Google Account Help: Sign in with backup codes](https://support.google.com/accounts/answer/1187538)
-[^which]: [Which?: How weak security checks leave the door unlocked for sim-swap scammers](https://www.which.co.uk/news/article/mobile-networks-must-step-up-to-prevent-sim-swap-fraud-aSsLN6p0CMRq)
 [^ncsc-tips]: [NCSC: Turn on 2-step verification](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
 [^fcc-sim]: [Federal Register: Protecting consumers from SIM-swap and port-out fraud, compliance dates for SIM changes](https://www.federalregister.gov/d/2026-23400)
 [^fcc-port]: [Federal Register: Protecting consumers from SIM-swap and port-out fraud, compliance dates for number transfers](https://www.federalregister.gov/d/2026-23522)
 [^recycled]: [Princeton University: Security and privacy risks of number recycling at mobile carriers](https://recyclednumbers.cs.princeton.edu/)
-[^apple-keys]: [Apple Support: About Security Keys for Apple Account](https://support.apple.com/en-us/102637)
 [^reg-authy]: [The Register: Twilio reminds users that Authy Desktop apps die in March](https://www.theregister.com/2024/02/15/twilio_authy_eol)
 [^google-auth]: [Google Account Help: Get verification codes with Google Authenticator](https://support.google.com/accounts/answer/1066447)
 [^ente-import]: [Ente Help: Migrating from other providers](https://ente.com/help/auth/migration/import)
