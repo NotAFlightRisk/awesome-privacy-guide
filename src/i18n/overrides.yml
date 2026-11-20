@@ -1077,6 +1077,1054 @@ es:
   Host Block Lists: Listas de bloqueo de hosts
   Scheduling: Planificación de citas
   Data Erasers: Borrado de datos
+  # The glossary, translated by hand
+  Two-factor authentication: Autenticación de dos factores
+  Logging in with your password plus a second thing, like a code from your phone or a security key, so a stolen password isn't enough.: Iniciar sesión con tu contraseña y algo más, como un código de tu teléfono o una llave de seguridad, para que una contraseña robada no baste.
+  ? |
+    With two-factor authentication, someone who steals your password still can't get in without your
+    second factor. That might be a code texted to you, a code from an authenticator app, a prompt on
+    your phone or a hardware security key. Turn it on for anything that matters, starting with your
+    email, since that's where most password resets go.
+
+    The options aren't equal. SMS codes are the weakest, because attackers can talk your mobile
+    network into moving your number to their SIM (a SIM swap), but they still beat nothing.
+    Authenticator apps are better. Phone prompts can be abused by attackers who spam you with
+    requests until you tap "approve". Passkeys and hardware security keys are the strongest, since
+    they won't work on a fake site.
+
+    Whatever you use, save the backup codes somewhere safe, or a lost phone can mean a lost account.
+    Keeping your 2FA codes in the same password manager as your passwords is convenient, but if that
+    one vault is ever compromised, both factors go with it.
+  : |-
+    Con la autenticación de dos factores, alguien que te robe la contraseña sigue sin poder entrar si no tiene tu segundo factor. Puede ser un código que te llega por SMS, un código de una app de autenticación, una notificación en tu teléfono o una llave de seguridad física. Actívala en todo lo que importe, empezando por tu correo, porque ahí llega la mayoría de los enlaces para restablecer contraseñas.
+
+    No todas las opciones son iguales. Los códigos por SMS son los más débiles, porque un atacante puede convencer a tu compañía telefónica de que pase tu número a su SIM (el llamado SIM swapping), pero siguen siendo mejor que nada. Las apps de autenticación son mejores. Las notificaciones en el teléfono se prestan a abusos: un atacante te bombardea con solicitudes hasta que tocas «Aprobar». Las llaves de acceso y las llaves de seguridad físicas son las más seguras, porque no funcionan en un sitio falso.
+
+    Uses lo que uses, guarda los códigos de recuperación en un lugar seguro, o un teléfono perdido puede acabar siendo una cuenta perdida. Guardar los códigos de 2FA en tu gestor de contraseñas, junto a las propias contraseñas, es cómodo, pero si esa única bóveda llega a verse comprometida, caen los dos factores a la vez.
+  multi-factor authentication: autenticación multifactor
+  two-step verification: verificación en dos pasos
+  Anonymity, pseudonymity and privacy: Anonimato, seudonimato y privacidad
+  Privacy hides what you do, anonymity hides who you are, and pseudonymity puts a consistent made-up name between you and what you do.: La privacidad oculta lo que haces, el anonimato oculta quién eres y el seudonimato pone un nombre inventado, siempre el mismo, entre tú y lo que haces.
+  ? |
+    These get mixed up all the time. Privacy is keeping what you do between you and the people you
+    choose, like your messages, files and browsing. Anonymity is nobody knowing who did something,
+    even if what was done is public. Pseudonymity sits in between: you act under a consistent name
+    that isn't your real one, like a username, so people can recognise you without knowing who you
+    are.
+
+    You can have one without the others. An end-to-end encrypted chat with a friend is private but
+    not anonymous, since you both know who's on the other end. A post made through Tor on a public
+    forum can be anonymous but not private. Most online accounts are pseudonymous, and a pseudonym
+    is only as good as the weakest link back to you, like a reused email address, a payment or a
+    slip in something you post.
+
+    Real anonymity is hard, and usually takes several tools plus careful habits - a VPN or a "no
+    sign-up" app won't get you there alone. Work out which of the three you actually need, as it
+    changes which tools make sense.
+  : |-
+    Estos tres conceptos se confunden constantemente. La privacidad consiste en que lo que haces (tus mensajes, tus archivos, tu navegación) quede entre tú y las personas que elijas. El anonimato es que nadie sepa quién hizo algo, aunque lo que se hizo sea público. El seudonimato está a medio camino: actúas con un nombre fijo que no es tu nombre real, como un nombre de usuario, así que la gente puede reconocerte sin saber quién eres.
+
+    Puedes tener uno sin los otros. Un chat cifrado de extremo a extremo con un amigo es privado pero no anónimo, porque los dos saben quién está al otro lado. Una publicación hecha a través de Tor en un foro público puede ser anónima pero no privada. La mayoría de las cuentas en internet son seudónimas, y un seudónimo es tan fuerte como el eslabón más débil que lleve hasta ti, ya sea una dirección de correo reutilizada, un pago o un descuido en algo que publiques.
+
+    El anonimato de verdad es difícil y suele exigir varias herramientas y mucho cuidado en el día a día: ni una VPN ni una app «sin crear cuenta» bastan por sí solas. Averigua cuál de las tres cosas necesitas realmente, porque de eso depende qué herramientas tienen sentido.
+  Browser fingerprinting: Huella digital del navegador
+  Identifying you by combining lots of small details about your browser and device, which works without cookies and survives clearing them.: Identificarte combinando muchos pequeños detalles de tu navegador y tu dispositivo, algo que no necesita cookies y sigue funcionando aunque las borres.
+  ? |
+    Any page you load can read dozens of small details about your browser: screen size, time zone,
+    language, installed fonts, tiny differences in how your hardware draws graphics (canvas
+    fingerprinting) and plenty more. None of them identifies you on its own, but together they're
+    often close to unique, so trackers can recognise you across sites and visits without storing
+    anything on your device.
+
+    That's what makes it awkward. Clearing cookies or opening a private window doesn't change your
+    fingerprint, and a VPN only changes your IP address. Piling on extensions and unusual settings
+    can make you stand out more, not less.
+
+    There are two main defences. One is to look like everyone else, which is what Tor Browser does
+    by making its users as alike as possible. The other is to randomise some of those details so
+    your fingerprint keeps changing. You can see how your own browser does with the EFF's
+    [Cover Your Tracks](https://coveryourtracks.eff.org/).
+  : |-
+    Cualquier página que cargues puede leer decenas de pequeños detalles de tu navegador: el tamaño de la pantalla, la zona horaria, el idioma, las fuentes instaladas, diferencias mínimas en cómo tu hardware dibuja los gráficos (lo que se conoce como canvas fingerprinting) y muchos más. Ninguno te identifica por sí solo, pero juntos suelen formar una combinación casi única, así que los rastreadores pueden reconocerte en distintos sitios y visitas sin guardar nada en tu dispositivo.
+
+    Ahí está lo complicado. Borrar las cookies o abrir una ventana privada no cambia tu huella, y una VPN solo cambia tu dirección IP. Llenar el navegador de extensiones y ajustes poco comunes puede hacer que llames más la atención, no menos.
+
+    Hay dos defensas principales. Una es que tu navegador se parezca al de todos los demás, que es lo que hace Tor Browser al igualar a sus usuarios todo lo posible. La otra es aleatorizar algunos de esos detalles para que tu huella cambie constantemente. Puedes poner a prueba tu propio navegador con [Cover Your Tracks](https://coveryourtracks.eff.org/), de la EFF.
+  device fingerprinting: huella digital del dispositivo
+  Custom ROM: ROM personalizada
+  A replacement version of Android you install yourself, often with Google's apps and services stripped out to cut down on tracking.: Una versión alternativa de Android que instalas tú, a menudo sin las apps ni los servicios de Google para que te rastreen menos.
+  ? |
+    A custom ROM is an alternative version of Android, built from Google's open source code but put
+    together by someone else. Many are "de-Googled", meaning they leave out Google Play Services,
+    the background layer that runs with deep access on most Android phones. Installing one usually
+    wipes your phone and means switching off its bootloader lock, which normally only lets the
+    maker's own software start up.
+
+    There are trade-offs. Some apps lean on Play Services for notifications, maps or payments and
+    break or complain without it, though some ROMs offer workarounds like an open source stand-in or
+    a sandboxed copy of Google's own. Banking and payment apps may refuse to run at all. Not every
+    ROM is as secure as the stock software, either - some can't turn the bootloader lock back on,
+    which makes it easier for someone who gets hold of your phone to tamper with it.
+
+    Device support matters most. Check that your exact model is officially supported, how quickly
+    security updates arrive and whether the project's still active, since a ROM that stops getting
+    updates can leave you worse off than the stock software it replaced.
+  : |-
+    Una ROM personalizada es una versión alternativa de Android, creada a partir del código abierto de Google pero preparada por otras personas. Muchas son «sin Google», es decir, prescinden de Google Play Services, la capa que funciona en segundo plano con acceso profundo al sistema en la mayoría de los teléfonos Android. Instalar una suele borrar el teléfono y obliga a quitar el bloqueo del bootloader, que normalmente solo deja arrancar el software del propio fabricante.
+
+    No todo son ventajas. Algunas apps dependen de Play Services para las notificaciones, los mapas o los pagos, y sin ellos fallan o se quejan, aunque algunas ROM ofrecen soluciones como un sustituto de código abierto o una copia de los propios servicios de Google aislada en un sandbox. Puede que las apps bancarias y de pagos ni siquiera arranquen. Además, no todas las ROM son tan seguras como el software de fábrica: algunas no permiten volver a activar el bloqueo del bootloader, lo que facilita que alguien que se haga con tu teléfono lo manipule.
+
+    Lo que más importa es la compatibilidad con tu dispositivo. Comprueba que tu modelo exacto tenga soporte oficial, con qué rapidez llegan las actualizaciones de seguridad y si el proyecto sigue activo, porque una ROM que deja de recibir actualizaciones puede dejarte peor que el software de fábrica al que sustituyó.
+  de-Googled phone: teléfono sin Google
+  de-Googled Android: Android sin Google
+  Data broker: Corredor de datos
+  A company that collects personal information about you from lots of sources and sells or rents it to whoever's buying.: Una empresa que recopila información personal sobre ti de muchas fuentes y la vende o la alquila a quien pague.
+  ? |
+    Data brokers build profiles on people without ever dealing with them directly. They pull from
+    public records, loyalty schemes, apps, online tracking, purchase histories and other companies'
+    databases, then piece it all together: your name, addresses, phone numbers, age, likely income,
+    interests and sometimes where you go.
+
+    Those profiles get sold to advertisers, people-search sites, insurers and sometimes police or
+    government agencies. You've almost certainly never heard of most of the companies involved,
+    which is rather the point.
+
+    You can ask brokers to delete your data - in the UK and EU you've got a legal right to, and some
+    US states have similar laws - but there are hundreds of them and your details tend to reappear.
+    Paid removal services send the requests for you, though they can't reach every broker. The
+    longer-term fix is giving out less in the first place, with email aliases, virtual phone numbers
+    and virtual cards.
+  : |-
+    Los corredores de datos crean perfiles de personas sin tratar nunca directamente con ellas. Sacan información de registros públicos, programas de puntos, apps, rastreo en internet, historiales de compras y bases de datos de otras empresas, y luego lo juntan todo: tu nombre, tus direcciones, tus números de teléfono, tu edad, tus ingresos estimados, tus intereses y, a veces, los lugares a los que vas.
+
+    Esos perfiles se venden a anunciantes, sitios de búsqueda de personas, aseguradoras y, a veces, a la policía o a organismos públicos. Casi seguro que nunca has oído hablar de la mayoría de las empresas implicadas, y de eso se trata.
+
+    Puedes pedirles a los corredores que borren tus datos (en el Reino Unido y la UE tienes derecho por ley, y algunos estados de EE. UU. tienen leyes parecidas), pero hay cientos y tus datos suelen volver a aparecer. Hay servicios de pago que mandan las solicitudes de borrado por ti, aunque no llegan a todos los corredores. La solución a largo plazo es dar menos datos desde el principio, con alias de correo, números de teléfono virtuales y tarjetas virtuales.
+  information broker: intermediario de información
+  data aggregator: agregador de datos
+  Domain Name System: Sistema de nombres de dominio
+  The internet's phone book, which turns names like example.com into the IP addresses your device actually connects to.: La guía telefónica de internet, que convierte nombres como example.com en las direcciones IP a las que se conecta realmente tu dispositivo.
+  ? |
+    Before your device can load a site, it asks a DNS resolver for the site's IP address. By default
+    that's usually your ISP's resolver, handed out by your router. Ordinary DNS isn't encrypted, so
+    your ISP and anyone else on the network can see every domain you look up, even when the site
+    itself uses HTTPS. Whoever runs the resolver can also log your lookups, block them or send you
+    somewhere else.
+
+    That's why your choice of resolver matters. Switching to a privacy-focused one (ideally over
+    encrypted DNS) means your ISP isn't the one keeping a list, and many also block ads, trackers or
+    malware for you. The new provider sees your lookups instead, so check its logging policy and
+    where it's based.
+
+    Running DNS for your own domain is a separate job, called DNS hosting. That's about publishing
+    records so other people can find your website and email, rather than looking things up for
+    yourself.
+  : |-
+    Antes de cargar un sitio, tu dispositivo le pregunta a un resolvedor DNS cuál es la dirección IP de ese sitio. Por defecto suele ser el resolvedor de tu proveedor de internet, que te asigna el router. El DNS normal no va cifrado, así que tu proveedor y cualquiera en la red pueden ver cada dominio que consultas, aunque el sitio en sí use HTTPS. Quien gestiona el resolvedor también puede registrar tus consultas, bloquearlas o mandarte a otra parte.
+
+    Por eso importa qué resolvedor eliges. Si te pasas a uno centrado en la privacidad (a ser posible con DNS cifrado), tu proveedor de internet deja de ser quien lleva la lista, y muchos de estos resolvedores también bloquean anuncios, rastreadores o malware. Ahora es el nuevo proveedor quien ve tus consultas, así que revisa su política de registros y dónde tiene su sede.
+
+    Gestionar el DNS de tu propio dominio es otra cosa, que se llama alojamiento DNS. Se trata de publicar registros para que otras personas puedan encontrar tu sitio web y tu correo, no de hacer consultas para ti.
+  DNS leak: Fuga de DNS
+  When your DNS lookups go around your VPN, usually to your ISP, giving away the sites you visit while you think you're covered.: Cuando tus consultas DNS se saltan la VPN, normalmente para ir a tu proveedor de internet, y delatan los sitios que visitas mientras crees que estás a salvo.
+  ? |
+    On a VPN, your DNS lookups should go through the tunnel to the resolver your VPN uses. A DNS
+    leak is when some of them go out the normal way instead, usually to your ISP. Your traffic's
+    still encrypted, but your ISP gets a running list of the domains you're visiting, which is a
+    good chunk of what you were trying to hide.
+
+    Leaks usually come from your operating system doing its own thing: sending lookups out over
+    every network connection it has, using IPv6 when the VPN only handles IPv4, or sticking with a
+    DNS server you set by hand.
+
+    Good VPN apps have leak protection built in and switched on. To check, connect to your VPN and
+    run a DNS leak test - if any of the servers it lists belong to your ISP, you've got a leak. A
+    kill switch that blocks everything outside the tunnel usually stops it too.
+  : |-
+    Con una VPN, tus consultas DNS deberían ir por el túnel hasta el resolvedor que usa la VPN. Hay una fuga de DNS cuando algunas salen por la vía normal, normalmente hacia tu proveedor de internet. Tu tráfico sigue cifrado, pero tu proveedor va recibiendo una lista de los dominios que visitas, que es buena parte de lo que intentabas ocultar.
+
+    Las fugas suelen deberse a que el sistema operativo hace las cosas a su manera: envía consultas por todas las conexiones de red que tiene, usa IPv6 cuando la VPN solo gestiona IPv4 o sigue usando un servidor DNS que configuraste a mano.
+
+    Las buenas apps de VPN traen la protección contra fugas integrada y activada. Para comprobarlo, conéctate a la VPN y haz una prueba de fugas de DNS: si alguno de los servidores que aparecen pertenece a tu proveedor de internet, tienes una fuga. Un kill switch que bloquee todo lo que salga fuera del túnel también suele evitarlas.
+  End-to-end encryption: Cifrado de extremo a extremo
+  Encryption where only the people at each end hold the keys, so the company in the middle can't read your messages or files.: Un cifrado en el que solo las personas de cada extremo tienen las claves, así que la empresa que está en medio no puede leer tus mensajes ni tus archivos.
+  ? |
+    With end-to-end encryption, your message is encrypted on your device and only decrypted on the
+    recipient's. The service in between just passes along scrambled data it has no key for, so
+    anything it leaks in a breach or is forced to hand over is gibberish. The Signal Protocol is the
+    best-known way of doing it, and plenty of apps use it.
+
+    What it doesn't hide is metadata - who you talked to, when and how often. It can't help if
+    someone gets into your phone, and it won't stop the person you're talking to from taking
+    screenshots. Backups are a common gap too: if your chat history goes to the cloud without the
+    same encryption, that copy isn't protected.
+
+    In a closed source app you're taking the company's word that it's really end-to-end, so look for
+    open source apps, a published security audit and a way to check you're talking to the right
+    person (usually by comparing a safety number or scanning a QR code). Be wary of "encrypted" on
+    its own, as it often only means encrypted in transit, which the company can still read.
+  : |-
+    Con el cifrado de extremo a extremo, tu mensaje se cifra en tu dispositivo y solo se descifra en el del destinatario. El servicio que hay en medio se limita a pasar datos cifrados para los que no tiene la clave, así que lo que se filtre en una brecha, o lo que se vea obligado a entregar, es un galimatías. El protocolo Signal es la forma más conocida de hacerlo, y lo usan muchas apps.
+
+    Lo que no oculta son los metadatos: con quién hablaste, cuándo y con qué frecuencia. No sirve de nada si alguien accede a tu teléfono, y no impide que la persona con la que hablas haga capturas de pantalla. Las copias de seguridad también suelen ser un punto débil: si tu historial de chats se sube a la nube sin el mismo cifrado, esa copia no está protegida.
+
+    En una app de código cerrado tienes que fiarte de la empresa cuando dice que el cifrado es de verdad de extremo a extremo, así que busca apps de código abierto, una auditoría de seguridad publicada y una forma de comprobar que hablas con la persona correcta (normalmente comparando un número de seguridad o escaneando un código QR). Desconfía de la palabra «cifrado» a secas, porque muchas veces solo significa cifrado en tránsito, que la empresa sí puede leer.
+  E2E encryption: cifrado E2E
+  Email alias: Alias de correo
+  A separate email address that forwards to your real inbox, so each site gets its own address and you can switch it off if it gets spammed.: Una dirección de correo aparte que reenvía los mensajes a tu bandeja de entrada real, así que cada sitio recibe su propia dirección y puedes desactivarla si empieza a llegarle spam.
+  ? |
+    An alias is an address that just forwards mail to your real inbox. Use a different one for every
+    site and your real address never gets out. If one starts getting spam, you'll know exactly who
+    leaked or sold it, and you can turn that alias off without touching anything else. Many alias
+    services also let you reply from the alias, so the other side never sees your real address.
+
+    Aliases make it much harder for data brokers and marketers to join up your accounts by email
+    address, and they limit the fallout when a site gets breached. Plus addressing
+    (`yourname+shop@example.com`) is a weaker version of the same trick, as your real address is
+    right there for anyone who strips off the plus bit.
+
+    The alias provider sees every email that passes through, so pick one you'd trust with your
+    inbox. Using your own domain means you can switch providers later without losing your aliases,
+    and some services will encrypt forwarded mail with your PGP key. Aliases aren't the same as
+    disposable inboxes, which are often public and short-lived.
+  : |-
+    Un alias es una dirección que se limita a reenviar el correo a tu bandeja de entrada real. Usa uno distinto en cada sitio y tu dirección real nunca llega a circular. Si uno empieza a recibir spam, sabrás exactamente quién lo filtró o lo vendió, y podrás desactivar ese alias sin tocar nada más. Muchos servicios de alias también te dejan responder desde el alias, así que la otra parte nunca ve tu dirección real.
+
+    Los alias hacen mucho más difícil que los corredores de datos y las empresas de marketing relacionen tus cuentas por la dirección de correo, y limitan los daños cuando un sitio sufre una brecha de seguridad. Las direcciones con el signo más (`yourname+shop@example.com`) son una versión más débil del mismo truco, porque tu dirección real queda a la vista de cualquiera que quite la parte del signo más.
+
+    El proveedor de alias ve todos los correos que pasan por él, así que elige uno al que le confiarías tu bandeja de entrada. Si usas tu propio dominio, podrás cambiar de proveedor más adelante sin perder tus alias, y algunos servicios cifran el correo reenviado con tu clave PGP. Los alias no son lo mismo que los correos desechables, que suelen ser públicos y duran poco.
+  masked email: correo enmascarado
+  forwarding address: dirección de reenvío
+  email aliasing: uso de alias de correo
+  DNS over HTTPS and DNS over TLS: DNS sobre HTTPS y DNS sobre TLS
+  Ways of encrypting your DNS lookups, so your ISP or the network you're on can't read or tamper with them on the way to the resolver.: Formas de cifrar tus consultas DNS para que tu proveedor de internet o la red en la que estés no pueda leerlas ni manipularlas por el camino hasta el resolvedor.
+  ? |
+    Both protect your lookups between your device and the resolver. DNS over HTTPS (DoH) sends them
+    as ordinary web traffic, which makes it harder to spot or block. DNS over TLS (DoT) uses its own
+    port, which is tidier but easier for a network to block. DNSCrypt is an older protocol that does
+    a similar job. Most browsers and operating systems support at least one of them, and on Android
+    it's the "Private DNS" setting.
+
+    They only hide your lookups from the network in between. The resolver still sees every one, so
+    you need to trust whoever runs it. Your ISP can also still see the IP addresses you connect to,
+    and often the site's name too, which goes out unencrypted at the start of most secure
+    connections. It's a sensible upgrade, but it won't hide your browsing on its own.
+
+    If you use a VPN, your lookups already travel inside the tunnel, so the VPN's own resolver is
+    usually the simplest choice.
+  : |-
+    Los dos protegen tus consultas entre tu dispositivo y el resolvedor. DNS sobre HTTPS (DoH) las envía como tráfico web normal, lo que hace que cueste más detectarlas o bloquearlas. DNS sobre TLS (DoT) usa su propio puerto, algo más limpio pero más fácil de bloquear para una red. DNSCrypt es un protocolo más antiguo que hace algo parecido. La mayoría de los navegadores y sistemas operativos admiten al menos uno de ellos, y en Android es el ajuste «DNS privado».
+
+    Solo ocultan tus consultas a la red que hay en medio. El resolvedor sigue viéndolas todas, así que tienes que confiar en quien lo gestiona. Tu proveedor de internet también sigue viendo las direcciones IP a las que te conectas, y a menudo el nombre del sitio, que se envía sin cifrar al inicio de la mayoría de las conexiones seguras. Es una mejora razonable, pero por sí sola no oculta tu navegación.
+
+    Si usas una VPN, tus consultas ya viajan dentro del túnel, así que lo más sencillo suele ser usar el propio resolvedor de la VPN.
+  encrypted DNS: DNS cifrado
+  Encryption at rest: Cifrado en reposo
+  Encrypting data while it's stored on a disk, phone or server, so it's unreadable if the hardware is lost, stolen or thrown out.: Cifrar los datos mientras están guardados en un disco, un teléfono o un servidor, para que sean ilegibles si el hardware se pierde, lo roban o acaba en la basura.
+  ? |
+    Encryption at rest protects stored data. On your own devices that means full-disk encryption: if
+    your laptop's nicked or your phone goes missing, nobody can read what's on it without your
+    password or PIN. Phones do it by default these days, and the main desktop operating systems have
+    it built in, though it isn't always switched on.
+
+    It does most of its work while the device is off or locked. Once you've logged in, your data is
+    readable to you and to any malware you've picked up. For online services, "encrypted at rest"
+    usually means the company encrypts its disks and keeps the keys itself. That stops someone
+    walking out of a data centre with a hard drive, but the company can still read your data, and so
+    can anyone with a court order.
+
+    If you want a provider that can't read your stuff, you need zero-knowledge or end-to-end
+    encryption instead, or to encrypt files yourself before you upload them.
+  : |-
+    El cifrado en reposo protege los datos almacenados. En tus propios dispositivos, eso significa cifrado de disco completo: si te roban el portátil o pierdes el teléfono, nadie puede leer lo que hay en ellos sin tu contraseña o tu PIN. Hoy en día los teléfonos lo hacen por defecto, y los principales sistemas operativos de escritorio lo traen integrado, aunque no siempre viene activado.
+
+    Hace casi todo su trabajo mientras el dispositivo está apagado o bloqueado. Una vez que has iniciado sesión, tus datos son legibles para ti y para cualquier malware que se te haya colado. En los servicios en línea, «cifrado en reposo» suele significar que la empresa cifra sus discos y se queda con las claves. Eso te protege si alguien se lleva un disco duro de un centro de datos, pero la empresa sigue pudiendo leer tus datos, y también cualquiera con una orden judicial.
+
+    Si quieres un proveedor que no pueda leer tus cosas, necesitas cifrado de conocimiento cero o de extremo a extremo, o cifrar los archivos por tu cuenta antes de subirlos.
+  storage encryption: cifrado del almacenamiento
+  full-disk encryption: cifrado de disco completo
+  Encryption in transit: Cifrado en tránsito
+  Encrypting data while it travels between your device and a server, so people on the network can't read it, though the server still can.: Cifrar los datos mientras viajan entre tu dispositivo y un servidor, para que nadie en la red pueda leerlos, aunque el servidor sí puede.
+  ? |
+    Encryption in transit protects data on its way from A to B. It's what the S in HTTPS is about:
+    TLS (the successor to SSL) encrypts the connection, so your ISP, the coffee shop Wi-Fi or anyone
+    else in the middle can't read or change what you send. Almost every site and app uses it now,
+    and one that doesn't is a red flag.
+
+    But it stops at the server. The company decrypts your data when it arrives and can read, scan or
+    store it, or be made to hand it over. So when a service says your data is "encrypted", that
+    often just means this, maybe with encryption at rest on top. For a provider that can't read your
+    stuff, you need end-to-end or zero-knowledge encryption.
+
+    Email is a special case. Mail between providers is usually encrypted in transit too, but only
+    when both servers support it, so some messages still cross the internet in plain text. Even when
+    it's encrypted, every server that handles it can read it.
+  : |-
+    El cifrado en tránsito protege los datos en su camino de A a B. Es lo que representa la S de HTTPS: TLS (el sucesor de SSL) cifra la conexión, así que ni tu proveedor de internet ni el wifi de la cafetería ni nadie que esté en medio puede leer ni modificar lo que envías. Casi todos los sitios y apps lo usan ya, y uno que no lo use es una señal de alarma.
+
+    Pero termina en el servidor. La empresa descifra tus datos cuando llegan y puede leerlos, analizarlos o guardarlos, o verse obligada a entregarlos. Así que cuando un servicio dice que tus datos están «cifrados», muchas veces se refiere solo a esto, quizá junto con el cifrado en reposo. Para tener un proveedor que no pueda leer tus cosas, necesitas cifrado de extremo a extremo o de conocimiento cero.
+
+    El correo es un caso especial. Los mensajes entre proveedores también suelen ir cifrados en tránsito, pero solo cuando los dos servidores lo admiten, así que algunos todavía cruzan internet en texto plano. Incluso cuando van cifrados, todos los servidores que los procesan pueden leerlos.
+  TLS encryption: cifrado TLS
+  SSL encryption: cifrado SSL
+  transport encryption: cifrado de transporte
+  Federation: Federación
+  Lots of independently run servers that talk to each other, so you can pick (or run) your own server and still reach everyone else.: Muchos servidores gestionados de forma independiente que se comunican entre sí, para que puedas elegir (o montar) tu propio servidor y aun así llegar a todos los demás.
+  ? |
+    Email is the classic example of federation: you can be with one provider and email someone with
+    another, and neither of them is in charge. Matrix (for chat) and Mastodon (for social media)
+    work the same way, each made up of thousands of servers that speak a shared protocol. Mastodon
+    and everything else built on ActivityPub are known together as the fediverse.
+
+    No single company owns the network, so nobody can sell it, fill it with ads or lock you in, and
+    if you don't like your server's rules you can move. The flip side is that your server's admins
+    can see anything it stores unencrypted, and whatever you send to people on other servers gets
+    copied there too. Deleting it later asks those servers to delete their copies, but nothing
+    forces them to.
+
+    So pick a server run by people you trust, or run your own. And check what's end-to-end
+    encrypted - on some federated platforms private messages are, and on others the admins of both
+    servers can read them.
+  : |-
+    El correo electrónico es el ejemplo clásico de federación: puedes tener cuenta en un proveedor y escribirle a alguien que usa otro, y ninguno de los dos proveedores manda. Matrix (para chatear) y Mastodon (para redes sociales) funcionan igual, y cada uno está formado por miles de servidores que hablan un protocolo común. A Mastodon y a todo lo demás construido sobre ActivityPub se les conoce en conjunto como el fediverso.
+
+    Como ninguna empresa es dueña de la red, nadie puede venderla, llenarla de anuncios ni atarte a ella, y si no te gustan las normas de tu servidor, puedes mudarte a otro. La otra cara de la moneda es que los administradores de tu servidor pueden ver todo lo que guarde sin cifrar, y lo que envíes a gente de otros servidores también se copia allí. Si luego lo borras, se les pide a esos servidores que borren sus copias, pero nada los obliga a hacerlo.
+
+    Así que elige un servidor gestionado por gente en la que confíes, o monta el tuyo. Y comprueba qué está cifrado de extremo a extremo: en algunas plataformas federadas los mensajes privados lo están, y en otras los administradores de los dos servidores pueden leerlos.
+  federated networks: redes federadas
+  Five Eyes and Fourteen Eyes: Cinco Ojos y Catorce Ojos
+  An intelligence-sharing alliance between the UK, US, Canada, Australia and New Zealand, plus wider groups known as the Nine and Fourteen Eyes.: Una alianza de intercambio de inteligencia entre el Reino Unido, Estados Unidos, Canadá, Australia y Nueva Zelanda, además de grupos más amplios conocidos como los Nueve Ojos y los Catorce Ojos.
+  ? |
+    The [Five Eyes](https://en.wikipedia.org/wiki/Five_Eyes) grew out of the UKUSA Agreement of
+    1946, and today the UK, US, Canada, Australia and New Zealand share signals intelligence through
+    it. Wider, looser groups have been reported too. The Nine Eyes adds Denmark, France, the
+    Netherlands and Norway, and the Fourteen Eyes adds Belgium, Germany, Italy, Spain and Sweden.
+
+    You'll see it all over VPN marketing, usually as "based outside the 14 Eyes". These countries do
+    work closely together, and some have sweeping surveillance laws. But it isn't a magic line.
+    Intelligence agencies spy on foreign communications anyway, and every country has some way of
+    making a business on its own soil cooperate.
+
+    What a provider can be forced to hand over, and what it actually keeps, matter far more than
+    which list its country is on. A service that only ever holds encrypted data it can't read is in
+    a much better spot wherever it's based.
+  : |-
+    Los [Cinco Ojos](https://en.wikipedia.org/wiki/Five_Eyes) surgieron del Acuerdo UKUSA de 1946, y hoy el Reino Unido, Estados Unidos, Canadá, Australia y Nueva Zelanda comparten inteligencia de señales a través de esta alianza. También se ha informado de grupos más amplios y menos formales. Los Nueve Ojos suman a Dinamarca, Francia, los Países Bajos y Noruega, y los Catorce Ojos añaden a Bélgica, Alemania, Italia, España y Suecia.
+
+    Lo verás por todas partes en la publicidad de las VPN, normalmente como «con sede fuera de los 14 Ojos». Es cierto que estos países colaboran estrechamente, y algunos tienen leyes de vigilancia muy amplias. Pero esa frontera no tiene nada de mágico. Las agencias de inteligencia espían las comunicaciones extranjeras de todos modos, y todos los países tienen alguna forma de obligar a colaborar a una empresa establecida en su territorio.
+
+    Lo que un proveedor puede verse obligado a entregar, y lo que realmente guarda, importan mucho más que la lista en la que esté su país. Un servicio que solo tiene datos cifrados que no puede leer está en una posición mucho mejor, tenga su sede donde la tenga.
+  5 Eyes: 5 Ojos
+  14 Eyes: 14 Ojos
+  Forward secrecy: Secreto hacia adelante
+  Giving each session or message its own short-lived keys, so a key stolen later can't decrypt all your old conversations.: Dar a cada sesión o mensaje sus propias claves de corta duración, para que una clave robada más adelante no pueda descifrar todas tus conversaciones antiguas.
+  ? |
+    Without forward secrecy, everything encrypted with a long-term key is only as safe as that key.
+    If someone records your encrypted traffic today and steals the key in five years, they can go
+    back and decrypt all of it. With forward secrecy, each session (or, in good messaging apps, each
+    message) uses short-lived keys that get thrown away, so old traffic stays scrambled even if a
+    long-term key leaks.
+
+    Modern HTTPS (TLS 1.3) has it built in, and so does the Signal Protocol, which goes a step
+    further and can recover after a key's been stolen, so future messages become safe again. PGP
+    email doesn't have forward secrecy, which is one of the main criticisms of it.
+
+    It's not something you can usually switch on yourself, as it's down to the protocol an app uses.
+    When you're comparing messaging apps, having it is a good sign the encryption is modern and well
+    designed.
+  : |-
+    Sin secreto hacia adelante, todo lo que se cifra con una clave de larga duración es tan seguro como lo sea esa clave. Si alguien graba hoy tu tráfico cifrado y roba la clave dentro de cinco años, puede volver atrás y descifrarlo todo. Con secreto hacia adelante, cada sesión (o, en las buenas apps de mensajería, cada mensaje) usa claves de corta duración que se desechan, así que el tráfico antiguo sigue siendo ilegible aunque se filtre una clave de larga duración.
+
+    El HTTPS moderno (TLS 1.3) lo trae integrado, igual que el protocolo Signal, que va un paso más allá: puede recuperarse después del robo de una clave, de modo que los mensajes futuros vuelven a estar seguros. El correo con PGP no tiene secreto hacia adelante, y esa es una de las principales críticas que recibe.
+
+    Normalmente no es algo que puedas activar tú, porque depende del protocolo que use la app. Cuando compares apps de mensajería, que lo tenga es buena señal de que el cifrado es moderno y está bien diseñado.
+  perfect forward secrecy: secreto perfecto hacia adelante
+  Free and open source software: Software libre y de código abierto
+  Software that's free as in freedom - you can run, study, change and share it - which in practice nearly always means open source too.: Software que te da libertad para ejecutarlo, estudiarlo, modificarlo y compartirlo, y que en la práctica casi siempre es también de código abierto.
+  ? |
+    The "free" in FOSS is about freedom, not price, or as the old line goes, "free as in speech, not
+    as in beer". The Free Software Foundation
+    [defines it](https://www.gnu.org/philosophy/free-sw.html) as four freedoms: to run the program
+    however you like, to study and change how it works, to share copies, and to share your changed
+    versions. FLOSS (free/libre and open source software) means the same thing, with "libre" added
+    to dodge the price confusion.
+
+    In practice, nearly all free software is open source and the other way round. The difference is
+    mostly philosophy: free software folk see it as an ethical issue, open source folk as a better
+    way to build software. Licences split along a different line. Copyleft licences like the GPL
+    make anyone who distributes a changed version share their code on the same terms, while
+    permissive ones like MIT let people make closed versions.
+
+    The AGPL goes a step further and covers software run as an online service, so anyone hosting a
+    modified version has to offer its users the source. On Android, the F-Droid app store only lists
+    FOSS apps, and flags the ones with tracking or other anti-features.
+  : |-
+    El «free» de FOSS se refiere a la libertad, no al precio, o, como dice la vieja frase, «libre» como en «libre expresión», no como en «barra libre». La Free Software Foundation [lo define](https://www.gnu.org/philosophy/free-sw.html) con cuatro libertades: ejecutar el programa como quieras, estudiar cómo funciona y modificarlo, compartir copias y compartir tus versiones modificadas. FLOSS (free/libre and open source software) significa lo mismo, pero añade «libre» para evitar la confusión con el precio.
+
+    En la práctica, casi todo el software libre es de código abierto y viceversa. La diferencia es sobre todo filosófica: quienes defienden el software libre lo ven como una cuestión ética, y quienes defienden el código abierto, como una forma mejor de hacer software. Las licencias, en cambio, se dividen según otro criterio. Las licencias copyleft, como la GPL, obligan a cualquiera que distribuya una versión modificada a compartir su código en las mismas condiciones, mientras que las permisivas, como la MIT, permiten hacer versiones cerradas.
+
+    La AGPL va un paso más allá y cubre también el software que funciona como servicio en línea, así que quien aloje una versión modificada tiene que ofrecer el código fuente a sus usuarios. En Android, la tienda de apps F-Droid solo incluye apps FOSS y marca las que tienen rastreo u otras características indeseadas.
+  libre software: software libre
+  Hardware security key: Llave de seguridad física
+  A small USB or NFC device you tap to log in, which proves it's really you and won't work on phishing sites.: Un pequeño dispositivo USB o NFC que tocas para iniciar sesión. Demuestra que de verdad eres tú y no funciona en sitios de phishing.
+  ? |
+    A hardware security key is a small device, usually on your keyring, that plugs into a USB port
+    or taps against your phone over NFC. It holds cryptographic keys that never leave it, so malware
+    on your computer can't copy them. You can use it as a second factor alongside your password, or
+    on newer keys to hold passkeys and skip the password entirely.
+
+    Like passkeys, security keys check the website's real address before they'll sign you in, so
+    they're one of the few logins that phishing can't easily beat. That's why they're the usual
+    advice for anyone likely to be targeted, like journalists, activists or people with money or
+    access worth stealing. Some can also generate TOTP codes, hold PGP keys or work as a smart card.
+
+    Buy two and register both, and keep the spare somewhere safe, because losing your only key means
+    relying on recovery codes (or getting locked out). Check that the services you care about
+    support them and let you add more than one. Keys only have room for a limited number of
+    passkeys, so check the spec if you plan to store a lot.
+  : |-
+    Una llave de seguridad física es un pequeño dispositivo, normalmente colgado del llavero, que se conecta a un puerto USB o que acercas a tu teléfono por NFC. Guarda claves criptográficas que nunca salen de ella, así que el malware de tu equipo no puede copiarlas. Puedes usarla como segundo factor junto a tu contraseña o, en los modelos más nuevos, para guardar llaves de acceso y prescindir por completo de la contraseña.
+
+    Igual que las llaves de acceso, las llaves de seguridad comprueban la dirección real del sitio web antes de dejarte iniciar sesión, así que son uno de los pocos métodos de acceso que el phishing no puede burlar fácilmente. Por eso se suelen recomendar a quien tiene más probabilidades de ser un objetivo, como periodistas, activistas o personas con dinero o accesos que valga la pena robar. Algunas también pueden generar códigos TOTP, guardar claves PGP o funcionar como tarjeta inteligente.
+
+    Compra dos, registra las dos y guarda la de repuesto en un lugar seguro, porque si pierdes tu única llave, dependerás de los códigos de recuperación (o te quedarás sin acceso). Comprueba que los servicios que te importan las admiten y te dejan añadir más de una. Cada llave tiene espacio para un número limitado de llaves de acceso, así que revisa las especificaciones si piensas guardar muchas.
+  security key: llave de seguridad
+  FIDO key: llave FIDO
+  U2F key: llave U2F
+  Jurisdiction: Jurisdicción
+  The country whose laws a service has to follow, which decides who can demand your data and what the company can be made to do.: El país cuyas leyes tiene que cumplir un servicio, y que decide quién puede exigir tus datos y a qué se puede obligar a la empresa.
+  ? |
+    A service's jurisdiction is the country (or countries) whose laws it has to follow, usually
+    where it's registered plus wherever it has servers or staff. Those laws decide whether it can be
+    made to hand over your data, keep logs it otherwise wouldn't, monitor a particular user, or keep
+    quiet about any of it. They also set your rights - in the UK and EU, for example, you can ask
+    for a copy of your data or have it deleted.
+
+    Privacy-focused companies often base themselves somewhere with strong privacy laws, and say so
+    loudly. That's a real plus, but it has limits. Providers in privacy-friendly countries have
+    still been ordered to log specific users, and police in one country can ask another to get data
+    on their behalf.
+
+    Jurisdiction matters most when a company holds data it can read. If your data's end-to-end
+    encrypted and the provider keeps little else, there's much less for any court to get hold of.
+  : |-
+    La jurisdicción de un servicio es el país (o los países) cuyas leyes tiene que cumplir, normalmente aquel en el que está registrado y cualquier otro en el que tenga servidores o personal. Esas leyes deciden si se le puede obligar a entregar tus datos, a conservar registros que de otro modo no conservaría, a vigilar a un usuario concreto o a guardar silencio sobre todo ello. También fijan tus derechos: en el Reino Unido y la UE, por ejemplo, puedes pedir una copia de tus datos o que los borren.
+
+    Las empresas centradas en la privacidad suelen establecerse en países con leyes de privacidad sólidas, y lo dicen bien alto. Es una ventaja real, pero tiene límites: incluso a proveedores de países que protegen la privacidad se les ha ordenado registrar la actividad de usuarios concretos, y la policía de un país puede pedirle a otro que consiga datos en su nombre.
+
+    La jurisdicción importa sobre todo cuando una empresa guarda datos que puede leer. Si tus datos están cifrados de extremo a extremo y el proveedor apenas guarda nada más, hay mucho menos que un tribunal pueda conseguir.
+  A VPN setting that cuts off your internet if the VPN connection drops, so nothing gets sent outside the tunnel.: Una opción de las VPN que corta tu conexión a internet si se cae la VPN, para que no salga nada fuera del túnel.
+  ? |
+    VPN connections drop more often than you'd think, like when you switch networks, wake your
+    laptop or a server goes down. Without a kill switch your device just carries on over your normal
+    connection, often without telling you, and your real IP address and browsing are out in the
+    open. A kill switch blocks all traffic until the VPN's back.
+
+    They're not all equal. Some only work while the VPN app's running, so if the app crashes, your
+    protection goes with it. Better ones set firewall rules in your operating system that stay in
+    place even if the app doesn't, and some block traffic from the moment your device starts up. On
+    Android, look for the built-in "Always-on VPN" and "Block connections without VPN" settings.
+
+    Check whether it's on by default, since it isn't always. Some apps also have a stricter mode
+    that blocks everything unless the VPN's connected, even after you've switched the VPN off
+    yourself.
+  : |-
+    Las conexiones VPN se caen más a menudo de lo que crees, por ejemplo cuando cambias de red, cuando tu equipo sale de la suspensión o cuando un servidor deja de funcionar. Sin un kill switch, tu dispositivo sigue usando tu conexión normal como si nada, a menudo sin avisarte, y tu dirección IP real y tu navegación quedan a la vista. Un kill switch bloquea todo el tráfico hasta que la VPN vuelve a conectarse.
+
+    No todos son iguales. Algunos solo funcionan mientras la app de la VPN está abierta, así que si la app se cuelga, tu protección se va con ella. Los mejores crean reglas de firewall en tu sistema operativo que se mantienen aunque la app deje de funcionar, y algunos bloquean el tráfico desde el momento en que arranca tu dispositivo. En Android, busca los ajustes integrados «VPN siempre activada» y «Bloquear conexiones sin VPN».
+
+    Comprueba si viene activado por defecto, porque no siempre es así. Algunas apps también tienen un modo más estricto que lo bloquea todo salvo cuando la VPN está conectada, incluso después de que hayas desactivado tú la VPN.
+  VPN kill switch: kill switch de VPN
+  Know your customer: Conoce a tu cliente
+  The identity checks that banks, card providers and crypto exchanges have to run before you can use them, usually with a photo ID.: Las comprobaciones de identidad que los bancos, los emisores de tarjetas y los exchanges de criptomonedas tienen que hacer antes de que puedas usarlos, normalmente con un documento de identidad con foto.
+  ? |
+    KYC rules are there to fight fraud and money laundering, and they apply to most regulated
+    financial services, including banks, card issuers, payment apps and big crypto exchanges.
+    Signing up means handing over your name, address and date of birth, often with a photo of your
+    ID and a selfie, and the company has to keep those records for years.
+
+    For privacy, that means your real identity is tied to everything you do on the service, and
+    copies of your ID are stored in a database that could leak (and some have). Some services
+    outside finance ask for ID too, like phone number providers in countries where the law requires
+    it.
+
+    Doing without KYC, legally, usually means smaller amounts and fewer features: cash, prepaid
+    cards with low limits, peer-to-peer crypto trading or services that don't ask. The rules vary a
+    lot by country, so check what applies where you are.
+  : |-
+    Las normas KYC existen para combatir el fraude y el lavado de dinero, y se aplican a la mayoría de los servicios financieros regulados, como bancos, emisores de tarjetas, apps de pago y los grandes exchanges de criptomonedas. Para registrarte tienes que dar tu nombre, tu dirección y tu fecha de nacimiento, a menudo junto con una foto de tu documento de identidad y un selfi, y la empresa tiene que conservar esos registros durante años.
+
+    Para tu privacidad, eso significa que tu identidad real queda ligada a todo lo que haces en el servicio, y que hay copias de tu documento guardadas en una base de datos que podría filtrarse (y algunas ya se han filtrado). Algunos servicios que no son financieros también piden identificación, como los proveedores de números de teléfono en países donde la ley lo exige.
+
+    Prescindir del KYC de forma legal suele implicar cantidades más pequeñas y menos funciones: efectivo, tarjetas prepago con límites bajos, compraventa de criptomonedas entre particulares o servicios que no lo piden. Las normas varían mucho de un país a otro, así que comprueba cuáles se aplican donde vives.
+  ID verification: verificación de identidad
+  Metadata: Metadatos
+  Data about your data - who you contacted, when, from where and on what device - rather than what you actually said or saved.: Datos sobre tus datos (con quién hablas, cuándo, desde dónde y con qué dispositivo), en lugar de lo que de verdad dices o guardas.
+  ? |
+    Metadata is everything around the content. For a message, that's who sent it to whom, when, how
+    often and from which IP address. For a photo, it's often baked into the file as EXIF data: the
+    phone or camera model, the time it was taken and sometimes the exact GPS location. Office
+    documents can carry your name, your organisation and leftover comments or tracked changes.
+
+    It's easy to shrug off, but it adds up fast. Who you talk to and where you go can reveal more
+    than the messages themselves, which is why so much surveillance collects it. Michael Hayden, a
+    former head of the NSA, once said "we kill people based on metadata", and he wasn't joking.
+
+    End-to-end encryption protects the content, not usually the metadata, so messaging apps vary a
+    lot in how much of it they can see or keep. With email, the servers always see who it's from,
+    who it's to and when, encrypted or not. For files, strip the metadata before you share them -
+    some sites remove EXIF data from uploads, but they may keep it for themselves.
+  : |-
+    Los metadatos son todo lo que rodea al contenido. En un mensaje, son quién se lo envió a quién, cuándo, con qué frecuencia y desde qué dirección IP. En una foto, suelen ir incrustados en el propio archivo como datos EXIF: el modelo del teléfono o de la cámara, la hora a la que se tomó y, a veces, la ubicación GPS exacta. Los documentos de Office pueden incluir tu nombre, tu organización y comentarios o revisiones del control de cambios que nadie borró.
+
+    Es fácil quitarles importancia, pero se acumulan muy rápido. Con quién hablas y adónde vas puede revelar más que los propios mensajes, y por eso tantos programas de vigilancia los recopilan. Michael Hayden, exdirector de la NSA, llegó a decir «matamos a gente basándonos en metadatos», y no lo decía en broma.
+
+    El cifrado de extremo a extremo protege el contenido, pero normalmente no los metadatos, así que las apps de mensajería varían mucho en la cantidad que pueden ver o guardar. En el correo electrónico, los servidores siempre ven quién lo envía, a quién y cuándo, esté cifrado o no. En el caso de los archivos, elimina los metadatos antes de compartirlos: algunos sitios quitan los datos EXIF de lo que subes, pero puede que se los queden para ellos.
+  No-logs policy: Política de no registros
+  A provider's promise not to keep records of what you do on its service, most often made by VPNs and DNS providers.: La promesa de un proveedor de no guardar registros de lo que haces en su servicio, habitual sobre todo en las VPN y los proveedores de DNS.
+  ? |
+    A no-logs policy is a promise not to record what you get up to, like the sites you visit, the IP
+    address you connect from, and when and for how long you're connected. It's most common with
+    VPNs, where the provider can see all your traffic and says it won't keep any of it. It never
+    means no data at all - they'll usually still have your account details and payment records, so
+    read what the policy actually covers.
+
+    The problem is you can't check it from the outside, and providers that advertised no logs have
+    handed records to the police before. The best signs are independent audits (repeated, ideally),
+    servers that run from memory so nothing survives a reboot, and real-world tests: court cases or
+    server seizures where the provider had nothing to hand over.
+
+    Even a perfect policy only covers the provider. Your ISP can still see that you're connected to
+    a VPN, and the sites you visit can still log what you do once you get there.
+  : |-
+    Una política de no registros es la promesa de no dejar constancia de lo que haces, como los sitios que visitas, la dirección IP desde la que te conectas y cuándo y durante cuánto tiempo estás conectado. Es más habitual en las VPN, donde el proveedor puede ver todo tu tráfico y asegura que no guardará nada. Nunca significa que no haya ningún dato: normalmente el proveedor seguirá teniendo los datos de tu cuenta y tu historial de pagos, así que lee qué cubre de verdad la política.
+
+    El problema es que no puedes comprobarlo desde fuera, y proveedores que anunciaban que no guardaban registros ya han entregado datos a la policía. Las mejores señales son las auditorías independientes (repetidas, idealmente), los servidores que funcionan solo en la memoria RAM, de modo que nada sobrevive a un reinicio, y las pruebas reales: casos judiciales o incautaciones de servidores en los que el proveedor no tenía nada que entregar.
+
+    Incluso una política perfecta solo cubre al proveedor. Tu proveedor de internet puede seguir viendo que estás conectado a una VPN, y los sitios que visitas pueden seguir registrando lo que haces una vez que entras en ellos.
+  no-log policy: política no-logs
+  zero-logs policy: política de cero registros
+  Open source: Código abierto
+  Software whose source code is public, under a licence that lets anyone read, use, change and share it.: Software con el código fuente público y una licencia que permite a cualquiera leerlo, usarlo, modificarlo y compartirlo.
+  ? |
+    Open source means the code is published under a licence that meets the
+    [Open Source Definition](https://opensource.org/osd), so anyone can read it, use it, change it
+    and pass it on. It doesn't have to be free of charge. For privacy tools that's the main draw,
+    because people outside the company can check what the app really does with your data instead of
+    taking the marketing's word for it.
+
+    It's no guarantee, mind. Published code doesn't mean anyone's checked it, and serious bugs have
+    gone unnoticed in popular open source projects for years. The app you download might not be
+    built from exactly the code you can see, unless the project has reproducible builds that let
+    people confirm it. With online services you also can't see what's running on their servers,
+    which matters less if the app on your device encrypts everything before it leaves.
+
+    When you're choosing, check which parts are actually open (the app, the server or both), what
+    the licence is, and whether the project's still active. "Open source" in marketing sometimes
+    means "some of it", so have a look at the code repository yourself.
+  : |-
+    Código abierto significa que el código se publica con una licencia que cumple la [Open Source Definition](https://opensource.org/osd), así que cualquiera puede leerlo, usarlo, modificarlo y distribuirlo. No tiene por qué ser gratis. Para las herramientas de privacidad, ese es el gran atractivo, porque gente ajena a la empresa puede comprobar qué hace de verdad la app con tus datos, en lugar de creerse lo que dice la publicidad.
+
+    Eso sí, no es ninguna garantía. Que el código esté publicado no significa que alguien lo haya revisado, y hay fallos graves que han pasado inadvertidos durante años en proyectos de código abierto muy populares. Puede que la app que descargas no esté compilada exactamente a partir del código que puedes ver, a menos que el proyecto tenga compilaciones reproducibles que permitan a otros confirmarlo. Con los servicios en línea, además, no puedes ver qué se ejecuta en sus servidores, aunque eso importa menos si la app de tu dispositivo lo cifra todo antes de enviarlo.
+
+    Al elegir, comprueba qué partes son realmente abiertas (la app, el servidor o ambos), qué licencia tienen y si el proyecto sigue activo. En publicidad, «código abierto» a veces significa «solo una parte», así que échale un vistazo al repositorio de código por tu cuenta.
+  open-source software: software de código abierto
+  Passkeys: Llaves de acceso (passkeys)
+  A login that uses a cryptographic key stored on your device or in your password manager instead of a password, and resists phishing.: Un método de inicio de sesión que, en lugar de una contraseña, usa una clave criptográfica guardada en tu dispositivo o en tu gestor de contraseñas, y que resiste el phishing.
+  ? |
+    A passkey is a pair of keys made when you set one up for a site. The site keeps the public half,
+    and the private half stays on your phone, computer, password manager or security key. To sign
+    in, you confirm it's you with your fingerprint, face or PIN, and your device proves it has the
+    private key without ever sending it. Your fingerprint never leaves your device either, and the
+    whole thing runs on standards called FIDO2 and WebAuthn.
+
+    The big win is phishing. A passkey is tied to the real website's address, so it just won't work
+    on a lookalike site, however convincing it is. There's no password to reuse or to leak in a
+    breach, because the site only stores the public key, which is no use to an attacker. Since you
+    need both the device and your fingerprint or PIN, many sites also treat a passkey as two factors
+    in one.
+
+    Synced passkeys live in a password manager (including the one built into your phone) and get
+    backed up with it, which is convenient but means trusting that provider. Device-bound ones stay
+    on a single device or security key and can't be copied, so you'll want a backup way in. Before
+    you go all in, check how your provider lets you move passkeys elsewhere.
+  : |-
+    Una llave de acceso es un par de claves que se crea cuando configuras una para un sitio. El sitio se queda con la mitad pública, y la mitad privada se queda en tu teléfono, tu equipo, tu gestor de contraseñas o tu llave de seguridad. Para iniciar sesión, confirmas que eres tú con tu huella, tu cara o tu PIN, y tu dispositivo demuestra que tiene la clave privada sin enviarla nunca. Tu huella tampoco sale nunca de tu dispositivo, y todo funciona con unos estándares llamados FIDO2 y WebAuthn.
+
+    La gran ventaja es la protección contra el phishing. Una llave de acceso está vinculada a la dirección real del sitio web, así que sencillamente no funciona en un sitio que lo imite, por muy convincente que sea. No hay ninguna contraseña que reutilizar ni que se filtre en una brecha de seguridad, porque el sitio solo guarda la clave pública, que no le sirve de nada a un atacante. Como necesitas tanto el dispositivo como tu huella o tu PIN, muchos sitios también consideran una llave de acceso como dos factores en uno.
+
+    Las llaves de acceso sincronizadas se guardan en un gestor de contraseñas (incluido el que trae tu teléfono) y se incluyen en sus copias de seguridad, lo cual es cómodo, pero implica confiar en ese proveedor. Las vinculadas a un dispositivo se quedan en un único dispositivo o llave de seguridad y no se pueden copiar, así que te conviene tener otra forma de acceder. Antes de apostarlo todo a las llaves de acceso, mira cómo te deja tu proveedor llevártelas a otra parte.
+  Password manager: Gestor de contraseñas
+  An app that creates, stores and fills in a different strong password for every account, all locked behind one master password.: Una app que crea, guarda y rellena una contraseña segura y distinta para cada cuenta, todo protegido con una única contraseña maestra.
+  ? |
+    Reusing passwords is how one breach turns into ten. A password manager fixes that by making a
+    long random password for every site and remembering them all, so you only need one strong master
+    password (a long passphrase works well). Most also fill in logins for you, sync across your
+    devices, and can store passkeys, 2FA codes and notes.
+
+    There are two main types. Cloud-based ones sync your vault through the provider's servers, which
+    is convenient, and the good ones encrypt everything on your device first so the provider can't
+    read it. Offline ones, like those using the KeePass format, keep your vault in a file you sync
+    or back up yourself - more control, more faff.
+
+    Whichever you go for, look for zero-knowledge encryption, a published security audit, open
+    source code and an easy way to export everything if you ever want to leave. Turn on 2FA for the
+    account itself. And remember the vault is only as strong as your master password - if it's weak
+    and the encrypted vault ever gets stolen, it can be cracked offline.
+  : |-
+    Reutilizar contraseñas es lo que hace que una filtración se convierta en diez. Un gestor de contraseñas lo soluciona creando una contraseña larga y aleatoria para cada sitio y recordándolas todas, así que solo necesitas una contraseña maestra segura (una frase de contraseña larga funciona bien). La mayoría también rellenan tus datos de acceso por ti, se sincronizan entre tus dispositivos y pueden guardar llaves de acceso, códigos de 2FA y notas.
+
+    Hay dos tipos principales. Los basados en la nube sincronizan tu bóveda a través de los servidores del proveedor, lo cual es cómodo, y los buenos lo cifran todo primero en tu dispositivo para que el proveedor no pueda leerlo. Los que funcionan sin conexión, como los que usan el formato KeePass, guardan tu bóveda en un archivo que sincronizas o del que haces copias de seguridad tú: más control, pero también más trabajo.
+
+    Elijas el que elijas, busca cifrado de conocimiento cero, una auditoría de seguridad publicada, código abierto y una forma fácil de exportarlo todo por si algún día quieres irte. Activa la 2FA en la propia cuenta del gestor. Y recuerda que la bóveda no es más segura que tu contraseña maestra: si la contraseña es débil y alguien llega a robar la bóveda cifrada, puede crackearla sin conexión.
+  password vault: bóveda de contraseñas
+  Devices connecting straight to each other to share data, rather than going through a company's central server.: Dispositivos que se conectan directamente entre sí para compartir datos, en lugar de pasar por el servidor central de una empresa.
+  ? |
+    In a peer-to-peer (P2P) network, devices talk to each other directly. There's no central server
+    holding everyone's messages or files, so there's nothing for a company to scan, lose in a
+    breach, hand over or shut down. BitTorrent is the famous example, and some messengers and file
+    sync tools work the same way.
+
+    The downside is that peers can usually see each other's IP addresses. With torrents the whole
+    swarm can, which is how copyright firms find people. Some P2P messengers get round this by
+    routing everything over Tor. Pure P2P can also mean both devices need to be online at once,
+    which is why many apps also use servers for finding each other, notifications or relaying
+    traffic when a direct connection fails.
+
+    When an app says it's P2P, check what happens when a direct connection isn't possible, whether
+    your IP address is shown to the people you talk to, and whether it's end-to-end encrypted.
+  : |-
+    En una red peer-to-peer (P2P), los dispositivos se comunican directamente entre sí. No hay un servidor central con los mensajes o archivos de todo el mundo, así que no hay nada que una empresa pueda escanear, perder en una filtración, entregar o cerrar. BitTorrent es el ejemplo más conocido, y algunas apps de mensajería y herramientas de sincronización de archivos funcionan igual.
+
+    El inconveniente es que los participantes suelen poder ver las direcciones IP de los demás. Con los torrents las ve todo el enjambre, y así es como las empresas antipiratería encuentran a la gente. Algunas apps de mensajería P2P lo evitan enviándolo todo a través de Tor. El P2P puro también puede significar que los dos dispositivos tienen que estar en línea a la vez, y por eso muchas apps usan además servidores para encontrarse, para las notificaciones o para retransmitir el tráfico cuando falla la conexión directa.
+
+    Cuando una app diga que es P2P, comprueba qué pasa cuando no es posible una conexión directa, si la gente con la que hablas puede ver tu dirección IP y si tiene cifrado de extremo a extremo.
+  PGP and OpenPGP: PGP y OpenPGP
+  An encryption standard for email and files that uses a public key you share and a private key you keep, and can sign things too.: Un estándar de cifrado para correos y archivos que usa una clave pública que compartes y una clave privada que te guardas, y que también sirve para firmar.
+  ? |
+    PGP (Pretty Good Privacy) dates back to 1991, and OpenPGP is the open standard that grew out of
+    it. GnuPG, or GPG, is the most widely used free implementation, and lots of PGP tools are built
+    on it. It works with a key pair: you share your public key so people can encrypt things to you,
+    and keep your private key to decrypt them. You can also sign messages and files, which proves
+    they came from you and haven't been changed.
+
+    It's still used for encrypted email, and it's how many software projects sign their downloads so
+    you can check you've got the real thing. But it has well-known gaps. With email, the sender,
+    recipient and date stay visible, and depending on your app, so might the subject line. There's
+    no forward secrecy, so if your private key is ever stolen, anyone holding copies of your old
+    messages can read every one. And it's easy to get wrong - one unencrypted reply that quotes the
+    whole thread gives the game away.
+
+    Look for tools that make key management easy, keep your private key under your control (ideally
+    on a hardware key for anything important), and help you check other people's key fingerprints.
+    For chatting rather than email, a modern end-to-end encrypted messenger is usually a better fit.
+  : |-
+    PGP (Pretty Good Privacy) data de 1991, y OpenPGP es el estándar abierto que surgió a partir de él. GnuPG, o GPG, es la implementación libre más usada, y muchas herramientas de PGP se basan en ella. Funciona con un par de claves: compartes tu clave pública para que otros puedan cifrar cosas para ti, y te guardas la clave privada para descifrarlas. También puedes firmar mensajes y archivos, lo que demuestra que vienen de ti y que nadie los ha modificado.
+
+    Todavía se usa para el correo cifrado, y es la forma en que muchos proyectos de software firman sus descargas para que puedas comprobar que tienes la versión auténtica. Pero tiene carencias bien conocidas. En el correo, el remitente, el destinatario y la fecha siguen siendo visibles y, según tu app, puede que también el asunto. No tiene secreto hacia adelante, así que si alguien llega a robar tu clave privada, quien tenga copias de tus mensajes antiguos podrá leerlos todos. Y es fácil equivocarse: una sola respuesta sin cifrar que cite el hilo entero lo deja todo al descubierto.
+
+    Busca herramientas que faciliten la gestión de claves, que dejen tu clave privada bajo tu control (idealmente en una llave de seguridad física para todo lo importante) y que te ayuden a comprobar las huellas de las claves de otras personas. Si lo que quieres es chatear y no enviar correos, una app de mensajería moderna con cifrado de extremo a extremo suele ser mejor opción.
+  Tricking you into handing over passwords, codes, money or personal details with a fake email, text, call or website.: Engañarte para que entregues contraseñas, códigos, dinero o datos personales mediante un correo, un SMS, una llamada o un sitio web falsos.
+  ? |
+    Phishing is one of the commonest ways accounts get broken into. You get an email, text or call
+    that looks like it's from your bank, a delivery firm or your boss, with a reason to act right
+    now and a link to a page that looks like the real thing. Anything you type there goes straight
+    to the attacker. Phishing by text is called smishing, by phone it's vishing, and attacks
+    tailored to one person are spear phishing.
+
+    Modern phishing kits can pass what you type to the real site as you go, so they can grab SMS and
+    authenticator codes as well as your password. The logins that resist it are passkeys and
+    hardware security keys, which check the site's real address and refuse to work on a fake one.
+
+    A password manager helps too, as it only fills in your login on the site it was saved for - if
+    it doesn't offer to fill, treat that as a warning. Beyond that, be suspicious of urgency, go to
+    sites directly rather than through links in messages, and check where a link really goes before
+    you click.
+  : |-
+    El phishing es una de las formas más habituales de robar cuentas. Te llega un correo, un SMS o una llamada que parece de tu banco, de una empresa de envíos o de tu jefe, con un motivo para actuar de inmediato y un enlace a una página que parece la auténtica. Todo lo que escribes ahí va directo al atacante. El phishing por SMS se llama smishing, por teléfono es vishing, y los ataques dirigidos a una persona concreta son spear phishing.
+
+    Los kits de phishing modernos pueden reenviar al instante lo que escribes al sitio real, así que pueden hacerse con los códigos por SMS y los de las apps de autenticación, además de tu contraseña. Los métodos de acceso que lo resisten son las llaves de acceso y las llaves de seguridad físicas, que comprueban la dirección real del sitio y se niegan a funcionar en uno falso.
+
+    Un gestor de contraseñas también ayuda, porque solo rellena tus datos de acceso en el sitio para el que se guardaron: si no te ofrece rellenarlos, tómatelo como una señal de alarma. Aparte de eso, desconfía de las urgencias, entra en los sitios directamente y no a través de enlaces en mensajes, y comprueba adónde lleva de verdad un enlace antes de hacer clic.
+  A server that passes your requests on to the internet for you, so the sites you visit see the proxy's address instead of yours.: Un servidor que reenvía tus peticiones a internet por ti, así que los sitios que visitas ven la dirección del proxy y no la tuya.
+  ? |
+    A proxy sits between you and the sites you visit and fetches things on your behalf. Unlike a
+    VPN, it usually only covers the apps you point at it, like your browser, and many don't add any
+    encryption of their own. That makes proxies handy for specific jobs, like getting round a block,
+    and a poor choice for hiding everything you do.
+
+    The proxy operator can see where you're going and, for anything not on HTTPS, what you're doing,
+    and can tamper with it. That's why free public proxies are such a bad idea: you've no idea who
+    runs them, and some exist to collect data or inject ads and malware.
+
+    Privacy front-ends work in a similar way. They're sites that load content from big platforms
+    like YouTube or Reddit for you, so the platform sees the front-end's server rather than you.
+    They cut out a lot of tracking, but whoever runs the instance can see what you look at, and they
+    tend to break when the platform changes things.
+  : |-
+    Un proxy se sitúa entre tú y los sitios que visitas y obtiene el contenido en tu nombre. A diferencia de una VPN, normalmente solo cubre las apps que configuras para usarlo, como tu navegador, y muchos no añaden ningún cifrado propio. Eso hace que los proxies sean útiles para tareas concretas, como saltarse un bloqueo, y una mala opción para ocultar todo lo que haces.
+
+    Quien gestiona el proxy puede ver adónde vas y, en todo lo que no vaya por HTTPS, qué haces, y además puede manipularlo. Por eso es tan mala idea usar proxies públicos gratuitos: no sabes quién los gestiona, y algunos están ahí para recopilar datos o inyectar anuncios y malware.
+
+    Los front-ends de privacidad funcionan de forma parecida. Son sitios que cargan por ti el contenido de grandes plataformas como YouTube o Reddit, así que la plataforma ve el servidor del front-end y no a ti. Eliminan buena parte del rastreo, pero quien gestiona la instancia puede ver lo que miras, y suelen dejar de funcionar cuando la plataforma cambia algo.
+  proxy server: servidor proxy
+  web proxy: proxy web
+  Running an app in a walled-off space with limited access to the rest of your system, so a bad or hacked app can only do so much damage.: Ejecutar una app en un espacio aislado con acceso limitado al resto del sistema, para que una app maliciosa o hackeada no pueda hacer demasiado daño.
+  ? |
+    A sandbox limits what an app can touch, like your files, other apps, your camera or the network.
+    If something inside it is malicious or gets hacked, the damage should stay inside the box. You
+    use sandboxes all the time without noticing: phone apps each run in one, and browsers sandbox
+    the code that runs web pages so a malicious site can't read your files.
+
+    On a desktop you can go further. Linux has tools that sandbox individual programs, and app
+    formats like Flatpak come with a permission system, though plenty of apps ask for far more
+    access than they need. Virtual machines go further still by running a whole separate operating
+    system, which is why they're popular for opening suspicious files or keeping different parts of
+    your life in separate compartments.
+
+    A sandbox is only as good as its rules. Broad permissions make it close to pointless, and bugs
+    that let code escape do turn up, so keep things updated. It also can't protect anything you hand
+    to the app inside it.
+  : |-
+    Un sandbox limita a qué puede acceder una app, como tus archivos, otras apps, la cámara o la red. Si algo de lo que hay dentro es malicioso o lo hackean, el daño debería quedarse ahí dentro. Usas sandboxes constantemente sin darte cuenta: cada app del teléfono se ejecuta en su propio sandbox, y los navegadores aíslan el código de las páginas web para que un sitio malicioso no pueda leer tus archivos.
+
+    En un equipo de escritorio puedes ir más allá. Linux tiene herramientas que aíslan programas concretos, y formatos de apps como Flatpak traen un sistema de permisos, aunque muchas apps piden muchísimo más acceso del que necesitan. Las máquinas virtuales van todavía más lejos, porque ejecutan un sistema operativo completo aparte, y por eso son tan populares para abrir archivos sospechosos o para mantener distintas partes de tu vida en compartimentos separados.
+
+    Un sandbox vale lo que valen sus reglas. Con permisos amplios pierde casi todo su sentido, y aparecen fallos que permiten al código escapar de él, así que mantenlo todo actualizado. Tampoco puede proteger lo que le entregues a la app que hay dentro.
+  app sandbox: sandbox de apps
+  Security audit: Auditoría de seguridad
+  An outside firm checking an app's code, systems or policies for security holes and false claims, ideally with a public report.: La revisión que hace una empresa externa del código, los sistemas o las políticas de una app en busca de fallos de seguridad y afirmaciones falsas, idealmente con un informe público.
+  ? |
+    In a security audit, a company pays an independent firm to go through its code or systems
+    looking for weaknesses, then (ideally) publishes the report. There are a few kinds: code
+    reviews, penetration tests where the auditors actively try to break in, reviews of the
+    cryptography, and policy audits like the no-logs audits VPN providers use to back up their
+    claims.
+
+    An audit is a snapshot. It only covers what was in scope at the time, and the app may have
+    changed a lot since. It's also paid for by the company being audited, which doesn't make it
+    worthless, but it's a good reason to read the details rather than trust a badge on the homepage.
+
+    Good signs are a full public report rather than a summary, a well-known auditing firm, a recent
+    date, a clear scope and a note of which issues got fixed. Regular audits over several years
+    count for more than a single one from 2019. No audit doesn't mean unsafe - plenty of small open
+    source projects can't afford one - but it does mean you're relying on whoever's read the code.
+  : |-
+    En una auditoría de seguridad, una empresa paga a una firma independiente para que revise su código o sus sistemas en busca de puntos débiles y luego (idealmente) publica el informe. Hay varios tipos: revisiones de código, pruebas de penetración en las que los auditores intentan colarse de verdad, revisiones de la criptografía y auditorías de políticas, como las de no registros con las que los proveedores de VPN respaldan lo que afirman.
+
+    Una auditoría es una instantánea. Solo cubre lo que entraba en su alcance en ese momento, y la app puede haber cambiado mucho desde entonces. También la paga la propia empresa auditada. Eso no le quita todo el valor, pero sí es un buen motivo para leer los detalles en lugar de confiar en un sello en la página de inicio.
+
+    Son buenas señales un informe público completo en lugar de un resumen, una firma auditora conocida, una fecha reciente, un alcance claro y una nota sobre qué problemas se corrigieron. Varias auditorías periódicas a lo largo de los años cuentan más que una sola de 2019. Que una app no tenga auditoría no quiere decir que sea insegura (muchos proyectos pequeños de código abierto no pueden permitírsela), pero sí que estás confiando en quien haya leído el código.
+  independent audit: auditoría independiente
+  third-party audit: auditoría externa
+  Self-hosting: Autoalojamiento
+  Running an app or service on hardware you control, at home or on a rented server, instead of relying on someone else's.: Ejecutar una app o un servicio en hardware que controlas tú, en casa o en un servidor alquilado, en lugar de depender del de otros.
+  ? |
+    Self-hosting means running the server side of something yourself, like your own cloud storage,
+    password manager server, chat server or media library. It might live on an old laptop, a
+    Raspberry Pi or a rented server. Your data stays somewhere you control, and no company can scan
+    it, sell it, change the terms or shut the service down on you.
+
+    The trade-off is that you're now the IT department. Updates, backups, security and fixing it at
+    2am are all on you, and a neglected server is easy pickings. On a rented server the hosting
+    company can get at your disk in principle, so encryption still matters. Email is notoriously
+    hard to self-host well, since the big providers are quick to treat mail from small servers as
+    spam.
+
+    Stick to open source apps with clear docs, an active project and an easy way to update. If you'd
+    rather not run it all yourself, plenty of privacy-focused services offer both - a hosted
+    version, and the code to run your own.
+  : |-
+    El autoalojamiento consiste en ejecutar tú mismo la parte de servidor de algo, como tu propio almacenamiento en la nube, el servidor de tu gestor de contraseñas, un servidor de chat o tu biblioteca multimedia. Puede estar en un equipo portátil viejo, en una Raspberry Pi o en un servidor alquilado. Tus datos se quedan en un lugar que controlas tú, y ninguna empresa puede escanearlos, venderlos, cambiar las condiciones o cerrarte el servicio.
+
+    La contrapartida es que ahora el departamento de informática eres tú. Las actualizaciones, las copias de seguridad, la seguridad y arreglarlo a las dos de la madrugada corren por tu cuenta, y un servidor descuidado es una presa fácil. En un servidor alquilado, la empresa de hosting puede, en teoría, acceder a tu disco, así que el cifrado sigue siendo importante. El correo electrónico tiene fama de ser muy difícil de autoalojar bien, porque los grandes proveedores no tardan en tratar como spam el correo que llega de servidores pequeños.
+
+    Limítate a apps de código abierto con documentación clara, un proyecto activo y una forma fácil de actualizarlas. Si prefieres no encargarte de todo tú, muchos servicios centrados en la privacidad ofrecen las dos cosas: una versión alojada y el código para montar la tuya.
+  self-hosted: autoalojado
+  Source-available software: Software de código fuente disponible
+  Software whose code you can read, but under a licence that limits what you can do with it, so it doesn't count as open source.: Software cuyo código puedes leer, pero con una licencia que limita lo que puedes hacer con él, así que no cuenta como código abierto.
+  ? |
+    Source-available code is public, but the licence holds back some of the freedoms open source
+    gives you. It might ban commercial use, stop you running it as a competing service, or forbid
+    sharing changed versions. The Business Source License and the Server Side Public License are
+    well-known examples, and neither is approved by the Open Source Initiative.
+
+    For privacy, it gets you most of the way. You (or anyone) can still read the code and check what
+    it does with your data, which is the main reason to care. What you lose is the safety net: if
+    the company goes bust or goes bad, usually nobody else is allowed to pick up the code and carry
+    on.
+
+    Watch the wording. Some projects call themselves open source when the licence says otherwise,
+    and code published with no licence at all is technically all rights reserved, even on GitHub. A
+    few source-available licences turn into proper open source ones after a set number of years.
+  : |-
+    En el software de código fuente disponible, el código es público, pero la licencia te niega algunas de las libertades que da el código abierto. Puede prohibir el uso comercial, impedirte ofrecerlo como un servicio que le haga la competencia o no dejarte compartir versiones modificadas. La Business Source License y la Server Side Public License son ejemplos conocidos, y ninguna de las dos está aprobada por la Open Source Initiative.
+
+    En cuanto a la privacidad, te da casi todo lo que necesitas. Tú (o cualquiera) puedes seguir leyendo el código y comprobar qué hace con tus datos, que es la razón principal por la que debería importarte. Lo que pierdes es la red de seguridad: si la empresa quiebra o deja de ser de fiar, normalmente nadie más tiene permiso para retomar el código y seguir adelante.
+
+    Fíjate bien en las palabras. Algunos proyectos se presentan como de código abierto aunque la licencia diga otra cosa, y el código que se publica sin ninguna licencia tiene, técnicamente, todos los derechos reservados, incluso en GitHub. Unas pocas licencias de código fuente disponible se convierten en licencias de código abierto de verdad al cabo de un número determinado de años.
+  Telemetry: Telemetría
+  Data an app or operating system sends back to its maker about how you use it, what device you're on and what went wrong.: Los datos que una app o un sistema operativo envía a su fabricante sobre cómo lo usas, qué dispositivo tienes y qué ha fallado.
+  ? |
+    Telemetry ranges from harmless to nosy. A crash report that helps someone fix a bug is one
+    thing. A steady stream of which buttons you click and what hardware you're on, tied to an ID
+    that follows you around, is another. Most of it's on by default and buried a few menus deep, if
+    it can be turned off at all.
+
+    Even "anonymous" telemetry has to be sent from somewhere, so the server receiving it sees your
+    IP address unless it goes through a proxy first. Windows, for one, lets you turn diagnostic data
+    down but not off unless you're on an Enterprise or Education edition, which is why so many tools
+    exist to block it.
+
+    The better apps make telemetry opt-in, list exactly what gets sent, and publish code you (or
+    someone else) can check. Open source apps can collect telemetry too, it's just harder to hide.
+    Blocking it with a firewall or a DNS blocklist works for plenty of apps, though some break or
+    nag you when they can't phone home.
+  : |-
+    La telemetría va desde lo inofensivo hasta lo entrometido. Un informe de fallos que ayuda a alguien a corregir un error es una cosa. Un flujo constante de datos sobre en qué botones haces clic y qué hardware usas, ligado a un identificador que te sigue a todas partes, es otra muy distinta. La mayor parte viene activada por defecto y escondida tras varios menús, si es que se puede desactivar.
+
+    Hasta la telemetría «anónima» tiene que enviarse desde algún lugar, así que el servidor que la recibe ve tu dirección IP, salvo que pase antes por un proxy. Windows, por ejemplo, te deja reducir los datos de diagnóstico, pero no desactivarlos, a menos que uses una edición Enterprise o Education, y por eso existen tantas herramientas para bloquearlos.
+
+    Las mejores apps solo activan la telemetría si tú lo aceptas, detallan exactamente qué se envía y publican código que puedes revisar tú (o cualquier otra persona). Las apps de código abierto también pueden recopilar telemetría, solo que les cuesta más ocultarla. Bloquearla con un firewall o una lista de bloqueo de DNS funciona con muchas apps, aunque algunas fallan o no paran de mostrarte avisos cuando no pueden conectar con sus servidores.
+  diagnostic data: datos de diagnóstico
+  usage data: datos de uso
+  Third-party cookies: Cookies de terceros
+  Cookies set by a company other than the site you're on, usually an ad network, so it can recognise you on every site it's embedded in.: Cookies que instala una empresa distinta del sitio web en el que estás, normalmente una red publicitaria, para reconocerte en todos los sitios en los que está integrada.
+  ? |
+    A cookie is a small bit of data a website stores in your browser. First-party cookies come from
+    the site you're actually on and do useful things like keep you logged in. Third-party cookies
+    come from something embedded in the page, like an ad, a share button or an analytics script, and
+    because the same company is embedded on thousands of sites, it can follow you from one to the
+    next.
+
+    Browsers have been clamping down on them. Safari blocks them by default, and Firefox gives every
+    site its own separate cookie jar so they can't follow you around. Chrome still allows them
+    unless you change the setting, after Google dropped its plan to phase them out.
+
+    Blocking them doesn't stop tracking on its own, since fingerprinting, tracking from a site's own
+    domain and being logged in to accounts all still work. In the UK and EU, sites need your consent
+    for non-essential cookies, which is what those banners are for. "Reject all" turns most of them
+    off, at least on sites that respect your choice.
+  : |-
+    Una cookie es un pequeño fragmento de datos que un sitio web guarda en tu navegador. Las cookies propias vienen del sitio que estás visitando y hacen cosas útiles, como mantener tu sesión iniciada. Las cookies de terceros vienen de algo integrado en la página, como un anuncio, un botón de compartir o un script de analítica, y como la misma empresa está integrada en miles de sitios, puede seguirte de uno a otro.
+
+    Los navegadores llevan tiempo poniéndoles freno. Safari las bloquea por defecto, y Firefox le da a cada sitio su propio espacio de cookies para que no puedan seguirte. Chrome todavía las permite si no cambias la configuración, después de que Google abandonara su plan de eliminarlas.
+
+    Bloquearlas no acaba con el rastreo por sí solo, porque siguen funcionando la huella digital del navegador, el rastreo desde el dominio del propio sitio y el hecho de tener la sesión iniciada en tus cuentas. En el Reino Unido y la UE, los sitios necesitan tu consentimiento para las cookies no esenciales, y para eso sirven esos banners. «Rechazar todas» desactiva la mayoría, al menos en los sitios que respetan tu decisión.
+  tracking cookies: cookies de rastreo
+  cross-site cookies: cookies entre sitios
+  Threat model: Modelo de amenazas
+  Working out what you're protecting, who from and how much hassle it's worth, so you pick tools that fit your real risks.: Averiguar qué estás protegiendo, de quién y cuántas molestias vale la pena asumir, para elegir herramientas que encajen con tus riesgos reales.
+  ? |
+    A threat model is just a plan. You work out what you want to protect (your messages, your
+    location, your identity), who you're protecting it from (advertisers, a nosy ex, scammers, a
+    government), how likely that is, how bad it'd be if it went wrong, and how much effort you're
+    prepared to put in. The EFF's Surveillance Self-Defense guide has a
+    [good walk-through](https://ssd.eff.org/module/your-security-plan).
+
+    Your answers decide what you need. Someone avoiding ad tracking needs a decent browser and an ad
+    blocker. A journalist protecting sources needs a lot more, and shouldn't rely on any one tool.
+    Most people are somewhere in between.
+
+    It also stops you overdoing it. Every extra tool is something else to maintain and something
+    else to break, and a setup that's a pain to live with tends to get abandoned. Pick protections
+    that match the threats you actually face, and look at them again when your situation changes.
+  : |-
+    Un modelo de amenazas no es más que un plan. Piensas qué quieres proteger (tus mensajes, tu ubicación, tu identidad), de quién lo proteges (anunciantes, un ex entrometido, estafadores, un gobierno), qué probabilidad hay de que pase, lo grave que sería si saliera mal y cuánto esfuerzo quieres invertir. La guía Surveillance Self-Defense de la EFF tiene una [buena explicación paso a paso](https://ssd.eff.org/module/your-security-plan).
+
+    Tus respuestas deciden lo que necesitas. Quien quiere evitar el rastreo publicitario necesita un navegador decente y un bloqueador de anuncios. Un periodista que protege a sus fuentes necesita mucho más, y no debería depender de una sola herramienta. La mayoría de la gente está en algún punto intermedio.
+
+    También te ayuda a no pasarte. Cada herramienta extra es una cosa más que mantener y una cosa más que se puede romper, y una configuración que es un fastidio en el día a día suele acabar abandonada. Elige protecciones que se ajusten a las amenazas a las que te enfrentas de verdad, y vuelve a revisarlas cuando cambie tu situación.
+  threat modelling: modelado de amenazas
+  Tor and onion routing: Tor y el enrutamiento cebolla
+  A free network that bounces your traffic through three volunteer-run relays, so no single one knows both who you are and where you're going.: Una red gratuita que hace rebotar tu tráfico por tres nodos gestionados por voluntarios, para que ninguno sepa a la vez quién eres y adónde vas.
+  ? |
+    Tor wraps your traffic in three layers of encryption and sends it through three relays run by
+    volunteers. Each relay peels off one layer (hence "onion"), so the first knows your IP address
+    but not where you're going, and the last knows where you're going but not who you are.
+    [Tor Browser](https://www.torproject.org/) is the easiest way in, and it also makes its users
+    look as alike as possible, so you're harder to fingerprint.
+
+    Onion services (the .onion addresses) never leave the Tor network, so both sides stay hidden.
+    For ordinary sites, the last relay can see your traffic if the site doesn't use HTTPS. Tor is
+    also slower than a normal connection, and some sites block it or pile on the CAPTCHAs.
+
+    Your ISP can see that you're using Tor, though not what for, unless you connect through a bridge
+    that disguises it. Tor can't protect you from yourself either - logging into your usual
+    accounts, or opening a downloaded file outside Tor Browser, can give you away. Someone who can
+    watch both ends of your connection at once may also be able to match up the traffic.
+  : |-
+    Tor envuelve tu tráfico en tres capas de cifrado y lo envía a través de tres nodos que gestionan voluntarios. Cada nodo quita una capa (de ahí lo de «cebolla»), de modo que el primero conoce tu dirección IP pero no adónde vas, y el último sabe adónde vas pero no quién eres. [Tor Browser](https://www.torproject.org/) es la forma más sencilla de empezar, y además hace que sus usuarios se parezcan lo máximo posible entre sí, así que cuesta más identificarte por la huella digital del navegador.
+
+    Los servicios onion (las direcciones .onion) nunca salen de la red Tor, así que las dos partes siguen ocultas. En los sitios normales, el último nodo puede ver tu tráfico si el sitio no usa HTTPS. Tor también es más lento que una conexión normal, y algunos sitios lo bloquean o te llenan de CAPTCHA.
+
+    Tu proveedor de internet puede ver que usas Tor, aunque no para qué, a menos que te conectes a través de un puente que lo disimule. Tor tampoco puede protegerte de ti mismo: iniciar sesión en tus cuentas de siempre, o abrir un archivo descargado fuera de Tor Browser, puede delatarte. Alguien que pueda vigilar los dos extremos de tu conexión a la vez también podría llegar a correlacionar el tráfico.
+  A community project that reads the terms and privacy policies of websites and apps, and grades them from A (very good) to E (very bad).: Un proyecto comunitario que lee las condiciones de uso y las políticas de privacidad de sitios web y apps, y les pone una nota de la A (muy buena) a la E (muy mala).
+  ? |
+    Hardly anyone reads the terms they agree to, so [ToS;DR](https://tosdr.org/) reads them for you.
+    Since 2012 its contributors have been going through the terms of service and privacy policies of
+    sites and apps, picking out the parts that matter, like whether you can delete your account or
+    whether your data gets shared with advertisers. Each point is labelled good, neutral, bad or,
+    for the worst ones, a blocker.
+
+    Those points add up to a grade from A, for very good, down to E, for very bad. Services with no
+    reviewed points don't get one. It's a quick way to spot terms that let a company do things you'd
+    object to.
+
+    Treat it as a starting point. Reviews come from a community of contributors, so smaller services
+    are often missing, and a company can change its terms after they've been reviewed. A grade is
+    also about what the terms say, not how secure the service is or whether the company sticks to
+    its word.
+  : |-
+    Casi nadie lee las condiciones que acepta, así que [ToS;DR](https://tosdr.org/) las lee por ti. Desde 2012, sus colaboradores repasan las condiciones del servicio y las políticas de privacidad de sitios web y apps, y señalan lo que importa, como si puedes borrar tu cuenta o si tus datos se comparten con anunciantes. Cada punto se etiqueta como bueno, neutral, malo o, en los peores casos, bloqueante.
+
+    A partir de esos puntos se calcula una nota que va de la A, muy buena, a la E, muy mala. Los servicios sin puntos revisados no reciben nota. Es una forma rápida de detectar condiciones que permiten a una empresa hacer cosas con las que no estarías de acuerdo.
+
+    Tómalo como un punto de partida. Las revisiones vienen de una comunidad de colaboradores, así que a menudo faltan los servicios más pequeños, y una empresa puede cambiar sus condiciones después de que se hayan revisado. Y la nota refleja lo que dicen las condiciones, no lo seguro que es el servicio ni si la empresa cumple su palabra.
+  Time-based one-time password: Contraseña de un solo uso basada en el tiempo
+  The short-lived codes from an authenticator app, worked out from a secret shared with the site and the current time.: Los códigos de corta duración de una app de autenticación, calculados a partir de una clave secreta compartida con el sitio y de la hora actual.
+  ? |
+    When you turn on app-based 2FA, the site shows you a QR code containing a secret key, which your
+    authenticator app saves. From then on, the app and the site both combine that secret with the
+    current time to work out the same short code, which usually changes every 30 seconds. It's all
+    done offline, so your phone doesn't need signal and the app doesn't need an account.
+
+    It's a big step up from SMS codes, since there's nothing for a SIM swap to intercept. It's not
+    phishing-proof, though. If you type a code into a convincing fake login page, the attacker can
+    pass it straight on to the real site while it's still valid. Anyone who gets hold of the secret
+    (from a backup, say, or a screenshot of the QR code) can also make your codes until you reset
+    2FA.
+
+    Pick an authenticator app that lets you back up or export your accounts, ideally encrypted, so a
+    lost or broken phone isn't a disaster. Some apps make it hard to get your secrets out, which
+    feels secure right up until you change phones.
+  : |-
+    Cuando activas la 2FA con una app, el sitio te muestra un código QR que contiene una clave secreta, y tu app de autenticación la guarda. A partir de ahí, tanto la app como el sitio combinan esa clave con la hora actual para calcular el mismo código corto, que normalmente cambia cada 30 segundos. Todo se hace sin conexión, así que tu teléfono no necesita señal y la app no necesita una cuenta.
+
+    Es un gran avance respecto a los códigos por SMS, porque un ataque de SIM swapping no tiene nada que interceptar. Pero no es a prueba de phishing. Si escribes un código en una página de inicio de sesión falsa pero convincente, el atacante puede reenviarlo al momento al sitio real mientras siga siendo válido. Y cualquiera que consiga la clave secreta (de una copia de seguridad, por ejemplo, o de una captura de pantalla del código QR) también puede generar tus códigos hasta que restablezcas la 2FA.
+
+    Elige una app de autenticación que te permita hacer una copia de seguridad de tus cuentas o exportarlas, idealmente cifradas, para que un teléfono perdido o roto no sea un desastre. Algunas apps ponen difícil sacar tus claves secretas, lo cual da mucha sensación de seguridad justo hasta que cambias de teléfono.
+  authenticator codes: códigos de autenticación
+  Tracker: Rastreador
+  Code in a website, app or email that records what you do and reports it to another company, usually for advertising.: Código en un sitio web, una app o un correo electrónico que registra lo que haces y se lo cuenta a otra empresa, normalmente con fines publicitarios.
+  ? |
+    Trackers come in a few shapes. On websites, they're scripts and invisible images from ad
+    networks and analytics firms, sometimes dozens on a single page. In apps, they're bits of code
+    from those same companies that the developer has bundled in, and they get whatever access the
+    app has. In emails, a tiny invisible image (a tracking pixel) tells the sender when you opened
+    it, roughly where you were and what device you used.
+
+    Because the same few companies are on so many sites and apps, they can follow you between them
+    and build up a profile of your interests, habits and whereabouts. That profile is used for
+    targeted ads, and some of it gets sold on to data brokers.
+
+    Blocking them is one of the easier wins. Content blockers in your browser use filter lists of
+    known trackers, DNS-level blockers do the same for every device on your network, and most email
+    apps can stop remote images loading. Blockers only catch trackers they know about, and some
+    sites now serve tracking from their own domain to get round them.
+  : |-
+    Hay rastreadores de varios tipos. En los sitios web, son scripts e imágenes invisibles de redes publicitarias y empresas de analítica, a veces decenas en una sola página. En las apps, son fragmentos de código de esas mismas empresas que el desarrollador ha incluido, y tienen el mismo acceso que la app. En los correos, una imagen diminuta e invisible (un píxel de seguimiento) le dice al remitente cuándo abriste el mensaje, más o menos dónde estabas y qué dispositivo usaste.
+
+    Como unas pocas empresas, siempre las mismas, están en tantísimos sitios y apps, pueden seguirte de unos a otros e ir construyendo un perfil de tus intereses, tus hábitos y los lugares por los que te mueves. Ese perfil se usa para anuncios personalizados, y parte de él se acaba vendiendo a corredores de datos.
+
+    Bloquearlos es una de las mejoras más fáciles de conseguir. Los bloqueadores de contenido del navegador usan listas de filtros con rastreadores conocidos, los bloqueadores a nivel de DNS hacen lo mismo para todos los dispositivos de tu red, y la mayoría de las apps de correo pueden impedir que se carguen las imágenes remotas. Los bloqueadores solo detienen los rastreadores que conocen, y algunos sitios ya sirven el rastreo desde su propio dominio para esquivarlos.
+  web tracker: rastreador web
+  ad tracker: rastreador publicitario
+  Virtual private network: Red privada virtual
+  An encrypted tunnel from your device to a VPN provider's server, which hides your traffic from your network and your IP address from sites.: Un túnel cifrado desde tu dispositivo hasta el servidor de un proveedor de VPN, que impide que tu red vea tu tráfico y que los sitios web vean tu dirección IP.
+  ? |
+    A VPN sends all your traffic through an encrypted tunnel to a server run by the VPN provider,
+    and from there out to the internet. Your ISP, or the Wi-Fi network you're on, can see that
+    you're using a VPN but not which sites you visit. The sites see the VPN server's IP address
+    instead of yours.
+
+    It doesn't make you anonymous. It moves your trust from your ISP to the VPN provider, who can
+    now see everything your ISP used to. It won't stop cookies, browser fingerprinting or a site
+    recognising you the moment you log in. It's good for hiding your IP address, using dodgy public
+    Wi-Fi, getting round blocks and geo-restrictions, and keeping your browsing away from your ISP,
+    and not much else.
+
+    The provider matters more than the tech. Look for an audited no-logs policy, open source apps, a
+    kill switch and leak protection, and a way to pay that doesn't tie the account to your name if
+    that matters to you. Be wary of free VPNs, which have to pay for their servers somehow, often
+    with your data.
+  : |-
+    Una VPN envía todo tu tráfico por un túnel cifrado hasta un servidor que gestiona el proveedor de la VPN, y de ahí sale a internet. Tu proveedor de internet, o la red wifi que estés usando, puede ver que usas una VPN, pero no qué sitios visitas. Los sitios ven la dirección IP del servidor de la VPN en lugar de la tuya.
+
+    No te da anonimato. Traslada tu confianza de tu proveedor de internet al de la VPN, que ahora puede ver todo lo que antes veía tu proveedor de internet. No impide las cookies, la huella digital del navegador ni que un sitio te reconozca en cuanto inicias sesión. Sirve para ocultar tu dirección IP, usar redes wifi públicas poco fiables, saltarte bloqueos y restricciones geográficas y mantener tu navegación lejos de tu proveedor de internet, y para poco más.
+
+    El proveedor importa más que la tecnología. Busca una política de no registros auditada, apps de código abierto, un kill switch y protección contra fugas y, si te importa, una forma de pago que no vincule la cuenta a tu nombre. Desconfía de las VPN gratuitas, que tienen que pagar sus servidores de alguna manera, a menudo con tus datos.
+  A regularly updated statement that a company hasn't received a secret government order, which it stops updating if it ever does.: Una declaración que una empresa actualiza con regularidad para decir que no ha recibido ninguna orden secreta del gobierno, y que deja de actualizar si algún día la recibe.
+  ? |
+    Some government orders, like US National Security Letters, come with a gag order that stops the
+    company telling anyone. A warrant canary is the workaround, named after the canaries miners used
+    to take underground. The company regularly publishes a statement saying it hasn't received any
+    such order, and if the statement disappears or stops being updated on schedule, you're meant to
+    assume it has.
+
+    It relies on the idea that a government can stop you saying something, but can't force you to
+    keep saying something false. That's never really been tested in court, and some lawyers think
+    pulling a canary could land a company in just as much trouble as speaking out.
+
+    So treat a canary as a hint. Check that it's updated on a regular schedule and signed (often
+    with PGP) so you know it's genuine. A lapsed canary can also just mean someone forgot to update
+    it, so look for an explanation before you panic.
+  : |-
+    Algunas órdenes del gobierno, como las National Security Letters de EE. UU., vienen con una orden de silencio que impide a la empresa contárselo a nadie. Un warrant canary es la forma de sortearla, y debe su nombre a los canarios que los mineros bajaban a la mina. La empresa publica con regularidad una declaración en la que dice que no ha recibido ninguna orden de ese tipo, y si la declaración desaparece o deja de actualizarse cuando toca, la idea es que des por hecho que sí la ha recibido.
+
+    Se basa en la idea de que un gobierno puede impedirte decir algo, pero no puede obligarte a seguir diciendo algo falso. Eso nunca se ha puesto realmente a prueba en los tribunales, y algunos abogados creen que retirar un canario podría meter a una empresa en tantos problemas como hablar abiertamente.
+
+    Así que toma un canario como un indicio. Comprueba que se actualiza con una periodicidad fija y que está firmado (a menudo con PGP), para saber que es auténtico. Un canario caducado también puede significar simplemente que a alguien se le olvidó actualizarlo, así que busca una explicación antes de entrar en pánico.
+  WebRTC leak: Fuga de WebRTC
+  When a website uses your browser's built-in calling tech to find your real IP address, even though you're on a VPN or proxy.: Cuando un sitio web usa la tecnología de llamadas integrada en tu navegador para averiguar tu dirección IP real, aunque estés usando una VPN o un proxy.
+  ? |
+    WebRTC is the browser tech behind video calls and other live connections that work without a
+    plugin. To connect people directly, it has to work out their IP addresses, and any website can
+    ask it to do that with a few lines of code. A WebRTC leak is when that reveals an address you
+    were hoping to hide.
+
+    It mostly bites with browser proxy extensions and VPN setups that don't send everything through
+    the tunnel, since WebRTC can go around them and expose your real public IP. A VPN app that
+    routes all your traffic usually isn't affected. Most major browsers now hide your local network
+    address from it by default, too.
+
+    To check, visit a WebRTC leak test page while you're connected. If it shows your real IP, you
+    can turn WebRTC off in some browsers (which breaks video calls in the browser), limit it with an
+    extension, or fix the VPN so it covers everything.
+  : |-
+    WebRTC es la tecnología del navegador que hay detrás de las videollamadas y otras conexiones en tiempo real que funcionan sin plugins. Para conectar a las personas directamente, tiene que averiguar sus direcciones IP, y cualquier sitio web puede pedirle que lo haga con unas pocas líneas de código. Hay una fuga de WebRTC cuando eso revela una dirección que querías ocultar.
+
+    El problema aparece sobre todo con las extensiones de proxy para el navegador y con las configuraciones de VPN que no envían todo por el túnel, porque WebRTC puede saltárselas y dejar a la vista tu IP pública real. Una app de VPN que enruta todo tu tráfico no suele verse afectada. La mayoría de los grandes navegadores también le ocultan ya por defecto tu dirección de red local.
+
+    Para comprobarlo, entra en una página de prueba de fugas de WebRTC con la VPN conectada. Si muestra tu IP real, puedes desactivar WebRTC en algunos navegadores (con lo que dejan de funcionar las videollamadas en el navegador), limitarlo con una extensión o arreglar la VPN para que lo cubra todo.
+  WebRTC IP leak: fuga de IP por WebRTC
+  Zero-knowledge encryption: Cifrado de conocimiento cero
+  Encryption done on your device before anything's uploaded, so the provider can store and sync your data but has no way to read it.: Cifrado que se hace en tu dispositivo antes de que se suba nada, para que el proveedor pueda guardar y sincronizar tus datos, pero no tenga forma de leerlos.
+  ? |
+    Zero-knowledge is mostly a marketing term, but a useful one. Your files, notes or passwords are
+    encrypted on your device with a key that comes from your password (or a key only you hold), and
+    only the encrypted version is ever sent to the provider. They can store and sync it, but they
+    can't read it, and neither can anyone who breaches them.
+
+    Check what's actually covered, as your email address, file sizes, timestamps and sometimes file
+    names can still be readable. Forget your password and there's usually no way to get your data
+    back - that's the point, but it catches people out. And if you use the web app, the provider
+    sends you fresh code every time you load it, so a provider that went bad (or was forced to)
+    could serve a version that grabs your password. Desktop and mobile apps make that harder to pull
+    off.
+
+    You'll also see "zero-access encryption", which some providers use for data that arrives
+    readable (an ordinary incoming email, say) and is encrypted with your key as soon as it lands.
+    Don't confuse any of it with zero-knowledge proofs, the maths behind some privacy coins - same
+    name, different idea.
+  : |-
+    «Conocimiento cero» es sobre todo un término de marketing, aunque útil. Tus archivos, notas o contraseñas se cifran en tu dispositivo con una clave derivada de tu contraseña (o con una clave que solo tienes tú), y al proveedor solo le llega la versión cifrada. Puede guardarla y sincronizarla, pero no leerla, y quien consiga entrar en sus sistemas tampoco.
+
+    Comprueba qué cubre exactamente, porque tu dirección de correo, el tamaño de los archivos, las marcas de tiempo y a veces los nombres de archivo pueden seguir siendo legibles. Si olvidas tu contraseña, normalmente no hay forma de recuperar tus datos: de eso se trata, pero sorprende a mucha gente. Y si usas la app web, el proveedor te envía código nuevo cada vez que la cargas, así que un proveedor que se volviera malicioso (o al que obligaran a hacerlo) podría servirte una versión que robe tu contraseña. Con las apps de escritorio y móviles, algo así es más difícil de conseguir.
+
+    También verás «cifrado de acceso cero», un término que algunos proveedores usan para los datos que llegan legibles (un correo entrante normal, por ejemplo) y se cifran con tu clave en cuanto se reciben. No confundas nada de esto con las pruebas de conocimiento cero, las matemáticas que hay detrás de algunas criptomonedas centradas en la privacidad: mismo nombre, idea distinta.
+  client-side encryption: cifrado del lado del cliente
+  zero-access encryption: cifrado de acceso cero
 fr:
   Utilities: Utilitaires
   Networking: Réseau
