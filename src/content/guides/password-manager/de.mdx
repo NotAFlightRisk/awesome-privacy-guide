@@ -1,0 +1,169 @@
+---
+title: Passwort-Manager einrichten und Passwörter übertragen
+description: Such dir einen Passwort-Manager aus, hol die Passwörter aus deinem Browser rüber, ohne dass eine Kopie herumliegt, und ändere zuerst dein E-Mail-Passwort.
+source: "516ef0870a9ccf70"
+sha: "e18ceac1d77545664aeb78d9d62f36e00f7d1525"
+---
+
+<Short>
+Such dir einen Passwort-Manager aus der Liste aus und sichere ihn mit einer [langen Passphrase](#master-passphrase), die du nirgendwo sonst benutzt. Übertrag, was dein Browser gespeichert hat, und prüf, ob alles angekommen ist. Danach [lösch die Exportdatei](#delete-the-export) und [leere den Passwortspeicher im Browser](#clear-the-browser-copy). [Ändere zuerst dein E-Mail-Passwort](#email-first), denn die meisten Links zum Zurücksetzen von Passwörtern landen in deinem Postfach. Die übrigen Passwörter änderst du nach und nach, wenn du dich irgendwo anmeldest. Wenn du 2022 ein LastPass-Konto hattest, [musst du auch die Passwörter darin ändern](#change-what-was-in-lastpass).
+</Short>
+
+## Such dir einen aus
+
+Die wichtigste Frage ist, wer sich um deinen Tresor kümmert. <App name="Bitwarden" /> und <App name="ProtonPass" /> synchronisieren ihn über ihre eigenen Server, verschlüsseln ihn aber schon auf deinem Gerät, bevor er übertragen wird, sodass die Firma ihn nicht lesen kann.[^bw-safari][^pp-import] Genau das ist mit <Term slug="zero-knowledge">Zero-Knowledge-Verschlüsselung</Term> gemeint. <App name="KeePass" /> legt deinen Tresor als verschlüsselte Datei auf deinen eigenen Geräten ab, und Synchronisierung und Backup dieser Datei sind deine Sache.[^keepass] Wenn du unsicher bist, fang mit einem an, der synchronisiert, denn damit hast du weniger Arbeit.
+
+Falls dein Browser deine Passwörter schon speichert: Du machst nichts falsch. Laut dem britischen NCSC ist das auf deinen eigenen Geräten sicher. Der Hauptgrund für einen Wechsel ist, dass ein eigenständiger Passwort-Manager über verschiedene Browser und Geräte hinweg synchronisiert, sodass dieselben Passwörter in Chrome auf deinem Laptop und in Safari auf deinem Handy funktionieren.[^ncsc-pm]
+
+{/* LessPass works passwords out rather than storing them, so it can't import anything. Pass is command line only, and PaperVault and 2of3 split one secret onto paper rather than managing logins. */}
+
+<Picks section="Password Managers" skip={['lesspass', 'pass', 'papervault', '2of3-by-ente']} />
+
+## Richte ihn ordentlich ein
+
+Leg dein Konto an und installier dann die App des Passwort-Managers auf deinem Handy und seine Erweiterung in deinem Browser, denn er kann Passwörter nur dort ausfüllen, wo er installiert ist.
+
+<Tip id="master-passphrase" priority="essential" effort={5} title="Nimm als Master-Passwort eine lange Passphrase aus zufälligen Wörtern">
+Dieses eine Passwort schützt alle anderen. Als 2022 die verschlüsselten Tresore von LastPass gestohlen wurden, war das Master-Passwort das Einzige, was jeden davon noch schützte, und die Diebe konnten offline so lange raten, wie sie wollten.[^krebs]
+
+Verlass dich nicht auf Großbuchstaben, Zahlen und Sonderzeichen. Solche Regeln führen meist nur zu Passwörtern wie `Password1!`, und Angreifer wissen, dass sie so etwas früh ausprobieren sollten.[^nist] Setz lieber auf Länge. Die EFF empfiehlt sechs Wörter, zufällig ausgewählt aus ihrer Liste mit 7.776 Wörtern, und solange sie zufällig sind, macht jedes zusätzliche Wort das Erraten 7.776-mal schwerer.[^eff] Wörter, die du dir selbst aussuchst, sind nicht zufällig, deshalb erklärt die EFF auf ihrer Seite, wie du sie auswürfelst.
+
+Benutz es für nichts anderes. Es auf Papier aufzuschreiben ist in Ordnung, denn dafür müsste jemand an den Zettel selbst herankommen, und laut NCSC geht das auch sicher, solange du dir überlegst, wer sonst noch an den Ort herankommt, an dem du ihn aufbewahrst.[^ncsc-pm]
+</Tip>
+
+<Tip id="lock-the-manager" priority="essential" effort={5} title="Schalte für den Passwort-Manager die Zwei-Faktor-Authentifizierung ein und druck den Wiederherstellungscode aus">
+Das Konto beim Passwort-Manager braucht <Term slug="2fa">Zwei-Faktor-Authentifizierung</Term> genauso dringend wie dein E-Mail-Konto, denn darin steckt alles andere. Bei Bitwarden bekommst du beim Einschalten einen Wiederherstellungscode, und wenn du sowohl diesen Code als auch das Handy verlierst, das du für die Zwei-Faktor-Authentifizierung nutzt, kommst du womöglich nicht mehr an deinen Tresor. Bitwarden empfiehlt, ihn auszudrucken und an einem sicheren Ort aufzubewahren.[^bw-recovery] Bewahr ihn nicht beim Master-Passwort auf, denn mit beidem zusammen kommt man an der Zwei-Faktor-Authentifizierung vorbei. Und leg ihn auch nicht nur im Tresor ab, denn genau da kommst du nicht ran, wenn du ihn brauchst.
+</Tip>
+
+## Zieh deine Passwörter um
+
+Der Export aus deinem Browser ist eine unverschlüsselte Datei, und dein Browser behält danach seine eigene Kopie. Das Aufräumen ist also genauso wichtig wie der Import. Die Schritte hier stammen aus den Hilfeseiten von Apple, Google und Bitwarden, Stand November 2026.
+
+<Tip id="move-without-a-file" priority="optional" effort={2} title="Zieh sie auf dem iPhone ohne Datei um">
+Seit iOS 26 kann Apples App „Passwörter“ deine Passwörter und Passkeys direkt an einen anderen Passwort-Manager übergeben, sodass keine Datei übrig bleibt, die du hinterher löschen musst. Das klappt nur, wenn der neue Passwort-Manager mitspielt, was bei Bitwarden der Fall ist.[^bw-safari]
+
+<Steps>
+1. Öffne die App „Passwörter“ und tippe auf die Taste „Weitere Optionen“.
+2. Tippe auf <Path>Daten in eine andere App exportieren</Path>, hak an, was du mitnehmen willst, und tippe auf „Fortfahren“.
+3. Wähl deinen neuen Passwort-Manager aus und bestätige dann in seiner App.
+</Steps>
+</Tip>
+
+<Tip id="export-and-import" priority="essential" effort={10} title="Exportier die Passwörter aus deinem Browser und importier sie dann">
+Alle unten aufgeführten Browser können deine Passwörter als CSV-Datei exportieren, und importieren kann diese Datei nicht nur Bitwarden, sondern auch ProtonPass und KeePassXC (eine KeePass-App).[^pp-import][^kpxc] Importier die Datei nur einmal, denn Bitwarden prüft nicht auf Duplikate.[^bw-safari]
+
+<Platforms>
+<Platform name="chrome">
+Öffne <Path>Dreipunkt-Menü --> Passwörter und Autofill --> Google Passwortmanager --> Einstellungen</Path> und wähl neben „Passwörter exportieren“ die Option „Datei herunterladen“.[^chrome] Brave und Opera funktionieren genauso, und Edge verwaltet seine Passwörter unter `edge://wallet/passwords`.[^bw-chrome]
+</Platform>
+<Platform name="firefox">
+Gib `about:logins` in die Adressleiste ein, öffne oben rechts das Menü und wähl <Path>Passwörter exportieren</Path>.[^bw-firefox]
+</Platform>
+<Platform name="macos">
+Öffne die App „Passwörter“ und wähl <Path>Ablage --> Alle Passwörter in eine Datei exportieren</Path>. WLAN-Passwörter, „Mit Apple anmelden“-Accounts und Passwörter in einer geteilten Gruppe, die jemand anderes erstellt hat, sind nicht dabei.[^apple-export]
+</Platform>
+<Platform name="ios">
+Wenn du den direkten Umzug oben nicht nutzen kannst, öffne <Path>Einstellungen --> Apps --> Safari</Path>, tippe unter „Verlauf und Websitedaten“ auf „Exportieren“, wähl „Passwörter“ und tippe auf „Im Downloads-Ordner sichern“.[^bw-safari]
+</Platform>
+<Platform name="android">
+Tippe in Chrome auf <Path>Dreipunkt-Menü --> Einstellungen --> Autofill und Passwörter --> Google Passwortmanager</Path>, dann auf <Path>Einstellungen --> Passwörter exportieren</Path>, und wähl aus, wo die Datei gespeichert werden soll.[^chrome]
+</Platform>
+</Platforms>
+
+Nutz dann die Importfunktion deines Passwort-Managers und wähl die Datei aus. In der Web-App von Bitwarden findest du sie unter <Path>Werkzeuge --> Import</Path>.[^bw-safari] Bevor du irgendetwas löschst, öffne den Passwort-Manager auf deinem Handy und prüf bei ein paar wichtigen Zugangsdaten, ob Benutzername und Passwort richtig angekommen sind.
+</Tip>
+
+<Tip id="delete-the-export" priority="essential" effort={1} title="Lösch die Exportdatei, sobald sie importiert ist">
+Die Datei ist nicht verschlüsselt, also kann jeder, der sie in die Finger bekommt, jedes Passwort darin lesen.[^apple-export] Lösch sie, sobald du den Import geprüft hast, und leere den Papierkorb. Ein Export vom iPhone landet in iCloud Drive, also lösch ihn dort.[^bw-safari]
+</Tip>
+
+<Tip id="clear-the-browser-copy" priority="essential" effort={5} title="Schalte das Speichern von Passwörtern im Browser aus und lösch, was er schon gespeichert hat">
+Sonst liegen deine Passwörter am Ende an zwei Stellen. Du änderst eins in deinem Passwort-Manager, der Browser behält das alte und bietet weiter an, neue zu speichern, und irgendwann weißt du nicht mehr, welches stimmt.
+
+<Platforms>
+<Platform name="chrome">
+Schalte unter <Path>Google Passwortmanager --> Einstellungen</Path> die Optionen „Speichern von Passwörtern und Passkeys anbieten“ und „Automatisch anmelden“ aus.[^bw-disable] „Alle Google Passwortmanager-Daten löschen“ entfernt den Rest, aber auch deine Passkeys.[^chrome] Wenn du dich irgendwo mit einem dort gespeicherten Passkey anmeldest, lösch die Passwörter stattdessen einzeln.
+</Platform>
+<Platform name="firefox">
+Entferne unter <Path>Einstellungen --> Passwörter und Autovervollständigung</Path> die Häkchen bei allen Optionen, die gesetzt sind, und lösch dann die gespeicherten Passwörter in `about:logins`.[^bw-disable]
+</Platform>
+<Platform name="macos">
+Entferne unter <Path>Safari --> Einstellungen --> Automatisch ausfüllen</Path> die Häkchen bei den Optionen und lösch dann die Passwörter, die du übertragen hast, aus der App „Passwörter“.[^bw-disable]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="phone-autofill" priority="essential" effort={3} title="Stell ihn auf dem Handy als Dienst zum automatischen Ausfüllen ein">
+Wenn die App dich bei der Installation nicht darum gebeten hat, holt sich dein Handy die Passwörter zum Ausfüllen weiter von der alten Stelle.
+
+<Platforms>
+<Platform name="ios">
+Öffne <Path>Einstellungen --> Allgemein --> Automatisch ausfüllen & Passwörter</Path> und schalte deinen neuen Passwort-Manager ein.[^bw-ios]
+</Platform>
+<Platform name="android">
+Öffne in Bitwarden <Path>Einstellungen --> Automatisches Ausfüllen --> Auto-Ausfüllen-Dienste</Path>, und wenn Android nach deinem bevorzugten Dienst fragt, wähl Bitwarden.[^bw-android]
+</Platform>
+</Platforms>
+</Tip>
+
+## Ändere zuerst die Passwörter, auf die es ankommt
+
+Du musst nicht heute Abend hundert Passwörter ändern. Ändere die, mit denen jemand an alles andere herankäme, und den Rest dann nach und nach, wenn du dich irgendwo anmeldest.
+
+<Tip id="email-first" priority="essential" effort={10} title="Ändere zuerst dein E-Mail-Passwort">
+Die meisten „Passwort vergessen“-Links landen in deinem Postfach, also kann jeder, der da reinkommt, die Passwörter deiner anderen Konten zurücksetzen. Lass deinen Passwort-Manager ein neues, zufälliges Passwort dafür erzeugen und melde dich damit auf deinen anderen Geräten neu an. Schalte bei der Gelegenheit gleich die Zwei-Faktor-Authentifizierung ein. Danach sind deine Bank, deine Shopping- und Bezahlkonten und deine Social-Media-Konten dran.[^ncsc-email]
+</Tip>
+
+<Tip id="reused-passwords" priority="optional" effort={15} title="Finde die Passwörter, die du mehrfach benutzt hast">
+Wenn du ein Passwort auf mehreren Websites benutzt hast, kann ein Krimineller, der es von einer davon erbeutet, es bei allen anderen ausprobieren.[^ncsc-email] Bei Bitwarden ist der Bericht „Datendiebstahl“ kostenlos, für die Berichte „Wiederverwendete Passwörter“ und „Schwache Passwörter“ brauchst du aber den kostenpflichtigen Tarif.[^bw-reports] Wenn du Chrome den Rücken kehrst: Der „Passwortcheck“ von Chrome findet Passwörter, die bei Datenpannen preisgegeben wurden, und schwache Passwörter, also lass ihn laufen, bevor du in Chrome aufräumst.[^chrome] Ändere alles, was bei einer Datenpanne aufgetaucht ist, sofort, und die mehrfach benutzten, wenn du dich das nächste Mal dort anmeldest.
+</Tip>
+
+## Nutz das automatische Ausfüllen als Warnsignal
+
+<Tip id="autofill-alarm" priority="essential" effort={1} title="Wenn er nichts ausfüllen will, prüf die Adresse">
+Ein Passwort-Manager füllt dein Passwort nur auf der Website aus, für die es gespeichert wurde. Ein Nachbau der Anmeldeseite deiner Bank unter einer ähnlich aussehenden Adresse bekommt also nichts.[^ncsc-pm] Wenn er das Ausfüllen nicht anbietet, halt kurz inne und lies die Adresse, bevor du das Passwort selbst hineinkopierst oder eintippst. Eine <Term slug="phishing">Phishing</Term>-Seite kann genauso aussehen wie die echte, aber ihre Adresse verrät sie.
+
+Manchmal ist es eine echte Website unter einer Adresse, die der Passwort-Manager noch nicht kennt, etwa ein Shop mit einer eigenen Domain für jedes Land. Bei Bitwarden kannst du die zusätzliche Adresse zu den Zugangsdaten hinzufügen, dann füllt er dort beim nächsten Mal aus.[^bw-uri]
+</Tip>
+
+## Sorg dafür, dass du wieder reinkommst
+
+<Tip id="plan-for-lockout" priority="optional" effort={10} title="Sorg vor, falls du das Master-Passwort vergisst">
+Das NCSC nennt einen Notfallzugriff über eine Vertrauensperson als eine Möglichkeit, wieder reinzukommen.[^ncsc-pm] Bei Bitwarden kann die Person, die du auswählst, Zugriff anfordern und bekommt ihn, sobald du zustimmst oder eine Wartezeit abgelaufen ist. Um jemanden hinzuzufügen, brauchst du allerdings den kostenpflichtigen Tarif.[^bw-ea] Bei KeePass ist dein Tresor eine Datei, also bewahr eine Kopie davon woanders auf als auf dem Gerät, auf dem du ihn benutzt.
+
+Wenn du das Master-Passwort lieber nicht auf einem einzigen Zettel aufbewahren willst, macht <App name="2of3 by Ente" /> daraus drei Karten, und mit zwei beliebigen davon bekommst du es zurück. Eine einzelne Karte nützt niemandem, der sie findet, und das Passwort verlässt nie deinen Browser, während die Karten entstehen.[^2of3] Probier aus, es aus zwei der Karten wiederherzustellen, bevor du dich darauf verlässt.
+</Tip>
+
+## Wenn du von LastPass wechselst
+
+Wenn du ein <Swap product="lastpass">LastPass</Swap>-Konto hattest, als LastPass 2022 gehackt wurde, reicht der Wechsel zu einem anderen Passwort-Manager allein nicht. Bitwarden und ProtonPass können beide einen LastPass-Export importieren.[^bw-lastpass][^pp-import]
+
+<Tip id="change-what-was-in-lastpass" priority="advanced" effort={60} title="Ändere die Passwörter, die in deinem LastPass-Tresor waren">
+2022 haben Angreifer eine Kopie der verschlüsselten Tresore von LastPass-Kunden erbeutet.[^lastpass] Wenn du dein LastPass-Master-Passwort jetzt änderst, ändert das nichts an dieser Kopie, und wer sie hat, kann sie offline angreifen, so lange er will. 2025 gaben US-Bundesermittler in einem Gerichtsdokument an, dass mithilfe von daraus geknackten Tresoren Kryptowährung gestohlen worden war. Viele der Bestohlenen hatten recht einfache Master-Passwörter, gehörten zu den ältesten Kunden von LastPass und hatten die Seed-Phrase einer Wallet in einer sicheren Notiz abgelegt.[^krebs]
+
+LastPass riet dazu, über eine Änderung der gespeicherten Passwörter nachzudenken, falls dein Master-Passwort nicht den Standardvorgaben entsprach, etwa der Mindestlänge von 12 Zeichen, die LastPass 2018 eingeführt hatte.[^lastpass] Wir würden sie auch dann ändern, wenn du glaubst, dass deins sie erfüllt hat, denn Forscher haben herausgefunden, dass LastPass viele ältere Konten nie auf seine neueren Schutzmaßnahmen umgestellt hat.[^krebs] Fang mit den Konten aus [dem E-Mail-Tipp](#email-first) an. Alles in einer sicheren Notiz, was sich nicht ändern lässt, etwa eine Kartennummer oder eine Seed-Phrase, solltest du als kompromittiert betrachten. Lass also die Karte austauschen und bring alles, was die Seed-Phrase schützt, in Sicherheit.
+</Tip>
+
+[^bw-safari]: [Bitwarden: Import from macOS & Safari](https://bitwarden.com/help/import-from-safari/)
+[^pp-import]: [Proton: Passwörter in Proton Pass importieren](https://proton.me/de/support/pass-import)
+[^keepass]: [KeePass Help: First steps](https://keepass.info/help/base/firststeps.html)
+[^ncsc-pm]: [NCSC: Managing your passwords](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
+[^krebs]: [Krebs on Security: Feds link $150M cyberheist to 2022 LastPass hacks](https://krebsonsecurity.com/2025/03/feds-link-150m-cyberheist-to-2022-lastpass-hacks/)
+[^nist]: [NIST SP 800-63B-4: Strength of passwords](https://pages.nist.gov/800-63-4/sp800-63b/passwords/)
+[^eff]: [EFF: New wordlists for random passphrases](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases)
+[^bw-recovery]: [Bitwarden: Get my recovery code](https://bitwarden.com/help/two-step-recovery-code/)
+[^bw-chrome]: [Bitwarden: Import from Chrome, Edge and Chromium browsers](https://bitwarden.com/help/import-from-chrome/)
+[^bw-firefox]: [Bitwarden: Import from Firefox](https://bitwarden.com/help/import-from-firefox/)
+[^apple-export]: [Apple Support: Exportieren von Passwörtern von deinem Mac in eine Datei](https://support.apple.com/de-de/guide/passwords/mchl35b12625/mac)
+[^kpxc]: [KeePassXC user guide: Importing databases](https://keepassxc.org/docs/KeePassXC_UserGuide)
+[^chrome]: [Chrome-Hilfe: Passwörter in Chrome verwalten](https://support.google.com/chrome/answer/95606?hl=de)
+[^bw-disable]: [Bitwarden: Deactivate your browser's built-in password manager](https://bitwarden.com/help/disable-browser-autofill/)
+[^bw-ios]: [Bitwarden: Autofill from the iOS app](https://bitwarden.com/help/auto-fill-ios/)
+[^bw-android]: [Bitwarden: Autofill from the Android app](https://bitwarden.com/help/auto-fill-android/)
+[^ncsc-email]: [NCSC: Use a strong and separate password for your email](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email)
+[^bw-reports]: [Bitwarden: Vault health reports](https://bitwarden.com/help/reports/)
+[^bw-uri]: [Bitwarden: Forming URIs for autofill](https://bitwarden.com/help/uri-match-detection/)
+[^bw-ea]: [Bitwarden: About emergency access](https://bitwarden.com/help/emergency-access/)
+[^2of3]: [2of3 by Ente](https://2of3.ente.com)
+[^bw-lastpass]: [Bitwarden: Import from LastPass](https://bitwarden.com/help/import-from-lastpass/)
+[^lastpass]: [LastPass: Notice of recent security incident](https://blog.lastpass.com/posts/notice-of-recent-security-incident)

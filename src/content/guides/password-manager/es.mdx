@@ -1,0 +1,169 @@
+---
+title: Cómo configurar un gestor de contraseñas e importar las tuyas
+description: Elige un gestor de contraseñas, importa en él las que guarda tu navegador sin dejar copias por ahí y cambia antes que nada la de tu correo.
+source: "516ef0870a9ccf70"
+sha: "e18ceac1d77545664aeb78d9d62f36e00f7d1525"
+---
+
+<Short>
+Elige un gestor de contraseñas de la lista y ponle una [frase de contraseña larga](#master-passphrase) que no hayas usado nunca en ningún otro sitio. Pasa al gestor lo que tiene guardado tu navegador, comprueba que no falte nada y luego [borra el archivo exportado](#delete-the-export) y [vacía la copia del navegador](#clear-the-browser-copy). [Cambia primero la contraseña del correo](#email-first), porque ahí llegan la mayoría de los enlaces para restablecer contraseñas, y cambia las demás a medida que vayas entrando en cada sitio. Si tenías una cuenta de LastPass en 2022, [también tienes que cambiar las contraseñas que guardabas allí](#change-what-was-in-lastpass).
+</Short>
+
+## Elige uno
+
+Lo principal que tienes que decidir es quién se encarga de tu bóveda. <App name="Bitwarden" /> y <App name="ProtonPass" /> la sincronizan a través de sus propios servidores, pero la cifran en tu dispositivo antes de enviarla, así que la empresa no puede leerla[^bw-safari][^pp-import]. A eso se le llama <Term slug="zero-knowledge">conocimiento cero</Term>. <App name="KeePass" /> guarda tu bóveda en un archivo cifrado en tus propios dispositivos, y sincronizar ese archivo y hacerle copias de seguridad te toca a ti[^keepass]. Si no lo tienes claro, empieza por uno que se sincronice, porque tendrás menos cosas de las que ocuparte.
+
+Si tu navegador ya guarda tus contraseñas, no estás haciendo nada mal. El NCSC británico dice que es seguro en tus propios dispositivos. El motivo principal para cambiarte es que un gestor aparte se sincroniza entre navegadores y dispositivos distintos, así que las mismas contraseñas te sirven en el Chrome de tu equipo y en el Safari de tu teléfono[^ncsc-pm].
+
+{/* LessPass works passwords out rather than storing them, so it can't import anything. Pass is command line only, and PaperVault and 2of3 split one secret onto paper rather than managing logins. */}
+
+<Picks section="Password Managers" skip={['lesspass', 'pass', 'papervault', '2of3-by-ente']} />
+
+## Configúralo bien
+
+Crea tu cuenta y después instala la app del gestor en tu teléfono y su extensión en tu navegador, porque solo puede rellenar contraseñas donde esté instalado.
+
+<Tip id="master-passphrase" priority="essential" effort={5} title="Usa como contraseña maestra una frase larga de palabras al azar">
+Esta contraseña protege todas las demás. Cuando robaron las bóvedas cifradas de LastPass en 2022, la contraseña maestra era lo único que seguía protegiendo cada una, y los ladrones podían probar contraseñas sin conexión todo el tiempo que quisieran[^krebs].
+
+No te fíes de las mayúsculas, los números y los símbolos. Lo que suelen conseguir esas reglas es que la gente ponga `Password1!`, y los atacantes ya saben que es de lo primero que tienen que probar[^nist]. Mejor apuesta por la longitud. La EFF recomienda seis palabras elegidas al azar de su lista de 7776 palabras, y siempre que sean al azar, cada palabra de más hace que la frase sea 7776 veces más difícil de adivinar[^eff]. Las palabras que eliges tú no son aleatorias, así que la página de la EFF explica cómo elegirlas con dados.
+
+No la uses para nada más. Apuntarla en un papel está bien, porque alguien tendría que llegar hasta el papel en sí, y el NCSC dice que puede hacerse con seguridad siempre que pienses en quién más tiene acceso al sitio donde lo guardas[^ncsc-pm].
+</Tip>
+
+<Tip id="lock-the-manager" priority="essential" effort={5} title="Activa la autenticación en dos pasos en el gestor e imprime el código de recuperación">
+La cuenta del gestor necesita la <Term slug="2fa">autenticación en dos pasos</Term> tanto como tu correo, porque guarda todo lo demás. En Bitwarden, al activarla recibes un código de recuperación, y si pierdes ese código y también el teléfono que usas para la autenticación en dos pasos, puedes quedarte sin acceso a tu bóveda. Bitwarden aconseja tener una copia impresa guardada en un lugar seguro[^bw-recovery]. No guardes el código en el mismo sitio que tu contraseña maestra, porque con los dos juntos se puede saltar la autenticación en dos pasos, y no lo tengas solo en la bóveda, que es justo el único sitio al que no podrás entrar cuando lo necesites.
+</Tip>
+
+## Pasa tus contraseñas al gestor
+
+Lo que exporta tu navegador es un archivo sin cifrar, y el navegador conserva su propia copia después, así que la limpieza importa tanto como la importación. Estos pasos salen de las páginas de ayuda de Apple, Google y Bitwarden tal como estaban en noviembre de 2026. Si en España el menú usa otra palabra, la tienes entre paréntesis.
+
+<Tip id="move-without-a-file" priority="optional" effort={2} title="En un iPhone, pásalas sin ningún archivo">
+Desde iOS 26, la app Contraseñas de Apple puede pasar tus contraseñas y llaves de acceso directamente a otro gestor, así que no queda ningún archivo que limpiar. Solo funciona si el gestor nuevo es compatible, y Bitwarden lo es[^bw-safari].
+
+<Steps>
+1. Abre la app Contraseñas y toca el botón de opciones.
+2. Toca <Path>Exportar datos a otra app</Path>, marca lo que quieras pasar y toca Continuar.
+3. Elige tu gestor nuevo y confirma en su app.
+</Steps>
+</Tip>
+
+<Tip id="export-and-import" priority="essential" effort={10} title="Exporta las contraseñas del navegador y luego impórtalas">
+Todos los navegadores de abajo pueden exportar tus contraseñas a un archivo CSV, y además de Bitwarden, también pueden importarlas ProtonPass y KeePassXC (una app de KeePass)[^pp-import][^kpxc]. Importa el archivo una sola vez, porque Bitwarden no comprueba si hay duplicados[^bw-safari].
+
+<Platforms>
+<Platform name="chrome">
+Abre <Path>Más --> Contraseñas y autocompletar --> Administrador de contraseñas de Google (Gestor de contraseñas de Google) --> Configuración</Path> y selecciona «Descargar archivo» junto a «Exportar contraseñas»[^chrome]. Brave y Opera funcionan igual, y Edge guarda sus contraseñas en `edge://wallet/passwords`[^bw-chrome].
+</Platform>
+<Platform name="firefox">
+Escribe `about:logins` en la barra de direcciones, abre el menú de arriba a la derecha y elige <Path>Exportar contraseñas</Path>[^bw-firefox].
+</Platform>
+<Platform name="macos">
+Abre la app Contraseñas y elige <Path>Archivo --> Exportar todas las contraseñas (Exportar todas las contraseñas a un archivo)</Path>. No se incluyen las contraseñas de redes Wi-Fi, las cuentas de «Iniciar sesión con Apple» ni las contraseñas de un grupo compartido que haya creado otra persona[^apple-export].
+</Platform>
+<Platform name="ios">
+Si no puedes usar el traspaso directo de arriba, abre <Path>Configuración (Ajustes) --> Apps --> Safari</Path>, toca Exportar debajo de «Historial y datos de sitios web», elige Contraseñas y guarda el archivo en Descargas[^bw-safari].
+</Platform>
+<Platform name="android">
+En Chrome, toca <Path>Más --> Configuración --> Autocompletar y contraseñas --> Administrador de contraseñas de Google</Path>, luego toca <Path>Configuración --> Exportar contraseñas</Path> y elige dónde guardar el archivo[^chrome].
+</Platform>
+</Platforms>
+
+Después usa la opción de importar de tu gestor y elige el archivo. En la app web de Bitwarden está en <Path>Herramientas --> Import</Path>[^bw-safari]. Antes de borrar nada, abre el gestor en tu teléfono y comprueba que algunas de tus cuentas importantes aparecen con el usuario y la contraseña correctos.
+</Tip>
+
+<Tip id="delete-the-export" priority="essential" effort={1} title="Borra el archivo exportado en cuanto esté importado">
+El archivo no está cifrado, así que cualquiera que se haga con él puede leer todas las contraseñas que contiene[^apple-export]. Bórralo cuando hayas comprobado la importación y vacía la papelera. Lo que exportas desde un iPhone se guarda en iCloud Drive, así que bórralo de ahí[^bw-safari].
+</Tip>
+
+<Tip id="clear-the-browser-copy" priority="essential" effort={5} title="Desactiva el guardado de contraseñas del navegador y borra lo que tenía guardado">
+Si no, acabarás teniendo dos juegos de contraseñas. Cambiarás una en el gestor, el navegador se quedará con la antigua y seguirá ofreciéndote guardar las nuevas, y al cabo de un tiempo no sabrás cuál es la buena.
+
+<Platforms>
+<Platform name="chrome">
+En <Path>Administrador de contraseñas de Google --> Configuración</Path>, desactiva «Ofrecer guardar contraseñas y llaves de acceso» («Preguntar si quiero guardar contraseñas y llaves de acceso») y «Acceder automáticamente» («Iniciar sesión automáticamente»)[^bw-disable]. La opción «Borrar todos los datos del Administrador de contraseñas de Google» («Eliminar todos los datos del Gestor de contraseñas de Google») se lleva todo lo demás, pero también borra tus llaves de acceso[^chrome]. Si inicias sesión en algún sitio con una llave de acceso guardada ahí, mejor borra las contraseñas una por una.
+</Platform>
+<Platform name="firefox">
+En <Path>Ajustes --> Contraseñas y autorrelleno (Contraseñas y autocompletado)</Path>, desmarca las opciones que estén marcadas y luego elimina las contraseñas guardadas desde `about:logins`[^bw-disable].
+</Platform>
+<Platform name="macos">
+En <Path>Safari --> Configuración (Ajustes) --> Autorrelleno</Path>, desmarca las opciones y luego elimina de la app Contraseñas las que ya hayas pasado al gestor[^bw-disable].
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="phone-autofill" priority="essential" effort={3} title="Haz que tu teléfono lo use para rellenar contraseñas">
+Si la app no te lo pidió al instalarla, el teléfono seguirá rellenando las contraseñas desde el sitio de antes.
+
+<Platforms>
+<Platform name="ios">
+Abre <Path>Configuración --> General --> Autorrelleno y contraseñas</Path> y activa tu gestor nuevo[^bw-ios].
+</Platform>
+<Platform name="android">
+En Bitwarden, abre <Path>Ajustes --> Autocompletar --> Servicios de Autocompletado</Path> y, cuando Android te pregunte qué servicio prefieres, elige Bitwarden[^bw-android].
+</Platform>
+</Platforms>
+</Tip>
+
+## Cambia primero las contraseñas que más importan
+
+No hace falta que cambies cien contraseñas esta noche. Cambia las que alguien podría usar para entrar en todo lo demás y deja el resto para cuando vayas iniciando sesión en cada sitio.
+
+<Tip id="email-first" priority="essential" effort={10} title="Cambia primero la contraseña del correo">
+La mayoría de los enlaces de «olvidé mi contraseña» llegan a tu correo, así que quien entre en él puede restablecer tus otras cuentas. Deja que el gestor genere una contraseña aleatoria nueva para el correo y luego vuelve a iniciar sesión con ella en tus otros dispositivos. Aprovecha para activar la autenticación en dos pasos. Después, sigue con el banco, tus cuentas de compras y de pagos, y tus redes sociales[^ncsc-email].
+</Tip>
+
+<Tip id="reused-passwords" priority="optional" effort={15} title="Busca las contraseñas que repites en varios sitios">
+Si usas la misma contraseña en varios sitios, un delincuente que la consiga en uno de ellos puede probarla en todos los demás[^ncsc-email]. En Bitwarden, el «Informe de filtración de datos» es gratis, pero los informes de «Contraseñas reutilizadas» y «Contraseñas débiles» necesitan el plan de pago[^bw-reports]. Si vas a dejar Chrome, su propia revisión encuentra contraseñas filtradas y poco seguras, así que hazla antes de vaciar Chrome[^chrome]. Cambia enseguida todo lo que haya aparecido en una filtración, y las repetidas, a medida que vayas iniciando sesión.
+</Tip>
+
+## Usa el autocompletado como señal de alarma
+
+<Tip id="autofill-alarm" priority="essential" effort={1} title="Si no te ofrece rellenar la contraseña, mira la dirección">
+Un gestor solo rellena tu contraseña en el sitio para el que se guardó, así que una copia de la página de acceso de tu banco en una dirección parecida se queda sin nada[^ncsc-pm]. Si no te la ofrece, para y lee la dirección antes de copiar o escribir la contraseña a mano. Una página de <Term slug="phishing">phishing</Term> puede ser idéntica a la de verdad, pero su dirección la delata.
+
+A veces es un sitio legítimo en una dirección que el gestor no conoce, como una tienda con un dominio distinto para cada país. Bitwarden te deja añadir esa otra dirección a la cuenta guardada, para que la próxima vez también la rellene ahí[^bw-uri].
+</Tip>
+
+## Asegúrate de poder volver a entrar
+
+<Tip id="plan-for-lockout" priority="optional" effort={10} title="Prepara una forma de volver a entrar si olvidas la contraseña maestra">
+El NCSC menciona el acceso de emergencia a través de alguien de confianza como una de las formas de volver a entrar[^ncsc-pm]. En Bitwarden, la persona que elijas puede pedir acceso, y lo obtiene cuando tú lo apruebas o cuando termina un periodo de espera, pero para añadirla necesitas el plan de pago[^bw-ea]. Con KeePass, tu bóveda es un archivo, así que guarda una copia en algún sitio que no sea el dispositivo en el que la usas.
+
+Si prefieres no tener la contraseña maestra en una sola hoja de papel, <App name="2of3 by Ente" /> la convierte en tres tarjetas, y con dos cualesquiera de ellas la recuperas. Una tarjeta sola no le sirve de nada a quien la encuentre, y la contraseña no sale de tu navegador mientras se crean[^2of3]. Haz la prueba de recuperarla con dos de las tarjetas antes de confiar en ellas.
+</Tip>
+
+## Si dejas LastPass
+
+Si tenías una cuenta de <Swap product="lastpass">LastPass</Swap> cuando sufrió el ataque de 2022, cambiarte a otro gestor no basta por sí solo. Tanto Bitwarden como ProtonPass pueden importar lo que exportes de LastPass[^bw-lastpass][^pp-import].
+
+<Tip id="change-what-was-in-lastpass" priority="advanced" effort={60} title="Cambia las contraseñas que tenías en tu bóveda de LastPass">
+En 2022, unos atacantes se llevaron una copia de las bóvedas cifradas de los clientes de LastPass[^lastpass]. Cambiar ahora tu contraseña maestra de LastPass no cambia esa copia, y quien la tenga puede atacarla sin conexión todo el tiempo que quiera. En 2025, agentes federales de EE. UU. afirmaron en un escrito judicial que se habían robado criptomonedas usando bóvedas descifradas a partir de esa copia. Muchas de las víctimas tenían contraseñas maestras bastante sencillas, estaban entre los clientes más antiguos de LastPass y guardaban la frase semilla de una billetera de criptomonedas en una nota segura[^krebs].
+
+LastPass recomendó que te plantearas cambiar las contraseñas guardadas si tu contraseña maestra no cumplía sus requisitos predeterminados, como el mínimo de 12 caracteres que introdujo en 2018[^lastpass]. Nosotros las cambiaríamos aunque creas que la tuya sí los cumplía, porque unos investigadores descubrieron que LastPass nunca pasó muchas cuentas antiguas a sus protecciones más nuevas[^krebs]. Empieza por las cuentas del [consejo sobre el correo](#email-first). Todo lo que tengas en una nota segura y no se pueda cambiar, como un número de tarjeta o una frase semilla, debes darlo por expuesto, así que pide una tarjeta nueva y mueve a otro lado lo que proteja la frase semilla.
+</Tip>
+
+[^bw-safari]: [Bitwarden: Importar desde macOS y Safari](https://bitwarden.com/help/import-from-safari/)
+[^pp-import]: [Proton: Importar contraseñas a Proton Pass](https://proton.me/es-419/support/pass-import)
+[^keepass]: [Ayuda de KeePass: Primeros pasos](https://keepass.info/help/base/firststeps.html)
+[^ncsc-pm]: [NCSC: Cómo gestionar tus contraseñas](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
+[^krebs]: [Krebs on Security: Los federales vinculan un ciberrobo de 150 millones de dólares con los hackeos de LastPass de 2022](https://krebsonsecurity.com/2025/03/feds-link-150m-cyberheist-to-2022-lastpass-hacks/)
+[^nist]: [NIST SP 800-63B-4: Solidez de las contraseñas](https://pages.nist.gov/800-63-4/sp800-63b/passwords/)
+[^eff]: [EFF: Nuevas listas de palabras para frases de contraseña aleatorias](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases)
+[^bw-recovery]: [Bitwarden: Obtener mi código de recuperación](https://bitwarden.com/help/two-step-recovery-code/)
+[^bw-chrome]: [Bitwarden: Importar desde Chrome, Edge y navegadores Chromium](https://bitwarden.com/help/import-from-chrome/)
+[^bw-firefox]: [Bitwarden: Importar desde Firefox](https://bitwarden.com/help/import-from-firefox/)
+[^apple-export]: [Soporte de Apple: Exportar contraseñas de tu Mac a un archivo](https://support.apple.com/es-mx/guide/passwords/mchl35b12625/mac)
+[^kpxc]: [Guía de usuario de KeePassXC: Importar bases de datos](https://keepassxc.org/docs/KeePassXC_UserGuide)
+[^chrome]: [Ayuda de Google Chrome: Cómo administrar contraseñas en Chrome](https://support.google.com/chrome/answer/95606?hl=es-419)
+[^bw-disable]: [Bitwarden: Desactivar el gestor de contraseñas integrado del navegador](https://bitwarden.com/help/disable-browser-autofill/)
+[^bw-ios]: [Bitwarden: Autocompletar desde la app de iOS](https://bitwarden.com/help/auto-fill-ios/)
+[^bw-android]: [Bitwarden: Autocompletar desde la app de Android](https://bitwarden.com/help/auto-fill-android/)
+[^ncsc-email]: [NCSC: Usa una contraseña segura y distinta para tu correo](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email)
+[^bw-reports]: [Bitwarden: Informes sobre el estado de la bóveda](https://bitwarden.com/help/reports/)
+[^bw-uri]: [Bitwarden: Cómo formar URI para el autocompletado](https://bitwarden.com/help/uri-match-detection/)
+[^bw-ea]: [Bitwarden: Acerca del acceso de emergencia](https://bitwarden.com/help/emergency-access/)
+[^2of3]: [2of3 by Ente](https://2of3.ente.com)
+[^bw-lastpass]: [Bitwarden: Importar desde LastPass](https://bitwarden.com/help/import-from-lastpass/)
+[^lastpass]: [LastPass: Aviso sobre un incidente de seguridad reciente](https://blog.lastpass.com/posts/notice-of-recent-security-incident)

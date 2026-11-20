@@ -1,0 +1,169 @@
+---
+title: "Comment passer à un gestionnaire de mots de passe"
+description: "Choisissez un gestionnaire, importez les mots de passe de votre navigateur sans laisser traîner de copie, et changez d’abord celui de votre messagerie."
+source: "516ef0870a9ccf70"
+sha: "e18ceac1d77545664aeb78d9d62f36e00f7d1525"
+---
+
+<Short>
+Choisissez un gestionnaire de mots de passe dans la liste et protégez-le avec une [longue phrase de passe](#master-passphrase) que vous n’avez jamais utilisée ailleurs. Importez ce que votre navigateur a enregistré, vérifiez que tout est bien arrivé, puis [supprimez le fichier d’export](#delete-the-export) et [effacez la copie que garde le navigateur](#clear-the-browser-copy). [Changez d’abord le mot de passe de votre messagerie](#email-first), puisque c’est là qu’arrivent la plupart des liens de réinitialisation, et changez les autres au fil de vos connexions. Si vous aviez un compte LastPass en 2022, [il faut aussi changer les mots de passe qu’il contenait](#change-what-was-in-lastpass).
+</Short>
+
+## Choisissez-en un
+
+La grande question, c’est de savoir qui s’occupe de votre coffre. <App name="Bitwarden" /> et <App name="ProtonPass" /> le synchronisent via leurs propres serveurs, mais le chiffrent sur votre appareil avant de l’envoyer, si bien que l’entreprise ne peut pas le lire.[^bw-safari][^pp-import] C’est ce qu’on appelle le <Term slug="zero-knowledge">chiffrement à connaissance zéro</Term>. <App name="KeePass" /> garde votre coffre dans un fichier chiffré sur vos propres appareils, et c’est à vous de synchroniser et de sauvegarder ce fichier.[^keepass] Dans le doute, commencez par un gestionnaire synchronisé : vous aurez moins de choses à gérer.
+
+Si votre navigateur enregistre déjà vos mots de passe, vous ne faites rien de mal. Le NCSC britannique estime que c’est sans danger sur vos propres appareils. La principale raison de changer, c’est qu’un gestionnaire dédié se synchronise entre des navigateurs et des appareils différents, pour que les mêmes mots de passe fonctionnent dans Chrome sur votre ordinateur portable et dans Safari sur votre téléphone.[^ncsc-pm]
+
+{/* LessPass works passwords out rather than storing them, so it can't import anything. Pass is command line only, and PaperVault and 2of3 split one secret onto paper rather than managing logins. */}
+
+<Picks section="Password Managers" skip={['lesspass', 'pass', 'papervault', '2of3-by-ente']} />
+
+## Configurez-le comme il faut
+
+Créez votre compte, puis installez l’application du gestionnaire sur votre téléphone et son extension dans votre navigateur : il ne peut remplir vos mots de passe que là où il est installé.
+
+<Tip id="master-passphrase" priority="essential" effort={5} title="Faites du mot de passe principal une longue phrase de passe aux mots tirés au hasard">
+Ce mot de passe protège tous les autres. Quand les coffres chiffrés de LastPass ont été volés en 2022, le mot de passe principal était la seule chose qui protégeait encore chacun d’eux, et les voleurs pouvaient essayer de le deviner hors ligne aussi longtemps qu’ils le voulaient.[^krebs]
+
+Ne comptez pas sur les majuscules, les chiffres et les symboles. Ce genre de règle pousse surtout les gens vers `Password1!`, que les attaquants essaient en priorité.[^nist] Misez plutôt sur la longueur. L’EFF recommande six mots tirés au hasard dans sa liste de 7 776 mots, et tant qu’ils sont aléatoires, chaque mot ajouté rend la phrase 7 776 fois plus difficile à deviner.[^eff] Les mots que vous choisissez vous-même ne sont pas aléatoires, c’est pourquoi la page de l’EFF explique comment les tirer avec des dés.
+
+Ne l’utilisez pour rien d’autre. L’écrire sur papier ne pose pas de problème, car il faudrait mettre la main sur le papier lui-même, et le NCSC estime que c’est possible sans risque, à condition de réfléchir à qui d’autre a accès à l’endroit où vous le rangez.[^ncsc-pm]
+</Tip>
+
+<Tip id="lock-the-manager" priority="essential" effort={5} title="Activez l’authentification à deux facteurs sur le gestionnaire et imprimez le code de récupération">
+Le compte du gestionnaire a autant besoin de l’<Term slug="2fa">authentification à deux facteurs</Term> que votre messagerie, puisqu’il contient tout le reste. Sur Bitwarden, son activation vous donne un code de récupération, et perdre à la fois ce code et le téléphone qui vous sert de second facteur peut vous bloquer l’accès à votre coffre. Bitwarden conseille d’en garder une copie imprimée en lieu sûr.[^bw-recovery] Ne la rangez pas avec votre mot de passe principal, car les deux réunis suffisent à contourner l’authentification à deux facteurs, ni uniquement dans le coffre, qui est justement le seul endroit auquel vous n’aurez pas accès le jour où vous en aurez besoin.
+</Tip>
+
+## Importez vos mots de passe
+
+L’export de votre navigateur est un fichier non chiffré, et votre navigateur garde ensuite sa propre copie : le nettoyage compte donc autant que l’import. Les étapes ci-dessous viennent des pages d’aide d’Apple, de Google et de Bitwarden, telles qu’elles étaient en novembre 2026.
+
+<Tip id="move-without-a-file" priority="optional" effort={2} title="Sur iPhone, transférez-les sans passer par un fichier">
+Depuis iOS 26, l’app Mots de passe d’Apple peut transmettre vos mots de passe et vos clés d’accès directement à un autre gestionnaire, sans fichier à supprimer ensuite. Cela ne marche que si le nouveau gestionnaire le prend en charge, ce qui est le cas de Bitwarden.[^bw-safari]
+
+<Steps>
+1. Ouvrez l’app Mots de passe et touchez le bouton d’options.
+2. Touchez <Path>Exporter les données vers une autre app</Path>, cochez ce que vous voulez transférer, puis touchez Continuer.
+3. Choisissez votre nouveau gestionnaire, puis confirmez dans son application.
+</Steps>
+</Tip>
+
+<Tip id="export-and-import" priority="essential" effort={10} title="Exportez les mots de passe de votre navigateur, puis importez-les">
+Chacun des navigateurs ci-dessous sait exporter vos mots de passe dans un fichier CSV, et ProtonPass et KeePassXC (une application KeePass) peuvent les importer, tout comme Bitwarden.[^pp-import][^kpxc] N’importez le fichier qu’une seule fois, car Bitwarden ne détecte pas les doublons.[^bw-safari]
+
+<Platforms>
+<Platform name="chrome">
+Ouvrez <Path>Plus --> Mots de passe et saisie automatique --> Gestionnaire de mots de passe Google --> Paramètres</Path>, puis sélectionnez « Télécharger le fichier » à côté de l’option « Exporter des mots de passe ».[^chrome] Brave et Opera fonctionnent de la même façon, et Edge range ses mots de passe à l’adresse `edge://wallet/passwords`.[^bw-chrome]
+</Platform>
+<Platform name="firefox">
+Tapez `about:logins` dans la barre d’adresse, ouvrez le menu en haut à droite et choisissez <Path>Exporter les mots de passe</Path>.[^bw-firefox]
+</Platform>
+<Platform name="macos">
+Ouvrez l’app Mots de passe et choisissez <Path>Fichier --> Exporter tous les mots de passe vers un fichier</Path>. Les mots de passe Wi-Fi, les comptes « Se connecter avec Apple » et les mots de passe d’un groupe partagé créé par quelqu’un d’autre ne sont pas inclus.[^apple-export]
+</Platform>
+<Platform name="ios">
+Si vous ne pouvez pas utiliser le transfert direct décrit plus haut, ouvrez <Path>Réglages --> Apps --> Safari</Path>, touchez Exporter sous « Historique et données de sites web », choisissez « Mots de passe » et enregistrez le fichier dans Téléchargements.[^bw-safari]
+</Platform>
+<Platform name="android">
+Dans Chrome, appuyez sur <Path>Plus --> Paramètres --> Saisie automatique et mots de passe --> Gestionnaire de mots de passe Google</Path>, puis sur <Path>Paramètres --> Exporter des mots de passe</Path>, et choisissez où enregistrer le fichier.[^chrome]
+</Platform>
+</Platforms>
+
+Ensuite, utilisez l’option d’import de votre gestionnaire et choisissez le fichier. Dans l’application web de Bitwarden, c’est <Path>Outils --> Import</Path>.[^bw-safari] Avant de supprimer quoi que ce soit, ouvrez le gestionnaire sur votre téléphone et vérifiez que quelques-uns de vos identifiants importants sont bien arrivés, avec le bon nom d’utilisateur et le bon mot de passe.
+</Tip>
+
+<Tip id="delete-the-export" priority="essential" effort={1} title="Supprimez le fichier d’export une fois qu’il est importé">
+Le fichier n’est pas chiffré, donc quiconque met la main dessus peut lire tous les mots de passe qu’il contient.[^apple-export] Supprimez-le une fois l’import vérifié, et videz la corbeille. Un export fait depuis un iPhone est enregistré dans iCloud Drive, c’est donc là qu’il faut le supprimer.[^bw-safari]
+</Tip>
+
+<Tip id="clear-the-browser-copy" priority="essential" effort={5} title="Désactivez l’enregistrement des mots de passe dans le navigateur et effacez ce qu’il a gardé">
+Sinon, vous vous retrouverez avec vos mots de passe en double. Vous en changerez un dans votre gestionnaire, le navigateur gardera l’ancien et continuera de vous proposer d’en enregistrer de nouveaux, et au bout d’un moment vous ne saurez plus lequel est le bon.
+
+<Platforms>
+<Platform name="chrome">
+Dans <Path>Gestionnaire de mots de passe Google --> Paramètres</Path>, désactivez « Proposer d’enregistrer les mots de passe et les clés d’accès » et « Connexion automatique ».[^bw-disable] L’option « Supprimer toutes les données du Gestionnaire de mots de passe Google » efface le reste, mais elle supprime aussi vos clés d’accès.[^chrome] Si vous vous connectez quelque part avec une clé d’accès qui y est enregistrée, supprimez plutôt les mots de passe un par un.
+</Platform>
+<Platform name="firefox">
+Dans <Path>Paramètres --> Mots de passe et remplissage automatique</Path>, décochez les options déjà cochées, puis supprimez les mots de passe enregistrés depuis `about:logins`.[^bw-disable]
+</Platform>
+<Platform name="macos">
+Dans <Path>Safari --> Réglages --> Remplissage automatique</Path>, décochez les options, puis supprimez de l’app Mots de passe les mots de passe que vous avez transférés.[^bw-disable]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="phone-autofill" priority="essential" effort={3} title="Faites-en l’outil de remplissage automatique de votre téléphone">
+Si l’application ne vous l’a pas proposé à l’installation, votre téléphone continuera de remplir vos mots de passe à partir de l’ancien gestionnaire.
+
+<Platforms>
+<Platform name="ios">
+Ouvrez <Path>Réglages --> Général --> Remplissage automatique et mots de passe</Path> et activez votre nouveau gestionnaire.[^bw-ios]
+</Platform>
+<Platform name="android">
+Dans Bitwarden, ouvrez <Path>Paramètres --> Saisie automatique --> Services de saisie automatique</Path>, et quand Android vous demande quel service vous préférez, choisissez Bitwarden.[^bw-android]
+</Platform>
+</Platforms>
+</Tip>
+
+## Changez d’abord les mots de passe qui comptent
+
+Inutile de changer cent mots de passe ce soir. Changez ceux qui permettraient à quelqu’un d’accéder à tout le reste, puis occupez-vous des autres au fil de vos connexions.
+
+<Tip id="email-first" priority="essential" effort={10} title="Changez d’abord le mot de passe de votre messagerie">
+La plupart des liens « mot de passe oublié » arrivent dans votre boîte mail, donc quiconque y accède peut réinitialiser vos autres comptes. Laissez votre gestionnaire créer un nouveau mot de passe aléatoire pour votre messagerie, puis utilisez-le pour vous reconnecter sur vos autres appareils. Profitez-en pour activer l’authentification à deux facteurs. Ensuite, occupez-vous de votre banque, de vos comptes de boutiques en ligne et de paiement, et de vos réseaux sociaux.[^ncsc-email]
+</Tip>
+
+<Tip id="reused-passwords" priority="optional" effort={15} title="Repérez les mots de passe que vous avez utilisés sur plusieurs sites">
+Si vous avez utilisé le même mot de passe sur plusieurs sites, un pirate qui le récupère sur l’un d’eux peut l’essayer sur tous les autres.[^ncsc-email] Sur Bitwarden, le rapport « Brèches de données » est gratuit, mais les rapports « Mots de passe réutilisés » et « Mots de passe faibles » nécessitent l’offre payante.[^bw-reports] Si vous quittez Chrome, son outil Check-up repère les mots de passe compromis et les mots de passe faibles, alors lancez-le avant de faire le ménage dans Chrome.[^chrome] Changez tout de suite ce qui est apparu dans une fuite de données, et les mots de passe réutilisés au fil de vos connexions.
+</Tip>
+
+## Faites du remplissage automatique un signal d’alerte
+
+<Tip id="autofill-alarm" priority="essential" effort={1} title="S’il ne propose pas de remplir le mot de passe, vérifiez l’adresse">
+Un gestionnaire ne remplit votre mot de passe que sur le site pour lequel il a été enregistré, donc sur une copie de la page de connexion de votre banque, hébergée à une adresse qui imite la vraie, il ne remplit rien.[^ncsc-pm] Quand il ne propose rien, arrêtez-vous et lisez l’adresse avant de copier ou de taper vous-même le mot de passe. Une page d’<Term slug="phishing">hameçonnage</Term> peut ressembler trait pour trait à la vraie, mais son adresse la trahit.
+
+Parfois, c’est un vrai site, mais à une adresse que le gestionnaire ne connaît pas, comme une boutique qui a un domaine différent pour chaque pays. Bitwarden vous permet d’ajouter cette adresse à l’identifiant, pour qu’il y remplisse le mot de passe la prochaine fois.[^bw-uri]
+</Tip>
+
+## Assurez-vous de pouvoir récupérer l’accès
+
+<Tip id="plan-for-lockout" priority="optional" effort={10} title="Prévoyez un moyen de récupérer votre coffre si vous oubliez le mot de passe principal">
+Le NCSC cite l’accès d’urgence par une personne de confiance comme l’un des moyens de récupérer votre coffre.[^ncsc-pm] Sur Bitwarden, la personne que vous choisissez peut demander l’accès, et l’obtient dès que vous acceptez sa demande ou qu’une période d’attente s’est écoulée, mais il faut l’offre payante pour désigner cette personne.[^bw-ea] Avec KeePass, votre coffre est un fichier : gardez-en une copie ailleurs que sur l’appareil où vous l’utilisez.
+
+Si vous préférez ne pas garder le mot de passe principal sur une seule feuille de papier, <App name="2of3 by Ente" /> le transforme en trois cartes, et deux d’entre elles, quelles qu’elles soient, suffisent à le retrouver. Une carte seule ne sert à rien à la personne qui la trouve, et le mot de passe ne quitte jamais votre navigateur pendant la création des cartes.[^2of3] Essayez de le retrouver avec deux des cartes avant de compter sur elles.
+</Tip>
+
+## Quitter LastPass
+
+Si vous aviez un compte <Swap product="lastpass">LastPass</Swap> au moment du piratage de 2022, passer à un autre gestionnaire ne suffit pas à lui seul. Bitwarden et ProtonPass savent tous les deux importer un export LastPass.[^bw-lastpass][^pp-import]
+
+<Tip id="change-what-was-in-lastpass" priority="advanced" effort={60} title="Changez les mots de passe qui se trouvaient dans votre coffre LastPass">
+En 2022, des attaquants ont récupéré une copie des coffres chiffrés des clients de LastPass.[^lastpass] Changer votre mot de passe principal LastPass aujourd’hui ne change rien à cette copie, qui peut être attaquée hors ligne aussi longtemps qu’on le souhaite. En 2025, des agents fédéraux américains ont affirmé dans un document judiciaire que des cryptomonnaies avaient été volées à l’aide de coffres issus de cette copie, une fois craqués. Beaucoup des victimes avaient des mots de passe principaux assez simples, faisaient partie des plus anciens clients de LastPass et avaient conservé la phrase de récupération d’un portefeuille dans une note sécurisée.[^krebs]
+
+LastPass a recommandé d’envisager de changer vos mots de passe enregistrés si votre mot de passe principal ne respectait pas ses paramètres par défaut, comme le minimum de 12 caractères instauré en 2018.[^lastpass] Nous vous conseillons de les changer même si vous pensez que le vôtre les respectait, car des chercheurs ont constaté que LastPass n’avait jamais fait passer de nombreux comptes anciens à ses protections plus récentes.[^krebs] Commencez par les comptes cités dans [le conseil sur la messagerie](#email-first). Tout ce qui se trouve dans une note sécurisée et ne peut pas être changé, comme un numéro de carte bancaire ou une phrase de récupération, doit être considéré comme exposé : faites remplacer la carte et transférez ailleurs ce que protège la phrase de récupération.
+</Tip>
+
+[^bw-safari]: [Bitwarden : Importer depuis macOS et Safari](https://bitwarden.com/help/import-from-safari/) (en anglais)
+[^pp-import]: [Proton : Importer des mots de passe dans Proton Pass](https://proton.me/fr/support/pass-import)
+[^keepass]: [Aide de KeePass : Premiers pas](https://keepass.info/help/base/firststeps.html) (en anglais)
+[^ncsc-pm]: [NCSC : Gérer vos mots de passe](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers) (en anglais)
+[^krebs]: [Krebs on Security : Les autorités fédérales américaines relient un cybercasse de 150 millions de dollars aux piratages de LastPass de 2022](https://krebsonsecurity.com/2025/03/feds-link-150m-cyberheist-to-2022-lastpass-hacks/) (en anglais)
+[^nist]: [NIST SP 800-63B-4 : Robustesse des mots de passe](https://pages.nist.gov/800-63-4/sp800-63b/passwords/) (en anglais)
+[^eff]: [EFF : De nouvelles listes de mots pour des phrases de passe aléatoires](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases) (en anglais)
+[^bw-recovery]: [Bitwarden : Obtenir mon code de récupération](https://bitwarden.com/help/two-step-recovery-code/) (en anglais)
+[^bw-chrome]: [Bitwarden : Importer depuis Chrome, Edge et les navigateurs Chromium](https://bitwarden.com/help/import-from-chrome/) (en anglais)
+[^bw-firefox]: [Bitwarden : Importer depuis Firefox](https://bitwarden.com/help/import-from-firefox/) (en anglais)
+[^apple-export]: [Assistance Apple : Exporter des mots de passe de votre Mac dans un fichier](https://support.apple.com/fr-fr/guide/passwords/export-passwords-mchl35b12625/mac)
+[^kpxc]: [Guide d’utilisation de KeePassXC : Importer des bases de données](https://keepassxc.org/docs/KeePassXC_UserGuide) (en anglais)
+[^chrome]: [Aide Google Chrome : Gérer les mots de passe dans Chrome](https://support.google.com/chrome/answer/95606?hl=fr)
+[^bw-disable]: [Bitwarden : Désactiver le gestionnaire de mots de passe intégré à votre navigateur](https://bitwarden.com/help/disable-browser-autofill/) (en anglais)
+[^bw-ios]: [Bitwarden : Remplissage automatique depuis l’application iOS](https://bitwarden.com/help/auto-fill-ios/) (en anglais)
+[^bw-android]: [Bitwarden : Remplissage automatique depuis l’application Android](https://bitwarden.com/help/auto-fill-android/) (en anglais)
+[^ncsc-email]: [NCSC : Utilisez un mot de passe solide et distinct pour votre messagerie](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email) (en anglais)
+[^bw-reports]: [Bitwarden : Rapports sur la santé du coffre](https://bitwarden.com/help/reports/) (en anglais)
+[^bw-uri]: [Bitwarden : Créer des URI pour le remplissage automatique](https://bitwarden.com/help/uri-match-detection/) (en anglais)
+[^bw-ea]: [Bitwarden : À propos de l’accès d’urgence](https://bitwarden.com/help/emergency-access/) (en anglais)
+[^2of3]: [2of3 by Ente](https://2of3.ente.com)
+[^bw-lastpass]: [Bitwarden : Importer depuis LastPass](https://bitwarden.com/help/import-from-lastpass/) (en anglais)
+[^lastpass]: [LastPass : Avis concernant un incident de sécurité récent](https://blog.lastpass.com/posts/notice-of-recent-security-incident) (en anglais)
