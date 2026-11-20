@@ -24,11 +24,11 @@ Passkeys and security keys are the safest kind of two-factor authentication. Cod
 
 <Term slug="2fa">Two-factor authentication</Term> means a stolen password isn't enough on its own. CISA, the US government's cyber security agency, ranks the different kinds by what can get past each one, and this is its order, weakest first.[^cisa]
 
-Text message codes can be taken without anyone touching your phone. In a SIM swap, a criminal talks your mobile network into moving your number to a SIM they hold, and from then on your texts go to them.[^cisa] Cifas, a UK fraud prevention service, had nearly 3,000 reported to it in 2024, more than ten times as many as the year before.[^cifas] The NCSC still says a text code is a huge improvement on no second step at all.[^ncsc-2sv]
+Text message codes can be taken without anyone touching your phone. In a SIM swap, a criminal talks your mobile network into moving your number to a SIM they hold, and from then on your texts go to them.[^cisa] Cifas, a UK fraud prevention service, received nearly 3,000 reports of SIM swaps in 2024, more than ten times as many as the year before.[^cifas] The NCSC still says a text code is a huge improvement on no second step at all.[^ncsc-2sv]
 
 Plain "Is this you?" prompts on your phone are next. Attackers can keep sending them in the hope that you'll eventually accept one. In 2022, that's how someone got into Uber. They'd probably bought a contractor's password, kept trying to log in, and the contractor accepted one of the prompts in the end.[^uber]
 
-Six-digit codes from an <Term slug="totp">authenticator app</Term> are made on your phone, so a SIM swap gets nothing. CISA puts prompts that make you type in a number from the login screen at the same level, since that's much harder to accept by accident.[^cisa] Microsoft Authenticator works that way for every prompt now.[^ms-number] Both can still be caught by a fake login page, though. If you type the code into a copy of the real site, the attacker can use it to log in as you before it runs out.[^cisa]
+Six-digit codes from an <Term slug="totp">authenticator app</Term> are made on your phone, so a SIM swap doesn't get them. Some prompts show a number on the login screen and make you type it in on your phone, which is much harder to accept by accident, and CISA ranks those alongside app codes.[^cisa] Microsoft Authenticator does this for all its prompts now.[^ms-number] An app code can still be caught by a fake login page, though. If you type it into a copy of the real site, the attacker can use it to log in as you before it runs out.[^cisa]
 
 Passkeys and security keys are the strongest. A passkey is made for one particular site's account, and there's no code or secret for you to type, so a fake login page has nothing to collect. Apple and CISA both call them phishing-resistant.[^apple-passkeys][^cisa] A <Term slug="hardware-security-key">security key</Term> is a small device, like a USB stick or a tag, that you use when you sign in.[^apple-keys] On a Google Account with 2-step verification on, signing in with a passkey counts as both steps, so it doesn't ask you for a code as well.[^google-passkeys]
 
@@ -43,7 +43,7 @@ After the first time, you're usually only asked for the second step on a new dev
 ## When someone tries to get past it
 
 <Tip id="never-share-a-code" priority="essential" effort={1} title="Never approve a login or hand over a code you didn't ask for">
-A prompt you didn't start usually means someone has your password and is trying to log in. Say no, then change that password. Uber's attacker got in when the contractor finally accepted one.[^uber]
+A prompt you didn't start may well mean someone has your password and is trying to log in. Say no, then change that password. Uber's attacker got in when the contractor finally accepted one.[^uber]
 
 Scammers also ring people pretending to be their mobile network, get details out of them, and then pretend to be them to the network.[^vodafone] Whoever contacted you, don't read out or type in a code for them. Vodafone says a code meant for using online should never be given over the phone,[^vodafone] and Google says it never asks for a backup code anywhere except its own sign-in page.[^google-backup]
 </Tip>
@@ -51,7 +51,7 @@ Scammers also ring people pretending to be their mobile network, get details out
 ## Where to turn it on first
 
 <Tip id="email-first" priority="essential" effort={10} title="Do your email first">
-Criminals who get into your email can use it to reset the passwords on your other accounts.[^ncsc-2sv] It can be the way in to your phone number too. In one case Which? looked into, criminals got into a man's email, used it to reset the password on his Vodafone account, and then used that to move his number to another network.[^which]
+Criminals who get into your email can use it to reset the passwords on your other accounts.[^ncsc-2sv] Getting into your email can also help someone take over your phone number. In one case Which? looked into, criminals got into a man's email, used it to reset the password on his Vodafone account, and then used that to move his number to another network.[^which]
 </Tip>
 
 <Tip id="then-the-rest" priority="essential" effort={30} title="Then do the accounts that would hurt most to lose">
@@ -86,9 +86,9 @@ Old numbers get given to new people. In the US, about 35 million numbers are dis
 </Tip>
 
 <Tip id="text-recovery" priority="advanced" effort={15} title="Check whether a text can reset the account">
-Some accounts let you reset the password with just a code texted to you, so whoever has your number gets past the password and the 2FA together. In the same Princeton study, two thirds of the 259 numbers they checked could have been used to take over someone's account at Amazon, Facebook, Google, PayPal or Yahoo through its account recovery.[^recycled]
+Some accounts let you reset the password with just a code texted to you, so whoever has your number gets past the password and the 2FA together. The same researchers checked 259 numbers that were free for anyone to pick, and 171 of them could have been used to take over an account through account recovery at Amazon, Facebook, Google, PayPal or Yahoo.[^recycled]
 
-Look at the recovery options on your most important accounts. If a text can get you back in and the account lets you remove your number, you can, but it's one fewer way back in for you too. Before you remove it, sign out and check that another way back in actually works. Security questions don't count, since the NCSC says they don't give the same protection.[^ncsc-2sv]
+Look at the recovery options on your most important accounts. If a text can get you back in and the account lets you remove your number, you can, but it's one fewer way back in for you too. Save a fresh set of backup codes first. Then, staying signed in where you are, open a private window or another device and check that another way back in actually works. Only remove the number once it has. A security question isn't a good enough alternative on its own, since the NCSC says they don't give the same protection.[^ncsc-2sv]
 </Tip>
 
 ## Don't lock yourself out
@@ -105,7 +105,7 @@ Apple won't let you turn on security keys for an Apple Account without at least 
 
 ## Picking an authenticator app
 
-Pick one that can get your codes onto a new phone. If an app only keeps them on the phone you've got, losing that phone means using backup codes and setting up 2FA again on every account. These are the apps whose list entries mention backups or syncing between devices.
+Pick one that can get your codes onto a new phone. If an app only keeps them on the phone you've got, losing that phone can mean using backup codes and setting up 2FA again on every account. The apps below back up or sync your codes, so they can come with you to a new phone.
 
 {/* The section's other apps don't mention backups or sync in the list, so they're left out. */}
 
@@ -115,7 +115,7 @@ Pick one that can get your codes onto a new phone. If an app only keeps them on 
 <Swap product="authy">Authy</Swap> can't export your codes, so moving to another app means setting up 2FA again on each account with the new app.[^reg-authy] Its desktop apps were due to stop working in March 2024, so plan to do this on your phone.[^reg-authy]
 
 <Steps>
-1. Sign in to an account, open its 2FA settings and set up an authenticator app again, this time with your new app. You might have to turn 2FA off and back on to do it.
+1. Sign in to an account, open its 2FA settings and set up an authenticator app again, this time with your new app. You might have to turn 2FA off and back on to do it, so do that in one go.
 2. Type in the code from the new app when the site asks, and save any new backup codes, since the old ones may stop working.
 3. Sign out, sign back in with the new app's code, and only then delete that account from Authy.
 </Steps>
