@@ -1,0 +1,134 @@
+---
+title: "Double authentification : laquelle choisir et où l’activer"
+description: "Codes par SMS, application ou clé d’accès : quelle double authentification choisir, quels comptes protéger en premier et comment ne pas perdre l’accès."
+---
+
+<Short>
+Les clés d’accès et les clés de sécurité sont les formes de double authentification les plus sûres. Viennent ensuite les codes d’une application d’authentification, et les SMS sont les moins sûrs, même s’ils valent toujours bien mieux que rien. [Commencez par votre messagerie](#email-first), car quiconque y accède peut réinitialiser vos autres mots de passe. Ensuite, [verrouillez votre numéro auprès de votre opérateur](#lock-your-number), [rangez les codes de secours en lieu sûr](#backup-codes) et [ne donnez jamais de code à quelqu’un qui a pris contact avec vous](#never-share-a-code).
+</Short>
+
+## Quelle forme de double authentification est la plus sûre ?
+
+L’<Term slug="2fa">authentification à deux facteurs</Term> fait qu’un mot de passe volé ne suffit plus à lui seul. La CISA, l’agence de cybersécurité du gouvernement américain, classe ses différentes formes selon ce qui permet de contourner chacune d’elles, et voici son classement, de la plus faible à la plus solide.[^cisa]
+
+Les codes reçus par SMS peuvent être détournés sans que personne ne touche à votre téléphone. Lors d’une arnaque à l’échange de SIM, un escroc convainc votre opérateur de transférer votre numéro sur une carte SIM qu’il a entre les mains, et à partir de là, vos SMS arrivent chez lui.[^cisa] Cifas, un organisme britannique de lutte contre la fraude, a reçu près de 3 000 signalements d’échanges de SIM en 2024, soit plus de dix fois plus que l’année précédente[^cifas]. Le NCSC, l’agence britannique de cybersécurité, estime malgré tout qu’un code par SMS est un énorme progrès par rapport à l’absence de seconde étape[^ncsc-2sv].
+
+Viennent ensuite les simples notifications « Est-ce bien vous ? » sur votre téléphone. Un attaquant peut vous en envoyer à la chaîne en espérant que vous finirez par en accepter une. C’est ainsi que quelqu’un s’est introduit chez Uber en 2022. Il avait sans doute acheté le mot de passe d’un prestataire et a tenté de se connecter encore et encore, jusqu’à ce que le prestataire finisse par accepter l’une des notifications[^uber].
+
+Les codes à six chiffres d’une <Term slug="totp">application d’authentification</Term> sont générés sur votre téléphone, donc un échange de SIM ne permet pas de les obtenir. Certaines notifications affichent un nombre sur l’écran de connexion et vous demandent de le taper sur votre téléphone. Il est alors bien plus difficile d’en accepter une par erreur, et la CISA les place au même niveau que les codes d’application[^cisa]. C’est désormais le cas de toutes les notifications de Microsoft Authenticator[^ms-number]. Une fausse page de connexion peut toutefois récupérer un code d’application. Si vous le tapez sur une copie du vrai site, l’attaquant peut s’en servir pour se connecter à votre place avant qu’il n’expire[^cisa].
+
+Les clés d’accès et les clés de sécurité sont les plus solides. Une clé d’accès est créée pour le compte d’un site précis, et vous n’avez ni code ni secret à taper, donc une fausse page de connexion n’a rien à récupérer. Apple et la CISA les qualifient toutes deux de résistantes à l’hameçonnage[^apple-passkeys][^cisa]. Une <Term slug="hardware-security-key">clé de sécurité</Term> est un petit appareil, comme une clé USB ou un badge, dont vous vous servez au moment de vous connecter[^apple-keys]. Sur un compte Google où la validation en deux étapes est activée, se connecter avec une clé d’accès compte pour les deux étapes, donc aucun code ne vous est demandé en plus[^google-passkeys].
+
+<Tip id="strongest-option" priority="essential" effort={5} title="Choisissez la forme la plus sûre que propose chaque compte">
+Dans les paramètres de sécurité du compte, elle peut s’appeler validation en deux étapes, double authentification, authentification à deux facteurs ou MFA. Choisissez une clé d’accès ou une clé de sécurité si c’est proposé, une application sinon, et les SMS si c’est le seul choix. [2fa.directory](https://2fa.directory/) indique quels sites prennent en charge la double authentification, ce qui vous permet de vérifier avant d’aller fouiller dans les paramètres[^which].
+
+Lorsque vous ajoutez une clé d’accès à un compte Google, vos autres moyens de vous connecter et de récupérer votre compte restent en place[^google-passkeys]. N’y touchez pas tant que la clé d’accès n’a pas servi à vous connecter sur chacun des appareils que vous utilisez.
+
+Après la première fois, la seconde étape ne vous est généralement demandée que sur un nouvel appareil ou quand vous modifiez quelque chose d’important, comme votre mot de passe[^ncsc-2sv].
+</Tip>
+
+## Quand quelqu’un essaie de la contourner
+
+<Tip id="never-share-a-code" priority="essential" effort={1} title="N’approuvez jamais une connexion et ne donnez jamais un code que vous n’avez pas demandé">
+Une notification que vous n’avez pas déclenchée peut très bien vouloir dire que quelqu’un a votre mot de passe et essaie de se connecter. Refusez-la, puis changez ce mot de passe. L’attaquant d’Uber est entré quand le prestataire a fini par en accepter une[^uber].
+
+Des escrocs appellent aussi des gens en se faisant passer pour leur opérateur, leur soutirent des informations, puis se font passer pour eux auprès de l’opérateur[^vodafone]. Peu importe qui a pris contact avec vous : ne lui lisez aucun code et n’en tapez aucun à sa demande. Vodafone précise qu’un code destiné à être utilisé en ligne ne doit jamais être donné par téléphone[^vodafone], et Google affirme ne jamais demander de code de secours ailleurs que sur sa propre page de connexion[^google-backup].
+</Tip>
+
+## Où l’activer en premier
+
+<Tip id="email-first" priority="essential" effort={10} title="Commencez par votre messagerie">
+Les escrocs qui accèdent à votre messagerie peuvent s’en servir pour réinitialiser les mots de passe de vos autres comptes[^ncsc-2sv]. Elle peut aussi leur permettre de s’emparer de votre numéro de téléphone. Dans un cas étudié par l’association de consommateurs britannique Which?, des escrocs se sont introduits dans la messagerie d’un homme, s’en sont servis pour réinitialiser le mot de passe de son compte Vodafone, puis ont utilisé ce compte pour transférer son numéro chez un autre opérateur[^which].
+</Tip>
+
+<Tip id="then-the-rest" priority="essential" effort={30} title="Passez ensuite aux comptes qu’il serait le plus grave de perdre">
+Pour le NCSC, les comptes importants sont la messagerie, la banque, les réseaux sociaux et les achats en ligne[^ncsc-tips]. Après votre messagerie, voici l’ordre que nous suivrions :
+
+<Steps>
+1. Votre gestionnaire de mots de passe, si vous en utilisez un, puisqu’il contient vos autres mots de passe. Le [guide sur les gestionnaires de mots de passe](/fr/guides/password-manager/#lock-the-manager) explique comment le protéger.
+2. Votre espace client chez votre opérateur mobile, puisqu’il permet de décider où arrivent vos SMS (voir [le conseil suivant](#lock-your-number)).
+3. Votre banque.
+4. Le compte Apple, Google ou Microsoft auquel votre téléphone ou votre ordinateur est connecté.
+5. Les boutiques en ligne où votre carte bancaire est enregistrée.
+6. Les réseaux sociaux, où quelqu’un pourrait écrire à vos amis en se faisant passer pour vous.
+</Steps>
+</Tip>
+
+## Gardez la main sur votre numéro
+
+<Tip id="lock-your-number" priority="essential" effort={10} title="Verrouillez votre numéro auprès de votre opérateur">
+Tant que quelqu’un d’autre a votre numéro, c’est lui qui reçoit vos codes par SMS, et le récupérer peut prendre du temps. Une cliente de Vodafone a attendu dix jours, et les escrocs ont utilisé entre-temps les codes que sa banque et son fournisseur de messagerie lui avaient envoyés[^which].
+
+<Region place="uk">
+Donnez un mot de passe solide à votre espace client en ligne chez votre opérateur et activez sa propre validation en deux étapes. Demandez ensuite à l’opérateur s’il peut ajouter un code PIN ou un mot de passe supplémentaire pour les changements importants, comme une nouvelle carte SIM. Which? a constaté que la plupart des échanges de SIM se font désormais en ligne plutôt qu’en boutique ou par téléphone[^which].
+</Region>
+
+<Region place="us">
+Les règles de la FCC, le régulateur américain des télécoms, obligent chaque opérateur mobile à proposer un verrouillage gratuit qui empêche quiconque de changer votre carte SIM, et à vous prévenir aussitôt quand quelqu’un demande le transfert de votre numéro vers un autre opérateur. Les opérateurs ont jusqu’à la mi-décembre 2026 pour s’y plier, donc il se peut que le vôtre ne propose pas encore ce verrouillage. Posez-lui la question, et activez-le dès qu’il est disponible[^fcc-sim][^fcc-port].
+</Region>
+</Tip>
+
+<Tip id="changing-number" priority="optional" effort={20} title="Si vous changez de numéro, transférez d’abord votre double authentification">
+Les anciens numéros finissent par être attribués à quelqu’un d’autre. Aux États-Unis, environ 35 millions de numéros sont résiliés chaque année puis réattribués, et quand des chercheurs de l’université de Princeton ont utilisé 200 numéros recyclés pendant une semaine, 19 d’entre eux recevaient encore des messages sensibles destinés aux anciens titulaires, comme des codes de connexion[^recycled]. Avant de renoncer à un numéro, faites passer chaque compte sur le nouveau, ou mieux, sur une application.
+</Tip>
+
+<Tip id="text-recovery" priority="advanced" effort={15} title="Vérifiez si un SMS suffit à réinitialiser le compte">
+Certains comptes permettent de réinitialiser le mot de passe avec un simple code reçu par SMS, si bien que la personne qui a votre numéro contourne à la fois le mot de passe et la double authentification. Les mêmes chercheurs ont vérifié 259 numéros que n’importe qui pouvait choisir librement, et 171 d’entre eux auraient pu servir à prendre le contrôle d’un compte par la procédure de récupération d’Amazon, Facebook, Google, PayPal ou Yahoo[^recycled].
+
+Regardez les options de récupération de vos comptes les plus importants. Si un SMS suffit à récupérer l’accès et que le compte vous permet de retirer votre numéro, vous pouvez le faire, mais c’est aussi un moyen de moins pour vous de récupérer votre compte. Enregistrez d’abord une nouvelle série de codes de secours. Ensuite, sans vous déconnecter là où vous êtes, ouvrez une fenêtre de navigation privée ou un autre appareil et vérifiez qu’un autre moyen de récupérer l’accès fonctionne bel et bien. Ne retirez le numéro qu’une fois que c’est le cas. Une question secrète ne suffit pas à elle seule comme solution de rechange, puisque le NCSC estime qu’elle n’offre pas la même protection[^ncsc-2sv].
+</Tip>
+
+## Évitez de perdre l’accès à vos comptes
+
+<Tip id="backup-codes" priority="essential" effort={5} title="Gardez les codes de secours sur papier, loin de votre téléphone">
+Quand un compte vous donne des codes de secours, chacun ne fonctionne qu’une fois, et ils vous permettent de vous connecter quand votre téléphone vous fait défaut[^ncsc-2sv]. Google suggère d’imprimer ses codes et de les ranger au même endroit que votre passeport. Générer une nouvelle série désactive les anciens codes, alors jetez l’ancienne feuille imprimée[^google-backup].
+
+Ne les gardez pas dans le même gestionnaire de mots de passe que le mot de passe, sinon quiconque accède au coffre a les deux (l’<Term slug="2fa">article du glossaire sur la double authentification</Term> en dit plus à ce sujet).
+</Tip>
+
+<Tip id="second-key" priority="optional" effort={10} title="Si vous utilisez des clés de sécurité, ayez-en une de rechange">
+Apple ne vous laisse pas activer les clés de sécurité sur un compte Apple sans en avoir au moins deux, et prévient que les perdre toutes, en même temps que vos appareils de confiance, pourrait vous bloquer l’accès définitivement[^apple-keys]. Quand un compte permet d’ajouter plusieurs clés, ajoutez aussi celle de rechange, et rangez-la ailleurs que sur votre trousseau de clés.
+</Tip>
+
+## Choisir une application d’authentification
+
+Choisissez-en une qui sait transférer vos codes sur un nouveau téléphone. Si une application ne les garde que sur votre téléphone actuel, perdre ce téléphone peut vous obliger à utiliser vos codes de secours et à reconfigurer la double authentification sur chaque compte. Les applications ci-dessous sauvegardent ou synchronisent vos codes, qui peuvent donc vous suivre sur un nouveau téléphone.
+
+{/* The section's other apps don't mention backups or sync in the list, so they're left out. */}
+
+<Picks section="2-Factor Authentication" skip={['tofu', 'authenticator', 'authenticator-gnome', 'authenticator-cc', 'proton-authenticator']} />
+
+<Tip id="leave-authy" priority="optional" effort={30} title="Quitter Authy oblige à reconfigurer chaque compte">
+<Swap product="authy">Authy</Swap> ne permet pas d’exporter vos codes, donc passer à une autre application implique de reconfigurer la double authentification sur chaque compte avec la nouvelle[^reg-authy]. Ses applications pour ordinateur devaient cesser de fonctionner en mars 2024, alors prévoyez de faire ça sur votre téléphone[^reg-authy].
+
+<Steps>
+1. Connectez-vous à un compte, ouvrez ses paramètres de double authentification et configurez de nouveau une application d’authentification, cette fois avec votre nouvelle application. Il faudra peut-être désactiver puis réactiver la double authentification pour y arriver, et dans ce cas, faites-le d’une traite.
+2. Tapez le code de la nouvelle application quand le site le demande, et enregistrez les éventuels nouveaux codes de secours, car les anciens risquent de ne plus fonctionner.
+3. Sans vous déconnecter, ouvrez une fenêtre de navigation privée, reconnectez-vous avec le code de la nouvelle application, et seulement ensuite, supprimez ce compte d’Authy.
+</Steps>
+</Tip>
+
+<Tip id="leave-google-authenticator" priority="optional" effort={10} title="Quitter Google Authenticator">
+<Swap product="google-authenticator">Google Authenticator</Swap> transfère vos comptes à l’aide de QR codes. Dans l’application, appuyez sur <Path>Menu --> Transférer des comptes --> Exporter des comptes</Path>, choisissez les comptes, puis scannez chaque QR code affiché (il peut y en avoir plusieurs) avec l’option d’import de votre nouvelle application[^google-auth]. Ente Auth, par exemple, sait les importer[^ente-import]. Un téléphone ne peut pas scanner son propre écran, donc si les deux applications sont sur le même téléphone, consultez d’abord l’aide de la nouvelle application sur l’import. Ces QR codes contiennent tout ce qu’il faut pour générer vos codes, alors n’en faites pas de capture d’écran.
+
+Gardez l’ancienne application tant que vous n’avez pas vérifié chaque code dans la nouvelle[^ente-import]. Si vos codes étaient synchronisés avec votre compte Google, en supprimer un dans l’application le supprime de tous les appareils sur lesquels il était synchronisé[^google-auth].
+</Tip>
+
+[^cisa]: [CISA : Mettre en place une MFA résistante à l’hameçonnage](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^cifas]: [Cifas : Hausse de 1 055 % des échanges de SIM non autorisés](https://www.cifas.org.uk/newsroom/huge-surge-see-sim-swaps-hit-telco-and-mobile)
+[^ncsc-2sv]: [NCSC : Configurer la validation en deux étapes](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
+[^uber]: [Uber : Point sur la sécurité](https://www.uber.com/newsroom/security-update/)
+[^ms-number]: [Microsoft Learn : La correspondance des nombres dans les notifications push d’Authenticator](https://learn.microsoft.com/fr-fr/entra/identity/authentication/how-to-mfa-number-match)
+[^apple-passkeys]: [Assistance Apple : À propos de la sécurité des clés d’accès](https://support.apple.com/fr-fr/102195)
+[^apple-keys]: [Assistance Apple : À propos des clés de sécurité pour le compte Apple](https://support.apple.com/fr-fr/102637)
+[^google-passkeys]: [Aide Compte Google : Se connecter avec une clé d’accès au lieu d’un mot de passe](https://support.google.com/accounts/answer/13548313?hl=fr)
+[^which]: [Which? : Des contrôles de sécurité trop faibles laissent la porte ouverte aux fraudeurs à l’échange de SIM](https://www.which.co.uk/news/article/mobile-networks-must-step-up-to-prevent-sim-swap-fraud-aSsLN6p0CMRq)
+[^vodafone]: [Vodafone UK : Comment vous protéger de la fraude à l’échange de SIM](https://www.vodafone.co.uk/newscentre/features/how-to-protect-yourself-from-sim-swap-fraud/)
+[^google-backup]: [Aide Compte Google : Se connecter avec des codes de secours](https://support.google.com/accounts/answer/1187538?hl=fr)
+[^ncsc-tips]: [NCSC : Activez la validation en deux étapes](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^fcc-sim]: [Federal Register : Protéger les consommateurs contre la fraude à l’échange de SIM et au transfert de numéro, dates de mise en conformité pour les changements de SIM](https://www.federalregister.gov/d/2026-23400)
+[^fcc-port]: [Federal Register : Protéger les consommateurs contre la fraude à l’échange de SIM et au transfert de numéro, dates de mise en conformité pour les transferts de numéro](https://www.federalregister.gov/d/2026-23522)
+[^recycled]: [Université de Princeton : Les risques du recyclage des numéros par les opérateurs mobiles pour la sécurité et la vie privée](https://recyclednumbers.cs.princeton.edu/)
+[^reg-authy]: [The Register : Twilio rappelle que les applications Authy Desktop s’arrêtent en mars](https://www.theregister.com/2024/02/15/twilio_authy_eol)
+[^google-auth]: [Aide Compte Google : Obtenir des codes de validation avec Google Authenticator](https://support.google.com/accounts/answer/1066447?hl=fr)
+[^ente-import]: [Aide Ente : Migrer depuis d’autres services](https://ente.com/help/auth/migration/import)
