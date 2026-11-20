@@ -1,0 +1,169 @@
+---
+title: "Password manager: come configurarlo e importare le password"
+description: Scegli un password manager dalla lista, importa le password salvate nel browser senza lasciarne copie in giro e cambia subito la password dell'email.
+source: "516ef0870a9ccf70"
+sha: "e18ceac1d77545664aeb78d9d62f36e00f7d1525"
+---
+
+<Short>
+Scegli un password manager (o gestore di password) dalla lista e proteggilo con una [passphrase lunga](#master-passphrase) che non hai mai usato da nessun'altra parte. Importa quello che ha salvato il browser, controlla che sia arrivato tutto, poi [elimina il file esportato](#delete-the-export) e [fai pulizia della copia rimasta nel browser](#clear-the-browser-copy). [Cambia per prima la password dell'email](#email-first), perché è lì che arriva la maggior parte dei link per reimpostare le password, e le altre cambiale man mano che accedi ai vari servizi. Se nel 2022 avevi un account LastPass, [vanno cambiate anche le password che c'erano dentro](#change-what-was-in-lastpass).
+</Short>
+
+## Scegline uno
+
+La scelta principale riguarda chi custodisce la tua cassaforte. <App name="Bitwarden" /> e <App name="ProtonPass" /> la sincronizzano attraverso i propri server, ma la cifrano sul tuo dispositivo prima di inviarla, quindi l'azienda non può leggerla.[^bw-safari][^pp-import] È questo che si intende per <Term slug="zero-knowledge">crittografia a conoscenza zero</Term>. <App name="KeePass" /> tiene la cassaforte in un file cifrato sui tuoi dispositivi, e sincronizzare quel file e farne il backup tocca a te.[^keepass] Se non sai quale scegliere, parti da uno sincronizzato, perché ti lascia meno cose da gestire.
+
+Se oggi le password te le salva il browser, non stai sbagliando niente. Secondo l'NCSC britannico, sui tuoi dispositivi è una soluzione sicura. Il motivo principale per cambiare è che un password manager separato si sincronizza tra browser e dispositivi diversi, così le stesse password funzionano in Chrome sul portatile e in Safari sul telefono.[^ncsc-pm]
+
+{/* LessPass works passwords out rather than storing them, so it can't import anything. Pass is command line only, and PaperVault and 2of3 split one secret onto paper rather than managing logins. */}
+
+<Picks section="Password Managers" skip={['lesspass', 'pass', 'papervault', '2of3-by-ente']} />
+
+## Configuralo come si deve
+
+Crea l'account, poi installa l'app del password manager sul telefono e la sua estensione nel browser, perché può compilare le password solo dove è installato.
+
+<Tip id="master-passphrase" priority="essential" effort={5} title="Usa come password principale una passphrase lunga, fatta di parole casuali">
+Questa password protegge tutte le altre. Quando nel 2022 sono state rubate le casseforti cifrate di LastPass, la password principale era l'unica cosa rimasta a proteggere ognuna, e i ladri potevano continuare a provare combinazioni offline per tutto il tempo che volevano.[^krebs]
+
+Non affidarti a maiuscole, numeri e simboli. Regole del genere il più delle volte portano la gente a `Password1!`, e chi attacca lo sa e la prova tra le prime.[^nist] Punta piuttosto sulla lunghezza. L'EFF consiglia sei parole estratte a caso dal suo elenco di 7.776, e purché siano davvero casuali, ogni parola in più rende la passphrase 7.776 volte più difficile da indovinare.[^eff] Le parole che scegli tu non sono casuali, per questo la pagina dell'EFF spiega come estrarle con i dadi.
+
+Non usarla per nient'altro. Scriverla su carta va bene, perché qualcuno dovrebbe mettere le mani proprio su quel foglio, e secondo l'NCSC si può fare in sicurezza, a patto di pensare a chi altro può arrivare dove lo tieni.[^ncsc-pm]
+</Tip>
+
+<Tip id="lock-the-manager" priority="essential" effort={5} title="Attiva l'autenticazione a due fattori sul password manager e stampa il codice di recupero">
+L'account del password manager ha bisogno dell'<Term slug="2fa">autenticazione a due fattori</Term> quanto la tua email, visto che contiene tutto il resto. Su Bitwarden, quando attivi la «verifica in due passaggi», ricevi un codice di recupero, e se perdi sia quel codice sia il telefono che usi come secondo fattore puoi restare chiuso fuori dalla cassaforte. Bitwarden consiglia di tenerne una copia stampata in un posto sicuro.[^bw-recovery] Non tenere il codice insieme alla password principale, perché con tutti e due si supera il secondo fattore, e non tenerlo solo nella cassaforte, che è proprio l'unico posto in cui non puoi entrare quando ti serve.
+</Tip>
+
+## Trasferisci le tue password
+
+Il file che esporti dal browser non è cifrato, e dopo l'esportazione il browser conserva comunque la sua copia, quindi fare pulizia conta quanto importare. I passaggi qui sotto vengono dalle pagine di assistenza di Apple, Google e Bitwarden com'erano a novembre 2026.
+
+<Tip id="move-without-a-file" priority="optional" effort={2} title="Su iPhone, trasferiscile senza passare da un file">
+Da iOS 26, l'app Password di Apple può passare password e passkey direttamente a un altro password manager, quindi non resta nessun file da eliminare. Funziona solo se il nuovo password manager lo supporta, come fa Bitwarden.[^bw-safari]
+
+<Steps>
+1. Apri l'app Password e tocca il pulsante delle opzioni.
+2. Tocca <Path>Esporta i dati su un'altra app</Path>, seleziona quello che vuoi trasferire e tocca Continua.
+3. Scegli il nuovo password manager, poi conferma nella sua app.
+</Steps>
+</Tip>
+
+<Tip id="export-and-import" priority="essential" effort={10} title="Esporta le password dal browser, poi importale">
+Tutti i browser qui sotto possono esportare le password in un file CSV, e oltre a Bitwarden possono importarlo anche ProtonPass e KeePassXC (un'app compatibile con KeePass).[^pp-import][^kpxc] Importa il file una volta sola, perché Bitwarden non controlla i doppioni.[^bw-safari]
+
+<Platforms>
+<Platform name="chrome">
+Apri <Path>Altro --> Password e compilazione automatica --> Gestore delle password di Google --> Impostazioni</Path>, poi seleziona «Scarica file» accanto a «Esporta password».[^chrome] Con Brave e Opera funziona allo stesso modo, mentre Edge tiene le password in `edge://wallet/passwords`.[^bw-chrome]
+</Platform>
+<Platform name="firefox">
+Scrivi `about:logins` nella barra degli indirizzi, apri il menu in alto a destra e scegli <Path>Esporta password</Path>.[^bw-firefox]
+</Platform>
+<Platform name="macos">
+Apri l'app Password e scegli <Path>File --> Esporta tutte le password su un file</Path>. Restano fuori le password del Wi-Fi, gli account «Accedi con Apple» e le password che qualcuno ha condiviso con te in un gruppo.[^apple-export]
+</Platform>
+<Platform name="ios">
+Se non puoi usare il trasferimento diretto descritto sopra, apri <Path>Impostazioni --> App --> Safari</Path>, tocca Esporta sotto «Dati di siti web e cronologia», scegli Password e tocca «Salva in Download».[^bw-safari]
+</Platform>
+<Platform name="android">
+In Chrome, tocca <Path>Altro --> Impostazioni --> Compilazione automatica e password --> Gestore delle password di Google</Path>, poi tocca <Path>Impostazioni --> Esporta password</Path> e scegli dove salvare il file.[^chrome]
+</Platform>
+</Platforms>
+
+Poi usa l'opzione di importazione del password manager e scegli il file. Nell'app web di Bitwarden si trova in <Path>Strumenti --> Importa</Path>.[^bw-safari] Prima di eliminare qualsiasi cosa, apri il password manager sul telefono e controlla che alcuni degli accessi più importanti siano arrivati con il nome utente e la password giusti.
+</Tip>
+
+<Tip id="delete-the-export" priority="essential" effort={1} title="Elimina il file esportato dopo averlo importato">
+Il file non è cifrato, quindi chiunque ci metta le mani può leggere tutte le password che contiene.[^apple-export] Eliminalo appena hai controllato l'importazione, e svuota il cestino. Se esporti da iPhone, il file finisce su iCloud Drive, quindi eliminalo da lì.[^bw-safari]
+</Tip>
+
+<Tip id="clear-the-browser-copy" priority="essential" effort={5} title="Disattiva il salvataggio delle password nel browser e cancella quelle che ha tenuto">
+Altrimenti ti ritrovi con due serie di password. Ne cambi una nel password manager, il browser si tiene quella vecchia e continua a proporti di salvarne di nuove, e dopo un po' non sai più quale sia quella giusta.
+
+<Platforms>
+<Platform name="chrome">
+In <Path>Gestore delle password di Google --> Impostazioni</Path>, disattiva «Chiedi di salvare password e passkey» e «Accedi automaticamente».[^bw-disable] Con «Elimina tutti i dati del Gestore delle password di Google» cancelli il resto, ma vanno via anche le passkey.[^chrome] Se accedi da qualche parte con una passkey salvata lì, elimina invece le password una alla volta.
+</Platform>
+<Platform name="firefox">
+In <Path>Impostazioni --> Password e compilazione automatica</Path>, togli la spunta alle opzioni già selezionate, poi rimuovi le password salvate da `about:logins`.[^bw-disable]
+</Platform>
+<Platform name="macos">
+In <Path>Safari --> Impostazioni --> Inserimento automatico</Path>, togli la spunta alle opzioni, poi rimuovi dall'app Password le password che hai trasferito.[^bw-disable]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="phone-autofill" priority="essential" effort={3} title="Usalo per la compilazione automatica sul telefono">
+Se l'app non te l'ha chiesto durante l'installazione, il telefono continuerà a prendere le password da dove le prendeva prima.
+
+<Platforms>
+<Platform name="ios">
+Apri <Path>Impostazioni --> Generali --> Inserimento automatico e password</Path> e attiva il nuovo password manager.[^bw-ios]
+</Platform>
+<Platform name="android">
+In Bitwarden, apri <Path>Impostazioni --> Riempimento automatico --> Servizi di riempimento automatico</Path> e, quando Android ti chiede quale servizio preferisci, scegli Bitwarden.[^bw-android]
+</Platform>
+</Platforms>
+</Tip>
+
+## Cambia prima le password che contano
+
+Non devi cambiare cento password stasera. Cambia quelle con cui qualcuno potrebbe entrare in tutto il resto, poi passa alle altre man mano che accedi ai vari servizi.
+
+<Tip id="email-first" priority="essential" effort={10} title="Cambia per prima la password dell'email">
+La maggior parte dei link «Password dimenticata?» arriva alla tua email, quindi chi riesce a entrarci può reimpostare le password degli altri account. Fai creare al password manager una nuova password casuale, poi accedi di nuovo con quella sugli altri dispositivi. Già che ci sei, attiva l'autenticazione a due fattori. Dopo passa alla banca, agli account per acquisti e pagamenti e ai social.[^ncsc-email]
+</Tip>
+
+<Tip id="reused-passwords" priority="optional" effort={15} title="Trova le password che hai usato più di una volta">
+Se hai usato la stessa password su più siti, un criminale che la ottiene da uno di questi può provarla su tutti gli altri.[^ncsc-email] Su Bitwarden il rapporto «Violazioni dei dati» è gratuito, mentre «Password riutilizzate» e «Password deboli» richiedono il piano a pagamento.[^bw-reports] Se stai lasciando Chrome, il controllo password integrato trova le password compromesse e quelle deboli, quindi avvialo prima di fare pulizia in Chrome.[^chrome] Cambia subito le password finite in una violazione, e quelle riutilizzate man mano che accedi.
+</Tip>
+
+## Usa la compilazione automatica come campanello d'allarme
+
+<Tip id="autofill-alarm" priority="essential" effort={1} title="Se non ti propone la password, controlla l'indirizzo">
+Un password manager compila la password solo sul sito per cui l'hai salvata, quindi una copia della pagina di accesso della tua banca su un indirizzo che imita quello vero non ottiene niente.[^ncsc-pm] Quando non te la propone, fermati e leggi l'indirizzo prima di copiare o digitare la password a mano. Una pagina di <Term slug="phishing">phishing</Term> può essere identica a quella vera, ma l'indirizzo la tradisce.
+
+A volte è un sito vero su un indirizzo che il password manager non ha mai visto, come un negozio con un dominio diverso per ogni paese. Bitwarden ti permette di aggiungere l'indirizzo in più a quel login, così la volta dopo compila anche lì.[^bw-uri]
+</Tip>
+
+## Assicurati di poter rientrare
+
+<Tip id="plan-for-lockout" priority="optional" effort={10} title="Prepara un modo per rientrare se dimentichi la password principale">
+L'NCSC cita l'accesso di emergenza tramite una persona di fiducia come uno dei modi per rientrare.[^ncsc-pm] Su Bitwarden, la persona che scegli può chiedere l'accesso e lo ottiene quando lo approvi o quando scade un periodo di attesa, ma per aggiungerla serve il piano a pagamento.[^bw-ea] Con KeePass la cassaforte è un file, quindi tienine una copia da qualche parte che non sia il dispositivo su cui la usi.
+
+Se preferisci non affidare la password principale a un solo foglio di carta, <App name="2of3 by Ente" /> la trasforma in tre schede, e due qualsiasi bastano a recuperarla. Una scheda da sola non serve a niente a chi la trova, e mentre le crea la password non esce mai dal tuo browser.[^2of3] Prima di contarci, prova a recuperarla da due delle schede.
+</Tip>
+
+## Lasciare LastPass
+
+Se avevi un account <Swap product="lastpass">LastPass</Swap> all'epoca della violazione del 2022, non basta passare a un altro password manager. Bitwarden e ProtonPass possono entrambi importare i dati esportati da LastPass.[^bw-lastpass][^pp-import]
+
+<Tip id="change-what-was-in-lastpass" priority="advanced" effort={60} title="Cambia le password che avevi nella cassaforte di LastPass">
+Nel 2022 degli attaccanti si sono portati via una copia delle casseforti cifrate dei clienti di LastPass.[^lastpass] Cambiare adesso la password principale di LastPass non cambia quella copia, che si può attaccare offline per tutto il tempo che si vuole. Nel 2025, in un atto depositato in tribunale, alcuni agenti federali statunitensi hanno dichiarato che con le casseforti forzate di quella copia erano state rubate delle criptovalute. Molte delle persone derubate avevano password principali piuttosto semplici, erano tra i clienti di più vecchia data di LastPass e avevano salvato in una nota sicura la seed phrase di un wallet.[^krebs]
+
+LastPass ha suggerito di valutare di cambiare le password salvate se la tua password principale non rispettava i suoi requisiti predefiniti, come il minimo di 12 caratteri introdotto nel 2018.[^lastpass] Noi le cambieremmo anche se pensi che la tua li rispettasse, perché alcuni ricercatori hanno scoperto che LastPass non ha mai spostato molti account più vecchi sulle protezioni più recenti.[^krebs] Comincia dagli account indicati nel [consiglio sull'email](#email-first). Tutto quello che è in una nota sicura e non si può cambiare, come il numero di una carta o una seed phrase, va considerato esposto, quindi sostituisci la carta e sposta tutto ciò che la seed phrase protegge.
+</Tip>
+
+[^bw-safari]: [Bitwarden: importare da macOS e Safari](https://bitwarden.com/help/import-from-safari/)
+[^pp-import]: [Proton: Importa le password in Proton Pass](https://proton.me/it/support/pass-import)
+[^keepass]: [Guida di KeePass: primi passi](https://keepass.info/help/base/firststeps.html)
+[^ncsc-pm]: [NCSC: gestire le password](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
+[^krebs]: [Krebs on Security: i federali collegano un furto informatico da 150 milioni di dollari agli attacchi a LastPass del 2022](https://krebsonsecurity.com/2025/03/feds-link-150m-cyberheist-to-2022-lastpass-hacks/)
+[^nist]: [NIST SP 800-63B-4: la robustezza delle password](https://pages.nist.gov/800-63-4/sp800-63b/passwords/)
+[^eff]: [EFF: nuovi elenchi di parole per passphrase casuali](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases)
+[^bw-recovery]: [Bitwarden: ottenere il codice di recupero](https://bitwarden.com/help/two-step-recovery-code/)
+[^bw-chrome]: [Bitwarden: importare da Chrome, Edge e browser Chromium](https://bitwarden.com/help/import-from-chrome/)
+[^bw-firefox]: [Bitwarden: importare da Firefox](https://bitwarden.com/help/import-from-firefox/)
+[^apple-export]: [Supporto Apple: Esportare le password dal Mac su un file](https://support.apple.com/it-it/guide/passwords/mchl35b12625/mac)
+[^kpxc]: [Guida utente di KeePassXC: importare database](https://keepassxc.org/docs/KeePassXC_UserGuide)
+[^chrome]: [Guida di Google Chrome: Gestisci le password in Chrome](https://support.google.com/chrome/answer/95606?hl=it)
+[^bw-disable]: [Bitwarden: disattivare il password manager integrato nel browser](https://bitwarden.com/help/disable-browser-autofill/)
+[^bw-ios]: [Bitwarden: riempimento automatico dall'app per iOS](https://bitwarden.com/help/auto-fill-ios/)
+[^bw-android]: [Bitwarden: riempimento automatico dall'app per Android](https://bitwarden.com/help/auto-fill-android/)
+[^ncsc-email]: [NCSC: usa per l'email una password forte e diversa dalle altre](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email)
+[^bw-reports]: [Bitwarden: i rapporti sullo stato della cassaforte](https://bitwarden.com/help/reports/)
+[^bw-uri]: [Bitwarden: come scrivere gli URI per il riempimento automatico](https://bitwarden.com/help/uri-match-detection/)
+[^bw-ea]: [Bitwarden: l'accesso di emergenza](https://bitwarden.com/help/emergency-access/)
+[^2of3]: [2of3 by Ente](https://2of3.ente.com)
+[^bw-lastpass]: [Bitwarden: importare da LastPass](https://bitwarden.com/help/import-from-lastpass/)
+[^lastpass]: [LastPass: avviso su un recente incidente di sicurezza](https://blog.lastpass.com/posts/notice-of-recent-security-incident)

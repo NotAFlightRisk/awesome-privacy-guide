@@ -1,0 +1,169 @@
+---
+title: パスワード管理アプリの始め方と安全な移行
+description: パスワードマネージャーの選び方と設定、ChromeやSafariのパスワードをファイルも古いデータも残さずに移す手順。最初に変えるべきはメールのパスワードです。
+source: "516ef0870a9ccf70"
+sha: "e18ceac1d77545664aeb78d9d62f36e00f7d1525"
+---
+
+<Short>
+リストからパスワードマネージャーを選び、ほかでは使ったことのない[長いパスフレーズ](#master-passphrase)を設定します。ブラウザに保存されているものを移したら、全部そろっているか確認してから[エクスポートしたファイルを削除](#delete-the-export)し、[ブラウザ側のパスワードも消します](#clear-the-browser-copy)。パスワード再設定のリンクはたいていメールに届くので、[メールのパスワードを最初に変え](#email-first)、ほかのパスワードはログインのついでに変えていきます。2022年にLastPassのアカウントを持っていた場合は、[そこに保存していたパスワードも変える必要があります](#change-what-was-in-lastpass)。
+</Short>
+
+## マネージャーを選ぶ
+
+いちばん大きな分かれ目は、保管庫を誰が管理するかです。<App name="Bitwarden" />と<App name="ProtonPass" />は自社のサーバーを通じて同期しますが、送信する前にデバイス上で暗号化するので、運営会社は中身を読めません。[^bw-safari][^pp-import]これが<Term slug="zero-knowledge">ゼロ知識暗号化</Term>です。<App name="KeePass" />は保管庫を暗号化したファイルとして自分のデバイスに置くので、そのファイルの同期やバックアップは自分で行います。[^keepass]迷ったら、自分で面倒を見る部分が少ない同期型から始めるのがおすすめです。
+
+今ブラウザにパスワードを保存しているとしても、それが間違っているわけではありません。英国のNCSCも、自分のデバイスで使うなら安全だとしています。乗り換える主な理由は、専用のマネージャーなら複数のブラウザやデバイスをまたいで同期できることです。ノートパソコンのChromeでも、スマホのSafariでも、同じパスワードが使えます。[^ncsc-pm]
+
+{/* LessPass works passwords out rather than storing them, so it can't import anything. Pass is command line only, and PaperVault and 2of3 split one secret onto paper rather than managing logins. */}
+
+<Picks section="Password Managers" skip={['lesspass', 'pass', 'papervault', '2of3-by-ente']} />
+
+## きちんと設定する
+
+アカウントを作ったら、スマホにはマネージャーのアプリを、ブラウザには拡張機能をインストールします。パスワードを自動入力できるのは、インストールした場所だけだからです。
+
+<Tip id="master-passphrase" priority="essential" effort={5} title="マスターパスワードはランダムな単語で長く">
+このパスワード1つが、ほかのすべてのパスワードを守っています。2022年にLastPassの暗号化された保管庫が盗まれたとき、それぞれの保管庫を守っていたのはマスターパスワードだけで、犯人はオフラインで好きなだけ推測を続けられました。[^krebs]
+
+大文字や数字、記号に頼るのはやめましょう。そういうルールがあると、たいていの人は`Password1!`のようなパスワードに落ち着きますし、攻撃者もそれを早いうちに試してきます。[^nist]代わりに、長さで勝負しましょう。EFFは7,776語のリストからランダムに6語を選ぶことを勧めていて、ランダムでさえあれば、1語増やすごとに推測の難しさは7,776倍になります。[^eff]自分で選んだ単語はランダムとは言えないので、EFFのページではサイコロを使った選び方を説明しています。
+
+ほかのことには使わないでください。紙に書いておくのはかまいません。盗み見るには、その紙そのものを手に入れなければならないからです。NCSCも、保管場所に誰が近づけるかを考えておけば、紙に書いても安全に管理できるとしています。[^ncsc-pm]
+</Tip>
+
+<Tip id="lock-the-manager" priority="essential" effort={5} title="マネージャーにも2段階認証、コードは印刷">
+マネージャーのアカウントにはほかのすべてが入っているので、メールと同じくらい<Term slug="2fa">2段階認証</Term>が必要です。Bitwardenでは、2段階認証をオンにするとリカバリーコードが発行されます。このコードと、2段階認証に使っているスマホの両方をなくすと、保管庫に入れなくなることがあります。Bitwardenは、印刷して安全な場所に保管することを勧めています。[^bw-recovery]保管場所はマスターパスワードとは別にしてください。2つがそろうと2段階認証を突破できてしまうからです。また、保管庫の中にしか保存しないのもやめましょう。必要なときに限って開けない場所だからです。
+</Tip>
+
+## パスワードを移す
+
+ブラウザからエクスポートしたファイルは暗号化されていませんし、エクスポートしたあともブラウザには元のパスワードが残っています。そのため、インポートと同じくらい後片付けが大切です。ここで紹介する手順は、2026年11月時点のApple、Google、Bitwardenのヘルプページに基づいています。
+
+<Tip id="move-without-a-file" priority="optional" effort={2} title="iPhoneではファイルを使わずに移す">
+iOS 26からは、Appleのパスワードアプリがパスワードとパスキーをほかのマネージャーに直接渡せるようになったので、片付けなければならないファイルが残りません。ただし移行先のマネージャーが対応している必要があり、Bitwardenは対応しています。[^bw-safari]
+
+<Steps>
+1. パスワードアプリを開き、オプションボタンをタップします。
+2. <Path>データを別のアプリに書き出す</Path>をタップし、移したいものにチェックを入れて「続ける」をタップします。
+3. 新しいマネージャーを選び、そのアプリで確定します。
+</Steps>
+</Tip>
+
+<Tip id="export-and-import" priority="essential" effort={10} title="ブラウザからエクスポートしてインポート">
+下のどのブラウザでも、パスワードをCSVファイルにエクスポートできます。そのファイルはBitwardenのほか、ProtonPassやKeePassXC（KeePassのアプリ）でもインポートできます。[^pp-import][^kpxc]Bitwardenは重複をチェックしないので、インポートは1回だけにしてください。[^bw-safari]
+
+<Platforms>
+<Platform name="chrome">
+<Path>その他 --> パスワードと自動入力 --> Google パスワード マネージャー --> 設定</Path>を開き、「パスワードをエクスポート」の横にある「ファイルをダウンロード」を選択します。[^chrome]BraveとOperaも同じ手順で、Edgeのパスワードは`edge://wallet/passwords`にあります。[^bw-chrome]
+</Platform>
+<Platform name="firefox">
+アドレスバーに`about:logins`と入力し、右上のメニューを開いて<Path>パスワードをエクスポート</Path>を選びます。[^bw-firefox]
+</Platform>
+<Platform name="macos">
+パスワードアプリを開き、<Path>ファイル --> すべてのパスワードをファイルに書き出す</Path>を選びます。Wi-Fiのパスワード、「Appleでサインイン」のアカウント、ほかの人が作成した共有グループのパスワードは含まれません。[^apple-export]
+</Platform>
+<Platform name="ios">
+上の直接移す方法が使えない場合は、<Path>設定 --> アプリ --> Safari</Path>を開き、「履歴とウェブサイトデータ」の下にある「書き出す」をタップして、「パスワード」を選び、「ダウンロード」に保存します。[^bw-safari]
+</Platform>
+<Platform name="android">
+Chromeで<Path>その他 --> 設定 --> 自動入力とパスワード --> Google パスワード マネージャー</Path>をタップし、<Path>設定 --> パスワードをエクスポート</Path>をタップして保存先を選びます。[^chrome]
+</Platform>
+</Platforms>
+
+あとは、マネージャーのインポート機能でそのファイルを選びます。Bitwardenのウェブアプリなら<Path>ツール --> インポート</Path>です。[^bw-safari]何かを削除する前に、スマホでマネージャーを開き、大事なログイン情報がいくつか正しいユーザー名とパスワードで移っているか確かめてください。
+</Tip>
+
+<Tip id="delete-the-export" priority="essential" effort={1} title="インポートが済んだらファイルを削除する">
+このファイルは暗号化されていないので、手に入れた人なら誰でも中のパスワードを全部読めます。[^apple-export]インポートを確認したら削除して、ゴミ箱も空にしてください。iPhoneからエクスポートしたファイルはiCloud Driveに保存されるので、そこから削除します。[^bw-safari]
+</Tip>
+
+<Tip id="clear-the-browser-copy" priority="essential" effort={5} title="ブラウザの保存をオフにして、残りも消す">
+そうしないと、パスワードが2組できてしまいます。マネージャーでパスワードを変えても、ブラウザは古いものを持ったまま、新しいパスワードを保存しようと勧め続けます。そのうち、どれが正しいのかわからなくなります。
+
+<Platforms>
+<Platform name="chrome">
+<Path>Google パスワード マネージャー --> 設定</Path>で、「パスワードとパスキーを保存するか確認する」と「自動ログイン」をオフにします。[^bw-disable]残りは「Google パスワード マネージャーのデータをすべて削除」で消せますが、パスキーも一緒に消えます。[^chrome]ここに保存したパスキーでサインインしているサイトがあるなら、全部消すのではなく、パスワードを1つずつ削除してください。
+</Platform>
+<Platform name="firefox">
+<Path>設定 --> パスワードと自動入力</Path>で、チェックが入っている項目のチェックを外し、`about:logins`から保存済みのパスワードを削除します。[^bw-disable]
+</Platform>
+<Platform name="macos">
+<Path>Safari --> 設定 --> 自動入力</Path>で項目のチェックを外し、移し終えたパスワードをパスワードアプリから削除します。[^bw-disable]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="phone-autofill" priority="essential" effort={3} title="スマホの自動入力に設定する">
+インストールしたときにアプリから設定を求められなかった場合、スマホはこれまでどおり前の場所からパスワードを自動入力し続けます。
+
+<Platforms>
+<Platform name="ios">
+<Path>設定 --> 一般 --> 自動入力とパスワード</Path>を開き、新しいマネージャーをオンにします。[^bw-ios]
+</Platform>
+<Platform name="android">
+Bitwardenで<Path>設定 --> 自動入力 --> 自動入力サービス</Path>を開き、Androidで優先するサービスを聞かれたらBitwardenを選びます。[^bw-android]
+</Platform>
+</Platforms>
+</Tip>
+
+## 大事なパスワードから変える
+
+今夜のうちに100個のパスワードを変える必要はありません。悪用されるとほかのすべてに入り込まれてしまうパスワードから先に変えて、残りはログインするたびに変えていきましょう。
+
+<Tip id="email-first" priority="essential" effort={10} title="まずメールのパスワードを変える">
+「パスワードをお忘れの方」のリンクはたいていメールに届くので、メールに入り込んだ人はほかのアカウントもリセットできてしまいます。マネージャーで新しいランダムなパスワードを作り、ほかのデバイスでもそのパスワードでサインインし直してください。ついでに2段階認証もオンにしましょう。そのあとは銀行、ショッピングや決済のアカウント、SNSを変えます。[^ncsc-email]
+</Tip>
+
+<Tip id="reused-passwords" priority="optional" effort={15} title="使い回しているパスワードを見つける">
+1つのパスワードを複数のサイトで使っていると、どこか1つのサイトからそれを手に入れた犯罪者が、ほかのサイトでも片っ端から試せてしまいます。[^ncsc-email]Bitwardenの場合、「情報漏えい調査」は無料ですが、「再利用パスワード調査」と「脆弱パスワード調査」には有料プランが必要です。[^bw-reports]Chromeから乗り換えるなら、Chrome自体のチェック機能で漏洩したパスワードや弱いパスワードが見つかるので、Chromeのデータを消す前に実行しておきましょう。[^chrome]漏洩が見つかったものはすぐに変え、使い回しているものはログインするついでに変えていきます。
+</Tip>
+
+## 自動入力を警告サインにする
+
+<Tip id="autofill-alarm" priority="essential" effort={1} title="自動入力されないときはアドレスを確認する">
+マネージャーはパスワードを保存したサイトでしか入力しないので、銀行のログインページをそっくり真似た偽物が似たアドレスにあっても、何も入力されません。[^ncsc-pm]入力を勧めてこないときは、パスワードを自分でコピーしたり打ち込んだりする前に、手を止めてアドレスをよく確かめてください。<Term slug="phishing">フィッシング</Term>のページは見た目こそ本物そっくりにできても、アドレスで正体がばれます。
+
+本物のサイトなのに、マネージャーが知らないアドレスということもあります。国ごとに別のドメインを使っているショップなどです。Bitwardenでは、そのアドレスをログイン情報に追加しておけば、次からはそこでも自動入力されます。[^bw-uri]
+</Tip>
+
+## 締め出されないように備える
+
+<Tip id="plan-for-lockout" priority="optional" effort={10} title="マスターパスワードを忘れたときに備える">
+NCSCは、締め出されたときの手段の1つとして、信頼できる人を通じた緊急アクセスを挙げています。[^ncsc-pm]Bitwardenでは、指定した相手が申請し、自分が承認するか待機期間が過ぎると、その人がアクセスできるようになります。ただし、相手を追加するには有料プランが必要です。[^bw-ea]KeePassの場合、保管庫はファイルなので、ふだん使うデバイスとは別の場所にコピーを置いておきましょう。
+
+マスターパスワードを1枚の紙だけに残しておくのが不安なら、<App name="2of3 by Ente" />でパスワードを3枚のカードに分けられます。そのうち2枚あれば元に戻せます。カード1枚だけでは拾った人には何の役にも立ちませんし、カードを作るあいだもパスワードがブラウザの外に出ることはありません。[^2of3]実際に頼る前に、2枚のカードから元に戻せるか試しておきましょう。
+</Tip>
+
+## LastPassから乗り換える
+
+2022年の侵害の時点で<Swap product="lastpass">LastPass</Swap>のアカウントを持っていた場合、ほかのマネージャーに移るだけでは足りません。BitwardenもProtonPassも、LastPassからエクスポートしたデータをインポートできます。[^bw-lastpass][^pp-import]
+
+<Tip id="change-what-was-in-lastpass" priority="advanced" effort={60} title="LastPassにあったパスワードを変える">
+2022年、攻撃者はLastPass利用者の暗号化された保管庫をコピーして持ち出しました。[^lastpass]今LastPassのマスターパスワードを変えてもそのコピーは変わらず、持ち出した側はオフラインで好きなだけ攻撃を続けられます。2025年には米連邦捜査官が裁判所への提出書類で、このコピーから解読された保管庫を使って暗号資産が盗まれたと述べています。被害者の多くに共通していたのは、マスターパスワードが比較的単純だったこと、LastPassを特に古くから使っていたこと、ウォレットのシードフレーズをセキュアメモに入れていたことです。[^krebs]
+
+LastPassは、マスターパスワードが同社の既定の要件（2018年に導入した12文字以上など）を満たしていなかった場合は、保存しているパスワードの変更を検討するよう呼びかけました。[^lastpass]私たちは、満たしていたと思う場合でも変えることをおすすめします。研究者の調べで、LastPassが古いアカウントの多くを新しい保護の仕組みに移していなかったことがわかっているからです。[^krebs]まずは[メールの項目](#email-first)で挙げたアカウントから始めましょう。カード番号やシードフレーズのように、セキュアメモに入れていて変えられないものは漏洩したものとして扱い、カードは再発行してもらい、シードフレーズで守っている資産は移してください。
+</Tip>
+
+[^bw-safari]: [Bitwarden：macOSとSafariからインポートする](https://bitwarden.com/help/import-from-safari/)
+[^pp-import]: [Proton：Proton Passにパスワードをインポートする](https://proton.me/ja/support/pass-import)
+[^keepass]: [KeePassヘルプ：最初のステップ](https://keepass.info/help/base/firststeps.html)
+[^ncsc-pm]: [NCSC：パスワードの管理](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
+[^krebs]: [Krebs on Security：米当局、1億5000万ドルのサイバー窃盗を2022年のLastPass侵害と関連付け](https://krebsonsecurity.com/2025/03/feds-link-150m-cyberheist-to-2022-lastpass-hacks/)
+[^nist]: [NIST SP 800-63B-4：パスワードの強度](https://pages.nist.gov/800-63-4/sp800-63b/passwords/)
+[^eff]: [EFF：ランダムなパスフレーズ用の新しい単語リスト](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases)
+[^bw-recovery]: [Bitwarden：リカバリーコードを入手する](https://bitwarden.com/help/two-step-recovery-code/)
+[^bw-chrome]: [Bitwarden：Chrome、Edge、Chromium系ブラウザからインポートする](https://bitwarden.com/help/import-from-chrome/)
+[^bw-firefox]: [Bitwarden：Firefoxからインポートする](https://bitwarden.com/help/import-from-firefox/)
+[^apple-export]: [Apple サポート：パスワードをMacからファイルに書き出す](https://support.apple.com/ja-jp/guide/passwords/mchl35b12625/mac)
+[^kpxc]: [KeePassXCユーザーガイド：データベースのインポート](https://keepassxc.org/docs/KeePassXC_UserGuide)
+[^chrome]: [Google Chrome ヘルプ：Chrome でパスワードを管理する](https://support.google.com/chrome/answer/95606?hl=ja)
+[^bw-disable]: [Bitwarden：ブラウザ内蔵のパスワードマネージャーを無効にする](https://bitwarden.com/help/disable-browser-autofill/)
+[^bw-ios]: [Bitwarden：iOSアプリで自動入力する](https://bitwarden.com/help/auto-fill-ios/)
+[^bw-android]: [Bitwarden：Androidアプリで自動入力する](https://bitwarden.com/help/auto-fill-android/)
+[^ncsc-email]: [NCSC：メールには強力で専用のパスワードを使う](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email)
+[^bw-reports]: [Bitwarden：保管庫の健全性レポート](https://bitwarden.com/help/reports/)
+[^bw-uri]: [Bitwarden：自動入力用のURIの指定方法](https://bitwarden.com/help/uri-match-detection/)
+[^bw-ea]: [Bitwarden：緊急アクセスについて](https://bitwarden.com/help/emergency-access/)
+[^2of3]: [2of3 by Ente](https://2of3.ente.com)
+[^bw-lastpass]: [Bitwarden：LastPassからインポートする](https://bitwarden.com/help/import-from-lastpass/)
+[^lastpass]: [LastPass：最近のセキュリティインシデントに関するお知らせ](https://blog.lastpass.com/posts/notice-of-recent-security-incident)

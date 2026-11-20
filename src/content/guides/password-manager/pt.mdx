@@ -1,0 +1,169 @@
+---
+title: "Gerenciador de senhas: como configurar e migrar suas senhas"
+description: "Escolha um gerenciador de senhas da lista, importe as senhas do navegador sem deixar nenhuma cópia por aí e troque a senha do seu e-mail antes de tudo."
+source: "516ef0870a9ccf70"
+sha: "e18ceac1d77545664aeb78d9d62f36e00f7d1525"
+---
+
+<Short>
+Escolha um gerenciador de senhas da lista e proteja-o com uma [frase-senha longa](#master-passphrase) que você nunca tenha usado em outro lugar. Importe o que o seu navegador tem salvo, confira se veio tudo e depois [apague o arquivo exportado](#delete-the-export) e [limpe a cópia que ficou no navegador](#clear-the-browser-copy). [Troque primeiro a senha do seu e-mail](#email-first), já que a maioria das redefinições de senha vai parar lá, e vá trocando as outras conforme for entrando nas suas contas. Se você tinha conta no LastPass em 2022, [as senhas que estavam nela também precisam ser trocadas](#change-what-was-in-lastpass).
+</Short>
+
+## Escolha um
+
+A principal decisão é quem cuida do seu cofre. O <App name="Bitwarden" /> e o <App name="ProtonPass" /> sincronizam o cofre pelos próprios servidores, mas criptografam tudo no seu aparelho antes do envio, então a empresa não consegue ler nada.[^bw-safari][^pp-import] É isso que se chama de <Term slug="zero-knowledge">criptografia de conhecimento zero</Term>. Já o <App name="KeePass" /> guarda o cofre num arquivo criptografado nos seus próprios aparelhos, e sincronizar esse arquivo e fazer backup dele fica por sua conta.[^keepass] Na dúvida, comece por um que sincronize, porque dá menos trabalho.
+
+Se o seu navegador já salva suas senhas, você não está fazendo nada de errado. O NCSC britânico diz que isso é seguro nos seus próprios aparelhos. O principal motivo para mudar é que um gerenciador à parte sincroniza entre navegadores e aparelhos diferentes, então as mesmas senhas funcionam no Chrome do notebook e no Safari do celular.[^ncsc-pm]
+
+{/* LessPass works passwords out rather than storing them, so it can't import anything. Pass is command line only, and PaperVault and 2of3 split one secret onto paper rather than managing logins. */}
+
+<Picks section="Password Managers" skip={['lesspass', 'pass', 'papervault', '2of3-by-ente']} />
+
+## Configure do jeito certo
+
+Crie sua conta e depois instale o app do gerenciador no celular e a extensão dele no navegador, porque ele só consegue preencher senhas onde estiver instalado.
+
+<Tip id="master-passphrase" priority="essential" effort={5} title="Use uma frase longa de palavras aleatórias como senha mestra">
+Essa senha protege todas as outras. Quando os cofres criptografados do LastPass foram roubados em 2022, a senha mestra era a única coisa que ainda protegia cada um deles, e os ladrões podiam continuar tentando adivinhá-la offline pelo tempo que quisessem.[^krebs]
+
+Não aposte em maiúsculas, números e símbolos. Regras assim geralmente levam as pessoas a escolher `Password1!`, e os atacantes sabem que devem testar isso logo de cara.[^nist] Em vez disso, aposte no tamanho. A EFF recomenda seis palavras sorteadas da lista dela, que tem 7.776 palavras, e, desde que sejam aleatórias, cada palavra a mais deixa a senha 7.776 vezes mais difícil de adivinhar.[^eff] Palavras que você mesmo escolhe não são aleatórias, por isso a página da EFF explica como sorteá-las com dados.
+
+Não use essa senha para mais nada. Anotar no papel não tem problema, porque alguém precisaria pôr as mãos no próprio papel, e o NCSC diz que dá para fazer isso com segurança, desde que você pense em quem mais tem acesso ao lugar onde ele fica guardado.[^ncsc-pm]
+</Tip>
+
+<Tip id="lock-the-manager" priority="essential" effort={5} title="Ative a autenticação de dois fatores no gerenciador e imprima o código de recuperação">
+A conta do gerenciador precisa de <Term slug="2fa">autenticação de dois fatores</Term> tanto quanto o seu e-mail, já que é ela que guarda todo o resto. No Bitwarden, ao ativá-la, você recebe um código de recuperação, e perder esse código junto com o celular que você usa como segundo fator pode deixar você sem acesso ao cofre. O Bitwarden sugere guardar uma cópia impressa num lugar seguro.[^bw-recovery] Não guarde o código junto com a senha mestra, porque, com os dois em mãos, dá para passar direto pela autenticação de dois fatores, e não deixe só dentro do cofre, que é justamente o lugar que você não vai conseguir abrir quando precisar.
+</Tip>
+
+## Leve suas senhas para o gerenciador
+
+O navegador exporta um arquivo sem criptografia e continua com a própria cópia das senhas depois, então a limpeza conta tanto quanto a importação. Os passos aqui vêm das páginas de ajuda da Apple, do Google e do Bitwarden tal como estavam em novembro de 2026.
+
+<Tip id="move-without-a-file" priority="optional" effort={2} title="No iPhone, transfira as senhas sem precisar de arquivo">
+Desde o iOS 26, o app Senhas da Apple consegue passar suas senhas e chaves-senha direto para outro gerenciador, então não sobra arquivo nenhum para apagar. Só funciona se o novo gerenciador tiver suporte a isso, e o Bitwarden tem.[^bw-safari]
+
+<Steps>
+1. Abra o app Senhas e toque no botão de opções.
+2. Toque em <Path>Exportar Dados para Outro App</Path>, marque o que você quer transferir e toque em “Continuar”.
+3. Escolha o novo gerenciador e confirme no app dele.
+</Steps>
+</Tip>
+
+<Tip id="export-and-import" priority="essential" effort={10} title="Exporte as senhas do navegador e importe no gerenciador">
+Todos os navegadores abaixo exportam suas senhas para um arquivo CSV, e, além do Bitwarden, o ProtonPass e o KeePassXC (um app compatível com o KeePass) também conseguem importá-lo.[^pp-import][^kpxc] Importe o arquivo uma vez só, porque o Bitwarden não verifica se há duplicatas.[^bw-safari]
+
+<Platforms>
+<Platform name="chrome">
+Abra <Path>Mais --> Senhas e preenchimento automático --> Gerenciador de Senhas do Google --> Configurações</Path> e selecione “Baixar o arquivo”, ao lado de “Exportar senhas”.[^chrome] No Brave e no Opera funciona do mesmo jeito, e o Edge guarda as senhas em `edge://wallet/passwords`.[^bw-chrome]
+</Platform>
+<Platform name="firefox">
+Digite `about:logins` na barra de endereços, abra o menu no canto superior direito e escolha <Path>Exportar senhas</Path>.[^bw-firefox]
+</Platform>
+<Platform name="macos">
+Abra o app Senhas e escolha <Path>Arquivo --> Exportar Todas as Senhas para Arquivo</Path>. Senhas de Wi-Fi, contas do Iniciar Sessão com a Apple e senhas de um grupo compartilhado que outra pessoa criou ficam de fora.[^apple-export]
+</Platform>
+<Platform name="ios">
+Se não der para usar a transferência direta acima, abra <Path>Ajustes --> Apps --> Safari</Path>, toque em “Exportar” na seção “Histórico e Dados dos Sites”, escolha “Senhas” e toque em “Salvar em Downloads”.[^bw-safari]
+</Platform>
+<Platform name="android">
+No Chrome, toque em <Path>Mais --> Configurações --> Preenchimento automático e senhas --> Gerenciador de Senhas do Google</Path>, depois toque em <Path>Configurações --> Exportar senhas</Path> e escolha onde salvar o arquivo.[^chrome]
+</Platform>
+</Platforms>
+
+Depois, use a opção de importação do gerenciador e escolha o arquivo. No app web do Bitwarden, ela fica em <Path>Ferramentas --> Importação</Path>.[^bw-safari] Antes de apagar qualquer coisa, abra o gerenciador no celular e confira se alguns dos seus logins mais importantes vieram com o nome de usuário e a senha certos.
+</Tip>
+
+<Tip id="delete-the-export" priority="essential" effort={1} title="Apague o arquivo exportado depois da importação">
+O arquivo não tem criptografia, então qualquer pessoa que conseguir uma cópia dele lê todas as senhas que estão lá.[^apple-export] Apague o arquivo assim que tiver conferido a importação e esvazie a lixeira. No iPhone, o arquivo exportado vai para o iCloud Drive, e é de lá que você precisa apagar.[^bw-safari]
+</Tip>
+
+<Tip id="clear-the-browser-copy" priority="essential" effort={5} title="Desative o salvamento de senhas do navegador e apague o que ficou guardado">
+Senão, você acaba com as senhas guardadas em dois lugares. Você troca uma no gerenciador, o navegador fica com a antiga e continua oferecendo para salvar as novas, e depois de um tempo você já não sabe qual é a certa.
+
+<Platforms>
+<Platform name="chrome">
+Em <Path>Gerenciador de Senhas do Google --> Configurações</Path>, desative “Oferecer para salvar senhas e chaves de acesso” e “Fazer login automaticamente”.[^bw-disable] A opção “Excluir todos os dados do Gerenciador de Senhas do Google” apaga o resto, mas leva junto as suas chaves de acesso.[^chrome] Se você usa uma chave de acesso salva ali para entrar em algum site, apague as senhas uma por uma em vez de usar essa opção.
+</Platform>
+<Platform name="firefox">
+Em <Path>Configurações --> Senhas e preenchimento automático</Path>, desmarque as opções que estiverem marcadas e depois remova as senhas salvas em `about:logins`.[^bw-disable]
+</Platform>
+<Platform name="macos">
+Em <Path>Safari --> Ajustes --> Preenchimento Automático</Path>, desmarque as opções e depois remova do app Senhas as senhas que você já transferiu.[^bw-disable]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="phone-autofill" priority="essential" effort={3} title="Faça do gerenciador o preenchimento automático do celular">
+Se o app não pediu isso quando você o instalou, o celular vai continuar puxando as senhas do lugar antigo.
+
+<Platforms>
+<Platform name="ios">
+Abra <Path>Ajustes --> Geral --> Preenchimento Automático e Senhas</Path> e ative o novo gerenciador.[^bw-ios]
+</Platform>
+<Platform name="android">
+No Bitwarden, abra <Path>Configurações --> Preenchimento automático --> Serviços de preenchimento automático</Path> e, quando o Android perguntar qual serviço você prefere, escolha o Bitwarden.[^bw-android]
+</Platform>
+</Platforms>
+</Tip>
+
+## Troque primeiro as senhas que mais importam
+
+Você não precisa trocar cem senhas hoje à noite. Troque as que alguém poderia usar para entrar em todo o resto e deixe as outras para quando for entrando nas contas.
+
+<Tip id="email-first" priority="essential" effort={10} title="Troque primeiro a senha do e-mail">
+A maioria dos links de “esqueci minha senha” vai para o seu e-mail, então quem entrar nele consegue redefinir a senha das suas outras contas. Deixe o gerenciador criar uma senha aleatória nova para ele e depois entre de novo com ela nos seus outros aparelhos. Aproveite para ativar a autenticação de dois fatores. Depois disso, cuide do banco, das contas de compras e de pagamento e das redes sociais.[^ncsc-email]
+</Tip>
+
+<Tip id="reused-passwords" priority="optional" effort={15} title="Descubra quais senhas você usou mais de uma vez">
+Se você usou a mesma senha em vários sites, um criminoso que conseguir essa senha em um deles pode testá-la em todos os outros.[^ncsc-email] No Bitwarden, o relatório de vazamento de dados é gratuito, mas os de senhas reutilizadas e de senhas fracas exigem o plano pago.[^bw-reports] Se você está saindo do Chrome, o “Check-up” dele encontra senhas vazadas e fracas, por isso rode a verificação antes de limpar o Chrome.[^chrome] Troque na hora qualquer senha que tenha aparecido num vazamento, e as reutilizadas conforme for entrando nas contas.
+</Tip>
+
+## Use o preenchimento automático como sinal de alerta
+
+<Tip id="autofill-alarm" priority="essential" effort={1} title="Se o gerenciador não oferecer o preenchimento, confira o endereço">
+O gerenciador só preenche sua senha no site para o qual ela foi salva, então uma cópia da página de login do seu banco num endereço parecido não recebe nada.[^ncsc-pm] Quando ele não oferecer, pare e leia o endereço antes de copiar ou digitar a senha você mesmo. Uma página de <Term slug="phishing">phishing</Term> pode ser idêntica à verdadeira, mas o endereço a entrega.
+
+Às vezes é um site de verdade num endereço que o gerenciador ainda não conhece, como uma loja que tem um domínio diferente para cada país. O Bitwarden deixa você adicionar o endereço extra ao login, e aí ele preenche ali da próxima vez.[^bw-uri]
+</Tip>
+
+## Garanta que você consiga entrar de novo
+
+<Tip id="plan-for-lockout" priority="optional" effort={10} title="Prepare um jeito de recuperar o acesso se esquecer a senha mestra">
+O NCSC cita o acesso de emergência por meio de alguém de confiança como uma forma de voltar a entrar.[^ncsc-pm] No Bitwarden, a pessoa que você escolher pode pedir acesso e o recebe quando você aprovar ou quando terminar um prazo de espera, mas adicionar essa pessoa exige o plano pago.[^bw-ea] No KeePass, o cofre é um arquivo: guarde uma cópia dele em outro lugar que não seja o aparelho onde você o usa.
+
+Se você prefere não deixar a senha mestra numa única folha de papel, o <App name="2of3 by Ente" /> a transforma em três cartões, e quaisquer dois deles recuperam a senha. Um cartão sozinho não serve de nada para quem o encontrar, e a senha não sai do seu navegador enquanto ele gera os cartões.[^2of3] Teste a recuperação com dois dos cartões antes de confiar neles.
+</Tip>
+
+## Saindo do LastPass
+
+Se você tinha conta no <Swap product="lastpass">LastPass</Swap> quando ele foi invadido em 2022, só mudar para outro gerenciador não basta. Tanto o Bitwarden quanto o ProtonPass conseguem importar um arquivo exportado do LastPass.[^bw-lastpass][^pp-import]
+
+<Tip id="change-what-was-in-lastpass" priority="advanced" effort={60} title="Troque as senhas que estavam no seu cofre do LastPass">
+Em 2022, invasores levaram uma cópia dos cofres criptografados dos clientes do LastPass.[^lastpass] Trocar agora a sua senha mestra do LastPass não muda essa cópia, que pode ser atacada offline pelo tempo que alguém quiser. Em 2025, agentes federais dos EUA disseram num documento judicial que criptomoedas tinham sido roubadas com a ajuda de cofres dessa cópia que foram quebrados. Muitas das vítimas tinham senhas mestras relativamente simples, estavam entre os clientes mais antigos do LastPass e tinham guardado a frase-semente (seed phrase) de uma carteira numa nota segura.[^krebs]
+
+O LastPass sugeriu pensar em trocar as senhas salvas se a sua senha mestra não seguisse os padrões dele, como o mínimo de 12 caracteres adotado em 2018.[^lastpass] Nossa recomendação é trocar mesmo que você ache que a sua seguia, porque pesquisadores descobriram que o LastPass nunca passou muitas contas antigas para as proteções mais novas.[^krebs] Comece pelas contas da [dica do e-mail](#email-first). O que estiver numa nota segura e não puder ser trocado, como o número de um cartão ou uma frase-semente, deve ser considerado exposto, então peça um cartão novo e transfira o que a frase-semente protege.
+</Tip>
+
+[^bw-safari]: [Bitwarden: importar do macOS e do Safari](https://bitwarden.com/help/import-from-safari/)
+[^pp-import]: [Proton: Importar senhas para o Proton Pass](https://proton.me/pt-br/support/pass-import)
+[^keepass]: [Ajuda do KeePass: primeiros passos](https://keepass.info/help/base/firststeps.html)
+[^ncsc-pm]: [NCSC: como gerenciar suas senhas](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
+[^krebs]: [Krebs on Security: autoridades federais ligam roubo cibernético de US$ 150 milhões às invasões do LastPass em 2022](https://krebsonsecurity.com/2025/03/feds-link-150m-cyberheist-to-2022-lastpass-hacks/)
+[^nist]: [NIST SP 800-63B-4: força das senhas](https://pages.nist.gov/800-63-4/sp800-63b/passwords/)
+[^eff]: [EFF: novas listas de palavras para frases-senha aleatórias](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases)
+[^bw-recovery]: [Bitwarden: obter meu código de recuperação](https://bitwarden.com/help/two-step-recovery-code/)
+[^bw-chrome]: [Bitwarden: importar do Chrome, do Edge e de navegadores Chromium](https://bitwarden.com/help/import-from-chrome/)
+[^bw-firefox]: [Bitwarden: importar do Firefox](https://bitwarden.com/help/import-from-firefox/)
+[^apple-export]: [Suporte da Apple: Exporte senhas do Mac para um arquivo](https://support.apple.com/pt-br/guide/passwords/mchl35b12625/mac)
+[^kpxc]: [Guia do usuário do KeePassXC: importar bancos de dados](https://keepassxc.org/docs/KeePassXC_UserGuide)
+[^chrome]: [Ajuda do Google Chrome: Gerenciar senhas no Chrome](https://support.google.com/chrome/answer/95606?hl=pt-BR)
+[^bw-disable]: [Bitwarden: desativar o gerenciador de senhas embutido no navegador](https://bitwarden.com/help/disable-browser-autofill/)
+[^bw-ios]: [Bitwarden: preenchimento automático no app para iOS](https://bitwarden.com/help/auto-fill-ios/)
+[^bw-android]: [Bitwarden: preenchimento automático no app para Android](https://bitwarden.com/help/auto-fill-android/)
+[^ncsc-email]: [NCSC: use uma senha forte e exclusiva no seu e-mail](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email)
+[^bw-reports]: [Bitwarden: relatórios de saúde do cofre](https://bitwarden.com/help/reports/)
+[^bw-uri]: [Bitwarden: como montar URIs para o preenchimento automático](https://bitwarden.com/help/uri-match-detection/)
+[^bw-ea]: [Bitwarden: sobre o acesso de emergência](https://bitwarden.com/help/emergency-access/)
+[^2of3]: [2of3 by Ente](https://2of3.ente.com)
+[^bw-lastpass]: [Bitwarden: importar do LastPass](https://bitwarden.com/help/import-from-lastpass/)
+[^lastpass]: [LastPass: aviso sobre um incidente de segurança recente](https://blog.lastpass.com/posts/notice-of-recent-security-incident)
