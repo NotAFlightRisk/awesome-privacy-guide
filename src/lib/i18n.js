@@ -29,6 +29,8 @@ export const tr = (lang, text) => lookup(lang, text) ?? text;
 export function trMd(lang, markdown) {
   if (!markdown?.trim()) return '';
   if (lang === 'en') return renderMarkdown(markdown);
+  const hand = overrides[lang]?.[markdown];
+  if (hand) return renderMarkdown(hand);
   return lookup(lang, markdown) ?? `<div lang="en">${renderMarkdown(markdown)}</div>`;
 }
 
