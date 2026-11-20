@@ -1,0 +1,136 @@
+---
+title: Welche 2FA am sichersten ist und wo du sie zuerst aktivierst
+description: SMS-Codes sind die schwächste Zwei-Faktor-Authentifizierung, Passkeys die stärkste. Warum, welche Konten zuerst dran sind und wie du dich nicht aussperrst.
+source: "37ccfea674d03e4c"
+sha: "28c34bf49ea5c12a459f1c7bda571e2dc1c10528"
+---
+
+<Short>
+Passkeys und Hardware-Sicherheitsschlüssel sind die sicherste Form der Zwei-Faktor-Authentifizierung. Danach kommen Codes aus einer Authenticator-App, und SMS-Codes sind am schwächsten, aber immer noch viel besser als gar nichts. [Fang mit deinem E-Mail-Konto an](#email-first), denn wer da reinkommt, kann deine anderen Passwörter zurücksetzen. [Sichere dann deine Handynummer bei deinem Mobilfunkanbieter ab](#lock-your-number), [bewahr die Backup-Codes an einem sicheren Ort auf](#backup-codes) und [gib nie einen Code an jemanden weiter, der sich bei dir gemeldet hat](#never-share-a-code).
+</Short>
+
+## Welche Art von 2FA ist am sichersten?
+
+<Term slug="2fa">Zwei-Faktor-Authentifizierung</Term> sorgt dafür, dass ein gestohlenes Passwort allein nicht reicht. CISA, die Cybersicherheitsbehörde der US-Regierung, sortiert die verschiedenen Arten danach, womit man an ihnen vorbeikommt. Hier ist ihre Reihenfolge, angefangen mit der schwächsten.[^cisa]
+
+SMS-Codes lassen sich abgreifen, ohne dass jemand dein Handy anfasst. Bei einem SIM-Swap überredet ein Krimineller deinen Mobilfunkanbieter, deine Nummer auf eine SIM-Karte zu übertragen, die er besitzt, und ab dann gehen deine SMS an ihn.[^cisa] Cifas, ein britischer Dienst zur Betrugsprävention, hat 2024 fast 3.000 Meldungen über SIM-Swaps bekommen, mehr als zehnmal so viele wie im Jahr davor.[^cifas] Laut dem britischen Cybersicherheitszentrum NCSC ist ein SMS-Code trotzdem eine riesige Verbesserung gegenüber gar keinem zweiten Schritt.[^ncsc-2sv]
+
+Danach kommen einfache „Bist du das?“-Anfragen auf deinem Handy. Angreifer können sie immer wieder schicken und darauf hoffen, dass du irgendwann eine bestätigst. Genau so ist 2022 jemand bei Uber reingekommen. Vermutlich hatte er das Passwort eines externen Mitarbeiters gekauft und es immer wieder mit der Anmeldung versucht, bis der Mitarbeiter am Ende eine der Anfragen bestätigt hat.[^uber]
+
+Sechsstellige Codes aus einer <Term slug="totp">Authenticator-App</Term> werden auf deinem Handy erzeugt, also kommt man mit einem SIM-Swap nicht an sie heran. Bei manchen Anfragen steht auf dem Anmeldebildschirm eine Zahl, die du auf deinem Handy eintippen musst. Die lassen sich viel schwerer aus Versehen bestätigen, und CISA stellt sie auf eine Stufe mit App-Codes.[^cisa] Microsoft Authenticator macht das inzwischen bei allen Anfragen so.[^ms-number] Einen App-Code kann aber auch eine gefälschte Anmeldeseite abgreifen. Wenn du ihn in eine Kopie der echten Website eintippst, kann sich der Angreifer damit als du anmelden, bevor der Code abläuft.[^cisa]
+
+Passkeys und Sicherheitsschlüssel sind am stärksten. Ein Passkey wird für das Konto bei einer bestimmten Website erstellt, und es gibt keinen Code und kein Geheimnis, das du eintippen müsstest, also kann eine gefälschte Anmeldeseite nichts abgreifen. Apple und CISA bezeichnen sie beide als resistent gegen Phishing.[^apple-passkeys][^cisa] Ein <Term slug="hardware-security-key">Hardware-Sicherheitsschlüssel</Term> ist ein kleines Gerät, das du bei der Anmeldung benutzt, etwa in Form eines USB-Sticks oder Anhängers.[^apple-keys] Wenn bei einem Google-Konto die Bestätigung in zwei Schritten eingeschaltet ist, zählt die Anmeldung mit einem Passkey als beide Schritte, und du wirst nicht noch zusätzlich nach einem Code gefragt.[^google-passkeys]
+
+<Tip id="strongest-option" priority="essential" effort={5} title="Nutz bei jedem Konto die stärkste Methode, die es anbietet">
+In den Sicherheitseinstellungen des Kontos heißt das vielleicht „Bestätigung in zwei Schritten“, „Zwei-Faktor-Authentifizierung“ oder „MFA“. Nimm einen Passkey oder einen Sicherheitsschlüssel, wenn es das gibt, sonst eine App, und SMS nur, wenn nichts anderes zur Wahl steht. [2fa.directory](https://2fa.directory/) listet auf, welche Websites 2FA unterstützen, also kannst du dort nachsehen, bevor du dich durch die Einstellungen klickst.[^which]
+
+Wenn du einem Google-Konto einen Passkey hinzufügst, bleiben deine anderen Möglichkeiten, dich anzumelden und wieder ins Konto zu kommen, so, wie sie waren.[^google-passkeys] Lass sie in Ruhe, bis du dich auf jedem Gerät, das du benutzt, einmal mit dem Passkey angemeldet hast.
+
+Nach dem ersten Mal wirst du meist nur noch nach dem zweiten Schritt gefragt, wenn du ein neues Gerät nutzt oder etwas Wichtiges änderst, etwa dein Passwort.[^ncsc-2sv]
+</Tip>
+
+## Wenn jemand versucht, daran vorbeizukommen
+
+<Tip id="never-share-a-code" priority="essential" effort={1} title="Bestätige keine Anmeldung und gib keinen Code weiter, wenn du nicht selbst darum gebeten hast">
+Eine Anfrage, die du nicht selbst ausgelöst hast, kann durchaus bedeuten, dass jemand dein Passwort hat und gerade versucht, sich anzumelden. Lehn sie ab und ändere dann dieses Passwort. Bei Uber kam der Angreifer rein, als der externe Mitarbeiter schließlich eine Anfrage bestätigte.[^uber]
+
+Betrüger rufen auch an und tun so, als wären sie dein Mobilfunkanbieter. Mit den Daten, die sie dir dabei entlocken, geben sie sich dann beim Anbieter als du aus.[^vodafone] Egal, wer sich bei dir gemeldet hat: Lies ihm keinen Code vor und tipp auch keinen für ihn ein. Laut Vodafone solltest du einen Code, der für die Eingabe im Internet gedacht ist, nie am Telefon weitergeben,[^vodafone] und Google sagt, dass es nur auf seiner eigenen Anmeldeseite nach einem Backup-Code fragt.[^google-backup]
+</Tip>
+
+## Wo du 2FA zuerst einschaltest
+
+<Tip id="email-first" priority="essential" effort={10} title="Fang mit deinem E-Mail-Konto an">
+Kriminelle, die in dein E-Mail-Konto kommen, können darüber die Passwörter deiner anderen Konten zurücksetzen.[^ncsc-2sv] Über dein E-Mail-Konto kann sich jemand auch deine Handynummer holen. In einem Fall, den sich die britische Verbraucherorganisation Which? angesehen hat, sind Kriminelle in das E-Mail-Konto eines Mannes gekommen, haben damit das Passwort seines Vodafone-Kontos zurückgesetzt und darüber dann seine Nummer zu einem anderen Anbieter mitgenommen.[^which]
+</Tip>
+
+<Tip id="then-the-rest" priority="essential" effort={30} title="Kümmere dich dann um die Konten, deren Verlust am meisten wehtun würde">
+Das NCSC zählt E-Mail, Onlinebanking, soziale Medien und Onlineshopping zu den wichtigen Konten.[^ncsc-tips] Nach deinem E-Mail-Konto würden wir in dieser Reihenfolge vorgehen:
+
+<Steps>
+1. Dein Passwort-Manager, falls du einen benutzt, denn darin stecken deine anderen Passwörter. Wie das geht, steht im [Ratgeber zum Passwort-Manager](/de/ratgeber/password-manager/#lock-the-manager).
+2. Dein Kundenkonto beim Mobilfunkanbieter, denn darüber lässt sich steuern, wohin deine SMS gehen (mehr dazu im [nächsten Tipp](#lock-your-number)).
+3. Deine Bank.
+4. Das Konto bei Apple, Google oder Microsoft, mit dem dein Handy oder Computer angemeldet ist.
+5. Onlineshops, bei denen deine Karte hinterlegt ist.
+6. Soziale Medien, wo jemand in deinem Namen deinen Freunden schreiben könnte.
+</Steps>
+</Tip>
+
+## Damit deine Nummer deine bleibt
+
+<Tip id="lock-your-number" priority="essential" effort={10} title="Sichere deine Nummer bei deinem Mobilfunkanbieter ab">
+Solange jemand anderes deine Nummer hat, gehen deine SMS-Codes an ihn, und es kann eine Weile dauern, bis du die Nummer zurückbekommst. Eine Vodafone-Kundin hat zehn Tage gewartet, und in der Zeit haben die Betrüger die Codes benutzt, die ihre Bank und ihr E-Mail-Anbieter ihr geschickt haben.[^which]
+
+<Region place="uk">
+Gib deinem Onlinekonto beim Mobilfunkanbieter ein starkes Passwort und schalte für dieses Konto die Zwei-Faktor-Authentifizierung ein. Frag den Anbieter dann, ob er für große Änderungen wie eine neue SIM-Karte eine zusätzliche PIN oder ein zusätzliches Passwort einrichten kann. Which? hat herausgefunden, dass die meisten SIM-Swaps inzwischen online passieren und nicht mehr im Laden oder am Telefon.[^which]
+</Region>
+
+<Region place="us">
+Nach den Regeln der US-Telekommunikationsbehörde FCC muss jeder Mobilfunkanbieter eine kostenlose Sperre anbieten, die verhindert, dass jemand deine SIM-Karte wechselt, und dir sofort Bescheid geben, wenn jemand deine Nummer zu einem anderen Anbieter mitnehmen will. Die Anbieter haben dafür bis Mitte Dezember 2026 Zeit, deiner bietet die Sperre also vielleicht noch nicht an. Frag nach und schalte sie ein, sobald es sie gibt.[^fcc-sim][^fcc-port]
+</Region>
+</Tip>
+
+<Tip id="changing-number" priority="optional" effort={20} title="Wenn du deine Nummer wechselst, zieh vorher deine 2FA um">
+Alte Nummern werden an neue Leute vergeben. In den USA werden jedes Jahr etwa 35 Millionen Nummern abgemeldet und weitergegeben, und als Forscher aus Princeton 200 recycelte Nummern eine Woche lang nutzten, bekamen 19 davon noch sensible Nachrichten an die früheren Inhaber, etwa Anmeldecodes.[^recycled] Bevor du eine Nummer aufgibst, stell jedes Konto auf die neue um, oder noch besser auf eine App.
+</Tip>
+
+<Tip id="text-recovery" priority="advanced" effort={15} title="Prüf, ob sich das Konto per SMS zurücksetzen lässt">
+Bei manchen Konten reicht ein per SMS geschickter Code, um das Passwort zurückzusetzen, und wer deine Nummer hat, kommt so am Passwort und an der 2FA gleichzeitig vorbei. Dieselben Forscher haben 259 Nummern geprüft, die jeder frei auswählen konnte, und mit 171 davon hätte man über die Kontowiederherstellung bei Amazon, Facebook, Google, PayPal oder Yahoo ein Konto übernehmen können.[^recycled]
+
+Sieh dir die Wiederherstellungsoptionen deiner wichtigsten Konten an. Wenn du per SMS wieder reinkommst und das Konto es erlaubt, deine Nummer zu entfernen, kannst du das machen, aber dann fehlt dir selbst auch ein Weg zurück ins Konto. Erstell vorher neue Backup-Codes und heb sie gut auf. Bleib dann angemeldet, wo du gerade bist, öffne ein privates Fenster oder nimm ein anderes Gerät und prüf, ob ein anderer Weg zurück ins Konto wirklich funktioniert. Entfern die Nummer erst, wenn das geklappt hat. Eine Sicherheitsfrage allein ist kein ausreichender Ersatz, denn laut NCSC bieten Sicherheitsfragen nicht denselben Schutz.[^ncsc-2sv]
+</Tip>
+
+## Sperr dich nicht selbst aus
+
+<Tip id="backup-codes" priority="essential" effort={5} title="Bewahr die Backup-Codes auf Papier auf, getrennt von deinem Handy">
+Wenn ein Konto dir Backup-Codes gibt, funktioniert jeder davon nur einmal, und mit ihnen kommst du rein, wenn es mit dem Handy nicht klappt.[^ncsc-2sv] Für dein Google-Konto schlägt Google vor, die Backup-Codes auszudrucken und dort aufzubewahren, wo auch dein Reisepass liegt. Wenn du neue Codes erstellst, funktionieren die alten nicht mehr, also wirf den alten Ausdruck weg.[^google-backup]
+
+Bewahr sie nicht im selben Passwort-Manager auf wie das Passwort, sonst hat jeder, der in den Tresor kommt, beides (mehr dazu im <Term slug="2fa">Glossareintrag zu 2FA</Term>).
+</Tip>
+
+<Tip id="second-key" priority="optional" effort={10} title="Wenn du Sicherheitsschlüssel nutzt, leg dir einen Ersatz zu">
+Apple lässt dich Sicherheitsschlüssel für einen Apple Account erst einschalten, wenn du mindestens zwei hast, und warnt, dass du dich dauerhaft aussperren kannst, wenn du alle Schlüssel und dazu deine vertrauenswürdigen Geräte verlierst.[^apple-keys] Wenn ein Konto mehr als einen Schlüssel zulässt, füg den Ersatz auch hinzu und bewahr ihn woanders auf als an deinem Schlüsselbund.
+</Tip>
+
+## Such dir eine Authenticator-App aus
+
+Nimm eine, die deine Codes auf ein neues Handy bringen kann. Wenn eine App sie nur auf deinem jetzigen Handy speichert, kann der Verlust dieses Handys bedeuten, dass du Backup-Codes benutzen und 2FA bei jedem Konto neu einrichten musst. Die Apps unten sichern oder synchronisieren deine Codes, sodass du sie auf ein neues Handy mitnehmen kannst.
+
+{/* The section's other apps don't mention backups or sync in the list, so they're left out. */}
+
+<Picks section="2-Factor Authentication" skip={['tofu', 'authenticator', 'authenticator-gnome', 'authenticator-cc', 'proton-authenticator']} />
+
+<Tip id="leave-authy" priority="optional" effort={30} title="Wenn du von Authy wechselst, musst du jedes Konto neu einrichten">
+<Swap product="authy">Authy</Swap> kann deine Codes nicht exportieren, also musst du beim Wechsel zu einer anderen App die 2FA bei jedem Konto mit der neuen App neu einrichten.[^reg-authy] Die Desktop-Apps von Authy sollten ab März 2024 nicht mehr funktionieren, also mach das am besten auf deinem Handy.[^reg-authy]
+
+<Steps>
+1. Melde dich bei einem Konto an, öffne die 2FA-Einstellungen und richte die Anmeldung per Authenticator-App neu ein, diesmal mit deiner neuen App. Vielleicht musst du 2FA dafür aus- und wieder einschalten, also mach das in einem Rutsch.
+2. Gib den Code aus der neuen App ein, wenn die Website danach fragt, und speicher alle neuen Backup-Codes, denn die alten funktionieren dann vielleicht nicht mehr.
+3. Bleib angemeldet, öffne ein privates Fenster, melde dich dort noch einmal mit dem Code aus der neuen App an und lösch das Konto erst dann aus Authy.
+</Steps>
+</Tip>
+
+<Tip id="leave-google-authenticator" priority="optional" effort={10} title="So ziehst du von Google Authenticator um">
+<Swap product="google-authenticator">Google Authenticator</Swap> überträgt Codes per QR-Code. Tippe in der App auf <Path>Menü --> Codes übertragen --> Codes exportieren</Path>, wähl die Konten aus und scanne jeden QR-Code, den die App anzeigt (es können mehrere sein), mit der Importfunktion deiner neuen App.[^google-auth] Ente Auth zum Beispiel kann sie importieren.[^ente-import] Ein Handy kann seinen eigenen Bildschirm nicht scannen. Wenn also beide Apps auf demselben Handy sind, sieh vorher in der Importhilfe der neuen App nach. In diesen QR-Codes steckt alles, was man braucht, um deine Codes zu erzeugen, also mach keinen Screenshot davon.
+
+Behalte die alte App, bis du jeden Code in der neuen geprüft hast.[^ente-import] Wenn deine Codes mit deinem Google-Konto synchronisiert sind, verschwindet ein Code, den du in der App löschst, von jedem Gerät, mit dem er synchronisiert wurde.[^google-auth]
+</Tip>
+
+[^cisa]: [CISA: Phishing-resistente MFA einführen](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^cifas]: [Cifas: Anstieg nicht autorisierter SIM-Swaps um 1.055 %](https://www.cifas.org.uk/newsroom/huge-surge-see-sim-swaps-hit-telco-and-mobile)
+[^ncsc-2sv]: [NCSC: Bestätigung in zwei Schritten einrichten](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
+[^uber]: [Uber: Sicherheitsupdate](https://www.uber.com/newsroom/security-update/)
+[^ms-number]: [Microsoft Learn: Nummernabgleich in Push-Benachrichtigungen von Authenticator](https://learn.microsoft.com/de-de/entra/identity/authentication/how-to-mfa-number-match)
+[^apple-passkeys]: [Apple Support: Informationen zur Sicherheit von Passkeys](https://support.apple.com/de-de/102195)
+[^apple-keys]: [Apple Support: Informationen zu Sicherheitsschlüsseln für den Apple Account](https://support.apple.com/de-de/102637)
+[^google-passkeys]: [Google-Konto-Hilfe: Für die Anmeldung Passkeys statt Passwörter verwenden](https://support.google.com/accounts/answer/13548313?hl=de)
+[^which]: [Which?: Wie schwache Sicherheitsprüfungen SIM-Swap-Betrügern die Tür offen lassen](https://www.which.co.uk/news/article/mobile-networks-must-step-up-to-prevent-sim-swap-fraud-aSsLN6p0CMRq)
+[^vodafone]: [Vodafone UK: So schützt du dich vor SIM-Swap-Betrug](https://www.vodafone.co.uk/newscentre/features/how-to-protect-yourself-from-sim-swap-fraud/)
+[^google-backup]: [Google-Konto-Hilfe: Mit Backup-Codes anmelden](https://support.google.com/accounts/answer/1187538?hl=de)
+[^ncsc-tips]: [NCSC: Bestätigung in zwei Schritten einschalten](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^fcc-sim]: [Federal Register: Schutz vor Betrug durch SIM-Swaps und Rufnummernmitnahmen, Fristen für SIM-Wechsel](https://www.federalregister.gov/d/2026-23400)
+[^fcc-port]: [Federal Register: Schutz vor Betrug durch SIM-Swaps und Rufnummernmitnahmen, Fristen für die Rufnummernmitnahme](https://www.federalregister.gov/d/2026-23522)
+[^recycled]: [Princeton University: Sicherheits- und Datenschutzrisiken durch recycelte Rufnummern bei Mobilfunkanbietern](https://recyclednumbers.cs.princeton.edu/)
+[^reg-authy]: [The Register: Twilio erinnert daran, dass die Desktop-Apps von Authy im März eingestellt werden](https://www.theregister.com/2024/02/15/twilio_authy_eol)
+[^google-auth]: [Google-Konto-Hilfe: Bestätigungscodes mit Google Authenticator abrufen](https://support.google.com/accounts/answer/1066447?hl=de)
+[^ente-import]: [Ente-Hilfe: Von anderen Anbietern umziehen](https://ente.com/help/auth/migration/import)

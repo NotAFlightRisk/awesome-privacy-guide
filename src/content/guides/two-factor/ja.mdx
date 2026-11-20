@@ -1,0 +1,136 @@
+---
+title: どの2段階認証が安全？どこから設定すべき？
+description: 2段階認証のなかでSMSのコードはいちばん弱く、パスキーがいちばん強い方法です。その理由と、どのアカウントから設定すべきか、締め出されないための備えを説明します。
+source: "37ccfea674d03e4c"
+sha: "28c34bf49ea5c12a459f1c7bda571e2dc1c10528"
+---
+
+<Short>
+2段階認証のなかでいちばん安全なのは、パスキーとセキュリティキーです。その次が認証アプリのコードで、SMSのコードはいちばん弱い方法ですが、それでも何もしないよりはずっと安全です。[まずはメールから設定しましょう](#email-first)。メールに不正ログインした人は、ほかのアカウントのパスワードまで再設定できてしまうからです。そのあとは[携帯電話会社で電話番号にロックをかけ](#lock-your-number)、[バックアップコードを安全な場所にしまっておきましょう](#backup-codes)。[向こうから連絡してきた相手には、コードを絶対に教えないでください](#never-share-a-code)。
+</Short>
+
+## どの方法がいちばん安全？
+
+<Term slug="2fa">2段階認証（二要素認証）</Term>を設定しておけば、パスワードを盗まれても、それだけではログインされません。米国政府のサイバーセキュリティ機関であるCISAは、それぞれの方法がどんな攻撃で突破されうるかをもとに順位をつけています。ここでは、その順位に沿って弱いものから順に紹介します[^cisa]。
+
+SMSで届くコードは、スマホに誰も触れなくても奪われることがあります。「SIMスワップ」と呼ばれる手口では、犯罪者が携帯電話会社を言いくるめて、あなたの番号を自分が持っているSIMに移させます。そこから先は、あなた宛てのSMSがすべて犯人に届きます[^cisa]。英国の詐欺防止サービスCifasには、2024年にSIMスワップの報告が3,000件近く寄せられました。前年の10倍以上です[^cifas]。それでも英国のNCSC（国家サイバーセキュリティセンター）は、2段階目がまったくない状態に比べれば、SMSのコードでもはるかに安全だとしています[^ncsc-2sv]。
+
+その次が、スマホに「ログインしようとしていますか？」と聞いてくるだけの通知です。攻撃者は、いつか承認されるのを狙って、通知を何度でも送りつけられます。2022年にUberが侵入されたのも、この手口でした。犯人はおそらく外部の契約スタッフのパスワードを買ったうえで何度もログインを試み、最後にはそのスタッフが通知を1つ承認してしまいました[^uber]。
+
+<Term slug="totp">認証アプリ</Term>が表示する6桁のコードはスマホの中で作られるので、SIMスワップでは手に入りません。通知のなかには、ログイン画面に表示された数字をスマホに入力させるものもあります。これならうっかり承認してしまうことはずっと少なく、CISAもアプリのコードと同じ順位に置いています[^cisa]。Microsoft Authenticatorは、今ではすべての通知でこの方式を使っています[^ms-number]。ただし、アプリのコードも偽のログインページで盗まれることがあります。本物そっくりに作られたサイトにコードを入力すると、そのコードの有効期限が切れる前に、攻撃者があなたになりすましてログインできてしまうのです[^cisa]。
+
+いちばん強いのは、パスキーとセキュリティキーです。パスキーは特定のサイトのアカウント専用に作られ、自分で入力するコードや秘密の情報もないので、偽のログインページには盗めるものがありません。AppleもCISAも、パスキーをフィッシング耐性のある方法としています[^apple-passkeys][^cisa]。<Term slug="hardware-security-key">セキュリティキー</Term>は、USBメモリやタグのような小さな機器で、サインインするときに使います[^apple-keys]。「2 段階認証プロセス」をオンにしているGoogleアカウントでは、パスキーでのサインインが両方の段階を兼ねるので、別にコードを求められることはありません[^google-passkeys]。
+
+<Tip id="strongest-option" priority="essential" effort={5} title="選べるなかでいちばん強い方法を使う">
+アカウントのセキュリティ設定では、「2段階認証」「二要素認証（2ファクタ認証）」「多要素認証（MFA）」といった名前になっていることがあります。パスキーかセキュリティキーが選べるならそれを、なければ認証アプリを、SMSしかなければSMSを選びましょう。どのサイトが2段階認証に対応しているかは[2fa.directory](https://2fa.directory/)に載っているので、設定画面を探し回る前に確認できます[^which]。
+
+Googleアカウントにパスキーを追加しても、ほかのログイン方法やアカウントを復元する方法は、それまでどおり残ります[^google-passkeys]。ふだん使っているデバイスすべてで、一度パスキーでサインインしてみるまでは、ほかの方法はそのままにしておいてください。
+
+最初の1回が済めば、2段階目を求められるのはたいてい、新しいデバイスでログインするときか、パスワードのような大事な設定を変えるときだけです[^ncsc-2sv]。
+</Tip>
+
+## 突破されそうになったら
+
+<Tip id="never-share-a-code" priority="essential" effort={1} title="頼んでいない承認やコードには応じない">
+自分で操作していないのに通知が届いたら、誰かがあなたのパスワードを手に入れて、ログインしようとしている可能性が高いです。拒否してから、そのパスワードを変えてください。Uberの件でも、契約スタッフがとうとう通知を1つ承認してしまい、そこから侵入されました[^uber]。
+
+詐欺師が携帯電話会社を名乗って電話をかけ、聞き出した情報を使って、今度は本人になりすまして携帯電話会社に連絡する手口もあります[^vodafone]。向こうから連絡してきた相手には、誰を名乗っていても、コードを読み上げたり代わりに入力したりしないでください。Vodafoneは、オンラインで使うためのコードを電話で伝えてはいけないとしていますし[^vodafone]、Googleも、自社のログインページ以外でバックアップコードを求めることはないとしています[^google-backup]。
+</Tip>
+
+## 最初に設定するアカウント
+
+<Tip id="email-first" priority="essential" effort={10} title="まずメールに設定する">
+メールに不正ログインされると、犯罪者はそれを使ってほかのアカウントのパスワードを再設定できてしまいます[^ncsc-2sv]。電話番号を乗っ取られるきっかけになることもあります。英国の消費者団体Which?が調べたある事例では、犯人は男性のメールに不正ログインし、それを使ってVodafoneのアカウントのパスワードを再設定したうえで、そのアカウントから男性の番号を別の携帯電話会社に移していました[^which]。
+</Tip>
+
+<Tip id="then-the-rest" priority="essential" effort={30} title="次に、乗っ取られると困るアカウントへ">
+NCSCは、大事なアカウントとしてメール、銀行、SNS、ネットショッピングを挙げています[^ncsc-tips]。メールが済んだら、私たちなら次の順番で進めます。
+
+<Steps>
+1. パスワードマネージャーを使っているなら、まずそれです。ほかのパスワードがすべて入っているからです。設定のしかたは[パスワードマネージャーのガイド](/ja/guides/password-manager/#lock-the-manager)で説明しています。
+2. 携帯電話会社のアカウントです。SMSがどこに届くかを決めているのはここだからです（[次の項目](#lock-your-number)を参照してください）。
+3. 銀行のアカウントです。
+4. スマホやパソコンでサインインしているApple、Google、Microsoftのアカウントです。
+5. カード情報を保存しているショッピングサイトです。
+6. SNSです。乗っ取られると、あなたになりすまして友だちにメッセージを送られるおそれがあります。
+</Steps>
+</Tip>
+
+## 電話番号を守る
+
+<Tip id="lock-your-number" priority="essential" effort={10} title="携帯電話会社で番号にロックをかける">
+番号が他人の手にあるあいだは、SMSのコードはその人に届きますし、番号を取り戻すまでには時間がかかることがあります。あるVodafoneの利用者は10日間待たされ、そのあいだに銀行やメールのサービスから届いたコードを詐欺師に使われてしまいました[^which]。
+
+<Region place="uk">
+携帯電話会社のオンラインアカウントに強力なパスワードを設定し、そのアカウント自体の2段階認証もオンにしましょう。それから、新しいSIMの発行のような大きな変更のときに使う追加のPINやパスワードを設定できないか、携帯電話会社に問い合わせてください。Which?の調べでは、今ではSIMスワップの大半が、店頭や電話ではなくオンラインで行われています[^which]。
+</Region>
+
+<Region place="us">
+米連邦通信委員会（FCC）の規則で、すべての携帯電話会社は、誰にもSIMを変更させない無料のロックを用意し、誰かがあなたの番号を他社に移そうとしたときにはすぐに知らせなければならなくなりました。携帯電話会社の対応期限は2026年12月中旬なので、契約している会社ではまだロックが使えないかもしれません。問い合わせてみて、使えるようになったらオンにしてください[^fcc-sim][^fcc-port]。
+</Region>
+</Tip>
+
+<Tip id="changing-number" priority="optional" effort={20} title="番号を変えるなら、先に2段階認証を移す">
+使われなくなった番号は、別の人に割り当てられます。米国では毎年約3,500万件の番号が解約され、別の人に回されています。プリンストン大学の研究者が再利用された番号200件を入手して1週間調べたところ、19件には前の持ち主宛ての、ログインコードのような機密性の高いメッセージがまだ届いていました[^recycled]。番号を手放す前に、各アカウントの設定を新しい番号に切り替えてください。できれば、番号ではなく認証アプリに切り替えるほうがおすすめです。
+</Tip>
+
+<Tip id="text-recovery" priority="advanced" effort={15} title="SMSだけで再設定できないか確認する">
+アカウントによっては、SMSで届いたコードだけでパスワードを再設定できるものがあります。そうなると、あなたの番号を手に入れた人は、パスワードと2段階認証をまとめて突破できてしまいます。同じ研究者たちが、誰でも選べる状態になっていた番号259件を調べたところ、そのうち171件は、Amazon、Facebook、Google、PayPal、Yahooのアカウント復元の仕組みを通じて、アカウントの乗っ取りに使えるものでした[^recycled]。
+
+いちばん大事なアカウントの復元方法を確認してみてください。SMSでアカウントに戻れる設定になっていて、番号を削除できるなら、削除してもかまいません。ただし、あなた自身がアカウントに戻る手段も1つ減ります。まずは新しいバックアップコードを発行して保存しておきましょう。次に、今のデバイスではサインインしたまま、プライベートウィンドウか別のデバイスを開いて、ほかの復元方法で本当に戻れるか確かめます。番号を削除するのは、それが確認できてからにしてください。秘密の質問だけでは、代わりとしては不十分です。NCSCによれば、それでは同じだけの保護が得られないからです[^ncsc-2sv]。
+</Tip>
+
+## 締め出されないために
+
+<Tip id="backup-codes" priority="essential" effort={5} title="バックアップコードは紙で別に保管する">
+アカウントでバックアップコードが発行された場合、コードはそれぞれ1回限り有効で、スマホが使えないときでもそれを使ってログインできます[^ncsc-2sv]。Googleは、コードを印刷して、パスポートと同じ場所に保管することを勧めています。新しいコードを発行すると古いコードは使えなくなるので、前に印刷した紙は捨ててください[^google-backup]。
+
+パスワードと同じパスワードマネージャーには入れないでください。保管庫に侵入されたら、両方とも渡ってしまいます（詳しくは<Term slug="2fa">用語集の「2段階認証」</Term>で説明しています）。
+</Tip>
+
+<Tip id="second-key" priority="optional" effort={10} title="セキュリティキーを使うなら予備も用意する">
+Appleは、セキュリティキーが2つ以上ないとApple Accountでセキュリティキーをオンにできないようにしています。また、すべてのキーと信頼できるデバイスをなくすと、アカウントに二度とアクセスできなくなるおそれがあると警告しています[^apple-keys]。複数のキーを登録できるアカウントでは予備のキーも登録して、ふだん持ち歩く鍵束とは別の場所に保管してください。
+</Tip>
+
+## 認証アプリの選び方
+
+コードを新しいスマホに移せるアプリを選びましょう。今のスマホの中にしかコードを保存しないアプリだと、そのスマホをなくしたとき、バックアップコードを使ってログインし、すべてのアカウントで2段階認証を設定し直すことになりかねません。下のアプリはコードをバックアップしたり同期したりできるので、新しいスマホにも持っていけます。
+
+{/* The section's other apps don't mention backups or sync in the list, so they're left out. */}
+
+<Picks section="2-Factor Authentication" skip={['tofu', 'authenticator', 'authenticator-gnome', 'authenticator-cc', 'proton-authenticator']} />
+
+<Tip id="leave-authy" priority="optional" effort={30} title="Authyからはアカウントごとに設定し直す">
+<Swap product="authy">Authy</Swap>はコードをエクスポートできないので、ほかのアプリに移るには、アカウントごとに新しいアプリで2段階認証を設定し直す必要があります[^reg-authy]。デスクトップ版は2024年3月に使えなくなる予定だったので、この作業はスマホで行う前提で進めてください[^reg-authy]。
+
+<Steps>
+1. アカウントにサインインして2段階認証の設定を開き、認証アプリの登録を、今度は新しいアプリでやり直します。そのために2段階認証をいったんオフにしてからオンに戻す必要があるかもしれないので、その場合は途中でやめずに一度に済ませてください。
+2. サイトに求められたら新しいアプリのコードを入力し、新しいバックアップコードが表示されたら保存しておきます。古いコードは使えなくなっているかもしれないからです。
+3. サインインしたままプライベートウィンドウを開き、新しいアプリのコードでもう一度サインインします。それができてから、Authyからそのアカウントを削除してください。
+</Steps>
+</Tip>
+
+<Tip id="leave-google-authenticator" priority="optional" effort={10} title="Google Authenticatorから乗り換える">
+<Swap product="google-authenticator">Google Authenticator</Swap>（Googleの日本語ヘルプでは「Google 認証システム」）では、QRコードを使ってコードを移します。アプリで<Path>メニュー --> コードを移行 --> コードをエクスポート</Path>をタップしてアカウントを選び、表示されるQRコードを新しいアプリのインポート機能ですべて読み取ってください（複数表示されることがあります）[^google-auth]。たとえばEnte Authなら、このQRコードを読み込めます[^ente-import]。スマホは自分の画面を読み取れないので、両方のアプリが同じスマホに入っている場合は、先に新しいアプリのインポートのヘルプを確認してください。このQRコードにはコードを作るのに必要な情報がすべて入っているので、スクリーンショットは撮らないでください。
+
+新しいアプリで1つずつコードを確かめるまでは、古いアプリを残しておいてください[^ente-import]。コードをGoogleアカウントに同期していた場合、アプリで1つ削除すると、同期しているすべてのデバイスからも削除されます[^google-auth]。
+</Tip>
+
+[^cisa]: [CISA：フィッシング耐性のあるMFAの導入](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^cifas]: [Cifas：不正なSIMスワップが1,055%急増](https://www.cifas.org.uk/newsroom/huge-surge-see-sim-swaps-hit-telco-and-mobile)
+[^ncsc-2sv]: [NCSC：2段階認証を設定する](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
+[^uber]: [Uber：セキュリティに関する最新情報](https://www.uber.com/newsroom/security-update/)
+[^ms-number]: [Microsoft Learn：Authenticatorのプッシュ通知での番号照合](https://learn.microsoft.com/ja-jp/entra/identity/authentication/how-to-mfa-number-match)
+[^apple-passkeys]: [Apple サポート：パスキーのセキュリティについて](https://support.apple.com/ja-jp/102195)
+[^apple-keys]: [Apple サポート：Apple Account用のセキュリティキーについて](https://support.apple.com/ja-jp/102637)
+[^google-passkeys]: [Google アカウント ヘルプ：パスワードの代わりにパスキーでログインする](https://support.google.com/accounts/answer/13548313?hl=ja)
+[^which]: [Which?：甘い本人確認がSIMスワップ詐欺師を招き入れている](https://www.which.co.uk/news/article/mobile-networks-must-step-up-to-prevent-sim-swap-fraud-aSsLN6p0CMRq)
+[^vodafone]: [Vodafone UK：SIMスワップ詐欺から身を守る方法](https://www.vodafone.co.uk/newscentre/features/how-to-protect-yourself-from-sim-swap-fraud/)
+[^google-backup]: [Google アカウント ヘルプ：バックアップ コードでログインする](https://support.google.com/accounts/answer/1187538?hl=ja)
+[^ncsc-tips]: [NCSC：2段階認証をオンにする](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^fcc-sim]: [Federal Register：SIMスワップ詐欺とポートアウト詐欺から消費者を守る規則、SIM変更に関する遵守期限](https://www.federalregister.gov/d/2026-23400)
+[^fcc-port]: [Federal Register：SIMスワップ詐欺とポートアウト詐欺から消費者を守る規則、番号移行に関する遵守期限](https://www.federalregister.gov/d/2026-23522)
+[^recycled]: [プリンストン大学：携帯電話会社による番号の再利用がもたらすセキュリティとプライバシーのリスク](https://recyclednumbers.cs.princeton.edu/)
+[^reg-authy]: [The Register：Twilio、Authyのデスクトップアプリが3月に終了すると改めて告知](https://www.theregister.com/2024/02/15/twilio_authy_eol)
+[^google-auth]: [Google アカウント ヘルプ：Google 認証システムで確認コードを取得する](https://support.google.com/accounts/answer/1066447?hl=ja)
+[^ente-import]: [Ente ヘルプ：ほかのサービスからの移行](https://ente.com/help/auth/migration/import)

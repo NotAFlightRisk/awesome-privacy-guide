@@ -1,0 +1,136 @@
+---
+title: "Autenticación de dos factores: cuál es la más segura"
+description: "Los SMS son la forma más débil de autenticación de dos factores, y las llaves de acceso, la más segura. Por dónde empezar y cómo no quedarte fuera."
+source: "37ccfea674d03e4c"
+sha: "28c34bf49ea5c12a459f1c7bda571e2dc1c10528"
+---
+
+<Short>
+Las llaves de acceso (passkeys) y las llaves de seguridad físicas son la forma más segura de autenticación de dos factores. Después vienen los códigos de una app de autenticación, y los SMS son la opción más débil, aunque siguen siendo mucho mejores que nada. [Empieza por tu correo](#email-first), porque quien entre en él puede restablecer tus otras contraseñas. Luego [protege tu número en tu compañía telefónica](#lock-your-number), [guarda los códigos de recuperación en un lugar seguro](#backup-codes) y [no le des nunca un código a alguien que se haya puesto en contacto contigo](#never-share-a-code).
+</Short>
+
+## ¿Qué tipo de 2FA es más seguro?
+
+La <Term slug="2fa">autenticación de dos factores</Term> hace que una contraseña robada no baste por sí sola. La CISA, la agencia de ciberseguridad del Gobierno de Estados Unidos, clasifica los distintos tipos según qué ataques pueden burlar cada uno, y este es su orden, empezando por el más débil[^cisa].
+
+Los códigos por SMS se pueden robar sin que nadie toque tu teléfono. En el llamado SIM swapping, un delincuente convence a tu compañía telefónica de que pase tu número a una SIM que tiene él, y a partir de ese momento tus SMS le llegan a él[^cisa]. A Cifas, un servicio británico de prevención del fraude, le notificaron casi 3000 casos de SIM swapping en 2024, más de diez veces los del año anterior[^cifas]. Eso sí, el NCSC, la agencia británica de ciberseguridad, sigue diciendo que un código por SMS es una mejora enorme frente a no tener ningún segundo paso[^ncsc-2sv].
+
+Después vienen las notificaciones del teléfono que solo preguntan «¿Eres tú?». Un atacante puede mandarte una tras otra con la esperanza de que acabes aceptando alguna. Así fue como alguien entró en Uber en 2022. Seguramente había comprado la contraseña de un contratista externo, y siguió intentando iniciar sesión hasta que el contratista acabó aceptando una de las notificaciones[^uber].
+
+Los códigos de seis cifras de una <Term slug="totp">app de autenticación</Term> se generan en tu teléfono, así que el SIM swapping no sirve para robarlos. Algunas notificaciones muestran un número en la pantalla de inicio de sesión y te piden que lo escribas en el teléfono, lo que hace mucho más difícil aceptarlas sin querer, y la CISA las pone al mismo nivel que los códigos de las apps[^cisa]. Microsoft Authenticator ya lo hace con todas sus notificaciones[^ms-number]. Aun así, una página de inicio de sesión falsa puede hacerse con el código de una app. Si lo escribes en una copia del sitio real, el atacante puede usarlo para entrar como si fueras tú antes de que caduque[^cisa].
+
+Las llaves de acceso y las llaves de seguridad son las más seguras. Cada llave de acceso se crea para la cuenta de un sitio concreto, y no hay ningún código ni secreto que tengas que escribir, así que una página de inicio de sesión falsa no tiene nada que recoger. Tanto Apple como la CISA dicen que resisten el phishing[^apple-passkeys][^cisa]. Una <Term slug="hardware-security-key">llave de seguridad física</Term> es un pequeño dispositivo, como una memoria USB o un llavero, que usas al iniciar sesión[^apple-keys]. En una Cuenta de Google con la verificación en dos pasos activada, iniciar sesión con una llave de acceso cuenta como los dos pasos, así que no te pide además un código[^google-passkeys].
+
+<Tip id="strongest-option" priority="essential" effort={5} title="Usa el tipo más seguro que ofrezca cada cuenta">
+En las opciones de seguridad de la cuenta puede aparecer como verificación en dos pasos, autenticación de dos factores o MFA. Elige una llave de acceso o una llave de seguridad si la ofrece, una app si no, y los SMS si es lo único que hay. En [2fa.directory](https://2fa.directory/) tienes una lista de los sitios que admiten la 2FA, para que lo compruebes antes de ponerte a rebuscar en los menús[^which].
+
+Cuando añades una llave de acceso a una Cuenta de Google, tus otras formas de iniciar sesión y de recuperar la cuenta siguen como estaban[^google-passkeys]. No las toques hasta que hayas iniciado sesión con la llave de acceso en cada dispositivo que uses.
+
+Después de la primera vez, normalmente solo te piden el segundo paso en un dispositivo nuevo o cuando cambias algo importante, como la contraseña[^ncsc-2sv].
+</Tip>
+
+## Si alguien intenta saltársela
+
+<Tip id="never-share-a-code" priority="essential" effort={1} title="No apruebes nunca un inicio de sesión ni des un código que no hayas pedido tú">
+Si te llega una notificación que no has provocado tú, es muy posible que alguien tenga tu contraseña y esté intentando entrar. Recházala y luego cambia esa contraseña. El atacante de Uber entró cuando el contratista acabó aceptando una[^uber].
+
+Los estafadores también llaman a la gente fingiendo ser su compañía telefónica, les sacan datos y luego se hacen pasar por ellos ante la compañía[^vodafone]. No importa quién se haya puesto en contacto contigo: no le leas ningún código ni lo escribas donde te pida. Vodafone dice que un código pensado para usarse en internet no se debe dar nunca por teléfono[^vodafone], y Google dice que nunca pide un código de recuperación en ningún sitio que no sea su propia página de inicio de sesión[^google-backup].
+</Tip>
+
+## Dónde activarla primero
+
+<Tip id="email-first" priority="essential" effort={10} title="Empieza por tu correo">
+Un delincuente que entra en tu correo puede usarlo para restablecer las contraseñas de tus otras cuentas[^ncsc-2sv]. También puede ser la vía para quedarse con tu número de teléfono. En un caso que investigó Which?, una organización británica de consumidores, unos delincuentes entraron en el correo de un hombre, lo usaron para restablecer la contraseña de su cuenta de Vodafone y desde ahí pasaron su número a otra compañía[^which].
+</Tip>
+
+<Tip id="then-the-rest" priority="essential" effort={30} title="Luego sigue con las cuentas que más te dolería perder">
+Para el NCSC, las cuentas importantes son el correo, el banco, las redes sociales y las compras por internet[^ncsc-tips]. Después del correo, este es el orden que seguiríamos nosotros:
+
+<Steps>
+1. Tu gestor de contraseñas, si usas uno, porque guarda tus otras contraseñas. La [guía del gestor de contraseñas](/es/guias/password-manager/#lock-the-manager) explica cómo hacerlo.
+2. Tu cuenta de la compañía telefónica, porque es la que decide adónde llegan tus SMS (mira [el siguiente consejo](#lock-your-number)).
+3. Tu banco.
+4. La cuenta de Apple, Google o Microsoft con la que inicia sesión tu teléfono o tu equipo.
+5. Las tiendas que tienen tu tarjeta guardada.
+6. Las redes sociales, donde alguien podría escribir a tus amigos haciéndose pasar por ti.
+</Steps>
+</Tip>
+
+## Que tu número de teléfono siga siendo tuyo
+
+<Tip id="lock-your-number" priority="essential" effort={10} title="Protege tu número en tu compañía telefónica">
+Mientras otra persona tiene tu número, tus códigos por SMS le llegan a ella, y recuperarlo puede llevar un tiempo. Una clienta de Vodafone estuvo diez días esperando, y mientras tanto los estafadores usaron los códigos que le enviaron su banco y su proveedor de correo[^which].
+
+<Region place="uk">
+Ponle una contraseña segura a la cuenta en línea de tu compañía telefónica y activa su propia verificación en dos pasos. Luego pregunta a la compañía si puede añadir un PIN o una contraseña extra para los cambios importantes, como pedir una SIM nueva. Which? descubrió que ahora la mayoría de los casos de SIM swapping se hacen por internet, y no en tiendas ni por teléfono[^which].
+</Region>
+
+<Region place="us">
+Las normas de la FCC, el regulador de las telecomunicaciones de Estados Unidos, obligan a todas las compañías de telefonía móvil a ofrecer un bloqueo gratuito que impide que nadie cambie tu SIM, y a avisarte enseguida cuando alguien pida pasar tu número a otra compañía. Las compañías tienen de plazo hasta mediados de diciembre de 2026, así que puede que la tuya todavía no ofrezca el bloqueo. Pregunta, y actívalo en cuanto esté disponible[^fcc-sim][^fcc-port].
+</Region>
+</Tip>
+
+<Tip id="changing-number" priority="optional" effort={20} title="Si vas a cambiar de número, pasa antes la 2FA al nuevo">
+Los números antiguos acaban en manos de otras personas. En Estados Unidos se dan de baja unos 35 millones de números al año, que luego se reasignan, y cuando unos investigadores de Princeton se quedaron con 200 números reciclados durante una semana, 19 seguían recibiendo mensajes con información sensible dirigidos a sus antiguos dueños, como códigos de inicio de sesión[^recycled]. Antes de renunciar a un número, cambia cada cuenta al nuevo o, mejor aún, pásala a una app.
+</Tip>
+
+<Tip id="text-recovery" priority="advanced" effort={15} title="Comprueba si basta un SMS para restablecer la cuenta">
+Algunas cuentas te dejan restablecer la contraseña solo con un código que te llega por SMS, así que quien tenga tu número se salta a la vez la contraseña y la 2FA. Los mismos investigadores revisaron 259 números libres que cualquiera podía elegir, y 171 de ellos se podrían haber usado para hacerse con una cuenta a través de la recuperación de cuentas de Amazon, Facebook, Google, PayPal o Yahoo[^recycled].
+
+Mira las opciones de recuperación de tus cuentas más importantes. Si con un SMS se puede volver a entrar y la cuenta te deja quitar tu número, puedes hacerlo, pero tú también tendrás una forma menos de volver a entrar. Antes, guarda un juego nuevo de códigos de recuperación. Después, sin cerrar la sesión donde estás, abre una ventana privada u otro dispositivo y comprueba que de verdad funciona otra forma de volver a entrar. No quites el número hasta que haya funcionado. Una pregunta de seguridad no basta como alternativa por sí sola, porque el NCSC dice que no da la misma protección[^ncsc-2sv].
+</Tip>
+
+## Cómo no quedarte fuera de tus cuentas
+
+<Tip id="backup-codes" priority="essential" effort={5} title="Guarda los códigos de recuperación en papel, lejos de tu teléfono">
+Cuando una cuenta te da códigos de recuperación, cada uno sirve una sola vez, y te dejan entrar cuando no puedes hacerlo con el teléfono[^ncsc-2sv]. Google sugiere imprimirlos y guardarlos donde tengas el pasaporte. Si generas un juego nuevo, los antiguos dejan de funcionar, así que tira la hoja impresa de antes[^google-backup].
+
+No los guardes en el mismo gestor de contraseñas que la contraseña, o quien entre en la bóveda tendrá las dos cosas (la <Term slug="2fa">entrada del glosario sobre la 2FA</Term> cuenta más sobre esto).
+</Tip>
+
+<Tip id="second-key" priority="optional" effort={10} title="Si usas llaves de seguridad, ten una de repuesto">
+Apple no te deja activar las llaves de seguridad en una Cuenta de Apple si no tienes al menos dos, y avisa de que si las pierdes todas, junto con tus dispositivos de confianza, podrías quedarte sin acceso para siempre[^apple-keys]. Cuando una cuenta te deje añadir más de una llave, añade también la de repuesto y guárdala en otro sitio que no sea tu llavero.
+</Tip>
+
+## Cómo elegir una app de autenticación
+
+Elige una que pueda pasar tus códigos a un teléfono nuevo. Si una app solo los guarda en el teléfono que tienes ahora, perderlo puede obligarte a usar los códigos de recuperación y a volver a configurar la 2FA en todas tus cuentas. Las apps de abajo hacen una copia de seguridad de tus códigos o los sincronizan, así que puedes llevártelos a un teléfono nuevo.
+
+{/* The section's other apps don't mention backups or sync in the list, so they're left out. */}
+
+<Picks section="2-Factor Authentication" skip={['tofu', 'authenticator', 'authenticator-gnome', 'authenticator-cc', 'proton-authenticator']} />
+
+<Tip id="leave-authy" priority="optional" effort={30} title="Si dejas Authy, tendrás que configurar otra vez cada cuenta">
+<Swap product="authy">Authy</Swap> no puede exportar tus códigos, así que cambiarte a otra app implica volver a configurar la 2FA en cada cuenta con la app nueva[^reg-authy]. Sus apps de escritorio iban a dejar de funcionar en marzo de 2024, así que prepárate para hacerlo desde el teléfono[^reg-authy].
+
+<Steps>
+1. Inicia sesión en una cuenta, abre sus opciones de 2FA y vuelve a configurar una app de autenticación, esta vez con tu app nueva. Puede que tengas que desactivar la 2FA y volver a activarla para conseguirlo, así que hazlo todo de una vez.
+2. Escribe el código de la app nueva cuando el sitio te lo pida y guarda los códigos de recuperación nuevos que te dé, porque puede que los antiguos dejen de funcionar.
+3. Sin cerrar la sesión, abre una ventana privada, vuelve a iniciar sesión con el código de la app nueva y solo entonces borra esa cuenta de Authy.
+</Steps>
+</Tip>
+
+<Tip id="leave-google-authenticator" priority="optional" effort={10} title="Cómo dejar Google Authenticator">
+<Swap product="google-authenticator">Google Authenticator</Swap> pasa tus códigos a otra app mediante códigos QR. En la app, toca <Path>Menú --> Transferir códigos --> Exportar códigos</Path>, elige las cuentas y escanea todos los códigos QR que te muestre (puede haber más de uno) con la opción de importar de tu app nueva[^google-auth]. Ente Auth, por ejemplo, puede importarlos[^ente-import]. Un teléfono no puede escanear su propia pantalla, así que si las dos apps están en el mismo teléfono, mira primero la ayuda de importación de la app nueva. Esos códigos QR contienen todo lo necesario para generar tus códigos, así que no les hagas capturas de pantalla.
+
+No borres la app antigua hasta que hayas comprobado cada código en la nueva[^ente-import]. Si tus códigos estaban sincronizados con tu Cuenta de Google, al borrar uno en la app se borra de todos los dispositivos con los que estaba sincronizado[^google-auth].
+</Tip>
+
+[^cisa]: [CISA: Cómo implementar una MFA resistente al phishing](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^cifas]: [Cifas: Los cambios de SIM no autorizados se disparan un 1055 %](https://www.cifas.org.uk/newsroom/huge-surge-see-sim-swaps-hit-telco-and-mobile)
+[^ncsc-2sv]: [NCSC: Cómo configurar la verificación en dos pasos](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
+[^uber]: [Uber: Actualización de seguridad](https://www.uber.com/newsroom/security-update/)
+[^ms-number]: [Microsoft Learn: Coincidencia de números en las notificaciones push de Authenticator](https://learn.microsoft.com/es-mx/entra/identity/authentication/how-to-mfa-number-match)
+[^apple-passkeys]: [Soporte de Apple: Acerca de la seguridad de las llaves de acceso](https://support.apple.com/es-mx/102195)
+[^apple-keys]: [Soporte de Apple: Acerca de las llaves de seguridad para la Cuenta de Apple](https://support.apple.com/es-mx/102637)
+[^google-passkeys]: [Ayuda de Cuenta de Google: Iniciar sesión con una llave de acceso en lugar de con una contraseña](https://support.google.com/accounts/answer/13548313?hl=es-419)
+[^which]: [Which?: Cómo unos controles de seguridad poco rigurosos dejan la puerta abierta a los estafadores del SIM swapping](https://www.which.co.uk/news/article/mobile-networks-must-step-up-to-prevent-sim-swap-fraud-aSsLN6p0CMRq)
+[^vodafone]: [Vodafone UK: Cómo protegerte del fraude por SIM swapping](https://www.vodafone.co.uk/newscentre/features/how-to-protect-yourself-from-sim-swap-fraud/)
+[^google-backup]: [Ayuda de Cuenta de Google: Cómo acceder con códigos de respaldo](https://support.google.com/accounts/answer/1187538?hl=es-419)
+[^ncsc-tips]: [NCSC: Activa la verificación en dos pasos](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^fcc-sim]: [Federal Register: Protección de los consumidores frente al SIM swapping y al fraude de portabilidad, plazos de cumplimiento para los cambios de SIM](https://www.federalregister.gov/d/2026-23400)
+[^fcc-port]: [Federal Register: Protección de los consumidores frente al SIM swapping y al fraude de portabilidad, plazos de cumplimiento para las portabilidades de número](https://www.federalregister.gov/d/2026-23522)
+[^recycled]: [Universidad de Princeton: Riesgos de seguridad y privacidad del reciclaje de números en las compañías telefónicas](https://recyclednumbers.cs.princeton.edu/)
+[^reg-authy]: [The Register: Twilio recuerda a los usuarios que las apps de escritorio de Authy dejan de funcionar en marzo](https://www.theregister.com/2024/02/15/twilio_authy_eol)
+[^google-auth]: [Ayuda de Cuenta de Google: Obtener códigos de verificación con Google Authenticator](https://support.google.com/accounts/answer/1066447?hl=es-419)
+[^ente-import]: [Ayuda de Ente: Migrar desde otros proveedores](https://ente.com/help/auth/migration/import)

@@ -1,0 +1,136 @@
+---
+title: "Verificação em duas etapas: qual tipo usar e onde ativar"
+description: "O SMS é a forma mais fraca de verificação em duas etapas, e a chave de acesso, a mais forte. Veja por quê, onde ativar primeiro e como não perder o acesso."
+source: "37ccfea674d03e4c"
+sha: "28c34bf49ea5c12a459f1c7bda571e2dc1c10528"
+---
+
+<Short>
+As chaves de acesso (passkeys) e as chaves de segurança são o tipo mais seguro de verificação em duas etapas. Os códigos de um app autenticador vêm logo depois, e o SMS é o mais fraco, embora ainda seja muito melhor do que nada. [Comece pelo seu e-mail](#email-first), porque quem entra nele consegue redefinir as suas outras senhas. Depois, [proteja o seu número na operadora](#lock-your-number), [guarde os códigos de backup num lugar seguro](#backup-codes) e [nunca passe um código para alguém que entrou em contato com você](#never-share-a-code).
+</Short>
+
+## Qual tipo de verificação em duas etapas é mais seguro?
+
+Com a <Term slug="2fa">verificação em duas etapas</Term>, uma senha roubada não basta sozinha. A CISA, a agência de cibersegurança do governo dos EUA, classifica os diferentes tipos pelos ataques que conseguem passar por cada um, e seguimos a ordem dela aqui, começando pelo mais fraco.[^cisa]
+
+Os códigos por SMS podem ser roubados sem que ninguém encoste no seu celular. Na troca de chip (o chamado SIM swap), um criminoso convence a operadora a passar o seu número para um chip que está com ele, e daí em diante os seus SMS vão para ele.[^cisa] A Cifas, um serviço britânico de prevenção a fraudes, recebeu quase 3.000 denúncias de troca de chip em 2024, mais de dez vezes o número do ano anterior.[^cifas] Mesmo assim, o NCSC britânico diz que um código por SMS é um avanço enorme em relação a não ter segunda etapa nenhuma.[^ncsc-2sv]
+
+As notificações no celular que só perguntam “É você?” vêm em seguida. Os invasores podem continuar mandando essas notificações na esperança de que você acabe aceitando uma. Foi assim que alguém invadiu a Uber em 2022. A pessoa provavelmente tinha comprado a senha de um terceirizado. Depois, ficou tentando entrar, e o terceirizado acabou aceitando uma das notificações.[^uber]
+
+Os códigos de seis dígitos de um <Term slug="totp">app autenticador</Term> são gerados no seu celular, então quem troca o seu chip não fica com eles. Algumas notificações mostram um número na tela de login e pedem que você o digite no celular, o que torna muito mais difícil aceitar sem querer, e a CISA as coloca no mesmo nível dos códigos de app.[^cisa] O Microsoft Authenticator agora faz isso em todas as notificações.[^ms-number] Só que um código de app ainda pode ser capturado por uma página de login falsa. Se você digitar o código numa cópia do site verdadeiro, o invasor pode usá-lo para entrar como você antes que ele expire.[^cisa]
+
+As chaves de acesso e as chaves de segurança são as mais fortes. Uma chave de acesso é criada para a conta de um site específico, e não há código nem segredo para você digitar, então uma página de login falsa não tem nada para capturar. A Apple e a CISA dizem que elas são resistentes a phishing.[^apple-passkeys][^cisa] Uma <Term slug="hardware-security-key">chave de segurança</Term> é um aparelhinho, parecido com um pendrive ou um chaveiro, que você usa na hora de entrar.[^apple-keys] Numa Conta do Google com a verificação em duas etapas ativada, entrar com uma chave de acesso vale pelas duas etapas, então o Google não pede um código além dela.[^google-passkeys]
+
+<Tip id="strongest-option" priority="essential" effort={5} title="Use o tipo mais forte que cada conta oferecer">
+Nas configurações de segurança da conta, essa opção pode aparecer como verificação em duas etapas, autenticação de dois fatores ou MFA. Escolha uma chave de acesso ou uma chave de segurança se houver essa opção, um app se não houver, e SMS se for a única escolha. O [2fa.directory](https://2fa.directory/) mostra quais sites têm verificação em duas etapas, então dá para conferir antes de sair procurando.[^which]
+
+Quando você adiciona uma chave de acesso a uma Conta do Google, as suas outras formas de fazer login e de recuperar o acesso continuam como estavam.[^google-passkeys] Não mexa nelas até ter entrado com a chave de acesso em cada aparelho que você usa.
+
+Depois da primeira vez, normalmente a segunda etapa só é pedida num aparelho novo ou quando você muda algo importante, como a senha.[^ncsc-2sv]
+</Tip>
+
+## Quando alguém tenta burlar a verificação
+
+<Tip id="never-share-a-code" priority="essential" effort={1} title="Nunca aprove um login nem passe um código que você não pediu">
+Se chegar uma notificação sem você ter tentado fazer login, pode muito bem ser alguém com a sua senha tentando entrar. Recuse e depois troque essa senha. O invasor da Uber conseguiu entrar quando o terceirizado finalmente aceitou uma.[^uber]
+
+Golpistas também ligam para as pessoas fingindo ser da operadora, arrancam dados delas e depois se passam por elas junto à operadora.[^vodafone] Não importa quem entrou em contato com você: não diga nem digite nenhum código para essa pessoa. A Vodafone diz que um código feito para uso online nunca deve ser passado por telefone,[^vodafone] e o Google diz que nunca pede um código de backup fora da própria página de login.[^google-backup]
+</Tip>
+
+## Onde ativar primeiro
+
+<Tip id="email-first" priority="essential" effort={10} title="Comece pelo e-mail">
+Criminosos que entram no seu e-mail podem usá-lo para redefinir as senhas das suas outras contas.[^ncsc-2sv] Ele também pode ser o caminho para alguém tomar o seu número de celular. Num caso investigado pela Which?, uma associação britânica de consumidores, criminosos entraram no e-mail de um homem, usaram o e-mail para redefinir a senha da conta dele na Vodafone e depois usaram essa conta para passar o número dele para outra operadora.[^which]
+</Tip>
+
+<Tip id="then-the-rest" priority="essential" effort={30} title="Depois, cuide das contas que mais fariam falta">
+Na lista de contas importantes do NCSC estão o e-mail, o banco, as redes sociais e as compras online.[^ncsc-tips] Depois do e-mail, esta é a ordem que seguiríamos:
+
+<Steps>
+1. O seu gerenciador de senhas, se você usar um, já que ele guarda as suas outras senhas. O [guia de gerenciadores de senhas](/pt/guias/password-manager/#lock-the-manager) explica como fazer isso.
+2. A sua conta na operadora, já que ela controla para onde vão os seus SMS (veja [a próxima dica](#lock-your-number)).
+3. O seu banco.
+4. A conta da Apple, do Google ou da Microsoft que está conectada ao seu celular ou computador.
+5. As lojas que têm o seu cartão salvo.
+6. As redes sociais, onde alguém poderia mandar mensagens para os seus amigos se passando por você.
+</Steps>
+</Tip>
+
+## Garanta que o seu número continue sendo seu
+
+<Tip id="lock-your-number" priority="essential" effort={10} title="Proteja o seu número na operadora">
+Enquanto outra pessoa estiver com o seu número, os seus códigos por SMS vão para ela, e recuperar o número pode demorar. Uma cliente da Vodafone esperou dez dias, e nesse meio-tempo os golpistas usaram os códigos que o banco e o provedor de e-mail dela mandaram.[^which]
+
+<Region place="uk">
+Use uma senha forte na conta online da sua operadora e ative a verificação em duas etapas dela. Depois, pergunte à operadora se dá para adicionar um PIN ou uma senha extra para mudanças grandes, como um chip novo. A Which? descobriu que hoje a maioria das trocas de chip é feita online, e não em lojas ou por telefone.[^which]
+</Region>
+
+<Region place="us">
+As regras da FCC, a agência que regula as telecomunicações nos EUA, obrigam todas as operadoras a oferecer um bloqueio gratuito que impede qualquer pessoa de trocar o seu chip e a avisar você na hora quando alguém pedir a portabilidade do seu número para outra operadora. O prazo das operadoras vai até meados de dezembro de 2026, então talvez a sua ainda não ofereça o bloqueio. Pergunte e ative assim que ele estiver disponível.[^fcc-sim][^fcc-port]
+</Region>
+</Tip>
+
+<Tip id="changing-number" priority="optional" effort={20} title="Se for trocar de número, transfira a verificação em duas etapas antes">
+Números antigos acabam indo para outras pessoas. Nos EUA, cerca de 35 milhões de números são desativados e reaproveitados todo ano, e, quando pesquisadores de Princeton ficaram com 200 números reciclados por uma semana, 19 ainda recebiam mensagens sensíveis destinadas aos antigos donos, como códigos de login.[^recycled] Antes de abrir mão de um número, passe cada conta para o número novo ou, melhor ainda, para um app.
+</Tip>
+
+<Tip id="text-recovery" priority="advanced" effort={15} title="Confira se um SMS consegue redefinir a conta">
+Algumas contas deixam você redefinir a senha só com um código enviado por SMS, então quem estiver com o seu número passa pela senha e pela verificação em duas etapas de uma vez. Os mesmos pesquisadores analisaram 259 números que estavam livres para qualquer pessoa pegar, e 171 deles poderiam ter sido usados para tomar uma conta na Amazon, no Facebook, no Google, no PayPal ou no Yahoo por meio da recuperação de conta.[^recycled]
+
+Veja as opções de recuperação das suas contas mais importantes. Se um SMS consegue devolver o acesso e a conta deixa você remover o seu número, você pode remover, mas aí também fica com um jeito a menos de voltar a entrar. Antes, salve um conjunto novo de códigos de backup. Depois, sem sair da conta onde você está, abra uma janela anônima ou outro aparelho e confira se outro jeito de voltar a entrar funciona de verdade. Só remova o número depois disso. Uma pergunta de segurança sozinha não basta como alternativa, já que o NCSC diz que ela não dá a mesma proteção.[^ncsc-2sv]
+</Tip>
+
+## Não fique sem acesso
+
+<Tip id="backup-codes" priority="essential" effort={5} title="Guarde os códigos de backup no papel, longe do celular">
+Quando uma conta oferece códigos de backup, cada um funciona uma vez só, e eles deixam você entrar quando não dá para usar o celular.[^ncsc-2sv] O Google sugere imprimir os códigos e guardá-los no mesmo lugar onde você guarda documentos como o passaporte. Gerar um conjunto novo faz os antigos pararem de funcionar, então jogue fora a folha impressa antiga.[^google-backup]
+
+Não guarde os códigos no mesmo gerenciador de senhas que a senha, senão quem entrar no cofre fica com os dois (o <Term slug="2fa">verbete do glossário sobre verificação em duas etapas</Term> explica em mais detalhes).
+</Tip>
+
+<Tip id="second-key" priority="optional" effort={10} title="Se você usa chaves de segurança, tenha uma reserva">
+A Apple só deixa ativar chaves de segurança numa Conta Apple se você tiver pelo menos duas, e avisa que perder todas elas, junto com os seus dispositivos confiáveis, pode deixar você sem acesso para sempre.[^apple-keys] Quando uma conta deixar adicionar mais de uma chave, adicione a reserva também e guarde-a num lugar que não seja o seu chaveiro.
+</Tip>
+
+## Como escolher um app autenticador
+
+Escolha um que consiga levar os seus códigos para um celular novo. Se um app só guarda os códigos no celular que você tem agora, perder esse celular pode significar usar os códigos de backup e configurar a verificação em duas etapas de novo em cada conta. Os apps abaixo fazem backup ou sincronizam os seus códigos, então eles podem ir com você para um celular novo.
+
+{/* The section's other apps don't mention backups or sync in the list, so they're left out. */}
+
+<Picks section="2-Factor Authentication" skip={['tofu', 'authenticator', 'authenticator-gnome', 'authenticator-cc', 'proton-authenticator']} />
+
+<Tip id="leave-authy" priority="optional" effort={30} title="Sair do Authy significa configurar cada conta de novo">
+O <Swap product="authy">Authy</Swap> não exporta os seus códigos, então mudar para outro app significa configurar a verificação em duas etapas de novo em cada conta, já com o app novo.[^reg-authy] Os apps de computador dele estavam programados para parar de funcionar em março de 2024, então faça isso pelo celular.[^reg-authy]
+
+<Steps>
+1. Entre numa conta, abra as configurações de verificação em duas etapas e configure um app autenticador de novo, desta vez com o app novo. Talvez você precise desativar e reativar a verificação para isso, então faça tudo de uma vez.
+2. Digite o código do app novo quando o site pedir e salve os códigos de backup novos, se houver, já que os antigos podem parar de funcionar.
+3. Sem sair da conta, abra uma janela anônima, entre de novo com o código do app novo e só então apague essa conta do Authy.
+</Steps>
+</Tip>
+
+<Tip id="leave-google-authenticator" priority="optional" effort={10} title="Como sair do Google Authenticator">
+O <Swap product="google-authenticator">Google Authenticator</Swap> transfere os códigos por QR code. No app, toque em <Path>Menu --> Transferir contas --> Exportar contas</Path>, escolha as contas e escaneie cada QR code que aparecer (pode ser mais de um) com a opção de importação do app novo.[^google-auth] O Ente Auth, por exemplo, consegue importá-los.[^ente-import] Um celular não consegue escanear a própria tela, então, se os dois apps estiverem no mesmo celular, veja antes a ajuda de importação do app novo. Esses QR codes têm tudo o que é preciso para gerar os seus códigos, então não tire print deles.
+
+Mantenha o app antigo até ter conferido cada código no app novo.[^ente-import] Se os seus códigos estavam sincronizados com a sua Conta do Google, apagar um deles no app apaga esse código de todos os aparelhos sincronizados.[^google-auth]
+</Tip>
+
+[^cisa]: [CISA: Como implementar MFA resistente a phishing](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^cifas]: [Cifas: Alta de 1.055% nas trocas de chip não autorizadas](https://www.cifas.org.uk/newsroom/huge-surge-see-sim-swaps-hit-telco-and-mobile)
+[^ncsc-2sv]: [NCSC: Como configurar a verificação em duas etapas](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
+[^uber]: [Uber: Atualização de segurança](https://www.uber.com/newsroom/security-update/)
+[^ms-number]: [Microsoft Learn: Correspondência de números nas notificações push do Authenticator](https://learn.microsoft.com/pt-br/entra/identity/authentication/how-to-mfa-number-match)
+[^apple-passkeys]: [Suporte da Apple: Sobre a segurança das chaves de acesso](https://support.apple.com/pt-br/102195)
+[^apple-keys]: [Suporte da Apple: Sobre as chaves de segurança da Conta Apple](https://support.apple.com/pt-br/102637)
+[^google-passkeys]: [Ajuda da Conta do Google: Fazer login com uma chave de acesso em vez de uma senha](https://support.google.com/accounts/answer/13548313?hl=pt-BR)
+[^which]: [Which?: Como checagens de segurança fracas deixam a porta aberta para os golpistas da troca de chip](https://www.which.co.uk/news/article/mobile-networks-must-step-up-to-prevent-sim-swap-fraud-aSsLN6p0CMRq)
+[^vodafone]: [Vodafone UK: Como se proteger do golpe da troca de chip](https://www.vodafone.co.uk/newscentre/features/how-to-protect-yourself-from-sim-swap-fraud/)
+[^google-backup]: [Ajuda da Conta do Google: Fazer login com códigos alternativos](https://support.google.com/accounts/answer/1187538?hl=pt-BR)
+[^ncsc-tips]: [NCSC: Ative a verificação em duas etapas](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^fcc-sim]: [Federal Register: Proteção dos consumidores contra fraudes de troca de chip e de portabilidade, prazos para a troca de chip](https://www.federalregister.gov/d/2026-23400)
+[^fcc-port]: [Federal Register: Proteção dos consumidores contra fraudes de troca de chip e de portabilidade, prazos para a portabilidade de números](https://www.federalregister.gov/d/2026-23522)
+[^recycled]: [Universidade de Princeton: Riscos de segurança e privacidade da reciclagem de números nas operadoras](https://recyclednumbers.cs.princeton.edu/)
+[^reg-authy]: [The Register: Twilio lembra os usuários de que os apps de computador do Authy param de funcionar em março](https://www.theregister.com/2024/02/15/twilio_authy_eol)
+[^google-auth]: [Ajuda da Conta do Google: Receber códigos de verificação com o Google Authenticator](https://support.google.com/accounts/answer/1066447?hl=pt-BR)
+[^ente-import]: [Ajuda do Ente: Como migrar de outros apps](https://ente.com/help/auth/migration/import)
