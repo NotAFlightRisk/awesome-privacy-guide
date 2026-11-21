@@ -1,0 +1,133 @@
+---
+title: "Comment quitter Gmail sans perdre vos e-mails ni vos comptes"
+description: "Importez vos anciens e-mails, transférez les nouveaux et changez d’abord d’adresse e-mail sur les comptes importants, pour ne rien perdre en quittant Gmail."
+---
+
+<Short>
+Choisissez une messagerie dans la liste, idéalement avec [votre propre nom de domaine](#own-domain), et laissez son outil d’import copier vos anciens e-mails. [Transférez vos e-mails Gmail vers la nouvelle adresse](#forward-gmail) pour continuer à voir ce qui arrive encore sur Gmail, puis [changez d’adresse sur les comptes importants](#important-accounts-first), et sur les autres à mesure qu’ils vous écrivent. [Gardez Gmail au moins un an](#keep-gmail), et connectez-vous à votre compte au moins une fois par an pour que Google ne le supprime pas.
+</Short>
+
+## Pourquoi il ne suffit pas de déplacer vos e-mails
+
+La <Swap product="gmail">page des alternatives à Gmail</Swap> explique ce que Google fait de votre boîte de réception. Ce guide-ci porte sur le déménagement lui-même. Copier vos anciens e-mails, c’est surtout l’affaire de votre nouvelle messagerie. Le gros du travail, ce sont les boutiques, les banques, les applications et les vieux comptes de forum qui vous connaissent tous par votre adresse Gmail, et certains ne vous écrivent qu’une fois par an. Vous aurez besoin d’un ordinateur pour une ou deux étapes, car le transfert de Gmail et l’export de Google Agenda ne se font pas depuis les applications mobiles.[^forward][^calendar]
+
+## Choisissez votre nouvelle messagerie
+
+Changer de messagerie ne rendra pas la plupart de vos e-mails <Term slug="e2ee">chiffrés de bout en bout</Term>. Cela ne fonctionne que si l’expéditeur et le destinataire l’ont tous deux mis en place, comme deux utilisateurs de Proton qui s’écrivent, ou deux personnes qui utilisent <Term slug="pgp">PGP</Term>.[^ec-tips][^proton-e2ee] La plupart de vos messages, comme ceux de votre banque, resteront des e-mails ordinaires. Ce qui change, c’est ce que peut lire l’entreprise qui héberge votre boîte de réception. Proton, par exemple, chiffre les messages dès leur arrivée, avec ce qu’il appelle le chiffrement zéro accès.[^proton-switch][^proton-forward]
+
+Si vous voulez votre propre nom de domaine, vérifiez que l’offre qui vous intéresse le permet : chez Proton, il faut une offre payante.[^proton-domain] Et si vous voulez utiliser un logiciel de messagerie classique plutôt que l’application du service, vérifiez ce point aussi. Proton passe pour cela par son application Bridge, elle aussi réservée aux offres payantes.[^proton-bridge] [Email Comparison](https://email-comparison.as93.net/) précise ces deux points pour chaque service, ainsi que les prix.
+
+<Picks section="Encrypted Email" />
+
+<Tip id="own-domain" priority="optional" effort={30} title="Envisagez d’utiliser votre propre nom de domaine">
+Avec une adresse sur un nom de domaine qui vous appartient, comme `vous@votrenom.com`, il vous suffira la prochaine fois de modifier les réglages de votre domaine pour changer de messagerie, au lieu de changer encore une fois d’adresse sur chaque compte.[^ec-tips] Un nom de domaine ne coûte pas cher, mais il se paie chaque année. Pour le configurer, vous ajouterez quelques enregistrements chez l’entreprise qui vous l’a vendu, et l’aide de Proton, par exemple, vous guide pas à pas.[^proton-domain] Une fois que c’est fait, envoyez-vous un e-mail depuis un autre compte pour vérifier que tout marche.
+
+Le hic, c’est qu’il faut continuer à payer. Si le domaine expire, quelqu’un d’autre peut l’acheter, y configurer une messagerie et utiliser le lien « mot de passe oublié » de vos comptes.[^pypi] Si vous choisissez cette solution, [veillez sur votre domaine](#keep-the-domain) dès le premier jour.
+</Tip>
+
+<Tip id="keep-the-domain" priority="essential" effort={10} title="Si vous utilisez votre propre domaine, ne le laissez pas expirer">
+Activez le renouvellement automatique et payez plusieurs années à la fois, pour qu’une carte bancaire expirée entre-temps ne vous prenne pas au dépourvu. Pour les domaines en .com et les autres extensions génériques, l’ICANN oblige les bureaux d’enregistrement à envoyer un rappel environ un mois avant l’expiration du domaine, un autre environ une semaine avant, puis un dernier après l’expiration, tous à l’adresse e-mail de contact indiquée dans l’enregistrement du domaine.[^icann-errp] Si cette adresse est sur le même domaine, le dernier risque de ne jamais vous parvenir, car la messagerie d’un domaine expiré peut cesser de fonctionner avant que le domaine soit supprimé.[^icann-errp] Pour votre compte chez le bureau d’enregistrement, utilisez une adresse hébergée ailleurs, et activez la double authentification sur ce compte, car quiconque y accède peut changer la destination des e-mails de votre domaine.
+</Tip>
+
+## Importez vos anciens e-mails
+
+<Tip id="lock-the-new-inbox" priority="essential" effort={10} title="Sécurisez la nouvelle messagerie avant d’y importer quoi que ce soit">
+Une fois vos comptes passés sur la nouvelle adresse, elle permettra de réinitialiser leurs mots de passe, alors activez d’abord la [double authentification](/fr/guides/two-factor/) et gardez ses codes de secours sur papier. Si la nouvelle messagerie vous demande une adresse e-mail de récupération, votre adresse Gmail fait l’affaire pour l’instant, mais changez-la avant de vous débarrasser de Gmail.
+</Tip>
+
+<Tip id="import-old-mail" priority="essential" effort={20} title="Laissez l’outil d’import de votre nouvelle messagerie s’en charger">
+Il se peut que votre nouvelle messagerie sache copier vos anciens e-mails directement depuis Gmail. Easy Switch, l’outil de Proton, récupère par exemple vos e-mails, vos contacts et vos agendas, et fonctionne sur les serveurs de Proton, ce qui vous laisse libre de faire autre chose pendant ce temps. Cela peut prendre plusieurs jours si vous utilisez Gmail depuis longtemps.[^proton-switch] Pour un autre service, cherchez « importer depuis Gmail » dans ses pages d’aide.
+
+Quand l’outil annonce qu’il a terminé, vérifiez avant de vous y fier : ouvrez vos messages envoyés, un e-mail vieux de plusieurs années et un autre avec une pièce jointe, et assurez-vous que vos dossiers ont bien suivi.
+
+Faites ensuite une copie de vos e-mails avec [Google Takeout](https://takeout.google.com/), en décochant tout sauf Mail, pour en avoir une qui ne dépende d’aucun fournisseur. Le lien de téléchargement n’est valable qu’environ une semaine, alors enregistrez le fichier sur un ordinateur ou un disque externe, et vérifiez qu’il a été téléchargé en entier. Le télécharger ne supprime rien chez Google.[^takeout]
+</Tip>
+
+<Tip id="contacts-and-calendars" priority="optional" effort={10} title="Emportez aussi vos contacts et votre agenda">
+Si l’outil d’import ne les a pas récupérés, exportez-les et importez les fichiers dans votre nouvelle messagerie. L’export de Google Agenda ne fonctionne que sur ordinateur, et ces étapes sont elles aussi prévues pour un ordinateur.[^calendar]
+
+<Steps>
+1. Dans [Google Contacts](https://contacts.google.com/), cochez n’importe quel contact, puis choisissez <Path>Actions de sélection --> Tous</Path>. Choisissez ensuite <Path>Autres actions --> Exporter</Path> et sélectionnez vCard.[^contacts]
+2. Dans Google Agenda, ouvrez <Path>Paramètres --> Importer et exporter</Path> et cliquez sur Exporter. Vous téléchargez alors un fichier zip contenant des fichiers .ics, que les autres applications d’agenda savent importer.[^calendar]
+</Steps>
+
+Si votre nouvelle messagerie n’a pas d’agenda, vous trouverez d’autres agendas sur la page des <Swap product="google-calendar">alternatives à Google Agenda</Swap>.
+</Tip>
+
+## Ne ratez rien de ce qui arrive encore sur Gmail
+
+<Tip id="forward-gmail" priority="essential" effort={10} title="Transférez vos e-mails Gmail vers la nouvelle adresse">
+Tant que tous vos comptes n’auront pas changé d’adresse, les e-mails de réinitialisation de mot de passe et les factures continueront d’arriver sur Gmail. Avec le transfert, vous les verrez quand même. Sur un ordinateur, dans Gmail :
+
+<Steps>
+1. Ouvrez <Path>Paramètres --> Voir tous les paramètres --> Transfert et POP/IMAP</Path> et cliquez sur « Ajouter une adresse de transfert ».
+2. Saisissez la nouvelle adresse, puis, pour la valider, cliquez sur le lien contenu dans l’e-mail que Gmail y envoie.
+3. De retour dans Gmail, actualisez la page et rouvrez le même onglet. Sélectionnez « Transférer une copie des messages reçus à », choisissez « Conserver la copie originale Gmail dans la boîte de réception » comme Google le recommande, puis cliquez sur « Enregistrer les modifications ».[^forward]
+</Steps>
+
+Envoyez un e-mail à votre adresse Gmail depuis un autre compte pour vérifier qu’il arrive bien. Gmail ne transfère pas le spam, alors jetez un œil au dossier Spam de Gmail chaque fois que vous vous y connectez.[^forward] Si vous passez à Proton, Easy Switch peut s’en charger à la place, côté Proton, mais il ne transfère que les e-mails qui arrivent dans la boîte de réception de Gmail : ceux qu’un de vos filtres Gmail sort de la boîte de réception ne vous parviendront pas.[^proton-forward]
+</Tip>
+
+<Tip id="forwarded-folder" priority="optional" effort={5} title="Rangez les e-mails transférés dans un dossier à part">
+Dans votre nouvelle messagerie, créez un filtre qui range dans un dossier à part les e-mails envoyés à votre adresse Gmail. Chaque expéditeur a encore votre ancienne adresse, si bien que ce dossier vous donne la liste de ce qu’il reste à changer. Les personnes qui vous écrivent encore à l’ancienne adresse y apparaîtront aussi : répondez-leur depuis la nouvelle pour les prévenir. Nous attendrions une année entière avant de considérer que c’est fini, car certains e-mails, comme les avis de renouvellement de votre assurance ou de votre nom de domaine, n’arrivent qu’une fois par an.
+</Tip>
+
+## Changez d’adresse sur vos comptes
+
+<Tip id="list-your-accounts" priority="essential" effort={15} title="Dressez la liste de ce qui utilise votre adresse Gmail">
+Si vous utilisez un gestionnaire de mots de passe, cherchez-y votre adresse Gmail. La recherche de Bitwarden tient compte des noms d’utilisateur et fait donc ressortir les identifiants enregistrés avec cette adresse.[^bw-search] Si vous n’avez pas encore de gestionnaire, le [guide sur les gestionnaires de mots de passe](/fr/guides/password-manager/) vous aidera.
+
+Cette recherche ne trouvera pas les comptes que vous avez créés avec un bouton « Se connecter avec Google », puisque vous n’avez pas de mot de passe pour ceux-là.[^siwg] Votre compte Google en garde la liste : ouvrez la [page Applications associées](https://myaccount.google.com/linkedapps) de votre compte et filtrez sur « Se connecter avec Google ».[^linked-apps] Quand un site le permet, ajoutez un mot de passe ou un autre moyen de vous connecter, et vérifiez qu’il fonctionne dans une fenêtre de navigation privée avant de supprimer l’association avec Google.
+</Tip>
+
+<Tip id="important-accounts-first" priority="essential" effort={60} title="Changez d’abord l’adresse des comptes importants">
+Commencez par les comptes qui donnent accès à d’autres, et par ceux dont un e-mail raté peut vous coûter de l’argent. Changez l’adresse e-mail dans les paramètres de chaque compte, en gardant Gmail ouvert au cas où le site enverrait aussi une confirmation à l’ancienne adresse, puis vérifiez que vous arrivez à vous reconnecter. Voici l’ordre que nous suivrions :
+
+<Steps>
+1. Votre gestionnaire de mots de passe, puisqu’il contient les identifiants de tous les autres.
+2. Votre banque, et tout autre compte où il y a de l’argent.
+3. Votre espace client chez votre opérateur mobile, puisqu’il permet de décider où arrivent vos SMS.
+4. Le compte Apple ou Microsoft auquel votre téléphone ou votre ordinateur est connecté.
+5. Vos comptes sur les sites des impôts, des aides sociales et des autres administrations.
+6. Les boutiques où votre carte bancaire est enregistrée, puis les réseaux sociaux.
+</Steps>
+
+Pour le NCSC britannique, les comptes importants sont la messagerie, la banque, les réseaux sociaux et les achats en ligne.[^ncsc-tips] Pour les autres, attendez que leur prochain e-mail arrive dans votre dossier des e-mails transférés. Si un site ne vous laisse pas changer d’adresse, contactez son service client. Vous pouvez aussi fermer le compte et vous réinscrire, après avoir vérifié ce que vous perdriez.
+</Tip>
+
+<Tip id="new-sign-ups" priority="optional" effort={5} title="Donnez une adresse à part à chaque nouvelle inscription">
+Désormais, inscrivez-vous avec un <Term slug="email-alias">alias</Term> plutôt qu’avec votre adresse principale. Chaque site reçoit sa propre adresse, qui vous fait suivre tout ce qu’elle reçoit. Si du spam commence à arriver sur l’une d’elles, vous savez à quel site vous l’avez donnée. Donnez un nouvel alias à ce site, puis désactivez l’ancien.[^ec-tips] <App name="Addy" /> et <App name="SimpleLogin" /> ont tous les deux une offre gratuite, et certaines messageries incluent des alias dans leurs offres payantes.
+</Tip>
+
+## Ne supprimez pas Gmail tout de suite
+
+<Tip id="keep-gmail" priority="essential" effort={5} title="Gardez Gmail au moins un an, et protégez-le toujours aussi bien">
+Gmail reste l’adresse de réinitialisation de tous les comptes que vous n’avez pas encore retrouvés. Il a donc toujours autant besoin d’un mot de passe solide et de la [double authentification](/fr/guides/two-factor/).
+
+Google peut supprimer un compte personnel qui n’a pas été utilisé depuis deux ans, alors connectez-vous au moins une fois par an. Lire un e-mail suffit. Profitez-en pour indiquer votre nouvelle adresse comme adresse e-mail de récupération : les avertissements de Google vous parviendront ainsi.[^inactive]
+</Tip>
+
+<Tip id="remove-gmail" priority="optional" effort={10} title="Quand plus rien n’y arrive, supprimez Gmail mais gardez le compte">
+Pas besoin de supprimer tout votre compte Google pour vous débarrasser de Gmail. Si vous ne supprimez que Gmail, vous gardez le compte, vos achats sur Google Play et les autres services de Google, mais le compte a besoin d’une autre adresse e-mail, qui ne soit pas une adresse Gmail. Vos e-mails sont effacés au bout de 30 jours. Si vous changez d’avis, Google vous laissera peut-être récupérer l’adresse, mais pas forcément les e-mails, alors n’y comptez pas.[^remove-gmail]
+
+Avant de le faire, vérifiez que votre copie Takeout s’ouvre, que plus rien n’arrive depuis un an dans le dossier des e-mails transférés et que le dossier Spam de Gmail ne contient aucun message légitime. Assurez-vous que chaque site où vous utilisez « Se connecter avec Google » a un autre moyen de connexion, et qu’aucune adresse de récupération ne pointe encore vers Gmail, y compris celle de votre nouvelle messagerie. Ouvrez ensuite <Path>Gérer votre compte Google --> Données et confidentialité --> Supprimer les données des services que vous n’utilisez plus</Path>, cliquez sur Supprimer à côté de Gmail et suivez les étapes. Rien n’est supprimé tant que vous n’avez pas cliqué sur le lien que Google envoie à l’autre adresse. Ensuite, personne d’autre ne pourra jamais utiliser votre ancienne adresse Gmail.[^remove-gmail]
+</Tip>
+
+[^ec-tips]: [Email Comparison : Conseils de sécurité pour vos e-mails](https://email-comparison.as93.net/email-security-tips) (en anglais)
+[^proton-e2ee]: [Proton : E-mails protégés par mot de passe](https://proton.me/fr/support/password-protected-emails)
+[^proton-forward]: [Proton : Comment transférer automatiquement vos e-mails Gmail vers Proton Mail](https://proton.me/fr/support/automatic-forwarding-gmail)
+[^proton-domain]: [Proton : Comment utiliser un domaine personnalisé avec Proton Mail](https://proton.me/fr/support/custom-domain)
+[^proton-bridge]: [Proton : Proton Mail Bridge](https://proton.me/fr/mail/bridge)
+[^pypi]: [Blog de PyPI : Empêcher les attaques par résurrection de domaine](https://blog.pypi.org/posts/2025-08-18-preventing-domain-resurrections/) (en anglais)
+[^icann-errp]: [ICANN : 5 choses que chaque titulaire de nom de domaine doit savoir sur la politique de récupération des enregistrements expirés](https://www.icann.org/resources/pages/registrant-about-errp-2018-12-07-en) (en anglais)
+[^proton-switch]: [Proton : Comment passer à Proton avec Easy Switch](https://proton.me/fr/support/easy-switch)
+[^takeout]: [Aide Compte Google : Comment télécharger vos données Google](https://support.google.com/accounts/answer/3024190?hl=fr)
+[^calendar]: [Aide Google Agenda : Exporter des événements depuis Google Agenda](https://support.google.com/calendar/answer/37111?hl=fr)
+[^contacts]: [Aide Contacts : Exporter, sauvegarder ou restaurer des contacts](https://support.google.com/contacts/answer/7199294?hl=fr)
+[^forward]: [Aide Gmail : Transférer automatiquement les messages Gmail vers un autre compte](https://support.google.com/mail/answer/10957?hl=fr)
+[^bw-search]: [Bitwarden : Rechercher dans votre coffre](https://bitwarden.com/help/searching-vault/) (en anglais)
+[^siwg]: [Aide Compte Google : Comment fonctionne Se connecter avec Google](https://support.google.com/accounts/answer/12849458?hl=fr)
+[^linked-apps]: [Aide Compte Google : Gérer les associations entre votre compte Google et les applications d’autres développeurs](https://support.google.com/accounts/answer/13533235?hl=fr)
+[^ncsc-tips]: [NCSC : Activez la validation en deux étapes](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email) (en anglais)
+[^inactive]: [Aide Compte Google : Règle concernant les comptes Google inactifs](https://support.google.com/accounts/answer/12418290?hl=fr)
+[^remove-gmail]: [Aide Compte Google : Supprimer Gmail de votre compte Google](https://support.google.com/accounts/answer/61177?hl=fr)
