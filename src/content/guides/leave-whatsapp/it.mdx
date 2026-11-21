@@ -1,10 +1,12 @@
 ---
 title: "Passare da WhatsApp a Signal portando con te gli amici"
 description: "Installare Signal è la parte facile. Il lavoro vero è far passare anche gli amici, quindi parti dalle chat che usi di più e poi chiudi WhatsApp come si deve."
+source: "bb13af2e633bbd49"
+sha: "02e6e4f0bec1ded6344ca44fe24f60c4e9947ad1"
 ---
 
 <Short>
-Installa Signal e [dai alle persone un nome utente, non il tuo numero](#hide-your-number). Poi sposta le poche chat che usi ogni settimana, non tutta la rubrica, [mandando in ogni gruppo WhatsApp il link di un gruppo Signal](#group-link). Tieni WhatsApp, silenziato, per chi non passa a Signal. Quando lì non scrive più quasi nessuno, [salva le chat che vuoi conservare](#export-chats) ed [elimina l'account dall'interno dell'app](#delete-the-account), perché disinstallare l'app non ti fa uscire dai gruppi.
+Installa Signal e [dai alle persone il tuo nome utente, non il tuo numero](#hide-your-number). Poi sposta le poche chat che usi ogni settimana, non tutta la rubrica, [mandando in ogni gruppo WhatsApp il link di un gruppo Signal](#group-link). Tieni WhatsApp, silenziato, per chi non passa a Signal. Quando lì non scrive più quasi nessuno, [salva le chat che vuoi conservare](#export-chats) ed [elimina l'account dall'interno dell'app](#delete-the-account), perché disinstallare l'app non ti fa uscire dai gruppi.
 </Short>
 
 ## Cosa lasci e qual è la parte difficile
@@ -34,11 +36,11 @@ Se preferisci che nessuno possa trovarti tramite il tuo numero, vai in <Path>Imp
 <Tip id="registration-lock" priority="essential" effort={5} title="Attiva il Blocco registrazione">
 Nel 2022 Twilio, l'azienda che invia gli SMS di registrazione di Signal, ha subito un attacco di phishing, e chi l'ha messo a segno avrebbe potuto provare a registrare su un altro telefono i numeri di circa 1.900 utenti di Signal. Signal dice di aver creato il Blocco registrazione per attacchi come quello. Aggiunge il tuo PIN di Signal ai controlli che scattano quando il tuo numero viene registrato.[^sig-twilio] Lo attivi da <Path>Impostazioni --> Account --> Blocco registrazione</Path>.
 
-Il prezzo da pagare è che Signal non può reimpostare il tuo PIN, e se lo dimentichi rischi di restare fuori dal tuo account fino a sette giorni. Puoi tenerlo nel tuo password manager.[^sig-pin] E non dire mai a nessuno un codice che Signal ti manda via SMS, né scriverlo da qualche parte che non sia la schermata di registrazione di Signal. Signal non contatta le persone dentro l'app, quindi una chat del «Supporto Signal» che te ne chiede uno è una truffa.[^sig-protect] Vale la pena anche proteggere il tuo numero presso l'operatore, e la [guida all'autenticazione a due fattori](/it/guide/two-factor/#lock-your-number) spiega come fare.
+Il prezzo da pagare è che Signal non può reimpostare il tuo PIN, e se lo dimentichi rischi di restare fuori dal tuo account fino a sette giorni. Puoi tenerlo nel tuo password manager.[^sig-pin] E non dire mai a nessuno un codice che Signal ti manda via SMS, né digitarlo da qualche parte che non sia la schermata di registrazione di Signal. Signal non contatta le persone dentro l'app, quindi una chat del «Supporto Signal» che te ne chiede uno è una truffa.[^sig-protect] Vale la pena anche proteggere il tuo numero presso l'operatore, e la [guida all'autenticazione a due fattori](/it/guide/two-factor/#lock-your-number) spiega come fare.
 </Tip>
 
 <Tip id="backups" priority="optional" effort={5} title="Attiva i backup e conserva la chiave">
-I backup di Signal restano disattivati finché non li attivi tu. Secure Backups (in italiano «Backup sicuri») include gratis tutti i tuoi messaggi di testo e le foto e i file degli ultimi 45 giorni, oppure fino a 100 GB di contenuti multimediali per 1,99 € al mese. È protetto da una chiave di ripristino di 64 caratteri che Signal non vede mai, e senza quella chiave nessuno, nemmeno Signal, può ripristinare il backup.[^sig-backups]
+I backup di Signal restano disattivati finché non li attivi tu. Secure Backups (in italiano «Backup sicuri») include gratis tutti i tuoi messaggi di testo e, in più, le foto e i file degli ultimi 45 giorni, oppure fino a 100 GB di contenuti multimediali per 1,99 € al mese. È protetto da una chiave di ripristino di 64 caratteri che Signal non vede mai, e senza quella chiave nessuno, nemmeno Signal, può ripristinare il backup.[^sig-backups]
 
 Per attivarlo, vai in <Path>Impostazioni --> Backup</Path>, tocca Imposta e segui i passaggi. Salva nel tuo password manager la chiave di ripristino che ti viene mostrata, oppure scrivila su un foglio e tienilo in un posto sicuro.[^sig-backups]
 </Tip>
@@ -62,7 +64,7 @@ Per spostare un gruppo, manda nel gruppo WhatsApp un link d'invito a un gruppo S
 
 Se il link arriva a persone che non volevi invitare, con Reimposta link, nella stessa schermata, ne crei uno nuovo.[^sig-group-link]
 
-Quando è tutto pronto, proponi i programmi prima nel gruppo Signal, e quando qualcuno chiede su WhatsApp, rimandalo lì. I gruppi di Signal possono avere fino a 1.000 persone, e i server di Signal non tengono traccia di chi fa parte di quale gruppo.[^sig-groups]
+Quando è tutto pronto, proponi i piani prima di tutto nel gruppo Signal, e quando qualcuno chiede qualcosa su WhatsApp, indicagli il gruppo Signal. I gruppi di Signal possono avere fino a 1.000 persone, e i server di Signal non tengono traccia di chi fa parte di quale gruppo.[^sig-groups]
 </Tip>
 
 <Tip id="holdouts" priority="optional" effort={5} title="Tieni WhatsApp per chi non passa a Signal">
