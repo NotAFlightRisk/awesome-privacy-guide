@@ -1,0 +1,117 @@
+---
+title: "WhatsAppからSignalへ乗り換えるには？友達にも移ってもらう手順"
+description: "Signalを入れるのは簡単です。大変なのは友達に移ってもらうほうです。よく使うチャットから順に移して、最後にWhatsAppのアカウントをきちんと削除するまでの手順を説明します。"
+---
+
+<Short>
+Signalをインストールしたら、[電話番号ではなくユーザーネームを教えるようにしましょう](#hide-your-number)。それから、[WhatsAppのグループごとにSignalのグループリンクを投稿して](#group-link)、毎週使っているいくつかのチャットだけを移します。連絡先の全員を移すわけではありません。移ってこない人のために、WhatsAppは通知をミュートして残しておきます。WhatsAppでのやりとりがなくなってきたら、[残したいチャットを保存して](#export-chats)、[アプリの中からアカウントを削除してください](#delete-the-account)。アプリを消すだけでは、グループから抜けられないからです。
+</Short>
+
+## やめる理由と、難しいところ
+
+WhatsAppのメッセージは<Term slug="e2ee">エンドツーエンド暗号化</Term>されています。それでもやめる理由になるのは、オンラインになった時間や連絡先に誰がいるかなど、メッセージのまわりでWhatsAppが集めている情報です。詳しくは<Swap product="whatsapp">WhatsAppの代わりになるアプリのページ</Swap>で説明しています。Signalは、こうした<Term slug="metadata">メタデータ</Term>をできるだけ持たないように作られています。2016年に米国の大陪審の召喚状で2人のユーザーについて情報を求められたとき、Signalが渡せたのは、それぞれのアカウントが登録された日時と、最後に接続した日時だけでした[^bigbrother]。また、運営しているのは非営利団体です[^bigbrother]。
+
+やめるときに難しいのは、メッセージアプリは相手がいてこそ使えるもので、あなたがやりとりしている相手はWhatsAppにいるということです。
+
+## 移行先を選ぶ
+
+<Picks section="Encrypted Messaging" skip={['xmpp', 'matrix']} />
+
+友達と一緒に移るなら、私たちはSignalを選びます。連絡先のなかで誰がすでにSignalを使っているかを確認してくれるので、すでにSignalを使っている友達が見つかるかもしれません[^sig-contacts]。<App name="SimpleX" />は電話番号もほかのIDも使わないので、アプリで作ったリンクかQRコード、またはSimpleXの名前（登録している場合）を渡すまで、誰もあなたに連絡できません[^simplex]。番号を誰にも知られたくないならうってつけですが、追加する相手は全員、先にあなたからリンクなどを受け取らなければなりません。
+
+プライバシーが理由でやめるなら、<Swap product="telegram">Telegram</Swap>には移らないでください。自分のスマホから相手のスマホまで暗号化されるのは、シークレットチャットだけです。シークレットチャットは1対1のやりとりで、始めたスマホでしか使えません。普通のチャットやグループは、Telegramのサーバーとの通信の間は暗号化されますが、そのサーバーに保存されます[^telegram]。
+
+## まずSignalを設定する
+
+<Tip id="hide-your-number" priority="essential" effort={5} title="番号ではなくユーザーネームを教える">
+Signalの登録には、今も電話番号が必要です。1回きりの料金で電話番号なしで登録できる仕組みも試していますが、今のところAndroidのベータ版に限られます[^sig-numberless]。ただし、初期設定では、Signal上であなたの番号がほかの人に表示されることはありません。番号が見えるのは、もともとあなたの番号を連絡先に保存している人だけで、これはグループのメンバーでも同じです[^sig-usernames]。
+
+番号を知らない相手とチャットするときは、ユーザーネームを作って、番号の代わりにそれを教えましょう。プロフィールアイコンをタップし（iPhoneではさらに「設定」をタップ）、自分のプロフィールをタップしてから、@の横をタップします。ユーザーネームの末尾には2桁以上の数字が必要で、リンクやQRコードにして共有することもできます。Signalにはユーザーネームを探せるディレクトリがないので、相手は正確なユーザーネームを知っている必要があります[^sig-usernames]。
+
+番号では誰にも見つけられないようにしたいなら、<Path>設定 --> プライバシー --> 電話番号</Path>を開きます。「電話番号を見ることができる人」が「なし」になっているのを確かめてから、「私を電話番号から検索できる人」も「なし」にしてください。ただしそうすると、あなたの番号を知っている友達にも、あなたがSignalを使っていることがわからなくなるので、ユーザーネームを教える必要があります[^sig-usernames]。
+</Tip>
+
+<Tip id="registration-lock" priority="essential" effort={5} title="登録ロックをオンにする">
+2022年、Signalの登録用SMSを送っているTwilioがフィッシング攻撃を受けました。攻撃者は、約1,900人のSignalユーザーの番号を、別のスマホで登録しようと試みられる状態にありました。Signalは、登録ロックをこうした攻撃に備えて作ったとしています。登録ロックをオンにすると、番号を登録するときの確認にSignal PINが加わります[^sig-twilio]。<Path>設定 --> アカウント --> 登録ロック</Path>でオンにしてください。
+
+その代わり、SignalはPINをリセットできず、PINを忘れると最大7日間アカウントに入れなくなることがあります。PINの保管には、パスワードマネージャーが使えます[^sig-pin]。また、SignalからSMSで届いたコードは誰にも教えず、Signal自身の登録画面以外には入力しないでください。Signalがアプリ内でユーザーに連絡してくることはないので、「Signalサポート」を名乗るチャットでコードを聞かれたら、それは詐欺です[^sig-protect]。携帯電話会社で番号にロックをかけておくのもおすすめです。やり方は[2段階認証のガイド](/ja/guides/two-factor/#lock-your-number)で説明しています。
+</Tip>
+
+<Tip id="backups" priority="optional" effort={5} title="バックアップをオンにし、キーを控える">
+Signalのバックアップは、自分でオンにするまでオフのままです。Secure Backups（セキュアバックアップ）では、すべてのテキストメッセージと直近45日分の写真やファイルを無料でバックアップできます。月額1.99米ドルを払えば、メディアを最大100GBまで保存できます。バックアップは64文字の回復キーで守られていて、Signalがこのキーを目にすることはありません。キーがなければ、Signalを含めて誰もバックアップを復元できません[^sig-backups]。
+
+オンにするには、<Path>設定 --> バックアップ</Path>を開き、「設定」ボタンをタップして、画面の手順に沿って進めます。表示された回復キーはパスワードマネージャーに保存するか、紙に書き写して安全な場所にしまっておいてください[^sig-backups]。
+</Tip>
+
+## 友達に移ってもらう
+
+<Tip id="start-small" priority="essential" effort={10} title="毎週使うチャットから始める">
+最初に移すのは、WhatsAppのチャット一覧の上のほうにいる数人とグループです。ほかの人は後回しでかまいません。
+
+Signalで新しいチャットを始めると、連絡先のうち誰がもうSignalを使っているかがわかります[^sig-contacts]。それ以外の人には、「Signalに移ることにしたよ。よかったらこのリンクから来てね」のような短いひとことを添えて、WhatsAppでSignalのユーザーネームのリンクを送りましょう。理由を聞かれたら、<Swap product="whatsapp">WhatsAppの代わりになるアプリのページ</Swap>を送ってあげてください。
+</Tip>
+
+<Tip id="group-link" priority="essential" effort={10} title="元のグループにリンクを貼って移す">
+グループを移すには、WhatsAppのグループにSignalの招待リンクを投稿します。Signal自身のヘルプでも、このやり方が紹介されています[^sig-group-link]。
+
+<Steps>
+1. Signalで新しいグループを作り、WhatsAppのグループのメンバーのうち、すでにSignalを使っている人を追加します。
+2. グループの設定を開き、「グループリンク」をタップしてオンにします。リンクを知っていれば誰でも参加でき、リンクは転送されがちなので、内輪のグループなら「管理者の承認を必要とする」もオンにしてください[^sig-group-link]。
+3. 「共有」をタップして、リンクをWhatsAppのグループに投稿します。
+</Steps>
+
+招待するつもりのなかった人にリンクが渡ってしまったら、同じ画面の「リンクをリセットする」で新しいリンクを作れます[^sig-group-link]。
+
+準備ができたら、予定などはまずSignalのグループに投稿し、WhatsAppで聞かれたらSignalのほうを案内しましょう。Signalのグループには最大1,000人まで参加でき、誰がどのグループにいるかの記録はSignalのサーバーには残りません[^sig-groups]。
+</Tip>
+
+<Tip id="holdouts" priority="optional" effort={5} title="移らない人のためにWhatsAppを残す">
+移ってくれない人もいますし、学校やクラブのグループのように、何をしてもWhatsAppから動かないグループもあるでしょう。そういう相手のためにアプリは残し、ミュートしておきましょう。チャットごとに名前をタップし、「通知」を開いて、期間を「常に」（Always）にしてミュートします。メッセージはこれまでどおり届きますが、通知に邪魔されることはなくなります[^wa-mute]。
+
+WhatsAppの設定で「自己紹介」（About）を「最近はだいたいSignalにいます」のような文にしておけば、プロフィールを見た人に伝わります。50文字まで入力でき、表示する期間も選べます[^wa-about]。
+</Tip>
+
+## WhatsAppから残すもの
+
+<Tip id="export-chats" priority="optional" effort={15} title="残したいチャットを保存する">
+チャットをエクスポートして手に入るのは、読むためのテキストファイルで、バックアップではありません。WhatsAppも、エクスポートしたファイルは読み込み直せないとしています[^wa-export]。履歴をSignalに移せることは期待せず、エクスポートは保存用の控えとして扱いましょう。
+
+チャットを開きます。Androidでは、画面上部の3点アイコンをタップしてから<Path>その他 --> チャットをエクスポート（Export chat）</Path>をタップします。iPhoneでは、連絡先名かグループ名をタップしてから「チャットをエクスポート」をタップすると、ZIPファイルで書き出されます。写真や動画も含められますが、Androidでは最近のものしか入りません。また、一度だけ表示できるメッセージ（view once）は含まれません[^wa-export]。エクスポートは1チャットずつです。ファイルは開けば誰でも読めてしまうので、メールで送ったりチャットに送ったりせず、スマホかパソコンに保存してください。いらないコピーは削除しておきましょう。
+</Tip>
+
+## WhatsAppをきちんとやめる
+
+<Tip id="delete-the-account" priority="essential" effort={10} title="アプリだけでなくアカウントも削除する">
+すべてのグループから抜け、メッセージ履歴とバックアップが消えるのは、アカウントを削除したときです[^wa-delete]。スマホからアプリを消しても、そうはなりません。WhatsAppは通常、120日間（米国では365日間）接続がなかったアカウントしか削除しません[^wa-delete][^wa-inactive]。
+
+アカウントの削除は取り消せず、削除したアカウントのチャットをWhatsAppが復元することもできないので、先に[残したいチャットを保存しておいてください](#export-chats)[^wa-delete]。WhatsAppのチャンネルを運営しているなら、やめる前にほかの管理者を追加してください。そうしないと、チャンネルもアカウントと一緒に削除されます[^wa-delete]。
+
+<Steps>
+1. リンクしたパソコンではなくスマホで、Androidなら画面上部の3点アイコンをタップしてから<Path>設定 --> アカウント --> アカウントを削除</Path>を、iPhoneなら<Path>設定 --> アカウント --> アカウントを削除</Path>を開きます。
+2. 電話番号を、+44 7700 900123のように国番号から始まる国際電話番号の形式で省略せずに入力し、確定します[^wa-delete]。
+</Steps>
+
+WhatsAppによると、情報の削除が終わるまでには最大90日かかることがあります[^wa-delete]。
+</Tip>
+
+## ほかのアプリをやめるなら
+
+どのアプリでも、たいていは同じように、元のグループにSignalのグループリンクを投稿すれば移ってもらえます。各アプリがメッセージをどう扱っているかは、<Swap product="facebook-messenger">Messenger</Swap>、<Swap product="telegram">Telegram</Swap>、<Swap product="viber">Viber</Swap>、<Swap product="line">LINE</Swap>、<Swap product="wechat">WeChat</Swap>それぞれの代わりになるアプリのページで説明しています。
+
+[^bigbrother]: [Signal：政府機関とのやりとり](https://signal.org/bigbrother/)
+[^sig-contacts]: [Signalサポート：Signal は私が連絡先に登録している人たちに私の電話番号を送信しているのですか?](https://support.signal.org/hc/ja/articles/360007061452)
+[^simplex]: [SimpleX：相手とつながる方法](https://simplex.chat/docs/guide/making-connections.html)
+[^telegram]: [Telegram：よくある質問](https://telegram.org/faq)
+[^sig-numberless]: [Signalサポート：Androidベータ版での電話番号なしの登録](https://support.signal.org/hc/en-us/articles/11197884108826)
+[^sig-usernames]: [Signalサポート：電話番号のプライバシーとユーザーネーム](https://support.signal.org/hc/ja/articles/6712070553754)
+[^sig-twilio]: [Signalサポート：Twilioインシデント：Signalユーザーの皆様が知っておくべきこと](https://support.signal.org/hc/ja/articles/4850133017242)
+[^sig-pin]: [Signalサポート：Signal PIN](https://support.signal.org/hc/ja/articles/360007059792)
+[^sig-protect]: [Signalサポート：被害に遭わないためのSignal内での対策方法](https://support.signal.org/hc/ja/articles/9932632052378)
+[^sig-backups]: [Signalサポート：Signalセキュアバックアップ](https://support.signal.org/hc/ja/articles/9708267671322)
+[^sig-group-link]: [Signalサポート：グループリンクとQRコード](https://support.signal.org/hc/ja/articles/360051086971)
+[^sig-groups]: [Signalサポート：グループチャット](https://support.signal.org/hc/ja/articles/360007319331)
+[^wa-mute]: [WhatsAppヘルプ：個別チャットやグループチャットの通知をミュートまたはミュート解除する方法](https://faq.whatsapp.com/694350718331007)
+[^wa-about]: [WhatsAppヘルプ：自己紹介を編集する方法](https://faq.whatsapp.com/752120927696324)
+[^wa-export]: [WhatsAppヘルプ：チャット履歴をエクスポートする方法](https://faq.whatsapp.com/1180414079177245)
+[^wa-inactive]: [WhatsAppヘルプ：使用されていないアカウントの削除について](https://faq.whatsapp.com/828406668498455)
+[^wa-delete]: [WhatsAppヘルプ：アカウントを削除する方法](https://faq.whatsapp.com/2138577903196467?locale=ja_JP)
