@@ -235,6 +235,7 @@ guides.description: Plain-English guides to the privacy and security jobs worth 
 guides.lead: Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.
 guides.english: English
 guides.topic.accounts: accounts
+guides.topic.email: email
 
 guide.read: "{time} read"
 guide.checked: Checked {date}

@@ -1,0 +1,135 @@
+---
+title: Von Gmail umziehen, ohne E-Mails oder Konten zu verlieren
+description: Nimm deine alten E-Mails mit, leite neue weiter und stell zuerst die wichtigen Konten auf die neue Adresse um. So geht nichts verloren, wenn du Gmail aufgibst.
+source: "d14d3acfa5638e2f"
+sha: "adbe70046cd443ddddc89b94113d8cfb814cd049"
+---
+
+<Short>
+Such dir einen Anbieter aus der Liste aus, am besten mit [einer eigenen Domain](#own-domain), und lass ihn deine alten E-Mails importieren. [Leite Gmail an die neue Adresse weiter](#forward-gmail), damit du mitbekommst, was dort noch landet. [Ändere dann deine Adresse bei den Konten, auf die es ankommt](#important-accounts-first), und kümmere dich um die übrigen, sobald sie dir das nächste Mal eine E-Mail schicken. [Behalte Gmail mindestens ein Jahr lang](#keep-gmail) und melde dich jedes Jahr wenigstens einmal an, damit Google das Konto nicht löscht.
+</Short>
+
+## Warum es mit dem Umzug der E-Mails nicht getan ist
+
+Was Google mit deinem Postfach macht, steht auf der <Swap product="gmail">Seite mit Alternativen zu Gmail</Swap>, deshalb geht es in diesem Ratgeber um den Umzug selbst. Das Kopieren deiner alten E-Mails übernimmt größtenteils der neue Anbieter. Die eigentliche Arbeit steckt in den Shops, Banken, Apps und alten Forenkonten, die dich alle unter deiner Gmail-Adresse kennen, und von manchen hörst du nur einmal im Jahr. Für ein paar Schritte brauchst du einen Computer, denn weder die Weiterleitung in Gmail noch der Export aus Google Kalender lässt sich in den Apps erledigen.[^forward][^calendar]
+
+## Such dir einen neuen E-Mail-Anbieter aus
+
+Durch den Umzug werden die meisten deiner E-Mails nicht <Term slug="e2ee">Ende-zu-Ende-verschlüsselt</Term>. Das funktioniert nur, wenn beide Seiten es eingerichtet haben, zum Beispiel wenn sich zwei Proton-Nutzer schreiben oder zwei Leute <Term slug="pgp">PGP</Term> benutzen.[^ec-tips][^proton-e2ee] Die meisten deiner E-Mails, etwa die von deiner Bank, kommen weiterhin als ganz normale E-Mails an. Der Unterschied ist, was die Firma, bei der dein Postfach liegt, lesen kann. Proton zum Beispiel verschlüsselt Nachrichten, sobald sie ankommen, und nennt das Zero-Access-Verschlüsselung.[^proton-switch][^proton-forward]
+
+Wenn du eine eigene Domain willst, prüf, ob der Tarif, den du dir ansiehst, das zulässt, denn bei Proton geht das nur in den kostenpflichtigen Tarifen.[^proton-domain] Und wenn du statt der App des Anbieters ein normales E-Mail-Programm nutzen willst, prüf auch das. Proton braucht dafür seine App Bridge, und Bridge gibt es ebenfalls nur mit einem kostenpflichtigen Tarif.[^proton-bridge] Bei [Email Comparison](https://email-comparison.as93.net/) findest du beides für jeden Anbieter, dazu die Preise.
+
+<Picks section="Encrypted Email" />
+
+<Tip id="own-domain" priority="optional" effort={30} title="Überleg dir, ob du eine eigene Domain nimmst">
+Mit einer Adresse auf einer Domain, die dir gehört, etwa `du@deinname.com`, änderst du beim nächsten Anbieterwechsel nur die Einstellungen deiner Domain und nicht schon wieder deine Adresse bei jedem einzelnen Konto.[^ec-tips] Zum Einrichten trägst du bei der Firma, bei der du die Domain gekauft hast, ein paar Einträge ein, und die Hilfe von Proton zum Beispiel erklärt Schritt für Schritt, wie das geht.[^proton-domain] Wenn alles eingerichtet ist, schick dir von einem anderen Konto aus eine Test-Mail.
+
+Der Haken ist, dass du weiter dafür zahlen musst. Läuft eine Domain aus, kann jemand anderes sie kaufen, E-Mail darauf einrichten und bei deinen Konten auf „Passwort vergessen“ klicken.[^pypi] Wenn du dich dafür entscheidest, [kümmere dich vom ersten Tag an um die Domain](#keep-the-domain).
+</Tip>
+
+<Tip id="keep-the-domain" priority="essential" effort={10} title="Wenn du eine eigene Domain nutzt, lass sie nicht auslaufen">
+Schalte die automatische Verlängerung ein und zahl gleich für ein paar Jahre im Voraus, damit es nicht an einer Karte scheitert, die zwischendurch abgelaufen ist. Bei .com und den anderen generischen Domain-Endungen schreibt die ICANN den Domain-Anbietern vor, Erinnerungen zu schicken, und zwar etwa einen Monat vor dem Ablauf, eine Woche vorher und noch einmal danach. Alle gehen an die Kontakt-E-Mail-Adresse, die bei der Registrierung der Domain hinterlegt ist.[^icann-errp] Liegt diese Adresse auf derselben Domain, erreicht dich die letzte vielleicht nie, weil die E-Mail einer abgelaufenen Domain schon ausfallen kann, bevor die Domain gelöscht wird.[^icann-errp] Hinterleg für dein Konto beim Domain-Anbieter eine Adresse, die nicht auf dieser Domain liegt, und schalte dort die Zwei-Faktor-Authentifizierung ein, denn wer in dieses Konto kommt, kann ändern, wohin die E-Mails deiner Domain gehen.
+</Tip>
+
+## Nimm deine alten E-Mails mit
+
+<Tip id="lock-the-new-inbox" priority="essential" effort={10} title="Sichere das neue Postfach ab, bevor du etwas umziehst">
+Sobald deine Konten auf die neue Adresse laufen, lassen sich ihre Passwörter darüber zurücksetzen. Schalte deshalb vorher die [Zwei-Faktor-Authentifizierung](/de/ratgeber/two-factor/) ein und bewahr die Backup-Codes auf Papier auf. Wenn dein neuer Anbieter eine E-Mail-Adresse zur Wiederherstellung haben will, ist Gmail vorerst in Ordnung, aber ändere sie, bevor du dich von Gmail trennst.
+</Tip>
+
+<Tip id="import-old-mail" priority="essential" effort={20} title="Lass den neuen Anbieter deine alten E-Mails importieren">
+Vielleicht kann dein neuer Anbieter deine alten E-Mails direkt aus Gmail holen. Easy Switch von Proton zum Beispiel bringt deine E-Mails, Kontakte und Kalender rüber und läuft auf den Servern von Proton, du kannst also in der Zwischenzeit etwas anderes machen. Wenn du Gmail schon lange nutzt, kann das Tage dauern.[^proton-switch] Bei einem anderen Anbieter such in dessen Hilfe nach „Gmail importieren“.
+
+Wenn der Anbieter meldet, dass der Import fertig ist, prüf ihn, bevor du dich darauf verlässt: Öffne deine gesendeten E-Mails, eine Jahre alte E-Mail und eine mit Anhang, und schau, ob deine Ordner mitgekommen sind.
+
+Lad dir danach mit [Google Takeout](https://takeout.google.com/) eine Kopie deiner E-Mails herunter und entfern dabei alle Häkchen außer bei „Mail“, damit du eine Kopie hast, die von keinem Anbieter abhängt. Der Download-Link gilt nur ungefähr eine Woche, also speicher die Datei auf einem Computer oder einer externen Festplatte und prüf, ob sie vollständig heruntergeladen ist. Durch den Download wird bei Google nichts gelöscht.[^takeout]
+</Tip>
+
+<Tip id="contacts-and-calendars" priority="optional" effort={10} title="Nimm auch deine Kontakte und deinen Kalender mit">
+Falls der Import die nicht mitgenommen hat, exportier sie und importier die Dateien beim neuen Anbieter. Der Kalender-Export funktioniert nur am Computer, und diese Schritte sind auch für den Computer gedacht.[^calendar]
+
+<Steps>
+1. Hak in [Google Kontakte](https://contacts.google.com/) einen beliebigen Kontakt an und wähl dann <Path>Aktionen für Auswahl --> Alle</Path>. Wähl <Path>Dreipunkt-Menü --> Exportieren</Path> und dann vCard.[^contacts]
+2. Öffne in Google Kalender <Path>Einstellungen --> Importieren & Exportieren</Path> und klick auf „Exportieren“. Dabei wird eine ZIP-Datei mit .ics-Dateien heruntergeladen, die andere Kalender-Apps importieren können.[^calendar]
+</Steps>
+
+Wenn dein neuer Anbieter keinen Kalender hat, findest du andere auf der Seite mit <Swap product="google-calendar">Alternativen zu Google Kalender</Swap>.
+</Tip>
+
+## Verpass nichts, was noch bei Gmail ankommt
+
+<Tip id="forward-gmail" priority="essential" effort={10} title="Leite Gmail an die neue Adresse weiter">
+Bis jedes Konto umgezogen ist, landen Rechnungen und E-Mails zum Zurücksetzen von Passwörtern weiterhin bei Gmail. Mit einer Weiterleitung bekommst du sie trotzdem mit. So geht’s am Computer in Gmail:
+
+<Steps>
+1. Öffne <Path>Einstellungen --> Alle Einstellungen aufrufen --> Weiterleitung & POP/IMAP</Path> und klick auf „Weiterleitungsadresse hinzufügen“.
+2. Gib die neue Adresse ein und klick dann in der E-Mail, die Gmail dorthin schickt, auf den Link, um sie zu bestätigen.
+3. Lad die Seite in Gmail neu und öffne wieder denselben Tab. Wähl „Eingehende E-Mails weiterleiten an“, lass wie von Google empfohlen „Gmail-Kopie im Posteingang behalten“ ausgewählt und klick auf „Änderungen speichern“.[^forward]
+</Steps>
+
+Schick dir von einem anderen Konto aus eine E-Mail an deine Gmail-Adresse, um zu prüfen, ob sie ankommt. Spam leitet Gmail nicht weiter, also schau jedes Mal, wenn du dich anmeldest, in den Spamordner von Gmail.[^forward] Wenn du zu Proton wechselst, kann Easy Switch die Weiterleitung stattdessen von Proton aus einrichten. Dabei wird aber nur weitergeleitet, was im Posteingang von Gmail landet, also kommen E-Mails, die einer deiner Gmail-Filter aus dem Posteingang verschiebt, nicht an.[^proton-forward]
+</Tip>
+
+<Tip id="forwarded-folder" priority="optional" effort={5} title="Leg weitergeleitete E-Mails in einem eigenen Ordner ab">
+Leg im neuen Postfach einen Filter für E-Mails an deine Gmail-Adresse an, der sie in einen eigenen Ordner verschiebt. Jeder Absender dort hat noch deine alte Adresse, also ist dieser Ordner gleichzeitig deine Liste mit dem, was du noch umstellen musst. Auch Leute, die dir noch an die alte Adresse schreiben, tauchen dort auf. Antworte ihnen von der neuen und sag ihnen Bescheid. Wir würden den Ordner ein ganzes Jahr lang im Auge behalten, bevor wir die Sache für erledigt halten, denn manches, etwa Versicherungen und Domain-Verlängerungen, meldet sich nur einmal im Jahr per E-Mail.
+</Tip>
+
+## Stell deine Konten auf die neue Adresse um
+
+<Tip id="list-your-accounts" priority="essential" effort={15} title="Mach dir eine Liste, wo deine Gmail-Adresse hinterlegt ist">
+Wenn du einen Passwort-Manager nutzt, such darin nach deiner Gmail-Adresse. Die Suche in Bitwarden schaut auch in die Benutzernamen, also findest du so die Zugangsdaten, die mit dieser Adresse gespeichert sind.[^bw-search] Falls du noch keinen hast, hilft dir der [Ratgeber zum Passwort-Manager](/de/ratgeber/password-manager/).
+
+Konten, die du mit „Über Google anmelden“ angelegt hast, findest du so nicht, weil du für sie kein Passwort benutzt.[^siwg] Dein Google-Konto führt sie auf: Geh auf [die Seite mit deinen verknüpften Apps](https://myaccount.google.com/linkedapps) und wähl dort den Filter „Über Google anmelden“.[^linked-apps] Wenn eine Website es zulässt, füg dort ein Passwort oder eine andere Anmeldemöglichkeit hinzu und prüf in einem privaten Fenster, ob das klappt, bevor du die Verknüpfung mit Google entfernst.
+</Tip>
+
+<Tip id="important-accounts-first" priority="essential" effort={60} title="Ändere die Adresse zuerst bei den wichtigen Konten">
+Über manche Konten kommt man in andere rein, und bei manchen kostet es dich Geld, wenn dir eine E-Mail von ihnen entgeht, also sind die zuerst dran. Ändere die E-Mail-Adresse jeweils in den Kontoeinstellungen, lass Gmail dabei offen, falls die Website die Änderung auch dort bestätigen lässt, und prüf danach, ob du dich noch anmelden kannst. In dieser Reihenfolge würden wir vorgehen:
+
+<Steps>
+1. Dein Passwort-Manager, denn darin steckt alles andere.
+2. Deine Bank und alles andere, wo Geld drin ist.
+3. Dein Kundenkonto beim Mobilfunkanbieter, denn darüber lässt sich steuern, wohin deine SMS gehen.
+4. Das Konto bei Apple oder Microsoft, mit dem dein Handy oder Computer angemeldet ist.
+5. Konten bei Behörden, etwa für die Steuer oder für Sozialleistungen.
+6. Shops, bei denen deine Karte hinterlegt ist, und danach soziale Medien.
+</Steps>
+
+Das britische Cybersicherheitszentrum NCSC zählt E-Mail, Onlinebanking, soziale Medien und Onlineshopping zu den wichtigen Konten.[^ncsc-tips] Mit allem anderen kannst du warten, bis dir die jeweilige Website wieder schreibt und die E-Mail in deinem Ordner für weitergeleitete E-Mails landet. Wenn eine Website dich die Adresse nicht ändern lässt, frag beim Support nach. Du kannst das Konto auch schließen und dich neu registrieren, wenn du vorher geprüft hast, was dabei verloren gehen würde.
+</Tip>
+
+<Tip id="new-sign-ups" priority="optional" effort={5} title="Gib jedem neuen Konto eine eigene Adresse">
+Registrier dich ab jetzt mit einem <Term slug="email-alias">Alias</Term> statt mit deiner Hauptadresse. Jede Website bekommt eine eigene Adresse, die an dich weiterleitet, und wenn an eine davon Spam kommt, weißt du, welcher Website du sie gegeben hast. Gib dieser Website dann einen neuen Alias und schalte den alten ab.[^ec-tips] <App name="Addy" /> und <App name="SimpleLogin" /> haben beide kostenlose Tarife, und bei manchen E-Mail-Anbietern sind Alias-Adressen in den kostenpflichtigen Tarifen enthalten.
+</Tip>
+
+## Lösch Gmail noch nicht
+
+<Tip id="keep-gmail" priority="essential" effort={5} title="Behalte Gmail noch mindestens ein Jahr, und zwar gut abgesichert">
+Für jedes Konto, das du noch nicht gefunden hast, ist Gmail immer noch die Adresse, über die sich das Passwort zurücksetzen lässt. Gmail braucht also sein starkes Passwort und die [Zwei-Faktor-Authentifizierung](/de/ratgeber/two-factor/) genauso wie vorher.
+
+Google kann ein privates Konto löschen, das zwei Jahre lang nicht benutzt wurde, also melde dich mindestens einmal im Jahr an. Eine E-Mail zu lesen, reicht dafür schon. Trag bei der Gelegenheit deine neue Adresse als E-Mail-Adresse zur Kontowiederherstellung ein, damit dich die Warnungen von Google erreichen.[^inactive]
+</Tip>
+
+<Tip id="remove-gmail" priority="optional" effort={10} title="Wenn bei Gmail nichts mehr ankommt, entfern Gmail und behalte das Google-Konto">
+Um Gmail loszuwerden, musst du nicht dein ganzes Google-Konto löschen. Wenn du nur Gmail entfernst, bleiben das Konto, deine Käufe bei Google Play und die anderen Dienste von Google erhalten, aber das Konto braucht dann eine andere Adresse, die nicht von Gmail ist. Deine E-Mails werden nach 30 Tagen gelöscht. Wenn du es dir anders überlegst, lässt Google dich die Adresse vielleicht wiederherstellen, aber nicht unbedingt die E-Mails, also verlass dich nicht darauf.[^remove-gmail]
+
+Prüf vorher, ob sich deine Takeout-Kopie öffnen lässt, ob im Ordner für weitergeleitete E-Mails seit einem Jahr Ruhe ist und ob im Spamordner von Gmail keine echten E-Mails liegen. Stell sicher, dass du bei jeder Website, bei der du „Über Google anmelden“ genutzt hast, auch anders reinkommst und dass keine Wiederherstellungsadresse mehr auf Gmail zeigt, auch nicht die vom neuen Postfach. Öffne dann <Path>Google-Konto verwalten --> Daten und Datenschutz --> Daten aus Diensten entfernen, die Sie nicht mehr verwenden</Path>, klick neben Gmail auf „Löschen“ und folge den Schritten. Entfernt wird erst etwas, wenn du auf den Link klickst, den Google an die andere Adresse schickt. Danach kann niemand anderes deine alte Gmail-Adresse je benutzen.[^remove-gmail]
+</Tip>
+
+[^ec-tips]: [Email Comparison: Tipps zur E-Mail-Sicherheit](https://email-comparison.as93.net/email-security-tips)
+[^proton-e2ee]: [Proton: Passwortgeschützte E-Mails](https://proton.me/de/support/password-protected-emails)
+[^proton-forward]: [Proton: Wie du Gmail automatisch an dein Proton Mail weiterleitest](https://proton.me/de/support/automatic-forwarding-gmail)
+[^proton-domain]: [Proton: So verwendest du eine eigene Domain mit Proton Mail](https://proton.me/de/support/custom-domain)
+[^proton-bridge]: [Proton: Proton Mail Bridge](https://proton.me/de/mail/bridge)
+[^pypi]: [PyPI-Blog: Angriffe über wiederbelebte Domains verhindern](https://blog.pypi.org/posts/2025-08-18-preventing-domain-resurrections/)
+[^icann-errp]: [ICANN: 5 Dinge, die Domaininhaber über die Richtlinie zur Wiederherstellung abgelaufener Domains (ERRP) wissen sollten](https://www.icann.org/resources/pages/registrant-about-errp-2018-12-07-en)
+[^proton-switch]: [Proton: Wie du mit Easy Switch zu Proton migrierst](https://proton.me/de/support/easy-switch)
+[^takeout]: [Google-Konto-Hilfe: So laden Sie Ihre Google-Daten herunter](https://support.google.com/accounts/answer/3024190?hl=de)
+[^calendar]: [Google Kalender-Hilfe: Termine aus Ihrem Google Kalender exportieren](https://support.google.com/calendar/answer/37111?hl=de)
+[^contacts]: [Kontakte-Hilfe: Kontakte exportieren, sichern oder wiederherstellen](https://support.google.com/contacts/answer/7199294?hl=de)
+[^forward]: [Gmail-Hilfe: Gmail-Nachrichten automatisch an ein anderes E-Mail-Konto weiterleiten](https://support.google.com/mail/answer/10957?hl=de)
+[^bw-search]: [Bitwarden: Tresor durchsuchen](https://bitwarden.com/help/searching-vault/)
+[^siwg]: [Google-Konto-Hilfe: Wie funktioniert „Über Google anmelden“?](https://support.google.com/accounts/answer/12849458?hl=de)
+[^linked-apps]: [Google-Konto-Hilfe: Verknüpfungen zwischen Ihrem Google-Konto und Apps von anderen Entwicklerinnen und Entwicklern verwalten](https://support.google.com/accounts/answer/13533235?hl=de)
+[^ncsc-tips]: [NCSC: Bestätigung in zwei Schritten einschalten](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^inactive]: [Google-Konto-Hilfe: Richtlinie zu inaktiven Google-Konten](https://support.google.com/accounts/answer/12418290?hl=de)
+[^remove-gmail]: [Google-Konto-Hilfe: Gmail aus dem eigenen Google-Konto entfernen](https://support.google.com/accounts/answer/61177?hl=de)
