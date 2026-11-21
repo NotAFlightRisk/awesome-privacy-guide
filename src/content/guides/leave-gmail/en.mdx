@@ -1,0 +1,140 @@
+---
+title: How to leave Gmail without losing email or accounts
+description: Move your old mail, forward the new, and change your address on the accounts that matter first, so nothing gets lost when you finally stop using Gmail.
+type: switch
+topic: email
+sections: [Encrypted Email, Mail Forwarding]
+products: [gmail, google-calendar]
+terms: [email-alias, e2ee]
+related: [password-manager, two-factor, email-aliases]
+further:
+  - url: https://email-comparison.as93.net/
+    label: A detailed comparison of private email providers
+  - url: https://digital-defense.io/checklist/email
+    label: The full email checklist
+published: 2026-11-21
+checked: 2026-11-21
+---
+
+<Short>
+Pick a provider from the list, ideally on [a domain you own](#own-domain), and let its importer copy your old mail across. [Forward Gmail to the new address](#forward-gmail) so nothing gets missed, then [change your email on the accounts that matter](#important-accounts-first) and do the rest as their emails turn up. [Keep Gmail for at least a year](#keep-gmail), and sign in now and then, or Google may delete it.
+</Short>
+
+## Why it's more than moving your email
+
+The <Swap product="gmail">Gmail alternatives page</Swap> covers what Google does with your inbox, so this guide is about the move. Copying your old email across takes an afternoon, and most of it happens on the new provider's servers while you get on with something else. The real job is the shops, banks, apps and old forum accounts that all know you by your Gmail address, and that's done over a few months rather than in one sitting.
+
+## Pick where you're going
+
+<Term slug="e2ee">End-to-end encryption</Term> changes less than you'd hope. It only works when both ends have it set up, like two Proton users writing to each other, or two people using <Term slug="pgp">PGP</Term>.[^ec-tips][^proton-e2ee] Your bank's emails will still arrive as ordinary email. What changes is who runs your inbox and what they're allowed to do with it.
+
+Before you pay for anything, check two things. The first is whether the plan you're looking at lets you use your own domain. Proton, for one, only offers that on paid plans.[^proton-domain] The second is whether it works with a normal mail app. Proton needs its Bridge app for that, and Bridge needs a paid plan too.[^proton-bridge] [Email Comparison](https://email-comparison.as93.net/) has both for each provider, along with prices.
+
+<Picks section="Encrypted Email" />
+
+<Tip id="own-domain" priority="optional" effort={30} title="Think about using your own domain">
+With an address on a domain you own, like `you@yourname.uk`, moving provider next time is a change to your domain's settings rather than another hundred accounts to update. A domain costs a few pounds a year, on top of a paid email plan.[^ec-tips]
+
+The catch is that you have to keep paying for it. If a domain lapses, someone else can buy it, set up email on it and use "forgot my password" on your accounts.[^pypi] If you go this way, [look after the domain](#keep-the-domain) from day one.
+</Tip>
+
+<Tip id="keep-the-domain" priority="essential" effort={10} title="If you use your own domain, don't let it lapse">
+Turn on auto-renew, and pay for a few years at a time, so a card that's expired in the meantime doesn't catch you out. Registrars have to send reminders about a month and a week before a domain runs out, and one more after it's expired, all to the contact email on the domain's registration.[^icann-errp] If that's an address on the same domain, the last one may never reach you, since an expired domain's email can stop working before the domain's deleted.[^icann-errp] Use an address somewhere else for the registrar account, and turn on two-step login there, since that account decides where your email goes.
+</Tip>
+
+## Move your old mail
+
+<Tip id="import-old-mail" priority="essential" effort={20} title="Let the new provider's importer copy it across">
+Your new provider may be able to copy your old mail straight out of Gmail. Proton's Easy Switch, for example, brings over your email, contacts and calendars, and it runs on Proton's servers, so you can get on with something else. It can take days if you've had Gmail a long time.[^proton-switch] Look in your new provider's help pages for its own version.
+
+Then take a copy of everything with [Google Takeout](https://takeout.google.com/), so you've got one that doesn't depend on any provider. The download link only lasts about a week, so save the file somewhere safe once it arrives. Downloading it doesn't delete anything from Google.[^takeout]
+</Tip>
+
+<Tip id="contacts-and-calendars" priority="optional" effort={10} title="Bring your contacts and calendar too">
+If the importer didn't do it, export them yourself. Both of these only work on a computer.
+
+<Steps>
+1. In [Google Contacts](https://contacts.google.com/), tick any contact, then choose <Path>Selection actions --> All</Path>. Choose <Path>More actions --> Export</Path> and pick vCard, which other apps can read.[^contacts]
+2. In Google Calendar, open <Path>Settings --> Import & export</Path> and click Export. That downloads a zip file of .ics files, which other calendar apps can import.[^calendar]
+</Steps>
+
+If your new provider doesn't have a calendar, the <Swap product="google-calendar">Google Calendar alternatives</Swap> do.
+</Tip>
+
+## Catch what still comes to Gmail
+
+<Tip id="forward-gmail" priority="essential" effort={10} title="Forward your Gmail to the new address">
+Until every account's moved, password resets and bills will still go to Gmail. Forwarding means you'll see them anyway. On a computer, in Gmail:
+
+<Steps>
+1. Open <Path>Settings --> See all settings --> Forwarding and POP/IMAP</Path> and click Add a forwarding address.
+2. Type in the new address, then click the link in the email Gmail sends there to confirm it.
+3. Back on the same tab in Gmail, refresh the page, choose Forward a copy of incoming mail to, and keep Gmail's copy in the inbox, as Google suggests. Save your changes.[^forward]
+</Steps>
+
+Gmail doesn't forward spam, so look at Gmail's spam folder now and then for anything real.[^forward] If you're moving to Proton, Easy Switch can set this up from Proton's side too, but it only forwards mail that lands in Gmail's inbox, so a Gmail filter that skips the inbox stops those messages coming.[^proton-forward]
+</Tip>
+
+<Tip id="forwarded-to-do-list" priority="optional" effort={5} title="Put forwarded mail in its own folder">
+In the new inbox, make a filter for mail sent to your Gmail address and send it to a folder of its own. Everything that lands there is from someone who still has your old address, so the folder is your to-do list. When it's been empty for a few months, you've moved everything that matters.
+</Tip>
+
+## Move your accounts across
+
+<Tip id="list-your-accounts" priority="essential" effort={15} title="Make a list of what uses your Gmail address">
+If you use a password manager, search it for your Gmail address. Bitwarden's search looks at usernames, so that brings up every login that uses it.[^bw-search] The [password manager guide](/guides/password-manager/) helps if you haven't got one yet.
+
+That misses anything you joined with a "Sign in with Google" button, since those don't have a password to save.[^siwg] Your Google Account lists them: go to [your linked apps page](https://myaccount.google.com/linkedapps) and filter it to Sign in with Google.[^linked-apps] On each one, add a password or another way to sign in, as well as changing the email, so you're not stuck if the Google Account goes.
+</Tip>
+
+<Tip id="important-accounts-first" priority="essential" effort={60} title="Change the address on the accounts that matter first">
+These are the ones where a missed email costs you, or where someone reading your old inbox could reset the password. Change the email in each one's account settings, and expect a confirmation link at the new address.
+
+<Steps>
+1. Your password manager, since it holds the rest.
+2. Your bank, and anything else with money in it, like PayPal.
+3. Your mobile network account, which controls where your texts go.
+4. The Apple or Microsoft account on your phone or computer.
+5. Tax, benefits and other government accounts.
+6. Shops with your card saved, and then social media.
+</Steps>
+
+The NCSC's own list of important accounts is email, banking, social media and online shopping.[^ncsc-tips] Leave everything else until its next email turns up in your forwarded folder.
+</Tip>
+
+<Tip id="new-sign-ups" priority="optional" effort={5} title="Give new sign-ups their own address">
+From now on, sign up with an <Term slug="email-alias">alias</Term> rather than your main address. Each site gets its own address that forwards to you, so a leak tells you who leaked it, and you can switch that one off.[^ec-tips] <App name="Addy" /> and <App name="SimpleLogin" /> both have free plans, and some providers include aliases in their paid plans.
+</Tip>
+
+## Don't delete Gmail yet
+
+<Tip id="keep-gmail" priority="essential" effort={5} title="Keep Gmail for at least a year, and sign in now and then">
+Accounts you've forgotten about will keep sending resets and renewals to Gmail, and you'll only find out which ones as their emails arrive. So keep it, and keep it as safe as your new inbox, with a strong password and [two-step login](/guides/two-factor/).
+
+Google can delete a personal account that hasn't been used for two years, so sign in now and then. Reading an email counts.[^inactive] While you're there, set your new address as its recovery email, so Google's warnings reach you.
+</Tip>
+
+<Tip id="remove-gmail" priority="optional" effort={10} title="When nothing comes to it any more, remove Gmail and keep the account">
+You don't have to delete your whole Google Account to get rid of Gmail. Removing just Gmail keeps the account itself, your Play purchases and Google's other services, but the account needs another address that isn't a Gmail one. Download anything you want to keep first, because the emails are deleted after 30 days. Nobody else can ever use your old Gmail address after that.[^remove-gmail]
+
+To do it, open <Path>Manage your Google Account --> Data & privacy --> Remove data from services you no longer use</Path>, click Delete next to Gmail and follow the steps. Nothing's removed until you click the link Google sends to the other address.[^remove-gmail]
+</Tip>
+
+[^proton-e2ee]: [Proton: Password-protected emails](https://proton.me/support/password-protected-emails)
+[^ec-tips]: [Email Comparison: Email security tips](https://email-comparison.as93.net/email-security-tips)
+[^proton-domain]: [Proton: How to use a custom domain with Proton Mail](https://proton.me/support/custom-domain)
+[^proton-bridge]: [Proton: Proton Mail Bridge](https://proton.me/mail/bridge)
+[^pypi]: [PyPI blog: Preventing domain resurrection attacks](https://blog.pypi.org/posts/2025-08-18-preventing-domain-resurrections/)
+[^icann-errp]: [ICANN: 5 things every registrant should know about the Expired Registration Recovery Policy](https://www.icann.org/resources/pages/registrant-about-errp-2018-12-07-en)
+[^proton-switch]: [Proton: How to migrate to Proton using Easy Switch](https://proton.me/support/easy-switch)
+[^takeout]: [Google Account Help: How to download your Google data](https://support.google.com/accounts/answer/3024190)
+[^contacts]: [Google Contacts Help: Export, back up, or restore contacts](https://support.google.com/contacts/answer/7199294)
+[^calendar]: [Google Calendar Help: Export events from your Google Calendar](https://support.google.com/calendar/answer/37111)
+[^forward]: [Gmail Help: Automatically forward Gmail messages to another account](https://support.google.com/mail/answer/10957)
+[^proton-forward]: [Proton: How to automatically forward Gmail to your Proton Mail](https://proton.me/support/automatic-forwarding-gmail)
+[^bw-search]: [Bitwarden: Search your vault](https://bitwarden.com/help/searching-vault/)
+[^siwg]: [Google Account Help: Sign in with Google](https://support.google.com/accounts/answer/12849458)
+[^linked-apps]: [Google Account Help: Manage links between your Google Account and apps](https://support.google.com/accounts/answer/13533235)
+[^ncsc-tips]: [NCSC: Turn on 2-step verification](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^inactive]: [Google Account Help: Inactive Google Account Policy](https://support.google.com/accounts/answer/12418290)
+[^remove-gmail]: [Google Account Help: Remove Gmail from your Google Account](https://support.google.com/accounts/answer/61177)

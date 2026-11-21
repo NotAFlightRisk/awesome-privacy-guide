@@ -1080,6 +1080,7 @@ de:
   Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Jeder Ratgeber nimmt sich eine Aufgabe gründlich vor oder beantwortet eine Frage, und zu jedem Schritt steht dabei, warum. Jede App, die er vorschlägt, stammt aus der Liste.
   English: Englisch
   accounts: Konten
+  email: E-Mail
   "{time} read": "{time} Lesezeit"
   Checked {date}: Geprüft am {date}
   the short answer: Kurz gesagt
@@ -2242,6 +2243,7 @@ es:
   Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Cada guía resuelve bien una tarea o responde a una pregunta, y explica el porqué de cada paso. Las apps que sugiere salen de la lista.
   English: En inglés
   accounts: Cuentas
+  email: Correo electrónico
   "{time} read": "{time} de lectura"
   Checked {date}: Revisada el {date}
   the short answer: La respuesta corta
@@ -2351,6 +2353,7 @@ fr:
   Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Chaque guide traite une seule tâche à fond ou répond à une seule question, en expliquant le pourquoi de chaque étape. Toutes les applications qu’il propose viennent de la liste.
   English: En anglais
   accounts: Comptes
+  email: E-mail
   "{time} read": "{time} de lecture"
   Checked {date}: Vérifié le {date}
   the short answer: En bref
@@ -3514,6 +3517,7 @@ pt:
   Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Cada guia resolve uma tarefa direito ou responde a uma pergunta, explicando o porquê de cada passo. Todo app que ele sugere vem da lista.
   English: Em inglês
   accounts: Contas
+  email: E-mail
   "{time} read": "{time} de leitura"
   Checked {date}: Conferido em {date}
   the short answer: Em resumo
@@ -4667,6 +4671,7 @@ it:
   Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Ogni guida fa bene una cosa sola o risponde a una domanda, spiegando il perché di ogni passaggio. Le app che suggerisce vengono tutte dalla lista.
   English: In inglese
   accounts: Account
+  email: Email
   "{time} read": "{time} di lettura"
   Checked {date}: Verificata il {date}
   the short answer: In breve
@@ -5831,6 +5836,7 @@ ru:
   Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: Каждое руководство как следует решает одну задачу или отвечает на один вопрос и объясняет, зачем нужен каждый шаг. Все приложения, которые в нём советуют, взяты из списка.
   English: На английском
   accounts: Аккаунты
+  email: Почта
   "{time} read": "{time} чтения"
   Checked {date}: Проверено {date}
   the short answer: Если коротко
@@ -7011,6 +7017,7 @@ ja:
   Each guide does one job properly or answers one question, with the reasoning behind every step. Any app it suggests comes from the list.: どのガイドも、1つの作業をきちんと終わらせるか、1つの疑問に答えるもので、どの手順にも理由を添えています。紹介するアプリはすべてリストに載っているものです。
   English: 英語
   accounts: アカウント
+  email: メール
   "{time} read": "{time}で読めます"
   Checked {date}: "{date}に確認"
   the short answer: 要点
