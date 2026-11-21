@@ -1,0 +1,133 @@
+---
+title: Gmailから乗り換えるには？メールもアカウントも失わない移行手順
+description: Gmailから別のメールサービスへ移行する手順です。古いメールを移し、届くメールを転送して、大事なアカウントから順にアドレスを変えていけば、Gmailをやめても何もなくしません。
+---
+
+<Short>
+リストからメールサービスを選び、できれば[自分のドメイン](#own-domain)で使いましょう。古いメールの移行は、そのサービスのインポート機能に任せます。Gmailに届くメールも見られるように[新しいアドレスへ転送し](#forward-gmail)、[大事なアカウントから先にメールアドレスを変えます](#important-accounts-first)。残りのアカウントは、それぞれからメールが届いたときに変えていきます。[Gmailは少なくとも1年は残しておき](#keep-gmail)、Googleに削除されないよう、年に1回はログインしてください。
+</Short>
+
+## 移すのはメールだけではない
+
+Googleが受信トレイの中身をどう扱っているかは<Swap product="gmail">Gmailの代わりになるサービスのページ</Swap>で説明しているので、このガイドでは乗り換えの手順に絞ります。古いメールを移す作業は、ほとんど移行先のサービスがやってくれます。手間がかかるのは、ネットショップや銀行、アプリ、昔登録した掲示板など、Gmailのアドレスで登録しているアカウントのほうです。なかには、年に1回しかメールが来ないものもあります。Gmailの転送設定とGoogleカレンダーのエクスポートはスマホのアプリではできないので、いくつかの手順ではパソコンが必要です[^forward][^calendar]。
+
+## 移行先を選ぶ
+
+メールサービスを乗り換えても、ほとんどのメールが<Term slug="e2ee">エンドツーエンド暗号化</Term>されるわけではありません。エンドツーエンド暗号化が使えるのは、Protonのユーザー同士でやりとりする場合や、2人とも<Term slug="pgp">PGP</Term>を使っている場合のように、送る側と受け取る側の両方で設定してあるときだけです[^ec-tips][^proton-e2ee]。銀行からのメールなど、たいていのメールはこれまでどおり普通のメールとして届きます。変わるのは、受信トレイを預かっている会社がどこまで読めるかです。たとえばProtonは、「ゼロアクセス暗号化」と呼ぶ方式で、届いたメッセージをその時点で暗号化します[^proton-switch][^proton-forward]。
+
+自分のドメインを使いたいなら、検討しているプランが対応しているか確認してください。Protonの場合、使えるのは有料プランだけです[^proton-domain]。サービス専用のアプリではなく、一般的なメールアプリを使いたい場合も確認が必要です。ProtonではBridgeというアプリが必要で、Bridgeを使うにもやはり有料プランが要ります[^proton-bridge]。どちらの点も、[Email Comparison](https://email-comparison.as93.net/)でサービスごとに料金と一緒に確認できます。
+
+<Picks section="Encrypted Email" />
+
+<Tip id="own-domain" priority="optional" effort={30} title="独自ドメインを使うか考える">
+`you@yourname.com`のように自分が持っているドメインのアドレスにしておけば、次にサービスを乗り換えるときはドメインの設定を変えるだけで済み、すべてのアカウントでアドレスを変え直す必要はありません[^ec-tips]。ドメインは安く買えますが、費用は毎年かかります。設定では、ドメインを買った会社の管理画面でいくつかのレコードを追加します。たとえばProtonのヘルプでは、そのやり方を順を追って説明しています[^proton-domain]。設定が済んだら、別のアカウントから新しいアドレスにメールを送って、届くか確かめてください。
+
+落とし穴は、ずっと払い続けなければならないことです。ドメインが失効すると、ほかの誰かがそれを買ってメールを設定し、あなたのアカウントで「パスワードを忘れた場合」の手続きができてしまいます[^pypi]。この方法を選ぶなら、最初から[ドメインをきちんと管理してください](#keep-the-domain)。
+</Tip>
+
+<Tip id="keep-the-domain" priority="essential" effort={10} title="独自ドメインは期限切れにしない">
+自動更新をオンにして、数年分をまとめて払っておきましょう。そうすれば、そのあいだにカードの有効期限が切れても、更新でつまずかずに済みます。.comなどの汎用ドメインでは、ICANNの規則により、登録業者（レジストラ）はドメインの期限が切れる約1か月前と約1週間前、さらに切れた後にもう1回、ドメインの登録情報にある連絡先のメールアドレスに通知を送ることになっています[^icann-errp]。その連絡先が同じドメインのアドレスだと、最後の通知は届かないかもしれません。期限が切れたドメインのメールは、ドメインが削除される前に使えなくなることがあるからです[^icann-errp]。登録業者のアカウントには別のサービスのメールアドレスを使い、そのアカウントの2段階認証もオンにしてください。そこに入られると、ドメイン宛てのメールの届け先を変えられてしまいます。
+</Tip>
+
+## 古いメールを移す
+
+<Tip id="lock-the-new-inbox" priority="essential" effort={10} title="移行前に新しいメールアカウントを守る">
+各アカウントの登録メールアドレスを新しいアドレスに変えると、そのアドレスでパスワードを再設定できるようになります。そのため、先に新しいメールアカウントの[2段階認証](/ja/guides/two-factor/)をオンにして、バックアップコードは紙に控えておいてください。復元用のメールアドレスを求められたら、今のところはGmailでかまいません。ただし、Gmailを手放す前に変更してください。
+</Tip>
+
+<Tip id="import-old-mail" priority="essential" effort={20} title="移行先のインポート機能で移す">
+移行先のサービスによっては、Gmailから古いメールを直接コピーできます。たとえばProtonのEasy Switchなら、メールと連絡先、カレンダーをまとめて移せます。処理はProtonのサーバーで進むので、そのあいだはほかのことをしていてかまいません。Gmailを長年使ってきた場合は、数日かかることもあります[^proton-switch]。ほかのサービスなら、そのサービスのヘルプで「Gmailからインポート」と検索してみてください。
+
+完了と表示されても、すぐには信用せずに確認しましょう。送信済みのメール、何年も前のメール、添付ファイル付きのメールを開いてみて、フォルダもそのまま移っているか確かめてください。
+
+それから、[Google Takeout](https://takeout.google.com/)で「メール」以外のチェックをすべて外して、メールのコピーを取っておきます。こうすれば、どのサービスにも頼らない控えが手元に残ります。ダウンロードリンクの有効期限は1週間ほどなので、ファイルはパソコンや外付けドライブに保存し、最後までダウンロードできたか確認してください。ダウンロードしても、Googleのデータは何も削除されません[^takeout]。
+</Tip>
+
+<Tip id="contacts-and-calendars" priority="optional" effort={10} title="連絡先とカレンダーも移す">
+インポート機能で移せなかった場合は、Googleからエクスポートしたファイルを移行先のサービスにインポートします。Googleカレンダーのエクスポートはパソコンでしかできません。下の手順も、パソコンでの操作です[^calendar]。
+
+<Steps>
+1. [Googleコンタクト](https://contacts.google.com/)でどれか1件の連絡先にチェックを入れてから、<Path>選択の操作 --> すべて</Path>を選びます。続いて<Path>その他の操作 --> エクスポート</Path>を選び、vCardを選択します[^contacts]。
+2. Googleカレンダーで<Path>設定 --> インポート / エクスポート</Path>を開き、「エクスポート」をクリックします。これで、ほかのカレンダーアプリに読み込める.icsファイルが、zipファイルにまとめてダウンロードされます[^calendar]。
+</Steps>
+
+移行先のサービスにカレンダーがない場合は、<Swap product="google-calendar">Googleカレンダーの代わりになるサービス</Swap>のページにほかの選択肢があります。
+</Tip>
+
+## Gmail宛てのメールを拾う
+
+<Tip id="forward-gmail" priority="essential" effort={10} title="Gmailを新しいアドレスに転送する">
+すべてのアカウントを移し終えるまでは、パスワード再設定のメールや請求書がGmailに届き続けます。転送しておけば、それも見逃しません。パソコンでGmailを開いて、次のように設定します。
+
+<Steps>
+1. <Path>設定 --> すべての設定を表示 --> メール転送と POP/IMAP</Path>を開き、「転送先アドレスを追加」をクリックします。
+2. 新しいアドレスを入力します。そのアドレスにGmailから確認メールが届くので、メール内のリンクをクリックして確認します。
+3. Gmailに戻ってページを再読み込みし、同じタブを開きます。「受信メールを次のアドレスに転送」を選び、Googleのおすすめどおり「Gmail のメールを受信トレイに残す」にして、「変更を保存」をクリックします[^forward]。
+</Steps>
+
+別のアカウントから自分のGmailアドレスにメールを送って、転送されてくるか確かめてください。迷惑メールは転送されないので、Gmailにログインしたときは迷惑メールフォルダも見るようにしましょう[^forward]。Protonに移る場合は、代わりにEasy SwitchでProton側から転送を設定することもできます。ただし、この方法で転送されるのはGmailの受信トレイに届いたメールだけなので、Gmailのフィルタで受信トレイから振り分けられるメールは届きません[^proton-forward]。
+</Tip>
+
+<Tip id="forwarded-folder" priority="optional" effort={5} title="転送されたメールは専用フォルダへ">
+新しい受信トレイで、Gmailアドレス宛てのメールを専用のフォルダに振り分けるフィルタを作ります。ここに届くメールの送り主には、古いアドレスがまだ登録されています。つまり、このフォルダがそのまま、移し残したもののリストになります。古いアドレスに今も送ってくる人のメールもここに届くので、新しいアドレスから返信して、アドレスが変わったことを伝えましょう。保険やドメインの更新のように年に1回しかメールが来ないものもあるので、私たちなら、このフォルダを丸1年見てから完了とします。
+</Tip>
+
+## アカウントを移行する
+
+<Tip id="list-your-accounts" priority="essential" effort={15} title="Gmailで登録したアカウントを洗い出す">
+パスワードマネージャーを使っているなら、Gmailのアドレスで検索してみてください。たとえばBitwardenの検索はユーザー名も対象にするので、そのアドレスで保存したログイン情報が出てきます[^bw-search]。まだパスワードマネージャーを使っていない場合は、[パスワードマネージャーのガイド](/ja/guides/password-manager/)を参考にしてください。
+
+ただし、「Google でログイン」ボタンで作ったアカウントはパスワードを使わないので、この方法では見つかりません[^siwg]。こうしたアカウントはGoogleアカウントで一覧できます。[リンク済みアプリのページ](https://myaccount.google.com/linkedapps)を開き、「Google でログイン」で絞り込んでください[^linked-apps]。サイト側で設定できるなら、パスワードなど別のログイン方法を追加し、プライベートウィンドウでそれを使ってログインできるか確かめてから、Googleとのリンクを削除しましょう。
+</Tip>
+
+<Tip id="important-accounts-first" priority="essential" effort={60} title="大事なアカウントからアドレスを変える">
+アカウントのなかには、ほかのアカウントに入るために使えるものや、メールを見逃すと余計なお金がかかるものがあります。そういうアカウントから先に変えましょう。それぞれのアカウント設定でメールアドレスを変更します。変更の確認メールがGmailに届くこともあるので、Gmailは開いたままにしておき、変更後はログインできるか確かめてください。私たちなら、次の順番で進めます。
+
+<Steps>
+1. パスワードマネージャーです。ほかのアカウントのログイン情報がすべて入っているからです。
+2. 銀行と、そのほかお金が入っているアカウントです。
+3. 携帯電話会社のアカウントです。SMSの届け先を決めているのはここだからです。
+4. スマホやパソコンで使っているAppleやMicrosoftのアカウントです。
+5. 税金や給付金など、行政のアカウントです。
+6. カード情報を保存しているショッピングサイト、その次にSNSです。
+</Steps>
+
+英国のNCSC（国家サイバーセキュリティセンター）は、大事なアカウントとしてメール、銀行、SNS、ネットショッピングを挙げています[^ncsc-tips]。それ以外は、転送メールのフォルダに次のメールが届くまで後回しでかまいません。アドレスを変更できないサイトなら、サポートに問い合わせてください。何を失うかを確かめたうえで、アカウントを削除して新しいアドレスで登録し直す手もあります。
+</Tip>
+
+<Tip id="new-sign-ups" priority="optional" effort={5} title="新規登録はサイトごとのアドレスで">
+これからサービスに登録するときは、メインのアドレスではなく<Term slug="email-alias">エイリアス</Term>を使いましょう。サイトごとに別のアドレスを用意して、そこから自分の受信トレイに転送する仕組みなので、どれかに迷惑メールが届きはじめたら、どのサイトに教えたアドレスかがわかります。そのサイトには新しいエイリアスを登録し、古いほうは無効にしてください[^ec-tips]。<App name="Addy" />と<App name="SimpleLogin" />にはどちらも無料プランがあり、メールサービスによっては有料プランにエイリアス機能が含まれています。
+</Tip>
+
+## Gmailはまだ削除しない
+
+<Tip id="keep-gmail" priority="essential" effort={5} title="Gmailは1年以上残して守っておく">
+まだ見つけていないアカウントでは、Gmailが今もパスワード再設定の連絡先になっています。これまでと変わらず、強力なパスワードと[2段階認証](/ja/guides/two-factor/)で守っておく必要があります。
+
+Googleは、2年間使われていない個人のアカウントを削除することがあるので、少なくとも年に1回はログインしてください。メールを読むだけでも使ったことになります。ついでに新しいアドレスを再設定用のメールアドレスに登録しておけば、Googleからの警告もそちらに届きます[^inactive]。
+</Tip>
+
+<Tip id="remove-gmail" priority="optional" effort={10} title="何も届かなくなったらGmailだけ削除する">
+Gmailをやめるのに、Googleアカウントごと削除する必要はありません。Gmailだけを削除すれば、アカウントそのものも、Google Playでの購入も、Googleのほかのサービスも残ります。ただし、Gmail以外の予備のメールアドレスが必要です。メールは30日後に削除されます。気が変わったらアドレスを復元できることもありますが、メールまで戻るとは限らないので、あてにはしないでください[^remove-gmail]。
+
+削除する前に、Takeoutで取ったコピーが開けるか、転送メールのフォルダに1年間何も届いていないか、Gmailの迷惑メールフォルダに本物のメールが紛れていないかを確認してください。「Google でログイン」を使っていたサイトすべてに別のログイン方法があるか、新しいメールアカウントも含めて、復元用のメールアドレスがGmailのままになっているアカウントがないかも確かめましょう。それから<Path>Google アカウントを管理 --> データとプライバシー --> 使用しなくなったサービスからデータを削除する</Path>を開き、Gmailの横にある削除アイコンをクリックして、画面の手順に沿って進めます。Googleから予備のメールアドレスに届くメールのリンクをクリックするまでは、何も削除されません。削除したGmailアドレスは、それ以降ほかの誰も使えなくなります[^remove-gmail]。
+</Tip>
+
+[^ec-tips]: [Email Comparison：メールのセキュリティのヒント](https://email-comparison.as93.net/email-security-tips)
+[^proton-e2ee]: [Proton：パスワード保護メール](https://proton.me/ja/support/password-protected-emails)
+[^proton-forward]: [Proton：GmailをProton Mailに自動転送する方法](https://proton.me/ja/support/automatic-forwarding-gmail)
+[^proton-domain]: [Proton：Proton Mailでカスタムドメインを使用する方法](https://proton.me/ja/support/custom-domain)
+[^proton-bridge]: [Proton：Proton Mail Bridge](https://proton.me/ja/mail/bridge)
+[^pypi]: [PyPIブログ：ドメインの「復活」による攻撃を防ぐ](https://blog.pypi.org/posts/2025-08-18-preventing-domain-resurrections/)
+[^icann-errp]: [ICANN：失効登録回復ポリシー（ERRP）について登録者が知っておくべき5つのこと](https://www.icann.org/resources/pages/registrant-about-errp-2018-12-07-en)
+[^proton-switch]: [Proton：Easy Switchを使用してProtonへ移行する方法](https://proton.me/ja/support/easy-switch)
+[^takeout]: [Google アカウント ヘルプ：Google データをダウンロードする方法](https://support.google.com/accounts/answer/3024190?hl=ja)
+[^calendar]: [Google カレンダー ヘルプ：Google カレンダーから予定を書き出す](https://support.google.com/calendar/answer/37111?hl=ja)
+[^contacts]: [連絡先 ヘルプ：連絡先のエクスポート、バックアップ、復元](https://support.google.com/contacts/answer/7199294?hl=ja)
+[^forward]: [Gmail ヘルプ：Gmail のメールを他のアカウントに自動転送する](https://support.google.com/mail/answer/10957?hl=ja)
+[^bw-search]: [Bitwarden：保管庫を検索する](https://bitwarden.com/help/searching-vault/)
+[^siwg]: [Google アカウント ヘルプ：「Google でログイン」の仕組み](https://support.google.com/accounts/answer/12849458?hl=ja)
+[^linked-apps]: [Google アカウント ヘルプ：Google アカウントと他のデベロッパーのアプリとのリンクを管理する](https://support.google.com/accounts/answer/13533235?hl=ja)
+[^ncsc-tips]: [NCSC：2段階認証をオンにする](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^inactive]: [Google アカウント ヘルプ：無効な Google アカウントに関するポリシー](https://support.google.com/accounts/answer/12418290?hl=ja)
+[^remove-gmail]: [Google アカウント ヘルプ：Google アカウントから Gmail を削除する](https://support.google.com/accounts/answer/61177?hl=ja)
