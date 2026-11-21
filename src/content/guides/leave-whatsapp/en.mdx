@@ -20,15 +20,15 @@ Install Signal and [give out a username rather than your number](#hide-your-numb
 
 ## What you're leaving, and the hard part
 
-WhatsApp's messages are <Term slug="e2ee">end-to-end encrypted</Term>, so the reason to leave is everything around them, like who you talk to and when, which the <Swap product="whatsapp">WhatsApp alternatives page</Swap> covers. Signal is designed to hold as little of that <Term slug="metadata">metadata</Term> as it can. When a US grand jury subpoena asked it about two users in 2016, all it could hand over was when each account was registered and when it last connected.[^bigbrother] It's also run by a nonprofit.[^bigbrother]
+WhatsApp's messages are <Term slug="e2ee">end-to-end encrypted</Term>, so the reason to leave is what it collects around them, like when you're online and who's in your address book, which the <Swap product="whatsapp">WhatsApp alternatives page</Swap> covers. Signal is designed to hold as little of that <Term slug="metadata">metadata</Term> as it can. When a US grand jury subpoena asked it about two users in 2016, all it could hand over was when each account was registered and when it last connected.[^bigbrother] It's also run by a nonprofit.[^bigbrother]
 
-Installing Signal is the easy bit. The hard part is that a messaging app is only as useful as the people on it, and yours are on WhatsApp.
+The hard part of leaving is that a messaging app is only as useful as the people on it, and yours are on WhatsApp.
 
 ## Pick where you're going
 
 <Picks section="Encrypted Messaging" skip={['xmpp', 'matrix']} />
 
-For moving friends across, it's usually Signal. It checks which of your contacts already use it, so some of your friends may turn out to be there already.[^sig-contacts] <App name="SimpleX" /> doesn't tie you to a phone number or any other ID, so nobody can contact you until you've given them a link or a QR code from the app, or a SimpleX name if you register one.[^simplex] That's great if you don't want anyone to have your number, but everyone you add needs something from you first.
+For moving friends across, Signal's the one we'd pick. It checks which of your contacts already use it, so some of your friends may turn out to be there already.[^sig-contacts] <App name="SimpleX" /> doesn't tie you to a phone number or any other ID, so nobody can contact you until you've given them a link or a QR code from the app, or a SimpleX name if you register one.[^simplex] That's great if you don't want anyone to have your number, but everyone you add needs something from you first.
 
 If privacy is why you're leaving, don't move to <Swap product="telegram">Telegram</Swap>. Only its secret chats, which are between two people on one device, are encrypted from one phone to the other. Ordinary chats and groups are encrypted on the way to and from Telegram's servers, and they're stored there.[^telegram]
 
@@ -45,11 +45,13 @@ If you'd rather nobody could find you by your number at all, go to <Path>Setting
 <Tip id="registration-lock" priority="essential" effort={5} title="Turn on Registration Lock">
 In 2022, someone phished Twilio, the company that sends Signal's sign-up texts, and could have tried to register about 1,900 Signal users' numbers on another phone. Signal says it built Registration Lock for attacks like that one. It adds your Signal PIN to the checks when your number's registered.[^sig-twilio] Turn it on in <Path>Settings --> Account --> Registration Lock</Path>.
 
-The cost is that Signal can't reset your PIN, and if you forget it, you can be locked out for up to seven days. Your password manager can keep it for you.[^sig-pin] And never give anyone a code Signal texts you. Signal doesn't contact people in the app, so a "Signal Support" chat asking for one is a scam.[^sig-protect] Locking your number with your mobile network is worth doing too, and the [2FA guide](/guides/two-factor/#lock-your-number) shows how.
+The cost is that Signal can't reset your PIN, and if you forget it, you can be locked out for up to seven days. Your password manager can keep it for you.[^sig-pin] And never tell anyone a code Signal texts you, or type it anywhere but Signal's own sign-up screen. Signal doesn't contact people in the app, so a "Signal Support" chat asking for one is a scam.[^sig-protect] Locking your number with your mobile network is worth doing too, and the [2FA guide](/guides/two-factor/#lock-your-number) shows how.
 </Tip>
 
 <Tip id="backups" priority="optional" effort={5} title="Turn on backups, and keep the key">
-Signal's backups are off until you turn them on. Secure Backups covers all your text messages and the last 45 days of photos and files for free, or up to 100GB of media for US$1.99 a month. It's protected by a 64-character recovery key that Signal never sees, and without that key nobody, Signal included, can restore the backup. Save it in your password manager when it's shown to you.[^sig-backups] It's in <Path>Settings --> Backups</Path>.
+Signal's backups are off until you turn them on. Secure Backups covers all your text messages and the last 45 days of photos and files for free, or up to 100GB of media for US$1.99 a month. It's protected by a 64-character recovery key that Signal never sees, and without that key nobody, Signal included, can restore the backup.[^sig-backups]
+
+To turn it on, go to <Path>Settings --> Backups</Path>, tap Set up and then Enable Backups. Save the recovery key it shows you in your password manager, or write it down and keep the paper somewhere safe.[^sig-backups]
 </Tip>
 
 ## Move your people
@@ -65,11 +67,11 @@ To move a group, post a Signal invite link in the WhatsApp group. That's what Si
 
 <Steps>
 1. In Signal, make a new group with anyone from the WhatsApp group who's on Signal already.
-2. Open the group's settings, tap Group Link, turn it on and tap Share.[^sig-group-link]
-3. Post the link in the WhatsApp group.
+2. Open the group's settings, tap Group Link and turn it on. Anyone with the link can join, and links get forwarded, so for a private group, turn on Approve New Members as well.[^sig-group-link]
+3. Tap Share and post the link in the WhatsApp group.
 </Steps>
 
-Anyone with the link can join, and links get forwarded. If you'd rather check who comes in, turn on Approve New Members in the same place, and if the link ends up somewhere it shouldn't, Reset Link there makes a new one.[^sig-group-link]
+If the link gets passed to people you didn't mean to invite, Reset Link in the same place makes a new one.[^sig-group-link]
 
 Once it's set up, post plans in the Signal group first, and when someone asks on WhatsApp, point them there. Signal groups can have up to 1,000 people, and Signal's servers keep no record of who's in which group.[^sig-groups]
 </Tip>
@@ -77,7 +79,7 @@ Once it's set up, post plans in the Signal group first, and when someone asks on
 <Tip id="holdouts" priority="optional" effort={5} title="Keep WhatsApp for whoever doesn't come">
 Some people won't move, and some groups, like a school's or a club's, may stay on WhatsApp whatever you do. Keep the app for those, but mute it. In each chat, tap its name, then Notifications, and mute it for Always. You'll still get the messages, just without the noise.[^wa-mute]
 
-Set your WhatsApp About to something like "Mostly on Signal now", so anyone who looks at your profile sees it. It takes up to 50 characters, and you choose how long it shows.[^wa-about]
+In WhatsApp's settings, set your About to something like "Mostly on Signal now", so anyone who looks at your profile sees it. It takes up to 50 characters, and you choose how long it shows.[^wa-about]
 </Tip>
 
 ## Keep what you want from WhatsApp
@@ -85,7 +87,7 @@ Set your WhatsApp About to something like "Mostly on Signal now", so anyone who 
 <Tip id="export-chats" priority="optional" effort={15} title="Save the chats you want to keep">
 Exporting a chat gives you a text file to read, not a backup, and WhatsApp says it can't be imported back in.[^wa-export] So don't count on moving your history into Signal. Treat the export as an archive.
 
-Open the chat, then tap <Path>More --> Export chat</Path> on Android, or the contact or group name and then Export chat on an iPhone, where it comes as a ZIP file. You can include photos and videos, though on Android you'll only get the most recent ones, and view once messages aren't included.[^wa-export] It's one chat at a time. Save the files to your phone or computer rather than sending them anywhere, since anyone who opens one can read the chat.
+Open the chat, then tap <Path>More --> Export chat</Path> on Android, or the contact or group name and then Export chat on an iPhone, where it comes as a ZIP file. You can include photos and videos, though on Android you'll only get the most recent ones, and view once messages aren't included.[^wa-export] It's one chat at a time. Save the files to your phone or computer rather than emailing them or sending them to a chat, since anyone who opens one can read it, and delete any copies you don't need.
 </Tip>
 
 ## Close WhatsApp down properly
@@ -93,7 +95,7 @@ Open the chat, then tap <Path>More --> Export chat</Path> on Android, or the con
 <Tip id="delete-the-account" priority="essential" effort={10} title="Delete the account, don't just remove the app">
 Deleting your account is what takes you out of all your groups and erases your message history and backup.[^wa-delete] Removing the app from your phone doesn't do that. WhatsApp generally only deletes an account once it's gone 120 days without connecting, or 365 days in the US.[^wa-inactive][^wa-delete]
 
-It can't be undone, and WhatsApp can't get anything back from a deleted account, so [save the chats you want](#export-chats) first.[^wa-delete] If you run a WhatsApp channel, add another admin before you go, or the channel's deleted along with your account.[^wa-delete]
+It can't be undone, and WhatsApp can't restore chats from a deleted account, so [save the chats you want](#export-chats) first.[^wa-delete] If you run a WhatsApp channel, add another admin before you go, or the channel's deleted along with your account.[^wa-delete]
 
 <Steps>
 1. On your phone, not a linked computer, open <Path>Settings --> Account --> Delete my account</Path> on Android, or <Path>Settings --> Account --> Delete My Account</Path> on an iPhone.
@@ -105,7 +107,7 @@ WhatsApp says it can take up to 90 days to finish deleting your information.[^wa
 
 ## Leaving Messenger, Telegram and the rest
 
-You can move people off any of them the same way, with a Signal group link posted in the old group. What each one does with your messages is on its alternatives page: <Swap product="facebook-messenger">Messenger</Swap>, <Swap product="telegram">Telegram</Swap>, <Swap product="viber">Viber</Swap>, <Swap product="line">LINE</Swap> and <Swap product="wechat">WeChat</Swap>.
+You can usually move people off any of them the same way, with a Signal group link posted in the old group. What each one does with your messages is on its alternatives page: <Swap product="facebook-messenger">Messenger</Swap>, <Swap product="telegram">Telegram</Swap>, <Swap product="viber">Viber</Swap>, <Swap product="line">LINE</Swap> and <Swap product="wechat">WeChat</Swap>.
 
 [^bigbrother]: [Signal: Government communication](https://signal.org/bigbrother/)
 [^sig-contacts]: [Signal Support: Does Signal send my number to my contacts?](https://support.signal.org/hc/en-us/articles/360007061452)
