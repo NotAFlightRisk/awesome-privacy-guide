@@ -1081,6 +1081,7 @@ de:
   English: Englisch
   accounts: Konten
   email: E-Mail
+  messaging: Messenger
   "{time} read": "{time} Lesezeit"
   Checked {date}: Geprüft am {date}
   the short answer: Kurz gesagt
@@ -2244,6 +2245,7 @@ es:
   English: En inglés
   accounts: Cuentas
   email: Correo electrónico
+  messaging: Mensajería
   "{time} read": "{time} de lectura"
   Checked {date}: Revisada el {date}
   the short answer: La respuesta corta
@@ -2354,6 +2356,7 @@ fr:
   English: En anglais
   accounts: Comptes
   email: E-mail
+  messaging: Messagerie
   "{time} read": "{time} de lecture"
   Checked {date}: Vérifié le {date}
   the short answer: En bref
@@ -3518,6 +3521,7 @@ pt:
   English: Em inglês
   accounts: Contas
   email: E-mail
+  messaging: Mensagens
   "{time} read": "{time} de leitura"
   Checked {date}: Conferido em {date}
   the short answer: Em resumo
@@ -4672,6 +4676,7 @@ it:
   English: In inglese
   accounts: Account
   email: Email
+  messaging: Messaggistica
   "{time} read": "{time} di lettura"
   Checked {date}: Verificata il {date}
   the short answer: In breve
@@ -5837,6 +5842,7 @@ ru:
   English: На английском
   accounts: Аккаунты
   email: Почта
+  messaging: Мессенджеры
   "{time} read": "{time} чтения"
   Checked {date}: Проверено {date}
   the short answer: Если коротко
@@ -7018,6 +7024,7 @@ ja:
   English: 英語
   accounts: アカウント
   email: メール
+  messaging: メッセージアプリ
   "{time} read": "{time}で読めます"
   Checked {date}: "{date}に確認"
   the short answer: 要点
