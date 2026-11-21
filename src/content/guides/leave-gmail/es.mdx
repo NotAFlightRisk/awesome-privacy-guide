@@ -1,0 +1,133 @@
+---
+title: "Cómo dejar de usar Gmail sin perder tus correos ni tus cuentas"
+description: "Copia tus correos antiguos, reenvía los nuevos y cambia primero tu dirección en las cuentas importantes, para no perder nada cuando por fin dejes Gmail."
+---
+
+<Short>
+Elige un proveedor de la lista, a ser posible con [un dominio propio](#own-domain), y deja que su herramienta de importación copie tus correos antiguos. [Reenvía Gmail a la dirección nueva](#forward-gmail) para seguir viendo lo que te llegue a la antigua, luego [cambia tu dirección en las cuentas importantes](#important-accounts-first) y deja las demás para cuando te vayan escribiendo. [Conserva Gmail al menos un año](#keep-gmail) e inicia sesión como mínimo una vez al año para que Google no borre la cuenta.
+</Short>
+
+## Por qué no basta con pasar tus correos
+
+La <Swap product="gmail">página de alternativas a Gmail</Swap> explica qué hace Google con tu bandeja de entrada, y esta guía se centra en la mudanza en sí. Copiar tus correos antiguos es, sobre todo, trabajo del nuevo proveedor. El trabajo de verdad está en las tiendas, los bancos, las apps y las cuentas de foros de hace años que te conocen por tu dirección de Gmail, y algunos solo te escriben una vez al año. Un par de pasos tendrás que hacerlos en un equipo, porque el reenvío de Gmail y la exportación de Calendario de Google no se pueden hacer desde las apps[^forward][^calendar].
+
+## Elige a qué correo cambiarte
+
+Cambiar de proveedor no hará que la mayoría de tus correos pasen a estar <Term slug="e2ee">cifrados de extremo a extremo</Term>. Eso solo funciona cuando los dos lados lo tienen configurado, como dos usuarios de Proton que se escriben entre sí o dos personas que usan <Term slug="pgp">PGP</Term>[^ec-tips][^proton-e2ee]. La mayoría de tus correos, como los de tu banco, seguirán llegando como correos normales. Lo que cambia es lo que puede leer la empresa que guarda tu bandeja de entrada. Proton, por ejemplo, cifra los mensajes en cuanto llegan, con lo que llama cifrado de acceso cero[^proton-switch][^proton-forward].
+
+Si quieres tener tu propio dominio, comprueba que el plan que estás mirando lo permite, porque Proton solo lo ofrece en los planes de pago[^proton-domain]. Y si quieres usar una app de correo normal en lugar de la del proveedor, compruébalo también. Para eso Proton necesita su app Bridge, y Bridge también exige un plan de pago[^proton-bridge]. En [Email Comparison](https://email-comparison.as93.net/) tienes las dos cosas para cada proveedor, junto con los precios.
+
+<Picks section="Encrypted Email" />
+
+<Tip id="own-domain" priority="optional" effort={30} title="Piensa en usar tu propio dominio">
+Con una dirección en un dominio tuyo, como `tu@tunombre.com`, la próxima vez que cambies de proveedor solo tendrás que cambiar la configuración del dominio, y no otra vez tu dirección en todas tus cuentas[^ec-tips]. Los dominios son baratos, pero hay que pagarlos todos los años. Para configurarlo tienes que añadir unos cuantos registros en la empresa donde lo compraste, y la ayuda de Proton, por ejemplo, te guía paso a paso[^proton-domain]. Cuando esté listo, envíate un correo desde otra cuenta para probarlo.
+
+El inconveniente es que tienes que seguir pagándolo. Si un dominio caduca, otra persona puede comprarlo, configurar el correo en él y usar «olvidé mi contraseña» en tus cuentas[^pypi]. Si eliges esta opción, [cuida el dominio](#keep-the-domain) desde el primer día.
+</Tip>
+
+<Tip id="keep-the-domain" priority="essential" effort={10} title="Si usas tu propio dominio, no dejes que caduque">
+Activa la renovación automática y paga varios años de una vez, para que no te sorprenda una tarjeta que haya caducado mientras tanto. En los dominios .com y en las demás extensiones genéricas, la ICANN obliga a los registradores a enviar un aviso más o menos un mes antes de que caduque el dominio, otro más o menos una semana antes y uno más después de que caduque, todos al correo de contacto que figura en el registro del dominio[^icann-errp]. Si ese correo es una dirección del mismo dominio, puede que el último no te llegue nunca, porque el correo de un dominio caducado puede dejar de funcionar antes de que se elimine el dominio[^icann-errp]. Para tu cuenta en el registrador, usa una dirección que no sea de ese dominio y activa la verificación en dos pasos en esa cuenta, porque quien entre en ella puede cambiar adónde va el correo de tu dominio.
+</Tip>
+
+## Pasa tus correos antiguos
+
+<Tip id="lock-the-new-inbox" priority="essential" effort={10} title="Protege tu nuevo correo antes de traer nada">
+Cuando tus cuentas apunten a la dirección nueva, desde ella se podrán restablecer sus contraseñas, así que activa primero la [verificación en dos pasos](/es/guias/two-factor/) y guarda los códigos de recuperación en papel. Si te pide un correo de recuperación, de momento puedes poner Gmail, pero cámbialo antes de deshacerte de Gmail.
+</Tip>
+
+<Tip id="import-old-mail" priority="essential" effort={20} title="Deja que el nuevo proveedor copie tus correos">
+Es posible que tu nuevo proveedor pueda copiar tus correos antiguos directamente desde Gmail. Por ejemplo, Easy Switch, la herramienta de Proton, trae tus correos, tus contactos y tus calendarios, y como funciona en los servidores de Proton, puedes dedicarte a otra cosa mientras tanto. Si llevas mucho tiempo con Gmail, puede tardar días[^proton-switch]. Si usas otro proveedor, busca «importar desde Gmail» en sus páginas de ayuda.
+
+Cuando diga que ha terminado, revísalo antes de fiarte: abre la carpeta de enviados, un correo de hace años y otro con un archivo adjunto, y comprueba que están todas tus carpetas.
+
+Después, haz una copia de tus correos con [Google Takeout](https://takeout.google.com/), desmarcando todo excepto Correo (Mail), para tener una que no dependa de ningún proveedor. El enlace de descarga solo dura una semana más o menos, así que guarda el archivo en un equipo o en un disco externo y comprueba que se ha descargado entero. Descargarlo no borra nada de Google[^takeout].
+</Tip>
+
+<Tip id="contacts-and-calendars" priority="optional" effort={10} title="Pasa también tus contactos y tu calendario">
+Si la herramienta de importación no los ha traído, expórtalos e importa los archivos en el nuevo proveedor. La exportación de Calendario de Google solo funciona en un equipo, y estos pasos también están pensados para un equipo[^calendar].
+
+<Steps>
+1. En [Contactos de Google](https://contacts.google.com/), marca cualquier contacto y luego elige <Path>Acciones de selección --> Todos</Path>. Elige <Path>Más acciones --> Exportar</Path> y selecciona vCard[^contacts].
+2. En Calendario de Google, abre <Path>Configuración --> Importar y exportar</Path> y haz clic en Exportar. Se descarga un archivo ZIP con archivos .ics, que otras apps de calendario pueden importar[^calendar].
+</Steps>
+
+Si tu nuevo proveedor no tiene calendario, en la página de <Swap product="google-calendar">alternativas a Calendario de Google</Swap> encontrarás otros.
+</Tip>
+
+## No te pierdas lo que siga llegando a Gmail
+
+<Tip id="forward-gmail" priority="essential" effort={10} title="Reenvía tu Gmail a la dirección nueva">
+Mientras no hayas cambiado todas tus cuentas, los correos para restablecer contraseñas y las facturas seguirán llegando a Gmail. Si los reenvías, los verás igualmente. En Gmail, desde un equipo:
+
+<Steps>
+1. Abre <Path>Configuración --> Ver toda la configuración --> Reenvío y correo POP/IMAP</Path> y haz clic en «Agregar una dirección de reenvío».
+2. Escribe la dirección nueva y luego haz clic en el enlace del correo que Gmail envía a esa dirección para confirmarla.
+3. De vuelta en Gmail, actualiza la página y abre la misma pestaña. Elige «Reenviar una copia de los correos electrónicos entrantes a», selecciona «Conservar la copia de Gmail en Recibidos», como recomienda Google, y guarda los cambios[^forward].
+</Steps>
+
+Envía un correo a tu dirección de Gmail desde otra cuenta para comprobar que llega a la dirección nueva. Gmail no reenvía el spam, así que mira la carpeta de spam de Gmail cada vez que inicies sesión[^forward]. Si te cambias a Proton, Easy Switch puede configurar el reenvío desde Proton, pero solo reenvía lo que llega a la bandeja de entrada de Gmail: si uno de tus filtros de Gmail saca un correo de ahí, no te llegará[^proton-forward].
+</Tip>
+
+<Tip id="forwarded-folder" priority="optional" effort={5} title="Guarda el correo reenviado en una carpeta aparte">
+En tu nuevo correo, crea un filtro para lo que se envía a tu dirección de Gmail y mándalo a una carpeta propia. Quien te envió cada uno de esos correos todavía tiene tu dirección antigua, así que esa carpeta es la lista de lo que te queda por cambiar. Ahí también aparecerá la gente que siga escribiéndote a la dirección antigua; contéstales desde la nueva y avísales del cambio. Nosotros esperaríamos un año entero antes de dar esa carpeta por cerrada, porque algunos avisos, como los del seguro o los de renovación de un dominio, solo llegan una vez al año.
+</Tip>
+
+## Cambia la dirección de correo de tus cuentas
+
+<Tip id="list-your-accounts" priority="essential" effort={15} title="Haz una lista de las cuentas que usan tu dirección de Gmail">
+Si usas un gestor de contraseñas, busca en él tu dirección de Gmail. La búsqueda de Bitwarden incluye los nombres de usuario, así que te saldrán las cuentas que tienes guardadas con esa dirección[^bw-search]. Si todavía no tienes uno, la [guía del gestor de contraseñas](/es/guias/password-manager/) te ayuda a empezar.
+
+Con eso no encontrarás las cuentas que abriste con un botón de «Acceder con Google», porque para esas no usas contraseña[^siwg]. Tu Cuenta de Google tiene la lista: ve a [tu página de apps vinculadas](https://myaccount.google.com/linkedapps) y filtra por Acceder con Google[^linked-apps]. Si el sitio te deja, añade una contraseña u otra forma de iniciar sesión, y comprueba en una ventana privada que funciona antes de quitar la vinculación con Google.
+</Tip>
+
+<Tip id="important-accounts-first" priority="essential" effort={60} title="Cambia primero la dirección de las cuentas que más importan">
+Hay cuentas que sirven para entrar en otras, y cuentas que te cuestan dinero si se te pasa un correo suyo, así que empieza por esas. Cambia el correo en la configuración de cada cuenta, con Gmail abierto por si el sitio te pide confirmar el cambio también ahí, y comprueba después que puedes iniciar sesión. Este es el orden que seguiríamos nosotros:
+
+<Steps>
+1. Tu gestor de contraseñas, porque guarda todas las demás.
+2. Tu banco y cualquier otra cuenta donde tengas dinero.
+3. Tu cuenta de la compañía telefónica, que es la que decide adónde llegan tus SMS.
+4. La cuenta de Apple o Microsoft con la que inicia sesión tu teléfono o tu equipo.
+5. Tus cuentas para impuestos, ayudas sociales y otros trámites con organismos públicos.
+6. Las tiendas que tienen tu tarjeta guardada, y después las redes sociales.
+</Steps>
+
+El propio NCSC, la agencia británica de ciberseguridad, considera cuentas importantes el correo, el banco, las redes sociales y las compras por internet[^ncsc-tips]. Lo demás puede esperar hasta que te llegue su próximo correo a la carpeta de reenviados. Si un sitio no te deja cambiar la dirección, pregunta a su servicio de atención al cliente. Cerrar la cuenta y volver a registrarte también funciona, pero comprueba antes qué perderías.
+</Tip>
+
+<Tip id="new-sign-ups" priority="optional" effort={5} title="Usa una dirección distinta para cada cuenta nueva">
+A partir de ahora, regístrate con un <Term slug="email-alias">alias</Term> en lugar de con tu dirección principal. Cada sitio tiene su propia dirección, que te reenvía el correo, así que cuando empiece a llegar spam a una de ellas sabrás a qué sitio se la diste. Dale a ese sitio un alias nuevo y desactiva el antiguo[^ec-tips]. <App name="Addy" /> y <App name="SimpleLogin" /> tienen planes gratuitos, y algunos proveedores de correo incluyen alias en sus planes de pago.
+</Tip>
+
+## No borres Gmail todavía
+
+<Tip id="keep-gmail" priority="essential" effort={5} title="Conserva Gmail al menos un año y mantenlo protegido">
+Gmail sigue siendo la dirección para restablecer todas las cuentas que aún no hayas encontrado, así que necesita una contraseña segura y la [verificación en dos pasos](/es/guias/two-factor/) tanto como antes.
+
+Google puede borrar una cuenta personal que no se haya usado en dos años, así que inicia sesión al menos una vez al año. Con leer un correo basta. Ya que estás, pon tu nueva dirección como correo de recuperación, para que te lleguen los avisos de Google[^inactive].
+</Tip>
+
+<Tip id="remove-gmail" priority="optional" effort={10} title="Cuando ya no te llegue nada, quita Gmail sin borrar la cuenta">
+No hace falta que borres toda tu Cuenta de Google para deshacerte de Gmail. Si quitas solo Gmail, conservas la cuenta, tus compras en Google Play y los demás servicios de Google, pero la cuenta necesita otra dirección que no sea de Gmail. Tus correos se borran a los 30 días. Puede que Google te deje recuperar la dirección si cambias de opinión, pero no siempre los correos, así que no cuentes con ello[^remove-gmail].
+
+Antes de hacerlo, comprueba que tu copia de Takeout se abre, que la carpeta de reenviados lleva un año sin recibir nada y que en la carpeta de spam de Gmail no hay ningún correo que importe. Asegúrate de que todos los sitios en los que usas «Acceder con Google» tengan otra forma de entrar, y de que ningún correo de recuperación siga apuntando a Gmail, tampoco el de tu nuevo correo. Después abre <Path>Administrar tu Cuenta de Google --> Datos y privacidad --> Quita datos de los servicios que ya no usas</Path>, haz clic en Borrar junto a Gmail y sigue los pasos. No se quita nada hasta que hagas clic en el enlace que Google envía a la otra dirección. A partir de ahí, nadie más podrá usar nunca tu antigua dirección de Gmail[^remove-gmail].
+</Tip>
+
+[^ec-tips]: [Email Comparison: Consejos de seguridad para el correo electrónico](https://email-comparison.as93.net/email-security-tips)
+[^proton-e2ee]: [Proton: Correos electrónicos protegidos con contraseña](https://proton.me/es-419/support/password-protected-emails)
+[^proton-forward]: [Proton: Cómo reenviar automáticamente Gmail a Proton Mail](https://proton.me/es-419/support/automatic-forwarding-gmail)
+[^proton-domain]: [Proton: Cómo usar un dominio personalizado con Proton Mail](https://proton.me/es-419/support/custom-domain)
+[^proton-bridge]: [Proton: Proton Mail Bridge](https://proton.me/es-419/mail/bridge)
+[^pypi]: [Blog de PyPI: Cómo evitar los ataques de resurrección de dominios](https://blog.pypi.org/posts/2025-08-18-preventing-domain-resurrections/)
+[^icann-errp]: [ICANN: 5 cosas que todo titular de un dominio debe saber sobre la Política de Recuperación de Registraciones Vencidas](https://www.icann.org/resources/pages/registrant-about-errp-2018-12-07-en)
+[^proton-switch]: [Proton: Cómo migrar a Proton con Easy Switch](https://proton.me/es-419/support/easy-switch)
+[^takeout]: [Ayuda de Cuenta de Google: Cómo descargar tus datos de Google](https://support.google.com/accounts/answer/3024190?hl=es-419)
+[^calendar]: [Ayuda de Calendario de Google: Exporta eventos de tu Calendario de Google](https://support.google.com/calendar/answer/37111?hl=es-419)
+[^contacts]: [Ayuda de Contactos: Cómo exportar contactos, restablecerlos o crear una copia de seguridad de ellos](https://support.google.com/contacts/answer/7199294?hl=es-419)
+[^forward]: [Ayuda de Gmail: Cómo reenviar automáticamente los mensajes de Gmail a otra cuenta](https://support.google.com/mail/answer/10957?hl=es-419)
+[^bw-search]: [Bitwarden: Buscar en tu bóveda](https://bitwarden.com/help/searching-vault/)
+[^siwg]: [Ayuda de Cuenta de Google: Cómo funciona Acceder con Google](https://support.google.com/accounts/answer/12849458?hl=es-419)
+[^linked-apps]: [Ayuda de Cuenta de Google: Administra las vinculaciones entre tu Cuenta de Google y otros desarrolladores](https://support.google.com/accounts/answer/13533235?hl=es-419)
+[^ncsc-tips]: [NCSC: Activa la verificación en dos pasos](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^inactive]: [Ayuda de Cuenta de Google: Política de Cuentas de Google Inactivas](https://support.google.com/accounts/answer/12418290?hl=es-419)
+[^remove-gmail]: [Ayuda de Cuenta de Google: Quita Gmail de tu Cuenta de Google](https://support.google.com/accounts/answer/61177?hl=es-419)
