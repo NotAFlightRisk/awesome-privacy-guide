@@ -1,0 +1,117 @@
+---
+title: "Passare da WhatsApp a Signal: come portarti dietro amici e gruppi"
+description: "Installare Signal è la parte facile. Il lavoro vero è far passare anche gli amici, quindi parti dalle chat che usi di più e poi chiudi WhatsApp come si deve."
+---
+
+<Short>
+Installa Signal e [dai alle persone un nome utente, non il tuo numero](#hide-your-number). Poi sposta le poche chat che usi ogni settimana, non tutta la rubrica, [mandando in ogni gruppo WhatsApp il link di un gruppo Signal](#group-link). Tieni WhatsApp, silenziato, per chi non passa a Signal. Quando lì non scrive più quasi nessuno, [salva le chat che vuoi conservare](#export-chats) ed [elimina l'account dall'interno dell'app](#delete-the-account), perché disinstallare l'app non ti fa uscire dai gruppi.
+</Short>
+
+## Cosa lasci e qual è la parte difficile
+
+I messaggi di WhatsApp sono <Term slug="e2ee">crittografati end-to-end</Term>, quindi il motivo per andarsene è quello che l'app raccoglie intorno ai messaggi, come quando sei online e chi hai in rubrica. Ne parla la <Swap product="whatsapp">pagina delle alternative a WhatsApp</Swap>. Signal è pensato per conservare il meno possibile di questi <Term slug="metadata">metadati</Term>. Nel 2016, quando il mandato di un gran giurì statunitense gli ha chiesto informazioni su due utenti, Signal ha potuto fornire soltanto il momento in cui ciascun account era stato registrato e quello del suo ultimo collegamento.[^bigbrother] Ed è gestito da un'organizzazione non profit.[^bigbrother]
+
+La parte difficile è che un'app di messaggistica serve solo se ci sono le persone con cui parli, e le tue sono su WhatsApp.
+
+## Scegli dove spostarti
+
+<Picks section="Encrypted Messaging" skip={['xmpp', 'matrix']} />
+
+Per portarti dietro gli amici, noi sceglieremmo Signal. Controlla quali dei tuoi contatti lo usano, quindi potresti scoprire che alcuni amici ci sono già.[^sig-contacts] <App name="SimpleX" /> non ti lega a un numero di telefono né a nessun altro identificativo, quindi nessuno può contattarti finché non gli hai dato un link o un codice QR generato dall'app, oppure un nome SimpleX, se ne registri uno.[^simplex] È perfetto se non vuoi dare il tuo numero a nessuno, ma ogni persona che aggiungi deve prima ricevere qualcosa da te.
+
+Se te ne vai per la privacy, non passare a <Swap product="telegram">Telegram</Swap>. Solo le sue chat segrete sono crittografate da un telefono all'altro, e funzionano solo tra due persone e solo sul telefono da cui le hai avviate. Le chat normali e i gruppi sono crittografati nel tragitto da e verso i server di Telegram, dove restano salvati.[^telegram]
+
+## Prima di tutto, configura Signal
+
+<Tip id="hide-your-number" priority="essential" effort={5} title="Dai alle persone un nome utente, non il tuo numero">
+Per registrarti, Signal chiede ancora un numero di telefono. Sta sperimentando la registrazione senza numero, con un pagamento una tantum, ma per ora solo nella versione beta per Android.[^sig-numberless] Per impostazione predefinita, però, su Signal il tuo numero non viene mostrato agli altri. Lo vede solo chi l'ha già salvato tra i suoi contatti, e questo vale anche per le persone nei tuoi gruppi.[^sig-usernames]
+
+Per chattare con qualcuno che non ha il tuo numero, crea un nome utente e dagli quello. Tocca l'icona del tuo profilo (poi Impostazioni, se hai un iPhone), tocca il tuo profilo e poi tocca accanto al simbolo @. Il nome deve finire con almeno due cifre, e puoi condividerlo anche come link o codice QR. Signal non ha un elenco dei nomi utente, quindi agli altri serve quello esatto.[^sig-usernames]
+
+Se preferisci che nessuno possa trovarti tramite il tuo numero, vai in <Path>Impostazioni --> Privacy --> Numero di telefono</Path>, controlla che «Chi può vedere il mio numero di telefono» sia impostato su «Nessuna persona», poi imposta su «Nessuna persona» anche «Chi può trovarmi tramite il mio numero». L'inconveniente è che gli amici che hanno il tuo numero non vedranno che sei su Signal, quindi dovrai dargli il tuo nome utente.[^sig-usernames]
+</Tip>
+
+<Tip id="registration-lock" priority="essential" effort={5} title="Attiva il Blocco registrazione">
+Nel 2022 Twilio, l'azienda che invia gli SMS di registrazione di Signal, ha subito un attacco di phishing, e chi l'ha messo a segno avrebbe potuto provare a registrare su un altro telefono i numeri di circa 1.900 utenti di Signal. Signal dice di aver creato il Blocco registrazione per attacchi come quello. Aggiunge il tuo PIN di Signal ai controlli che scattano quando il tuo numero viene registrato.[^sig-twilio] Lo attivi da <Path>Impostazioni --> Account --> Blocco registrazione</Path>.
+
+Il prezzo da pagare è che Signal non può reimpostare il tuo PIN, e se lo dimentichi rischi di restare fuori dal tuo account fino a sette giorni. Puoi tenerlo nel tuo password manager.[^sig-pin] E non dire mai a nessuno un codice che Signal ti manda via SMS, né scriverlo da qualche parte che non sia la schermata di registrazione di Signal. Signal non contatta le persone dentro l'app, quindi una chat del «Supporto Signal» che te ne chiede uno è una truffa.[^sig-protect] Vale la pena anche proteggere il tuo numero presso l'operatore, e la [guida all'autenticazione a due fattori](/it/guide/two-factor/#lock-your-number) spiega come fare.
+</Tip>
+
+<Tip id="backups" priority="optional" effort={5} title="Attiva i backup e conserva la chiave">
+I backup di Signal restano disattivati finché non li attivi tu. Secure Backups (in italiano «Backup sicuri») include gratis tutti i tuoi messaggi di testo e le foto e i file degli ultimi 45 giorni, oppure fino a 100 GB di contenuti multimediali per 1,99 € al mese. È protetto da una chiave di ripristino di 64 caratteri che Signal non vede mai, e senza quella chiave nessuno, nemmeno Signal, può ripristinare il backup.[^sig-backups]
+
+Per attivarlo, vai in <Path>Impostazioni --> Backup</Path>, tocca Imposta e segui i passaggi. Salva nel tuo password manager la chiave di ripristino che ti viene mostrata, oppure scrivila su un foglio e tienilo in un posto sicuro.[^sig-backups]
+</Tip>
+
+## Sposta amici e gruppi
+
+<Tip id="start-small" priority="essential" effort={10} title="Comincia dalle chat che usi ogni settimana">
+Parti da quella manciata di persone e gruppi che stanno in cima all'elenco delle chat di WhatsApp. Tutti gli altri possono aspettare.
+
+Inizia una nuova chat su Signal per vedere quali dei tuoi contatti lo usano già.[^sig-contacts] Agli altri manda su WhatsApp il link al tuo nome utente di Signal, con un messaggio breve come «Sto passando a Signal, ecco il mio link se vuoi venire anche tu». Se qualcuno ti chiede perché, mandagli la <Swap product="whatsapp">pagina delle alternative a WhatsApp</Swap>.
+</Tip>
+
+<Tip id="group-link" priority="essential" effort={10} title="Sposta ogni gruppo con un link da mandare nel vecchio gruppo">
+Per spostare un gruppo, manda nel gruppo WhatsApp un link d'invito a un gruppo Signal. È anche quello che consiglia il centro assistenza di Signal.[^sig-group-link]
+
+<Steps>
+1. Su Signal, crea un nuovo gruppo con chi, tra i membri del gruppo WhatsApp, usa già Signal.
+2. Apri le impostazioni del gruppo, tocca Link del gruppo e attivalo. Chiunque abbia il link può entrare, e i link girano, quindi per un gruppo privato attiva anche «Richiedi l'approvazione dell'admin».[^sig-group-link]
+3. Tocca Condividi e manda il link nel gruppo WhatsApp.
+</Steps>
+
+Se il link arriva a persone che non volevi invitare, con Reimposta link, nella stessa schermata, ne crei uno nuovo.[^sig-group-link]
+
+Quando è tutto pronto, proponi i programmi prima nel gruppo Signal, e quando qualcuno chiede su WhatsApp, rimandalo lì. I gruppi di Signal possono avere fino a 1.000 persone, e i server di Signal non tengono traccia di chi fa parte di quale gruppo.[^sig-groups]
+</Tip>
+
+<Tip id="holdouts" priority="optional" effort={5} title="Tieni WhatsApp per chi non passa a Signal">
+Alcune persone non si sposteranno, e certi gruppi, come quello della scuola o di un'associazione, potrebbero restare su WhatsApp qualunque cosa tu faccia. Per quelli tieni l'app, ma silenziala. In ogni chat tocca il nome, poi Notifiche, e silenziala scegliendo Sempre. I messaggi ti arriveranno lo stesso, ma senza disturbarti.[^wa-mute]
+
+Nelle impostazioni di WhatsApp, scrivi nella sezione Info qualcosa come «Ora mi trovi quasi sempre su Signal», così chi guarda il tuo profilo lo vede. Puoi usare fino a 50 caratteri e scegliere per quanto tempo resta visibile.[^wa-about]
+</Tip>
+
+## Cosa tenere di WhatsApp
+
+<Tip id="export-chats" priority="optional" effort={15} title="Salva le chat che vuoi conservare">
+Esportando una chat ottieni un file di testo da leggere, non un backup, e WhatsApp dice che non si può reimportare.[^wa-export] Quindi non aspettarti di poter spostare la cronologia su Signal. Considera l'esportazione un archivio.
+
+Apri la chat. Su Android, tocca i tre puntini in alto e poi <Path>Altro --> Esporta chat</Path>. Su iPhone, tocca il nome del contatto o del gruppo e poi Esporta chat, e otterrai un file ZIP. Puoi includere foto e video, anche se su Android avrai solo quelli più recenti, e i messaggi visualizzabili una volta non vengono inclusi.[^wa-export] Si fa una chat alla volta. Salva i file sul telefono o sul computer invece di mandarli per email o in una chat, perché chiunque ne apra uno può leggerlo, ed elimina le copie che non ti servono.
+</Tip>
+
+## Chiudi WhatsApp come si deve
+
+<Tip id="delete-the-account" priority="essential" effort={10} title="Elimina l'account, non limitarti a disinstallare l'app">
+È eliminando l'account che esci da tutti i tuoi gruppi e cancelli la cronologia dei messaggi e il backup.[^wa-delete] Disinstallare l'app dal telefono non ha lo stesso effetto. In genere WhatsApp elimina un account solo dopo 120 giorni in cui non si è mai collegato, o 365 negli Stati Uniti.[^wa-delete][^wa-inactive]
+
+Non si può tornare indietro, e WhatsApp non può recuperare le chat di un account eliminato, quindi prima [salva le chat che vuoi tenere](#export-chats).[^wa-delete] Se gestisci un canale WhatsApp, aggiungi un altro amministratore prima di andartene, altrimenti il canale viene eliminato insieme al tuo account.[^wa-delete]
+
+<Steps>
+1. Sul telefono, non su un computer collegato, tocca i tre puntini in alto e poi <Path>Impostazioni --> Account --> Elimina il mio account</Path> su Android, oppure apri <Path>Impostazioni --> Account --> Elimina account</Path> su iPhone.
+2. Scrivi il tuo numero completo in formato internazionale, a partire dal prefisso del Paese, come +44 7700 900123, e conferma.[^wa-delete]
+</Steps>
+
+WhatsApp dice che per finire di eliminare le tue informazioni possono servire fino a 90 giorni.[^wa-delete]
+</Tip>
+
+## Lasciare Messenger, Telegram e le altre app
+
+Di solito puoi spostare le persone da ognuna di queste app allo stesso modo, con il link di un gruppo Signal mandato nel vecchio gruppo. Cosa fa ciascuna con i tuoi messaggi lo trovi nella sua pagina delle alternative: <Swap product="facebook-messenger">Messenger</Swap>, <Swap product="telegram">Telegram</Swap>, <Swap product="viber">Viber</Swap>, <Swap product="line">LINE</Swap> e <Swap product="wechat">WeChat</Swap>.
+
+[^bigbrother]: [Signal: comunicazioni con le autorità](https://signal.org/bigbrother/)
+[^sig-contacts]: [Supporto Signal: Signal invia il mio numero ai miei contatti?](https://support.signal.org/hc/it/articles/360007061452)
+[^simplex]: [SimpleX: come stabilire una connessione](https://simplex.chat/docs/guide/making-connections.html)
+[^telegram]: [FAQ di Telegram](https://telegram.org/faq)
+[^sig-numberless]: [Supporto Signal: registrazione senza numero di telefono nella beta per Android](https://support.signal.org/hc/en-us/articles/11197884108826)
+[^sig-usernames]: [Supporto Signal: privacy del numero di telefono e nomi utente](https://support.signal.org/hc/it/articles/6712070553754)
+[^sig-twilio]: [Supporto Signal: il caso Twilio in breve per gli utenti di Signal](https://support.signal.org/hc/it/articles/4850133017242)
+[^sig-pin]: [Supporto Signal: PIN di Signal](https://support.signal.org/hc/it/articles/360007059792)
+[^sig-protect]: [Supporto Signal: come rimanere al sicuro su Signal](https://support.signal.org/hc/it/articles/9932632052378)
+[^sig-backups]: [Supporto Signal: Backup sicuri di Signal](https://support.signal.org/hc/it/articles/9708267671322)
+[^sig-group-link]: [Supporto Signal: link del gruppo o QR code](https://support.signal.org/hc/it/articles/360051086971)
+[^sig-groups]: [Supporto Signal: chat di gruppo](https://support.signal.org/hc/it/articles/360007319331)
+[^wa-mute]: [Centro assistenza di WhatsApp: come disattivare o attivare le notifiche delle chat individuali o di gruppo](https://faq.whatsapp.com/694350718331007?locale=it_IT)
+[^wa-about]: [Centro assistenza di WhatsApp: come modificare la sezione Info](https://faq.whatsapp.com/752120927696324?locale=it_IT)
+[^wa-export]: [Centro assistenza di WhatsApp: come esportare la cronologia chat](https://faq.whatsapp.com/1180414079177245?locale=it_IT)
+[^wa-inactive]: [Centro assistenza di WhatsApp: informazioni sull'eliminazione degli account inattivi](https://faq.whatsapp.com/828406668498455?locale=it_IT)
+[^wa-delete]: [Centro assistenza di WhatsApp: come eliminare il tuo account](https://faq.whatsapp.com/2138577903196467?locale=it_IT)
