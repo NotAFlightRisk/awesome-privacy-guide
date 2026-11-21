@@ -22,30 +22,30 @@ Pick a provider from the list, ideally on [a domain you own](#own-domain), and l
 
 ## Why it's more than moving your email
 
-The <Swap product="gmail">Gmail alternatives page</Swap> covers what Google does with your inbox, so this guide is about the move. Copying your old email across is mostly the new provider's job. The real work is the shops, banks, apps and old forum accounts that all know you by your Gmail address, and you'll only hear from some of them once a year.
+The <Swap product="gmail">Gmail alternatives page</Swap> covers what Google does with your inbox, so this guide is about the move. Copying your old email across is mostly the new provider's job. The real work is the shops, banks, apps and old forum accounts that all know you by your Gmail address, and you'll only hear from some of them once a year. You'll need a computer for a couple of the steps, since Gmail's forwarding and Calendar's export aren't in the apps.[^forward][^calendar]
 
 ## Pick where you're going
 
-Moving won't make most of your email <Term slug="e2ee">end-to-end encrypted</Term>. That only works when both ends have it set up, like two Proton users writing to each other, or two people using <Term slug="pgp">PGP</Term>.[^ec-tips][^proton-e2ee] Everyone else, including your bank, will carry on sending ordinary email. The difference is in how your inbox is kept. Proton, for one, encrypts messages as they arrive, using what it calls zero-access encryption.[^proton-switch][^proton-forward]
+Moving won't make most of your email <Term slug="e2ee">end-to-end encrypted</Term>. That only works when both ends have it set up, like two Proton users writing to each other, or two people using <Term slug="pgp">PGP</Term>.[^ec-tips][^proton-e2ee] Most of your email, like your bank's, will still arrive as ordinary email. What changes is what the company holding your inbox can read. Proton, for one, encrypts messages as they arrive, using what it calls zero-access encryption.[^proton-switch][^proton-forward]
 
 If you want your own domain, check that the plan you're looking at allows it, since Proton only does on paid plans.[^proton-domain] And if you want to use a normal mail app rather than the provider's own, check that too. Proton needs its Bridge app for that, and Bridge needs a paid plan as well.[^proton-bridge] [Email Comparison](https://email-comparison.as93.net/) has both for each provider, along with prices.
 
 <Picks section="Encrypted Email" />
 
 <Tip id="own-domain" priority="optional" effort={30} title="Think about using your own domain">
-With an address on a domain you own, like `you@yourname.com`, moving provider next time means changing your domain's settings, not your address on every account all over again.[^ec-tips] A domain costs a few pounds a year. Setting it up means adding a few records at the company you bought it from, and Proton's help, for one, walks you through it.[^proton-domain] Send yourself an email from another account once it's done.
+With an address on a domain you own, like `you@yourname.com`, moving provider next time means changing your domain's settings, not your address on every account all over again.[^ec-tips] Domains are cheap, but you pay every year. Setting it up means adding a few records at the company you bought it from, and Proton's help, for one, walks you through it.[^proton-domain] Send yourself an email from another account once it's done.
 
 The catch is that you have to keep paying for it. If a domain lapses, someone else can buy it, set up email on it and use "forgot my password" on your accounts.[^pypi] If you go this way, [look after the domain](#keep-the-domain) from day one.
 </Tip>
 
 <Tip id="keep-the-domain" priority="essential" effort={10} title="If you use your own domain, don't let it lapse">
-Turn on auto-renew, and pay for a few years at a time, so a card that's expired in the meantime doesn't catch you out. For .com and the other generic endings, ICANN makes registrars send reminders about a month and a week before a domain runs out, and one more after, all to the contact email on the domain's registration.[^icann-errp] If that's an address on the same domain, the last one may never reach you, since an expired domain's email can stop working before the domain's deleted.[^icann-errp] Use an address somewhere else for that account, and turn on two-step login there, since whoever gets into it can point your email anywhere.
+Turn on auto-renew, and pay for a few years at a time, so a card that's expired in the meantime doesn't catch you out. For .com and the other generic endings, ICANN makes registrars send reminders about a month and a week before a domain runs out, and one more after, all to the contact email on the domain's registration.[^icann-errp] If that's an address on the same domain, the last one may never reach you, since an expired domain's email can stop working before the domain's deleted.[^icann-errp] Use an address somewhere else for your account with the registrar, and turn on two-step login for that account, since anyone who gets into it can change where your domain's email goes.
 </Tip>
 
 ## Move your old mail
 
 <Tip id="lock-the-new-inbox" priority="essential" effort={10} title="Lock down the new inbox before you move anything in">
-Once your accounts point at it, the new inbox can reset all of them, so turn on [two-step login](/guides/two-factor/) first and keep its backup codes on paper. If it asks for a recovery email, don't give it your Gmail address, since that's the one you're planning to get rid of.
+Once your accounts point at the new address, it can reset their passwords, so turn on [two-step login](/guides/two-factor/) first and keep its backup codes on paper. If it wants a recovery email, Gmail's fine for now, but change it before you get rid of Gmail.
 </Tip>
 
 <Tip id="import-old-mail" priority="essential" effort={20} title="Let the new provider's importer copy it across">
@@ -82,7 +82,7 @@ Send an email to your Gmail address from another account to check it comes throu
 </Tip>
 
 <Tip id="forwarded-folder" priority="optional" effort={5} title="Put forwarded mail in its own folder">
-In the new inbox, make a filter for mail sent to your Gmail address and send it to a folder of its own. Whoever sent each one still has your old address, so that folder is the list of what's left to move. Give it a full year before you call it done, because some things, like insurance and domain renewals, only email you once a year.
+In the new inbox, make a filter for mail sent to your Gmail address and send it to a folder of its own. Whoever sent each one still has your old address, so that folder is the list of what's left to move. People who still write to the old address will turn up there too, so reply from the new one and tell them. We'd give the folder a full year before calling it done, since some things, like insurance and domain renewals, only email you once a year.
 </Tip>
 
 ## Move your accounts across
@@ -94,7 +94,7 @@ That won't find accounts you made with a "Sign in with Google" button, since you
 </Tip>
 
 <Tip id="important-accounts-first" priority="essential" effort={60} title="Change the address on the accounts that matter first">
-Start with the accounts that someone could use to get into the rest, or that would cost you money if you missed an email. Change the email in each one's account settings, with Gmail still open in case the site confirms the change there too, and check you can sign in afterwards. This is the order we'd go in:
+Some accounts can be used to get into others, and some cost you money if you miss an email from them, so do those first. Change the email in each one's account settings, with Gmail still open in case the site confirms the change there too, and check you can sign in afterwards. This is the order we'd go in:
 
 <Steps>
 1. Your password manager, since it holds the rest.
@@ -105,11 +105,11 @@ Start with the accounts that someone could use to get into the rest, or that wou
 6. Shops with your card saved, and then social media.
 </Steps>
 
-The NCSC's own list of important accounts is email, banking, social media and online shopping.[^ncsc-tips] Leave everything else until its next email turns up in your forwarded folder. If a site won't let you change the address, ask its support, or close the account and sign up again.
+The NCSC's own list of important accounts is email, banking, social media and online shopping.[^ncsc-tips] Leave everything else until its next email turns up in your forwarded folder. If a site won't let you change the address, ask its support. Closing the account and signing up again works too, once you've checked what you'd lose.
 </Tip>
 
 <Tip id="new-sign-ups" priority="optional" effort={5} title="Give new sign-ups their own address">
-From now on, sign up with an <Term slug="email-alias">alias</Term> rather than your main address. Each site gets its own address that forwards to you, so when spam starts arriving at one, you know which site you gave it to, and you can switch that one off.[^ec-tips] <App name="Addy" /> and <App name="SimpleLogin" /> both have free plans, and some email providers include aliases in their paid plans.
+From now on, sign up with an <Term slug="email-alias">alias</Term> rather than your main address. Each site gets its own address that forwards to you, so when spam starts arriving at one, you know which site you gave it to. Give that site a new alias, then switch the old one off.[^ec-tips] <App name="Addy" /> and <App name="SimpleLogin" /> both have free plans, and some email providers include aliases in their paid plans.
 </Tip>
 
 ## Don't delete Gmail yet
@@ -123,7 +123,7 @@ Google can delete a personal account that hasn't been used for two years, so sig
 <Tip id="remove-gmail" priority="optional" effort={10} title="When nothing comes to it any more, remove Gmail and keep the account">
 You don't have to delete your whole Google Account to get rid of Gmail. Removing just Gmail keeps the account, your Play purchases and Google's other services, but the account needs another address that isn't a Gmail one. Your emails are deleted after 30 days. Google may let you get the address back if you change your mind, but not always the emails, so don't count on it.[^remove-gmail]
 
-Before you do it, check that your Takeout copy opens, that the forwarded folder has been quiet for a year, and that every "Sign in with Google" site has another way in. Then open <Path>Manage your Google Account --> Data & privacy --> Remove data from services you no longer use</Path>, click Delete next to Gmail and follow the steps. Nothing's removed until you click the link Google sends to the other address. After that, nobody can ever use your old Gmail address again.[^remove-gmail]
+Before you do it, check that your Takeout copy opens, that the forwarded folder has been quiet for a year, and that Gmail's spam folder has nothing real in it. Make sure every "Sign in with Google" site has another way in, and that no recovery email still points at Gmail, including the new inbox's. Then open <Path>Manage your Google Account --> Data & privacy --> Remove data from services you no longer use</Path>, click Delete next to Gmail and follow the steps. Nothing's removed until you click the link Google sends to the other address. After that, nobody can ever use your old Gmail address again.[^remove-gmail]
 </Tip>
 
 [^ec-tips]: [Email Comparison: Email security tips](https://email-comparison.as93.net/email-security-tips)
