@@ -236,6 +236,7 @@ guides.lead: Each guide does one job properly or answers one question, with the 
 guides.english: English
 guides.topic.accounts: accounts
 guides.topic.email: email
+guides.topic.messaging: messaging
 
 guide.read: "{time} read"
 guide.checked: Checked {date}
