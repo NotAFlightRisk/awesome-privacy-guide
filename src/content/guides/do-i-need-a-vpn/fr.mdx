@@ -1,17 +1,17 @@
 ---
-title: "Avez-vous besoin d’un VPN ? Ce qu’il cache, et ce qu’il ne cache pas"
-description: "Un VPN change qui peut voir les sites que vous consultez : ce n’est plus votre fournisseur d’accès, mais le fournisseur de VPN. Quand cela vaut le coup, ce qu’il ne peut pas cacher, et comment en choisir un."
+title: "Faut-il un VPN ? Ce qu’il cache et ce qu’il ne cache pas"
+description: "Un VPN cache les sites que vous consultez à votre FAI, mais le fournisseur de VPN les voit à sa place. Quand c’est utile, ses limites et comment le choisir."
 ---
 
 <Short>
-Pour l’essentiel de votre navigation quotidienne, probablement pas. Un VPN change votre adresse IP, et il cache les sites que vous consultez à votre fournisseur d’accès à Internet et à celui qui gère le Wi-Fi. Mais c’est alors le fournisseur de VPN qui voit ce que voyait votre fournisseur d’accès, donc cela ne vaut le coup que si vous faites davantage confiance au VPN qu’à [votre fournisseur d’accès](#hide-from-your-provider) ou qu’au [réseau sur lequel vous êtes](#untrusted-networks), ou si vous avez besoin de [contourner un blocage](#get-round-blocks). Il ne fait rien contre [les cookies, les comptes ou l’empreinte numérique](#ce-que-ne-fait-pas-un-vpn).
+Pour l’essentiel de votre navigation quotidienne, probablement pas. Un VPN change votre adresse IP, et il cache les sites que vous consultez à votre fournisseur d’accès à Internet et à celui qui gère le Wi-Fi. Mais c’est alors le fournisseur de VPN qui voit ce que voyait votre fournisseur d’accès, donc cela ne vaut le coup que si vous faites davantage confiance au VPN qu’à [votre fournisseur d’accès](#hide-from-your-provider) ou qu’au [réseau auquel vous êtes connecté](#untrusted-networks), ou si vous avez besoin de [contourner un blocage](#get-round-blocks). Un VPN ne fait rien contre [les cookies, les comptes ou l’empreinte numérique](#ce-que-ne-fait-pas-un-vpn).
 </Short>
 
 ## Ce que cache un VPN, et à qui
 
 Un <Term slug="vpn">VPN</Term> fait passer votre trafic Internet par un tunnel chiffré jusqu’au serveur du VPN, d’où il part ensuite vers Internet, si bien que les sites voient l’adresse IP du VPN au lieu de la vôtre.[^eff] Votre fournisseur d’accès et celui qui gère le Wi-Fi ne voient que le tunnel. C’est le fournisseur de VPN qui voit, à leur place, où va votre trafic.[^eff]
 
-Même sans VPN, HTTPS cache déjà beaucoup de choses. Environ 95 % des pages que charge Chrome l’utilisent,[^google-https] et sur ces pages, les intermédiaires ne peuvent voir ni les pages que vous lisez, ni vos identifiants, ni vos messages. Ce qu’ils peuvent généralement encore voir, ce sont les noms des sites et le moment où vous les consultez.[^eff] Le fournisseur de VPN a exactement la même vue, plus tout ce qui n’est pas chiffré.
+Même sans VPN, HTTPS cache déjà beaucoup de choses. Environ 95 % des pages que charge Chrome l’utilisent,[^google-https] et sur ces pages, les intermédiaires ne peuvent voir ni les pages que vous lisez, ni vos identifiants, ni vos messages. Ce qu’ils peuvent généralement encore voir, ce sont les noms des sites et le moment où vous les consultez.[^eff] Le fournisseur de VPN voit la même chose, plus tout ce qui n’est pas chiffré.
 
 ## Ce que ne fait pas un VPN
 
@@ -23,7 +23,7 @@ Un VPN n’est pas un outil d’anonymat. Les sites et les applications peuvent 
 Votre fournisseur d’accès peut généralement voir les noms des sites que vous consultez. Que cela pose problème ou non dépend du pays où vous vivez.
 
 <Region place="us">
-En 2021, la FTC a examiné six fournisseurs d’accès qui se partageaient environ 98 % de l’Internet mobile aux États-Unis, et a constaté que plusieurs d’entre eux croisaient les données de navigation avec d’autres données pour cibler leurs publicités, et classaient leurs clients dans des catégories sensibles, comme l’origine ethnique ou l’orientation sexuelle.[^ftc-isp]
+En 2021, la FTC, l’autorité américaine de protection des consommateurs, a examiné six fournisseurs d’accès qui se partageaient environ 98 % du marché de l’Internet mobile américain, et a constaté que plusieurs d’entre eux croisaient les données de navigation avec d’autres données pour cibler leurs publicités, et classaient leurs clients dans des catégories sensibles, comme l’origine ethnique ou l’orientation sexuelle.[^ftc-isp]
 </Region>
 
 <Region place="uk">
@@ -38,12 +38,12 @@ Le Wi-Fi public est plus sûr que ne le laissent entendre les publicités pour l
 </Tip>
 
 <Tip id="get-round-blocks" priority="optional" effort={5} title="Pour contourner un blocage">
-Avec un VPN, vous avez l’air de vous connecter depuis l’endroit où se trouve son serveur, ce qui peut vous permettre de passer certains blocages, comme celui du réseau d’une école qui bloque des sites, ou les restrictions de certains pays. Il ne les contournera pas tous. Certains pays interdisent les VPN, alors tenez-vous informé des règles en vigueur là où vous êtes avant de compter sur l’un d’eux, et les services de streaming bloquent de plus en plus de VPN.[^eff]
+Avec un VPN, vous avez l’air de vous connecter depuis l’endroit où se trouve son serveur, ce qui peut vous permettre de contourner certains blocages, comme le filtrage du réseau d’une école, ou les restrictions de certains pays. Il ne les contournera pas tous. Certains pays interdisent les VPN, alors tenez-vous informé des règles en vigueur là où vous êtes avant de vous fier à un VPN, et les services de streaming bloquent de plus en plus de VPN.[^eff]
 </Tip>
 
 ## Quand Tor convient mieux
 
-Si passer par un autre réseau ne suffit pas et que vous avez besoin de plus d’anonymat, <Term slug="tor">Tor</Term> est l’outil qu’il vous faut. Le fournisseur de VPN peut voir votre trafic, mais Tor le fait passer par plusieurs serveurs, et aucun d’eux ne peut voir à lui seul votre navigation.[^eff] Il est plus lent, et certains sites le bloquent ou fonctionnent mal avec lui. Se connecter à un compte via Tor indique quand même au site qui vous êtes.
+Si passer par un autre réseau ne suffit pas et que vous avez besoin de plus d’anonymat, <Term slug="tor">Tor</Term> est mieux adapté. Le fournisseur de VPN peut voir votre trafic, mais Tor le fait passer par plusieurs serveurs, et aucun d’eux ne peut voir à lui seul votre navigation.[^eff] Il est plus lent, et certains sites le bloquent ou fonctionnent mal avec lui. Se connecter à un compte via Tor indique quand même au site qui vous êtes.
 
 <Picks section="Anonymity Networks" limit={1} />
 
@@ -54,13 +54,13 @@ Un VPN est aux premières loges pour voir tout votre trafic, et l’EFF prévien
 
 Si vous payez par carte bancaire, le VPN sait qui vous êtes. L’EFF suggère plutôt une carte cadeau ou un numéro de carte à usage unique,[^eff] et <App name="Mullvad" /> accepte les paiements en espèces. Le VPN voit tout de même votre adresse IP quand vous vous connectez.[^eff]
 
-Méfiez-vous des applications VPN gratuites. Selon l’EFF, certains VPN gratuits vendent vos données, et la présence d’une application dans une boutique d’applications ne garantit pas qu’elle soit sûre.[^eff] Une étude de 2016 portant sur 283 applications Android qui utilisent la fonction VPN du téléphone a montré que 75 % d’entre elles intégraient du code de pistage tiers, que VirusTotal en signalait plus de 38 % comme de possibles logiciels malveillants, et que 18 % ne chiffraient pas du tout le trafic.[^csiro] Ces chiffres sont anciens, mais ils montrent ce qui peut se cacher derrière un téléchargement gratuit.
+Méfiez-vous des applications VPN gratuites. Selon l’EFF, certains VPN gratuits vendent vos données, et le fait qu’un VPN soit proposé dans une boutique d’applications ne garantit pas qu’il soit sûr.[^eff] Une étude de 2016 portant sur 283 applications Android qui utilisent la fonction VPN du téléphone a montré que 75 % d’entre elles intégraient du code de pistage tiers, que VirusTotal en signalait plus de 38 % comme de possibles logiciels malveillants, et que 18 % ne chiffraient pas du tout le trafic.[^csiro] Ces chiffres sont anciens, mais ils montrent ce qui peut se cacher derrière un téléchargement gratuit.
 
 Voici les VPN retenus par la liste :
 
 <Picks section="Virtual Private Networks" />
 
-Pour comparer les conditions d’utilisation des grands VPN, [fineprint.peng.ly](https://fineprint.peng.ly/) les met côte à côte. Si vous payez déjà pour <Swap product="expressvpn">ExpressVPN</Swap>, <Swap product="nordvpn">NordVPN</Swap>, <Swap product="ipvanish">IPVanish</Swap> ou <Swap product="hotspot-shield">Hotspot Shield</Swap>, leurs pages indiquent ce qui a été révélé sur chacun d’eux.
+Pour comparer les conditions d’utilisation des grands VPN, [fineprint.peng.ly](https://fineprint.peng.ly/) les met côte à côte. Si vous êtes déjà abonné à <Swap product="expressvpn">ExpressVPN</Swap>, <Swap product="nordvpn">NordVPN</Swap>, <Swap product="ipvanish">IPVanish</Swap> ou <Swap product="hotspot-shield">Hotspot Shield</Swap>, leurs pages indiquent ce qui a été révélé sur chacun d’eux.
 </Tip>
 
 ## Les réglages qui comptent
@@ -68,7 +68,7 @@ Pour comparer les conditions d’utilisation des grands VPN, [fineprint.peng.ly]
 <Tip id="kill-switch-and-leaks" priority="essential" effort={5} title="Activez le kill switch, puis vérifiez qu’il n’y a pas de fuite">
 Si le VPN se coupe un instant, votre appareil peut continuer à passer par votre connexion habituelle jusqu’à ce qu’il se reconnecte, sauf si le <Term slug="kill-switch">kill switch</Term> du VPN est activé. Cherchez-le dans les paramètres de l’application.
 
-Les fuites existent bel et bien. Dans cette même étude de 2016, 84 % des applications ne faisaient pas passer le trafic IPv6 par le tunnel, et 66 % n’y faisaient pas passer les recherches DNS.[^csiro] Avec le VPN activé, ouvrez <App name="IP Leak Test" /> et vérifiez que l’adresse IP et la localisation affichées sont celles du VPN et non les vôtres, y compris dans le test <Term slug="webrtc-leak">WebRTC</Term>. Si la partie DNS affiche votre propre fournisseur d’accès, c’est une <Term slug="dns-leak">fuite DNS</Term>.
+Les fuites, ça arrive. Dans cette même étude de 2016, 84 % des applications ne faisaient pas passer le trafic IPv6 par le tunnel, et 66 % n’y faisaient pas passer les requêtes DNS.[^csiro] Avec le VPN activé, ouvrez <App name="IP Leak Test" /> et vérifiez que l’adresse IP et la localisation affichées sont celles du VPN et non les vôtres, y compris dans le test <Term slug="webrtc-leak">WebRTC</Term>. Si la partie DNS affiche votre propre fournisseur d’accès, c’est une <Term slug="dns-leak">fuite DNS</Term>.
 </Tip>
 
 [^eff]: [EFF Surveillance Self-Defense : Choisir le VPN qui vous convient](https://ssd.eff.org/module/choosing-vpn-thats-right-you) (en anglais)
