@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
+import sharp from 'sharp';
 import { FIXTURES, GUIDES, readGuides, shape, split, tipsIn, uses } from '../../src/lib/data/guides.js';
 
 test('every guide and translation has good frontmatter and tips', () => {
@@ -34,6 +35,15 @@ test('the fixture uses every guide component, in English and a translation, with
   assert.match(fixture.versions.de.body, /<Local>/);
   assert.equal(fixture.versions.de.stale, false);
   assert.equal(fixture.versions.fr, undefined);
+});
+
+test("a guide's own share card is a 1200x630 png", async () => {
+  for (const { slug } of guides) {
+    const file = `${GUIDES}/${slug}/og.png`;
+    if (!existsSync(file)) continue;
+    const { format, width, height } = await sharp(file).metadata();
+    assert.deepEqual({ format, width, height }, { format: 'png', width: 1200, height: 630 }, file);
+  }
 });
 
 test('bad frontmatter and tips are refused', () => {

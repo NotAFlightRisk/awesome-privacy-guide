@@ -1,8 +1,9 @@
 // Social cards drawn at build time: satori lays the divs out as SVG, sharp makes the JPEG
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import satori from 'satori';
 import sharp from 'sharp';
+import { GUIDES } from './data/guides.js';
 
 const SIZE = { width: 1200, height: 630 };
 const PAD = 84;
@@ -161,8 +162,10 @@ const draw = {
     ),
 };
 
-/** One page's card as a JPEG */
+/** One page's card as a JPEG, or a guide's own og.png when it has one */
 export async function drawCard(page) {
+  const own = page.kind === 'guide' && resolve(GUIDES, page.entity.slug, 'og.png');
+  if (own && existsSync(own)) return sharp(own).jpeg({ quality: 85 }).toBuffer();
   const svg = await satori(await draw[page.kind](page.entity), { ...SIZE, fonts });
   return sharp(Buffer.from(svg)).jpeg({ quality: 85 }).toBuffer();
 }
