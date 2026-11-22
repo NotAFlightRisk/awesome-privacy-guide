@@ -239,6 +239,7 @@ guides.topic.accounts: accounts
 guides.topic.email: email
 guides.topic.messaging: messaging
 guides.topic.browsing: browsing
+guides.topic.network: network
 
 guide.read: "{time} read"
 guide.checked: Checked {date}

@@ -1,0 +1,93 @@
+---
+title: Do you need a VPN? What it hides, and what it doesn't
+description: A VPN moves your trust from your internet provider to a VPN company. When that's worth it, what it can't hide, and how to pick one you can check.
+type: explainer
+topic: network
+sections: [Virtual Private Networks, Anonymity Networks]
+products: [expressvpn, nordvpn, ipvanish, hotspot-shield]
+terms: [vpn, no-logs-policy, kill-switch, dns-leak]
+related: [browser-privacy]
+further:
+  - url: https://ssd.eff.org/module/choosing-vpn-thats-right-you
+    label: EFF's guide to choosing a VPN
+  - url: https://fineprint.peng.ly/
+    label: The fine print of the big VPNs, side by side
+  - url: https://digital-defense.io/checklist/networks
+    label: The full networking checklist
+published: 2026-11-22
+checked: 2026-11-22
+---
+
+<Short>
+For most everyday browsing, probably not. A VPN hides the sites you visit from your internet provider and whoever runs the Wi-Fi, and hides your IP address from the sites, but the VPN company can then see everything your provider used to. It's worth it when you trust the VPN more than [your internet provider](#hide-from-your-provider) or [the network you're on](#untrusted-networks), or when you need to [get round a block](#get-round-blocks). It does nothing about [tracking by accounts, cookies or fingerprinting](#what-it-doesnt-do).
+</Short>
+
+## What a VPN hides, and from whom
+
+A <Term slug="vpn">VPN</Term> sends everything from your device through an encrypted tunnel to the VPN's server, and it goes out to the internet from there. Sites see the VPN's IP address and location instead of yours.[^eff] Your internet provider and whoever runs the Wi-Fi can see that you're using a VPN, but not where your traffic goes after that. The VPN company can see all of it instead.[^eff]
+
+HTTPS already hides a lot without one. About 95% of the pages Chrome loads use it,[^google-https] and on those, nobody along the way can see which pages you read, your logins or your messages. What they can still see is the names of the sites and when you visit them.[^eff] So a VPN mostly hides that list of sites from your provider and your network, and your IP address from the sites themselves.
+
+## What it doesn't do
+
+A VPN doesn't make you anonymous. Sites can still recognise you through cookies, tracking pixels, the accounts you're signed in to and <Term slug="browser-fingerprinting">fingerprinting</Term>, and none of those need your IP address.[^eff] The [browser privacy guide](/guides/browser-privacy/) deals with those. It won't stop malware or phishing either. EFF says VPN adverts oversell them badly, and that what they're actually good for is routing your connection through a different network.[^eff]
+
+## When it's worth it
+
+<Tip id="hide-from-your-provider" priority="optional" effort={15} title="Hiding your browsing from your internet provider">
+Your provider can see the name of every site you visit. Whether that matters depends on where you live.
+
+<Region place="us">
+In 2021, the FTC found that several big internet providers combine web browsing data with other data to target ads, and some put customers into sensitive categories like race and sexual orientation.[^ftc-isp]
+</Region>
+
+<Region place="uk">
+Under the Investigatory Powers Act, the government can require providers to keep "internet connection records", which show which services you connected to, for up to 12 months.[^ipa-87][^ipa-62]
+</Region>
+
+A VPN moves that record from your provider to the VPN company, which is only an improvement if you trust the VPN more. VPN companies get legal requests too, and EFF notes that many keep as much as internet providers do.[^eff]
+</Tip>
+
+<Tip id="untrusted-networks" priority="optional" effort={5} title="On a network you don't trust">
+Public Wi-Fi is safer than VPN adverts make out. The FTC says that because most sites use encryption now, public Wi-Fi is usually safe.[^ftc-wifi] People on the same network can still see which sites you visit, though, the same way your provider can at home. EFF suggests a VPN when you don't know who runs the network, as long as it's a VPN you trust.[^eff]
+</Tip>
+
+<Tip id="get-round-blocks" priority="optional" effort={5} title="Getting round a block">
+A VPN makes it look as if you're connecting from wherever its server is, so it can get you past a school or office network that blocks sites, or a country that does. Check the law first, since some countries ban VPNs. Streaming services are blocking more and more VPNs too, so it's not a sure way to watch something from another country.[^eff]
+</Tip>
+
+## When Tor is the better tool
+
+If you need to be anonymous rather than just on a different network, use <Term slug="tor">Tor</Term>. The VPN company can see your traffic, but Tor sends it through several servers, and no single one of them can see your browsing.[^eff] The cost is speed, and some sites block it or break.
+
+<Picks section="Anonymity Networks" limit={1} />
+
+## Picking one
+
+<Tip id="pick-on-evidence" priority="essential" effort={30} title="Pick on what you can check, not what it promises">
+Every VPN says it keeps no logs. EFF says that isn't a guarantee. It suggests checking whether the company has been caught misleading its customers before, and looking for published independent audits, though nothing stops a company changing its ways after one.[^eff] It's also worth knowing who runs it and where it's based, since its country's laws decide who can ask it for data (<Term slug="jurisdiction">jurisdiction</Term>).[^eff] And if you pay by card, the VPN knows who you are, so some people use a gift card or a service that takes cash.[^eff]
+
+Be wary of free VPN apps. Something has to pay for the servers, and EFF says some free VPNs sell your data.[^eff] A 2016 study of 283 Android VPN apps found that 75% used third-party tracking code, over 38% were flagged for some kind of malware, and 18% didn't encrypt the traffic at all.[^csiro] Being in an app store doesn't make one safe.[^eff]
+
+These are the list's picks:
+
+<Picks section="Virtual Private Networks" />
+
+To compare the terms of the big VPNs, [fineprint.peng.ly](https://fineprint.peng.ly/) lines them up. If you're on one of the most advertised ones, the <Swap product="expressvpn">ExpressVPN</Swap>, <Swap product="nordvpn">NordVPN</Swap>, <Swap product="ipvanish">IPVanish</Swap> and <Swap product="hotspot-shield">Hotspot Shield</Swap> pages say what's come out about each.
+</Tip>
+
+## Settings that matter
+
+<Tip id="kill-switch-and-leaks" priority="essential" effort={5} title="Turn on the kill switch, then check for leaks">
+A VPN that drops out for a moment sends your traffic the normal way until it reconnects, unless its <Term slug="kill-switch">kill switch</Term> is on. Look for it in the app's settings, along with any option to block connections without the VPN.
+
+Leaks are common. The same 2016 study found that 84% of the apps leaked IPv6 traffic outside the tunnel and 66% leaked DNS lookups.[^csiro] With the VPN on, open <App name="IP Leak Test" /> and check that it shows the VPN's address and DNS servers, not your own, including in the <Term slug="webrtc-leak">WebRTC</Term> check. If your provider's name turns up, you've got a <Term slug="dns-leak">DNS leak</Term>.
+</Tip>
+
+[^eff]: [EFF Surveillance Self-Defense: Choosing the VPN that's right for you](https://ssd.eff.org/module/choosing-vpn-thats-right-you)
+[^google-https]: [Google Security Blog: HTTPS by default](https://security.googleblog.com/2025/10/https-by-default.html)
+[^ftc-isp]: [FTC: FTC staff report finds many internet service providers collect troves of personal data](https://www.ftc.gov/news-events/news/press-releases/2021/10/ftc-staff-report-finds-many-internet-service-providers-collect-troves-personal-data-users-have-few)
+[^ipa-87]: [Investigatory Powers Act 2016, section 87: Powers to require retention of certain data](https://www.legislation.gov.uk/ukpga/2016/25/section/87)
+[^ipa-62]: [Investigatory Powers Act 2016, section 62: Restrictions in relation to internet connection records](https://www.legislation.gov.uk/ukpga/2016/25/section/62)
+[^ftc-wifi]: [FTC: Are public Wi-Fi networks safe? What you need to know](https://consumer.ftc.gov/articles/are-public-wi-fi-networks-safe-what-you-need-know)
+[^csiro]: [Ikram et al.: An analysis of the privacy and security risks of Android VPN permission-enabled apps](https://research.csiro.au/isp/wp-content/uploads/sites/106/2016/08/paper-1.pdf)
