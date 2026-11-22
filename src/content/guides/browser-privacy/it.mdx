@@ -1,0 +1,182 @@
+---
+title: "Privacy nel browser: le impostazioni da cambiare e quelle da lasciar perdere"
+description: "Parti da tre modifiche. Cosa blocca davvero ogni impostazione del browser, dove trovarla in Chrome, Firefox ed Edge e quali consigli famosi puoi saltare."
+---
+
+<Short>
+Usa un browser che blocchi i tracker al posto tuo, aggiungi un solo blocco contenuti e controlla che i cookie di terze parti siano bloccati. Noi partiremmo da qui, e a molte persone basta questo. Il resto della pagina spiega cosa blocca davvero ogni impostazione, così puoi decidere tu sulle altre, e [quali consigli famosi lasciar perdere](#consigli-da-lasciar-perdere), perché alcuni rendono il tuo browser più facile da riconoscere.
+</Short>
+
+## Parti dal browser
+
+Molte checklist sulla privacy sono state scritte quando i browser non bloccavano niente. Safari blocca i cookie di terze parti per impostazione predefinita dal 2020.[^webkit] Firefox blocca i tracker noti per impostazione predefinita dal 2019, e dal 2022 sui computer dà a ogni sito un contenitore di cookie tutto suo, quindi un tracker non può leggere su un sito quello che ha salvato su un altro.[^tcp] Chrome blocca i cookie di terze parti in modalità Incognito, ma in tutti gli altri casi è un'impostazione che devi cambiare tu.[^chrome-cookies]
+
+Questi sono i browser scelti dalla lista, e ognuno blocca i tracker già con le impostazioni predefinite. Nella lista c'è anche Tor Browser, ma è più lento e alcuni siti non ci funzionano bene, quindi lo trovi [più in basso](#blend-in), per chi ne ha bisogno.
+
+<Picks section="Browsers" skip={['tor-browser']} />
+
+<Tip id="leave-chrome" priority="optional" effort={30} title="Se usi Chrome, valuta di cambiare browser">
+Chrome rende più difficili due dei tre passi di base. I cookie di terze parti restano attivi finché non li disattivi tu, perché Google ha deciso di tenerli (i dettagli sono nella pagina su <Swap product="chrome">Chrome</Swap>). E da luglio 2025 Chrome ha disattivato tutte le estensioni basate sulle sue regole più vecchie, senza nessun modo per riattivarle. Tra queste c'era la versione completa di uBlock Origin, e su Chrome resta uBlock Origin Lite, creato per le nuove regole.[^mv2][^ubo] Microsoft prevede di fare lo stesso in Edge entro la fine del 2026.[^ubo] Mozilla dice che, per quanto si può prevedere oggi, Firefox continuerà a supportare le estensioni più vecchie.[^moz-mv2]
+
+Le pagine su <Swap product="edge">Edge</Swap> e <Swap product="opera">Opera</Swap> spiegano cosa non va in quei due. Se decidi di cambiare, la [guida al password manager](/it/guide/password-manager/) spiega come portare via le password salvate senza rischi.
+</Tip>
+
+## Blocca i tracker con una sola estensione
+
+<Tip id="one-blocker" priority="essential" effort={5} title="Installa un solo blocco contenuti">
+I <Term slug="tracker">tracker</Term> sono pezzi di codice di altre aziende che i siti caricano per registrare quello che fai. Un blocco contenuti impedisce del tutto il caricamento di quelli che compaiono nelle sue liste. <App name="uBlock Origin" /> blocca pubblicità, tracker e siti di malware usando liste come EasyList ed EasyPrivacy, e il suo sviluppatore dice che funziona meglio su Firefox.[^ubo]
+
+Se usi Brave non ti serve, perché ha già un blocco integrato. LibreWolf e Mullvad Browser hanno uBlock Origin già installato, quindi lascialo com'è e non aggiungerne un altro.
+</Tip>
+
+<Tip id="fewer-extensions" priority="essential" effort={5} title="Rimuovi le estensioni che non usi">
+Un'estensione che chiede i tuoi dati su tutti i siti che visiti può leggere e modificare ogni pagina che apri, compresa quella della tua banca.[^cws] In più, le estensioni si aggiornano da sole. La vigilia di Natale del 2024, qualcuno ha ingannato con il phishing un dipendente di Cyberhaven e ha usato il suo accesso al Chrome Web Store per pubblicare una versione dannosa dell'estensione dell'azienda. I browser che l'hanno aggiornata in automatico hanno ricevuto quella versione, che per poco più di un giorno poteva sottrarre i cookie e le sessioni di accesso di alcuni siti. Cyberhaven ha detto che, secondo alcune segnalazioni pubbliche, faceva parte di una campagna più ampia contro gli sviluppatori di estensioni.[^cyberhaven]
+
+Apri `chrome://extensions` (o `about:addons` in Firefox) e rimuovi tutto quello che non usi. Spesso, poi, un'estensione che modifica le pagine che vedi può essere individuata dai siti stessi, e questo rende il tuo browser più facile da distinguere da quello di tutti gli altri.[^arkenfox]
+</Tip>
+
+## Cookie
+
+<Tip id="third-party-cookies" priority="essential" effort={2} title="Blocca i cookie di terze parti">
+Un <Term slug="third-party-cookies">cookie di terze parti</Term> viene salvato da qualcosa di incorporato nella pagina, come una pubblicità, invece che dal sito su cui ti trovi. La stessa guida di Google dice che possono servire a scoprire quello che fai su altri siti.[^chrome-cookies] Safari e Firefox se ne occupano già,[^webkit][^tcp] ma in Chrome e in Edge il blocco devi attivarlo tu.
+
+<Platforms>
+<Platform name="chrome">
+Apri <Path>Impostazioni --> Privacy e sicurezza --> Cookie di terze parti</Path> e scegli «Blocca cookie di terze parti».[^chrome-cookies] In alcune versioni quella pagina si chiama «Cookie di terze parti e dati dei siti».[^chrome-optout]
+</Platform>
+<Platform name="edge">
+Apri <Path>Impostazioni --> Privacy, ricerca e servizi --> Cookie</Path> e attiva «Blocca i cookie di terze parti».[^edge-cookies] Nella stessa pagina, se imposti «Prevenzione monitoraggio» su «Limitato», blocchi la maggior parte dei tracker tra un sito e l'altro, ma alcuni video potrebbero non partire o alcuni accessi potrebbero non funzionare.[^edge-tp]
+</Platform>
+</Platforms>
+
+Alcuni siti che ne dipendono potrebbero non funzionare bene. In Chrome, mentre sei su un sito, puoi permettergli di usarli per 90 giorni dalla barra degli indirizzi, oppure per sempre aggiungendolo in «Siti autorizzati a utilizzare i cookie di terze parti».[^chrome-cookies]
+</Tip>
+
+<Tip id="clear-on-close" priority="optional" effort={5} title="Cancella i cookie quando chiudi il browser, tranne che per pochi siti">
+Bloccare i cookie di terze parti non impedisce a un sito di riconoscerti quando ci torni, perché i cookie che ha salvato lui sono ancora lì. Se il browser li elimina quando lo chiudi, è meno probabile che i siti si ricordino di te tra una visita e l'altra.[^chrome-ondevice] Non serve a niente una volta che hai fatto l'accesso, né contro il fingerprinting, e il prezzo è dover rifare l'accesso ovunque e rivedere tutti i banner dei cookie, quindi ne vale la pena solo se ti dà fastidio essere riconosciuto dai siti su cui non accedi.
+
+<Platforms>
+<Platform name="firefox">
+In <Path>Impostazioni --> Privacy e sicurezza</Path>, nella sezione «Cookie e dati dei siti web», spunta «Elimina cookie e dati dei siti web ogni volta che chiudi Firefox». Aggiungi in «Gestisci eccezioni» i siti su cui vuoi restare collegato.[^ff-strings]
+</Platform>
+<Platform name="chrome">
+Apri <Path>Impostazioni --> Privacy e sicurezza --> Impostazioni sito --> Altre impostazioni contenuti --> Dati dei siti sul dispositivo</Path> e scegli «Elimina i dati salvati dai siti sul dispositivo alla chiusura di tutte le finestre».[^chrome-ondevice]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="private-windows" priority="optional" effort={1} title="Scopri cosa nasconde una finestra privata, e a chi">
+Una finestra privata (in Chrome si chiama modalità Incognito) non ti fa accedere a niente in automatico, e quando la chiudi dimentica i cookie e la cronologia di quella sessione. I download e i segnalibri che salvi, però, restano. È comodo su un computer condiviso o quando stai cercando un regalo.[^chrome-incognito] Non ti nasconde ai siti che visiti, né a chi gestisce la rete, come il tuo datore di lavoro, la tua scuola o il tuo provider internet.[^chrome-incognito] Chrome blocca i cookie di terze parti in modalità Incognito,[^chrome-cookies] ma l'EFF fa notare che lì non fa niente contro il fingerprinting.[^cyt]
+</Tip>
+
+## Connessioni
+
+<Tip id="https-only" priority="optional" effort={1} title="Attiva la modalità solo HTTPS">
+Circa il 95% delle pagine che Chrome carica usa HTTPS. Su una pagina che non lo usa, un malintenzionato può dirottare la visita e caricare al suo posto qualcos'altro, per esempio un malware. Basta una sola visita non cifrata, e spesso non te ne accorgi nemmeno, perché un attimo dopo il sito ti sposta su HTTPS.[^google-https] La modalità solo HTTPS prova prima con HTTPS e ti avvisa prima di caricare una pagina che non lo usa.[^chrome-security]
+
+<Platforms>
+<Platform name="chrome">
+Apri <Path>Impostazioni --> Privacy e sicurezza --> Sicurezza</Path> e, nella sezione «Connessioni sicure», attiva «Utilizza sempre connessioni sicure». Se continua ad avvisarti per la pagina delle impostazioni del router, scegli l'opzione «Ti avvisa in caso di siti pubblici non sicuri».[^chrome-security] Google aveva previsto di attivarla per tutti a partire da Chrome 154, a ottobre 2026, quindi potrebbe essere già attiva.[^google-https]
+</Platform>
+<Platform name="firefox">
+In <Path>Impostazioni --> Privacy e sicurezza</Path>, nella sezione «Modalità solo HTTPS», scegli «Attiva in tutte le finestre».[^ff-strings]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="secure-dns" priority="optional" effort={2} title="Fai in modo che il DNS sicuro resti attivo">
+Prima di aprire un sito, il browser deve cercarne l'indirizzo, e di solito il tuo provider internet vede ogni ricerca. Il <Term slug="encrypted-dns">DNS sicuro</Term> le nasconde al provider e a chiunque altro sia sulla tua rete. Al loro posto le vede il fornitore che scegli, quindi ti stai fidando di lui, e il tuo provider internet può comunque vedere a quali server ti colleghi (la voce del glossario ne parla più nel dettaglio).
+
+Chrome e Firefox usano entrambi il DNS sicuro quando possono, ma se c'è un problema tornano in silenzio alle ricerche normali.[^chrome-security][^ff-strings] Se scegli tu un fornitore, questo non succede più.
+
+<Platforms>
+<Platform name="chrome">
+Apri <Path>Impostazioni --> Privacy e sicurezza --> Sicurezza</Path> e, nella sezione «Avanzate», sotto «Usa DNS sicuro», scegli un fornitore dal menu a discesa invece di quello attuale. L'opzione non c'è se il computer è gestito dal tuo datore di lavoro o se è attivo il Controllo genitori.[^chrome-security]
+</Platform>
+<Platform name="firefox">
+In <Path>Impostazioni --> Privacy e sicurezza</Path>, nella sezione «DNS su HTTPS», scegli «Protezione massima» e un fornitore. A quel punto Firefox ti avvisa invece di tornare alle ricerche normali, e quando il DNS sicuro non è disponibile i siti non si caricano bene.[^ff-strings]
+</Platform>
+</Platforms>
+</Tip>
+
+## Fingerprinting
+
+I siti possono riconoscere il tuo browser anche dai dettagli che rivela comunque, come le dimensioni dello schermo e i font che hai installato. Mettendone insieme abbastanza, la maggior parte dei browser risulta unica, e così li si può seguire ovunque anche senza cookie.[^cyt][^tor-fp] È questo il <Term slug="browser-fingerprinting">fingerprinting del browser</Term>. L'EFF descrive due modi in cui un browser può difendersi: sembrare uguale a tanti altri, come fa Tor Browser, oppure sembrare un po' diverso ogni volta, come fa Brave.[^cyt]
+
+<Tip id="blend-in" priority="advanced" effort={10} title="Se il fingerprinting ti preoccupa, cambia browser invece di aggiungere estensioni">
+Le estensioni che falsificano o rimescolano i tuoi dettagli tendono a farti notare di più, e spesso i siti riescono a individuare l'estensione stessa.[^arkenfox] L'esempio dell'EFF è un browser che dice di essere Chrome mentre tutto il resto dice Safari, e che a quel punto potrebbe essere l'unico del suo genere.[^cyt] Il Tor Project dice che non si può falsificare tutto alla perfezione, e sconsiglia vivamente di aggiungere estensioni a Tor Browser, perché possono renderti più facile da tracciare.[^tor-fp][^tor-plugins]
+
+Se hai bisogno di essere molto più difficile da riconoscere, usa <App name="Mullvad Browser" />, che il Tor Project ha creato insieme a Mullvad per ridurre il tracciamento e il fingerprinting,[^mullvad] oppure <App name="Tor Browser" />, che in più fa passare il tuo traffico attraverso <Term slug="tor">Tor</Term>. Non aggiungere estensioni a nessuno dei due, e ricorda che nessuno dei due ti aiuta una volta che accedi a qualcosa.
+</Tip>
+
+## Ricerca
+
+<Tip id="search-engine" priority="essential" effort={2} title="Cambia il motore di ricerca predefinito">
+Le tue ricerche vanno al motore di ricerca che usa il tuo browser, e la pagina su <Swap product="google">Google Search</Swap> spiega cosa ne fa Google. Questi sono i motori di ricerca privati della lista:
+
+<Picks section="Search Engines" />
+
+In Chrome, apri <Path>Impostazioni --> Motore di ricerca</Path> e seleziona Modifica.[^chrome-search] In Firefox si trova in <Path>Impostazioni --> Ricerca</Path>, sotto «Motore di ricerca predefinito».[^ff-strings] Se ti mancano i risultati di Google, Startpage mostra per lo più quelli, ma li recupera al posto tuo, così Google non riceve il tuo indirizzo IP.
+</Tip>
+
+## Accesso e sincronizzazione
+
+<Tip id="sync" priority="optional" effort={5} title="Se sincronizzi il browser, assicurati che l'azienda non possa leggere i tuoi dati">
+Se attivi la sincronizzazione, una copia di cose come i segnalibri e la cronologia resta sui server dell'azienda, così le ritrovi su ogni dispositivo. Firefox Sync le cifra sul tuo dispositivo con una chiave che Mozilla non riceve mai.[^ff-sync] Con iCloud, la cronologia e i pannelli aperti di Safari sono protetti dalla crittografia end-to-end, ma i segnalibri lo sono solo se attivi la protezione avanzata dei dati.[^apple-adp]
+
+In Chrome, la cronologia sincronizzata che viene aggiunta anche all'Attività web e app del tuo Account Google può essere usata per personalizzare altri prodotti Google, come la Ricerca. Una passphrase di sincronizzazione impedisce a Google di leggere i dati di Chrome sincronizzati. Il prezzo è doverla digitare su ogni dispositivo, e della cronologia vengono sincronizzati solo gli indirizzi che digiti nella barra degli indirizzi. Si trova in <Path>Impostazioni --> Tu e Google</Path>: seleziona il nome del tuo account, poi «Opzioni di crittografia».[^chrome-sync]
+</Tip>
+
+<Tip id="gpc" priority="optional" effort={1} title="Attiva Global Privacy Control">
+È una richiesta, non un blocco, quindi non impedisce il caricamento di niente. Chiede a ogni sito che visiti di non vendere né condividere i tuoi dati. In California, le aziende soggette alla legge sulla privacy dello stato devono trattarla come una revoca del consenso,[^ca-ccpa] e dovrebbe valere come la stessa richiesta anche per leggi simili di altri stati USA.[^gpc] Altrove, come risponde un sito dipende dal sito stesso e dalle leggi locali.[^chrome-optout]
+
+<Platforms>
+<Platform name="firefox">
+In <Path>Impostazioni --> Privacy e sicurezza</Path>, nella sezione «Preferenze per la privacy dei siti web», spunta «Segnala ai siti web di non vendere o condividere i miei dati».[^ff-strings]
+</Platform>
+<Platform name="chrome">
+Per ora Chrome la offre solo in California, e la sta ancora distribuendo. Apri <Path>Impostazioni --> Privacy e sicurezza --> Cookie di terze parti e dati dei siti</Path> e, nella sezione «Richieste dei siti», attiva «Invia una richiesta di revoca del consenso ai siti in merito all'utilizzo dei tuoi dati».[^chrome-optout]
+</Platform>
+</Platforms>
+</Tip>
+
+## Consigli da lasciar perdere
+
+Il caso più evidente è Do Not Track. La maggior parte dei siti, compresi quelli di Google, lo ignora.[^chrome-dnt] Apple l'ha tolto da Safari perché poteva essere usato per il fingerprinting,[^safari-dnt] e anche Firefox l'ha rimosso e indirizza invece verso Global Privacy Control.[^ff-135]
+
+HTTPS Everywhere è stato ritirato nel 2023, perché ormai i browser fanno questo lavoro da soli.[^arkenfox] Ghostery, Disconnect e altre estensioni simili che bloccano i tracker per lo più ripetono quello che Firefox fa già con il contenitore di cookie di ogni sito, e le estensioni che puliscono i cookie possono essere peggio di niente: arkenfox ne ha trovata una che diceva ai suoi utenti di disattivare la protezione dei cookie di Firefox.[^arkenfox] La sezione sulle estensioni per browser della lista stessa dice che di solito bastano poche estensioni, e rimanda ad arkenfox per spiegare il perché.
+
+Lo stesso vale per le estensioni che falsificano i dettagli del browser, per i motivi spiegati nella parte sul [fingerprinting](#blend-in).
+
+Impostazioni verificate su Firefox 160 e Chrome 159.
+
+[^webkit]: [WebKit: blocco completo dei cookie di terze parti e altro](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/)
+[^tcp]: [Mozilla: Firefox attiva per impostazione predefinita la protezione totale dei cookie per tutti gli utenti del mondo](https://blog.mozilla.org/en/products/firefox/firefox-rolls-out-total-cookie-protection-by-default-to-all-users-worldwide/)
+[^chrome-cookies]: [Guida di Google Chrome: Elimina, consenti e gestisci i cookie in Chrome](https://support.google.com/chrome/answer/95647?hl=it)
+[^mv2]: [Chrome for Developers: il calendario del supporto a Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+[^ubo]: [uBlock Origin su GitHub](https://github.com/gorhill/uBlock)
+[^moz-mv2]: [Mozilla Add-ons Blog: Manifest V3 e Manifest V2, aggiornamento di marzo 2024](https://blog.mozilla.org/addons/2024/03/13/manifest-v3-manifest-v2-march-2024-update/)
+[^cws]: [Guida del Chrome Web Store: le autorizzazioni richieste da app ed estensioni](https://support.google.com/chrome_webstore/answer/186213?hl=it)
+[^cyberhaven]: [Cyberhaven: l'incidente di sicurezza della nostra estensione per Chrome](https://www.cyberhaven.com/blog/cyberhavens-chrome-extension-security-incident-and-what-were-doing-about-it)
+[^arkenfox]: [Wiki di arkenfox: le estensioni](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)
+[^chrome-optout]: [Guida di Google Chrome: Invia una richiesta di revoca del consenso in merito all'uso dei tuoi dati](https://support.google.com/chrome/answer/18797212?hl=it)
+[^edge-cookies]: [Supporto Microsoft: eliminare i cookie in Microsoft Edge](https://support.microsoft.com/it-it/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09)
+[^edge-tp]: [Supporto Microsoft: informazioni sulla prevenzione del monitoraggio in Microsoft Edge](https://support.microsoft.com/it-it/microsoft-edge/learn-about-tracking-prevention-in-microsoft-edge-5ac125e8-9b90-8d59-fa2c-7f2e9a44d869)
+[^chrome-ondevice]: [Guida di Google Chrome: Informazioni relative ai dati dei siti sul dispositivo in Chrome](https://support.google.com/chrome/answer/14114868?hl=it)
+[^ff-strings]: [Codice sorgente di Firefox 160: il testo della pagina delle impostazioni](https://github.com/mozilla-firefox/firefox/blob/FIREFOX_160_0_1_RELEASE/browser/locales/en-US/browser/preferences/preferences.ftl)
+[^chrome-incognito]: [Guida di Google Chrome: Naviga in modalità Incognito](https://support.google.com/chrome/answer/9845881?hl=it)
+[^cyt]: [EFF Cover Your Tracks: scopri di più](https://coveryourtracks.eff.org/learn)
+[^google-https]: [Google Security Blog: HTTPS per impostazione predefinita](https://security.googleblog.com/2025/10/https-by-default.html)
+[^chrome-security]: [Guida di Google Chrome: Gestisci la sicurezza e la protezione di Chrome](https://support.google.com/chrome/answer/10468685?hl=it)
+[^tor-fp]: [Tor Project: le protezioni contro il fingerprinting](https://support.torproject.org/tor-browser/features/fingerprinting-protections/)
+[^tor-plugins]: [Manuale di Tor Browser: plugin, componenti aggiuntivi e JavaScript](https://tb-manual.torproject.org/plugins/)
+[^mullvad]: [Mullvad: Mullvad Browser](https://mullvad.net/en/browser)
+[^chrome-search]: [Guida di Google Chrome: Impostare il motore di ricerca predefinito](https://support.google.com/chrome/answer/95426?hl=it)
+[^ff-sync]: [Mozilla Hacks: privato fin dalla progettazione, come abbiamo costruito Firefox Sync](https://hacks.mozilla.org/2018/11/firefox-sync-privacy/)
+[^apple-adp]: [Supporto Apple: Panoramica sulla sicurezza dei dati di iCloud](https://support.apple.com/it-it/102651)
+[^chrome-sync]: [Guida di Google Chrome: Sincronizzare e crittografare i dati](https://support.google.com/chrome/answer/165139?hl=it)
+[^ca-ccpa]: [California Attorney General: California Consumer Privacy Act](https://oag.ca.gov/privacy/ccpa)
+[^gpc]: [Global Privacy Control](https://globalprivacycontrol.org/)
+[^chrome-dnt]: [Guida di Google Chrome: Attivare o disattivare «Do Not Track»](https://support.google.com/chrome/answer/2790761?hl=it)
+[^safari-dnt]: [Apple Developer: note di rilascio di Safari 12.1](https://developer.apple.com/documentation/safari-release-notes/safari-12_1-release-notes)
+[^ff-135]: [Note di rilascio di Firefox 135](https://www.firefox.com/en-US/firefox/135.0/releasenotes/)
