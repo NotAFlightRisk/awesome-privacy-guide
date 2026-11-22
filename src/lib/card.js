@@ -43,7 +43,7 @@ const img = (src, size) => ({ type: 'img', props: { src, width: size, height: si
 
 const svgUri = (svg) => `data:image/svg+xml,${encodeURIComponent(svg)}`;
 const logo = svgUri(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 3H3v18h4M17 3h4v18h-4" fill="none" stroke="${colour.text}" stroke-width="2.4"/><rect x="7" y="9" width="10" height="6" rx="1" fill="${colour.accent}"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 3H3v18h4.5M16.5 3H21v18h-4.5" fill="none" stroke="${colour.text}" stroke-width="3"/><path d="M12 12.1V6.5M12 12.1l5.33-1.73M12 12.1l3.29 4.53M12 12.1l-3.29 4.53M12 12.1l-5.33-1.73" fill="none" stroke="${colour.accent}" stroke-width="3"/></svg>`,
 );
 
 // satori can't read webp, so each icon goes in as a png, once
