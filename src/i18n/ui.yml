@@ -238,6 +238,7 @@ guides.english: English
 guides.topic.accounts: accounts
 guides.topic.email: email
 guides.topic.messaging: messaging
+guides.topic.browsing: browsing
 
 guide.read: "{time} read"
 guide.checked: Checked {date}
