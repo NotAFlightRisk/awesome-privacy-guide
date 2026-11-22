@@ -24,18 +24,18 @@
     "@astrojs/svelte": "^9.1.6",
     "@fontsource-variable/martian-mono": "^5.3.0",
     "@fontsource-variable/onest": "^5.3.1",
-    "@lucide/astro": "^1.73.0",
-    "@lucide/svelte": "^1.73.0",
-    "@sentry/browser": "^11.12.0",
-    "astro": "^7.4.12",
-    "marked": "^18.2.0",
-    "svelte": "^5.57.3",
+    "@lucide/astro": "^1.76.0",
+    "@lucide/svelte": "^1.76.0",
+    "@sentry/browser": "^11.14.0",
+    "astro": "^7.4.13",
+    "marked": "^18.2.1",
+    "svelte": "^5.58.0",
     "yaml": "^2.9.1"
   },
   "devDependencies": {
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@fontsource/martian-mono": "^5.3.0",
-    "@sentry/vite-plugin": "^11.12.0",
+    "@sentry/vite-plugin": "^11.14.0",
     "satori": "^0.63.2",
     "sharp": "^0.35.5"
   }
