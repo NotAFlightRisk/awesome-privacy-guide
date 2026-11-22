@@ -85,9 +85,9 @@ En <Path>Ajustes --> Privacidad & Seguridad</Path>, en Modo solo-HTTPS, elige «
 </Tip>
 
 <Tip id="secure-dns" priority="optional" effort={2} title="Evita que el DNS seguro se desactive sin avisar">
-Antes de abrir un sitio, tu navegador tiene que buscar su dirección, y normalmente tu proveedor de internet puede ver cada una de esas consultas. El <Term slug="encrypted-dns">DNS seguro</Term> las oculta a tu proveedor y a cualquier otra persona de tu red. Las ve, en cambio, el proveedor que elijas, así que estás confiando en él, y tu proveedor de internet sigue pudiendo ver a qué servidores te conectas (en la entrada del glosario hay más detalles).
+Antes de abrir un sitio, tu navegador tiene que buscar su dirección, y normalmente tu proveedor de internet puede ver cada una de esas consultas. El <Term slug="encrypted-dns">DNS seguro</Term> las oculta a tu proveedor y a cualquier otra persona de tu red. Las ve, en cambio, el proveedor de DNS que elijas, así que estás confiando en él, y tu proveedor de internet sigue pudiendo ver a qué servidores te conectas (en la entrada del glosario hay más detalles).
 
-Tanto Chrome como Firefox usan DNS seguro cuando pueden, pero si hay algún problema vuelven sin avisar a las consultas normales[^chrome-security][^ff-strings]. Si eliges tú el proveedor, eso deja de pasar.
+Tanto Chrome como Firefox usan DNS seguro cuando pueden, pero si hay algún problema vuelven sin avisar a las consultas normales[^chrome-security][^ff-strings]. En Chrome, eso deja de pasar si eliges tú el proveedor de DNS. En Firefox, hace falta Protección máxima.
 
 <Platforms>
 <Platform name="chrome">
@@ -104,7 +104,7 @@ En <Path>Ajustes --> Privacidad & Seguridad</Path>, en DNS sobre HTTPS, elige Pr
 Los sitios también pueden reconocer tu navegador por datos que revela de todos modos, como el tamaño de tu pantalla o las fuentes que tienes instaladas. Si se juntan suficientes, la mayoría de los navegadores acaban siendo únicos, así que se pueden seguir de un sitio a otro incluso sin cookies[^cyt][^tor-fp]. A eso se le llama <Term slug="browser-fingerprinting">huella digital del navegador</Term> (fingerprinting). La EFF describe dos formas en que un navegador puede combatirla: parecerse a muchos otros, como hace Tor Browser, o parecer un poco distinto cada vez, como hace Brave[^cyt].
 
 <Tip id="blend-in" priority="advanced" effort={10} title="Si te preocupa la huella digital, cambia de navegador en lugar de añadir extensiones">
-Las extensiones que falsean tus datos o los cambian al azar suelen hacer que destaques más, y a menudo los sitios pueden detectar la propia extensión[^arkenfox]. El ejemplo de la EFF es un navegador que dice ser Chrome cuando todo lo demás indica que es Safari, y que entonces puede ser el único de su clase[^cyt]. El Tor Project dice que no es posible falsearlo todo a la perfección, y desaconseja firmemente añadir extensiones a Tor Browser, porque pueden hacer que te rastreen más fácilmente[^tor-fp][^tor-plugins].
+Las extensiones que falsean los datos de tu navegador o los cambian al azar suelen hacer que destaques más, y a menudo los sitios pueden detectar la propia extensión[^arkenfox]. El ejemplo de la EFF es un navegador que dice ser Chrome cuando todo lo demás indica que es Safari, y que entonces puede ser el único de su clase[^cyt]. El Tor Project dice que no es posible falsearlo todo a la perfección, y desaconseja firmemente añadir extensiones a Tor Browser, porque pueden hacer que te rastreen más fácilmente[^tor-fp][^tor-plugins].
 
 Si necesitas ser mucho más difícil de reconocer, usa <App name="Mullvad Browser" />, que el Tor Project creó con Mullvad para reducir el rastreo y la huella digital[^mullvad], o <App name="Tor Browser" />, que además envía tu tráfico a través de <Term slug="tor">Tor</Term>. No añadas extensiones a ninguno de los dos, y recuerda que ninguno te protege una vez que inicias sesión en algo.
 </Tip>

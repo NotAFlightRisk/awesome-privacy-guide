@@ -4,7 +4,7 @@ description: "Commencez par trois réglages. Ce que chaque paramètre bloque vra
 ---
 
 <Short>
-Utilisez un navigateur qui bloque les traceurs à votre place, ajoutez un bloqueur de contenu et assurez-vous que les cookies tiers sont bloqués. C’est par là que nous commencerions, et pour beaucoup de gens, cela suffit. La suite de cette page explique ce que chaque paramètre empêche réellement, pour que vous puissiez décider du reste, et [quels conseils répandus vous pouvez ignorer](#les-conseils-dont-vous-pouvez-vous-passer), puisque certains rendent votre navigateur plus facile à repérer.
+Utilisez un navigateur qui bloque les traceurs à votre place, ajoutez un seul bloqueur de contenu et assurez-vous que les cookies tiers sont bloqués. C’est par là que nous commencerions, et pour beaucoup de gens, cela suffit. La suite de cette page explique ce que chaque paramètre empêche réellement, pour que vous puissiez décider du reste, et [quels conseils répandus vous pouvez ignorer](#les-conseils-dont-vous-pouvez-vous-passer), puisque certains rendent votre navigateur plus facile à repérer.
 </Short>
 
 ## Commencez par le navigateur
@@ -87,7 +87,7 @@ Dans <Path>Paramètres --> Vie privée et sécurité</Path>, sous « Mode HTTPS
 <Tip id="secure-dns" priority="optional" effort={2} title="Rendez le DNS sécurisé obligatoire">
 Avant de pouvoir ouvrir un site, votre navigateur doit rechercher son adresse, et normalement, votre fournisseur d’accès à Internet voit chacune de ces recherches. Le <Term slug="encrypted-dns">DNS sécurisé</Term> les cache à votre fournisseur d’accès et à toute autre personne sur votre réseau. C’est le fournisseur DNS que vous choisissez qui les voit à la place, et il faut donc lui faire confiance, et votre fournisseur d’accès peut toujours voir à quels serveurs vous vous connectez (l’article du glossaire en dit plus).
 
-Chrome et Firefox utilisent tous deux le DNS sécurisé quand ils le peuvent, mais reviennent discrètement aux recherches classiques en cas de problème.[^chrome-security][^ff-strings] Choisir vous-même un fournisseur DNS les en empêche.
+Chrome et Firefox utilisent tous deux le DNS sécurisé quand ils le peuvent, mais reviennent discrètement aux recherches classiques en cas de problème.[^chrome-security][^ff-strings] Dans Chrome, choisir vous-même un fournisseur DNS les en empêche. Dans Firefox, il faut la « Protection maximale ».
 
 <Platforms>
 <Platform name="chrome">
@@ -104,7 +104,7 @@ Dans <Path>Paramètres --> Vie privée et sécurité</Path>, sous « DNS via HT
 Les sites peuvent aussi reconnaître votre navigateur grâce à des détails qu’il transmet de toute façon, comme la taille de votre écran ou les polices installées. Une fois réunis en nombre suffisant, ces détails rendent la plupart des navigateurs uniques, si bien qu’on peut les suivre partout, même sans cookies.[^cyt][^tor-fp] C’est ce qu’on appelle l’<Term slug="browser-fingerprinting">empreinte numérique du navigateur</Term>. L’EFF décrit deux façons pour un navigateur de s’en défendre : ressembler à beaucoup d’autres, comme le fait Tor Browser, ou paraître légèrement différent à chaque fois, comme le fait Brave.[^cyt]
 
 <Tip id="blend-in" priority="advanced" effort={10} title="Si l’empreinte numérique vous inquiète, changez de navigateur plutôt que d’ajouter des extensions">
-Les extensions qui falsifient ou brouillent ces détails ont tendance à vous faire remarquer davantage, et les sites peuvent souvent repérer l’extension elle-même.[^arkenfox] L’EFF prend l’exemple d’un navigateur qui se présente comme Chrome alors que tout le reste indique Safari, et qui risque alors d’être le seul de son espèce.[^cyt] Le Tor Project explique qu’une falsification parfaite est impossible, et déconseille fortement d’ajouter des extensions à Tor Browser, car elles peuvent vous rendre plus facile à suivre à la trace.[^tor-fp][^tor-plugins]
+Les extensions qui falsifient ou brouillent les caractéristiques de votre navigateur ont tendance à vous faire remarquer davantage, et les sites peuvent souvent repérer l’extension elle-même.[^arkenfox] L’EFF prend l’exemple d’un navigateur qui se présente comme Chrome alors que tout le reste indique Safari, et qui risque alors d’être le seul de son espèce.[^cyt] Le Tor Project explique qu’une falsification parfaite est impossible, et déconseille fortement d’ajouter des extensions à Tor Browser, car elles peuvent vous rendre plus facile à suivre à la trace.[^tor-fp][^tor-plugins]
 
 Si vous avez besoin d’être beaucoup plus difficile à reconnaître, utilisez <App name="Mullvad Browser" />, que le Tor Project a conçu avec Mullvad pour limiter le pistage et l’empreinte numérique,[^mullvad] ou <App name="Tor Browser" />, qui fait aussi passer votre trafic par <Term slug="tor">Tor</Term>. N’ajoutez d’extensions ni à l’un ni à l’autre, et gardez en tête qu’aucun des deux n’y peut plus rien une fois que vous vous connectez à un compte.
 </Tip>
@@ -128,7 +128,7 @@ Dans Chrome, l’historique synchronisé qui est aussi ajouté à la section «�
 </Tip>
 
 <Tip id="gpc" priority="optional" effort={1} title="Activez Global Privacy Control">
-C’est une demande, pas un bloqueur : elle n’empêche rien de se charger. Le signal demande à chaque site que vous consultez de ne pas vendre ni partager vos données. En Californie, les entreprises soumises à la loi de l’État sur la vie privée doivent le traiter comme une demande d’opposition,[^ca-ccpa] et il est conçu pour formuler la même demande au titre de lois similaires dans d’autres États américains.[^gpc] Ailleurs, la façon dont un site y répond dépend du site lui-même et de la loi locale.[^chrome-optout]
+C’est une demande, pas un bloqueur : elle n’empêche rien de se charger. Le signal demande à chaque site que vous consultez de ne pas vendre ni partager vos données. En Californie, les entreprises soumises à la loi de l’État sur la vie privée doivent le traiter comme un refus de la vente ou du partage de vos données,[^ca-ccpa] et il est conçu pour formuler la même demande au titre de lois similaires dans d’autres États américains.[^gpc] Ailleurs, la façon dont un site y répond dépend du site lui-même et de la loi locale.[^chrome-optout]
 
 <Platforms>
 <Platform name="firefox">
