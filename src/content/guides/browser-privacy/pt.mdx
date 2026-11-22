@@ -30,7 +30,7 @@ Se você usa o Brave, não precisa de um, já que ele tem um bloqueador próprio
 </Tip>
 
 <Tip id="fewer-extensions" priority="essential" effort={5} title="Remova as extensões que você não usa">
-Uma extensão que pede acesso aos seus dados em todos os sites que você visita consegue ler e alterar todas as páginas que você abre, inclusive a do seu banco.[^cws] Além disso, elas se atualizam sozinhas. Na véspera de Natal de 2024, alguém aplicou um golpe de phishing num funcionário da Cyberhaven e usou o login dele na Chrome Web Store para publicar uma versão maliciosa da extensão da empresa. Os navegadores que atualizaram a extensão automaticamente receberam essa versão, e, por pouco mais de um dia, ela conseguia capturar cookies e sessões com login ativo de alguns sites. A Cyberhaven disse que relatos públicos indicavam que o ataque fazia parte de uma campanha maior contra desenvolvedores de extensões.[^cyberhaven]
+Uma extensão que pede acesso aos seus dados em todos os sites que você visita consegue ler e alterar todas as páginas que você abre, inclusive a do seu banco.[^cws] Além disso, as extensões se atualizam sozinhas. Na véspera de Natal de 2024, alguém aplicou um golpe de phishing num funcionário da Cyberhaven e usou o login dele na Chrome Web Store para publicar uma versão maliciosa da extensão da empresa. Os navegadores que atualizaram a extensão automaticamente receberam essa versão, e, por pouco mais de um dia, ela conseguia capturar cookies e sessões com login ativo de alguns sites. A Cyberhaven disse que relatos públicos indicavam que o ataque fazia parte de uma campanha maior contra desenvolvedores de extensões.[^cyberhaven]
 
 Abra `chrome://extensions` (ou `about:addons` no Firefox) e remova o que você não usa. Muitas vezes, uma extensão que altera as páginas que você vê também pode ser detectada pelos próprios sites, o que deixa o seu navegador mais fácil de diferenciar dos outros.[^arkenfox]
 </Tip>
@@ -87,11 +87,11 @@ Em <Path>Configurações --> Privacidade e Segurança</Path>, na seção “Modo
 <Tip id="secure-dns" priority="optional" effort={2} title="Faça o DNS seguro valer de vez">
 Antes de abrir um site, o navegador precisa consultar o endereço dele, e normalmente o seu provedor de internet consegue ver cada consulta. O <Term slug="encrypted-dns">DNS seguro</Term> esconde essas consultas do seu provedor e de qualquer outra pessoa na sua rede. Quem passa a vê-las é o provedor de DNS que você escolher, então você está confiando nele, e o seu provedor de internet ainda consegue ver a quais servidores você se conecta (o verbete do glossário tem mais detalhes).
 
-O Chrome e o Firefox usam DNS seguro sempre que podem, mas voltam discretamente às consultas comuns se houver algum problema.[^chrome-security][^ff-strings] Escolher você mesmo o provedor evita isso.
+O Chrome e o Firefox usam DNS seguro sempre que podem, mas voltam discretamente às consultas comuns se houver algum problema.[^chrome-security][^ff-strings] Escolher você mesmo o provedor de DNS evita isso.
 
 <Platforms>
 <Platform name="chrome">
-Abra <Path>Configurações --> Privacidade e segurança --> Segurança</Path> e, em “Avançadas”, na opção “Usar DNS seguro”, escolha um provedor no menu suspenso em vez do seu provedor atual. Essa opção não fica disponível se o seu computador for gerenciado pela sua empresa ou estiver com o controle dos pais ativado.[^chrome-security]
+Abra <Path>Configurações --> Privacidade e segurança --> Segurança</Path> e, em “Avançadas”, na opção “Usar DNS seguro”, escolha um provedor no menu suspenso em vez do atual. Essa opção não fica disponível se o seu computador for gerenciado pela sua empresa ou estiver com o controle dos pais ativado.[^chrome-security]
 </Platform>
 <Platform name="firefox">
 Em <Path>Configurações --> Privacidade e Segurança</Path>, na seção “DNS sobre HTTPS”, escolha “Proteção máxima” e um provedor. Aí o Firefox passa a avisar você em vez de voltar às consultas comuns, e os sites não carregam direito quando o DNS seguro não está disponível.[^ff-strings]

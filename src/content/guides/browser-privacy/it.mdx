@@ -85,16 +85,16 @@ In <Path>Impostazioni --> Privacy e sicurezza</Path>, nella sezione «Modalità 
 </Tip>
 
 <Tip id="secure-dns" priority="optional" effort={2} title="Fai in modo che il DNS sicuro resti attivo">
-Prima di aprire un sito, il browser deve cercarne l'indirizzo, e di solito il tuo provider internet vede ogni ricerca. Il <Term slug="encrypted-dns">DNS sicuro</Term> le nasconde al provider e a chiunque altro sia sulla tua rete. Le vede invece il fornitore che scegli, quindi ti stai fidando di lui, e il tuo provider internet può comunque vedere a quali server ti colleghi (la voce del glossario ne parla più nel dettaglio).
+Prima di aprire un sito, il browser deve cercarne l'indirizzo, e di solito il tuo provider internet vede ognuna di queste richieste. Il <Term slug="encrypted-dns">DNS sicuro</Term> le nasconde al provider e a chiunque altro sia sulla tua rete. Le vede invece il fornitore DNS che scegli, quindi ti stai fidando di lui, e il tuo provider internet può comunque vedere a quali server ti colleghi (la voce del glossario ne parla più nel dettaglio).
 
-Chrome e Firefox usano entrambi il DNS sicuro quando possono, ma se c'è un problema tornano in silenzio alle ricerche normali.[^chrome-security][^ff-strings] Se scegli tu un fornitore, questo non succede più.
+Chrome e Firefox usano entrambi il DNS sicuro quando possono, ma se c'è un problema tornano in silenzio alle richieste normali.[^chrome-security][^ff-strings] Se scegli tu un fornitore, questo non succede più.
 
 <Platforms>
 <Platform name="chrome">
 Apri <Path>Impostazioni --> Privacy e sicurezza --> Sicurezza</Path> e, nella sezione «Avanzate», sotto «Usa DNS sicuro», scegli un fornitore dal menu a discesa invece di quello attuale. L'opzione non c'è se il computer è gestito dal tuo datore di lavoro o se è attivo il Controllo genitori.[^chrome-security]
 </Platform>
 <Platform name="firefox">
-In <Path>Impostazioni --> Privacy e sicurezza</Path>, nella sezione «DNS su HTTPS», scegli «Protezione massima» e un fornitore. A quel punto Firefox ti avvisa invece di tornare alle ricerche normali, e quando il DNS sicuro non è disponibile i siti non si caricano bene.[^ff-strings]
+In <Path>Impostazioni --> Privacy e sicurezza</Path>, nella sezione «DNS su HTTPS», scegli «Protezione massima» e un fornitore. A quel punto Firefox ti avvisa invece di tornare alle richieste normali, e quando il DNS sicuro non è disponibile i siti non si caricano bene.[^ff-strings]
 </Platform>
 </Platforms>
 </Tip>
@@ -128,7 +128,7 @@ In Chrome, la cronologia sincronizzata che viene aggiunta anche all'Attività we
 </Tip>
 
 <Tip id="gpc" priority="optional" effort={1} title="Attiva Global Privacy Control">
-È una richiesta, non un blocco, quindi non impedisce il caricamento di niente. Chiede a ogni sito che visiti di non vendere né condividere i tuoi dati. In California, le aziende soggette alla legge sulla privacy dello stato devono trattarla come una richiesta di opt-out,[^ca-ccpa] e negli altri stati USA con leggi simili è pensata per fare la stessa richiesta.[^gpc] Altrove, come risponde un sito dipende dal sito stesso e dalle leggi locali.[^chrome-optout]
+Global Privacy Control è una richiesta, non un blocco, quindi non impedisce il caricamento di niente. Chiede a ogni sito che visiti di non vendere né condividere i tuoi dati. In California, le aziende soggette alla legge sulla privacy dello stato devono trattarla come una richiesta di opt-out,[^ca-ccpa] e negli altri stati USA con leggi simili è pensata per fare la stessa richiesta.[^gpc] Altrove, come risponde un sito dipende dal sito stesso e dalle leggi locali.[^chrome-optout]
 
 <Platforms>
 <Platform name="firefox">
