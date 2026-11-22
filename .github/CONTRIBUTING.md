@@ -33,7 +33,7 @@ There's a bit more detail in the [Development](./README.md#development) section 
 
 The guides are the one part of the site that's written here rather than pulled from the list. This is how they're built, not how they're written.
 
-Each guide is a folder in `src/content/guides/`, named after its slug. `en.mdx` is the source and the only file with footnotes. A translation is `de.mdx`, `ja.mdx` and so on, with its own title, description and body. Anything else the guide needs, like an SVG, goes in the same folder.
+Each guide is a folder in `src/content/guides/`, named after its slug. `en.mdx` is the source and the only file with footnotes. A translation is `de.mdx`, `ja.mdx` and so on, with its own title, description and body. Anything else the guide needs, like an SVG, goes in the same folder. An `og.png` there (1200x630) is the guide's share card, in place of the plain title card.
 
 ```mdx
 ---
