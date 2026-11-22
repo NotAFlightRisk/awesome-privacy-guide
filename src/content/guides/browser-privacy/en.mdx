@@ -1,0 +1,196 @@
+---
+title: Browser privacy settings worth changing, and ones to skip
+description: Three changes stop most tracking in your browser. What each setting actually blocks, where to find it in Chrome, Firefox and Edge, and which tips to skip.
+type: tips
+topic: browsing
+sections: [Browsers, Browser Extensions, Search Engines]
+products: [chrome, edge, opera, google]
+terms: [browser-fingerprinting, third-party-cookies, tracker, encrypted-dns]
+related: [do-i-need-a-vpn]
+further:
+  - url: https://digital-defense.io/checklist/web-browsing
+    label: The full web browsing checklist
+  - url: https://coveryourtracks.eff.org/
+    label: EFF's Cover Your Tracks, to see what your browser gives away
+published: 2026-11-22
+checked: 2026-11-22
+---
+
+<Short>
+Use a browser that blocks trackers for you, add one content blocker, and make sure third-party cookies are blocked. Those three do the most, and most people can stop there. The rest of this page says what each setting actually stops, so you can decide on the others, and [which popular tips to skip](#tips-to-skip), since a couple of them make you easier to follow.
+</Short>
+
+## Start with the browser
+
+A lot of privacy checklists were written when browsers blocked nothing, and that's changed. Safari has blocked third-party cookies by default since 2020,[^webkit] and since 2022 Firefox has kept every site's cookies in a separate jar, so a tracker can't read on one site what it saved on another.[^tcp] Chrome still lets them through until you change a setting.[^chrome-cookies]
+
+The browsers below are the list's picks, and they all block trackers as they come. Tor Browser is on the list too, but it's slower and some sites break in it, so it's [further down](#blend-in) for the people who need it.
+
+<Picks section="Browsers" skip={['tor-browser']} />
+
+<Tip id="leave-chrome" priority="optional" effort={30} title="If you're on Chrome, think about moving">
+Chrome is the hardest browser to fix. Since July 2025 it turns off every extension built on its older rules, and nobody can turn them back on. The full version of the uBlock Origin blocker was one of them.[^mv2][^ubo] Only a Lite version, built for the new rules, runs on Chrome now. Microsoft plans to do the same in Edge by the end of 2026.[^ubo] Mozilla says Firefox will keep supporting the older extensions for the foreseeable future.[^moz-mv2]
+
+Google also decided to keep third-party cookies in Chrome, and the <Swap product="chrome">Chrome</Swap> page has the details. Edge and Opera have their own catches, which are on the <Swap product="edge">Edge</Swap> and <Swap product="opera">Opera</Swap> pages.
+
+If you do move, get your saved passwords out first. The [password manager guide](/guides/password-manager/) covers that, and it's a good moment to stop keeping them in the browser at all.
+</Tip>
+
+## Block trackers with one extension
+
+<Tip id="one-blocker" priority="essential" effort={5} title="Install one content blocker">
+A <Term slug="tracker">tracker</Term> is code from another company that a site loads to log what you do there. A content blocker stops it loading at all. <App name="uBlock Origin" /> blocks ads, trackers and known malware sites from lists that are kept up to date, and its developer says it works best on Firefox.[^ubo]
+
+Brave, LibreWolf and Mullvad Browser already have blocking built in, so you don't need to add one.
+</Tip>
+
+<Tip id="fewer-extensions" priority="essential" effort={5} title="Remove the extensions you don't use">
+An extension that asks for your data on all the websites you visit can read and change every page you open, your bank included.[^cws] Updates install themselves, too. On Christmas Eve 2024, someone phished an employee at Cyberhaven, a security company, and used their Chrome Web Store login to publish a bad version of its extension. Browsers updated to it automatically, and for about a day it could take cookies and logged-in sessions for some sites. Cyberhaven says it was part of a wider campaign against extension developers.[^cyberhaven]
+
+So each extension is a bet that its developer stays honest and never gets hacked. Open `chrome://extensions` (or `about:addons` in Firefox) and remove anything you don't use. Every extension you add also makes your browser a little easier to tell apart from everyone else's (see [fingerprinting](#blend-in)).[^tor-plugins]
+</Tip>
+
+## Cookies
+
+<Tip id="third-party-cookies" priority="essential" effort={2} title="Block third-party cookies">
+A <Term slug="third-party-cookies">third-party cookie</Term> is saved by something embedded in the page, like an ad, rather than by the site you're on. Google's own help says they can be used to learn what you do on other sites.[^chrome-cookies] Safari and Firefox already deal with them,[^webkit][^tcp] but Chrome and Edge need a change.
+
+<Platforms>
+<Platform name="chrome">
+Open <Path>Settings --> Privacy and security --> Third-party cookies</Path> and pick Block third-party cookies.[^chrome-cookies] On some versions that page is called Third-party cookies & site data.[^chrome-optout]
+</Platform>
+<Platform name="edge">
+Open <Path>Settings --> Privacy, search, and services --> Cookies</Path> and turn on Block third-party cookies.[^edge-cookies]
+</Platform>
+</Platforms>
+
+Some sites that rely on them might not work properly. In Chrome, you can let one site use them by adding it under Sites allowed to use third-party cookies on the same page.[^chrome-cookies]
+</Tip>
+
+<Tip id="clear-on-close" priority="optional" effort={5} title="Clear cookies when you close the browser, except on a few sites">
+Blocking third-party cookies doesn't stop a site from recognising you when you come back, because the cookies it saved itself are still there. Clearing them when you close the browser means sites are much less likely to remember you between visits.[^chrome-ondevice] Add the sites you want to stay signed in to as exceptions. The cost is signing in again everywhere else, and seeing every cookie banner again.
+
+<Platforms>
+<Platform name="firefox">
+In <Path>Settings --> Privacy and security</Path>, under Cookies and Site Data, tick Clear cookies and site data every time you close Firefox, then add your exceptions under Manage Exceptions.[^ff-strings]
+</Platform>
+<Platform name="chrome">
+Open <Path>Settings --> Privacy and security --> Site settings --> Additional content settings --> On-device site data</Path> and pick Delete data sites have saved to your device when you close all windows.[^chrome-ondevice] Sites you add as allowed there keep their data.
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="private-windows" priority="optional" effort={1} title="Know what a private window hides, and from whom">
+A private window (Incognito in Chrome) doesn't sign you in to anything, and it forgets the cookies and the history from that session when you close it. That's handy on a shared computer or when you're shopping for a present.[^chrome-incognito] It doesn't hide you from the sites you visit, or from whoever runs the network, like your employer, your school or your internet provider.[^chrome-incognito] EFF points out that Chrome's version does nothing against fingerprinting either.[^cyt]
+</Tip>
+
+## Connections
+
+<Tip id="https-only" priority="optional" effort={1} title="Turn on HTTPS-only mode">
+Most sites use HTTPS now, so what you send them is encrypted on the way. The risk is the odd visit that isn't, since one is enough for someone on the same network to tamper with the page, and many of them go unnoticed because the site moves you onto HTTPS a moment later.[^google-https] HTTPS-only mode tries HTTPS first, and warns you before it loads a page without it.[^chrome-security]
+
+<Platforms>
+<Platform name="chrome">
+Open <Path>Settings --> Privacy and security --> Security</Path> and, under Secure connections, turn on Always use secure connections. If it keeps warning about your router's settings page, pick the option that only warns for public sites.[^chrome-security] Google said this would be on by default from Chrome 154,[^google-https] so it may be on already.
+</Platform>
+<Platform name="firefox">
+In <Path>Settings --> Privacy and security</Path>, under HTTPS-Only Mode, pick Enable HTTPS-Only Mode in all windows.[^ff-strings]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="secure-dns" priority="optional" effort={2} title="Make secure DNS stick">
+Before your browser can open a site, it has to look up where the site is, and normally your internet provider can see those lookups. <Term slug="encrypted-dns">Secure DNS</Term> hides them from your provider and your network, but not the sites themselves, so it's an upgrade rather than a disguise.
+
+Chrome and Firefox both turn it on where they can, but drop back to ordinary lookups if there's a problem.[^chrome-security][^ff-strings] Choosing a provider stops that.
+
+<Platforms>
+<Platform name="chrome">
+Open <Path>Settings --> Privacy and security --> Security</Path> and, under Use secure DNS, pick a provider from the list instead of your current one. It isn't available if your computer is managed by work or has parental controls on.[^chrome-security]
+</Platform>
+<Platform name="firefox">
+In <Path>Settings --> Privacy and security</Path>, under DNS over HTTPS, pick Max Protection and a provider. Firefox will then warn you rather than fall back, and some sites won't load when secure DNS isn't working.[^ff-strings]
+</Platform>
+</Platforms>
+</Tip>
+
+## Fingerprinting
+
+Sites can also recognise your browser without any cookies, from details it gives away anyway, like your screen size and which fonts you've got installed. Put enough of those together and most browsers turn out to be unique.[^cyt][^tor-fp] That's <Term slug="browser-fingerprinting">browser fingerprinting</Term>, and clearing cookies does nothing about it. There are two ways to fight it: make your browser look like lots of others, which is how Tor Browser does it, or make it look slightly different every time, which is Brave's way.[^cyt]
+
+<Tip id="blend-in" priority="advanced" effort={10} title="If fingerprinting worries you, change browser rather than adding extensions">
+Extensions that fake or shuffle your details tend to make you stand out more. EFF's example is a browser that says it's Chrome while everything else about it says Safari, which may then be the only one of its kind.[^cyt] The Tor Project says perfect faking isn't possible, and it tells people not to add extensions to Tor Browser at all, since they make you easier to track.[^tor-fp][^tor-plugins]
+
+If you really need not to be recognised, use <App name="Mullvad Browser" />, which the Tor Project built with Mullvad, or <App name="Tor Browser" />, which also hides your IP address by sending your traffic through <Term slug="tor">Tor</Term>.[^mullvad] Use them as they come, without adding anything.
+</Tip>
+
+## Search
+
+<Tip id="search-engine" priority="essential" effort={2} title="Change your default search engine">
+Google keeps what you search for and uses it for ads, and the <Swap product="google">Google Search</Swap> page has the details. These are the list's private search engines:
+
+<Picks section="Search Engines" />
+
+In Chrome, open <Path>Settings --> Search engine</Path> and select Change.[^chrome-search] In Firefox, it's under <Path>Settings --> Search</Path>, in Default search engine.[^ff-strings] If you miss Google's results, Startpage shows them without passing your details on.
+</Tip>
+
+## Signing in and syncing
+
+<Tip id="sync" priority="optional" effort={5} title="Only sync your browser if the company can't read it">
+Signing in to the browser itself sends your history and bookmarks to that company's servers. Firefox Sync encrypts them on your device with a key that Mozilla never gets.[^ff-sync] With iCloud, Safari's history and open tabs are end-to-end encrypted, but your bookmarks only are once you turn on Advanced Data Protection.[^apple-adp]
+
+Chrome history saved to your Google Account can be used to personalise other Google products, like Search. A sync passphrase stops Google reading your Chrome data, but you'll need to type it on every device, and only the addresses you type yourself get synced from your history.[^chrome-sync] It's under <Path>Settings --> You and Google</Path>: select your account name, then Encryption options.[^chrome-sync]
+</Tip>
+
+<Tip id="gpc" priority="optional" effort={1} title="Turn on Global Privacy Control">
+It asks every site you visit not to sell or share your data. In California, businesses covered by the state's privacy law have to treat it as an opt-out,[^ca-ccpa] and it's meant to work the same way under similar laws in other US states.[^gpc] Anywhere else, what it does depends on the site and the local law.[^chrome-optout]
+
+<Platforms>
+<Platform name="firefox">
+In <Path>Settings --> Privacy and security</Path>, under Website Privacy Preferences, tick Tell websites not to sell or share my data.[^ff-strings]
+</Platform>
+<Platform name="chrome">
+Chrome only offers it to people in California so far. Open <Path>Settings --> Privacy and security --> Third-party cookies & site data</Path> and, under Site requests, turn on Send an opt-out request to sites regarding use of your data.[^chrome-optout]
+</Platform>
+</Platforms>
+</Tip>
+
+## Tips to skip
+
+Plenty of older advice doesn't help any more, and some of it makes you easier to pick out.
+
+Do Not Track is the obvious one. Most sites, Google's included, ignore it.[^chrome-dnt] Apple took it out of Safari because it could be used to fingerprint you,[^safari-dnt] and Firefox has dropped it in favour of Global Privacy Control.[^ff-135]
+
+Piling on privacy extensions doesn't add much either. Once you've got a content blocker and a browser that keeps cookies apart, most of the others repeat what those already do. The list's own Browser Extensions section says you'll usually only need a few, and points to the arkenfox wiki for why.[^arkenfox] The same goes for extensions that fake your browser's details, for the reasons in [fingerprinting](#blend-in).
+
+Settings checked on Firefox 160 and Chrome 159.
+
+[^webkit]: [WebKit: Full third-party cookie blocking and more](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/)
+[^tcp]: [Mozilla: Firefox rolls out Total Cookie Protection by default to all users worldwide](https://blog.mozilla.org/en/products/firefox/firefox-rolls-out-total-cookie-protection-by-default-to-all-users-worldwide/)
+[^chrome-cookies]: [Chrome Help: Delete, allow and manage cookies in Chrome](https://support.google.com/chrome/answer/95647)
+[^mv2]: [Chrome for Developers: Manifest V2 support timeline](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+[^ubo]: [uBlock Origin on GitHub](https://github.com/gorhill/uBlock)
+[^moz-mv2]: [Mozilla Add-ons Blog: Manifest V3 and Manifest V2, March 2024 update](https://blog.mozilla.org/addons/2024/03/13/manifest-v3-manifest-v2-march-2024-update/)
+[^cws]: [Chrome Web Store Help: Permissions requested by apps and extensions](https://support.google.com/chrome_webstore/answer/186213)
+[^cyberhaven]: [Cyberhaven: Our Chrome extension security incident](https://www.cyberhaven.com/blog/cyberhavens-chrome-extension-security-incident-and-what-were-doing-about-it)
+[^tor-plugins]: [Tor Browser Manual: Plugins, add-ons and JavaScript](https://tb-manual.torproject.org/plugins/)
+[^chrome-optout]: [Chrome Help: Send an opt-out request regarding use of your data](https://support.google.com/chrome/answer/18797212)
+[^edge-cookies]: [Microsoft Support: Delete cookies in Microsoft Edge](https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09)
+[^chrome-ondevice]: [Chrome Help: Learn about on-device site data in Chrome](https://support.google.com/chrome/answer/14114868)
+[^ff-strings]: [Firefox 160 source: the text of the settings page](https://github.com/mozilla-firefox/firefox/blob/FIREFOX_160_0_1_RELEASE/browser/locales/en-US/browser/preferences/preferences.ftl)
+[^chrome-incognito]: [Chrome Help: Browse in Incognito mode](https://support.google.com/chrome/answer/9845881)
+[^cyt]: [EFF Cover Your Tracks: Learn](https://coveryourtracks.eff.org/learn)
+[^google-https]: [Google Security Blog: HTTPS by default](https://security.googleblog.com/2025/10/https-by-default.html)
+[^chrome-security]: [Chrome Help: Manage Chrome safety and security](https://support.google.com/chrome/answer/10468685)
+[^tor-fp]: [Tor Project: Fingerprinting protections](https://support.torproject.org/tor-browser/features/fingerprinting-protections/)
+[^mullvad]: [Mullvad: Mullvad Browser](https://mullvad.net/en/browser)
+[^chrome-search]: [Chrome Help: Set your default search engine](https://support.google.com/chrome/answer/95426)
+[^ff-sync]: [Mozilla Hacks: Private by design, how we built Firefox Sync](https://hacks.mozilla.org/2018/11/firefox-sync-privacy/)
+[^apple-adp]: [Apple Support: iCloud data security overview](https://support.apple.com/en-us/102651)
+[^chrome-sync]: [Chrome Help: Sync and encrypt your data](https://support.google.com/chrome/answer/165139)
+[^ca-ccpa]: [California Attorney General: California Consumer Privacy Act](https://oag.ca.gov/privacy/ccpa)
+[^gpc]: [Global Privacy Control](https://globalprivacycontrol.org/)
+[^chrome-dnt]: [Chrome Help: Turn "Do Not Track" on or off](https://support.google.com/chrome/answer/2790761)
+[^safari-dnt]: [Apple Developer: Safari 12.1 release notes](https://developer.apple.com/documentation/safari-release-notes/safari-12_1-release-notes)
+[^ff-135]: [Firefox 135 release notes](https://www.firefox.com/en-US/firefox/135.0/releasenotes/)
+[^arkenfox]: [arkenfox wiki: Extensions](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)
