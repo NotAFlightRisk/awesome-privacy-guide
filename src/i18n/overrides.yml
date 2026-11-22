@@ -1,5 +1,6 @@
 # Hand fixes for short names machine translation gets wrong out of context, by language
 de:
+  Edge: Edge
   Essentials: Grundlagen
   Utilities: Dienstprogramme
   Social: Soziales
@@ -1179,6 +1180,7 @@ de:
   "today's pick": "Tipp des Tages"
 
 es:
+  Edge: Edge
   Utilities: Utilidades
   Media: Multimedia
   File Drop: Envío de archivos
@@ -2340,6 +2342,7 @@ es:
   "today's pick": "La recomendación de hoy"
 
 fr:
+  Edge: Edge
   Utilities: Utilitaires
   Networking: Réseau
   Music Players: Lecteurs de musique
@@ -3507,6 +3510,7 @@ fr:
   "{count} picks": "{count} choix"
 
 pt:
+  Edge: Edge
   File Drop: Envio de arquivos
   Music Players: Reprodutores de música
   # The guide pages, translated by hand
@@ -4661,6 +4665,7 @@ pt:
   "to the apps you use every day": "aos aplicativos que você usa todos os dias"
 
 it:
+  Edge: Edge
   Utilities: Utilità
   Office Suites: Suite per ufficio
   Scheduling: Pianificazione
@@ -5826,6 +5831,7 @@ it:
   "Nothing here": "Qui non c'è niente"
 
 ru:
+  Edge: Edge
   Utilities: Утилиты
   Networking: Сеть
   Social: Соцсети
@@ -7009,6 +7015,7 @@ ru:
   "{count} alternatives": "Альтернатив: {count}"
 
 ja:
+  Edge: Edge
   Essentials: 必須ツール
   Smart Home & IoT: スマートホームとIoT
   Social: ソーシャル
