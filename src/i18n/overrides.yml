@@ -1,5 +1,6 @@
 # Hand fixes for short names machine translation gets wrong out of context, by language
 de:
+  Edge: Edge
   Essentials: Grundlagen
   Utilities: Dienstprogramme
   Social: Soziales
@@ -1082,6 +1083,7 @@ de:
   accounts: Konten
   email: E-Mail
   messaging: Messenger
+  browsing: Browser
   "{time} read": "{time} Lesezeit"
   Checked {date}: Geprüft am {date}
   the short answer: Kurz gesagt
@@ -1179,6 +1181,7 @@ de:
   "today's pick": "Tipp des Tages"
 
 es:
+  Edge: Edge
   Utilities: Utilidades
   Media: Multimedia
   File Drop: Envío de archivos
@@ -2246,6 +2249,7 @@ es:
   accounts: Cuentas
   email: Correo electrónico
   messaging: Mensajería
+  browsing: Navegación
   "{time} read": "{time} de lectura"
   Checked {date}: Revisada el {date}
   the short answer: La respuesta corta
@@ -2340,6 +2344,7 @@ es:
   "today's pick": "La recomendación de hoy"
 
 fr:
+  Edge: Edge
   Utilities: Utilitaires
   Networking: Réseau
   Music Players: Lecteurs de musique
@@ -2357,6 +2362,7 @@ fr:
   accounts: Comptes
   email: E-mail
   messaging: Messagerie
+  browsing: Navigation
   "{time} read": "{time} de lecture"
   Checked {date}: Vérifié le {date}
   the short answer: En bref
@@ -3507,6 +3513,7 @@ fr:
   "{count} picks": "{count} choix"
 
 pt:
+  Edge: Edge
   File Drop: Envio de arquivos
   Music Players: Reprodutores de música
   # The guide pages, translated by hand
@@ -3522,6 +3529,7 @@ pt:
   accounts: Contas
   email: E-mail
   messaging: Mensagens
+  browsing: Navegação
   "{time} read": "{time} de leitura"
   Checked {date}: Conferido em {date}
   the short answer: Em resumo
@@ -4661,6 +4669,7 @@ pt:
   "to the apps you use every day": "aos aplicativos que você usa todos os dias"
 
 it:
+  Edge: Edge
   Utilities: Utilità
   Office Suites: Suite per ufficio
   Scheduling: Pianificazione
@@ -4677,6 +4686,7 @@ it:
   accounts: Account
   email: Email
   messaging: Messaggistica
+  browsing: Navigazione
   "{time} read": "{time} di lettura"
   Checked {date}: Verificata il {date}
   the short answer: In breve
@@ -5826,6 +5836,7 @@ it:
   "Nothing here": "Qui non c'è niente"
 
 ru:
+  Edge: Edge
   Utilities: Утилиты
   Networking: Сеть
   Social: Соцсети
@@ -5843,6 +5854,7 @@ ru:
   accounts: Аккаунты
   email: Почта
   messaging: Мессенджеры
+  browsing: Браузеры
   "{time} read": "{time} чтения"
   Checked {date}: Проверено {date}
   the short answer: Если коротко
@@ -7009,6 +7021,7 @@ ru:
   "{count} alternatives": "Альтернатив: {count}"
 
 ja:
+  Edge: Edge
   Essentials: 必須ツール
   Smart Home & IoT: スマートホームとIoT
   Social: ソーシャル
@@ -7025,6 +7038,7 @@ ja:
   accounts: アカウント
   email: メール
   messaging: メッセージアプリ
+  browsing: ブラウザ
   "{time} read": "{time}で読めます"
   Checked {date}: "{date}に確認"
   the short answer: 要点

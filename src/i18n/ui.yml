@@ -166,6 +166,7 @@ platform.extension: Browser extension
 platform.self-hosted: Self-hosted
 platform.desktop: Desktop
 platform.chrome: Chrome
+platform.edge: Edge
 platform.firefox: Firefox
 
 compare.title: "{a} vs {b}: privacy compared"
@@ -237,6 +238,7 @@ guides.english: English
 guides.topic.accounts: accounts
 guides.topic.email: email
 guides.topic.messaging: messaging
+guides.topic.browsing: browsing
 
 guide.read: "{time} read"
 guide.checked: Checked {date}

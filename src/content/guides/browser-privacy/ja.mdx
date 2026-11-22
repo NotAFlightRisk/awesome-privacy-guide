@@ -1,0 +1,184 @@
+---
+title: "ブラウザのおすすめプライバシー設定と、やらなくていい対策"
+description: "まずやることは3つです。ブラウザの各設定が実際に何を防ぐのか、Chrome・Firefox・Edgeのどこにあるのか、よく勧められるのにやらなくていい対策はどれかを説明します。"
+source: "005355daf12d8db9"
+sha: "60b4856a3e6f7c7669225bf838fa906a0b2d23cb"
+---
+
+<Short>
+トラッカーを自動でブロックしてくれるブラウザを使い、コンテンツブロッカーを1つ追加して、サードパーティCookieがブロックされているか確認しましょう。私たちならまずここから始めますし、多くの人はそれで十分です。このページでは、ほかの設定を自分で決められるように、それぞれの設定が実際に何を防ぐのかを説明します。よく勧められる対策のなかには、かえってブラウザを見分けやすくしてしまうものもあるので、[やらなくていい対策](#やらなくていい対策)も紹介します。
+</Short>
+
+## ブラウザ選びから
+
+プライバシー対策のチェックリストの多くは、ブラウザがまだ何もブロックしていなかった頃に書かれたものです。Safariは2020年から、サードパーティCookieを初期設定でブロックしています[^webkit]。Firefoxは2019年から既知のトラッカーを初期設定でブロックしていて、2022年からはパソコン版でサイトごとに専用のCookieの保管場所を用意しています。そのため、トラッカーがあるサイトで保存した情報を、別のサイトで読み取ることはできません[^tcp]。ChromeはシークレットモードではサードパーティCookieをブロックしますが、それ以外では自分で設定を変える必要があります[^chrome-cookies]。
+
+下のブラウザはリストのおすすめで、どれもインストールしたままの状態でトラッカーをブロックします。Tor Browserもリストに載っていますが、動作が遅く、うまく表示されないサイトもあるので、必要な人向けに[後のほう](#blend-in)で紹介します。
+
+<Picks section="Browsers" skip={['tor-browser']} />
+
+<Tip id="leave-chrome" priority="optional" effort={30} title="Chromeなら乗り換えを考える">
+最初に挙げた3つのうち2つが、Chromeではやりにくくなります。GoogleがサードパーティCookieを廃止しないと決めたため、自分でオフにするまでは有効なままです（詳しくは<Swap product="chrome">Chrome</Swap>のページで説明しています）。また2025年7月以降、Chromeは古い仕様で作られた拡張機能をすべて無効にしていて、もう一度有効にする方法はありません。完全版のuBlock Originもその1つで、Chromeで使えるのは、新しい仕様向けに作られたuBlock Origin Liteだけになりました[^mv2][^ubo]。Microsoftも、2026年末までにEdgeで同じことをする予定です[^ubo]。Mozillaは、Firefoxでは当面のあいだ古い拡張機能のサポートを続けるとしています[^moz-mv2]。
+
+<Swap product="edge">Edge</Swap>と<Swap product="opera">Opera</Swap>の問題点は、それぞれのページで説明しています。乗り換えるなら、保存しているパスワードを安全に移す方法を[パスワードマネージャーのガイド](/ja/guides/password-manager/)で紹介しています。
+</Tip>
+
+## 拡張機能1つで追跡を防ぐ
+
+<Tip id="one-blocker" priority="essential" effort={5} title="コンテンツブロッカーを1つ入れる">
+<Term slug="tracker">トラッカー</Term>とは、サイトが読み込む別の会社の小さなプログラムで、あなたの行動を記録するものです。コンテンツブロッカーは、リストに載っているトラッカーをそもそも読み込ませません。<App name="uBlock Origin" />は、EasyListやEasyPrivacyといったリストを使って広告、トラッカー、マルウェアを配布するサイトをブロックします。開発者によれば、Firefoxで使うのがいちばん効果的だそうです[^ubo]。
+
+Braveにはブロッカーが組み込まれているので、Braveを使っているなら追加する必要はありません。LibreWolfとMullvad Browserには最初からuBlock Originが入っているので、それはそのままにして、ほかのブロッカーは追加しないでください。
+</Tip>
+
+<Tip id="fewer-extensions" priority="essential" effort={5} title="使っていない拡張機能を削除する">
+閲覧したすべてのウェブサイト上のデータへのアクセスを求める拡張機能は、銀行のサイトも含め、開いたページをすべて読み取って書き換えることができます[^cws]。しかも、拡張機能は自動で更新されます。2024年のクリスマスイブには、何者かがCyberhavenの従業員にフィッシングを仕掛け、その人のChrome Web Storeのログイン情報を使って、同社の拡張機能の悪意あるバージョンを公開しました。自動で更新したブラウザにはそのバージョンが入り、1日あまりのあいだ、一部のサイトのCookieやログイン中のセッションを盗み取れる状態になっていました。Cyberhavenは、公開されている報告から見て、拡張機能の開発者を狙ったより大規模な攻撃の一部だったようだとしています[^cyberhaven]。
+
+`chrome://extensions`（Firefoxなら`about:addons`）を開いて、使っていないものを削除しましょう。また、表示するページに手を加える拡張機能は、サイトの側から気づかれることが多く、そのせいでブラウザがほかの人のものと見分けやすくなります[^arkenfox]。
+</Tip>
+
+## Cookie
+
+<Tip id="third-party-cookies" priority="essential" effort={2} title="サードパーティCookieをブロックする">
+<Term slug="third-party-cookies">サードパーティCookie</Term>は、今見ているサイトではなく、広告のようにページに埋め込まれたものが保存するCookieです。Google自身のヘルプでも、ほかのサイトでの行動を把握するのに使われることがあるとしています[^chrome-cookies]。SafariとFirefoxはすでに対処していますが[^webkit][^tcp]、ChromeとEdgeでは自分でブロックをオンにする必要があります。
+
+<Platforms>
+<Platform name="chrome">
+<Path>設定 --> プライバシーとセキュリティ --> サードパーティ Cookie</Path>を開き、「サードパーティの Cookie をブロックする」を選びます[^chrome-cookies]。バージョンによっては、このページの名前が「サードパーティ Cookie とサイトデータ」になっています[^chrome-optout]。
+</Platform>
+<Platform name="edge">
+<Path>設定 --> プライバシー/検索/サービス --> Cookie</Path>を開き、「サードパーティの Cookie をブロックする」をオンにします[^edge-cookies]。「プライバシー/検索/サービス」に戻って「トラッキング防止」を「厳重」にすると、サイトをまたぐトラッカーのほとんどをブロックできますが、一部の動画が再生されなかったり、一部のサイトにログインできなかったりすることがあります[^edge-tp]。
+</Platform>
+</Platforms>
+
+サードパーティCookieに頼っているサイトのなかには、うまく動かなくなるものもあります。Chromeでは、そのサイトを開いているときにアドレスバーから90日間だけ使用を許可することも、「サードパーティ Cookie の使用が許可されているサイト」に追加してずっと許可することもできます[^chrome-cookies]。
+</Tip>
+
+<Tip id="clear-on-close" priority="optional" effort={5} title="一部を除き、終了時にCookieを消す">
+サードパーティCookieをブロックしても、サイト自身が保存したCookieは残っているので、もう一度訪れたときにそのサイトにあなただと気づかれることは防げません。ブラウザを閉じるときにそれも削除するようにすれば、サイトが前回の訪問を覚えている可能性は低くなります[^chrome-ondevice]。ただし、ログインしてしまえば意味はありませんし、フィンガープリンティングにも効きません。そのうえ、どのサイトにもログインし直すことになり、Cookieのバナーもまた毎回表示されます。ログインしていないサイトに覚えられるのが気になる場合にだけ、やる価値があります。
+
+<Platforms>
+<Platform name="firefox">
+<Path>設定 --> プライバシーとセキュリティ</Path>の「Cookie とサイトデータ」で、「Firefox を閉じる度に Cookie とサイトデータを削除する」にチェックを入れます。ログインしたままにしておきたいサイトは、「例外を管理...」で追加してください[^ff-strings]。
+</Platform>
+<Platform name="chrome">
+<Path>設定 --> プライバシーとセキュリティ --> サイトの設定 --> その他のコンテンツの設定 --> デバイス上のサイトデータ</Path>を開き、「すべてのウィンドウを閉じるときに、サイトによりデバイスに保存されたデータを削除する」を選びます[^chrome-ondevice]。
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="private-windows" priority="optional" effort={1} title="プライベートウィンドウは何を誰から隠すのか">
+プライベートウィンドウ（Chromeではシークレットモード）では、どのサイトにも自動ではログインせず、ウィンドウを閉じるとそのあいだのCookieと履歴を忘れます。ただし、ダウンロードしたファイルや保存したブックマークは残ります。共有のパソコンを使うときや、プレゼントを探すときに便利です[^chrome-incognito]。一方で、アクセスしたサイトや、勤務先、学校、インターネットプロバイダーのようにネットワークを管理している相手からは、あなたの行動は隠れません[^chrome-incognito]。ChromeはシークレットモードでサードパーティCookieをブロックしますが[^chrome-cookies]、EFFは、そこでもフィンガープリンティングには何の効果もないと指摘しています[^cyt]。
+</Tip>
+
+## 接続
+
+<Tip id="https-only" priority="optional" effort={1} title="HTTPS-Onlyモードをオンにする">
+Chromeが読み込むページの約95%はHTTPSを使っています。HTTPSを使っていないページでは、攻撃者がアクセスを乗っ取り、代わりにマルウェアなどを読み込ませることができます。攻撃には暗号化されていないアクセスが1回あれば十分で、しかもサイトがすぐにHTTPSに切り替えるので、気づかないことがよくあります[^google-https]。HTTPS-Onlyモードでは、まずHTTPSで接続を試み、HTTPSを使っていないページを読み込む前に警告してくれます[^chrome-security]。
+
+<Platforms>
+<Platform name="chrome">
+<Path>設定 --> プライバシーとセキュリティ --> セキュリティ</Path>を開き、「安全な接続」で「常に安全な接続を使用する」をオンにします。ルーターの設定ページで何度も警告が出る場合は、「安全でない公開サイトについて警告する」を選んでください[^chrome-security]。Googleは2026年10月のChrome 154から、この設定を全員に対してオンにする予定だったので、すでにオンになっているかもしれません[^google-https]。
+</Platform>
+<Platform name="firefox">
+<Path>設定 --> プライバシーとセキュリティ</Path>の「HTTPS-Only モード」で、「すべてのウィンドウで HTTPS-Only モードを有効にする」を選びます[^ff-strings]。
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="secure-dns" priority="optional" effort={2} title="セキュアDNSを確実に使う">
+ブラウザはサイトを開く前に、そのサイトのアドレスを調べる必要があり、ふつうはその問い合わせがすべてインターネットプロバイダーから見えています。<Term slug="encrypted-dns">セキュアDNS</Term>を使うと、インターネットプロバイダーや同じネットワークにいるほかの人からは見えなくなります。その代わり、自分で選んだDNSプロバイダーには見えるので、そこを信頼することになります。また、どのサーバーに接続しているかは、インターネットプロバイダーからまだ見えます（詳しくは用語集で説明しています）。
+
+ChromeもFirefoxも、使えるときはセキュアDNSを使いますが、問題があると黙って通常の問い合わせに戻ってしまいます[^chrome-security][^ff-strings]。Chromeでは、DNSプロバイダーを自分で選べばそうならなくなります。Firefoxでは「最大限の保護」が必要です。
+
+<Platforms>
+<Platform name="chrome">
+<Path>設定 --> プライバシーとセキュリティ --> セキュリティ</Path>を開き、「詳細設定」の「セキュア DNS を使用する」で、プルダウンメニューから「現在のサービス プロバイダ」以外のプロバイダーを選びます。パソコンが勤務先に管理されている場合や、保護者による使用制限がオンになっている場合は使えません[^chrome-security]。
+</Platform>
+<Platform name="firefox">
+<Path>設定 --> プライバシーとセキュリティ</Path>の「DNS over HTTPS」で、「最大限の保護」とプロバイダーを選びます。こうすると、Firefoxは通常の問い合わせに戻る代わりに警告を出すようになり、セキュアDNSが使えないときはサイトが正しく読み込まれなくなります[^ff-strings]。
+</Platform>
+</Platforms>
+</Tip>
+
+## フィンガープリンティング
+
+サイトは、画面サイズやインストールしているフォントなど、ブラウザがどうしても伝えてしまう情報からも、ブラウザを見分けられます。こうした情報を十分に組み合わせると、ほとんどのブラウザはほかに同じものがない状態になるので、Cookieがなくても追跡できてしまいます[^cyt][^tor-fp]。これが<Term slug="browser-fingerprinting">ブラウザフィンガープリンティング</Term>です。EFFは、ブラウザがこれに対抗する方法を2つ挙げています。Tor Browserのように多くのブラウザと同じに見せるか、Braveのように毎回少しずつ違って見せるかです[^cyt]。
+
+<Tip id="blend-in" priority="advanced" effort={10} title="フィンガープリント対策は、拡張機能よりブラウザで">
+情報を偽ったりランダムに入れ替えたりする拡張機能は、かえってあなたを目立たせがちで、サイトから拡張機能そのものに気づかれることもよくあります[^arkenfox]。EFFが挙げている例は、Chromeだと名乗っているのに、ほかの情報はすべてSafariを示しているブラウザです。そうなると、同じ特徴を持つブラウザはほかに1つもないかもしれません[^cyt]。Tor Projectは、完璧に偽ることはできないとしていて、拡張機能を入れると追跡されやすくなることがあるため、Tor Browserに拡張機能を追加しないよう強く勧めています[^tor-fp][^tor-plugins]。
+
+格段に見分けられにくくしたいなら、Tor ProjectがMullvadと共同で、追跡とフィンガープリンティングを減らすために作った<App name="Mullvad Browser" />[^mullvad]か、<App name="Tor Browser" />を使いましょう。Tor Browserはそれに加えて、通信を<Term slug="tor">Tor</Term>経由で送ります。どちらにも拡張機能は追加しないでください。また、何かにログインしてしまえば、どちらも役に立たないことを覚えておいてください。
+</Tip>
+
+## 検索
+
+<Tip id="search-engine" priority="essential" effort={2} title="既定の検索エンジンを変える">
+検索した内容は、ブラウザが使っている検索エンジンに送られます。Googleがそれをどう扱うかは、<Swap product="google">Google Search</Swap>のページで説明しています。プライバシーを守れる検索エンジンとしてリストに載っているのは、次のとおりです。
+
+<Picks section="Search Engines" />
+
+Chromeでは、<Path>設定 --> 検索エンジン</Path>を開いて「変更」を選びます[^chrome-search]。Firefoxでは、<Path>設定 --> 検索</Path>の「既定の検索エンジン」にあります[^ff-strings]。Googleの検索結果のほうがいい場合は、Startpageでもおおむね同じ結果が表示されます。Startpageが代わりに取ってくるので、GoogleにIPアドレスは渡りません。
+</Tip>
+
+## ログインと同期
+
+<Tip id="sync" priority="optional" effort={5} title="同期するなら、運営会社が読めないようにする">
+同期をオンにすると、ブックマークや履歴などのコピーが運営会社のサーバーに保存され、どのデバイスでも使えるようになります。Firefox Syncは、Mozillaが手にすることのない鍵を使って、データをデバイス上で暗号化します[^ff-sync]。iCloudでは、Safariの履歴と開いているタブはエンドツーエンドで暗号化されますが、ブックマークが暗号化されるのは「高度なデータ保護」をオンにしてからです[^apple-adp]。
+
+Chromeでは、同期した履歴がGoogleアカウントの「ウェブとアプリのアクティビティ」にも追加されると、検索などほかのGoogleサービスのパーソナライズに使われることがあります。同期のパスフレーズを設定すれば、同期したChromeのデータをGoogleは読めなくなります。その代わり、すべてのデバイスでパスフレーズを入力する必要があり、履歴はアドレスバーに入力したアドレスしか同期されなくなります。<Path>設定 --> Google の設定</Path>でアカウント名を選び、「暗号化オプション」に進みます[^chrome-sync]。
+</Tip>
+
+<Tip id="gpc" priority="optional" effort={1} title="Global Privacy Controlをオンにする">
+これはブロックする機能ではなく、サイトへのリクエストなので、何かの読み込みを止めることはありません。アクセスするすべてのサイトに、データを販売したり共有したりしないよう求めます。カリフォルニア州では、州のプライバシー法の対象となる事業者は、これをオプトアウトとして扱わなければなりません[^ca-ccpa]。米国のほかの州の同様の法律のもとでも、同じ要求として扱われるよう作られています[^gpc]。それ以外の地域では、サイトがどう対応するかは、サイトと現地の法律によって変わります[^chrome-optout]。
+
+<Platforms>
+<Platform name="firefox">
+<Path>設定 --> プライバシーとセキュリティ</Path>の「ウェブサイトのプライバシー設定」で、「ウェブサイトにユーザーデータの販売や共有の拒否を通知する」にチェックを入れます[^ff-strings]。
+</Platform>
+<Platform name="chrome">
+Chromeでは今のところカリフォルニア州でしか提供されておらず、それもまだ順次提供中です。<Path>設定 --> プライバシーとセキュリティ --> サードパーティ Cookie とサイトデータ</Path>を開き、「サイトのリクエスト」で「データの使用に関するオプトアウト リクエストをサイトに送信する」をオンにします[^chrome-optout]。
+</Platform>
+</Platforms>
+</Tip>
+
+## やらなくていい対策
+
+代表的なのがDo Not Trackです。Googleのサイトも含め、ほとんどのサイトはこれを無視します[^chrome-dnt]。Appleは、フィンガープリンティングに使われるおそれがあるとしてSafariから削除しました[^safari-dnt]。Firefoxも削除し、代わりにGlobal Privacy Controlを案内しています[^ff-135]。
+
+HTTPS Everywhereは、今ではブラウザ自体が同じことをするため、2023年に提供を終えました[^arkenfox]。GhosteryやDisconnectのようなトラッカーブロッカーは、Firefoxがサイトごとに分けたCookieの保管場所ですでにやっていることとほとんど重複しています。Cookieを掃除する拡張機能に至っては、何もしないより悪いこともあります。arkenfoxは、FirefoxのCookie保護をオフにするようユーザーに指示していた拡張機能を見つけています[^arkenfox]。リスト自体の「ブラウザ拡張機能」のセクションでも、拡張機能はたいてい少しあれば足りるとしていて、詳しい理由はarkenfoxを参照するよう案内しています。
+
+ブラウザの情報を偽る拡張機能も同じで、理由は[フィンガープリンティング](#blend-in)の項目で説明したとおりです。
+
+設定はFirefox 160とChrome 159で確認しました。
+
+[^webkit]: [WebKit：サードパーティCookieの完全ブロックなど](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/)
+[^tcp]: [Mozilla：Firefox、包括的 Cookie 保護を世界中のより多くのユーザーに標準で提供](https://blog.mozilla.org/en/products/firefox/firefox-rolls-out-total-cookie-protection-by-default-to-all-users-worldwide/)
+[^chrome-cookies]: [Google Chrome ヘルプ：Chrome で Cookie を削除、許可、管理する](https://support.google.com/chrome/answer/95647?hl=ja)
+[^mv2]: [Chrome for Developers：Manifest V2のサポート終了スケジュール](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+[^ubo]: [GitHubのuBlock Origin](https://github.com/gorhill/uBlock)
+[^moz-mv2]: [Mozilla Add-ons Blog：Manifest V3とManifest V2、2024年3月の最新情報](https://blog.mozilla.org/addons/2024/03/13/manifest-v3-manifest-v2-march-2024-update/)
+[^cws]: [Chrome Web Store ヘルプ：アプリや拡張機能によりリクエストされる権限](https://support.google.com/chrome_webstore/answer/186213?hl=ja)
+[^cyberhaven]: [Cyberhaven：CyberhavenのChrome拡張機能のセキュリティインシデントと当社の対応](https://www.cyberhaven.com/blog/cyberhavens-chrome-extension-security-incident-and-what-were-doing-about-it)
+[^arkenfox]: [arkenfox wiki：拡張機能](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)
+[^chrome-optout]: [Google Chrome ヘルプ：データの使用に関するオプトアウト リクエストを送信する](https://support.google.com/chrome/answer/18797212?hl=ja)
+[^edge-cookies]: [Microsoft サポート：Microsoft Edge で Cookie を管理する](https://support.microsoft.com/ja-jp/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09)
+[^edge-tp]: [Microsoft サポート：Microsoft Edge でのトラッキング予防についての詳細](https://support.microsoft.com/ja-jp/microsoft-edge/learn-about-tracking-prevention-in-microsoft-edge-5ac125e8-9b90-8d59-fa2c-7f2e9a44d869)
+[^chrome-ondevice]: [Google Chrome ヘルプ：Chrome の「デバイス上のサイトデータ」について](https://support.google.com/chrome/answer/14114868?hl=ja)
+[^ff-strings]: [Firefox 160のソース：設定ページのテキスト](https://github.com/mozilla-firefox/firefox/blob/FIREFOX_160_0_1_RELEASE/browser/locales/en-US/browser/preferences/preferences.ftl)
+[^chrome-incognito]: [Google Chrome ヘルプ：シークレット モードでブラウジングする](https://support.google.com/chrome/answer/9845881?hl=ja)
+[^cyt]: [EFF Cover Your Tracks：仕組みを知る](https://coveryourtracks.eff.org/learn)
+[^google-https]: [Google Security Blog：HTTPSをデフォルトに](https://security.googleblog.com/2025/10/https-by-default.html)
+[^chrome-security]: [Google Chrome ヘルプ：Chrome の安全性とセキュリティを管理する](https://support.google.com/chrome/answer/10468685?hl=ja)
+[^tor-fp]: [Tor Project：フィンガープリンティング対策](https://support.torproject.org/tor-browser/features/fingerprinting-protections/)
+[^tor-plugins]: [Tor Browserマニュアル：プラグイン](https://tb-manual.torproject.org/plugins/)
+[^mullvad]: [Mullvad：Mullvad Browser](https://mullvad.net/en/browser)
+[^chrome-search]: [Google Chrome ヘルプ：既定の検索エンジンとサイト内検索のショートカットを設定する](https://support.google.com/chrome/answer/95426?hl=ja)
+[^ff-sync]: [Mozilla Hacks：プライバシーを前提にした設計、Firefox Syncの作り方](https://hacks.mozilla.org/2018/11/firefox-sync-privacy/)
+[^apple-adp]: [Apple サポート：iCloudのデータセキュリティの概要](https://support.apple.com/ja-jp/102651)
+[^chrome-sync]: [Google Chrome ヘルプ：すべてのデバイスで同じブックマーク、パスワード、その他の設定を利用する](https://support.google.com/chrome/answer/165139?hl=ja)
+[^ca-ccpa]: [カリフォルニア州司法長官：カリフォルニア州消費者プライバシー法](https://oag.ca.gov/privacy/ccpa)
+[^gpc]: [Global Privacy Control](https://globalprivacycontrol.org/)
+[^chrome-dnt]: [Google Chrome ヘルプ：「Do Not Track」をオンまたはオフにする](https://support.google.com/chrome/answer/2790761?hl=ja)
+[^safari-dnt]: [Apple Developer：Safari 12.1 リリースノート](https://developer.apple.com/documentation/safari-release-notes/safari-12_1-release-notes)
+[^ff-135]: [Firefox 135 リリースノート](https://www.firefox.com/en-US/firefox/135.0/releasenotes/)
