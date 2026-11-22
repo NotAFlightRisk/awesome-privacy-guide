@@ -1,0 +1,82 @@
+---
+title: "Serve davvero una VPN? Cosa nasconde e cosa no"
+description: "Una VPN nasconde al tuo provider internet i siti che visiti, ma li mostra all'azienda della VPN. Quando conviene, cosa non nasconde e come sceglierne una."
+source: "7b52675337f70451"
+sha: "9721e2c79c8a41b04e745a5c6bda60c6b13df9e5"
+---
+
+<Short>
+Per gran parte della navigazione quotidiana, probabilmente no. Una VPN cambia il tuo indirizzo IP e nasconde quali siti visiti al tuo provider internet e a chi gestisce il Wi-Fi. Quello che prima vedeva il provider, però, a quel punto lo vede l'azienda della VPN, quindi ne vale la pena solo se ti fidi della VPN più che [del tuo provider internet](#hide-from-your-provider) o [della rete a cui sei collegato](#untrusted-networks), oppure se devi [aggirare un blocco](#get-round-blocks). Su [cookie, account e fingerprinting](#cosa-non-fa) non ha nessun effetto.
+</Short>
+
+## Cosa nasconde una VPN, e a chi
+
+Una <Term slug="vpn">VPN</Term> fa passare il tuo traffico internet attraverso un tunnel cifrato fino al server della VPN, e da lì il traffico esce su internet, quindi i siti vedono l'indirizzo IP della VPN invece del tuo.[^eff] Il tuo provider internet e chi gestisce il Wi-Fi vedono solo il tunnel. Al loro posto, è l'azienda della VPN a vedere dove va il tuo traffico.[^eff]
+
+HTTPS nasconde già molto anche senza VPN. Circa il 95% delle pagine che Chrome carica lo usa,[^google-https] e su queste chi si trova lungo il percorso non può vedere quali pagine leggi, le tue credenziali o i tuoi messaggi. Di solito, però, può ancora vedere i nomi dei siti e quando li visiti.[^eff] L'azienda della VPN vede le stesse cose, più tutto quello che non è cifrato.
+
+## Cosa non fa
+
+Una VPN non è uno strumento per l'anonimato. Siti e app possono comunque riconoscerti dai cookie, dai pixel di tracciamento, dagli account in cui hai fatto l'accesso e dal <Term slug="browser-fingerprinting">fingerprinting</Term>, e un'app che ha accesso alla posizione può comunque usare il GPS del telefono.[^eff] La [guida alla privacy del browser](/it/guide/browser-privacy/) si occupa della parte che riguarda il browser. L'EFF dice che le pubblicità delle VPN esagerano di molto, presentandole come la soluzione contro malware, sorveglianza dei governi e tracciamento online, mentre quello per cui servono davvero è far passare la tua connessione attraverso un'altra rete.[^eff]
+
+## Quando ne vale la pena
+
+<Tip id="hide-from-your-provider" priority="optional" effort={15} title="Nascondere la tua navigazione al provider internet">
+Di solito il tuo provider internet può vedere i nomi dei siti che visiti. Quanto questo conti dipende da dove vivi.
+
+<Region place="us">
+Nel 2021 la FTC ha esaminato sei provider internet che coprivano circa il 98% del mercato statunitense di internet mobile, e ha scoperto che diversi di loro combinavano i dati di navigazione con altri dati per mostrare pubblicità mirata, e inserivano i clienti in categorie sensibili come l'origine razziale e l'orientamento sessuale.[^ftc-isp]
+</Region>
+
+<Region place="uk">
+In base all'Investigatory Powers Act, la legge britannica sui poteri di indagine, il ministro competente può ordinare ai provider internet di conservare per un massimo di 12 mesi i «registri delle connessioni internet», da cui risulta a quali servizi ti sei collegato.[^ipa-87][^ipa-62]
+</Region>
+
+Con una VPN, il tuo provider internet vede il tunnel e l'azienda della VPN vede i siti, e questo è un passo avanti solo se ti fidi della VPN più che del provider. Anche le aziende delle VPN ricevono richieste di dati per vie legali, e l'EFF fa notare che molte conservano tanti dati quanti ne conservano i provider internet.[^eff]
+</Tip>
+
+<Tip id="untrusted-networks" priority="optional" effort={5} title="Su una rete di cui non ti fidi">
+Il Wi-Fi pubblico è più sicuro di quanto lascino intendere le pubblicità delle VPN. La FTC statunitense dice che, visto che ormai la crittografia è così diffusa, di solito il Wi-Fi pubblico è sicuro.[^ftc-wifi] Chi si trova nel raggio della rete potrebbe comunque vedere i nomi dei siti che visiti, proprio come a casa può vederli il tuo provider internet. L'EFF consiglia una VPN quando non sai chi gestisce la rete, purché sia una VPN di cui ti fidi.[^eff]
+</Tip>
+
+<Tip id="get-round-blocks" priority="optional" effort={5} title="Aggirare un blocco">
+Con una VPN sembra che ti colleghi dal posto in cui si trova il suo server, quindi può farti superare alcuni blocchi, come quelli di una rete scolastica che blocca certi siti, o le restrizioni di alcuni paesi. Non funziona con tutti, però. Alcuni paesi vietano le VPN, quindi tieniti aggiornato sulle regole del posto in cui ti trovi prima di farci affidamento, e i servizi di streaming bloccano sempre più VPN.[^eff]
+</Tip>
+
+## Quando è meglio usare Tor
+
+Se una rete diversa non basta e ti serve più anonimato, <Term slug="tor">Tor</Term> è lo strumento migliore. L'azienda della VPN può vedere il tuo traffico, mentre Tor lo fa passare attraverso diversi server, e nessuno di questi, da solo, può vedere la tua navigazione.[^eff] È più lento, e alcuni siti lo bloccano o con Tor non funzionano bene. Se lo usi per accedere a un account, quel sito sa comunque chi sei.
+
+<Picks section="Anonymity Networks" limit={1} />
+
+## Come sceglierne una
+
+<Tip id="pick-on-evidence" priority="essential" effort={30} title="Scegli in base a quello che puoi verificare, non a quello che promette">
+Una VPN sta in un punto da cui può vedere tutto il tuo traffico, e l'EFF avverte che una VPN poco raccomandabile potrebbe raccoglierlo di proposito.[^eff] Molte VPN dicono di non tenere nessun log, ma per l'EFF non è una garanzia. Il suo consiglio è controllare se l'azienda è già stata scoperta a ingannare i propri clienti e cercare audit indipendenti resi pubblici, anche se dopo un audit niente impedisce a un'azienda di cambiare comportamento.[^eff] Conta anche in quali paesi opera l'azienda, perché sono le leggi di quei paesi a stabilire quando deve consegnare i dati (<Term slug="jurisdiction">giurisdizione</Term>).[^eff]
+
+Se paghi con la carta, il servizio VPN sa chi sei. L'EFF suggerisce invece una carta regalo o una carta virtuale usa e getta,[^eff] e <App name="Mullvad" /> accetta i contanti. Quando ti colleghi, però, il servizio VPN vede comunque il tuo indirizzo IP.[^eff]
+
+Fai attenzione alle app VPN gratuite. L'EFF dice che alcune VPN gratuite vendono i tuoi dati, e che una VPN non è sicura solo perché è su un app store.[^eff] Uno studio del 2016 su 283 app Android che usano la funzione VPN del telefono ha scoperto che il 75% conteneva codice di tracciamento di terze parti, che VirusTotal ne segnalava più del 38% come possibile malware e che il 18% non cifrava affatto il traffico.[^csiro] È uno studio vecchio, ma mostra cosa può nascondersi dietro un download gratuito.
+
+Queste sono le VPN consigliate dalla lista:
+
+<Picks section="Virtual Private Networks" />
+
+Per confrontare le condizioni delle VPN più grandi, [fineprint.peng.ly](https://fineprint.peng.ly/) le mette una accanto all'altra. Se hai già un abbonamento a <Swap product="expressvpn">ExpressVPN</Swap>, <Swap product="nordvpn">NordVPN</Swap>, <Swap product="ipvanish">IPVanish</Swap> o <Swap product="hotspot-shield">Hotspot Shield</Swap>, le loro pagine spiegano cosa è venuto fuori su ognuna.
+</Tip>
+
+## Le impostazioni che contano
+
+<Tip id="kill-switch-and-leaks" priority="essential" effort={5} title="Attiva il kill switch, poi controlla che non ci siano perdite">
+Se la VPN cade per un attimo, il tuo dispositivo può continuare a usare la connessione normale finché la VPN non si ricollega, a meno che il <Term slug="kill-switch">kill switch</Term> della VPN non sia attivo. Cercalo nelle impostazioni dell'app.
+
+Le perdite capitano. Nello stesso studio del 2016, l'84% delle app non faceva passare il traffico IPv6 nel tunnel, e il 66% non ci faceva passare le richieste DNS.[^csiro] Con la VPN attiva, apri <App name="IP Leak Test" /> e controlla che l'indirizzo IP e la posizione che mostra siano quelli della VPN e non i tuoi, anche nel test <Term slug="webrtc-leak">WebRTC</Term>. Se nella parte sul DNS compare il tuo provider internet, si tratta di una <Term slug="dns-leak">perdita DNS</Term>.
+</Tip>
+
+[^eff]: [EFF Surveillance Self-Defense: scegliere la VPN giusta per te](https://ssd.eff.org/module/choosing-vpn-thats-right-you)
+[^google-https]: [Google Security Blog: HTTPS per impostazione predefinita](https://security.googleblog.com/2025/10/https-by-default.html)
+[^ftc-isp]: [FTC: secondo un rapporto dello staff della FTC, molti provider internet raccolgono enormi quantità di dati personali](https://www.ftc.gov/news-events/news/press-releases/2021/10/ftc-staff-report-finds-many-internet-service-providers-collect-troves-personal-data-users-have-few)
+[^ipa-87]: [Investigatory Powers Act 2016, sezione 87: i poteri di imporre la conservazione di determinati dati](https://www.legislation.gov.uk/ukpga/2016/25/section/87)
+[^ipa-62]: [Investigatory Powers Act 2016, sezione 62: le limitazioni relative ai registri delle connessioni internet](https://www.legislation.gov.uk/ukpga/2016/25/section/62)
+[^ftc-wifi]: [FTC: le reti Wi-Fi pubbliche sono sicure? Cosa devi sapere](https://consumer.ftc.gov/articles/are-public-wi-fi-networks-safe-what-you-need-know)
+[^csiro]: [Ikram et al.: un'analisi dei rischi per la privacy e la sicurezza delle app Android che usano il permesso VPN](https://research.csiro.au/isp/wp-content/uploads/sites/106/2016/08/paper-1.pdf)
