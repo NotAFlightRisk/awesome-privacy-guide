@@ -1,21 +1,21 @@
 ---
 title: "¿Necesitas una VPN? Para qué sirve y qué no oculta"
-description: "Una VPN cambia quién puede ver qué sitios visitas: pasa de tu proveedor de internet a la empresa de la VPN. Cuándo vale la pena, qué no puede ocultar y cómo elegir una."
+description: "Con una VPN, los sitios que visitas ya no los ve tu proveedor de internet, sino la empresa de la VPN. Cuándo vale la pena, qué no oculta y cómo elegir una."
 ---
 
 <Short>
-Para la mayor parte de lo que haces a diario en internet, seguramente no. Una VPN cambia tu dirección IP y oculta qué sitios visitas a tu proveedor de internet y a quien gestione la red Wi-Fi. Pero entonces es la empresa de la VPN la que ve lo que antes veía tu proveedor, así que solo vale la pena si confías más en la VPN que en [tu proveedor](#hide-from-your-provider) o en [la red que estás usando](#untrusted-networks), o si necesitas [sortear un bloqueo](#get-round-blocks). No hace nada respecto a [las cookies, las cuentas ni la huella digital](#lo-que-no-hace).
+Para la mayor parte de lo que haces a diario en internet, probablemente no. Una VPN cambia tu dirección IP y oculta qué sitios visitas a tu proveedor de internet y a quien gestione la red Wi-Fi. Pero entonces es la empresa de la VPN la que ve lo que antes veía tu proveedor, así que solo vale la pena si confías más en la VPN que en [tu proveedor](#hide-from-your-provider) o en [la red que estás usando](#untrusted-networks), o si necesitas [sortear un bloqueo](#get-round-blocks). No hace nada contra [las cookies, las cuentas ni la huella digital del navegador](#lo-que-no-hace).
 </Short>
 
-## Qué oculta una VPN, y de quién
+## Qué oculta una VPN y a quién
 
-Una <Term slug="vpn">VPN</Term> envía tu tráfico de internet por un túnel cifrado hasta el servidor de la VPN, y sale a internet desde ahí, así que los sitios ven la dirección IP de la VPN en lugar de la tuya[^eff]. Tu proveedor de internet y quien gestione la red Wi-Fi solo ven el túnel. En cambio, la empresa de la VPN ve adónde va tu tráfico[^eff].
+Una <Term slug="vpn">VPN</Term> envía tu tráfico de internet por un túnel cifrado hasta su servidor, y desde ahí ese tráfico sale a internet, así que los sitios ven la dirección IP de la VPN en lugar de la tuya[^eff]. Tu proveedor de internet y quien gestione la red Wi-Fi solo ven el túnel. En cambio, la empresa de la VPN ve adónde va tu tráfico[^eff].
 
 Incluso sin VPN, HTTPS ya oculta mucho. Alrededor del 95 % de las páginas que carga Chrome lo usan[^google-https], y en esas páginas, quienes estén entre tú y el sitio no pueden ver qué páginas lees, tus datos de inicio de sesión ni tus mensajes. Lo que normalmente sí pueden ver es el nombre de los sitios y cuándo los visitas[^eff]. La empresa de la VPN ve eso mismo, además de todo lo que no vaya cifrado.
 
 ## Lo que no hace
 
-Una VPN no es una herramienta de anonimato. Los sitios y las apps pueden seguir reconociéndote por las cookies, los píxeles de seguimiento, las cuentas en las que tienes la sesión iniciada y la <Term slug="browser-fingerprinting">huella digital del navegador</Term>, y una app con acceso a tu ubicación puede seguir usando el GPS de tu teléfono[^eff]. La [guía de privacidad del navegador](/es/guias/browser-privacy/) se ocupa de lo que depende del navegador. La EFF dice que los anuncios de VPN exageran mucho al presentarlas como la solución al malware, a la vigilancia de los gobiernos y al rastreo en internet, y que para lo que sirven de verdad es para hacer pasar tu conexión por otra red[^eff].
+Una VPN no es una herramienta de anonimato. Los sitios y las apps pueden seguir reconociéndote por las cookies, los píxeles de seguimiento, las cuentas en las que tienes la sesión iniciada y la <Term slug="browser-fingerprinting">huella digital del navegador</Term>, y una app con acceso a tu ubicación puede seguir usando el GPS de tu teléfono[^eff]. La [guía de privacidad del navegador](/es/guias/browser-privacy/) se ocupa de esa parte. La EFF dice que los anuncios de VPN exageran mucho al presentarlas como la solución al malware, a la vigilancia de los gobiernos y al rastreo en internet, y que para lo que sirven de verdad es para hacer pasar tu conexión por otra red[^eff].
 
 ## Cuándo vale la pena
 
@@ -23,14 +23,14 @@ Una VPN no es una herramienta de anonimato. Los sitios y las apps pueden seguir 
 Normalmente, tu proveedor puede ver el nombre de los sitios que visitas. Que eso importe o no depende de dónde vivas.
 
 <Region place="us">
-En 2021, la FTC analizó a seis proveedores que cubrían cerca del 98 % del mercado de internet móvil de Estados Unidos, y descubrió que varios de ellos combinaban los datos de navegación con otros datos para mostrar anuncios dirigidos, y que clasificaban a sus clientes en categorías sensibles, como la raza o la orientación sexual[^ftc-isp].
+En 2021, la Comisión Federal de Comercio (FTC) analizó a seis proveedores que representaban cerca del 98 % del mercado de internet móvil de Estados Unidos, y descubrió que varios de ellos combinaban los datos de navegación con otros datos para mostrar anuncios dirigidos, y que clasificaban a sus clientes en categorías sensibles, como la raza o la orientación sexual[^ftc-isp].
 </Region>
 
 <Region place="uk">
-La Investigatory Powers Act, la ley británica de poderes de investigación, permite al ministro competente ordenar a los proveedores que guarden durante un máximo de 12 meses los «registros de conexión a internet», que muestran a qué servicios te has conectado[^ipa-87][^ipa-62].
+La Investigatory Powers Act, la ley británica de poderes de investigación, permite al ministro competente ordenar a los proveedores que guarden durante un máximo de 12 meses los «registros de conexión a internet», que muestran a qué servicios te conectas[^ipa-87][^ipa-62].
 </Region>
 
-Con una VPN, tu proveedor ve el túnel y la empresa de la VPN ve los sitios, lo que solo supone una mejora si confías más en la VPN. Las empresas de VPN también reciben requerimientos legales, y la EFF señala que muchas guardan tantos datos como los proveedores de internet[^eff].
+Con una VPN, tu proveedor ve el túnel y la empresa de la VPN ve los sitios, lo que solo supone una mejora si confías más en la VPN. Las empresas de VPN también reciben peticiones de datos de las autoridades, y la EFF señala que muchas guardan tantos datos como los proveedores de internet[^eff].
 </Tip>
 
 <Tip id="untrusted-networks" priority="optional" effort={5} title="En una red en la que no confías">
@@ -38,12 +38,12 @@ Las redes Wi-Fi públicas son más seguras de lo que dan a entender los anuncios
 </Tip>
 
 <Tip id="get-round-blocks" priority="optional" effort={5} title="Sortear un bloqueo">
-Una VPN hace que parezca que te conectas desde el lugar donde está su servidor, así que puede ayudarte a sortear algunos bloqueos, como los de la red de un centro de estudios que bloquea ciertos sitios o las restricciones de algunos países. No los evita todos. Algunos países prohíben las VPN, así que mantente al tanto de las normas del lugar donde estés antes de depender de una, y las plataformas de streaming bloquean cada vez más VPN[^eff].
+Una VPN hace que parezca que te conectas desde el lugar donde está su servidor, así que con ella puedes sortear algunos bloqueos, como los de la red de un centro de estudios que bloquea ciertos sitios o las restricciones de algunos países. No los evita todos. Algunos países prohíben las VPN, así que mantente al tanto de las normas del lugar donde estés antes de depender de una, y las plataformas de streaming bloquean cada vez más VPN[^eff].
 </Tip>
 
 ## Cuándo es mejor usar Tor
 
-Si no te basta con usar otra red y necesitas más anonimato, <Term slug="tor">Tor</Term> es la mejor herramienta. La empresa de la VPN puede ver tu tráfico, pero Tor lo envía a través de varios servidores, y ninguno de ellos puede ver por sí solo tu navegación[^eff]. Es más lento, y algunos sitios lo bloquean o no funcionan bien en él. Si inicias sesión en una cuenta desde Tor, ese sitio sigue sabiendo quién eres.
+Si no te basta con usar otra red y necesitas más anonimato, <Term slug="tor">Tor</Term> es mejor opción. La empresa de la VPN puede ver tu tráfico, pero Tor lo envía a través de varios servidores, y ninguno de ellos puede ver por sí solo tu navegación[^eff]. Es más lento, y algunos sitios lo bloquean o no funcionan bien en él. Si inicias sesión en una cuenta desde Tor, el sitio de esa cuenta sabe igualmente quién eres.
 
 <Picks section="Anonymity Networks" limit={1} />
 
@@ -54,7 +54,7 @@ Una VPN está en un punto desde el que puede ver todo tu tráfico, y la EFF avis
 
 Si pagas con tarjeta, la VPN sabe quién eres. La EFF propone usar en su lugar una tarjeta de regalo o un número de tarjeta de un solo uso[^eff], y <App name="Mullvad" /> acepta pagos en efectivo. Aun así, la VPN sigue viendo tu dirección IP cuando te conectas[^eff].
 
-Desconfía de las apps de VPN gratuitas. La EFF dice que algunas VPN gratuitas venden tus datos, y que el hecho de que una esté en una tienda de apps no quiere decir que sea segura[^eff]. Un estudio de 2016 sobre 283 apps de Android que usan la función de VPN del teléfono descubrió que el 75 % incluía código de rastreo de terceros, que VirusTotal marcó más del 38 % como posible malware y que el 18 % ni siquiera cifraba el tráfico[^csiro]. Ya tiene unos años, pero muestra lo que puede esconderse detrás de una descarga gratuita.
+Desconfía de las apps de VPN gratuitas. La EFF dice que algunas VPN gratuitas venden tus datos, y que el hecho de que una esté en una tienda de apps no quiere decir que sea segura[^eff]. Un estudio de 2016 sobre 283 apps de Android que usan la función de VPN del teléfono descubrió que el 75 % incluía código de rastreo de terceros, que VirusTotal marcó más del 38 % como posible malware y que el 18 % ni siquiera cifraba el tráfico[^csiro]. Ya tiene sus años, pero muestra lo que puede esconderse detrás de una descarga gratuita.
 
 Estas son las que recomienda la lista:
 
@@ -66,9 +66,9 @@ Para comparar las condiciones de las grandes VPN, [fineprint.peng.ly](https://fi
 ## Ajustes que importan
 
 <Tip id="kill-switch-and-leaks" priority="essential" effort={5} title="Activa el kill switch y luego comprueba si hay fugas">
-Si la VPN se desconecta un momento, tu dispositivo puede seguir usando tu conexión normal hasta que vuelva a conectarse, a menos que tengas activado el <Term slug="kill-switch">kill switch</Term> de la VPN. Búscalo en los ajustes de la app.
+Si la VPN se desconecta un momento, tu dispositivo puede seguir usando tu conexión normal hasta que la VPN vuelva a conectarse, a menos que el <Term slug="kill-switch">kill switch</Term> de la VPN esté activado. Búscalo en la configuración de la app.
 
-Las fugas ocurren. En ese mismo estudio de 2016, el 84 % de las apps no enviaba el tráfico IPv6 por el túnel, y el 66 % no enviaba por él las consultas DNS[^csiro]. Con la VPN activada, abre <App name="IP Leak Test" /> y comprueba que la dirección IP y la ubicación que muestra son las de la VPN y no las tuyas, también en su prueba de <Term slug="webrtc-leak">WebRTC</Term>. Si en la parte de DNS aparece tu propio proveedor de internet, es una <Term slug="dns-leak">fuga de DNS</Term>.
+Las fugas pasan de verdad. En ese mismo estudio de 2016, el 84 % de las apps no enviaba el tráfico IPv6 por el túnel, y el 66 % no enviaba por él las consultas DNS[^csiro]. Con la VPN activada, abre <App name="IP Leak Test" /> y comprueba que la dirección IP y la ubicación que muestra son las de la VPN y no las tuyas, también en su prueba de <Term slug="webrtc-leak">WebRTC</Term>. Si en la parte de DNS aparece tu propio proveedor de internet, es una <Term slug="dns-leak">fuga de DNS</Term>.
 </Tip>
 
 [^eff]: [EFF Surveillance Self-Defense: Elegir la VPN adecuada para ti](https://ssd.eff.org/module/choosing-vpn-thats-right-you)
