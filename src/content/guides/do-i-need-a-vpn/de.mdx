@@ -1,17 +1,17 @@
 ---
 title: "Ist ein VPN sinnvoll? Was es verbirgt und was nicht"
-description: "Mit einem VPN sieht nicht mehr dein Internetanbieter, welche Websites du besuchst, sondern die VPN-Firma. Wann sich das lohnt, was ein VPN nicht verbirgt und worauf du bei der Auswahl achten solltest."
+description: "Mit VPN sieht die VPN-Firma statt deines Internetanbieters, welche Websites du besuchst. Wann sich das lohnt, was es nicht verbirgt und wie du eins findest."
 ---
 
 <Short>
-Fürs alltägliche Surfen wahrscheinlich nicht. Ein VPN ändert deine IP-Adresse und verbirgt vor deinem Internetanbieter und vor dem, der das WLAN betreibt, welche Websites du besuchst. Dafür sieht dann aber die VPN-Firma, was vorher dein Anbieter gesehen hat, und deshalb lohnt es sich nur, wenn du dem VPN mehr vertraust als [deinem Anbieter](#hide-from-your-provider) oder [dem Netzwerk, in dem du gerade bist](#untrusted-networks), oder wenn du [eine Sperre umgehen](#get-round-blocks) musst. An [Cookies, Konten und Fingerprinting](#was-ein-vpn-nicht-kann) ändert es nichts.
+Für das meiste, was du im Alltag im Netz machst, wahrscheinlich nicht. Ein VPN ändert deine IP-Adresse und verbirgt vor deinem Internetanbieter und vor dem Betreiber des WLANs, welche Websites du besuchst. Dafür sieht dann aber die VPN-Firma, was vorher dein Anbieter gesehen hat, und deshalb lohnt es sich nur, wenn du dem VPN mehr vertraust als [deinem Anbieter](#hide-from-your-provider) oder [dem Netzwerk, in dem du gerade bist](#untrusted-networks), oder wenn du [eine Sperre umgehen](#get-round-blocks) musst. An [Cookies, Konten und Fingerprinting](#was-ein-vpn-nicht-kann) ändert es nichts.
 </Short>
 
 ## Was ein VPN verbirgt und vor wem
 
-Ein <Term slug="vpn">VPN</Term> leitet deinen Datenverkehr durch einen verschlüsselten Tunnel zum VPN-Server, und erst von dort geht er weiter ins Internet, sodass Websites die IP-Adresse des VPN-Servers sehen statt deiner.[^eff] Dein Internetanbieter und der Betreiber des WLANs sehen nur den Tunnel. Wohin dein Datenverkehr geht, sieht stattdessen die VPN-Firma.[^eff]
+Ein <Term slug="vpn">VPN</Term> leitet deinen Datenverkehr durch einen verschlüsselten Tunnel zum VPN-Server, und erst von dort geht er weiter ins Internet, sodass Websites statt deiner die IP-Adresse des VPN-Servers sehen.[^eff] Dein Internetanbieter und der Betreiber des WLANs sehen nur den Tunnel. Wohin dein Datenverkehr geht, sieht stattdessen die VPN-Firma.[^eff]
 
-HTTPS verbirgt auch ohne VPN schon eine Menge. Etwa 95 % der Seiten, die Chrome lädt, nutzen es,[^google-https] und bei diesen Seiten kann niemand auf dem Weg zwischen dir und der Website sehen, welche Seiten du liest, und auch nicht deine Anmeldedaten oder Nachrichten. Was dort meist trotzdem zu sehen ist, sind die Namen der Websites und wann du sie besuchst.[^eff] Die VPN-Firma bekommt genau diesen Einblick, und dazu alles, was nicht verschlüsselt ist.
+HTTPS verbirgt auch ohne VPN schon eine Menge. Etwa 95 % der Seiten, die Chrome lädt, nutzen es,[^google-https] und bei diesen Seiten kann niemand auf dem Weg zwischen dir und der Website sehen, welche Seiten du liest, und auch nicht deine Anmeldedaten oder Nachrichten. Was man unterwegs meist trotzdem sehen kann, sind die Namen der Websites und wann du sie besuchst.[^eff] Die VPN-Firma bekommt genau diesen Einblick, und dazu alles, was nicht verschlüsselt ist.
 
 ## Was ein VPN nicht kann
 
@@ -23,38 +23,38 @@ Ein VPN ist kein Werkzeug für Anonymität. Websites und Apps können dich weite
 Dein Anbieter sieht in der Regel die Namen der Websites, die du besuchst. Ob das eine Rolle spielt, hängt davon ab, wo du wohnst.
 
 <Region place="us">
-2021 hat sich die US-Verbraucherschutzbehörde FTC sechs Anbieter angesehen, die zusammen etwa 98 % des mobilen Internets in den USA abdecken, und festgestellt, dass mehrere von ihnen Daten über das Surfverhalten mit anderen Daten zusammenführten, um gezielt Werbung zu schalten, und ihre Kunden in sensible Kategorien wie ethnische Herkunft und sexuelle Orientierung einteilten.[^ftc-isp]
+2021 hat die US-Verbraucherschutzbehörde FTC sechs Anbieter untersucht, die zusammen etwa 98 % des mobilen Internets in den USA abdecken, und festgestellt, dass mehrere von ihnen Daten über das Surfverhalten mit anderen Daten zusammenführten, um gezielt Werbung zu schalten, und ihre Kunden in sensible Kategorien wie ethnische Herkunft und sexuelle Orientierung einteilten.[^ftc-isp]
 </Region>
 
 <Region place="uk">
 Nach dem Investigatory Powers Act, dem britischen Überwachungsgesetz, kann der zuständige Minister Anbieter verpflichten, bis zu zwölf Monate lang „Internet Connection Records“ aufzubewahren, aus denen hervorgeht, mit welchen Diensten du dich verbunden hast.[^ipa-87][^ipa-62]
 </Region>
 
-Mit einem VPN sieht dein Anbieter den Tunnel und die VPN-Firma die Websites, und das ist nur dann besser, wenn du dem VPN mehr vertraust. Auch VPN-Firmen bekommen Anfragen von Behörden, und die EFF weist darauf hin, dass viele genauso viel speichern wie Internetanbieter.[^eff]
+Mit einem VPN sieht dein Anbieter den Tunnel und die VPN-Firma die Websites, und das ist nur dann besser, wenn du dem VPN mehr vertraust. Auch VPN-Firmen bekommen Auskunftsersuchen von Behörden und Gerichten, und die EFF weist darauf hin, dass viele genauso viel speichern wie Internetanbieter.[^eff]
 </Tip>
 
 <Tip id="untrusted-networks" priority="optional" effort={5} title="In einem Netzwerk, dem du nicht traust">
-Öffentliches WLAN ist sicherer, als die Werbung für VPNs glauben machen will. Laut der FTC ist es meist sicher, weil Verschlüsselung inzwischen so weit verbreitet ist.[^ftc-wifi] Wer in Reichweite ist, könnte trotzdem die Namen der Websites sehen, die du besuchst, genau wie zu Hause dein Anbieter. Die EFF empfiehlt ein VPN, wenn du nicht weißt, wer das Netzwerk betreibt, solange es ein VPN ist, dem du vertraust.[^eff]
+Öffentliches WLAN ist sicherer, als die Werbung für VPNs glauben machen will. Laut der FTC ist es meist sicher, weil Verschlüsselung inzwischen so weit verbreitet ist.[^ftc-wifi] Wer in Reichweite ist, könnte trotzdem die Namen der Websites sehen, die du besuchst, genau wie zu Hause dein Internetanbieter. Die EFF empfiehlt ein VPN, wenn du nicht weißt, wer das Netzwerk betreibt, solange es ein VPN ist, dem du vertraust.[^eff]
 </Tip>
 
 <Tip id="get-round-blocks" priority="optional" effort={5} title="Eine Sperre umgehen">
-Mit einem VPN sieht es so aus, als würdest du dich von dort aus verbinden, wo sein Server steht, also kommst du damit an manchen Sperren vorbei, etwa an gesperrten Websites im Schulnetz oder an den Einschränkungen mancher Länder. An allen kommt es aber nicht vorbei. Manche Länder verbieten VPNs, also halt dich über die Regeln vor Ort auf dem Laufenden, bevor du dich auf ein VPN verlässt, und Streamingdienste sperren immer mehr VPNs.[^eff]
+Mit einem VPN sieht es so aus, als würdest du dich von dort aus verbinden, wo sein Server steht, deshalb kannst du damit an manchen Sperren vorbeikommen, etwa an gesperrten Websites im Schulnetz oder an den Einschränkungen mancher Länder. An allen kommt es aber nicht vorbei. Manche Länder verbieten VPNs, also halt dich über die Regeln vor Ort auf dem Laufenden, bevor du dich auf ein VPN verlässt, und Streamingdienste sperren immer mehr VPNs.[^eff]
 </Tip>
 
 ## Wann Tor das bessere Werkzeug ist
 
-Wenn ein anderes Netzwerk nicht reicht und du mehr Anonymität brauchst, ist <Term slug="tor">Tor</Term> das bessere Werkzeug. Die VPN-Firma kann deinen Datenverkehr sehen, aber Tor schickt ihn über mehrere Server, und keiner von ihnen kann allein sehen, was du im Netz machst.[^eff] Tor ist langsamer, und manche Websites sperren es oder funktionieren darin nicht richtig. Wenn du dich darin bei einem Konto anmeldest, weiß diese Website trotzdem, wer du bist.
+Wenn ein anderes Netzwerk nicht reicht und du mehr Anonymität brauchst, ist <Term slug="tor">Tor</Term> das bessere Werkzeug. Die VPN-Firma kann deinen Datenverkehr sehen, aber Tor schickt ihn über mehrere Server, und keiner von ihnen kann allein sehen, was du im Netz machst.[^eff] Tor ist langsamer, und manche Websites sperren es oder funktionieren darin nicht richtig. Wenn du dich über Tor bei einem Konto anmeldest, weiß die Website trotzdem, wer du bist.
 
 <Picks section="Anonymity Networks" limit={1} />
 
 ## Ein VPN aussuchen
 
-<Tip id="pick-on-evidence" priority="essential" effort={30} title="Wähl nach dem, was du prüfen kannst, nicht nach dem, was versprochen wird">
-Ein VPN sitzt an einer Stelle, an der es deinen gesamten Datenverkehr sieht, und die EFF warnt, dass ein zwielichtiges VPN ihn absichtlich sammeln könnte.[^eff] Viele VPNs sagen, dass sie keine Logs speichern, aber laut der EFF ist das keine Garantie. Sie rät, nachzusehen, ob die Firma schon einmal dabei erwischt wurde, ihre Kunden zu täuschen, und nach veröffentlichten Berichten unabhängiger Prüfer zu suchen, auch wenn nichts eine Firma davon abhält, es nach einer solchen Prüfung wieder anders zu machen.[^eff] Wichtig ist außerdem, wo die Firma ihre Geschäfte macht, denn die Gesetze dieser Länder legen fest, wann sie Daten herausgeben muss (<Term slug="jurisdiction">Gerichtsbarkeit</Term>).[^eff]
+<Tip id="pick-on-evidence" priority="essential" effort={30} title="Wähl nach dem, was du prüfen kannst, nicht nach Versprechen">
+Ein VPN sitzt an einer Stelle, an der es deinen gesamten Datenverkehr sieht, und die EFF warnt, dass ein zwielichtiges VPN ihn absichtlich sammeln könnte.[^eff] Viele VPNs sagen, dass sie keine Logs speichern, aber laut der EFF ist das keine Garantie. Sie rät, nachzusehen, ob die Firma schon einmal dabei erwischt wurde, ihre Kunden zu täuschen, und nach veröffentlichten Berichten unabhängiger Prüfer zu suchen, auch wenn nichts eine Firma daran hindert, nach so einer Prüfung ihre Praxis zu ändern.[^eff] Wichtig ist außerdem, wo die Firma ihre Geschäfte macht, denn die Gesetze dieser Länder legen fest, wann sie Daten herausgeben muss (<Term slug="jurisdiction">Gerichtsbarkeit</Term>).[^eff]
 
-Wenn du mit Karte zahlst, weiß das VPN, wer du bist. Die EFF schlägt stattdessen eine Geschenkkarte oder eine Kartennummer zum einmaligen Gebrauch vor,[^eff] und <App name="Mullvad" /> nimmt Bargeld an. Deine IP-Adresse sieht das VPN beim Verbinden aber trotzdem.[^eff]
+Wenn du mit Karte zahlst, weiß das VPN, wer du bist. Die EFF schlägt stattdessen eine Geschenkkarte oder eine Einweg-Kartennummer vor,[^eff] und <App name="Mullvad" /> nimmt Bargeld an. Deine IP-Adresse sieht das VPN beim Verbinden aber trotzdem.[^eff]
 
-Sei bei kostenlosen VPN-Apps vorsichtig. Laut der EFF verkaufen manche kostenlosen VPNs deine Daten, und dass eins in einem App-Store steht, macht es noch nicht sicher.[^eff] Eine Studie aus dem Jahr 2016 zu 283 Android-Apps, die die VPN-Funktion des Handys nutzen, hat ergeben, dass 75 % Tracking-Code von Drittanbietern enthielten, VirusTotal bei über 38 % mögliche Malware meldete und 18 % den Datenverkehr überhaupt nicht verschlüsselten.[^csiro] Das ist schon älter, zeigt aber, was sich hinter einem kostenlosen Download verbergen kann.
+Sei bei kostenlosen VPN-Apps vorsichtig. Laut der EFF verkaufen manche kostenlosen VPNs deine Daten, und dass eins in einem App-Store steht, macht es noch nicht sicher.[^eff] Eine Studie aus dem Jahr 2016 zu 283 Android-Apps, die die VPN-Funktion des Handys nutzen, hat ergeben, dass 75 % Tracking-Code von Drittanbietern enthielten, VirusTotal bei über 38 % mögliche Malware meldete und 18 % den Datenverkehr überhaupt nicht verschlüsselten.[^csiro] Die Studie ist alt, zeigt aber, was sich hinter einem kostenlosen Download verbergen kann.
 
 Das sind die Empfehlungen der Liste:
 
@@ -65,16 +65,16 @@ Auf [fineprint.peng.ly](https://fineprint.peng.ly/) stehen die Bedingungen der g
 
 ## Einstellungen, auf die es ankommt
 
-<Tip id="kill-switch-and-leaks" priority="essential" effort={5} title="Schalte den Kill Switch ein und prüf dann auf Leaks">
-Wenn das VPN kurz aussetzt, kann dein Gerät über deine normale Verbindung weitermachen, bis das VPN wieder verbunden ist, es sei denn, du hast den <Term slug="kill-switch">Kill Switch</Term> des VPNs eingeschaltet. Du findest ihn in den Einstellungen der App.
+<Tip id="kill-switch-and-leaks" priority="essential" effort={5} title="Schalt den Kill-Switch ein und prüf dann auf Leaks">
+Wenn das VPN kurz aussetzt, kann dein Gerät über deine normale Verbindung weitermachen, bis das VPN wieder verbunden ist, es sei denn, der <Term slug="kill-switch">Kill-Switch</Term> des VPNs ist eingeschaltet. Such ihn in den Einstellungen der App.
 
-Leaks kommen vor. In derselben Studie von 2016 leiteten 84 % der Apps den IPv6-Datenverkehr nicht durch den Tunnel und 66 % die DNS-Anfragen nicht.[^csiro] Öffne bei eingeschaltetem VPN <App name="IP Leak Test" /> und prüf, ob die IP-Adresse und der Standort, die dort angezeigt werden, zum VPN gehören und nicht zu dir, auch bei der <Term slug="webrtc-leak">WebRTC</Term>-Prüfung. Wenn im DNS-Teil dein eigener Internetanbieter auftaucht, ist das ein <Term slug="dns-leak">DNS-Leak</Term>.
+Leaks kommen vor. In derselben Studie von 2016 leiteten 84 % der Apps den IPv6-Datenverkehr nicht durch den Tunnel und 66 % die DNS-Anfragen nicht.[^csiro] Öffne bei eingeschaltetem VPN <App name="IP Leak Test" /> und prüf, auch in der <Term slug="webrtc-leak">WebRTC</Term>-Prüfung, ob die IP-Adresse und der Standort, die dort angezeigt werden, zum VPN gehören und nicht zu dir. Wenn im DNS-Teil dein eigener Internetanbieter auftaucht, ist das ein <Term slug="dns-leak">DNS-Leak</Term>.
 </Tip>
 
 [^eff]: [EFF Surveillance Self-Defense: Das richtige VPN für dich finden](https://ssd.eff.org/module/choosing-vpn-thats-right-you)
 [^google-https]: [Google Security Blog: HTTPS als Standard](https://security.googleblog.com/2025/10/https-by-default.html)
 [^ftc-isp]: [FTC: Bericht von FTC-Mitarbeitern zeigt, dass viele Internetanbieter Unmengen persönlicher Daten sammeln](https://www.ftc.gov/news-events/news/press-releases/2021/10/ftc-staff-report-finds-many-internet-service-providers-collect-troves-personal-data-users-have-few)
-[^ipa-87]: [Investigatory Powers Act 2016, Section 87: Befugnis, die Speicherung bestimmter Daten anzuordnen](https://www.legislation.gov.uk/ukpga/2016/25/section/87)
-[^ipa-62]: [Investigatory Powers Act 2016, Section 62: Einschränkungen bei Internet Connection Records](https://www.legislation.gov.uk/ukpga/2016/25/section/62)
+[^ipa-87]: [Investigatory Powers Act 2016, Abschnitt 87: Befugnis, die Speicherung bestimmter Daten anzuordnen](https://www.legislation.gov.uk/ukpga/2016/25/section/87)
+[^ipa-62]: [Investigatory Powers Act 2016, Abschnitt 62: Einschränkungen bei Internet Connection Records](https://www.legislation.gov.uk/ukpga/2016/25/section/62)
 [^ftc-wifi]: [FTC: Sind öffentliche WLAN-Netze sicher? Was du wissen musst](https://consumer.ftc.gov/articles/are-public-wi-fi-networks-safe-what-you-need-know)
 [^csiro]: [Ikram et al.: Eine Analyse der Datenschutz- und Sicherheitsrisiken von Android-Apps mit VPN-Berechtigung](https://research.csiro.au/isp/wp-content/uploads/sites/106/2016/08/paper-1.pdf)
