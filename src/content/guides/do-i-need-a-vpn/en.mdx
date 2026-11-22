@@ -1,6 +1,6 @@
 ---
 title: Do you need a VPN? What it hides, and what it doesn't
-description: A VPN moves your trust from your internet provider to a VPN company. When that's worth it, what it can't hide, and how to pick one you can check.
+description: A VPN changes who can see which sites you visit, from your internet provider to a VPN company. When that's worth it, what it can't hide, and how to pick one.
 type: explainer
 topic: network
 sections: [Virtual Private Networks, Anonymity Networks]
@@ -19,69 +19,71 @@ checked: 2026-11-22
 ---
 
 <Short>
-For most everyday browsing, probably not. A VPN hides the sites you visit from your internet provider and whoever runs the Wi-Fi, and hides your IP address from the sites, but the VPN company can then see everything your provider used to. It's worth it when you trust the VPN more than [your internet provider](#hide-from-your-provider) or [the network you're on](#untrusted-networks), or when you need to [get round a block](#get-round-blocks). It does nothing about [tracking by accounts, cookies or fingerprinting](#what-it-doesnt-do).
+For most everyday browsing, probably not. A VPN changes your IP address, and it hides which sites you visit from your internet provider and whoever runs the Wi-Fi. But the VPN company can then see what your provider used to, so it's only worth it when you trust the VPN more than [your provider](#hide-from-your-provider) or [the network you're on](#untrusted-networks), or when you need to [get round a block](#get-round-blocks). It does nothing about [cookies, accounts or fingerprinting](#what-it-doesnt-do).
 </Short>
 
 ## What a VPN hides, and from whom
 
-A <Term slug="vpn">VPN</Term> sends everything from your device through an encrypted tunnel to the VPN's server, and it goes out to the internet from there. Sites see the VPN's IP address and location instead of yours.[^eff] Your internet provider and whoever runs the Wi-Fi can see that you're using a VPN, but not where your traffic goes after that. The VPN company can see all of it instead.[^eff]
+A <Term slug="vpn">VPN</Term> routes your internet traffic through an encrypted tunnel to the VPN's server, and it goes out to the internet from there, so sites see the VPN's IP address instead of yours.[^eff] Your internet provider and whoever runs the Wi-Fi only see the tunnel. The VPN company sees where your traffic goes instead.[^eff]
 
-HTTPS already hides a lot without one. About 95% of the pages Chrome loads use it,[^google-https] and on those, nobody along the way can see which pages you read, your logins or your messages. What they can still see is the names of the sites and when you visit them.[^eff] So a VPN mostly hides that list of sites from your provider and your network, and your IP address from the sites themselves.
+HTTPS already hides a lot without one. About 95% of the pages Chrome loads use it,[^google-https] and on those, people along the way can't see which pages you read, your logins or your messages. What they can usually still see is the names of the sites and when you visit them.[^eff] The VPN company gets that same view, plus anything that isn't encrypted.
 
 ## What it doesn't do
 
-A VPN doesn't make you anonymous. Sites can still recognise you through cookies, tracking pixels, the accounts you're signed in to and <Term slug="browser-fingerprinting">fingerprinting</Term>, and none of those need your IP address.[^eff] The [browser privacy guide](/guides/browser-privacy/) deals with those. It won't stop malware or phishing either. EFF says VPN adverts oversell them badly, and that what they're actually good for is routing your connection through a different network.[^eff]
+A VPN isn't a tool for anonymity. Sites and apps can still recognise you through cookies, tracking pixels, the accounts you're signed in to and <Term slug="browser-fingerprinting">fingerprinting</Term>, and an app with location access can still use your phone's GPS.[^eff] The [browser privacy guide](/guides/browser-privacy/) deals with the browser side. EFF says VPN adverts badly oversell them as the answer to malware, government surveillance and online tracking, and that what they're actually good for is routing your connection through a different network.[^eff]
 
 ## When it's worth it
 
 <Tip id="hide-from-your-provider" priority="optional" effort={15} title="Hiding your browsing from your internet provider">
-Your provider can see the name of every site you visit. Whether that matters depends on where you live.
+Your provider can usually see the names of the sites you visit. Whether that matters depends on where you live.
 
 <Region place="us">
-In 2021, the FTC found that several big internet providers combine web browsing data with other data to target ads, and some put customers into sensitive categories like race and sexual orientation.[^ftc-isp]
+In 2021, the FTC looked at six providers covering about 98% of US mobile internet, and found several of them combining web browsing data with other data to target ads, and putting customers into sensitive categories like race and sexual orientation.[^ftc-isp]
 </Region>
 
 <Region place="uk">
-Under the Investigatory Powers Act, the government can require providers to keep "internet connection records", which show which services you connected to, for up to 12 months.[^ipa-87][^ipa-62]
+Under the Investigatory Powers Act, the Secretary of State can order providers to keep "internet connection records", which show which services you connected to, for up to 12 months.[^ipa-87][^ipa-62]
 </Region>
 
-A VPN moves that record from your provider to the VPN company, which is only an improvement if you trust the VPN more. VPN companies get legal requests too, and EFF notes that many keep as much as internet providers do.[^eff]
+With a VPN, your provider sees the tunnel and the VPN company sees the sites, which is only an improvement if you trust the VPN more. VPN companies get legal requests too, and EFF notes that many keep as much as internet providers do.[^eff]
 </Tip>
 
 <Tip id="untrusted-networks" priority="optional" effort={5} title="On a network you don't trust">
-Public Wi-Fi is safer than VPN adverts make out. The FTC says that because most sites use encryption now, public Wi-Fi is usually safe.[^ftc-wifi] People on the same network can still see which sites you visit, though, the same way your provider can at home. EFF suggests a VPN when you don't know who runs the network, as long as it's a VPN you trust.[^eff]
+Public Wi-Fi is safer than VPN adverts make out. The FTC says that because encryption is so widely used now, public Wi-Fi is usually safe.[^ftc-wifi] People in range of it could still see the names of the sites you visit, just as your provider can at home. EFF suggests a VPN when you don't know who runs the network, as long as it's a VPN you trust.[^eff]
 </Tip>
 
 <Tip id="get-round-blocks" priority="optional" effort={5} title="Getting round a block">
-A VPN makes it look as if you're connecting from wherever its server is, so it can get you past a school or office network that blocks sites, or a country that does. Check the law first, since some countries ban VPNs. Streaming services are blocking more and more VPNs too, so it's not a sure way to watch something from another country.[^eff]
+A VPN makes it look as if you're connecting from wherever its server is, so it can get you past some blocks, like a school network that blocks sites, or some countries' restrictions. It won't get past all of them. Some countries ban VPNs, so keep up with the rules where you are before you rely on one, and streaming services are blocking more and more VPNs.[^eff]
 </Tip>
 
 ## When Tor is the better tool
 
-If you need to be anonymous rather than just on a different network, use <Term slug="tor">Tor</Term>. The VPN company can see your traffic, but Tor sends it through several servers, and no single one of them can see your browsing.[^eff] The cost is speed, and some sites block it or break.
+If a different network isn't enough and you need more anonymity, <Term slug="tor">Tor</Term> is the better tool. The VPN company can see your traffic, but Tor sends it through several servers, and no single one of them can see your browsing.[^eff] It's slower, and some sites block it or break in it. Signing in to an account in it still tells that site who you are.
 
 <Picks section="Anonymity Networks" limit={1} />
 
 ## Picking one
 
 <Tip id="pick-on-evidence" priority="essential" effort={30} title="Pick on what you can check, not what it promises">
-Every VPN says it keeps no logs. EFF says that isn't a guarantee. It suggests checking whether the company has been caught misleading its customers before, and looking for published independent audits, though nothing stops a company changing its ways after one.[^eff] It's also worth knowing who runs it and where it's based, since its country's laws decide who can ask it for data (<Term slug="jurisdiction">jurisdiction</Term>).[^eff] And if you pay by card, the VPN knows who you are, so some people use a gift card or a service that takes cash.[^eff]
+A VPN sits where it can see all your traffic, and EFF warns that a dodgy one might collect it on purpose.[^eff] Plenty of VPNs say they keep no logs, but EFF says that isn't a guarantee. It suggests checking whether the company has been caught misleading its customers before, and looking for published independent audits, though nothing stops a company changing its ways after one.[^eff] It also matters where the company does business, since those countries' laws decide when it has to hand over data (<Term slug="jurisdiction">jurisdiction</Term>).[^eff]
 
-Be wary of free VPN apps. Something has to pay for the servers, and EFF says some free VPNs sell your data.[^eff] A 2016 study of 283 Android VPN apps found that 75% used third-party tracking code, over 38% were flagged for some kind of malware, and 18% didn't encrypt the traffic at all.[^csiro] Being in an app store doesn't make one safe.[^eff]
+If you pay by card, the VPN knows who you are. EFF suggests a gift card or a disposable card number instead,[^eff] and <App name="Mullvad" /> takes cash. The VPN still sees your IP address when you connect, though.[^eff]
+
+Be wary of free VPN apps. EFF says some free VPNs sell your data, and that being in an app store doesn't make one safe.[^eff] A 2016 study of 283 Android apps that use the phone's VPN feature found that 75% included third-party tracking code, VirusTotal flagged over 38% for possible malware, and 18% didn't encrypt the traffic at all.[^csiro] That's old, but it shows what can hide behind a free download.
 
 These are the list's picks:
 
 <Picks section="Virtual Private Networks" />
 
-To compare the terms of the big VPNs, [fineprint.peng.ly](https://fineprint.peng.ly/) lines them up. If you're on one of the most advertised ones, the <Swap product="expressvpn">ExpressVPN</Swap>, <Swap product="nordvpn">NordVPN</Swap>, <Swap product="ipvanish">IPVanish</Swap> and <Swap product="hotspot-shield">Hotspot Shield</Swap> pages say what's come out about each.
+To compare the terms of the big VPNs, [fineprint.peng.ly](https://fineprint.peng.ly/) lines them up. If you already pay for <Swap product="expressvpn">ExpressVPN</Swap>, <Swap product="nordvpn">NordVPN</Swap>, <Swap product="ipvanish">IPVanish</Swap> or <Swap product="hotspot-shield">Hotspot Shield</Swap>, their pages say what's come out about each.
 </Tip>
 
 ## Settings that matter
 
 <Tip id="kill-switch-and-leaks" priority="essential" effort={5} title="Turn on the kill switch, then check for leaks">
-A VPN that drops out for a moment sends your traffic the normal way until it reconnects, unless its <Term slug="kill-switch">kill switch</Term> is on. Look for it in the app's settings, along with any option to block connections without the VPN.
+If the VPN drops out for a moment, your device can carry on over your normal connection until it reconnects, unless the VPN's <Term slug="kill-switch">kill switch</Term> is on. Look for it in the app's settings.
 
-Leaks are common. The same 2016 study found that 84% of the apps leaked IPv6 traffic outside the tunnel and 66% leaked DNS lookups.[^csiro] With the VPN on, open <App name="IP Leak Test" /> and check that it shows the VPN's address and DNS servers, not your own, including in the <Term slug="webrtc-leak">WebRTC</Term> check. If your provider's name turns up, you've got a <Term slug="dns-leak">DNS leak</Term>.
+Leaks happen. In that same 2016 study, 84% of the apps didn't send IPv6 traffic through the tunnel, and 66% didn't send DNS lookups through it.[^csiro] With the VPN on, open <App name="IP Leak Test" /> and check that the IP address and location it shows are the VPN's, not yours, including in its <Term slug="webrtc-leak">WebRTC</Term> check. If the DNS part shows your own internet provider, that's a <Term slug="dns-leak">DNS leak</Term>.
 </Tip>
 
 [^eff]: [EFF Surveillance Self-Defense: Choosing the VPN that's right for you](https://ssd.eff.org/module/choosing-vpn-thats-right-you)
