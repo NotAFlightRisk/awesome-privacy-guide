@@ -1180,6 +1180,19 @@ de:
   "your privacy here": "Deine Privatsphäre bei uns"
   "Copy as Markdown": "Als Markdown kopieren"
   "today's pick": "Tipp des Tages"
+  # Page titles, leads and descriptions, by hand
+  "{services} privacy-respecting picks, {sections} topics": "{services} datenschutzfreundliche Empfehlungen, {sections} Themen"
+  One privacy-respecting pick to use instead of {names}, from the Awesome Privacy list.: Eine datenschutzfreundliche Empfehlung statt {names}, aus der Awesome Privacy Liste.
+  "{count} privacy-respecting picks to use instead of {names}, from the Awesome Privacy list.": "{count} datenschutzfreundliche Empfehlungen statt {names}, aus der Awesome Privacy Liste."
+  One privacy-respecting alternative to {name} from the Awesome Privacy list, under {topics}.: Eine datenschutzfreundliche Alternative zu {name} aus der Awesome Privacy Liste, unter {topics}.
+  "{count} privacy-respecting alternatives to {name} from the Awesome Privacy list, under {topics}.": "{count} datenschutzfreundliche Alternativen zu {name} aus der Awesome Privacy Liste, unter {topics}."
+  "A privacy-respecting alternative to {name}: {names}. Picked by the Awesome Privacy community.": "Eine datenschutzfreundliche Alternative zu {name}: {names}. Ausgewählt von der Awesome Privacy Community."
+  "{count} privacy-respecting alternatives to {name}, including {names}. Picked by the Awesome Privacy community.": "{count} datenschutzfreundliche Alternativen zu {name}, darunter {names}. Ausgewählt von der Awesome Privacy Community."
+  "{count} popular apps and services, with privacy-respecting alternatives to each, picked by the Awesome Privacy community.": "{count} beliebte Apps und Dienste, jeweils mit datenschutzfreundlichen Alternativen, ausgewählt von der Awesome Privacy Community."
+  "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms.": "{a} oder {b}? Beide stehen auf der Awesome Privacy Liste unter {section}. So schneiden sie bei Quellcode, Audits, Nutzungsbedingungen und Plattformen ab."
+  Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.: Beide stehen auf der Awesome Privacy Liste unter {section}. Hier steht, was über beide bekannt ist.
+  Lesser-known privacy tools from the Awesome Privacy list, with a new pick every day.: Weniger bekannte Datenschutz-Tools aus der Awesome Privacy Liste, jeden Tag eine neue Empfehlung.
+  The latest apps and services added to the Awesome Privacy list, with a link to each change on GitHub.: Die neuesten Apps und Dienste auf der Awesome Privacy Liste, jeweils mit einem Link zur Änderung auf GitHub.
 
 es:
   Edge: Edge
@@ -2344,6 +2357,21 @@ es:
   "my privacy toolkit": "Mi kit de privacidad"
   "Skip": "Omitir"
   "today's pick": "La recomendación de hoy"
+  # Page titles, leads and descriptions, by hand
+  Privacy-respecting alternatives to the apps and services you use every day. {services} recommendations in {sections} topics, from the Awesome Privacy list.: Alternativas respetuosas con la privacidad a las apps y servicios que usas cada día. {services} recomendaciones en {sections} temas, de la lista de Awesome Privacy.
+  "{services} privacy-respecting picks, {sections} topics": "{services} opciones respetuosas con la privacidad, {sections} temas"
+  "{name}: privacy-respecting picks": "{name}: opciones respetuosas con la privacidad"
+  One privacy-respecting pick to use instead of {names}, from the Awesome Privacy list.: Una opción respetuosa con la privacidad para usar en lugar de {names}, de la lista de Awesome Privacy.
+  "{count} privacy-respecting picks to use instead of {names}, from the Awesome Privacy list.": "{count} opciones respetuosas con la privacidad para usar en lugar de {names}, de la lista de Awesome Privacy."
+  One privacy-respecting option for {name}, from the Awesome Privacy list.: Una opción respetuosa con la privacidad para {name}, de la lista de Awesome Privacy.
+  One privacy-respecting alternative to {name} from the Awesome Privacy list, under {topics}.: Una alternativa a {name} respetuosa con la privacidad, de la lista de Awesome Privacy, en {topics}.
+  "{count} privacy-respecting alternatives to {name} from the Awesome Privacy list, under {topics}.": "{count} alternativas a {name} respetuosas con la privacidad, de la lista de Awesome Privacy, en {topics}."
+  "A privacy-respecting alternative to {name}: {names}. Picked by the Awesome Privacy community.": "Una alternativa a {name} respetuosa con la privacidad: {names}. Elegida por la comunidad de Awesome Privacy."
+  "{count} privacy-respecting alternatives to {name}, including {names}. Picked by the Awesome Privacy community.": "{count} alternativas a {name} respetuosas con la privacidad, como {names}. Elegidas por la comunidad de Awesome Privacy."
+  "{count} popular apps and services, with privacy-respecting alternatives to each, picked by the Awesome Privacy community.": "{count} apps y servicios populares, cada uno con alternativas respetuosas con la privacidad, elegidas por la comunidad de Awesome Privacy."
+  "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms.": ¿{a} o {b}? Ambas son opciones de {section} en la lista de Awesome Privacy. Así se comparan en código fuente, auditorías, condiciones de uso y plataformas.
+  Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.: Ambas son opciones de {section} en la lista de Awesome Privacy. Esto es lo que consta de cada una.
+  "{count} privacy and security terms explained in plain English, like end-to-end encryption, metadata and warrant canaries.": "{count} términos de privacidad y seguridad explicados en lenguaje sencillo, como el cifrado de extremo a extremo, los metadatos y el warrant canary."
 
 fr:
   Edge: Edge
@@ -3514,6 +3542,14 @@ fr:
   "more to explore": "À explorer aussi"
   "Nothing here": "Rien par ici"
   "{count} picks": "{count} choix"
+  # Page titles, leads and descriptions, by hand
+  "{services} privacy-respecting picks, {sections} topics": "{services} choix respectueux de la vie privée, {sections} sujets"
+  "{count} more": "{count} autres"
+  "{count} privacy-respecting picks to use instead of {names}, from the Awesome Privacy list.": "{count} choix respectueux de la vie privée à utiliser au lieu de {names}, issus de la liste Awesome Privacy."
+  "A privacy-respecting alternative to {name}: {names}. Picked by the Awesome Privacy community.": "Une alternative à {name} respectueuse de la vie privée : {names}. Choisie par la communauté Awesome Privacy."
+  "{count} privacy-respecting alternatives to {name}, including {names}. Picked by the Awesome Privacy community.": "{count} alternatives à {name} respectueuses de la vie privée, dont {names}. Choisies par la communauté Awesome Privacy."
+  "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms.": "{a} ou {b} ? Les deux figurent dans la rubrique {section} de la liste Awesome Privacy. Voici comment ils se comparent sur le code source, les audits, les conditions d’utilisation et les plateformes."
+  Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.: Les deux figurent dans la rubrique {section} de la liste Awesome Privacy. Voici ce qui est consigné pour chacun.
 
 pt:
   Edge: Edge
@@ -4671,6 +4707,15 @@ pt:
   "your privacy here": "Sua privacidade neste site"
   "my privacy toolkit": "Meu kit de ferramentas de privacidade"
   "to the apps you use every day": "aos aplicativos que você usa todos os dias"
+  # Page titles, leads and descriptions, by hand
+  Private alternatives to {name}: Alternativas privadas para {name}
+  One privacy-respecting alternative to {name} from the Awesome Privacy list, under {topics}.: Uma alternativa para {name} que respeita a privacidade, da lista Awesome Privacy, em {topics}.
+  "{count} privacy-respecting alternatives to {name} from the Awesome Privacy list, under {topics}.": "{count} alternativas para {name} que respeitam a privacidade, da lista Awesome Privacy, em {topics}."
+  "A privacy-respecting alternative to {name}: {names}. Picked by the Awesome Privacy community.": "Uma alternativa para {name} que respeita a privacidade: {names}. Escolhida pela comunidade Awesome Privacy."
+  "{count} privacy-respecting alternatives to {name}, including {names}. Picked by the Awesome Privacy community.": "{count} alternativas para {name} que respeitam a privacidade, incluindo {names}. Escolhidas pela comunidade Awesome Privacy."
+  "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms.": "{a} ou {b}? Ambos estão na categoria {section} da lista Awesome Privacy. Veja como se comparam em código-fonte, auditorias, termos de uso e plataformas."
+  Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.: Ambos estão na categoria {section} da lista Awesome Privacy. Veja o que está registrado sobre cada um.
+  "{count} privacy and security terms explained in plain English, like end-to-end encryption, metadata and warrant canaries.": "{count} termos de privacidade e segurança explicados em linguagem simples, como criptografia de ponta a ponta, metadados e warrant canary."
 
 it:
   Edge: Edge
@@ -5839,6 +5884,17 @@ it:
   "my privacy toolkit": "Il mio kit per la privacy"
   "Skip": "Salta"
   "Nothing here": "Qui non c'è niente"
+  # Page titles, leads and descriptions, by hand
+  "{count} more": altri {count}
+  Private alternatives to {name}: Alternative private a {name}
+  One privacy-respecting alternative to {name} from the Awesome Privacy list, under {topics}.: Un'alternativa a {name} rispettosa della privacy, dalla lista Awesome Privacy, in {topics}.
+  "{count} privacy-respecting alternatives to {name} from the Awesome Privacy list, under {topics}.": "{count} alternative a {name} rispettose della privacy, dalla lista Awesome Privacy, in {topics}."
+  "A privacy-respecting alternative to {name}: {names}. Picked by the Awesome Privacy community.": "Un'alternativa a {name} rispettosa della privacy: {names}. Scelta dalla comunità di Awesome Privacy."
+  "{count} privacy-respecting alternatives to {name}, including {names}. Picked by the Awesome Privacy community.": "{count} alternative a {name} rispettose della privacy, tra cui {names}. Scelte dalla comunità di Awesome Privacy."
+  "{a} vs {b}: privacy compared": "{a} vs {b}: privacy a confronto"
+  "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms.": "{a} o {b}? Entrambe sono nella sezione {section} della lista Awesome Privacy. Ecco come si confrontano su codice sorgente, audit, termini di servizio e piattaforme."
+  Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.: Entrambe sono nella sezione {section} della lista Awesome Privacy. Ecco cosa risulta per ciascuna.
+  "{count} privacy and security terms explained in plain English, like end-to-end encryption, metadata and warrant canaries.": "{count} termini di privacy e sicurezza spiegati in parole semplici, come crittografia end-to-end, metadati e warrant canary."
 
 ru:
   Edge: Edge
@@ -7025,6 +7081,27 @@ ru:
   "{count} options": "Вариантов: {count}"
   "{count} picks": "Приложений: {count}"
   "{count} alternatives": "Альтернатив: {count}"
+  # Page titles, leads and descriptions, by hand
+  Privacy-respecting alternatives to the apps and services you use every day. {services} recommendations in {sections} topics, from the Awesome Privacy list.: "Приватные альтернативы приложениям и сервисам, которыми вы пользуетесь каждый день. Рекомендаций: {services}, тем: {sections}, всё из списка Awesome Privacy."
+  "{services} privacy-respecting picks, {sections} topics": "Рекомендаций: {services}, тем: {sections}"
+  "{count} more": ещё {count}
+  "Privacy-respecting {name} tools: {count} recommendations for {topics}, from the Awesome Privacy list.": "{name}: инструменты, уважающие приватность, из списка Awesome Privacy. Рекомендаций: {count}, темы: {topics}."
+  "{count} recommendations in {topics} topics": "Рекомендаций: {count}, тем: {topics}"
+  "{name}: privacy-respecting picks": "{name}: рекомендации, уважающие приватность"
+  One privacy-respecting pick to use instead of {names}, from the Awesome Privacy list.: "Чем заменить {names}, не жертвуя приватностью: {count} вариант из списка Awesome Privacy."
+  "{count} privacy-respecting picks to use instead of {names}, from the Awesome Privacy list.": "Чем заменить {names}, не жертвуя приватностью: варианты из списка Awesome Privacy, всего {count}."
+  One privacy-respecting option for {name}, from the Awesome Privacy list.: "{count} вариант из списка Awesome Privacy, уважающий приватность, в разделе «{name}»."
+  "{count} privacy-respecting options for {name}, from the Awesome Privacy list.": Варианты из списка Awesome Privacy, уважающие приватность, в разделе «{name}», всего {count}.
+  Private alternatives to {name}: Приватные альтернативы {name}
+  One privacy-respecting alternative to {name} from the Awesome Privacy list, under {topics}.: Альтернатива {name}, уважающая приватность, из списка Awesome Privacy, в разделе «{topics}».
+  "{count} privacy-respecting alternatives to {name} from the Awesome Privacy list, under {topics}.": "Альтернативы {name}, уважающие приватность, из списка Awesome Privacy, в разделе «{topics}». Всего: {count}."
+  "A privacy-respecting alternative to {name}: {names}. Picked by the Awesome Privacy community.": "Альтернатива {name}, уважающая приватность: {names}. Выбор сообщества Awesome Privacy."
+  "{count} privacy-respecting alternatives to {name}, including {names}. Picked by the Awesome Privacy community.": Альтернативы {name}, уважающие приватность ({count}), в том числе {names}. Выбор сообщества Awesome Privacy.
+  "{count} popular apps and services, with privacy-respecting alternatives to each, picked by the Awesome Privacy community.": Популярные приложения и сервисы ({count}) и уважающие приватность альтернативы каждому из них. Выбор сообщества Awesome Privacy.
+  Pick the app you want to get away from and see what the Awesome Privacy list suggests instead. {count} apps so far.: "Выберите приложение, от которого хотите уйти, и посмотрите, что вместо него предлагает список Awesome Privacy. Приложений пока: {count}."
+  "{a} or {b}? Both are {section} picks on the Awesome Privacy list. Here's how they compare on source code, audits, terms and platforms.": "{a} или {b}? Оба есть в разделе «{section}» списка Awesome Privacy. Сравниваем исходный код, аудиты, условия использования и платформы."
+  Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.: Оба есть в разделе «{section}» списка Awesome Privacy. Вот что известно о каждом.
+  "{count} privacy and security terms explained in plain English, like end-to-end encryption, metadata and warrant canaries.": "Термины из мира приватности и безопасности простым языком, всего {count}: сквозное шифрование, метаданные, warrant canary и другие."
 
 ja:
   Edge: Edge
@@ -8214,3 +8291,19 @@ ja:
   "{count} options": "{count}件の選択肢"
   "{count} picks": "{count}件"
   "{count} alternatives": "{count}件の代替サービス"
+  # Page titles, leads and descriptions, by hand
+  Privacy-respecting alternatives to the apps and services you use every day. {services} recommendations in {sections} topics, from the Awesome Privacy list.: 毎日使うアプリやサービスの代わりになる、プライバシー重視の選択肢。Awesome Privacyリストから、{sections}のトピックに{services}件のおすすめを紹介しています。
+  "{services} privacy-respecting picks, {sections} topics": プライバシー重視のおすすめ{services}件、{sections}トピック
+  "{count} more": ほか{count}件
+  "Privacy-respecting {name} tools: {count} recommendations for {topics}, from the Awesome Privacy list.": プライバシー重視の{name}ツール。Awesome Privacyリストから、{topics}のおすすめ{count}件を紹介します。
+  "{count} recommendations in {topics} topics": おすすめ{count}件、{topics}トピック
+  "{name}: privacy-respecting picks": "{name}：プライバシー重視のおすすめ"
+  "{count} privacy-respecting picks to use instead of {names}, from the Awesome Privacy list.": "{names}の代わりに使える、プライバシー重視の選択肢{count}件をAwesome Privacyリストから紹介します。"
+  "{count} privacy-respecting options for {name}, from the Awesome Privacy list.": Awesome Privacyリストから、プライバシー重視の{name}の選択肢を{count}件紹介します。
+  Private alternatives to {name}: "{name}に代わるプライバシー重視の選択肢"
+  "{count} privacy-respecting alternatives to {name} from the Awesome Privacy list, under {topics}.": Awesome Privacyリストの{topics}から、{name}に代わるプライバシー重視の選択肢を{count}件紹介します。
+  "{count} privacy-respecting alternatives to {name}, including {names}. Picked by the Awesome Privacy community.": "{name}に代わるプライバシー重視の選択肢{count}件：{names}。Awesome Privacyコミュニティが選びました。"
+  "{count} popular apps and services, with privacy-respecting alternatives to each, picked by the Awesome Privacy community.": 人気のアプリやサービス{count}件と、それぞれに代わるプライバシー重視の選択肢。Awesome Privacyコミュニティが選びました。
+  Both are {section} picks on the Awesome Privacy list. Here's what's on record for each.: どちらもAwesome Privacyリストの{section}のおすすめです。それぞれについて記録されている情報は次のとおりです。
+  "{count} privacy and security terms explained in plain English, like end-to-end encryption, metadata and warrant canaries.": エンドツーエンド暗号化、メタデータ、ワラントカナリアなど、プライバシーとセキュリティの用語{count}件をわかりやすく解説します。
+  The latest apps and services added to the Awesome Privacy list, with a link to each change on GitHub.: Awesome Privacyリストに最近追加されたアプリやサービスを、GitHub上の各変更へのリンク付きで紹介します。
