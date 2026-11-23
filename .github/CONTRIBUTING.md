@@ -64,7 +64,7 @@ The components get handed to every guide, so there's nothing to import:
 | `<Tip id priority effort title>` | one tip, with an anchor that's the same in every language. `priority` is essential, optional or advanced, and `effort` is minutes |
 | `<Steps>`, `<Path>` | numbered steps, and menu paths like `<Path>Settings --> Privacy</Path>` |
 | `<Platforms>`, `<Platform name>` | steps that differ by platform, as tabs (stacked without JS) |
-| `<Picks section limit skip only>` | apps from a list section, in the list's order |
+| `<Picks section limit skip only level>` | apps from a list section, in the list's order. Their names are h3s, so pass `level={4}` inside a `<Tip>` |
 | `<App name>`, `<Swap product>`, `<Term slug>` | inline links to an app, an alternatives page or a glossary term |
 | `<Note kind>`, `<Region place>` | a warning or info box, and advice for the UK, US or EU only |
 | `<Local>` | a note for one country, only in that translation |

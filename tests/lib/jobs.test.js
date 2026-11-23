@@ -11,6 +11,14 @@ test('links go out as short placeholders and come back with their real URLs', ()
   assert.match(back, /^<p>Siehe/);
 });
 
+test('a translation that leaves a link empty is thrown back', () => {
+  const { markdown } = kinds();
+  const job = markdown('See the [arkenfox wiki](https://github.com/arkenfox/user.js/wiki) for more');
+  assert.equal(job.read('<p>Mehr dazu <a href="0"></a> im arkenfox-Wiki</p>'), undefined);
+  assert.equal(job.read('<p>Siehe <a href="0"> </a>arkenfox-Wiki</p>'), undefined);
+  assert.match(job.read('<p>Siehe das <a href="0">arkenfox-Wiki</a></p>'), /rel="noopener">arkenfox-Wiki<\/a>/);
+});
+
 test('app names are kept out of translation, but never inside a tag', () => {
   const protect = protector(['Signal', 'Session']);
   const html = protect('<p>Signal and <a href="0">Session</a> beat a weak signal</p>');

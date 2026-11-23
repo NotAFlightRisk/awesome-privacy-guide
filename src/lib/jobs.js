@@ -68,7 +68,7 @@ export const kinds = (protect = (html) => html) => ({
         const html = unkeep(out, lang).replace(/<a href=["'](\d+)["']>/g, (tag, i) =>
           links[i] ? `<a href="${links[i]}" rel="noopener">` : tag,
         );
-        return /<a href=["']\d+["']/.test(html) ? undefined : html;
+        return /<a href=["']\d+["']|<a [^>]*>\s*<\/a>/.test(html) ? undefined : html;
       },
     };
   },

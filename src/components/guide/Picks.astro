@@ -5,7 +5,7 @@ import { links } from '../../lib/routes.js';
 import { langOf, translator } from '../../lib/i18n.js';
 import { missing } from './missing.js';
 
-const { section: name, limit, skip = [], only } = Astro.props;
+const { section: name, limit, skip = [], only, level = 3 } = Astro.props;
 const lang = langOf(Astro.url);
 const { t, tr } = translator(lang);
 const section = getModel().sections.find((entry) => entry.name === name);
@@ -17,7 +17,7 @@ const services = (section?.services ?? [])
 
 {services.length > 0 && (
   <div class="picks">
-    {services.map((service) => <ServiceCard service={service} lang={lang} level={4} />)}
+    {services.map((service) => <ServiceCard service={service} lang={lang} level={level} />)}
     <p class="credit">
       <a href={links(lang).section(section)}>{t('guide.picks', { section: tr(section.name) })}</a>
     </p>
