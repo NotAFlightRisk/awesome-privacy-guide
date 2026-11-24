@@ -1,6 +1,6 @@
 ---
 title: What to do after a data breach, in the right order
-description: Change the reused password, then deal with whatever else leaked, and watch for the scam that follows. What to do first after a data breach, and why.
+description: Find out what leaked, change any password you reused, and watch for the scam that follows. What to do first after a data breach, and why.
 type: respond
 topic: accounts
 sections: [Online Tools, Mail Forwarding]
@@ -18,7 +18,7 @@ checked: 2026-11-24
 ---
 
 <Short>
-If money has already gone, or someone's got into one of your accounts, [deal with that first](#if-you-paid). Otherwise, [change the password](#change-reused) on the breached account and anywhere else you've used it. Then go through [whatever else leaked](#what-leaked), starting with card details and ID. From now on, [don't trust a message just because it knows things about you](#details-prove-nothing), since criminals use what leaked to make their messages look real.
+If money has already gone, [deal with that first](#if-you-paid), and if someone's got into one of your accounts, [get them out](#check-for-intruders). Otherwise, find out [what leaked](#what-leaked). If it included a password, [change it](#change-reused) on the breached account and anywhere else you've used it, then go through the rest, starting with card details and ID. From now on, [don't trust a message just because it knows things about you](#details-prove-nothing), since criminals use what leaked to make their messages look real.
 </Short>
 
 ## Find out what was taken
@@ -28,8 +28,8 @@ Go to the company's website or app yourself and look for its notice, rather than
 
 - If it was a password, even a hashed one, [change it everywhere you've used it](#change-reused).
 - For card or bank details, [tell your bank](#tell-your-bank).
-- Your date of birth, home address or a copy of your ID can help someone [apply for credit as you](#block-new-credit).
-- If your phone number leaked and you get login codes by text, [protect the number too](#lock-your-number).
+- Your date of birth, home address or a copy of your ID can be used to pretend to be you, so [make it harder to open accounts in your name](#block-new-credit).
+- If you get login codes by text, [protect your phone number](#lock-your-number).
 - Whatever it was, [expect messages that use it](#details-prove-nothing).
 
 <Region place="uk">
@@ -45,22 +45,24 @@ If a breach is likely to put you at high risk, and the company hasn't dealt with
 <App name="Have I Been Pwned">Have I Been Pwned</App> shows which of the breaches it knows about an email address has turned up in. Breaches of sites people wouldn't want to be linked to only show once you've proved the address is yours, by signing in. Not being in it doesn't mean you're in the clear, since it only holds a small part of what's been leaked, and lots of breaches never get published at all.[^hibp-faq]
 </Tip>
 
-## Passwords first
-
-<Tip id="change-reused" priority="essential" effort={20} title="Change that password, and everywhere you've used it">
-Criminals take passwords from one breach and try them on other sites, in case you used the same one.[^ncsc-pw] In 2023, that's how someone got into about 14,000 23andMe accounts, and through them into the profiles that about 5.5 million other customers had chosen to share with their relatives.[^23andme]
-
-Change it even if the company says the passwords were hashed, which scrambles them so they can't be read straight off. The NCSC says that if they were hashed poorly, or the attacker has enough computing power, some of them can still be worked out.[^ncsc-pw]
-
-If you used the same password on your email, change that one first, but [check its forwarding rules](#check-for-intruders) before you do. Whoever gets into your email can use it to reset the passwords on your other accounts.[^ncsc-hacked] The [password manager guide](/guides/password-manager/#reused-passwords) shows how to find where else you've used a password, and if you only ever used it on the breached account, that's the only one to change. If an account offers a passkey, you can use that instead of a new password.[^ncsc] Turn on two-step login on your email and your bank while you're there, so a password on its own isn't enough to get in.[^ncsc-hacked] The [2FA guide](/guides/two-factor/) says which kind to pick.
-</Tip>
+## Passwords and accounts
 
 <Tip id="check-for-intruders" priority="essential" effort={10} title="Check nobody's already been in">
-The NCSC's signs to look for are that you can't log in, your security settings have changed without you, there are messages you didn't send, or there are logins from places or at times that don't fit.[^ncsc]
+Look at the breached account and your email for the signs the NCSC lists: you can't log in, security settings have changed without you, there are messages you didn't send, or there are logins from places or at times that don't fit.[^ncsc]
 
-Before you change your email password, look at its filters and forwarding rules. A common trick is to add a rule that sends the criminal a copy of everything you get, password resets included, so a new password on its own won't shut them out. Once you've changed the password, log out every other device and app from the account's settings, so anyone still signed in has to type the new one.[^ncsc-hacked]
+If your email shows any of them, open its filters and forwarding rules first, and delete any you didn't set up. A common trick is a rule that sends the criminal a copy of everything you get, so they'd keep getting your password resets. Then change the password, and log out every other device and app from the account's settings, so anyone still signed in has to type the new one.[^ncsc-hacked]
 
 If you can't get in at all, the NCSC's guide to [recovering a hacked account](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account) starts with the provider's own recovery process.
+</Tip>
+
+<Tip id="change-reused" priority="essential" effort={20} title="Change that password, and everywhere you've used it">
+Criminals take passwords from one breach and try them on other sites, in case you used the same one.[^ncsc-pw] In 2023, that's how someone got into about 14,000 23andMe accounts, and through them reached about 5.5 million other customers' DNA Relatives profiles.[^23andme]
+
+Change it even if the company says the passwords were hashed, which scrambles them so they can't be read straight off. If they were hashed poorly, or the attacker has enough computing power, some of them can still be worked out.[^ncsc-pw]
+
+If you used the same password on your email, change that one first, since whoever gets into your email can use it to reset your other passwords.[^ncsc-hacked] If you only ever used it on the breached account, that's the only one to change. The [password manager guide](/guides/password-manager/#reused-passwords) shows how to find where else you've used it, and an account that offers a passkey lets you use that instead of a new password.[^ncsc]
+
+While you're there, turn on two-step login on your email and your bank, so a password on its own isn't enough to get in.[^ncsc-hacked] The [2FA guide](/guides/two-factor/) says which kind to pick.
 </Tip>
 
 ## If your card or bank details leaked
@@ -69,19 +71,21 @@ If you can't get in at all, the NCSC's guide to [recovering a hacked account](ht
 Call your bank or card provider on the number on your card, statement or app, say the details were in a breach, and ask whether it'll replace the card. Then check your statements for payments you don't recognise, and report any as soon as you see them.[^ftc-cards][^ico]
 
 <Region place="us">
-If your card number is used but the card itself wasn't lost or stolen, you aren't responsible for charges you didn't authorise on a credit card. On a debit card, you aren't responsible as long as you report them within 60 days of the statement they're on being sent to you, and after that you can lose the money. Anyone who calls to sell you "card loss protection" is a scammer, since federal law already covers unauthorised use of a credit card.[^ftc-cards]
+If your card number is used but the card itself wasn't lost or stolen, you aren't responsible for charges you didn't authorise on a credit card. On a debit card, you aren't responsible as long as you report them within 60 days after the statement showing them was sent to you, and after that you can lose the money. Anyone who calls to sell you "card loss protection" is a scammer, since federal law already covers unauthorised use of a credit card.[^ftc-cards]
 </Region>
 </Tip>
 
 ## If your ID or date of birth leaked
 
 <Tip id="block-new-credit" priority="essential" effort={30} title="Make it harder for someone to open accounts in your name">
-Someone with your personal details can try to apply for credit, or other products and services, as you.[^ftc-freeze][^cifas]
+Fraudsters can use details like these to apply for credit, or other products and services, in your name.[^ftc-freeze][^cifas]
 
 <Region place="us">
-Freeze your credit with all three bureaus, Equifax, Experian and TransUnion. While it's on, nobody can open a new credit account in your name, you included. It's free, it doesn't affect your credit score, and it lasts until you lift it. When you need credit, lift it at the one bureau that lender uses, then put it back. A fraud alert is free too, and you only need to ask one bureau, which tells the other two. It makes lenders check with you first, and lasts a year. If a child's details leaked, you can freeze their credit too while they're under 16, through a separate process at each bureau.[^ftc-freeze]
+Freeze your credit with all three bureaus, Equifax, Experian and TransUnion. While it's on, nobody can open a new credit account in your name, you included. It's free, it doesn't affect your credit score, and it lasts until you lift it. When you need credit, lift it at the one bureau that lender uses, then put it back.
 
-If your Social Security number leaked, an IRS identity protection PIN stops anyone else filing a tax return with it. Anyone with a Social Security number who can prove who they are can get one. The online sign-up is closed for maintenance until mid-January 2027. Until then, the IRS page has a form you can use if your income is under its limit, or you can book an appointment in person.[^irs]
+You can add a fraud alert as well. It makes lenders check with you before they give anyone credit in your name, and it's free. For this one you only need to ask one bureau, which tells the other two, and it lasts a year. If a child's details leaked, you can freeze their credit too while they're under 16, through a separate process at each bureau.[^ftc-freeze]
+
+If your Social Security number or ITIN leaked, an IRS identity protection PIN stops anyone else filing a tax return with it. Anyone with either who can prove who they are can get one. The online sign-up is closed for maintenance until mid-January 2027. Until then, the IRS page has a form you can use if your income is under its limit, or you can book an appointment in person.[^irs]
 </Region>
 
 <Region place="uk">
@@ -94,7 +98,7 @@ You can also ask Equifax, Experian and TransUnion for your credit report, which 
 ## If your phone number leaked
 
 <Tip id="lock-your-number" priority="optional" effort={10} title="If you get login codes by text, protect your number">
-Expect scam calls and texts.[^ncsc] And if any of your accounts send you login codes by text, the number itself is worth protecting. In a SIM swap, a criminal talks your mobile network into moving your number to a SIM they control,[^cisa] and the codes go to them from then on. The [2FA guide](/guides/two-factor/#lock-your-number) covers what to ask your network for, and the safer kinds of 2FA to move to.
+A leaked number means you should expect scam calls and texts.[^ncsc] If any of your accounts send you login codes by text, also ask your network what it can do to stop someone moving your number to a new SIM. In a SIM swap, a criminal talks your network into moving your number to a SIM they control,[^cisa] and your codes go to them from then on. The [2FA guide](/guides/two-factor/#lock-your-number) covers what to ask for, and the safer kinds of 2FA to move to.
 </Tip>
 
 ## The scam that comes next
@@ -102,20 +106,20 @@ Expect scam calls and texts.[^ncsc] And if any of your accounts send you login c
 <Tip id="details-prove-nothing" priority="essential" effort={1} title="Don't trust a message just because it knows your details">
 Criminals use what leaked to make their messages look genuine, and some pretend to be the company that was breached. They can turn up some time after the breach is in the news.[^ncsc]
 
-In 2025, criminals paid some of Coinbase's support staff to copy customer records, including names, addresses, phone numbers, email addresses, ID photos, account balances and transaction histories. Coinbase said the point was a list of people the criminals could contact while pretending to be Coinbase, to trick them into handing over their crypto.[^coinbase] So a caller who knows your balance and what you've been buying can still be a scammer.
+In 2025, criminals paid some of Coinbase's support staff to copy customer records, including contact details, ID photos, account balances and transaction histories. Coinbase said the point was a list of people the criminals could contact while pretending to be Coinbase, to trick them into handing over their crypto.[^coinbase] So a caller who knows your balance and what you've been buying can still be a scammer.
 
-The NCSC's list of what to watch for includes messages about resetting a password, claiming compensation, scanning your device or a missed delivery, and anything that wants you to act right now.[^ncsc]
+Be wary of messages about resetting a password, claiming compensation, scanning your device or a missed delivery, and of anything that wants you to act right now.[^ncsc]
 
 Coinbase says it'll never ask for your password or a 2FA code, or ask you to move your money somewhere new.[^coinbase] The [2FA guide](/guides/two-factor/#never-share-a-code) has more on why you never hand a code to anyone who contacted you.
 </Tip>
 
 <Tip id="ring-back" priority="essential" effort={2} title="Ring back on a number you already have">
-The number on your screen proves nothing either, since scammers can make a call look like it's from your bank.[^ofcom] If a call, text or email says it's from your bank or the breached company, don't use its link or its number. Hang up, then contact them yourself, on the number on the back of your card or through their own app or website.[^ico]
+The number on your screen proves nothing either, since scammers can make a call look like it's from your bank.[^ofcom] If a call, text or email says it's from your bank or the breached company, don't use any link or number in it. Hang up, then contact them yourself, on the number on the back of your card or through their own app or website.[^ico]
 
 <App name="Phish.ly" />, <App name="Is Legit?" /> and <App name="Site Report" /> can tell you more about a website you're not sure of. A clean result doesn't make a message genuine, though, so still go in through the app or the address you already use.
 
 <Region place="uk">
-If your bank supports it, calling 159 connects you to it safely.[^ico] Forward scam emails to report@phishing.gov.uk and scam texts to 7726, which is free.[^ncsc]
+If your bank takes part in 159, calling 159 connects you to it safely.[^ico] Forward scam emails to report@phishing.gov.uk and scam texts to 7726, which is free.[^ncsc]
 </Region>
 
 <Region place="us">
@@ -129,7 +133,9 @@ If you've paid anything, tell your bank straight away, on a number you already h
 <Region place="uk">
 Report it to [Report Fraud](https://www.reportfraud.police.uk/), or call the police on 101 in Scotland.[^ncsc]
 
-If you were tricked into sending a bank transfer from one UK account to another, your bank has to refund you up to £85,000, unless you were in on it or grossly negligent. Claim within 13 months. Card payments come under different rules. Some banks take off up to £100, most claims should be settled within five working days, and all of them within 35. If your bank says no, you can take it to the Financial Ombudsman Service.[^psr]
+If you were tricked into sending a bank transfer from one UK account to another, your bank has to refund you up to £85,000, unless you were in on it or grossly negligent. Claim within 13 months. Card payments come under different rules.
+
+Some banks take off up to £100. Most claims should be settled within five working days, and if the bank needs more information it can take longer, but it has to decide within 35. If it says no, you can take it to the Financial Ombudsman Service.[^psr]
 </Region>
 
 <Region place="us">
