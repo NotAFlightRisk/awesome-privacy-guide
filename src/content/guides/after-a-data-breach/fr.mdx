@@ -1,0 +1,161 @@
+---
+title: "Fuite de données : que faire, et dans quel ordre"
+description: "Vos données ont fuité ? Vérifiez ce qui a été volé, changez les mots de passe réutilisés et méfiez-vous de l’arnaque qui suit. Par quoi commencer, et pourquoi."
+source: "979f7d2cc4b9732e"
+sha: "67c0f06165e558b228f6f381e0efea767663d308"
+---
+
+<Short>
+Si de l’argent est déjà parti, [occupez-vous-en d’abord](#if-you-paid), et si quelqu’un s’est introduit dans l’un de vos comptes, [reprenez-en le contrôle](#check-for-intruders). Sinon, commencez par vérifier [ce qui a fuité](#what-leaked). S’il y avait un mot de passe, [changez-le](#change-reused) sur le compte touché et partout où vous l’avez utilisé, puis passez au reste, en commençant par les données de carte bancaire et les pièces d’identité. Désormais, [ne vous fiez pas à un message simplement parce qu’il sait des choses sur vous](#details-prove-nothing) : les escrocs se servent de ce qui a fuité pour rendre leurs messages crédibles.
+</Short>
+
+## Découvrez ce qui a été volé
+
+<Tip id="what-leaked" priority="essential" effort={5} title="Vérifiez sur le site de l’entreprise elle-même ce qui a fuité, pas dans un message">
+Allez vous-même sur le site ou dans l’application de l’entreprise et cherchez ce qu’elle a publié sur la fuite, plutôt que de suivre le lien d’un e-mail qui en parle. Le NCSC, l’agence britannique de cybersécurité, explique que l’entreprise devrait pouvoir vous dire si vous êtes concerné, en quoi, et ce qu’il vous reste à faire.[^ncsc] Ensuite, tout dépend de ce qui a été volé :
+
+- S’il s’agit d’un mot de passe, même haché, [changez-le partout où vous l’avez utilisé](#change-reused).
+- Pour des données de carte ou de compte bancaire, [prévenez votre banque](#tell-your-bank).
+- Votre date de naissance, votre adresse postale ou une copie de votre pièce d’identité peuvent servir à se faire passer pour vous, alors [rendez plus difficile l’ouverture de comptes à votre nom](#block-new-credit).
+- Si vous recevez des codes de connexion par SMS, [protégez votre numéro de téléphone](#lock-your-number).
+- Dans tous les cas, [attendez-vous à des messages qui s’appuient sur ce qui a fuité](#details-prove-nothing).
+
+<Region place="uk">
+Vous pouvez adresser une réclamation à l’entreprise pour lui demander ce qui s’est passé, lesquelles de vos données sont concernées et ce qu’elle fait pour y remédier, et elle a 30 jours pour en accuser réception. Notez à qui vous avez parlé et quand. Si elle ne règle pas le problème, vous pouvez saisir l’ICO, l’autorité britannique de protection des données.[^ico]
+</Region>
+
+<Region place="eu">
+Si une fuite est susceptible de présenter un risque élevé pour vous et que l’entreprise n’a pas écarté ce risque, elle doit vous en informer, et pas seulement l’autorité de contrôle. Si elle ne l’a pas fait, ou si la façon dont elle a géré les choses ne vous convient pas, vous pouvez déposer une plainte auprès de l’autorité de protection des données de votre pays, qui doit vous informer de l’avancement de votre plainte dans un délai de trois mois.[^ec]
+</Region>
+</Tip>
+
+<Tip id="check-other-breaches" priority="optional" effort={5} title="Regardez dans quelles autres fuites figure votre adresse e-mail">
+<App name="Have I Been Pwned">Have I Been Pwned</App> indique, parmi les fuites qu’il connaît, celles dans lesquelles une adresse e-mail est apparue. Les fuites de sites auxquels on préférerait ne pas être associé ne s’affichent qu’une fois que vous avez prouvé que l’adresse est bien la vôtre, en vous connectant. Ne pas y figurer ne veut pas dire que vous n’avez rien à craindre, car le site ne recense qu’une petite partie de ce qui a fuité, et beaucoup de fuites ne sont jamais rendues publiques.[^hibp-faq]
+</Tip>
+
+## Mots de passe et comptes
+
+<Tip id="check-for-intruders" priority="essential" effort={10} title="Vérifiez que personne n’est déjà entré dans vos comptes">
+Cherchez, sur le compte touché et dans votre messagerie, les signes que liste le NCSC : vous n’arrivez plus à vous connecter, des paramètres de sécurité ont été modifiés à votre insu, il y a des messages que vous n’avez pas envoyés, ou des connexions depuis des endroits ou à des heures qui ne correspondent pas à vos habitudes.[^ncsc]
+
+Si un compte présente l’un de ces signes, changez son mot de passe, puis déconnectez tous les autres appareils et applications depuis les paramètres du compte, pour que toute personne encore connectée doive saisir le nouveau. S’il s’agit de votre messagerie, ouvrez ses filtres et ses règles de transfert avant même de changer le mot de passe, et supprimez tout ce que vous n’avez pas configuré vous-même. Une ruse courante consiste à ajouter une règle qui envoie à l’escroc une copie de tout ce qui arrive dans votre boîte, pour qu’il continue de recevoir vos e-mails de réinitialisation de mot de passe.[^ncsc-hacked]
+
+Si vous ne pouvez plus du tout accéder au compte, le guide du NCSC pour [récupérer un compte piraté](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account) conseille de commencer par la procédure de récupération du service lui-même.
+</Tip>
+
+<Tip id="change-reused" priority="essential" effort={20} title="Changez ce mot de passe, sur ce compte et partout où vous l’avez utilisé">
+Les pirates récupèrent les mots de passe d’une fuite et les essaient sur d’autres sites, au cas où vous auriez utilisé le même.[^ncsc-pw] En 2023, c’est ainsi que quelqu’un est entré dans environ 14 000 comptes 23andMe, et a pu accéder par leur intermédiaire aux profils DNA Relatives d’environ 5,5 millions d’autres clients.[^23andme]
+
+Changez-le même si l’entreprise affirme que les mots de passe étaient hachés, un procédé qui les brouille pour qu’on ne puisse pas les lire tels quels. S’ils ont été mal hachés, ou si l’attaquant dispose d’une puissance de calcul suffisante, certains peuvent quand même être retrouvés.[^ncsc-pw]
+
+Si vous utilisiez le même mot de passe pour votre messagerie, changez celui-là en premier, car quiconque accède à votre messagerie peut s’en servir pour réinitialiser vos autres mots de passe.[^ncsc-hacked] Si vous ne l’avez jamais utilisé que sur le compte touché, c’est le seul à changer. Le [guide sur les gestionnaires de mots de passe](/fr/guides/password-manager/#reused-passwords) explique comment retrouver les autres sites où vous l’avez utilisé, et si un compte propose une clé d’accès, vous pouvez vous en servir à la place d’un nouveau mot de passe.[^ncsc]
+
+Profitez-en pour activer la validation en deux étapes sur votre messagerie et sur votre compte bancaire, pour qu’un mot de passe seul ne suffise plus à y accéder.[^ncsc-hacked] Le [guide sur la double authentification](/fr/guides/two-factor/) indique quelle forme choisir.
+</Tip>
+
+## Si votre carte ou vos coordonnées bancaires ont fuité
+
+<Tip id="tell-your-bank" priority="essential" effort={10} title="Prévenez votre banque et surveillez vos relevés">
+Appelez votre banque ou l’émetteur de votre carte au numéro indiqué sur la carte, sur votre relevé ou dans l’application, expliquez que les données de votre carte figuraient dans une fuite et demandez si la carte va être remplacée. Passez ensuite vos relevés en revue pour repérer les paiements que vous ne reconnaissez pas, et signalez-les dès que vous les voyez.[^ftc-cards][^ico]
+
+<Region place="us">
+Si votre numéro de carte est utilisé sans que la carte elle-même ait été perdue ou volée, vous n’êtes pas responsable des débits que vous n’avez pas autorisés sur une carte de crédit. Sur une carte de débit, vous ne l’êtes pas non plus, à condition de les signaler dans les 60 jours qui suivent l’envoi du relevé où ils apparaissent, et passé ce délai, vous risquez de perdre l’argent. Quiconque vous appelle pour vous vendre une « protection contre la perte de carte » est un escroc, puisque la loi fédérale couvre déjà l’utilisation non autorisée d’une carte de crédit.[^ftc-cards]
+</Region>
+</Tip>
+
+## Si votre pièce d’identité ou votre date de naissance ont fuité
+
+<Tip id="block-new-credit" priority="essential" effort={30} title="Rendez plus difficile l’ouverture de comptes à votre nom">
+Les fraudeurs peuvent se servir de ce genre d’informations pour demander un crédit, ou d’autres produits et services, à votre nom.[^ftc-freeze][^cifas]
+
+<Region place="us">
+Faites geler votre dossier de crédit (credit freeze) auprès des trois agences d’évaluation du crédit, Equifax, Experian et TransUnion. Tant que le gel est en place, personne ne peut ouvrir de nouveau compte de crédit à votre nom, pas même vous. C’est gratuit, sans effet sur votre score de crédit, et le gel dure jusqu’à ce que vous le leviez. Quand vous avez besoin d’un crédit, levez-le uniquement auprès de l’agence que consulte ce prêteur, puis remettez-le en place.
+
+Vous pouvez aussi ajouter une alerte à la fraude (fraud alert). Elle oblige les prêteurs à vérifier auprès de vous avant d’accorder le moindre crédit à votre nom, et elle est gratuite. Pour celle-ci, il suffit de la demander à une seule agence, qui prévient les deux autres, et elle dure un an. Si les données d’un enfant ont fuité, vous pouvez aussi faire geler son dossier de crédit tant qu’il a moins de 16 ans, en suivant une procédure distincte auprès de chaque agence.[^ftc-freeze]
+
+Si votre numéro de sécurité sociale (Social Security number) ou votre numéro d’identification fiscale individuel (ITIN) a fuité, un code PIN de protection d’identité (Identity Protection PIN) délivré par l’IRS, le fisc américain, empêche toute autre personne de s’en servir pour déposer une déclaration de revenus. Il suffit d’avoir l’un de ces numéros et de pouvoir prouver son identité pour en obtenir un. L’inscription en ligne est fermée pour maintenance jusqu’à la mi-janvier 2027, et la page de l’IRS indique les autres façons de faire la demande, notamment en personne.[^irs]
+</Region>
+
+<Region place="uk">
+Le service Protective Registration de Cifas, un organisme britannique de lutte contre la fraude, ajoute un avertissement à vos données, si bien que les entreprises qui font appel à Cifas effectuent des vérifications supplémentaires avant d’ouvrir quoi que ce soit à votre nom. Il coûte 30 £ pour deux ans et n’a aucun effet sur votre score de crédit, mais vos propres demandes peuvent prendre plus de temps. D’après Cifas, c’est dans les premiers mois qui suivent la perte de vos données qu’il est le plus efficace.[^cifas]
+
+Vous pouvez aussi demander gratuitement votre dossier de crédit (credit report) aux agences d’évaluation du crédit Equifax, Experian et TransUnion.[^ico-credit] Cherchez-y des comptes ou des opérations que vous ne reconnaissez pas.[^ico]
+</Region>
+</Tip>
+
+## Si votre numéro de téléphone a fuité
+
+<Tip id="lock-your-number" priority="optional" effort={10} title="Si vous recevez des codes de connexion par SMS, protégez votre numéro">
+Si votre numéro a fuité, attendez-vous à des appels et des SMS frauduleux.[^ncsc] Si certains de vos comptes vous envoient des codes de connexion par SMS, demandez aussi à votre opérateur ce qu’il peut faire pour empêcher quelqu’un de transférer votre numéro sur une nouvelle carte SIM. Lors d’un échange de SIM, un escroc convainc votre opérateur de transférer votre numéro sur une carte SIM qu’il contrôle,[^cisa] et à partir de là, c’est lui qui reçoit vos codes. Le [guide sur la double authentification](/fr/guides/two-factor/#lock-your-number) explique quoi demander, et vers quelles formes de double authentification plus sûres passer.
+</Tip>
+
+## L’arnaque qui suit
+
+<Tip id="details-prove-nothing" priority="essential" effort={1} title="Ne vous fiez pas à un message simplement parce qu’il connaît vos données">
+Les escrocs se servent de ce qui a fuité pour donner à leurs messages un air authentique, et certains se font passer pour l’entreprise victime de la fuite. Ces messages peuvent arriver un bon moment après que la fuite a fait l’actualité.[^ncsc]
+
+En 2025, des escrocs ont payé des employés du service client de Coinbase pour qu’ils copient des fiches clients, avec notamment les coordonnées, les photos de pièces d’identité, le solde des comptes et l’historique des transactions. D’après Coinbase, le but était d’obtenir une liste de personnes à contacter en se faisant passer pour Coinbase, afin de les pousser à remettre leurs cryptomonnaies.[^coinbase] Quelqu’un qui vous appelle en connaissant votre solde et vos derniers achats peut donc très bien être un escroc.
+
+Méfiez-vous des messages qui parlent de réinitialiser un mot de passe, de réclamer une indemnisation, d’analyser votre appareil ou d’un colis non livré, et de tout ce qui vous pousse à agir immédiatement.[^ncsc]
+
+Coinbase assure ne jamais vous demander votre mot de passe ou un code de double authentification, ni de transférer votre argent ailleurs.[^coinbase] Le [guide sur la double authentification](/fr/guides/two-factor/#never-share-a-code) explique plus en détail pourquoi il ne faut jamais donner un code à quelqu’un qui a pris contact avec vous.
+</Tip>
+
+<Tip id="ring-back" priority="essential" effort={2} title="Rappelez à un numéro que vous connaissez déjà">
+Le numéro qui s’affiche sur votre écran ne prouve rien non plus, car les escrocs peuvent faire croire qu’un appel vient de votre banque.[^ofcom] Si un appel, un SMS ou un e-mail prétend venir de votre banque ou de l’entreprise touchée, n’utilisez aucun des liens ni aucun des numéros qu’il contient. Raccrochez, puis contactez-les vous-même, au numéro qui figure au dos de votre carte ou via leur propre application ou site web.[^ico]
+
+<App name="Phish.ly" />, <App name="Is Legit?" /> et <App name="Site Report" /> peuvent vous en dire plus sur un site dont vous n’êtes pas sûr. Un résultat rassurant ne prouve pas pour autant qu’un message est authentique, alors passez quand même par l’application ou l’adresse web que vous utilisez d’habitude.
+
+<Region place="uk">
+Si votre banque participe au service 159, appeler le 159 vous met en relation avec elle en toute sécurité.[^ico] Transférez les e-mails frauduleux à report@phishing.gov.uk et les SMS frauduleux au 7726, un service gratuit.[^ncsc]
+</Region>
+
+<Region place="us">
+Signalez les arnaques à la FTC, l’autorité américaine de protection des consommateurs, sur [ReportFraud.ftc.gov](https://reportfraud.ftc.gov/).[^ftc-cards]
+</Region>
+</Tip>
+
+<Tip id="if-you-paid" priority="essential" effort={15} title="Si vous avez déjà payé ou transmis quelque chose">
+Si vous avez payé quoi que ce soit, prévenez tout de suite votre banque, en l’appelant à un numéro que vous connaissez déjà.[^ncsc][^psr] Si vous avez donné un mot de passe ou un code, considérez ce compte comme piraté et [vérifiez que personne n’y est entré](#check-for-intruders).
+
+<Region place="uk">
+Signalez-le à [Report Fraud](https://www.reportfraud.police.uk/), le service de signalement des fraudes pour l’Angleterre, le pays de Galles et l’Irlande du Nord, ou, en Écosse, appelez la police au 101.[^ncsc]
+
+Si un escroc vous a amené par la ruse à faire un virement d’un compte britannique vers un autre compte britannique, votre banque doit vous rembourser jusqu’à 85 000 £, sauf si vous étiez complice ou avez fait preuve de négligence grave. Faites votre réclamation dans les 13 mois qui suivent le paiement. Les paiements par carte relèvent d’autres règles.
+
+Certaines banques déduisent jusqu’à 100 £ du remboursement. La plupart des demandes devraient être réglées en cinq jours ouvrés, et si la banque a besoin de plus d’informations, cela peut prendre plus longtemps, mais elle doit trancher en 35 jours ouvrés au plus. Si elle refuse, vous pouvez saisir le Financial Ombudsman Service, le médiateur financier britannique.[^psr]
+</Region>
+
+<Region place="us">
+Si vous pensez que quelqu’un usurpe votre identité, signalez-le sur [IdentityTheft.gov](https://www.identitytheft.gov/), qui vous propose un plan pour rétablir la situation.[^ftc-cards]
+</Region>
+</Tip>
+
+## Limitez les dégâts de la prochaine fuite
+
+<Tip id="alias-per-account" priority="optional" effort={20} title="Donnez à chaque compte sa propre adresse e-mail">
+Si chaque site reçoit son propre <Term slug="email-alias">alias</Term>, qui vous fait suivre ce qu’il reçoit, une fuite ne révèle que cet alias, et non l’adresse que vous utilisez partout. Quand du spam commence à arriver sur un alias, vous savez quel site l’a laissé fuiter, et vous pouvez désactiver cet alias sans toucher au reste.[^ec-tips]
+
+<Picks section="Mail Forwarding" level={4} />
+
+Les alertes gratuites de Have I Been Pwned vous préviennent quand votre adresse apparaît dans une nouvelle fuite.[^hibp-notify]
+</Tip>
+
+[^ncsc]: [NCSC : Conseils aux particuliers en cas de fuite de données](https://www.ncsc.gov.uk/guidance/data-breaches) (en anglais)
+[^ico]: [ICO : Quelles mesures prendre si vous êtes touché par une violation de données personnelles ?](https://ico.org.uk/for-the-public/i-m-worried-an-organisation-hasn-t-kept-my-information-safe-what-should-i-do/what-steps-can-i-take-if-i-ve-been-affected-by-a-personal-data-breach/) (en anglais)
+[^ec]: [Commission européenne : Informations pour les particuliers](https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en) (en anglais)
+[^hibp-faq]: [Have I Been Pwned : Questions fréquentes](https://haveibeenpwned.com/FAQs) (en anglais)
+[^ncsc-pw]: [NCSC : La gestion des mots de passe pour les responsables de systèmes](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach) (en anglais)
+[^23andme]: [23andMe : Réponse aux inquiétudes sur la sécurité des données](https://www.23andme.org/blog/articles/addressing-data-security-concerns/) (en anglais)
+[^ncsc-hacked]: [NCSC : Récupérer un compte piraté](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account) (en anglais)
+[^ftc-cards]: [FTC : Cartes de crédit, de retrait et de débit perdues ou volées](https://consumer.ftc.gov/articles/lost-or-stolen-credit-atm-and-debit-cards) (en anglais)
+[^ftc-freeze]: [FTC : Gel du crédit et alertes à la fraude](https://consumer.ftc.gov/articles/credit-freezes-and-fraud-alerts) (en anglais)
+[^cifas]: [Cifas : Protective Registration](https://www.cifas.org.uk/pr) (en anglais)
+[^irs]: [IRS : Obtenir un code PIN de protection d’identité](https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin) (en anglais)
+[^ico-credit]: [ICO : Le crédit](https://ico.org.uk/for-the-public/credit/) (en anglais)
+[^cisa]: [CISA : Mettre en place une MFA résistante à l’hameçonnage](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf) (en anglais)
+[^coinbase]: [Coinbase : Protéger nos clients et tenir tête aux maîtres chanteurs](https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists) (en anglais)
+[^ofcom]: [Ofcom : Les différents types d’appels, de SMS et de messages frauduleux](https://www.ofcom.org.uk/phones-and-broadband/scam-calls-and-messages/types-of-scam-calls-texts-and-messages) (en anglais)
+[^psr]: [Payment Systems Regulator : Le remboursement en cas de fraude au virement autorisé (APP)](https://www.psr.org.uk/information-for-consumers/app-fraud-reimbursement-protections/) (en anglais)
+[^ec-tips]: [Email Comparison : Conseils de sécurité pour vos e-mails](https://email-comparison.as93.net/email-security-tips) (en anglais)
+[^hibp-notify]: [Have I Been Pwned : Recevoir gratuitement des alertes en cas de fuite](https://haveibeenpwned.com/NotifyMe) (en anglais)

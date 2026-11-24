@@ -1,0 +1,161 @@
+---
+title: "Filtración de datos: qué hacer y en qué orden"
+description: "Averigua qué se filtró, cambia las contraseñas que hayas repetido y no caigas en la estafa que viene después. Qué hacer primero tras una filtración y por qué."
+source: "979f7d2cc4b9732e"
+sha: "67c0f06165e558b228f6f381e0efea767663d308"
+---
+
+<Short>
+Si ya has perdido dinero, [ocúpate de eso primero](#if-you-paid), y si alguien ha entrado en una de tus cuentas, [échalo de ahí](#check-for-intruders). Si no, averigua [qué se filtró](#what-leaked). Si había una contraseña, [cámbiala](#change-reused) en la cuenta afectada y en cualquier otro sitio donde la hayas usado, y luego sigue con el resto, empezando por los datos de la tarjeta y los documentos de identidad. A partir de ahora, [no te fíes de un mensaje solo porque sabe cosas de ti](#details-prove-nothing), ya que los delincuentes usan lo que se filtró para que sus mensajes parezcan auténticos.
+</Short>
+
+## Averigua qué se llevaron
+
+<Tip id="what-leaked" priority="essential" effort={5} title="Consulta en el sitio de la propia empresa qué se filtró, no en un mensaje">
+Entra por tu cuenta en el sitio web o la app de la empresa y busca su aviso, en lugar de seguir el enlace de un correo que hable de ello. El NCSC, la agencia británica de ciberseguridad, dice que la empresa debería poder decirte si te ha afectado, de qué forma y qué más tienes que hacer[^ncsc]. Después, actúa según lo que se hayan llevado:
+
+- Si era una contraseña, aunque estuviera protegida con hash, [cámbiala en todos los sitios donde la hayas usado](#change-reused).
+- Si eran los datos de tu tarjeta o de tu cuenta bancaria, [avisa a tu banco](#tell-your-bank).
+- Con tu fecha de nacimiento, la dirección de tu casa o una copia de tu documento de identidad, alguien puede hacerse pasar por ti, así que [haz que sea más difícil abrir cuentas a tu nombre](#block-new-credit).
+- Si recibes los códigos de inicio de sesión por SMS, [protege tu número de teléfono](#lock-your-number).
+- Sea lo que sea, [prepárate para recibir mensajes que lo usen](#details-prove-nothing).
+
+<Region place="uk">
+Puedes presentar una reclamación a la empresa y preguntarle qué ha pasado, qué datos tuyos se han visto afectados y qué está haciendo al respecto, y tiene 30 días para acusar recibo de tu reclamación. Apunta con quién hablaste y cuándo. Si no lo soluciona, puedes reclamar ante la ICO, la autoridad británica de protección de datos[^ico].
+</Region>
+
+<Region place="eu">
+Si es probable que una filtración te ponga en una situación de alto riesgo y la empresa no le ha puesto remedio, tiene que avisarte a ti, no solo al regulador. Si no lo hizo, o no te convence cómo ha gestionado el asunto, puedes reclamar ante la autoridad de protección de datos de tu país, que tiene que informarte de cómo va tu reclamación en un plazo de tres meses[^ec].
+</Region>
+</Tip>
+
+<Tip id="check-other-breaches" priority="optional" effort={5} title="Mira en qué otras filtraciones aparece tu dirección de correo">
+Escribe una dirección de correo en <App name="Have I Been Pwned">Have I Been Pwned</App> y te dirá en cuáles de las filtraciones que conoce aparece. Las de sitios con los que nadie querría que lo relacionaran solo se muestran cuando demuestras, iniciando sesión, que la dirección es tuya. Que no aparezcas no quiere decir que te hayas librado, porque solo recoge una pequeña parte de lo que se ha filtrado, y muchas filtraciones no llegan a hacerse públicas nunca[^hibp-faq].
+</Tip>
+
+## Contraseñas y cuentas
+
+<Tip id="check-for-intruders" priority="essential" effort={10} title="Comprueba que no haya entrado nadie">
+Revisa la cuenta afectada y tu correo en busca de las señales que enumera el NCSC: no puedes iniciar sesión, la configuración de seguridad ha cambiado sin que tú la tocaras, hay mensajes que no enviaste o hay inicios de sesión desde lugares o a horas que no cuadran[^ncsc].
+
+Si ves cualquiera de estas señales en una cuenta, cambia su contraseña y luego, desde la configuración de la cuenta, cierra la sesión en todos los demás dispositivos y apps, para que quien siga conectado tenga que escribir la nueva. Si es tu correo, antes de hacer nada de eso abre sus filtros y sus reglas de reenvío, y borra las que no hayas creado tú. Un truco habitual es una regla que le manda al delincuente una copia de todo lo que recibes, así que le seguirían llegando tus correos para restablecer contraseñas[^ncsc-hacked].
+
+Si no puedes entrar de ninguna forma, la guía del NCSC para [recuperar una cuenta hackeada](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account) empieza por el propio proceso de recuperación del proveedor.
+</Tip>
+
+<Tip id="change-reused" priority="essential" effort={20} title="Cambia esa contraseña en todos los sitios donde la hayas usado">
+Los delincuentes toman las contraseñas de una filtración y las prueban en otros sitios, por si has usado la misma[^ncsc-pw]. Así fue como alguien entró en 2023 en unas 14 000 cuentas de 23andMe y, a través de ellas, llegó a los perfiles de parientes genéticos (DNA Relatives) de unos 5,5 millones de clientes más[^23andme].
+
+Cámbiala aunque la empresa diga que las contraseñas estaban protegidas con hash, un proceso que las transforma para que no se puedan leer tal cual. Si el hash se hizo mal, o el atacante tiene suficiente potencia de cálculo, algunas se pueden averiguar igualmente[^ncsc-pw].
+
+Si usaste la misma contraseña en tu correo, cambia esa primero, porque quien entre en tu correo puede usarlo para restablecer tus otras contraseñas[^ncsc-hacked]. Si solo la usaste en la cuenta afectada, esa es la única que tienes que cambiar. La [guía del gestor de contraseñas](/es/guias/password-manager/#reused-passwords) explica cómo encontrar en qué otros sitios la has usado, y si una cuenta ofrece llave de acceso, puedes usarla en lugar de una contraseña nueva[^ncsc].
+
+Aprovecha también para activar la verificación en dos pasos en tu correo y en tu banco, para que una contraseña por sí sola no baste para entrar[^ncsc-hacked]. La [guía de autenticación de dos factores](/es/guias/two-factor/) explica qué tipo elegir.
+</Tip>
+
+## Si se filtraron los datos de tu tarjeta o de tu banco
+
+<Tip id="tell-your-bank" priority="essential" effort={10} title="Avisa a tu banco y vigila los movimientos de tu cuenta">
+Llama a tu banco o a la entidad emisora de tu tarjeta al número que aparece en la tarjeta, en el estado de cuenta o en la app, explica que tus datos estaban en una filtración y pregunta si te van a cambiar la tarjeta. Luego revisa tus movimientos por si hay pagos que no reconoces, y avisa de cualquiera en cuanto lo veas[^ftc-cards][^ico].
+
+<Region place="us">
+Si alguien usa el número de tu tarjeta pero no la perdiste ni te la robaron, con una tarjeta de crédito no eres responsable de los cargos que no autorizaste. Con una tarjeta de débito, no eres responsable siempre que los comuniques en los 60 días siguientes a la fecha en que te enviaron el estado de cuenta en el que aparecen, y pasado ese plazo puedes perder el dinero. Si te llama alguien para venderte una «protección contra la pérdida de la tarjeta», es un estafador, porque la ley federal ya te protege del uso no autorizado de una tarjeta de crédito[^ftc-cards].
+</Region>
+</Tip>
+
+## Si se filtró tu documento de identidad o tu fecha de nacimiento
+
+<Tip id="block-new-credit" priority="essential" effort={30} title="Haz que sea más difícil abrir cuentas a tu nombre">
+Los estafadores pueden usar datos como estos para pedir créditos, u otros productos y servicios, a tu nombre[^ftc-freeze][^cifas].
+
+<Region place="us">
+Congela tu crédito en las tres compañías de informes de crédito: Equifax, Experian y TransUnion. Mientras esté congelado, nadie podrá abrir una cuenta de crédito nueva a tu nombre, ni siquiera tú. El congelamiento es gratis, no afecta a tu puntaje de crédito y dura hasta que lo levantes. Cuando necesites un crédito, levántalo solo en la compañía que vaya a consultar quien te lo dé, y luego vuelve a activarlo.
+
+También puedes añadir una alerta de fraude, que obliga a las entidades a consultarte antes de darle un crédito a nadie a tu nombre, y tampoco cuesta nada. Para esta basta con pedirla en una de las compañías, que avisa a las otras dos, y dura un año. Si se filtraron los datos de un menor de 16 años a tu cargo, también puedes congelar su crédito, con un trámite aparte en cada compañía[^ftc-freeze].
+
+Si se filtró tu número de Seguro Social (SSN) o tu ITIN, un PIN para la protección de la identidad (IP PIN) impide que otra persona presente una declaración de impuestos con él. Lo da el IRS, la agencia tributaria de Estados Unidos, a cualquiera que tenga uno de esos números y pueda demostrar quién es. La inscripción en línea está cerrada por mantenimiento hasta mediados de enero de 2027, y en la página del IRS se explican las otras formas de pedirlo, incluida la solicitud en persona[^irs].
+</Region>
+
+<Region place="uk">
+Cifas, un servicio británico de prevención del fraude, ofrece el Protective Registration, que añade un aviso a tus datos para que las empresas que usan Cifas hagan comprobaciones adicionales antes de abrir nada a tu nombre. Cuesta 30 £ por dos años y no afecta a tu puntuación de crédito, pero tus propias solicitudes pueden tardar más. Cifas dice que es más eficaz en los primeros meses después de que se pierdan tus datos[^cifas].
+
+También puedes pedir tu informe de crédito a Equifax, Experian y TransUnion, y es gratis[^ico-credit]. Busca cuentas o movimientos que no reconozcas[^ico].
+</Region>
+</Tip>
+
+## Si se filtró tu número de teléfono
+
+<Tip id="lock-your-number" priority="optional" effort={10} title="Si recibes códigos de inicio de sesión por SMS, protege tu número">
+Si se filtró tu número, es de esperar que te lleguen llamadas y SMS fraudulentos[^ncsc]. Si alguna de tus cuentas te envía los códigos de inicio de sesión por SMS, pregunta además a tu compañía telefónica qué puede hacer para impedir que alguien pase tu número a una SIM nueva. En un SIM swapping, un delincuente convence a la compañía de que pase tu número a una SIM que controla él[^cisa], y desde ese momento tus códigos le llegan a él. La [guía de autenticación de dos factores](/es/guias/two-factor/#lock-your-number) explica qué pedir y a qué tipos de 2FA más seguros pasarte.
+</Tip>
+
+## La estafa que viene después
+
+<Tip id="details-prove-nothing" priority="essential" effort={1} title="No te fíes de un mensaje solo porque conoce tus datos">
+Los delincuentes usan lo que se filtró para que sus mensajes parezcan auténticos, y algunos se hacen pasar por la empresa que sufrió la filtración. Pueden aparecer un tiempo después de que la filtración salga en las noticias[^ncsc].
+
+En 2025, unos delincuentes pagaron a algunos empleados de atención al cliente de Coinbase para que copiaran registros de clientes con datos de contacto, fotos de documentos de identidad, saldos e historiales de transacciones. Coinbase dijo que el objetivo era conseguir una lista de personas con las que ponerse en contacto haciéndose pasar por Coinbase, para engañarlas y que entregaran sus criptomonedas[^coinbase]. Así que alguien que te llama y conoce tu saldo y lo que has estado comprando puede ser igualmente un estafador.
+
+Desconfía de los mensajes sobre restablecer una contraseña, reclamar una indemnización, analizar tu dispositivo o un paquete que no te pudieron entregar, y de cualquier cosa que te meta prisa para que actúes ya[^ncsc].
+
+Coinbase dice que nunca te pedirá tu contraseña ni un código de 2FA, ni que pases tu dinero a otro sitio[^coinbase]. En la [guía de autenticación de dos factores](/es/guias/two-factor/#never-share-a-code) tienes más sobre por qué no debes darle nunca un código a nadie que se haya puesto en contacto contigo.
+</Tip>
+
+<Tip id="ring-back" priority="essential" effort={2} title="Cuelga y llama tú a un número que ya tengas">
+El número que aparece en la pantalla tampoco demuestra nada, porque los estafadores pueden hacer que una llamada parezca venir de tu banco[^ofcom]. Si una llamada, un SMS o un correo dice venir de tu banco o de la empresa que sufrió la filtración, no uses ningún enlace ni número que traiga. Cuelga y ponte tú en contacto con ellos, llamando al número que aparece en el reverso de tu tarjeta o a través de su propia app o sitio web[^ico].
+
+<App name="Phish.ly" />, <App name="Is Legit?" /> y <App name="Site Report" /> te pueden dar más información sobre un sitio web que te despierte dudas. Eso sí, que un sitio salga limpio no hace que el mensaje sea auténtico, así que entra igualmente desde la app o la dirección web que ya usas.
+
+<Region place="uk">
+Si tu banco participa en el 159, llamar al 159 te pone en contacto con él de forma segura[^ico]. Reenvía los correos fraudulentos a report@phishing.gov.uk y los SMS fraudulentos al 7726, que es gratis[^ncsc].
+</Region>
+
+<Region place="us">
+Denuncia las estafas ante la FTC, la Comisión Federal de Comercio de Estados Unidos, en [ReporteFraude.ftc.gov](https://reportefraude.ftc.gov/)[^ftc-cards].
+</Region>
+</Tip>
+
+<Tip id="if-you-paid" priority="essential" effort={15} title="Si ya has pagado o entregado algo">
+Si has pagado algo, avisa a tu banco enseguida, llamando a un número que ya tengas[^ncsc][^psr]. Si has dado una contraseña o un código, trata esa cuenta como hackeada y [comprueba que no haya entrado nadie](#check-for-intruders).
+
+<Region place="uk">
+Denúncialo en [Report Fraud](https://www.reportfraud.police.uk/), el servicio de denuncias de fraude de Inglaterra, Gales e Irlanda del Norte, o, si estás en Escocia, llama a la policía al 101[^ncsc].
+
+Si te engañaron para que hicieras una transferencia bancaria de una cuenta del Reino Unido a otra cuenta del Reino Unido, tu banco tiene que devolverte hasta 85 000 £, salvo que participaras en el fraude o actuaras con negligencia grave. Reclama en un plazo de 13 meses desde el pago. Los pagos con tarjeta se rigen por otras normas.
+
+Algunos bancos descuentan hasta 100 £ de lo que te devuelven. La mayoría de las reclamaciones deberían resolverse en cinco días hábiles. Si el banco necesita más información, puede tardar más, pero tiene que decidir en un máximo de 35 días hábiles. Si te dice que no, puedes llevar el caso al Financial Ombudsman Service, el defensor del cliente financiero del Reino Unido[^psr].
+</Region>
+
+<Region place="us">
+Si crees que alguien está usando tu identidad, denúncialo en [RobodeIdentidad.gov](https://www.robodeidentidad.gov/), que te da un plan de recuperación[^ftc-cards].
+</Region>
+</Tip>
+
+## Que la próxima filtración te afecte menos
+
+<Tip id="alias-per-account" priority="optional" effort={20} title="Dale a cada cuenta su propia dirección de correo">
+Si cada sitio tiene su propio <Term slug="email-alias">alias</Term> que te reenvía el correo, una filtración solo deja al descubierto ese alias, y no la dirección que usas en todas partes. Cuando empiece a llegar spam a un alias, sabrás qué sitio lo filtró y podrás desactivar ese alias sin tocar nada más[^ec-tips].
+
+<Picks section="Mail Forwarding" level={4} />
+
+Las alertas gratuitas de Have I Been Pwned te avisan cuando tu dirección aparece en una filtración nueva[^hibp-notify].
+</Tip>
+
+[^ncsc]: [NCSC: Orientaciones sobre filtraciones de datos para particulares](https://www.ncsc.gov.uk/guidance/data-breaches)
+[^ico]: [ICO: ¿Qué puedo hacer si me ha afectado una filtración de datos personales?](https://ico.org.uk/for-the-public/i-m-worried-an-organisation-hasn-t-kept-my-information-safe-what-should-i-do/what-steps-can-i-take-if-i-ve-been-affected-by-a-personal-data-breach/)
+[^ec]: [Comisión Europea: Información para particulares](https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en)
+[^hibp-faq]: [Have I Been Pwned: Preguntas frecuentes](https://haveibeenpwned.com/FAQs)
+[^ncsc-pw]: [NCSC: Administración de contraseñas para responsables de sistemas](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^23andme]: [23andMe: Respuesta a las dudas sobre la seguridad de los datos](https://www.23andme.org/blog/articles/addressing-data-security-concerns/)
+[^ncsc-hacked]: [NCSC: Cómo recuperar una cuenta hackeada](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account)
+[^ftc-cards]: [FTC: Pérdida o robo de tarjetas de crédito y de débito](https://consumidor.ftc.gov/articulos/perdida-o-robo-de-tarjetas-de-credito-y-de-debito)
+[^ftc-freeze]: [FTC: Congelamientos de crédito y alertas de fraude](https://consumer.ftc.gov/articles/credit-freezes-and-fraud-alerts)
+[^cifas]: [Cifas: Protective Registration](https://www.cifas.org.uk/pr)
+[^irs]: [IRS: Cómo obtener un PIN para la protección de la identidad](https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin)
+[^ico-credit]: [ICO: Crédito](https://ico.org.uk/for-the-public/credit/)
+[^cisa]: [CISA: Cómo implementar una MFA resistente al phishing](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^coinbase]: [Coinbase: Protegemos a nuestros clientes y hacemos frente a los extorsionadores](https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists)
+[^ofcom]: [Ofcom: Tipos de llamadas, SMS y mensajes fraudulentos](https://www.ofcom.org.uk/phones-and-broadband/scam-calls-and-messages/types-of-scam-calls-texts-and-messages)
+[^psr]: [Payment Systems Regulator: Protección de reembolso ante el fraude por transferencia autorizada (APP)](https://www.psr.org.uk/information-for-consumers/app-fraud-reimbursement-protections/)
+[^ec-tips]: [Email Comparison: Consejos de seguridad para el correo electrónico](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned: Recibe avisos gratuitos de filtraciones](https://haveibeenpwned.com/NotifyMe)

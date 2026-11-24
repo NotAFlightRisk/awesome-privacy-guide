@@ -1,0 +1,173 @@
+---
+title: What to do after a data breach, in the right order
+description: Find out what leaked, change any password you reused, and watch for the scam that follows. What to do first after a data breach, and why.
+type: respond
+topic: accounts
+sections: [Online Tools, Mail Forwarding]
+terms: [phishing]
+related: [password-manager, two-factor, email-aliases]
+further:
+  - url: https://www.ncsc.gov.uk/guidance/data-breaches
+    label: The NCSC's guidance on data breaches
+  - url: https://digital-defense.io/checklist/authentication
+    label: The full authentication checklist
+  - url: https://digital-defense.io/checklist/personal-finance
+    label: The personal finance checklist
+published: 2026-11-24
+checked: 2026-11-24
+---
+
+<Short>
+If money has already gone, [deal with that first](#if-you-paid), and if someone's got into one of your accounts, [get them out](#check-for-intruders). Otherwise, find out [what leaked](#what-leaked). If it included a password, [change it](#change-reused) on the breached account and anywhere else you've used it, then go through the rest, starting with card details and ID. From now on, [don't trust a message just because it knows things about you](#details-prove-nothing), since criminals use what leaked to make their messages look real.
+</Short>
+
+## Find out what was taken
+
+<Tip id="what-leaked" priority="essential" effort={5} title="Check the company's own site for what leaked, not a message">
+Go to the company's website or app yourself and look for its notice, rather than following a link in an email about it. The NCSC says the company should be able to tell you whether you were affected, how, and what else you need to do.[^ncsc] Then go by what was taken:
+
+- If it was a password, even a hashed one, [change it everywhere you've used it](#change-reused).
+- For card or bank details, [tell your bank](#tell-your-bank).
+- Your date of birth, home address or a copy of your ID can be used to pretend to be you, so [make it harder to open accounts in your name](#block-new-credit).
+- If you get login codes by text, [protect your phone number](#lock-your-number).
+- Whatever it was, [expect messages that use it](#details-prove-nothing).
+
+<Region place="uk">
+You can complain to the company and ask what happened, what of yours was involved and what it's doing about it, and it has 30 days to acknowledge your complaint. Keep a note of who you spoke to and when. If it doesn't sort things out, you can complain to the ICO.[^ico]
+</Region>
+
+<Region place="eu">
+If a breach is likely to put you at high risk, and the company hasn't dealt with that risk, it has to tell you, not just the regulator. If it didn't, or you're not happy with how it's handled things, you can complain to your country's data protection authority, which has to tell you how it's getting on within three months.[^ec]
+</Region>
+</Tip>
+
+<Tip id="check-other-breaches" priority="optional" effort={5} title="See which other breaches your email address is in">
+Type an email address into <App name="Have I Been Pwned">Have I Been Pwned</App> and it shows which of the breaches it knows about that address was in. Breaches of sites people wouldn't want to be linked to only show once you've proved the address is yours, by signing in. Not being in it doesn't mean you're in the clear, since it only holds a small part of what's been leaked, and lots of breaches never get published at all.[^hibp-faq]
+</Tip>
+
+## Passwords and accounts
+
+<Tip id="check-for-intruders" priority="essential" effort={10} title="Check nobody's already been in">
+Look at the breached account and your email for the signs the NCSC lists: you can't log in, security settings have changed without you, there are messages you didn't send, or there are logins from places or at times that don't fit.[^ncsc]
+
+If an account shows any of them, change its password, then log out every other device and app from the account's settings, so anyone still signed in has to type the new one. If it's your email, open its filters and forwarding rules before you do any of that, and delete any you didn't set up. A common trick is a rule that sends the criminal a copy of everything you get, so they'd keep getting your password resets.[^ncsc-hacked]
+
+If you can't get in at all, the NCSC's guide to [recovering a hacked account](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account) starts with the provider's own recovery process.
+</Tip>
+
+<Tip id="change-reused" priority="essential" effort={20} title="Change that password, and everywhere you've used it">
+Criminals take passwords from one breach and try them on other sites, in case you used the same one.[^ncsc-pw] In 2023, that's how someone got into about 14,000 23andMe accounts, and through them reached about 5.5 million other customers' DNA Relatives profiles.[^23andme]
+
+Change it even if the company says the passwords were hashed, which scrambles them so they can't be read straight off. If they were hashed poorly, or the attacker has enough computing power, some of them can still be worked out.[^ncsc-pw]
+
+If you used the same password on your email, change that one first, since whoever gets into your email can use it to reset your other passwords.[^ncsc-hacked] If you only ever used it on the breached account, that's the only one to change. The [password manager guide](/guides/password-manager/#reused-passwords) shows how to find where else you've used it, and an account that offers a passkey lets you use that instead of a new password.[^ncsc]
+
+While you're there, turn on two-step login on your email and your bank, so a password on its own isn't enough to get in.[^ncsc-hacked] The [2FA guide](/guides/two-factor/) says which kind to pick.
+</Tip>
+
+## If your card or bank details leaked
+
+<Tip id="tell-your-bank" priority="essential" effort={10} title="Tell your bank, and keep an eye on your statements">
+Call your bank or card provider on the number on your card, statement or app, say the details were in a breach, and ask whether it'll replace the card. Then check your statements for payments you don't recognise, and report any as soon as you see them.[^ftc-cards][^ico]
+
+<Region place="us">
+If your card number is used but the card itself wasn't lost or stolen, you aren't responsible for charges you didn't authorise on a credit card. On a debit card, you aren't responsible as long as you report them within 60 days after the statement showing them was sent to you, and after that you can lose the money. Anyone who calls to sell you "card loss protection" is a scammer, since federal law already covers unauthorised use of a credit card.[^ftc-cards]
+</Region>
+</Tip>
+
+## If your ID or date of birth leaked
+
+<Tip id="block-new-credit" priority="essential" effort={30} title="Make it harder for someone to open accounts in your name">
+Fraudsters can use details like these to apply for credit, or other products and services, in your name.[^ftc-freeze][^cifas]
+
+<Region place="us">
+Freeze your credit with all three bureaus, Equifax, Experian and TransUnion. While it's on, nobody can open a new credit account in your name, you included. It's free, it doesn't affect your credit score, and it lasts until you lift it. When you need credit, lift it at the one bureau that lender uses, then put it back.
+
+You can add a fraud alert as well. It makes lenders check with you before they give anyone credit in your name, and it's free. For this one you only need to ask one bureau, which tells the other two, and it lasts a year. If a child's details leaked, you can freeze their credit too while they're under 16, through a separate process at each bureau.[^ftc-freeze]
+
+If your Social Security number or ITIN leaked, an IRS identity protection PIN stops anyone else filing a tax return with it. Anyone with either who can prove who they are can get one. The online sign-up is closed for maintenance until mid-January 2027, and the IRS page lists the other ways to apply, including in person.[^irs]
+</Region>
+
+<Region place="uk">
+Cifas Protective Registration puts a warning on your details, so companies that use Cifas do extra checks before opening anything in your name. It costs £30 for two years and doesn't affect your credit score, but your own applications can take longer. Cifas says it's most effective in the first few months after your details are lost.[^cifas]
+
+You can also ask Equifax, Experian and TransUnion for your credit report, which is free.[^ico-credit] Look for any accounts or activity you don't recognise.[^ico]
+</Region>
+</Tip>
+
+## If your phone number leaked
+
+<Tip id="lock-your-number" priority="optional" effort={10} title="If you get login codes by text, protect your number">
+A leaked number means you should expect scam calls and texts.[^ncsc] If any of your accounts send you login codes by text, also ask your network what it can do to stop someone moving your number to a new SIM. In a SIM swap, a criminal talks your network into moving your number to a SIM they control,[^cisa] and your codes go to them from then on. The [2FA guide](/guides/two-factor/#lock-your-number) covers what to ask for, and the safer kinds of 2FA to move to.
+</Tip>
+
+## The scam that comes next
+
+<Tip id="details-prove-nothing" priority="essential" effort={1} title="Don't trust a message just because it knows your details">
+Criminals use what leaked to make their messages look genuine, and some pretend to be the company that was breached. They can turn up some time after the breach is in the news.[^ncsc]
+
+In 2025, criminals paid some of Coinbase's support staff to copy customer records, including contact details, ID photos, account balances and transaction histories. Coinbase said the point was a list of people the criminals could contact while pretending to be Coinbase, to trick them into handing over their crypto.[^coinbase] So a caller who knows your balance and what you've been buying can still be a scammer.
+
+Be wary of messages about resetting a password, claiming compensation, scanning your device or a missed delivery, and of anything that wants you to act right now.[^ncsc]
+
+Coinbase says it'll never ask for your password or a 2FA code, or ask you to move your money somewhere new.[^coinbase] The [2FA guide](/guides/two-factor/#never-share-a-code) has more on why you never hand a code to anyone who contacted you.
+</Tip>
+
+<Tip id="ring-back" priority="essential" effort={2} title="Ring back on a number you already have">
+The number on your screen proves nothing either, since scammers can make a call look like it's from your bank.[^ofcom] If a call, text or email says it's from your bank or the breached company, don't use any link or number in it. Hang up, then contact them yourself, on the number on the back of your card or through their own app or website.[^ico]
+
+<App name="Phish.ly" />, <App name="Is Legit?" /> and <App name="Site Report" /> can tell you more about a website you're not sure of. A clean result doesn't make a message genuine, though, so still go in through the app or the web address you already use.
+
+<Region place="uk">
+If your bank takes part in 159, calling 159 connects you to it safely.[^ico] Forward scam emails to report@phishing.gov.uk and scam texts to 7726, which is free.[^ncsc]
+</Region>
+
+<Region place="us">
+Report scams to the FTC at [ReportFraud.ftc.gov](https://reportfraud.ftc.gov/).[^ftc-cards]
+</Region>
+</Tip>
+
+<Tip id="if-you-paid" priority="essential" effort={15} title="If you've already paid or handed something over">
+If you've paid anything, tell your bank straight away, on a number you already have.[^ncsc][^psr] If you gave away a password or a code, treat that account as hacked and [check nobody's been in](#check-for-intruders).
+
+<Region place="uk">
+Report it to [Report Fraud](https://www.reportfraud.police.uk/), which covers England, Wales and Northern Ireland, or call the police on 101 in Scotland.[^ncsc]
+
+If you were tricked into sending a bank transfer from one UK account to another, your bank has to refund you up to £85,000, unless you were in on it or grossly negligent. Claim within 13 months of the payment. Card payments come under different rules.
+
+Some banks take off up to £100. Most claims should be settled within five working days, and if the bank needs more information it can take longer, but it has to decide within 35 working days. If it says no, you can take it to the Financial Ombudsman Service.[^psr]
+</Region>
+
+<Region place="us">
+If you think someone's using your identity, report it at [IdentityTheft.gov](https://www.identitytheft.gov/), which gives you a recovery plan.[^ftc-cards]
+</Region>
+</Tip>
+
+## Make the next breach smaller
+
+<Tip id="alias-per-account" priority="optional" effort={20} title="Give each account its own email address">
+If every site gets its own <Term slug="email-alias">alias</Term> that forwards to you, a breach only gives away that one alias, rather than the address you use everywhere. When spam starts arriving at an alias, you know which site leaked it, and you can switch that alias off without touching anything else.[^ec-tips]
+
+<Picks section="Mail Forwarding" level={4} />
+
+Have I Been Pwned's free alerts will tell you when your address turns up in a new breach.[^hibp-notify]
+</Tip>
+
+[^ncsc]: [NCSC: Data breach guidance for individuals](https://www.ncsc.gov.uk/guidance/data-breaches)
+[^ico]: [ICO: What steps can I take if I've been affected by a personal data breach?](https://ico.org.uk/for-the-public/i-m-worried-an-organisation-hasn-t-kept-my-information-safe-what-should-i-do/what-steps-can-i-take-if-i-ve-been-affected-by-a-personal-data-breach/)
+[^ec]: [European Commission: Information for individuals](https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en)
+[^hibp-faq]: [Have I Been Pwned: Frequently asked questions](https://haveibeenpwned.com/FAQs)
+[^ncsc-pw]: [NCSC: Password administration for system owners](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^23andme]: [23andMe: Addressing data security concerns](https://www.23andme.org/blog/articles/addressing-data-security-concerns/)
+[^ncsc-hacked]: [NCSC: Recovering a hacked account](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account)
+[^ftc-cards]: [FTC: Lost or stolen credit, ATM, and debit cards](https://consumer.ftc.gov/articles/lost-or-stolen-credit-atm-and-debit-cards)
+[^ftc-freeze]: [FTC: Credit freezes and fraud alerts](https://consumer.ftc.gov/articles/credit-freezes-and-fraud-alerts)
+[^cifas]: [Cifas: Protective Registration](https://www.cifas.org.uk/pr)
+[^irs]: [IRS: Get an identity protection PIN](https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin)
+[^ico-credit]: [ICO: Credit](https://ico.org.uk/for-the-public/credit/)
+[^cisa]: [CISA: Implementing phishing-resistant MFA](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^coinbase]: [Coinbase: Protecting our customers, standing up to extortionists](https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists)
+[^ofcom]: [Ofcom: Types of scam calls, texts and messages](https://www.ofcom.org.uk/phones-and-broadband/scam-calls-and-messages/types-of-scam-calls-texts-and-messages)
+[^psr]: [Payment Systems Regulator: APP fraud reimbursement protections](https://www.psr.org.uk/information-for-consumers/app-fraud-reimbursement-protections/)
+[^ec-tips]: [Email Comparison: Email security tips](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned: Get free breach notifications](https://haveibeenpwned.com/NotifyMe)

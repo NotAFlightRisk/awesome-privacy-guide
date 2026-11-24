@@ -1,0 +1,161 @@
+---
+title: "個人情報が漏洩したら最初にやるべきこと"
+description: "情報漏洩の通知が届いたら、まず何が漏れたかを会社のサイトで確かめ、使い回していたパスワードを変えましょう。カード情報や身分証が漏れたときの対策と、漏れた情報を使った詐欺への備えを、やる順番と理由つきで説明します。"
+source: "979f7d2cc4b9732e"
+sha: "67c0f06165e558b228f6f381e0efea767663d308"
+---
+
+<Short>
+すでにお金を取られてしまったなら、[まずそちらに対処してください](#if-you-paid)。誰かがアカウントに入り込んでいるなら、[追い出しましょう](#check-for-intruders)。そうでなければ、まず[何が漏れたか](#what-leaked)を確かめます。パスワードが含まれていたら、漏洩したアカウントと、同じパスワードを使っているほかのすべての場所で[変えてください](#change-reused)。そのあとは、カード情報や身分証明書から順に、残りを片付けていきます。これからは、[自分のことを知っているからといって、そのメッセージを信用しないでください](#details-prove-nothing)。犯罪者は、漏れた情報を使ってメッセージを本物らしく見せかけるからです。
+</Short>
+
+## 何が盗まれたかを確かめる
+
+<Tip id="what-leaked" priority="essential" effort={5} title="漏洩はメールでなく公式サイトで確認">
+漏洩を知らせるメールのリンクはたどらずに、会社のサイトやアプリを自分で開いて、お知らせを探してください。英国のNCSC（国家サイバーセキュリティセンター）によれば、会社は、あなたが影響を受けたかどうか、どんな影響があったか、ほかに何をすべきかを伝えられるはずです[^ncsc]。そのうえで、盗まれたものに応じて対応します。
+
+- パスワードが漏れたなら、ハッシュ化されていたとしても、[使っていたすべての場所で変えてください](#change-reused)。
+- カード情報や口座情報なら、[銀行に連絡してください](#tell-your-bank)。
+- 生年月日や自宅の住所、身分証明書のコピーは、あなたになりすますのに使われることがあるので、[あなたの名義で勝手に契約されにくくしておきましょう](#block-new-credit)。
+- ログイン用のコードをSMSで受け取っているなら、[電話番号を守ってください](#lock-your-number)。
+- 何が漏れたにしても、[それを使ったメッセージが届くものと思っておきましょう](#details-prove-nothing)。
+
+<Region place="uk">
+会社に苦情を申し入れて、何が起きたのか、あなたのどの情報が関係しているのか、どう対応しているのかを尋ねることができます。会社は30日以内に、苦情を受け付けたことをあなたに知らせなければなりません。いつ誰と話したかは記録しておきましょう。それでも解決しなければ、英国のデータ保護当局であるICO（情報コミッショナー事務局）に苦情を申し立てられます[^ico]。
+</Region>
+
+<Region place="eu">
+漏洩によってあなたに高いリスクが生じるおそれがあり、会社がそのリスクに対処していない場合、会社は規制当局だけでなく、あなた本人にも知らせなければなりません。知らせてこなかった場合や、会社の対応に納得できない場合は、住んでいる国のデータ保護機関に苦情を申し立てられます。データ保護機関は、3か月以内に進み具合をあなたに知らせなければなりません[^ec]。
+</Region>
+</Tip>
+
+<Tip id="check-other-breaches" priority="optional" effort={5} title="ほかの漏洩にもアドレスがないか調べる">
+<App name="Have I Been Pwned">Have I Been Pwned</App>にメールアドレスを入力すると、このサービスが把握している漏洩のうち、どれにそのアドレスが含まれていたかがわかります。利用していることを人に知られたくないようなサイトの漏洩は、サインインしてアドレスが自分のものだと証明するまで表示されません。ここに載っていなくても安心はできません。これまでに漏れた情報のごく一部しか集められていませんし、まったく公表されない漏洩もたくさんあるからです[^hibp-faq]。
+</Tip>
+
+## パスワードとアカウント
+
+<Tip id="check-for-intruders" priority="essential" effort={10} title="すでに侵入されていないか確かめる">
+漏洩したアカウントとメールに、NCSCが挙げている兆候がないか確かめてください。ログインできない、自分では何もしていないのにセキュリティ設定が変わっている、送った覚えのないメッセージがある、心当たりのない場所や時間からのログインがある、といったものです[^ncsc]。
+
+どれかに当てはまるアカウントがあれば、そのパスワードを変えてから、アカウントの設定でほかのデバイスとアプリをすべてログアウトさせてください。こうすれば、まだサインインしたままの人も、新しいパスワードを入力しないと入れなくなります。メールのアカウントなら、パスワードを変える前にまずフィルタと転送の設定を開いて、自分で作っていないものを削除してください。よくあるのは、届いたメールをすべて犯人にもコピーして送る設定を仕込む手口で、そうなるとパスワード再設定のメールも犯人に届き続けます[^ncsc-hacked]。
+
+まったくログインできない場合は、NCSCの[乗っ取られたアカウントを取り戻すためのガイド](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account)にあるとおり、まずはそのサービス自身の復元手続きから始めましょう。
+</Tip>
+
+<Tip id="change-reused" priority="essential" effort={20} title="パスワードは使い回し先も含めて変える">
+犯罪者は、ある漏洩で手に入れたパスワードを、使い回されていることを見込んで、ほかのサイトでも試します[^ncsc-pw]。2023年には、この手口で米国の遺伝子検査サービス23andMeのアカウント約1万4,000件に不正ログインされ、そこを足がかりに、ほかの利用者約550万人分の「DNA Relatives」のプロフィールにまでアクセスされました[^23andme]。
+
+会社がパスワードはハッシュ化されていたと説明していても、変えてください。ハッシュ化とは、パスワードをそのままでは読めない形に変換しておくことです。ただ、ハッシュ化のやり方が甘かったり、攻撃者に十分な計算能力があったりすると、一部のパスワードは割り出せてしまいます[^ncsc-pw]。
+
+同じパスワードをメールにも使っていたなら、メールから先に変えてください。メールに入り込んだ人は、それを使ってほかのパスワードを再設定できてしまうからです[^ncsc-hacked]。漏洩したアカウントでしか使っていなかったなら、変えるのはそれ1つだけです。ほかにどこで使っているかを見つける方法は[パスワードマネージャーのガイド](/ja/guides/password-manager/#reused-passwords)で説明しています。パスキーに対応しているアカウントなら、新しいパスワードの代わりにパスキーを使うこともできます[^ncsc]。
+
+ついでに、メールと銀行で2段階認証をオンにしておきましょう。そうすれば、パスワードだけではログインできなくなります[^ncsc-hacked]。どの方法を選べばいいかは[2段階認証のガイド](/ja/guides/two-factor/)で説明しています。
+</Tip>
+
+## カードや口座情報が漏れたら
+
+<Tip id="tell-your-bank" priority="essential" effort={10} title="銀行に連絡し、明細をこまめに確認する">
+カードや利用明細、アプリに載っている番号で銀行やカード会社に電話し、情報が漏洩に含まれていたことを伝えて、カードを再発行してもらえるか聞いてください。そのあとは、明細に見覚えのない支払いがないか確かめ、見つけたらすぐに届け出ます[^ftc-cards][^ico]。
+
+<Region place="us">
+カード自体はなくしたり盗まれたりしていないのにカード番号を使われた場合、クレジットカードなら、自分が認めていない請求を負担する必要はありません。デビットカードの場合も、その請求が載った利用明細が送られてから60日以内に届け出れば負担はありませんが、それを過ぎるとお金が戻らなくなることがあります。「カード紛失保護」を売り込む電話をかけてくる相手は詐欺師です。クレジットカードを不正利用されても、すでに連邦法で守られているからです[^ftc-cards]。
+</Region>
+</Tip>
+
+## 身分証や生年月日が漏れたら
+
+<Tip id="block-new-credit" priority="essential" effort={30} title="名義を勝手に使われにくくする">
+詐欺師はこうした情報を使って、あなたの名義でローンやクレジットカードを申し込んだり、ほかの商品やサービスを契約したりすることがあります[^ftc-freeze][^cifas]。
+
+<Region place="us">
+Equifax、Experian、TransUnionの3つの信用情報機関すべてで、信用情報を凍結（credit freeze）しましょう。凍結しているあいだは、あなた自身も含めて誰も、あなたの名義で新しくローンやクレジットカードを契約できません。無料で、信用スコアにも影響せず、自分で解除するまで続きます。ローンやカードを申し込むときは、その貸し手が使っている1社だけで凍結を解除し、済んだらまた凍結します。
+
+詐欺アラート（fraud alert）を追加することもできます。あなたの名義で新しくローンやカードの契約をする前に、貸し手があなたに確認を取らなければならなくなります。これも無料です。こちらは1社に申し込めばほかの2社にも伝わり、有効期間は1年です。子どもの情報が漏れた場合は、16歳未満のあいだなら子どもの信用情報も凍結できますが、各社で別の手続きが必要です[^ftc-freeze]。
+
+社会保障番号（Social Security number）か個人納税者番号（ITIN）が漏れた場合は、米国内国歳入庁（IRS）の個人情報保護PIN（Identity Protection PIN）を取得すれば、ほかの誰かがその番号で納税申告をするのを防げます。どちらかの番号を持っていて、本人確認ができる人なら誰でも取得できます。オンラインでの申し込みはメンテナンスのため2027年1月中旬まで停止していますが、IRSのページには、対面での手続きを含め、ほかの申し込み方法が載っています[^irs]。
+</Region>
+
+<Region place="uk">
+英国の詐欺防止サービスCifasのProtective Registrationを使うと、あなたの情報に警告が付き、Cifasを利用している会社は、あなたの名義での申し込みを受け付ける前に追加の確認をするようになります。料金は2年間で30ポンドで、信用スコアには影響しませんが、自分で申し込むときにも時間がかかることがあります。Cifasによると、情報が漏れてから最初の数か月のあいだがいちばん効果的です[^cifas]。
+
+信用情報機関のEquifax、Experian、TransUnionに信用情報レポートを請求することもでき、これは無料です[^ico-credit]。見覚えのない契約や取引がないか確かめてください[^ico]。
+</Region>
+</Tip>
+
+## 電話番号が漏れたら
+
+<Tip id="lock-your-number" priority="optional" effort={10} title="SMSでコードが届くなら番号を守る">
+番号が漏れたら、詐欺の電話やSMSが来るものと思っておいてください[^ncsc]。SMSでログイン用のコードを送ってくるアカウントがあるなら、誰かがあなたの番号を新しいSIMに移せないようにする手段がないか、携帯電話会社にも問い合わせましょう。SIMスワップでは、犯罪者が携帯電話会社を言いくるめて、あなたの番号を自分が持っているSIMに移させます[^cisa]。そこから先は、コードがすべて犯人に届くようになります。何を頼めばいいかと、乗り換え先になるより安全な2段階認証については、[2段階認証のガイド](/ja/guides/two-factor/#lock-your-number)で説明しています。
+</Tip>
+
+## 漏洩のあとに来る詐欺
+
+<Tip id="details-prove-nothing" priority="essential" effort={1} title="個人情報を知っていても信用しない">
+犯罪者は漏れた情報を使ってメッセージを本物らしく見せかけ、なかには漏洩を起こした会社を名乗るものもあります。こうしたメッセージは、漏洩がニュースになってからしばらくたって届くこともあります[^ncsc]。
+
+2025年には、犯罪者が米国の暗号資産取引所Coinbaseのサポート担当者の一部を買収し、連絡先、身分証の写真、口座の残高、取引履歴などの顧客情報をコピーさせました。Coinbaseによれば、犯人の狙いは、Coinbaseを装って連絡を取り、暗号資産をだまし取るための相手のリストを手に入れることでした[^coinbase]。ですから、残高やこれまでに何を買ったかを知っている電話の相手でも、詐欺師の可能性はあります。
+
+パスワードの再設定、補償金の受け取り、デバイスのスキャン、荷物の不在通知についてのメッセージや、今すぐ行動するよう急かしてくるものには注意してください[^ncsc]。
+
+Coinbaseは、パスワードや2段階認証のコードを聞いたり、資産を新しい場所に移すよう頼んだりすることは決してないとしています[^coinbase]。向こうから連絡してきた相手にコードを絶対に教えてはいけない理由は、[2段階認証のガイド](/ja/guides/two-factor/#never-share-a-code)で詳しく説明しています。
+</Tip>
+
+<Tip id="ring-back" priority="essential" effort={2} title="手元にある番号にかけ直す">
+画面に表示される番号も、本物だという証拠にはなりません。詐欺師は、銀行からの電話のように見せかけることができるからです[^ofcom]。銀行や漏洩を起こした会社を名乗る電話、SMS、メールが届いたら、そこにあるリンクや番号は使わないでください。電話ならいったん切ってから、カードの裏にある番号か、公式のアプリやサイトを通じて、自分から連絡してください[^ico]。
+
+<App name="Phish.ly" />、<App name="Is Legit?" />、<App name="Site Report" />を使えば、怪しいと思ったサイトについてもっと詳しく調べられます。ただし、問題が見つからなかったからといってメッセージが本物だとは限らないので、それでもいつも使っているアプリやURLから入ってください。
+
+<Region place="uk">
+取引している銀行が159に参加していれば、159に電話すると安全にその銀行につながります[^ico]。詐欺メールはreport@phishing.gov.ukに、詐欺SMSは7726に転送してください。7726への転送は無料です[^ncsc]。
+</Region>
+
+<Region place="us">
+詐欺は米連邦取引委員会（FTC）の[ReportFraud.ftc.gov](https://reportfraud.ftc.gov/)に報告してください[^ftc-cards]。
+</Region>
+</Tip>
+
+<Tip id="if-you-paid" priority="essential" effort={15} title="お金や情報をもう渡してしまったら">
+お金を払ってしまったなら、手元にある番号ですぐに銀行に連絡してください[^ncsc][^psr]。パスワードやコードを教えてしまったなら、そのアカウントは乗っ取られたものとして扱い、[誰かが入り込んでいないか確かめてください](#check-for-intruders)。
+
+<Region place="uk">
+詐欺とサイバー犯罪の通報窓口である[Report Fraud](https://www.reportfraud.police.uk/)に届け出てください。対象はイングランド、ウェールズ、北アイルランドなので、スコットランドの場合は警察の101番（緊急でない用件の番号）に電話してください[^ncsc]。
+
+だまされて英国内の口座から別の英国内の口座に振り込んでしまった場合、あなたの銀行は8万5,000ポンドまで返金しなければなりません。ただし、あなたが詐欺に加担していた場合や、重大な過失があった場合は除きます。請求は、支払いから13か月以内に行ってください。カードでの支払いには別のルールが適用されます。
+
+銀行によっては、返金額から最大100ポンドを差し引くことがあります。たいていの請求は5営業日以内に決着するはずです。銀行が追加の情報を必要とする場合はもっとかかることもありますが、35営業日以内には判断しなければなりません。断られた場合は、英国の金融オンブズマンであるFinancial Ombudsman Serviceに申し立てられます[^psr]。
+</Region>
+
+<Region place="us">
+誰かがあなたになりすましていると思ったら、[IdentityTheft.gov](https://www.identitytheft.gov/)で報告してください。被害を回復するための計画を示してくれます[^ftc-cards]。
+</Region>
+</Tip>
+
+## 次の漏洩で被害を抑える
+
+<Tip id="alias-per-account" priority="optional" effort={20} title="アカウントごとに別のアドレスを使う">
+サイトごとに、自分宛てに転送される専用の<Term slug="email-alias">エイリアス</Term>を用意しておけば、漏洩で知られてしまうのはそのエイリアス1つだけで、どこでも使っているアドレスは漏れずに済みます。あるエイリアスに迷惑メールが届きはじめたら、どのサイトから漏れたのかがわかり、ほかには手を付けずにそのエイリアスだけを無効にできます[^ec-tips]。
+
+<Picks section="Mail Forwarding" level={4} />
+
+Have I Been Pwnedの無料の通知に登録しておけば、新しい漏洩であなたのアドレスが見つかったときに知らせてくれます[^hibp-notify]。
+</Tip>
+
+[^ncsc]: [NCSC：個人向けのデータ漏洩ガイダンス](https://www.ncsc.gov.uk/guidance/data-breaches)
+[^ico]: [ICO：個人データの漏洩で影響を受けたときにできること](https://ico.org.uk/for-the-public/i-m-worried-an-organisation-hasn-t-kept-my-information-safe-what-should-i-do/what-steps-can-i-take-if-i-ve-been-affected-by-a-personal-data-breach/)
+[^ec]: [欧州委員会：個人向けの情報](https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en)
+[^hibp-faq]: [Have I Been Pwned：よくある質問](https://haveibeenpwned.com/FAQs)
+[^ncsc-pw]: [NCSC：システム管理者のためのパスワード管理](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^23andme]: [23andMe：データセキュリティに関する懸念への対応](https://www.23andme.org/blog/articles/addressing-data-security-concerns/)
+[^ncsc-hacked]: [NCSC：乗っ取られたアカウントを取り戻す](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account)
+[^ftc-cards]: [FTC：クレジットカード、ATMカード、デビットカードの紛失と盗難](https://consumer.ftc.gov/articles/lost-or-stolen-credit-atm-and-debit-cards)
+[^ftc-freeze]: [FTC：信用情報の凍結と詐欺アラート](https://consumer.ftc.gov/articles/credit-freezes-and-fraud-alerts)
+[^cifas]: [Cifas：Protective Registration](https://www.cifas.org.uk/pr)
+[^irs]: [IRS：個人情報保護PINを取得する](https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin)
+[^ico-credit]: [ICO：信用情報](https://ico.org.uk/for-the-public/credit/)
+[^cisa]: [CISA：フィッシング耐性のあるMFAの導入](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^coinbase]: [Coinbase：顧客を守り、恐喝には屈しない](https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists)
+[^ofcom]: [Ofcom：詐欺の電話、SMS、メッセージの種類](https://www.ofcom.org.uk/phones-and-broadband/scam-calls-and-messages/types-of-scam-calls-texts-and-messages)
+[^psr]: [Payment Systems Regulator：APP詐欺の返金保護](https://www.psr.org.uk/information-for-consumers/app-fraud-reimbursement-protections/)
+[^ec-tips]: [Email Comparison：メールのセキュリティのヒント](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned：漏洩の無料通知に登録する](https://haveibeenpwned.com/NotifyMe)
