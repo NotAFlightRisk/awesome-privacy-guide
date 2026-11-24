@@ -1,0 +1,159 @@
+---
+title: "Data breach: cosa fare se i tuoi dati sono trapelati"
+description: "Scopri cosa è trapelato, cambia le password che hai riutilizzato e occhio alla truffa che arriva dopo. Cosa fare prima di tutto dopo un data breach, e perché."
+---
+
+<Short>
+Se hai già perso dei soldi, [occupatene per prima cosa](#if-you-paid), e se qualcuno è entrato in uno dei tuoi account, [buttalo fuori](#check-for-intruders). Altrimenti, scopri [cosa è trapelato](#what-leaked). Se c'era una password, [cambiala](#change-reused) sull'account del sito violato e ovunque tu l'abbia usata, poi passa al resto, a partire dai dati della carta e dei documenti. D'ora in poi, [non fidarti di un messaggio solo perché sa delle cose su di te](#details-prove-nothing), perché i criminali usano i dati trapelati per rendere credibili i loro messaggi.
+</Short>
+
+## Scopri cosa è stato rubato
+
+<Tip id="what-leaked" priority="essential" effort={5} title="Scopri sul sito dell'azienda cosa è trapelato, non da un messaggio">
+Vai tu sul sito o nell'app dell'azienda e cerca il suo avviso, invece di seguire il link di un'email che ne parla. Secondo l'NCSC, il centro nazionale britannico per la cybersicurezza, l'azienda dovrebbe saperti dire se la violazione ti riguarda, in che modo e cos'altro devi fare.[^ncsc] Poi regolati in base a cosa è stato rubato:
+
+- Se era una password, anche in forma di hash, [cambiala ovunque tu l'abbia usata](#change-reused).
+- Se erano i dati della carta o del conto, [avvisa la tua banca](#tell-your-bank).
+- La data di nascita, l'indirizzo di casa o la copia di un documento possono servire a qualcuno per spacciarsi per te, quindi [rendi più difficile aprire conti a tuo nome](#block-new-credit).
+- Se ricevi i codici di accesso via SMS, [proteggi il tuo numero di telefono](#lock-your-number).
+- Qualunque cosa sia trapelata, [aspettati messaggi che la sfruttano](#details-prove-nothing).
+
+<Region place="uk">
+Puoi fare reclamo all'azienda e chiederle cosa è successo, quali dati tuoi sono coinvolti e cosa sta facendo per rimediare, e l'azienda ha 30 giorni per confermarti di averlo ricevuto. Annota con chi hai parlato e quando. Se non risolve la situazione, puoi presentare un reclamo all'ICO, l'autorità britannica per la protezione dei dati.[^ico]
+</Region>
+
+<Region place="eu">
+Se è probabile che una violazione ti esponga a un rischio elevato, e l'azienda non ha già rimediato a quel rischio, deve avvisare te, e non solo l'autorità. Se non l'ha fatto, o non ti convince come ha gestito la cosa, puoi presentare un reclamo all'autorità per la protezione dei dati del tuo paese, che entro tre mesi deve dirti a che punto è il reclamo.[^ec]
+</Region>
+</Tip>
+
+<Tip id="check-other-breaches" priority="optional" effort={5} title="Scopri in quali altre violazioni compare il tuo indirizzo email">
+<App name="Have I Been Pwned">Have I Been Pwned</App> ti mostra in quali delle violazioni che conosce è comparso un indirizzo email. Le violazioni dei siti a cui la gente preferirebbe non essere associata compaiono solo dopo che hai dimostrato che l'indirizzo è tuo, accedendo al sito. Se non ci sei, non vuol dire che tu sia al sicuro, perché il sito contiene solo una piccola parte di quello che è trapelato, e molte violazioni non vengono mai rese pubbliche.[^hibp-faq]
+</Tip>
+
+## Password e account
+
+<Tip id="check-for-intruders" priority="essential" effort={10} title="Controlla che nessuno sia già entrato">
+Nell'account del sito violato e nella tua email, cerca i segnali indicati dall'NCSC: non riesci ad accedere, le impostazioni di sicurezza sono cambiate senza che tu le toccassi, ci sono messaggi che non hai mandato tu, oppure ci sono accessi da luoghi o in orari che non tornano.[^ncsc]
+
+Se nella tua email trovi uno di questi segnali, apri prima di tutto i filtri e le regole di inoltro, ed elimina quelli che non hai creato tu. Un trucco comune è una regola che manda al criminale una copia di tutto quello che ricevi, così continuerebbe a ricevere anche le email per reimpostare le tue password. Poi cambia la password e, dalle impostazioni dell'account, disconnetti tutti gli altri dispositivi e le altre app, così chi è ancora collegato deve inserire quella nuova.[^ncsc-hacked]
+
+Se non riesci proprio a entrare, la guida dell'NCSC per [recuperare un account hackerato](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account) parte dalla procedura di recupero del provider stesso.
+</Tip>
+
+<Tip id="change-reused" priority="essential" effort={20} title="Cambia quella password, lì e ovunque tu l'abbia usata">
+I criminali prendono le password di una violazione e le provano su altri siti, nel caso tu abbia usato la stessa.[^ncsc-pw] Nel 2023 è così che qualcuno è entrato in circa 14.000 account di 23andMe, l'azienda di test genetici, e attraverso quelli ha raggiunto i profili DNA Relatives di circa 5,5 milioni di altri clienti.[^23andme]
+
+Cambiala anche se l'azienda dice che le password erano protette con un hash, che le rimescola in modo che non si possano leggere così come sono. Se l'hash è fatto male, o chi attacca ha abbastanza potenza di calcolo, alcune si possono comunque ricavare.[^ncsc-pw]
+
+Se hai usato la stessa password per la tua email, cambia prima quella, perché chi entra nella tua email può usarla per reimpostare le altre password.[^ncsc-hacked] Se l'hai usata solo sull'account del sito violato, basta cambiare quella. La [guida al password manager](/it/guide/password-manager/#reused-passwords) spiega come trovare gli altri account in cui l'hai usata, e se un account offre le passkey puoi usare una passkey al posto di una nuova password.[^ncsc]
+
+Già che ci sei, attiva la verifica in due passaggi sulla tua email e sul conto in banca, così la password da sola non basta per entrare.[^ncsc-hacked] La [guida all'autenticazione a due fattori](/it/guide/two-factor/) spiega quale tipo scegliere.
+</Tip>
+
+## Se sono trapelati i dati della carta o del conto
+
+<Tip id="tell-your-bank" priority="essential" effort={10} title="Avvisa la banca e tieni d'occhio gli estratti conto">
+Chiama la banca, o chi ti ha dato la carta, al numero che trovi sulla carta, sull'estratto conto o nell'app, spiega che i dati sono finiti in una violazione e chiedi se ti manda una carta nuova. Poi controlla gli estratti conto per trovare pagamenti che non riconosci, e segnalali appena li vedi.[^ftc-cards][^ico]
+
+<Region place="us">
+Se qualcuno usa il numero della tua carta ma la carta non è stata persa o rubata, con una carta di credito non rispondi degli addebiti che non hai autorizzato. Con una carta di debito non ne rispondi purché li segnali entro 60 giorni dall'invio dell'estratto conto in cui compaiono, e dopo quel termine puoi perdere i soldi. Chi ti chiama per venderti una «protezione contro la perdita della carta» è un truffatore, perché la legge federale copre già l'uso non autorizzato di una carta di credito.[^ftc-cards]
+</Region>
+</Tip>
+
+## Se sono trapelati i tuoi documenti o la data di nascita
+
+<Tip id="block-new-credit" priority="essential" effort={30} title="Rendi più difficile a un estraneo aprire conti a tuo nome">
+I truffatori possono usare dati come questi per chiedere prestiti, o altri prodotti e servizi, a tuo nome.[^ftc-freeze][^cifas]
+
+<Region place="us">
+Chiedi il blocco del credito (credit freeze) a tutte e tre le agenzie di informazioni creditizie: Equifax, Experian e TransUnion. Finché il blocco è attivo, nessuno può aprire una nuova linea di credito a tuo nome, nemmeno tu. È gratis, non influisce sul tuo punteggio di credito e dura finché non lo togli. Quando ti serve un prestito, togli il blocco solo presso l'agenzia che usa quella banca o finanziaria, poi rimettilo.
+
+Puoi anche aggiungere un avviso di frode (fraud alert). È gratis, e obbliga banche e finanziarie a verificare con te prima di concedere a chiunque credito a tuo nome. In questo caso basta chiederlo a una sola agenzia, che avvisa le altre due, e dura un anno. Se sono trapelati i dati di un figlio, puoi bloccare anche il suo credito finché ha meno di 16 anni, con una procedura separata presso ogni agenzia.[^ftc-freeze]
+
+Se è trapelato il tuo Social Security number o il tuo ITIN (il numero fiscale di chi non ha diritto a un Social Security number), un Identity Protection PIN dell'IRS, il fisco statunitense, impedisce a chiunque altro di presentare una dichiarazione dei redditi con quel numero. Può ottenerlo chiunque abbia uno dei due e possa dimostrare chi è. La richiesta online è chiusa per manutenzione fino a metà gennaio 2027, e sulla pagina dell'IRS trovi gli altri modi per chiederlo, anche di persona.[^irs]
+</Region>
+
+<Region place="uk">
+Con la Protective Registration di Cifas, un servizio britannico di prevenzione delle frodi, sui tuoi dati compare un avvertimento, così le aziende che usano Cifas fanno controlli in più prima di aprire qualsiasi cosa a tuo nome. Costa 30 sterline per due anni e non influisce sul tuo punteggio di credito, ma le pratiche che avvii tu possono andare più a rilento. Secondo Cifas è più efficace nei primi mesi dopo che i tuoi dati sono finiti in mani sbagliate.[^cifas]
+
+Puoi anche chiedere il tuo credit report, cioè il resoconto della tua storia creditizia, alle agenzie Equifax, Experian e TransUnion, ed è gratis.[^ico-credit] Cerca conti o movimenti che non riconosci.[^ico]
+</Region>
+</Tip>
+
+## Se è trapelato il tuo numero di telefono
+
+<Tip id="lock-your-number" priority="optional" effort={10} title="Se ricevi i codici di accesso via SMS, proteggi il tuo numero">
+Se il tuo numero è trapelato, aspettati chiamate e SMS truffa.[^ncsc] Se uno dei tuoi account ti manda i codici di accesso via SMS, chiedi anche al tuo operatore cosa può fare per impedire che qualcuno sposti il tuo numero su una nuova SIM. Con il SIM swap, un criminale convince il tuo operatore a spostare il tuo numero su una SIM che ha in mano lui,[^cisa] e da quel momento i tuoi codici arrivano a lui. La [guida alla 2FA](/it/guide/two-factor/#lock-your-number) spiega cosa chiedere e a quali tipi di 2FA più sicuri passare.
+</Tip>
+
+## La truffa che arriva dopo
+
+<Tip id="details-prove-nothing" priority="essential" effort={1} title="Non fidarti di un messaggio solo perché conosce i tuoi dati">
+I criminali usano i dati trapelati per far sembrare autentici i loro messaggi, e alcuni si spacciano per l'azienda che ha subito la violazione. Possono farsi vivi anche un po' di tempo dopo che la notizia è uscita.[^ncsc]
+
+Nel 2025 dei criminali hanno pagato alcuni addetti all'assistenza clienti di Coinbase, la piattaforma di criptovalute, perché copiassero i dati dei clienti, compresi recapiti, foto dei documenti, saldi e cronologia delle transazioni. Secondo Coinbase, l'obiettivo era un elenco di persone da contattare fingendosi Coinbase, per convincerle a consegnare le loro criptovalute.[^coinbase] Quindi anche chi ti chiama e conosce il tuo saldo e cosa hai comprato di recente può essere un truffatore.
+
+Diffida dei messaggi che parlano di reimpostare una password, di chiedere un risarcimento, di scansionare il tuo dispositivo o di una consegna non andata a buon fine, e di tutto ciò che ti mette fretta.[^ncsc]
+
+Coinbase dice che non ti chiederà mai la password o un codice 2FA, né di spostare i tuoi soldi da un'altra parte.[^coinbase] La [guida alla 2FA](/it/guide/two-factor/#never-share-a-code) spiega meglio perché non devi mai dare un codice a chi ti ha contattato.
+</Tip>
+
+<Tip id="ring-back" priority="essential" effort={2} title="Richiama tu, a un numero che hai già">
+Nemmeno il numero che compare sullo schermo prova nulla, perché i truffatori possono far sembrare che una chiamata arrivi dalla tua banca.[^ofcom] Se una chiamata, un SMS o un'email dice di arrivare dalla tua banca o dall'azienda colpita, non usare nessun link o numero che contiene. Riattacca, poi mettiti in contatto tu con loro, al numero sul retro della carta o tramite la loro app o il loro sito.[^ico]
+
+<App name="Phish.ly" />, <App name="Is Legit?" /> e <App name="Site Report" /> possono dirti di più su un sito di cui non sei sicuro. Un risultato pulito, però, non rende autentico un messaggio, quindi entra comunque dall'app o dall'indirizzo che usi già.
+
+<Region place="uk">
+Se la tua banca aderisce al servizio 159, chiamando il 159 ti metti in contatto con lei in modo sicuro.[^ico] Inoltra le email truffa a report@phishing.gov.uk e gli SMS truffa al 7726, che è gratuito.[^ncsc]
+</Region>
+
+<Region place="us">
+Segnala le truffe alla FTC, l'autorità statunitense per la tutela dei consumatori, su [ReportFraud.ftc.gov](https://reportfraud.ftc.gov/).[^ftc-cards]
+</Region>
+</Tip>
+
+<Tip id="if-you-paid" priority="essential" effort={15} title="Se hai già pagato o consegnato qualcosa">
+Se hai pagato qualcosa, avvisa subito la banca, a un numero che hai già.[^ncsc][^psr] Se hai dato una password o un codice, considera quell'account hackerato e [controlla che nessuno sia entrato](#check-for-intruders).
+
+<Region place="uk">
+Segnalalo a [Report Fraud](https://www.reportfraud.police.uk/), il servizio per denunciare frodi e reati informatici in Inghilterra, Galles e Irlanda del Nord, oppure, se sei in Scozia, chiama la polizia al 101.[^ncsc]
+
+Se con un inganno ti hanno fatto fare un bonifico da un conto britannico a un altro, la tua banca deve rimborsarti fino a 85.000 sterline, a meno che tu non fossi complice o abbia agito con grave negligenza. Hai 13 mesi dal pagamento per chiedere il rimborso. Per i pagamenti con carta valgono regole diverse.
+
+Alcune banche trattengono fino a 100 sterline. La maggior parte delle richieste dovrebbe chiudersi entro cinque giorni lavorativi. Se alla banca servono altre informazioni può volerci di più, ma deve decidere entro 35 giorni lavorativi. Se ti dice di no, puoi rivolgerti al Financial Ombudsman Service, l'arbitro britannico per le controversie con banche e finanziarie.[^psr]
+</Region>
+
+<Region place="us">
+Se pensi che qualcuno stia usando la tua identità, segnalalo su [IdentityTheft.gov](https://www.identitytheft.gov/), che ti dà un piano per rimettere le cose a posto.[^ftc-cards]
+</Region>
+</Tip>
+
+## Limita i danni della prossima violazione
+
+<Tip id="alias-per-account" priority="optional" effort={20} title="Dai a ogni account un indirizzo email diverso">
+Se ogni sito ha un suo <Term slug="email-alias">alias</Term> che ti inoltra la posta, una violazione fa trapelare solo quell'alias, e non l'indirizzo che usi dappertutto. Quando su un alias comincia ad arrivare spam, sai quale sito se l'è lasciato sfuggire, e puoi disattivare quell'alias senza toccare nient'altro.[^ec-tips]
+
+<Picks section="Mail Forwarding" level={4} />
+
+Gli avvisi gratuiti di Have I Been Pwned ti dicono quando il tuo indirizzo compare in una nuova violazione.[^hibp-notify]
+</Tip>
+
+[^ncsc]: [NCSC: violazioni dei dati, indicazioni per i privati](https://www.ncsc.gov.uk/guidance/data-breaches)
+[^ico]: [ICO: cosa posso fare se sono coinvolto in una violazione dei dati personali?](https://ico.org.uk/for-the-public/i-m-worried-an-organisation-hasn-t-kept-my-information-safe-what-should-i-do/what-steps-can-i-take-if-i-ve-been-affected-by-a-personal-data-breach/)
+[^ec]: [Commissione europea: informazioni per i cittadini](https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en)
+[^hibp-faq]: [Have I Been Pwned: domande frequenti](https://haveibeenpwned.com/FAQs)
+[^ncsc-pw]: [NCSC: la gestione delle password per chi amministra i sistemi](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^23andme]: [23andMe: rispondere ai timori sulla sicurezza dei dati](https://www.23andme.org/blog/articles/addressing-data-security-concerns/)
+[^ncsc-hacked]: [NCSC: recuperare un account hackerato](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account)
+[^ftc-cards]: [FTC: carte di credito, bancomat e carte di debito perse o rubate](https://consumer.ftc.gov/articles/lost-or-stolen-credit-atm-and-debit-cards)
+[^ftc-freeze]: [FTC: blocco del credito e avvisi di frode](https://consumer.ftc.gov/articles/credit-freezes-and-fraud-alerts)
+[^cifas]: [Cifas: Protective Registration](https://www.cifas.org.uk/pr)
+[^irs]: [IRS: ottenere un PIN di protezione dell'identità](https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin)
+[^ico-credit]: [ICO: il credito](https://ico.org.uk/for-the-public/credit/)
+[^cisa]: [CISA: come adottare un'MFA resistente al phishing](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^coinbase]: [Coinbase: proteggere i nostri clienti e tenere testa agli estorsori](https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists)
+[^ofcom]: [Ofcom: i tipi di chiamate, SMS e messaggi truffa](https://www.ofcom.org.uk/phones-and-broadband/scam-calls-and-messages/types-of-scam-calls-texts-and-messages)
+[^psr]: [Payment Systems Regulator: i rimborsi per le frodi con bonifico autorizzato (APP)](https://www.psr.org.uk/information-for-consumers/app-fraud-reimbursement-protections/)
+[^ec-tips]: [Email Comparison: consigli per la sicurezza dell'email](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned: ricevi gratis gli avvisi sulle violazioni](https://haveibeenpwned.com/NotifyMe)

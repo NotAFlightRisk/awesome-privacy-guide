@@ -1,0 +1,159 @@
+---
+title: "Datenleck: Was du jetzt tun solltest, der Reihe nach"
+description: "Finde heraus, was geleakt wurde, ändere mehrfach benutzte Passwörter und rechne mit der Betrugsmasche danach. Was nach einem Datenleck zuerst dran ist und warum."
+---
+
+<Short>
+Wenn schon Geld weg ist, [kümmere dich zuerst darum](#if-you-paid), und wenn jemand in eins deiner Konten gekommen ist, [sperr ihn aus](#check-for-intruders). Ansonsten finde heraus, [was geleakt wurde](#what-leaked). War ein Passwort dabei, [ändere es](#change-reused) beim betroffenen Konto und überall sonst, wo du es benutzt hast. Geh danach den Rest durch, angefangen mit Kartendaten und Ausweis. [Trau ab jetzt keiner Nachricht, nur weil sie Dinge über dich weiß](#details-prove-nothing), denn Kriminelle nutzen die geleakten Daten, damit ihre Nachrichten echt wirken.
+</Short>
+
+## Finde heraus, was gestohlen wurde
+
+<Tip id="what-leaked" priority="essential" effort={5} title="Finde auf der Website des Unternehmens selbst heraus, was geleakt wurde, statt über eine Nachricht">
+Geh selbst auf die Website oder in die App des Unternehmens und such dort nach seiner Mitteilung, statt einem Link in einer E-Mail dazu zu folgen. Laut dem britischen Cybersicherheitszentrum NCSC sollte dir das Unternehmen sagen können, ob und wie du betroffen bist und was du sonst noch tun musst.[^ncsc] Richte dich dann danach, was gestohlen wurde:
+
+- Wenn es ein Passwort war, auch ein gehashtes, [ändere es überall, wo du es benutzt hast](#change-reused).
+- Waren es Karten- oder Bankdaten, [sag deiner Bank Bescheid](#tell-your-bank).
+- Mit deinem Geburtsdatum, deiner Adresse oder einer Kopie deines Ausweises kann sich jemand als du ausgeben, also [mach es schwerer, in deinem Namen Konten zu eröffnen](#block-new-credit).
+- Wenn du Anmeldecodes per SMS bekommst, [sichere deine Handynummer ab](#lock-your-number).
+- Was auch immer es war, [rechne mit Nachrichten, die genau das ausnutzen](#details-prove-nothing).
+
+<Region place="uk">
+Du kannst dich beim Unternehmen beschweren und fragen, was passiert ist, welche deiner Daten betroffen sind und was es dagegen tut, und es muss den Eingang deiner Beschwerde innerhalb von 30 Tagen bestätigen. Schreib dir auf, mit wem du wann gesprochen hast. Wenn das Unternehmen die Sache nicht klärt, kannst du dich bei der britischen Datenschutzbehörde ICO beschweren.[^ico]
+</Region>
+
+<Region place="eu">
+Wenn ein Datenleck für dich wahrscheinlich ein hohes Risiko bedeutet und das Unternehmen dieses Risiko nicht ausgeräumt hat, muss es dich informieren und nicht nur die Aufsichtsbehörde. Hat es das nicht getan oder bist du unzufrieden damit, wie es mit der Sache umgegangen ist, kannst du dich bei der zuständigen Datenschutzbehörde in deinem Land beschweren. Die muss dir innerhalb von drei Monaten sagen, wie weit sie ist.[^ec]
+</Region>
+</Tip>
+
+<Tip id="check-other-breaches" priority="optional" effort={5} title="Sieh nach, in welchen anderen Datenlecks deine E-Mail-Adresse auftaucht">
+<App name="Have I Been Pwned">Have I Been Pwned</App> zeigt dir, in welchen der Datenlecks, die der Dienst kennt, eine E-Mail-Adresse aufgetaucht ist. Lecks bei Websites, mit denen man lieber nicht in Verbindung gebracht werden möchte, siehst du erst, wenn du dich anmeldest und damit nachweist, dass die Adresse dir gehört. Dass du dort nicht auftauchst, heißt aber nicht, dass du aus dem Schneider bist. Der Dienst kennt nur einen kleinen Teil dessen, was geleakt wurde, und viele Datenlecks werden nie öffentlich.[^hibp-faq]
+</Tip>
+
+## Passwörter und Konten
+
+<Tip id="check-for-intruders" priority="essential" effort={10} title="Prüf, ob schon jemand drin war">
+Achte im betroffenen Konto und in deinem E-Mail-Postfach auf die Anzeichen, die das NCSC nennt: Du kannst dich nicht anmelden, Sicherheitseinstellungen wurden ohne dein Zutun geändert, es gibt Nachrichten, die du nicht geschickt hast, oder Anmeldungen von Orten oder zu Zeiten, die nicht zu dir passen.[^ncsc]
+
+Wenn dir in deinem E-Mail-Konto eins davon auffällt, öffne zuerst die Filter und Weiterleitungsregeln und lösch alle, die du nicht selbst eingerichtet hast. Ein beliebter Trick ist eine Regel, die dem Kriminellen eine Kopie von allem schickt, was bei dir ankommt, sodass er auch weiterhin jede E-Mail zum Zurücksetzen deiner Passwörter bekäme. Ändere dann das Passwort und meld in den Kontoeinstellungen alle anderen Geräte und Apps ab, damit jeder, der noch angemeldet ist, das neue Passwort eingeben muss.[^ncsc-hacked]
+
+Wenn du gar nicht mehr reinkommst: Die Anleitung des NCSC, wie du [ein gehacktes Konto zurückholst](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account), beginnt mit dem Wiederherstellungsverfahren des Anbieters selbst.
+</Tip>
+
+<Tip id="change-reused" priority="essential" effort={20} title="Ändere das Passwort, und zwar überall, wo du es benutzt hast">
+Kriminelle nehmen Passwörter aus einem Datenleck und probieren sie auf anderen Websites aus, falls du dort dasselbe benutzt.[^ncsc-pw] So ist 2023 jemand in etwa 14.000 Konten bei 23andMe gekommen und darüber an die DNA-Relatives-Profile von rund 5,5 Millionen weiteren Kunden.[^23andme]
+
+Ändere es auch dann, wenn das Unternehmen sagt, die Passwörter seien gehasht gewesen. Beim Hashen werden sie so umgewandelt, dass man sie nicht einfach ablesen kann. Wurden sie aber schlecht gehasht oder hat der Angreifer genug Rechenleistung, lassen sich manche davon trotzdem knacken.[^ncsc-pw]
+
+Hast du dasselbe Passwort für dein E-Mail-Konto benutzt, ändere es dort zuerst, denn wer in dein E-Mail-Konto kommt, kann darüber deine anderen Passwörter zurücksetzen.[^ncsc-hacked] Hast du es nur beim betroffenen Konto benutzt, musst du es auch nur dort ändern. Wie du herausfindest, wo du es sonst noch benutzt hast, steht im [Ratgeber zum Passwort-Manager](/de/ratgeber/password-manager/#reused-passwords), und wenn ein Konto Passkeys anbietet, kannst du statt eines neuen Passworts einen Passkey nehmen.[^ncsc]
+
+Schalte bei der Gelegenheit für dein E-Mail-Konto und deine Bank die Zwei-Faktor-Authentifizierung ein, damit ein Passwort allein nicht reicht, um reinzukommen.[^ncsc-hacked] Welche Art du nehmen solltest, erklärt der [Ratgeber zur Zwei-Faktor-Authentifizierung](/de/ratgeber/two-factor/).
+</Tip>
+
+## Wenn deine Karten- oder Bankdaten geleakt wurden
+
+<Tip id="tell-your-bank" priority="essential" effort={10} title="Sag deiner Bank Bescheid und behalte deine Kontoauszüge im Blick">
+Ruf deine Bank oder deinen Kartenanbieter unter der Nummer an, die auf deiner Karte, auf deinem Kontoauszug oder in der App steht. Sag, dass deine Daten von einem Datenleck betroffen sind, und frag, ob die Karte ausgetauscht wird. Prüf dann deine Kontoauszüge auf Zahlungen, die du nicht zuordnen kannst, und melde jede davon, sobald du sie entdeckst.[^ftc-cards][^ico]
+
+<Region place="us">
+Wenn deine Kartennummer benutzt wird, die Karte selbst aber nicht verloren gegangen ist oder gestohlen wurde, haftest du bei einer Kreditkarte nicht für Zahlungen, die du nicht freigegeben hast. Bei einer Debitkarte haftest du nicht, solange du die Zahlungen innerhalb von 60 Tagen meldest, nachdem dir der Kontoauszug geschickt wurde, auf dem sie stehen. Danach kann das Geld weg sein. Wer dich anruft, um dir eine „Versicherung gegen Kartenverlust“ zu verkaufen, ist ein Betrüger, denn nicht freigegebene Zahlungen mit einer Kreditkarte sind durch US-Bundesrecht ohnehin abgedeckt.[^ftc-cards]
+</Region>
+</Tip>
+
+## Wenn deine Ausweisdaten oder dein Geburtsdatum geleakt wurden
+
+<Tip id="block-new-credit" priority="essential" effort={30} title="Mach es anderen schwerer, in deinem Namen Konten zu eröffnen">
+Mit solchen Daten können Betrüger in deinem Namen Kredite oder andere Produkte und Dienstleistungen beantragen.[^ftc-freeze][^cifas]
+
+<Region place="us">
+Lass bei allen drei großen Auskunfteien (Equifax, Experian und TransUnion) eine Kreditsperre einrichten, einen sogenannten Credit Freeze. Solange sie aktiv ist, kann niemand in deinem Namen ein neues Kreditkonto eröffnen, auch du selbst nicht. Sie ist kostenlos, wirkt sich nicht auf deine Bonität aus und gilt, bis du sie aufhebst. Wenn du einen Kredit brauchst, heb sie nur bei der Auskunftei auf, die der Kreditgeber nutzt, und schalte sie danach wieder ein.
+
+Zusätzlich kannst du eine Betrugswarnung eintragen lassen, einen sogenannten Fraud Alert. Dann müssen Kreditgeber bei dir nachfragen, bevor sie jemandem in deinem Namen einen Kredit geben, und auch das ist kostenlos. Dafür reicht es, dich an eine der Auskunfteien zu wenden, die dann den anderen beiden Bescheid gibt, und die Warnung gilt ein Jahr. Wenn die Daten eines Kindes geleakt wurden, kannst du bis zu seinem 16. Geburtstag auch für das Kind eine Kreditsperre einrichten lassen, allerdings mit einem eigenen Verfahren bei jeder Auskunftei.[^ftc-freeze]
+
+Wenn deine Sozialversicherungsnummer (Social Security Number) oder deine ITIN (die US-Steuernummer für Menschen ohne Sozialversicherungsnummer) geleakt wurde, hilft dir eine Identity Protection PIN der US-Steuerbehörde IRS. Damit kann niemand sonst mit deiner Nummer eine Steuererklärung abgeben. Die PIN bekommt jeder, der eine der beiden Nummern hat und nachweisen kann, wer er ist. Der Online-Antrag ist wegen Wartungsarbeiten bis Mitte Januar 2027 abgeschaltet, und auf der Seite der IRS stehen die anderen Wege, die PIN zu beantragen, auch persönlich vor Ort.[^irs]
+</Region>
+
+<Region place="uk">
+Die Protective Registration von Cifas, einem britischen Dienst zur Betrugsprävention, setzt einen Warnhinweis auf deine Daten. Unternehmen, die Cifas nutzen, prüfen dann genauer, bevor sie in deinem Namen etwas eröffnen. Sie kostet 30 £ für zwei Jahre und wirkt sich nicht auf deine Bonität aus, aber deine eigenen Anträge können länger dauern. Laut Cifas bringt sie in den ersten Monaten, nachdem deine Daten abhandengekommen sind, am meisten.[^cifas]
+
+Du kannst außerdem bei den Auskunfteien Equifax, Experian und TransUnion kostenlos deine Kreditauskunft anfordern.[^ico-credit] Achte darauf, ob dort Konten oder Vorgänge auftauchen, die du nicht kennst.[^ico]
+</Region>
+</Tip>
+
+## Wenn deine Handynummer geleakt wurde
+
+<Tip id="lock-your-number" priority="optional" effort={10} title="Wenn du Anmeldecodes per SMS bekommst, sichere deine Nummer ab">
+Ist deine Nummer geleakt, musst du mit Betrugsanrufen und Betrugs-SMS rechnen.[^ncsc] Wenn dir eins deiner Konten Anmeldecodes per SMS schickt, frag außerdem deinen Mobilfunkanbieter, was er tun kann, damit niemand deine Nummer auf eine neue SIM-Karte übertragen lässt. Bei einem SIM-Swap überredet ein Krimineller deinen Mobilfunkanbieter, deine Nummer auf eine SIM-Karte zu übertragen, die er kontrolliert,[^cisa] und ab dann gehen deine Codes an ihn. Wonach du fragen solltest und auf welche sichereren Arten von 2FA du umsteigen kannst, steht im [Ratgeber zur Zwei-Faktor-Authentifizierung](/de/ratgeber/two-factor/#lock-your-number).
+</Tip>
+
+## Die Betrugsmasche, die danach kommt
+
+<Tip id="details-prove-nothing" priority="essential" effort={1} title="Trau keiner Nachricht, nur weil sie deine Daten kennt">
+Kriminelle nutzen die geleakten Daten, damit ihre Nachrichten echt wirken, und manche geben sich als das betroffene Unternehmen aus. Solche Nachrichten können auch erst einige Zeit nach den Berichten über das Datenleck kommen.[^ncsc]
+
+2025 haben Kriminelle einige Support-Mitarbeiter von Coinbase dafür bezahlt, Kundendaten zu kopieren, darunter Kontaktdaten, Ausweisfotos, Kontostände und Transaktionsverläufe. Laut Coinbase ging es den Kriminellen um eine Liste von Leuten, bei denen sie sich melden und als Coinbase ausgeben konnten, um ihnen ihre Kryptowährung abzuluchsen.[^coinbase] Wer dich anruft, deinen Kontostand kennt und weiß, was du zuletzt gekauft hast, kann also trotzdem ein Betrüger sein.
+
+Sei vorsichtig bei Nachrichten, in denen es ums Zurücksetzen eines Passworts, um eine Entschädigung, um das Scannen deines Geräts oder um eine verpasste Lieferung geht, und bei allem, was dich zum sofortigen Handeln drängt.[^ncsc]
+
+Coinbase betont, dass dich das Unternehmen nie nach deinem Passwort oder einem 2FA-Code fragen und dich auch nie bitten wird, dein Geld woandershin zu verschieben.[^coinbase] Warum du einen Code nie an jemanden weitergibst, der sich bei dir gemeldet hat, liest du im [Ratgeber zur Zwei-Faktor-Authentifizierung](/de/ratgeber/two-factor/#never-share-a-code).
+</Tip>
+
+<Tip id="ring-back" priority="essential" effort={2} title="Ruf unter einer Nummer zurück, die du schon hast">
+Auch die Nummer auf deinem Display beweist nichts, denn Betrüger können einen Anruf so aussehen lassen, als käme er von deiner Bank.[^ofcom] Wenn ein Anruf, eine SMS oder eine E-Mail angeblich von deiner Bank oder vom betroffenen Unternehmen kommt, nutz keinen Link und keine Nummer daraus. Leg auf und melde dich selbst bei ihnen, über die Nummer auf der Rückseite deiner Karte oder über ihre eigene App oder Website.[^ico]
+
+<App name="Phish.ly" />, <App name="Is Legit?" /> und <App name="Site Report" /> verraten dir mehr über eine Website, bei der du dir nicht sicher bist. Ein unauffälliges Ergebnis macht eine Nachricht aber nicht echt, also geh trotzdem über die App oder die Adresse rein, die du sonst auch benutzt.
+
+<Region place="uk">
+Wenn deine Bank beim Telefondienst 159 mitmacht, wirst du unter 159 sicher mit ihr verbunden.[^ico] Leite Betrugs-E-Mails an report@phishing.gov.uk weiter und Betrugs-SMS kostenlos an 7726.[^ncsc]
+</Region>
+
+<Region place="us">
+Melde Betrug bei der US-Verbraucherschutzbehörde FTC unter [ReportFraud.ftc.gov](https://reportfraud.ftc.gov/).[^ftc-cards]
+</Region>
+</Tip>
+
+<Tip id="if-you-paid" priority="essential" effort={15} title="Wenn du schon bezahlt oder etwas herausgegeben hast">
+Wenn du etwas bezahlt hast, sag sofort deiner Bank Bescheid, und zwar unter einer Nummer, die du schon hast.[^ncsc][^psr] Wenn du ein Passwort oder einen Code herausgegeben hast, behandle das Konto als gehackt und [prüf, ob jemand drin war](#check-for-intruders).
+
+<Region place="uk">
+Melde es bei [Report Fraud](https://www.reportfraud.police.uk/), der Meldestelle für Betrug in England, Wales und Nordirland, oder ruf in Schottland die Polizei unter 101 an.[^ncsc]
+
+Wenn Betrüger dich dazu gebracht haben, Geld von einem britischen Konto auf ein anderes britisches Konto zu überweisen, muss deine Bank dir bis zu 85.000 £ erstatten, außer du warst selbst daran beteiligt oder hast grob fahrlässig gehandelt. Beantrage die Erstattung innerhalb von 13 Monaten nach der Zahlung. Für Kartenzahlungen gelten andere Regeln.
+
+Manche Banken ziehen davon bis zu 100 £ ab. Die meisten Anträge sollten innerhalb von fünf Geschäftstagen erledigt sein. Braucht die Bank mehr Informationen, kann es länger dauern, aber sie muss innerhalb von 35 Geschäftstagen entscheiden. Lehnt sie ab, kannst du dich an den Financial Ombudsman Service wenden, die britische Schlichtungsstelle für Finanzstreitigkeiten.[^psr]
+</Region>
+
+<Region place="us">
+Wenn du glaubst, dass jemand deine Identität benutzt, melde es auf [IdentityTheft.gov](https://www.identitytheft.gov/). Dort bekommst du einen Plan, wie du die Sache wieder in Ordnung bringst.[^ftc-cards]
+</Region>
+</Tip>
+
+## Damit das nächste Datenleck weniger anrichtet
+
+<Tip id="alias-per-account" priority="optional" effort={20} title="Gib jedem Konto eine eigene E-Mail-Adresse">
+Wenn jede Website einen eigenen <Term slug="email-alias">Alias</Term> bekommt, der an dich weiterleitet, verrät ein Datenleck nur diesen einen Alias und nicht die Adresse, die du überall benutzt. Kommt bei einem Alias plötzlich Spam an, weißt du, welche Website ihn geleakt hat, und kannst diesen Alias abschalten, ohne irgendetwas anderes anzufassen.[^ec-tips]
+
+<Picks section="Mail Forwarding" level={4} />
+
+Mit den kostenlosen Benachrichtigungen von Have I Been Pwned erfährst du, wenn deine Adresse in einem neuen Datenleck auftaucht.[^hibp-notify]
+</Tip>
+
+[^ncsc]: [NCSC: Leitfaden zu Datenlecks für Privatpersonen](https://www.ncsc.gov.uk/guidance/data-breaches)
+[^ico]: [ICO: Was kann ich tun, wenn ich von einem Datenleck betroffen bin?](https://ico.org.uk/for-the-public/i-m-worried-an-organisation-hasn-t-kept-my-information-safe-what-should-i-do/what-steps-can-i-take-if-i-ve-been-affected-by-a-personal-data-breach/)
+[^ec]: [Europäische Kommission: Informationen für Privatpersonen](https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en)
+[^hibp-faq]: [Have I Been Pwned: Häufig gestellte Fragen](https://haveibeenpwned.com/FAQs)
+[^ncsc-pw]: [NCSC: Passwortverwaltung für Systemverantwortliche](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^23andme]: [23andMe: Zu den Bedenken rund um die Datensicherheit](https://www.23andme.org/blog/articles/addressing-data-security-concerns/)
+[^ncsc-hacked]: [NCSC: Ein gehacktes Konto wiederherstellen](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account)
+[^ftc-cards]: [FTC: Verlorene oder gestohlene Kreditkarten, Geldautomatenkarten und Debitkarten](https://consumer.ftc.gov/articles/lost-or-stolen-credit-atm-and-debit-cards)
+[^ftc-freeze]: [FTC: Kreditsperren und Betrugswarnungen](https://consumer.ftc.gov/articles/credit-freezes-and-fraud-alerts)
+[^cifas]: [Cifas: Protective Registration](https://www.cifas.org.uk/pr)
+[^irs]: [IRS: Eine Identity Protection PIN bekommen](https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin)
+[^ico-credit]: [ICO: Kreditauskünfte](https://ico.org.uk/for-the-public/credit/)
+[^cisa]: [CISA: Phishing-resistente MFA einführen](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^coinbase]: [Coinbase: Wir schützen unsere Kunden und stellen uns gegen Erpresser](https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists)
+[^ofcom]: [Ofcom: Arten von Betrugsanrufen, Betrugs-SMS und betrügerischen Nachrichten](https://www.ofcom.org.uk/phones-and-broadband/scam-calls-and-messages/types-of-scam-calls-texts-and-messages)
+[^psr]: [Payment Systems Regulator: Erstattungsschutz bei APP-Betrug](https://www.psr.org.uk/information-for-consumers/app-fraud-reimbursement-protections/)
+[^ec-tips]: [Email Comparison: Tipps zur E-Mail-Sicherheit](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned: Kostenlose Benachrichtigungen bei Datenlecks](https://haveibeenpwned.com/NotifyMe)

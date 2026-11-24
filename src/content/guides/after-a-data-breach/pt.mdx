@@ -1,0 +1,159 @@
+---
+title: "Vazamento de dados: o que fazer e em que ordem"
+description: "Seus dados vazaram? Veja o que foi exposto, troque as senhas repetidas e fique de olho no golpe que vem depois. O que fazer primeiro e por quê."
+---
+
+<Short>
+Se você já perdeu dinheiro, [resolva isso primeiro](#if-you-paid), e, se alguém entrou numa das suas contas, [tire essa pessoa de lá](#check-for-intruders). Se não for nada disso, descubra [o que vazou](#what-leaked). Se o vazamento incluiu uma senha, [troque essa senha](#change-reused) na conta afetada e em qualquer outro lugar onde você a tenha usado, e depois cuide do resto, começando pelos dados do cartão e pelos documentos. Daqui para a frente, [não confie numa mensagem só porque ela sabe coisas sobre você](#details-prove-nothing), já que os criminosos usam o que vazou para dar cara de verdade às mensagens deles.
+</Short>
+
+## Descubra o que foi levado
+
+<Tip id="what-leaked" priority="essential" effort={5} title="Descubra no site da própria empresa o que vazou, e não por uma mensagem">
+Abra você mesmo o site ou o app da empresa e procure o comunicado dela, em vez de seguir o link de algum e-mail sobre o assunto. O NCSC, o centro nacional de cibersegurança do Reino Unido, diz que a empresa deve conseguir informar se o vazamento atingiu você, de que forma e o que mais você precisa fazer.[^ncsc] Depois, aja de acordo com o que foi levado:
+
+- Se foi uma senha, mesmo que protegida por hash, [troque essa senha em todos os lugares onde você a usou](#change-reused).
+- Se foram dados do cartão ou da conta bancária, [avise o seu banco](#tell-your-bank).
+- Com a sua data de nascimento, o seu endereço ou uma cópia do seu documento de identidade, alguém pode se passar por você, então [dificulte a abertura de contas no seu nome](#block-new-credit).
+- Se você recebe códigos de login por SMS, [proteja o seu número de celular](#lock-your-number).
+- Seja o que for, [prepare-se para mensagens que usem esses dados](#details-prove-nothing).
+
+<Region place="uk">
+Você pode reclamar com a empresa e perguntar o que aconteceu, quais dados seus estavam envolvidos e o que ela está fazendo a respeito, e ela tem 30 dias para confirmar que recebeu a sua reclamação. Anote com quem você falou e quando. Se a empresa não resolver, você pode registrar uma reclamação no ICO, o órgão britânico que fiscaliza a proteção de dados.[^ico]
+</Region>
+
+<Region place="eu">
+Se for provável que um vazamento traga um risco alto para você, e a empresa não tiver resolvido esse risco, ela tem de avisar você, e não só o órgão regulador. Se ela não avisou, ou se você não gostou de como ela lidou com a situação, você pode registrar uma reclamação na autoridade de proteção de dados do seu país, que tem de informar você sobre o andamento dela em até três meses.[^ec]
+</Region>
+</Tip>
+
+<Tip id="check-other-breaches" priority="optional" effort={5} title="Veja em quais outros vazamentos o seu e-mail aparece">
+O <App name="Have I Been Pwned">Have I Been Pwned</App> mostra em quais dos vazamentos que ele conhece um endereço de e-mail apareceu. Os vazamentos de sites que as pessoas prefeririam não ver ligados ao próprio nome só aparecem depois que você prova que o endereço é seu fazendo login no site. Não aparecer lá não quer dizer que você está a salvo, já que ele só tem uma pequena parte do que já vazou, e muitos vazamentos nunca chegam a ser divulgados.[^hibp-faq]
+</Tip>
+
+## Senhas e contas
+
+<Tip id="check-for-intruders" priority="essential" effort={10} title="Veja se alguém já entrou na sua conta">
+Procure na conta afetada e no seu e-mail os sinais que o NCSC aponta: você não consegue entrar, as configurações de segurança mudaram sem você mexer nelas, há mensagens que você não enviou ou há logins de lugares ou em horários que não batem.[^ncsc]
+
+Se o seu e-mail mostrar algum desses sinais, abra primeiro os filtros e as regras de encaminhamento e apague qualquer um que você não tenha criado. Um truque comum é uma regra que manda para o criminoso uma cópia de tudo o que você recebe, e assim ele continuaria recebendo os seus links de redefinição de senha. Depois, troque a senha e, nas configurações da conta, desconecte todos os outros aparelhos e apps, para que quem ainda estiver conectado tenha de digitar a senha nova.[^ncsc-hacked]
+
+Se você não consegue entrar de jeito nenhum, o guia do NCSC para [recuperar uma conta invadida](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account) começa pelo processo de recuperação do próprio provedor.
+</Tip>
+
+<Tip id="change-reused" priority="essential" effort={20} title="Troque essa senha na conta afetada e onde mais você a usou">
+Os criminosos pegam as senhas de um vazamento e testam em outros sites, para o caso de você ter usado a mesma.[^ncsc-pw] Em 2023, foi assim que alguém entrou em cerca de 14.000 contas da 23andMe, uma empresa americana de testes de DNA, e, por meio delas, chegou aos perfis do DNA Relatives de cerca de 5,5 milhões de outros clientes.[^23andme]
+
+Troque mesmo que a empresa diga que as senhas passaram por hash, um processo que as embaralha para que não possam ser lidas assim de cara. Se o hash foi malfeito, ou se o invasor tiver poder de computação suficiente, ainda dá para descobrir algumas delas.[^ncsc-pw]
+
+Se você usou a mesma senha no seu e-mail, troque essa primeiro, já que quem entra no seu e-mail consegue usá-lo para redefinir as suas outras senhas.[^ncsc-hacked] Se você só usou a senha na conta afetada, só essa precisa ser trocada. O [guia de gerenciadores de senhas](/pt/guias/password-manager/#reused-passwords) mostra como descobrir onde mais você a usou, e, quando uma conta oferece chave de acesso, você pode usar uma no lugar de uma senha nova.[^ncsc]
+
+Aproveite para ativar a verificação em duas etapas no seu e-mail e no seu banco, para que só a senha não baste para entrar.[^ncsc-hacked] O [guia de verificação em duas etapas](/pt/guias/two-factor/) explica qual tipo escolher.
+</Tip>
+
+## Se vazaram os dados do seu cartão ou da sua conta bancária
+
+<Tip id="tell-your-bank" priority="essential" effort={10} title="Avise o seu banco e fique de olho nos extratos">
+Ligue para o banco ou para a administradora do cartão no número que aparece no cartão, no extrato ou no app, diga que os seus dados estavam num vazamento e pergunte se eles vão mandar um cartão novo. Depois, confira nos extratos se há pagamentos que você não reconhece e avise o banco assim que vir algum.[^ftc-cards][^ico]
+
+<Region place="us">
+Se o número do seu cartão for usado, mas o cartão em si não tiver sido perdido nem roubado, você não é responsável pelas cobranças que não autorizou num cartão de crédito. Num cartão de débito, você não é responsável desde que comunique as cobranças em até 60 dias depois do envio do extrato em que elas aparecem, e, passado esse prazo, pode perder o dinheiro. Quem ligar oferecendo um “seguro contra perda do cartão” é golpista, já que a lei federal já cobre o uso não autorizado de um cartão de crédito.[^ftc-cards]
+</Region>
+</Tip>
+
+## Se vazaram os seus documentos ou a sua data de nascimento
+
+<Tip id="block-new-credit" priority="essential" effort={30} title="Dificulte que alguém abra contas no seu nome">
+Golpistas podem usar dados como esses para pedir crédito, ou outros produtos e serviços, no seu nome.[^ftc-freeze][^cifas]
+
+<Region place="us">
+Congele o seu crédito (credit freeze) nos três birôs de crédito, Equifax, Experian e TransUnion. Enquanto o congelamento estiver ativo, ninguém consegue abrir uma nova conta de crédito no seu nome, nem mesmo você. É gratuito, não afeta o seu score de crédito e vale até você suspender. Quando precisar de crédito, suspenda o congelamento só no birô consultado por quem vai conceder o crédito e depois ative de novo.
+
+Você também pode adicionar um alerta de fraude (fraud alert). Com ele, as empresas precisam confirmar com você antes de conceder crédito a alguém no seu nome, e ele é gratuito. Nesse caso, basta pedir a um birô, que avisa os outros dois, e o alerta dura um ano. Se vazaram os dados de uma criança, você também pode congelar o crédito dela enquanto ela tiver menos de 16 anos, por um processo à parte em cada birô.[^ftc-freeze]
+
+Se vazou o seu número do Seguro Social (Social Security number) ou o seu ITIN (o número de contribuinte de quem não tem Seguro Social), o IRS, a Receita Federal americana, tem um PIN de proteção de identidade (Identity Protection PIN) que impede outra pessoa de entregar uma declaração de imposto de renda com esse número. Qualquer pessoa que tenha um desses números e consiga comprovar a própria identidade pode pedir um. O cadastro online está fora do ar para manutenção até meados de janeiro de 2027, e a página do IRS lista as outras formas de pedir o PIN, inclusive presencialmente.[^irs]
+</Region>
+
+<Region place="uk">
+O Protective Registration da Cifas, um serviço britânico de prevenção a fraudes, coloca um alerta nos seus dados, e assim as empresas que consultam a Cifas fazem verificações extras antes de abrir qualquer coisa no seu nome. Custa £ 30 por dois anos e não afeta o seu score de crédito, mas os seus próprios pedidos podem demorar mais. A Cifas diz que ele é mais eficaz nos primeiros meses depois que os seus dados vazam.[^cifas]
+
+Você também pode pedir o seu relatório de crédito à Equifax, à Experian e à TransUnion, e isso é gratuito.[^ico-credit] Procure contas ou movimentações que você não reconheça.[^ico]
+</Region>
+</Tip>
+
+## Se vazou o seu número de celular
+
+<Tip id="lock-your-number" priority="optional" effort={10} title="Se você recebe códigos de login por SMS, proteja o seu número">
+Com o número vazado, pode esperar ligações e SMS de golpistas.[^ncsc] Se alguma das suas contas manda códigos de login por SMS, pergunte também à sua operadora o que ela pode fazer para impedir que alguém passe o seu número para um chip novo. Na troca de chip (o chamado SIM swap), um criminoso convence a operadora a passar o seu número para um chip que está com ele,[^cisa] e daí em diante os seus códigos vão para ele. O [guia de verificação em duas etapas](/pt/guias/two-factor/#lock-your-number) explica o que pedir e quais tipos de verificação em duas etapas são mais seguros para usar no lugar do SMS.
+</Tip>
+
+## O golpe que vem depois
+
+<Tip id="details-prove-nothing" priority="essential" effort={1} title="Não confie numa mensagem só porque ela sabe os seus dados">
+Os criminosos usam o que vazou para que as mensagens pareçam verdadeiras, e alguns fingem ser a empresa que sofreu o vazamento. Essas mensagens podem chegar algum tempo depois de o vazamento sair no noticiário.[^ncsc]
+
+Em 2025, criminosos pagaram a alguns funcionários do suporte da Coinbase, uma corretora de criptomoedas, para copiar registros de clientes, incluindo dados de contato, fotos de documentos, saldos e históricos de transações. A Coinbase disse que o objetivo era montar uma lista de pessoas que os criminosos pudessem procurar fingindo ser da Coinbase, para convencê-las a entregar as criptomoedas delas.[^coinbase] Então, alguém que liga sabendo o seu saldo e o que você andou comprando ainda pode ser um golpista.
+
+Desconfie de mensagens que falam em redefinir senha, receber indenização, verificar o seu aparelho ou uma entrega que não deu certo, e de qualquer coisa que peça para você agir agora mesmo.[^ncsc]
+
+A Coinbase diz que nunca vai pedir a sua senha nem um código de verificação em duas etapas, nem pedir que você transfira o seu dinheiro para outro lugar.[^coinbase] O [guia de verificação em duas etapas](/pt/guias/two-factor/#never-share-a-code) explica melhor por que você nunca deve passar um código para alguém que entrou em contato com você.
+</Tip>
+
+<Tip id="ring-back" priority="essential" effort={2} title="Ligue de volta usando um número que você já tem">
+O número que aparece na tela também não prova nada, já que os golpistas conseguem fazer uma ligação parecer que vem do seu banco.[^ofcom] Se uma ligação, um SMS ou um e-mail diz que é do seu banco ou da empresa que sofreu o vazamento, não use nenhum link nem número que vier nele. Desligue e entre em contato você mesmo, pelo número no verso do cartão ou pelo próprio app ou site deles.[^ico]
+
+O <App name="Phish.ly" />, o <App name="Is Legit?" /> e o <App name="Site Report" /> podem contar mais sobre um site que deixou você na dúvida. Só que um resultado limpo não torna uma mensagem verdadeira, então continue entrando pelo app ou pelo endereço que você já usa.
+
+<Region place="uk">
+Se o seu banco participa do 159, ligar para o 159 conecta você a ele com segurança.[^ico] Encaminhe e-mails de golpe para report@phishing.gov.uk e SMS de golpe para o 7726, que é gratuito.[^ncsc]
+</Region>
+
+<Region place="us">
+Denuncie golpes à FTC, a agência americana de defesa do consumidor, em [ReportFraud.ftc.gov](https://reportfraud.ftc.gov/).[^ftc-cards]
+</Region>
+</Tip>
+
+<Tip id="if-you-paid" priority="essential" effort={15} title="Se você já pagou ou entregou alguma coisa">
+Se você pagou qualquer coisa, avise o seu banco na hora, por um número que você já tem.[^ncsc][^psr] Se você passou uma senha ou um código, trate essa conta como invadida e [confira se ninguém entrou nela](#check-for-intruders).
+
+<Region place="uk">
+Denuncie no [Report Fraud](https://www.reportfraud.police.uk/), o canal de denúncia de fraudes da Inglaterra, do País de Gales e da Irlanda do Norte, ou, na Escócia, ligue para a polícia no 101.[^ncsc]
+
+Se um golpista convenceu você a fazer uma transferência bancária de uma conta do Reino Unido para outra, o seu banco tem de devolver até £ 85.000, a menos que você tenha participado do golpe ou agido com negligência grave. Faça o pedido em até 13 meses depois do pagamento. Pagamentos com cartão seguem outras regras.
+
+Alguns bancos descontam até £ 100. A maioria dos pedidos deve ser resolvida em até cinco dias úteis. Se o banco precisar de mais informações, pode demorar mais, mas ele tem de decidir em até 35 dias úteis. Se ele recusar, você pode levar o caso ao Financial Ombudsman Service, a ouvidoria financeira britânica.[^psr]
+</Region>
+
+<Region place="us">
+Se você acha que alguém está usando a sua identidade, denuncie no [IdentityTheft.gov](https://www.identitytheft.gov/), que monta um plano de recuperação para você.[^ftc-cards]
+</Region>
+</Tip>
+
+## Diminua o estrago do próximo vazamento
+
+<Tip id="alias-per-account" priority="optional" effort={20} title="Dê a cada conta um endereço de e-mail próprio">
+Se cada site recebe um <Term slug="email-alias">alias</Term> próprio, que encaminha os e-mails para você, um vazamento só expõe aquele alias, e não o endereço que você usa em todo lugar. Quando começa a chegar spam num alias, você sabe de qual site ele vazou e pode desativar esse alias sem mexer em mais nada.[^ec-tips]
+
+<Picks section="Mail Forwarding" level={4} />
+
+Os alertas gratuitos do Have I Been Pwned avisam quando o seu endereço aparece num vazamento novo.[^hibp-notify]
+</Tip>
+
+[^ncsc]: [NCSC: Orientações sobre vazamentos de dados para cidadãos](https://www.ncsc.gov.uk/guidance/data-breaches)
+[^ico]: [ICO: O que posso fazer se fui afetado por um vazamento de dados pessoais?](https://ico.org.uk/for-the-public/i-m-worried-an-organisation-hasn-t-kept-my-information-safe-what-should-i-do/what-steps-can-i-take-if-i-ve-been-affected-by-a-personal-data-breach/)
+[^ec]: [Comissão Europeia: Informações para cidadãos](https://commission.europa.eu/law/law-topic/data-protection/information-individuals_en)
+[^hibp-faq]: [Have I Been Pwned: Perguntas frequentes](https://haveibeenpwned.com/FAQs)
+[^ncsc-pw]: [NCSC: Administração de senhas para responsáveis por sistemas](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^23andme]: [23andMe: Sobre as preocupações com a segurança dos dados](https://www.23andme.org/blog/articles/addressing-data-security-concerns/)
+[^ncsc-hacked]: [NCSC: Como recuperar uma conta invadida](https://www.ncsc.gov.uk/guidance/recovering-a-hacked-account)
+[^ftc-cards]: [FTC: Cartões de crédito, de débito e de saque perdidos ou roubados](https://consumer.ftc.gov/articles/lost-or-stolen-credit-atm-and-debit-cards)
+[^ftc-freeze]: [FTC: Congelamento de crédito e alertas de fraude](https://consumer.ftc.gov/articles/credit-freezes-and-fraud-alerts)
+[^cifas]: [Cifas: Protective Registration](https://www.cifas.org.uk/pr)
+[^irs]: [IRS: Como obter um PIN de proteção de identidade](https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin)
+[^ico-credit]: [ICO: Crédito](https://ico.org.uk/for-the-public/credit/)
+[^cisa]: [CISA: Como implementar MFA resistente a phishing](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf)
+[^coinbase]: [Coinbase: Protegendo nossos clientes e enfrentando extorsionários](https://www.coinbase.com/blog/protecting-our-customers-standing-up-to-extortionists)
+[^ofcom]: [Ofcom: Tipos de ligações, SMS e mensagens de golpe](https://www.ofcom.org.uk/phones-and-broadband/scam-calls-and-messages/types-of-scam-calls-texts-and-messages)
+[^psr]: [Payment Systems Regulator: Reembolso em fraudes de pagamento autorizado (APP)](https://www.psr.org.uk/information-for-consumers/app-fraud-reimbursement-protections/)
+[^ec-tips]: [Email Comparison: Dicas de segurança de e-mail](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned: Receba alertas gratuitos de vazamentos](https://haveibeenpwned.com/NotifyMe)
