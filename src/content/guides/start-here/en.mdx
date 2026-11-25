@@ -1,0 +1,146 @@
+---
+title: "How to protect your privacy online: where to start"
+description: The four changes that help most in your first hour, three questions for working out what's worth doing next, and the popular advice you can skip.
+type: tips
+topic: basics
+terms: [threat-model, 2fa, tracker, data-broker, email-alias]
+related: [password-manager, two-factor, browser-privacy, leave-gmail, leave-whatsapp, after-a-data-breach, do-i-need-a-vpn]
+further:
+  - url: https://digital-defense.io/checklist
+    label: The full personal security checklist
+  - url: https://ssd.eff.org/module/your-security-plan
+    label: EFF's guide to making your own security plan
+published: 2026-11-25
+checked: 2026-11-25
+---
+
+<Short>
+Spend the first hour on four things: [a password manager](#password-manager), [two-factor on your email](#email-2fa), [automatic updates and a screen lock](#update-and-lock), and [one content blocker in your browser](#content-blocker). Then use the three questions below to decide what else is worth your time. You can [skip some popular advice](#what-you-can-skip), like changing your passwords every few months.
+</Short>
+
+## Why these four come first
+
+Privacy advice usually comes as a long list where every tip looks equally important. They aren't. Google's research with two universities found that most attempts to break into accounts are automated, using passwords leaked from other sites. Google estimated that only about one in a million of its users face the kind of hired attacker who goes after one particular person.[^g2019]
+
+So the first hour goes on what stops the automated attempts: a different password for every account, a second step on the account that can reset all the others, and software with its holes fixed. Security experts tend to agree. In a 2015 Google survey, 35% of experts named installing updates as one of their top three habits, against 2% of everyone else, and experts were three times as likely to use a password manager.[^g2015]
+
+## The first hour
+
+<Tip id="password-manager" priority="essential" effort={20} title="Start using a password manager, and give your email its own password">
+If you've used one password in several places, a leak from any one of those sites can let criminals into all of them. Your email matters most, because anyone who gets into it can reset the passwords on your other accounts.[^ncsc-email] A password manager makes a different password for every site and remembers them all for you, and the NCSC, the UK's cyber security agency, encourages people to use one.[^ncsc-email]
+
+The [password manager guide](/guides/password-manager/) covers picking one from the list and moving your saved passwords into it. If that's more than you'll do today, the one built into your browser is fine on your own devices,[^ncsc-pm] and a new password for your email, used nowhere else, is the part that can't wait.
+</Tip>
+
+<Tip id="email-2fa" priority="essential" effort={10} title="Turn on two-factor for your email">
+With <Term slug="2fa">two-factor authentication</Term>, a stolen password isn't enough to get in on its own. Even the simplest kind helps a lot. When Google asked for a code sent by text before letting a suspicious sign-in through, that alone stopped all of the automated attempts in its study and 96% of the mass phishing ones.[^g2019]
+
+Start with your email, then your bank, and then shops that have your card saved.[^ncsc-2sv] The [two-factor guide](/guides/two-factor/) says which kind is safest and how not to lock yourself out.
+</Tip>
+
+<Tip id="update-and-lock" priority="essential" effort={10} title="Turn on automatic updates and a screen lock">
+Updates fix security problems, and the NCSC calls installing them one of the most important (and quickest) things you can do. Turn on automatic updates so you don't have to remember.[^ncsc-updates] A screen lock means someone who picks up your phone can't open your email and reset everything from there.
+
+<Platforms>
+<Platform name="ios">
+For updates, open <Path>Settings --> General --> Software Update --> Automatic Updates</Path> and turn on Automatically Install. Your iPhone then installs updates overnight, while it's charging and on Wi-Fi.[^apple-update] For the lock, open <Path>Settings --> Face ID & Passcode</Path> (Touch ID & Passcode on older iPhones) and tap Turn Passcode On.[^apple-passcode]
+</Platform>
+<Platform name="android">
+Most system updates and security patches install themselves. To see how recent yours are, open <Path>Settings --> About phone --> Android version</Path> and look at the Android security update date.[^android-update] For the lock, open <Path>Settings --> Security --> Screen lock</Path> and pick a PIN, pattern or password, since those also encrypt your phone's backups.[^android-lock] The menus vary a bit between phone makers.
+</Platform>
+</Platforms>
+
+Phones stop getting updates after a few years. The NCSC says to avoid using one that's no longer supported, though you don't need the newest or most expensive model.[^ncsc-updates]
+</Tip>
+
+<Tip id="content-blocker" priority="essential" effort={5} title="Add one content blocker to your browser">
+Lots of websites load <Term slug="tracker">trackers</Term> from other companies, which log what you do there. A content blocker stops the ones on its lists from loading at all. <App name="uBlock Origin" /> blocks ads, trackers and malware sites,[^ubo] and Brave has a blocker of its own built in.
+
+One is enough. An extension that can see all the websites you visit can read and change every page you open,[^cws] so each one you add is something else to trust. The [browser privacy guide](/guides/browser-privacy/) covers which browser to use and the settings worth changing after this.
+</Tip>
+
+## Three questions for what to do next
+
+What's worth doing after the first hour depends on you. EFF's guide to making a security plan asks six questions, and it's worth reading in full.[^eff] These three get most people most of the way.
+
+### Who would want your data?
+
+For most people it's companies and criminals. Companies want it for advertising, and some of it ends up with <Term slug="data-broker">data brokers</Term>. Criminals mostly want your accounts and your money, and usually go after them with automated tools rather than by picking you out.[^g2019] Against companies, the steps are about what you hand over: your browser, the apps on your phone and the services you use. Against criminals, they're about locking accounts down, which the [two-factor guide](/guides/two-factor/) and the [data breach guide](/guides/after-a-data-breach/) cover.
+
+If you're worried about a government, the police or your employer, this page is too basic for you. EFF's Surveillance Self-Defense is written for that, and it starts from your own situation.[^eff]
+
+### What would hurt most if it got out, or got lost?
+
+Your email is near the top for everyone, since it can reset everything else. After that it depends on you: your messages, where you go, your photos. EFF suggests listing what you want to protect, where it's kept and who can get at it.[^eff] If losing your photos would hurt more than anyone seeing them, back them up to an external drive or a cloud service, which is one of the NCSC's six top tips.[^ncsc-tips]
+
+### How much hassle will you put up with?
+
+Every step costs something, either time once or convenience every day, and EFF's plan has you weigh that against what you're protecting.[^eff] A setup you'll stick with beats a stricter one you give up on after a fortnight, so pick the steps that fit your answers above and leave the rest.
+
+## The first month
+
+<Tip id="location" priority="optional" effort={10} title="Check which apps can see where you are">
+Where you go can show where you live, who you spend time with, which doctors you see and where you worship.[^ftc] In 2024, the US Federal Trade Commission said a data broker called X-Mode had sold precise location data that could track people's visits to medical clinics, places of worship and domestic abuse shelters. Some of it came from other companies' apps that had X-Mode's code built in, and the FTC said those apps didn't properly tell people where their location was going.[^ftc]
+
+Go through your apps and let each one use your location only while you're using it, or not at all. Turn precise location off for apps that only need a rough idea of where you are, like a weather app.
+
+<Platforms>
+<Platform name="ios">
+Open <Path>Settings --> Privacy & Security --> Location Services</Path>, tap an app, and choose Never or While Using the App. Turn off Precise Location on the same screen for apps that don't need your exact location.[^apple-loc]
+</Platform>
+<Platform name="android">
+Open <Path>Settings --> Location --> App location permissions</Path>, tap an app, and choose Allow only while using the app or Don't allow. Use precise location can be turned off on the same screen.[^android-loc]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="one-big-switch" priority="optional" effort={60} title="Move off one big service properly, rather than five halfway">
+Pick the service that knows the most about you and move off it properly before starting on another. For a lot of people that's their email, and the [leave Gmail guide](/guides/leave-gmail/) is a good place to start. If it's your chats, the [WhatsApp to Signal guide](/guides/leave-whatsapp/) is about bringing your friends with you, which is the hard part. If it's your browser, the browser guide has a section on [moving off Chrome](/guides/browser-privacy/#leave-chrome).
+</Tip>
+
+<Tip id="aliases" priority="optional" effort={10} title="Give new accounts their own email address">
+An <Term slug="email-alias">email alias</Term> forwards to your real inbox, so each site can have its own address. When one starts getting spam, you'll know which site leaked it, and you can switch that alias off without touching anything else. A breach then only gives away that one alias, rather than the address you use everywhere.[^ec-tips] These are the list's picks:
+
+<Picks section="Mail Forwarding" level={4} />
+
+Start with new sign-ups. Old accounts can move over when you next log in to them.
+</Tip>
+
+## After that
+
+<Tip id="breach-alerts" priority="optional" effort={5} title="Get told when your email turns up in a breach">
+<App name="Have I Been Pwned" /> will email you for free when your address turns up in a breach it finds out about.[^hibp-notify] When that happens, the [data breach guide](/guides/after-a-data-breach/) goes through what to do, in order. Otherwise, the updates are already automatic, and the three questions are worth asking again when something big changes, like a new job or a break-up.[^eff]
+</Tip>
+
+## What you can skip
+
+Changing your passwords every few months is the big one. NIST, which writes the US government's rules on passwords, tells services not to make people do it.[^nist] The NCSC says forced changes do more harm than good, since people tend to pick a small variation of the old password, and stolen passwords are usually used straight away anyway.[^ncsc-expiry] Change a password when it's leaked or you think someone else has it.
+
+Paying for antivirus isn't where to start, either. Windows comes with Microsoft Defender Antivirus built in.[^ms-defender] In Google's 2015 survey, 42% of non-experts put antivirus in their top three habits, against 7% of experts, who worried it can give people a false sense of security.[^g2015]
+
+A VPN only helps with a few particular jobs, and the [VPN guide](/guides/do-i-need-a-vpn/) helps you check whether you've got one of them. Do Not Track and a browser full of privacy extensions can both make you easier to pick out, and the [browser privacy guide](/guides/browser-privacy/) explains why.
+
+Settings checked against Apple's iOS 27 guide and Google's Android help in November 2026.
+
+[^g2019]: [Google Security Blog: How effective is basic account hygiene at preventing hijacking](https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html)
+[^g2015]: [Google Security Blog: Comparing how security experts and non-experts stay safe online](https://security.googleblog.com/2015/07/new-research-comparing-how-security.html)
+[^ncsc-email]: [NCSC: Use a strong and separate password for your email](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email)
+[^ncsc-pm]: [NCSC: Password managers](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
+[^ncsc-2sv]: [NCSC: Turn on 2-step verification](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^ncsc-updates]: [NCSC: Install the latest software and app updates](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/install-the-latest-software-and-app-updates)
+[^apple-update]: [Apple Support: Update your iPhone or iPad](https://support.apple.com/en-us/118575)
+[^apple-passcode]: [Apple Support: Use a passcode with your iPhone or iPad](https://support.apple.com/en-us/119586)
+[^android-update]: [Android Help: Check and update your Android version](https://support.google.com/android/answer/7680439)
+[^android-lock]: [Android Help: Set screen lock on an Android device](https://support.google.com/android/answer/9079129)
+[^ubo]: [uBlock Origin on GitHub](https://github.com/gorhill/uBlock)
+[^cws]: [Chrome Web Store Help: Permissions requested by apps and extensions](https://support.google.com/chrome_webstore/answer/186213)
+[^eff]: [EFF Surveillance Self-Defense: Your security plan](https://ssd.eff.org/module/your-security-plan)
+[^ncsc-tips]: [NCSC: Top tips for staying secure online](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online)
+[^ftc]: [FTC: FTC order prohibits data broker X-Mode Social and Outlogic from selling sensitive location data](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data)
+[^apple-loc]: [iPhone User Guide: Control the location information you share on iPhone](https://support.apple.com/guide/iphone/control-the-location-information-you-share-iph3dd5f9be/ios)
+[^android-loc]: [Android Help: Manage location permissions for apps](https://support.google.com/android/answer/6179507)
+[^ec-tips]: [Email Comparison: Email security tips](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned: Get free breach notifications](https://haveibeenpwned.com/NotifyMe)
+[^nist]: [NIST SP 800-63B-4: Authenticators](https://pages.nist.gov/800-63-4/sp800-63b/authenticators/)
+[^ncsc-expiry]: [NCSC: Password administration for system owners](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^ms-defender]: [Microsoft Support: Stay protected with the Windows Security app](https://support.microsoft.com/en-us/windows/stay-protected-with-the-windows-security-app-2ae0363d-0ada-c064-8b56-6a39afb6a963)

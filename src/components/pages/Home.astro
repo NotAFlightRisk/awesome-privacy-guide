@@ -6,7 +6,7 @@ import ServiceIcon from '../ui/ServiceIcon.astro';
 import Badges from '../ui/Badges.astro';
 import StarCta from '../ui/StarCta.astro';
 import GuideCard from '../ui/GuideCard.astro';
-import { getGuides } from '../../lib/data/guides.js';
+import { pinnedGuides } from '../../lib/data/guides.js';
 import { getModel } from '../../lib/data/model.js';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
@@ -28,9 +28,7 @@ const suspects = products
   .filter((product) => product.note)
   .sort((a, b) => b.services.length - a.services.length);
 const pick = pickOfTheDay(services);
-const guides = getGuides()
-  .toSorted((a, b) => (b.slug === 'start-here') - (a.slug === 'start-here'))
-  .slice(0, 3);
+const guides = pinnedGuides().slice(0, 3);
 const jsonLd = [
   {
     '@type': 'WebSite',

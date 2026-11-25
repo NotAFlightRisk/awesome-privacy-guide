@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Heading from '../ui/Heading.astro';
 import GuideCard from '../ui/GuideCard.astro';
-import { getGuides, inLanguage } from '../../lib/data/guides.js';
+import { pinnedGuides, inLanguage } from '../../lib/data/guides.js';
 import { links } from '../../lib/routes.js';
 import { translator, ui } from '../../lib/i18n.js';
 import { site } from '../../lib/site.js';
@@ -11,7 +11,7 @@ const { lang, page } = Astro.props;
 const { t } = translator(lang);
 const to = links(lang);
 const topicName = (topic) => (`guides.topic.${topic}` in ui ? t(`guides.topic.${topic}`) : topic);
-const guides = getGuides();
+const guides = pinnedGuides();
 const topics = [...new Set(guides.map((guide) => guide.topic))].map((topic) => ({
   topic,
   guides: guides.filter((guide) => guide.topic === topic),

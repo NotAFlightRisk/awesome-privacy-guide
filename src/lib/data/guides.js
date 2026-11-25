@@ -152,6 +152,9 @@ let cache;
 export const getGuides = () =>
   (cache ??= readGuides(process.env.GUIDES_FIXTURE ? [GUIDES, FIXTURES] : [GUIDES]).filter((guide) => !guide.draft));
 
+/** The guides with start-here at the front, for the home page and the hub */
+export const pinnedGuides = () => getGuides().toSorted((a, b) => (b.slug === 'start-here') - (a.slug === 'start-here'));
+
 /** A guide as one language shows it: its own translation, or the English with `fallback` set */
 export function inLanguage(guide, lang) {
   const version = guide.versions[lang] ?? guide.versions.en;
