@@ -1,0 +1,148 @@
+---
+title: "ネットのプライバシー対策、何から始める？"
+description: "ネットでプライバシーと個人情報を守るために、最初の1時間でやっておきたい4つの対策と、次に何をするかを決める3つの質問、よく勧められるのにやらなくていい対策を紹介します。"
+source: "56ead93a68bb4b45"
+sha: "6c7a3b183ac589ba4226bf99e8f550eaa5ebc269"
+---
+
+<Short>
+最初の1時間でやることは4つです。[パスワードマネージャーを使い始め](#password-manager)、[メールの2段階認証をオンにし](#email-2fa)、[自動アップデートと画面ロックを設定して](#update-and-lock)、[ブラウザにコンテンツブロッカーを1つ入れます](#content-blocker)。そのあとは、下の3つの質問をもとに、ほかに何に時間をかける価値があるかを決めましょう。数か月ごとにパスワードを変えるなど、よく聞くアドバイスのなかには[やらなくていいもの](#やらなくていいこと)もあります。
+</Short>
+
+## なぜこの4つが先なのか
+
+プライバシー対策のアドバイスは、たいてい長いリストになっていて、どれも同じくらい大事に見えます。でも、実際はそうではありません。Googleによれば、利用者のアカウントへの不正ログインの試みのほとんどは自動化されたもので、ほかのサイトから漏れたパスワードが使われています。また、Googleは、お金をもらって特定の人物のアカウントに侵入するハッカー集団を追跡していましたが、そうした集団に狙われた利用者は100万人に1人ほどにすぎないと推定しています[^g2019]。
+
+そこで、最初の2つはこの自動化された攻撃への対策です。アカウントごとに別のパスワードを使うことと、ほかのすべてのアカウントを再設定できるアカウント、つまりメールに2段階目の確認を加えることです。アップデートはデバイスをマルウェアから守るのに役立ち[^ncsc-updates]、コンテンツブロッカーは、サイトからサイトへとあなたを追いかけるトラッキングの多くを止めてくれます。2015年にGoogleがセキュリティの専門家231人とそれ以外の294人に尋ねたところ、アップデートのインストールを大事な習慣の上位3つに挙げたのは、専門家では35%だったのに対し、それ以外の人では2%でした。少なくとも一部のアカウントでパスワードマネージャーを使っている割合も、専門家はそれ以外の人の3倍でした[^g2015]。
+
+## 最初の1時間
+
+<Tip id="password-manager" priority="essential" effort={20} title="パスワードはアプリで管理、メールは専用に">
+同じパスワードを複数の場所で使っていると、そのうち1つのサイトから漏れただけで、犯罪者はそのすべてに入れてしまいます。いちばん大事なのはメールです。メールに入り込んだ人は、ほかのアカウントのパスワードを再設定できるからです[^ncsc-email]。パスワードマネージャーはサイトごとに別のパスワードを作り、それをすべて覚えておいてくれます。英国のNCSC（国家サイバーセキュリティセンター）も、パスワードマネージャーを使うよう勧めています[^ncsc-email]。
+
+リストからの選び方、保存済みのパスワードの移し方、マネージャー自体に忘れないパスワードを決める方法は、[パスワードマネージャーのガイド](/ja/guides/password-manager/)で説明しています。今日はそこまで手が回らなければ、自分のデバイスで使う限り、ブラウザに組み込まれたパスワードの保存機能でもかまいません[^ncsc-pm]。どちらにしても、メールにはほかのどこでも使っていない新しいパスワードを設定してください。NCSCは、ランダムな3つの単語を組み合わせることを勧めています[^ncsc-tips]。
+</Tip>
+
+<Tip id="email-2fa" priority="essential" effort={10} title="メールの2段階認証とバックアップコード">
+<Term slug="2fa">2段階認証</Term>を設定しておけば、パスワードだけではログインできなくなります。SMSで届くコードでも、かなりの効果があります。Googleの調査では、怪しいログインを通す前にこのコードを求めるだけで、自動化された攻撃のすべてと、大量にばらまかれるフィッシングの96%を防げました[^g2019]。
+
+設定を終える前に、アカウントに登録されている再設定用のメールアドレスと電話番号が今も使っているものか確かめ、バックアップコードをスマホ以外の場所に保存しておきましょう。バックアップコードは、スマホをなくしても使えるからです[^ncsc-2sv-guide]。Googleの調査で確認を求められた人のうち、38%は手元にスマホがなく、34%は再設定用のメールアドレスを思い出せませんでした[^g2019]。メールが済んだら、銀行と、カード情報を保存しているネットショップにも設定します[^ncsc-2sv]。向こうから連絡してきた相手にコードを読み上げたり、自分で始めていないログインを承認したりは、絶対にしないでください。どの方法がいちばん安全か、その理由も含めて[2段階認証のガイド](/ja/guides/two-factor/)で説明しています。
+</Tip>
+
+<Tip id="update-and-lock" priority="essential" effort={10} title="自動アップデートと画面ロック">
+アップデートはセキュリティ上の問題を修正するもので、NCSCは、アップデートのインストールを、できることのなかでも特に大事な（そしてすぐに済む）ものの1つとしています。覚えておかなくても済むように、スマホ本体だけでなくアプリも自動でアップデートされるようにしておきましょう[^ncsc-updates]。画面ロックは、スマホがほかの人の手に渡ったときに、中のデータを守るのに役立ちます[^apple-passcode]。
+
+<Platforms>
+<Platform name="ios">
+アップデートは、<Path>設定 --> 一般 --> ソフトウェアアップデート --> 自動アップデート</Path>を開き、「自動インストール」をオンにします。こうすると、iPhoneは充電中でWi-Fiにつながっている夜間にアップデートをインストールし、その前に知らせてくれます[^apple-update]。画面ロックは、<Path>設定 --> Face IDとパスコード</Path>（ホームボタンのあるiPhoneでは「Touch IDとパスコード」）を開き、「パスコードをオンにする」をタップします[^apple-passcode]。
+</Platform>
+<Platform name="android">
+システムアップデートとセキュリティパッチのほとんどは、自動でインストールされます。アップデートがあるか確かめるには、<Path>設定 --> システム --> ソフトウェア アップデート</Path>を開きます[^android-update]。画面ロックは、<Path>設定 --> セキュリティ --> 画面ロック</Path>を開き、パスワードか、6桁以上のPINを選びます。Googleによれば、パスワードがいちばん安全な方法です。PINかパスワードにしておけば、バックアップも画面ロックで暗号化されます。スワイプではそうなりません[^android-lock]。メニューの名前や場所は、スマホのメーカーによって少しずつ違います。
+</Platform>
+</Platforms>
+
+スマホは数年たつとアップデートが届かなくなります。自分の機種にまだメーカーからアップデートが届いているかは、ネットで調べられます。NCSCは、サポートが終わったスマホは使わないよう勧めていますが、最新の機種や高価な機種である必要はないとしています[^ncsc-updates]。
+</Tip>
+
+<Tip id="content-blocker" priority="essential" effort={5} title="コンテンツブロッカーを1つ入れる">
+多くのウェブサイトは、ほかの会社の<Term slug="tracker">トラッカー</Term>を読み込んでいて、トラッカーはそのサイトでのあなたの行動を記録します。コンテンツブロッカーは、自分のリストに載っているトラッカーを、そもそも読み込ませません。<App name="uBlock Origin" />は広告、トラッカー、マルウェアを配布するサイトをブロックし、パソコンでもAndroidでも、Firefoxで使うのがいちばん効果的です[^ubo]。Chromeではすでに完全版が無効になり、Microsoftも2026年末までにEdgeで同じことを進めているので、どちらでも使えるのは、新しい仕様向けに作られたuBlock Origin Liteになります[^mv2][^ubo]。Safari向けに用意されているのも、このLite版です[^ubol]。Braveは独自の「シールド」でトラッカーと広告をブロックするので、Braveを使っているなら、これはもう済んでいます[^brave]。
+
+入れるのは1つで十分です。閲覧するすべてのウェブサイトにアクセスできる拡張機能は、開いたページをすべて読み取って書き換えられるので[^cws]、1つ増やすたびに、信頼しなければならない相手が1つ増えます。どのブラウザを使えばいいか、このあとどの設定を変えておく価値があるかは、[ブラウザのプライバシーガイド](/ja/guides/browser-privacy/)で説明しています。
+</Tip>
+
+## 次を決める3つの質問
+
+最初の1時間のあとに何をする価値があるかは、人によって違います。米国の非営利団体EFF（電子フロンティア財団）による、自分のセキュリティプランを立てるためのガイドは6つの質問を挙げていて、英語ですが全文を読む価値があります[^eff]。私たちなら、次の3つから始めます。
+
+### データを誰が狙う？その可能性は？
+
+たいていの人にとって、相手は企業と犯罪者です。企業はデータを広告に使い、<Term slug="data-broker">データブローカー</Term>はそれを売り買いします。ごくふつうのアプリを通じて集めていることもあります[^ftc]。犯罪者が欲しいのは主にあなたのアカウントとお金で、少なくともGoogleアカウントに対しては、特定の1人を選んで狙うより、自動化されたツールを使うのがほとんどです[^g2019]。企業と距離を置くには、ブラウザやアプリ、サービスを慎重に選び、見られる範囲を制限します。犯罪者を締め出すには、アカウントの守りを固めます。その方法は[2段階認証のガイド](/ja/guides/two-factor/)と[情報漏洩のガイド](/ja/guides/after-a-data-breach/)で説明しています。
+
+EFFは、起こりうることと実際に起こりそうなことを分けて考え、心配するにはまれすぎる脅威を書き出しておくよう勧めています[^eff]。政府や警察、勤務先を警戒しているなら、このページの内容では足りません。EFFのガイド「Surveillance Self-Defense」はそうした人のために書かれていて、あなた自身の状況から考え始められるようになっています[^eff]。
+
+### 漏れたり消えたりしていちばん困るものは？
+
+たいていの人にとって、上位に来るのはメールのアカウントです。ほかのすべてを再設定できてしまうからです[^ncsc-email]。その先は人によって違い、メッセージ、行った場所、写真などが挙がるでしょう。EFFは、守りたいものと、それがどこに保存されているか、誰がアクセスできるかをリストにすることを勧めています[^eff]。
+
+### どこまで手間をかけられる？
+
+どの対策にもコストがかかります。一度だけかかる時間か、毎日少しずつ手放す便利さです。EFFのプランでは、それを守りたいものと天秤にかけます[^eff]。下の対策から自分の答えに合うものを選び、残りは今はそのままにしておきましょう。
+
+## 最初の1か月
+
+<Tip id="location" priority="optional" effort={10} title="位置情報を使うアプリを見直す">
+どこに行くかがわかれば、どこに住んでいるか、誰と過ごしているか、どの病院に通っているか、どこで礼拝しているかまでわかってしまうことがあります[^ftc]。2024年、米連邦取引委員会（FTC）は、X-Modeというデータブローカーを、医療機関や礼拝所、DV被害者のシェルターへの訪問まで追跡できる正確な位置情報を販売していたとして訴えました。データの一部は、X-Modeのコードを組み込んだ他社のアプリから集められたもので、FTCは、そうしたアプリが位置情報の送り先を利用者にきちんと伝えていなかったとしています。X-Modeは、センシティブな位置情報の販売を禁じる和解に応じました[^ftc]。
+
+アプリを1つずつ見て、そもそも位置情報が必要か、使っていないときにも必要かを考えてみてください。家族と居場所を共有するアプリや、ランニングを記録するアプリなら、使っていないときにも必要かもしれません。まったく必要のないアプリもたくさんあります。正確な場所まで知る必要のないアプリでは、正確な位置情報をオフにしましょう。
+
+<Platforms>
+<Platform name="ios">
+<Path>設定 --> プライバシーとセキュリティ --> 位置情報サービス</Path>を開いてアプリをタップし、「しない」か「このアプリの使用中」を選びます。正確な位置が必要ないアプリは、同じ画面で「正確な位置情報」をオフにします[^apple-loc]。
+</Platform>
+<Platform name="android">
+<Path>設定 --> 位置情報 --> アプリへの位置情報の利用許可</Path>を開いてアプリをタップし、「アプリの使用中のみ許可」か「許可しない」を選びます。同じ画面で「正確な位置情報を使用」をオフにすることもできます[^android-loc]。
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="back-up" priority="optional" effort={30} title="替えのきかないものをバックアップする">
+スマホはなくすこともあれば、ノートパソコンが壊れることもあります。NCSCのおすすめの対策には、写真や書類のようないちばん大事なものを、外付けドライブかクラウドサービスにバックアップすることが含まれています[^ncsc-tips]。設定できたら、バックアップからファイルを1つか2つ開いてみて、本当に使えるか確かめておきましょう。
+</Tip>
+
+<Tip id="one-big-switch" priority="optional" effort={60} title="大きな乗り換えは1つずつ、メールから">
+<Swap product="gmail">Gmail</Swap>と<Swap product="whatsapp">WhatsApp</Swap>のページでは、それぞれが何を集めているかを説明しています。乗り換えには時間がかかります。メールなら古いアドレスを登録しているアカウントをすべて変更しなければなりませんし、メッセージアプリならやり取りしている相手にも一緒に移ってもらう必要があるからです。1つ選んで、それを終えてから次に取りかかりましょう。始めるならたいていはメールです。ほかのアカウントのパスワード再設定のメールは、すべてそこに届くからです[^ncsc-email]。[Gmailから乗り換えるガイド](/ja/guides/leave-gmail/)では移行中も古いアドレスを使えるようにしておく方法を、[WhatsAppからSignalへ乗り換えるガイド](/ja/guides/leave-whatsapp/)では友達にも一緒に移ってもらう方法を説明しています。変えたいのがブラウザなら、ブラウザのガイドに[Chromeからの乗り換え](/ja/guides/browser-privacy/#leave-chrome)についての項目があります。
+</Tip>
+
+<Tip id="aliases" priority="optional" effort={10} title="新規登録は専用のアドレスで">
+<Term slug="email-alias">メールエイリアス</Term>は本来の受信トレイにメールを転送するので、サイトごとに専用のアドレスを使えます。どれかに迷惑メールが届きはじめたら、どのサイトから漏れたのかがわかりますし、ほかには手を付けずにそのエイリアスだけを止められます。あるサイトで漏洩が起きても、漏れるのはそのサイト用のエイリアスだけで、どこでも使っているアドレスは漏れずに済みます[^ec-tips]。リストのおすすめは次のとおりです。
+
+<Picks section="Mail Forwarding" level={4} />
+
+まずは新しく登録するサイトから始めましょう。古いアカウントを移すにはメールアドレスを変更する必要がありますが、それは次にログインしたときにやれば十分です。ただし、エイリアスサービスには転送するメールがすべて見えるので、自分のメールを任せられると思えるところを選んでください。
+</Tip>
+
+## そのあとは
+
+<Tip id="breach-alerts" priority="optional" effort={5} title="漏洩の通知を受け取る">
+<App name="Have I Been Pwned" />に登録しておくと、把握した漏洩にあなたのアドレスが含まれていたとき、無料でメールで知らせてくれます[^hibp-notify]。ただし、このサービスが持っているのは、これまでに漏れた情報のごく一部だけです。メールが来ないからといって、何も漏れていないとは限りません[^hibp-faq]。漏洩が見つかったら、何をどの順番でやればいいかを[情報漏洩のガイド](/ja/guides/after-a-data-breach/)で説明しています。EFFは、状況が変わるたびにプランを見直すよう勧めています。転職のような大きな変化があったら、3つの質問をもう一度考えてみる価値があります[^eff]。
+</Tip>
+
+## やらなくていいこと
+
+代表的なのが、数か月ごとのパスワード変更です。米国政府のパスワードに関するルールを定めているNISTは、利用者に定期的な変更をさせないよう、サービス側に求めています[^nist]。NCSCは、変更を強制するのは逆効果だとしています。人は前のパスワードを少し変えただけのものを選びがちですし、盗まれたパスワードはたいていすぐに使われてしまうからです。パスワードを変えるのは、漏れたときか、誰かに知られたと思ったときで十分です[^ncsc-expiry]。
+
+ウイルス対策ソフトも、最初にやることではありません。WindowsにはMicrosoft Defender ウイルス対策が組み込まれていて、電源を入れた瞬間からあなたを守っています[^ms-defender]。2015年のGoogleの調査では、ウイルス対策ソフトを大事な習慣の上位3つに挙げたのは、専門家以外では42%だったのに対し、専門家では7%でした。専門家は役に立たないとは言っていませんが、それで安心しすぎてしまうおそれがあると心配していました[^g2015]。
+
+VPNが必要かどうかは、いくつかの特定の用途があるかどうかで決まります。[VPNのガイド](/ja/guides/do-i-need-a-vpn/)で確かめてみてください。Do Not Trackはオフのままにしておきましょう。フィンガープリンティングに使われるおそれがあるとして、AppleがSafariから削除した機能です[^safari-dnt]。ブラウザの情報を偽る拡張機能も、かえって目立つ原因になることがよくあります[^arkenfox]。どちらについても、[ブラウザのプライバシーガイド](/ja/guides/browser-privacy/)で説明しています。
+
+設定は、2026年11月時点のAppleのiOS 27ガイドとGoogleのAndroidヘルプで確認しました。
+
+[^g2019]: [Google Security Blog：基本的なアカウントの手入れは乗っ取りの防止にどれほど効果があるか](https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html)
+[^ncsc-updates]: [NCSC：最新のソフトウェアとアプリのアップデートをインストールする](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/install-the-latest-software-and-app-updates)
+[^g2015]: [Google Security Blog：セキュリティの専門家と一般の人のネットでの身の守り方を比べる](https://security.googleblog.com/2015/07/new-research-comparing-how-security.html)
+[^ncsc-email]: [NCSC：メールには強力で専用のパスワードを使う](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email)
+[^ncsc-pm]: [NCSC：パスワードの管理](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
+[^ncsc-tips]: [NCSC：ネットで安全に過ごすためのヒント](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online)
+[^ncsc-2sv-guide]: [NCSC：2段階認証を設定する](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
+[^ncsc-2sv]: [NCSC：2段階認証をオンにする](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^apple-passcode]: [Apple サポート：iPhone、iPad、iPod touchでパスコードを使う](https://support.apple.com/ja-jp/119586)
+[^apple-update]: [Apple サポート：iPhoneやiPadをアップデートする](https://support.apple.com/ja-jp/118575)
+[^android-update]: [Android ヘルプ：Android のバージョンを確認して更新する](https://support.google.com/android/answer/7680439?hl=ja)
+[^android-lock]: [Android ヘルプ：Android デバイスで画面ロックを設定する](https://support.google.com/android/answer/9079129?hl=ja)
+[^ubo]: [GitHubのuBlock Origin](https://github.com/gorhill/uBlock)
+[^mv2]: [Chrome for Developers：Manifest V2のサポート終了スケジュール](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+[^ubol]: [GitHubのuBlock Origin Lite](https://github.com/uBlockOrigin/uBOL-home)
+[^brave]: [Brave：Shields](https://brave.com/shields/)
+[^cws]: [Chrome ウェブストア ヘルプ：アプリや拡張機能によりリクエストされる権限](https://support.google.com/chrome_webstore/answer/186213?hl=ja)
+[^eff]: [EFF Surveillance Self-Defense：自分のセキュリティプラン](https://ssd.eff.org/module/your-security-plan)
+[^ftc]: [FTC：データブローカーのX-Mode SocialとOutlogicにセンシティブな位置情報の販売を禁じる命令](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data)
+[^apple-loc]: [iPhoneユーザガイド：iPhoneで共有する位置情報を制御する](https://support.apple.com/ja-jp/guide/iphone/iph3dd5f9be/ios)
+[^android-loc]: [Android ヘルプ：アプリの位置情報の利用許可を管理する](https://support.google.com/android/answer/6179507?hl=ja)
+[^ec-tips]: [Email Comparison：メールのセキュリティのヒント](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned：漏洩の無料通知に登録する](https://haveibeenpwned.com/NotifyMe)
+[^hibp-faq]: [Have I Been Pwned：よくある質問](https://haveibeenpwned.com/FAQs)
+[^nist]: [NIST SP 800-63B-4：認証器](https://pages.nist.gov/800-63-4/sp800-63b/authenticators/)
+[^ncsc-expiry]: [NCSC：システム管理者のためのパスワード管理](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^ms-defender]: [Microsoft サポート：Windows セキュリティ アプリで常に保護する](https://support.microsoft.com/ja-jp/windows/stay-protected-with-the-windows-security-app-2ae0363d-0ada-c064-8b56-6a39afb6a963)
+[^safari-dnt]: [Apple Developer：Safari 12.1 リリースノート](https://developer.apple.com/documentation/safari-release-notes/safari-12_1-release-notes)
+[^arkenfox]: [arkenfox wiki：拡張機能](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)

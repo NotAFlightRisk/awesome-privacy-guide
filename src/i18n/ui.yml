@@ -240,6 +240,7 @@ guides.topic.email: email
 guides.topic.messaging: messaging
 guides.topic.browsing: browsing
 guides.topic.network: network
+guides.topic.basics: basics
 
 guide.read: "{time} read"
 guide.checked: Checked {date}

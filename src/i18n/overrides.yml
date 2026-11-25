@@ -1085,6 +1085,7 @@ de:
   messaging: Messenger
   browsing: Browser
   network: Netzwerk
+  basics: Grundlagen
   "{time} read": "{time} Lesezeit"
   Checked {date}: Geprüft am {date}
   the short answer: Kurz gesagt
@@ -2265,6 +2266,7 @@ es:
   messaging: Mensajería
   browsing: Navegación
   network: Red
+  basics: Lo básico
   "{time} read": "{time} de lectura"
   Checked {date}: Revisada el {date}
   the short answer: La respuesta corta
@@ -2394,6 +2396,7 @@ fr:
   messaging: Messagerie
   browsing: Navigation
   network: Réseau
+  basics: Les bases
   "{time} read": "{time} de lecture"
   Checked {date}: Vérifié le {date}
   the short answer: En bref
@@ -3570,6 +3573,7 @@ pt:
   messaging: Mensagens
   browsing: Navegação
   network: Rede
+  basics: O básico
   "{time} read": "{time} de leitura"
   Checked {date}: Conferido em {date}
   the short answer: Em resumo
@@ -4737,6 +4741,7 @@ it:
   messaging: Messaggistica
   browsing: Navigazione
   network: Rete
+  basics: Le basi
   "{time} read": "{time} di lettura"
   Checked {date}: Verificata il {date}
   the short answer: In breve
@@ -5917,6 +5922,7 @@ ru:
   messaging: Мессенджеры
   browsing: Браузеры
   network: Сеть
+  basics: Основы
   "{time} read": "{time} чтения"
   Checked {date}: Проверено {date}
   the short answer: Если коротко
@@ -7123,6 +7129,7 @@ ja:
   messaging: メッセージアプリ
   browsing: ブラウザ
   network: ネットワーク
+  basics: 基本
   "{time} read": "{time}で読めます"
   Checked {date}: "{date}に確認"
   the short answer: 要点
