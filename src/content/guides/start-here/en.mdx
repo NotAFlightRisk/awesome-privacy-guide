@@ -20,7 +20,7 @@ Spend the first hour on four things: [a password manager](#password-manager), [t
 
 ## Why these four come first
 
-Privacy advice usually comes as a long list where every tip looks equally important. They aren't. Google's research with two universities found that most attempts to break into Google accounts were automated, using passwords leaked from other sites. Google estimated that only about one in a million of its users faced the paid hacking groups it tracked, which charge to break into one particular person's account.[^g2019]
+Privacy advice usually comes as a long list where every tip looks equally important. They aren't. Google says most attempts to break into its users' accounts are automated, using passwords leaked from other sites. It also estimated that only about one in a million of its users faced the paid hacking groups it tracked, which charge to break into one particular person's account.[^g2019]
 
 So the first two steps go after those automated attempts: a different password for every account, and a second step on the account that can reset all the others. Updates help protect your devices from malware,[^ncsc-updates] and a content blocker stops a lot of the tracking that follows you from site to site. When Google surveyed 231 security experts and 294 other people in 2015, 35% of the experts named installing updates as one of their top three habits, against 2% of everyone else. The experts were also three times as likely to use a password manager for at least some of their accounts.[^g2015]
 
@@ -46,7 +46,7 @@ Updates fix security problems, and the NCSC calls installing them one of the mos
 For updates, open <Path>Settings --> General --> Software Update --> Automatic Updates</Path> and turn on Automatically Install. Your iPhone then installs them overnight while it's charging and on Wi-Fi, and tells you first.[^apple-update] For the lock, open <Path>Settings --> Face ID & Passcode</Path> (Touch ID & Passcode on older iPhones) and tap Turn Passcode On.[^apple-passcode]
 </Platform>
 <Platform name="android">
-Most system updates and security patches install themselves. To check for one, open <Path>Settings --> System --> Software updates</Path>.[^android-update] For the lock, open <Path>Settings --> Security --> Screen lock</Path> and pick a PIN of at least six digits, or a password, which Google says is the most secure option. A PIN or password also means your backups are encrypted with your screen lock, which a swipe doesn't do.[^android-lock] The menus vary a bit between phone makers.
+Most system updates and security patches install themselves. To check for one, open <Path>Settings --> System --> Software updates</Path>.[^android-update] For the lock, open <Path>Settings --> Security --> Screen lock</Path> and pick a password, which Google says is the most secure option, or a PIN of at least six digits. A PIN or password also means your backups are encrypted with your screen lock, which a swipe doesn't do.[^android-lock] The menus vary a bit between phone makers.
 </Platform>
 </Platforms>
 
@@ -54,7 +54,7 @@ Phones stop getting updates after a few years, and you can check online whether 
 </Tip>
 
 <Tip id="content-blocker" priority="essential" effort={5} title="Add one content blocker to your browser">
-Lots of websites load <Term slug="tracker">trackers</Term> from other companies, which log what you do there. A content blocker stops the ones on its lists from loading at all. <App name="uBlock Origin" /> blocks ads, trackers and malware sites, and works in Firefox (Android included), Edge and Opera.[^ubo] On Chrome, the full version no longer works, and uBlock Origin Lite, built for Chrome's newer rules, is what's left.[^mv2] There's no Safari version, but Safari blocks third-party cookies on its own.[^webkit] Brave blocks trackers and ads with its own Shields, so if you use Brave, you've already done this one.[^brave]
+Lots of websites load <Term slug="tracker">trackers</Term> from other companies, which log what you do there. A content blocker stops the ones on its lists from loading at all. <App name="uBlock Origin" /> blocks ads, trackers and malware sites, and works best in Firefox, on computers and Android.[^ubo] Chrome has switched off the full version, and Microsoft is doing the same in Edge by the end of 2026, which leaves uBlock Origin Lite, built for their newer rules, on both.[^mv2][^ubo] Lite is also the version there is for Safari.[^ubol] Brave blocks trackers and ads with its own Shields, so if you use Brave, you've already done this one.[^brave]
 
 One is enough. An extension that can see all the websites you visit can read and change every page you open,[^cws] so each one you add is something else to trust. The [browser privacy guide](/guides/browser-privacy/) covers which browser to use, and the settings worth changing after this.
 </Tip>
@@ -140,7 +140,7 @@ Settings checked against Apple's iOS 27 guide and Google's Android help in Novem
 [^android-lock]: [Android Help: Set screen lock on an Android device](https://support.google.com/android/answer/9079129)
 [^ubo]: [uBlock Origin on GitHub](https://github.com/gorhill/uBlock)
 [^mv2]: [Chrome for Developers: Manifest V2 support timeline](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
-[^webkit]: [WebKit: Full third-party cookie blocking and more](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/)
+[^ubol]: [uBlock Origin Lite on GitHub](https://github.com/uBlockOrigin/uBOL-home)
 [^brave]: [Brave: Shields](https://brave.com/shields/)
 [^cws]: [Chrome Web Store Help: Permissions requested by apps and extensions](https://support.google.com/chrome_webstore/answer/186213)
 [^eff]: [EFF Surveillance Self-Defense: Your security plan](https://ssd.eff.org/module/your-security-plan)
