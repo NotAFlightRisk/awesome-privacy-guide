@@ -1,0 +1,148 @@
+---
+title: "Privatsphäre im Internet schützen: So fängst du an"
+description: "Vier Dinge für die erste Stunde, drei Fragen, mit denen du klärst, was sich danach lohnt, und welche beliebten Datenschutz-Tipps du dir sparen kannst."
+source: "56ead93a68bb4b45"
+sha: "6c7a3b183ac589ba4226bf99e8f550eaa5ebc269"
+---
+
+<Short>
+Nimm dir für die erste Stunde vier Dinge vor: [einen Passwort-Manager](#password-manager), [Zwei-Faktor-Authentifizierung für dein E-Mail-Konto](#email-2fa), [automatische Updates und eine Displaysperre](#update-and-lock) und [einen Content-Blocker in deinem Browser](#content-blocker). Mit den drei Fragen weiter unten entscheidest du dann, was sich sonst noch für dich lohnt. [Manche beliebten Tipps kannst du dir sparen](#was-du-dir-sparen-kannst), zum Beispiel, alle paar Monate deine Passwörter zu ändern.
+</Short>
+
+## Warum diese vier zuerst dran sind
+
+Datenschutz-Tipps kommen meist als lange Liste, in der jeder Punkt gleich wichtig aussieht. Das sind sie aber nicht. Laut Google laufen die meisten Versuche, in die Konten seiner Nutzer einzubrechen, automatisiert ab, und zwar mit Passwörtern, die bei anderen Websites geleakt wurden. Außerdem schätzte Google, dass nur etwa einer von einer Million seiner Nutzer ins Visier der bezahlten Hackergruppen geriet, die es beobachtete. Diese Gruppen lassen sich dafür bezahlen, in das Konto einer ganz bestimmten Person einzubrechen.[^g2019]
+
+Die ersten beiden Schritte richten sich deshalb gegen genau diese automatisierten Angriffe: ein eigenes Passwort für jedes Konto und ein zweiter Anmeldeschritt bei dem Konto, über das sich alle anderen zurücksetzen lassen. Updates helfen, deine Geräte vor Malware zu schützen,[^ncsc-updates] und ein Content-Blocker stoppt einen großen Teil des Trackings, das dir von Website zu Website folgt. Google hat 2015 insgesamt 231 Sicherheitsexperten und 294 andere Leute befragt. Von den Experten nannten 35 % das Installieren von Updates als eine ihrer drei wichtigsten Gewohnheiten, von den übrigen Befragten nur 2 %. Außerdem nutzten die Experten dreimal so häufig einen Passwort-Manager, zumindest für einen Teil ihrer Konten.[^g2015]
+
+## Die erste Stunde
+
+<Tip id="password-manager" priority="essential" effort={20} title="Fang mit einem Passwort-Manager an und gib deinem E-Mail-Konto ein eigenes Passwort">
+Wenn du ein Passwort an mehreren Stellen benutzt hast, kann ein Datenleck bei einer einzigen dieser Websites Kriminellen die Tür zu allen öffnen. Am wichtigsten ist dein E-Mail-Konto, denn wer da reinkommt, kann die Passwörter deiner anderen Konten zurücksetzen.[^ncsc-email] Ein Passwort-Manager erstellt für jede Website ein anderes Passwort und merkt sich alle für dich, und das britische Cybersicherheitszentrum NCSC empfiehlt, einen zu benutzen.[^ncsc-email]
+
+Im [Ratgeber zum Passwort-Manager](/de/ratgeber/password-manager/) steht, wie du einen aus der Liste aussuchst, deine gespeicherten Passwörter überträgst und für den Passwort-Manager selbst ein Passwort wählst, das du nicht vergisst. Wenn dir das für heute zu viel ist: Auf deinen eigenen Geräten ist auch der eingebaute Passwortspeicher deines Browsers in Ordnung.[^ncsc-pm] Gib deinem E-Mail-Konto aber in jedem Fall ein neues Passwort, das du nirgendwo sonst benutzt. Das NCSC schlägt dafür drei zufällige Wörter vor.[^ncsc-tips]
+</Tip>
+
+<Tip id="email-2fa" priority="essential" effort={10} title="Schalte für dein E-Mail-Konto die Zwei-Faktor-Authentifizierung ein und heb die Backup-Codes auf">
+Mit <Term slug="2fa">Zwei-Faktor-Authentifizierung</Term> reicht ein Passwort allein nicht mehr, um reinzukommen. Auch ein per SMS geschickter Code hilft schon viel. Wenn Google bei einer verdächtigen Anmeldung erst einen solchen Code verlangte, bevor es sie durchließ, wehrte das allein sämtliche automatisierten Angriffe in seiner Studie und 96 % der breit gestreuten Phishing-Angriffe ab.[^g2019]
+
+Prüf zum Schluss, ob du die E-Mail-Adresse und die Telefonnummer zur Wiederherstellung, die im Konto hinterlegt sind, noch benutzt, und speicher die Backup-Codes woanders als auf deinem Handy, denn sie funktionieren auch dann noch, wenn du es verlierst.[^ncsc-2sv-guide] Als Google in seiner Studie von Nutzern eine zusätzliche Bestätigung verlangte, hatten 38 % ihr Handy nicht griffbereit, und 34 % konnten sich nicht an ihre Wiederherstellungs-E-Mail-Adresse erinnern.[^g2019] Danach sind deine Bank und die Onlineshops dran, bei denen deine Karte hinterlegt ist.[^ncsc-2sv] Lies niemandem, der sich bei dir gemeldet hat, einen Code vor, und bestätige keine Anmeldung, die du nicht selbst gestartet hast. Welche Art von 2FA am sichersten ist und warum, steht im [Ratgeber zur Zwei-Faktor-Authentifizierung](/de/ratgeber/two-factor/).
+</Tip>
+
+<Tip id="update-and-lock" priority="essential" effort={10} title="Schalte automatische Updates und eine Displaysperre ein">
+Updates schließen Sicherheitslücken, und das NCSC nennt ihre Installation eine der wichtigsten (und schnellsten) Sachen, die du tun kannst. Schalte automatische Updates ein, für deine Apps genauso wie für dein Handy, damit du nicht daran denken musst.[^ncsc-updates] Eine Displaysperre hilft, die Daten auf deinem Handy zu schützen, falls es jemand anderes in die Finger bekommt.[^apple-passcode]
+
+<Platforms>
+<Platform name="ios">
+Für die Updates öffne <Path>Einstellungen --> Allgemein --> Softwareupdate --> Automatische Updates</Path> und schalte „Automatisch installieren“ ein. Dein iPhone installiert Updates dann über Nacht, während es lädt und mit einem WLAN verbunden ist, und sagt dir vorher Bescheid.[^apple-update] Für die Sperre öffne <Path>Einstellungen --> Face ID & Code</Path> (auf älteren iPhones „Touch ID & Code“) und tippe auf „Code aktivieren“.[^apple-passcode]
+</Platform>
+<Platform name="android">
+Die meisten Systemupdates und Sicherheitspatches installieren sich von selbst. Ob ein neues da ist, siehst du unter <Path>Einstellungen --> System --> Softwareupdates</Path>.[^android-update] Für die Sperre öffne <Path>Einstellungen --> Sicherheit --> Displaysperre</Path> und wähl ein Passwort, das laut Google die sicherste Option ist, oder eine PIN mit mindestens sechs Ziffern. Mit einer PIN oder einem Passwort werden deine Backups außerdem mit deiner Displaysperre verschlüsselt, was beim Entsperren per Wischen nicht passiert.[^android-lock] Die Menüs unterscheiden sich je nach Hersteller ein bisschen.
+</Platform>
+</Platforms>
+
+Handys bekommen nach ein paar Jahren keine Updates mehr, und ob dein Modell vom Hersteller noch welche bekommt, kannst du im Internet nachsehen. Das NCSC rät davon ab, ein Handy zu benutzen, das nicht mehr unterstützt wird, aber das neueste oder teuerste Modell brauchst du deshalb nicht.[^ncsc-updates]
+</Tip>
+
+<Tip id="content-blocker" priority="essential" effort={5} title="Installier einen Content-Blocker in deinem Browser">
+Viele Websites laden <Term slug="tracker">Tracker</Term> anderer Firmen, die aufzeichnen, was du dort tust. Ein Content-Blocker sorgt dafür, dass die Tracker auf seinen Listen gar nicht erst geladen werden. <App name="uBlock Origin" /> blockiert Werbung, Tracker und Malware-Websites und funktioniert am besten in Firefox, auf dem Computer und unter Android.[^ubo] Chrome hat die Vollversion abgeschaltet, und Microsoft macht in Edge bis Ende 2026 dasselbe. Damit bleibt dir in beiden Browsern uBlock Origin Lite, das für ihre neueren Regeln gebaut ist.[^mv2][^ubo] Lite ist auch die Version, die es für Safari gibt.[^ubol] Brave hat mit seinen Shields einen eigenen Blocker für Tracker und Werbung eingebaut. Wenn du Brave nutzt, hast du diesen Punkt also schon erledigt.[^brave]
+
+Einer reicht. Eine Erweiterung mit Zugriff auf alle Websites, die du besuchst, kann jede Seite lesen und verändern, die du öffnest,[^cws] und jede weitere ist eine mehr, der du vertrauen musst. Welchen Browser du nehmen solltest und welche Einstellungen sich danach noch lohnen, steht im [Ratgeber zum Browser-Datenschutz](/de/ratgeber/browser-privacy/).
+</Tip>
+
+## Drei Fragen für die nächsten Schritte
+
+Was sich nach der ersten Stunde lohnt, hängt von dir ab. Der Leitfaden der EFF zum eigenen Sicherheitsplan stellt sechs Fragen, und es lohnt sich, ihn ganz zu lesen.[^eff] Mit diesen drei würden wir anfangen.
+
+### Wer hätte gern deine Daten, und wie wahrscheinlich ist ein Versuch?
+
+Bei den meisten sind das Firmen und Kriminelle. Firmen nutzen deine Daten für Werbung, und <Term slug="data-broker">Datenhändler</Term> kaufen und verkaufen sie, manchmal nachdem sie sie über ganz normale Apps gesammelt haben.[^ftc] Kriminelle wollen meist an deine Konten und dein Geld, und zumindest bei Google-Konten setzen sie überwiegend auf automatisierte Werkzeuge, statt sich gezielt eine Person herauszupicken.[^g2019] Firmen hältst du auf Abstand, indem du Browser, Apps und Dienste mit Bedacht auswählst und einschränkst, was sie sehen dürfen. Kriminelle hältst du draußen, indem du deine Konten gut absicherst. Darum geht es im [Ratgeber zur Zwei-Faktor-Authentifizierung](/de/ratgeber/two-factor/) und im [Ratgeber zu Datenlecks](/de/ratgeber/after-a-data-breach/).
+
+Die EFF rät, zwischen dem zu unterscheiden, was passieren könnte, und dem, was wahrscheinlich passiert, und aufzuschreiben, welche Bedrohungen so selten sind, dass du dir darüber keine Gedanken machen musst.[^eff] Wenn du dir wegen einer Regierung, der Polizei oder deines Arbeitgebers Sorgen machst, geht diese Seite nicht weit genug für dich. Genau dafür hat die EFF „Surveillance Self-Defense“ geschrieben, und der Leitfaden geht von deiner eigenen Situation aus.[^eff]
+
+### Was wäre am schlimmsten, wenn es öffentlich würde oder verloren ginge?
+
+Bei den meisten steht das E-Mail-Konto ziemlich weit oben, weil sich darüber alles andere zurücksetzen lässt.[^ncsc-email] Danach kommt es auf dich an: deine Nachrichten, wo du dich aufhältst, deine Fotos. Die EFF schlägt vor, aufzulisten, was du schützen willst, wo es gespeichert ist und wer darauf zugreifen kann.[^eff]
+
+### Wie viel Aufwand nimmst du in Kauf?
+
+Jeder Schritt kostet etwas, entweder einmal Zeit oder jeden Tag ein Stück Bequemlichkeit, und im Plan der EFF wägst du das gegen das ab, was du schützen willst.[^eff] Such dir unten die Schritte aus, die zu deinen Antworten passen, und lass den Rest erst mal liegen.
+
+## Der erste Monat
+
+<Tip id="location" priority="optional" effort={10} title="Prüf, welche Apps wissen, wo du bist">
+Wo du unterwegs bist, kann verraten, wo du wohnst, mit wem du Zeit verbringst, bei welchen Ärzten du in Behandlung bist und wo du deinen Glauben ausübst.[^ftc] 2024 warf die US-Verbraucherschutzbehörde FTC einem Datenhändler namens X-Mode vor, genaue Standortdaten verkauft zu haben, mit denen sich nachverfolgen ließ, wer medizinische Einrichtungen, Gotteshäuser und Schutzunterkünfte für Opfer häuslicher Gewalt aufsuchte. Ein Teil der Daten stammte aus Apps anderer Firmen, in die der Code von X-Mode eingebaut war, und laut FTC haben diese Apps den Leuten nicht richtig gesagt, wohin ihre Standortdaten gingen. X-Mode hat einem Vergleich zugestimmt, der dem Unternehmen den Verkauf sensibler Standortdaten verbietet.[^ftc]
+
+Geh deine Apps durch und frag dich bei jeder, ob sie deinen Standort überhaupt braucht und ob sie ihn auch dann braucht, wenn du sie gerade nicht benutzt. Eine App, die deiner Familie zeigt, wo du bist, oder deine Laufstrecken aufzeichnet, braucht ihn vielleicht auch dann, wenn du sie gerade nicht nutzt. Viele andere brauchen ihn gar nicht. Schalte den genauen Standort für Apps aus, die nicht exakt wissen müssen, wo du bist.
+
+<Platforms>
+<Platform name="ios">
+Öffne <Path>Einstellungen --> Datenschutz & Sicherheit --> Ortungsdienste</Path>, tippe auf eine App und wähl „Nie“ oder „Beim Verwenden der App“. Auf demselben Bildschirm schaltest du „Genauer Standort“ für Apps aus, die deinen exakten Standort nicht brauchen.[^apple-loc]
+</Platform>
+<Platform name="android">
+Öffne <Path>Einstellungen --> Standort --> Berechtigungen zur Standortermittlung</Path>, tippe auf eine App und wähl „Zugriff nur während der Nutzung der App zulassen“ oder „Nicht zulassen“. Auf demselben Bildschirm kannst du „Genauen Standort verwenden“ ausschalten.[^android-loc]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="back-up" priority="optional" effort={30} title="Mach ein Backup von allem, was du nicht ersetzen kannst">
+Handys gehen verloren, Laptops geben den Geist auf. Zu den Top-Tipps des NCSC gehört, das Wichtigste, etwa Fotos und Dokumente, auf einer externen Festplatte oder bei einem Cloud-Dienst zu sichern.[^ncsc-tips] Wenn alles eingerichtet ist, öffne ein oder zwei Dateien aus dem Backup, damit du weißt, dass es auch wirklich funktioniert.
+</Tip>
+
+<Tip id="one-big-switch" priority="optional" effort={60} title="Zieh mit einem großen Dienst um, am besten zuerst mit deiner E-Mail">
+Auf den Seiten zu <Swap product="gmail">Gmail</Swap> und <Swap product="whatsapp">WhatsApp</Swap> steht, was die beiden jeweils sammeln. So ein Umzug dauert eine Weile, weil du bei jedem Konto, das deine alte E-Mail-Adresse nutzt, die Adresse ändern musst oder weil die Leute, mit denen du chattest, mitkommen müssen. Nimm dir also einen Dienst vor und bring ihn zu Ende, bevor du mit dem nächsten anfängst. Meist fängt man mit der E-Mail an, weil jedes andere Konto seine Links zum Zurücksetzen von Passwörtern dorthin schickt.[^ncsc-email] Mit dem [Ratgeber zum Umzug von Gmail](/de/ratgeber/leave-gmail/) funktioniert deine alte Adresse weiter, während du umziehst, und im [Ratgeber zum Wechsel von WhatsApp zu Signal](/de/ratgeber/leave-whatsapp/) geht es darum, deine Freunde zum Mitkommen zu bewegen. Wenn du deinen Browser wechseln willst, hat der Ratgeber zum Browser-Datenschutz einen Abschnitt dazu, [wie du von Chrome wegkommst](/de/ratgeber/browser-privacy/#leave-chrome).
+</Tip>
+
+<Tip id="aliases" priority="optional" effort={10} title="Gib neuen Konten eine eigene E-Mail-Adresse">
+Ein <Term slug="email-alias">E-Mail-Alias</Term> leitet an dein echtes Postfach weiter, sodass jede Website ihre eigene Adresse bekommen kann. Wenn an einen davon Spam geht, weißt du, über welche Website er reinkommt, und kannst diesen Alias abschalten, ohne irgendetwas anderes anzufassen. Ein Datenleck bei einer Website verrät dann nur deren Alias und nicht die Adresse, die du überall benutzt.[^ec-tips] Das sind die Empfehlungen aus der Liste:
+
+<Picks section="Mail Forwarding" level={4} />
+
+Fang mit neuen Konten an, denn bei einem alten Konto musst du dafür die E-Mail-Adresse ändern, und das kannst du beim nächsten Anmelden erledigen. Der Haken: Der Alias-Dienst sieht jede E-Mail, die er weiterleitet, also nimm einen, dem du deine Post anvertrauen würdest.
+</Tip>
+
+## Danach
+
+<Tip id="breach-alerts" priority="optional" effort={5} title="Lass dich benachrichtigen, wenn deine E-Mail-Adresse in einem Datenleck auftaucht">
+<App name="Have I Been Pwned" /> schickt dir kostenlos eine E-Mail, wenn deine Adresse in einem Datenleck auftaucht, von dem der Dienst erfährt.[^hibp-notify] Er hat aber nur einen kleinen Teil dessen, was geleakt wurde. Kommt von ihm keine E-Mail, heißt das also nicht, dass nichts geleakt wurde.[^hibp-faq] Wenn doch eine kommt, geht der [Ratgeber zu Datenlecks](/de/ratgeber/after-a-data-breach/) der Reihe nach durch, was zu tun ist. Die EFF rät, deinen Plan wieder durchzugehen, wenn sich deine Situation ändert. Nach einer großen Veränderung wie einem neuen Job lohnt es sich also, die drei Fragen noch einmal zu stellen.[^eff]
+</Tip>
+
+## Was du dir sparen kannst
+
+Das wichtigste Beispiel ist, deine Passwörter alle paar Monate zu ändern. Das NIST, das die Passwortregeln der US-Regierung schreibt, weist Dienste an, ihre Nutzer nicht dazu zu zwingen.[^nist] Laut NCSC schaden erzwungene Passwortwechsel mehr, als sie nützen, weil man dann gern nur das alte Passwort leicht abwandelt und gestohlene Passwörter ohnehin meist sofort benutzt werden. Ändere ein Passwort, wenn es geleakt wurde oder du glaubst, dass jemand anderes es kennt.[^ncsc-expiry]
+
+Mit einem Antivirenprogramm musst du auch nicht anfangen. Windows hat Microsoft Defender Antivirus schon eingebaut, und es schützt dich vom ersten Einschalten an.[^ms-defender] In Googles Umfrage von 2015 zählten 42 % der Laien Antivirenprogramme zu ihren drei wichtigsten Gewohnheiten, aber nur 7 % der Experten. Die Experten hielten sie nicht für nutzlos, fürchteten aber, dass sie den Leuten ein falsches Gefühl von Sicherheit geben können.[^g2015]
+
+Ob du ein VPN brauchst, hängt von ein paar bestimmten Zwecken ab, und mit dem [Ratgeber zu VPNs](/de/ratgeber/do-i-need-a-vpn/) findest du heraus, ob einer davon auf dich zutrifft. Do Not Track lässt du am besten ausgeschaltet: Apple hat es aus Safari entfernt, weil es sich für Fingerprinting nutzen ließ.[^safari-dnt] Auch Erweiterungen, die die Merkmale deines Browsers fälschen, lassen dich oft stärker auffallen.[^arkenfox] Beides erklärt der [Ratgeber zum Browser-Datenschutz](/de/ratgeber/browser-privacy/).
+
+Die Einstellungen wurden im November 2026 mit Apples Anleitung zu iOS 27 und der Android-Hilfe von Google abgeglichen.
+
+[^g2019]: [Google Security Blog: Wie gut einfache Sicherheitsmaßnahmen gegen gekaperte Konten helfen](https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html)
+[^ncsc-updates]: [NCSC: Installiere die neuesten Software- und App-Updates](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/install-the-latest-software-and-app-updates)
+[^g2015]: [Google Security Blog: Neue Studie vergleicht, wie sich Sicherheitsexperten und Laien im Netz schützen](https://security.googleblog.com/2015/07/new-research-comparing-how-security.html)
+[^ncsc-email]: [NCSC: Ein starkes, eigenes Passwort für dein E-Mail-Konto](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email)
+[^ncsc-pm]: [NCSC: Passwort-Manager](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers)
+[^ncsc-tips]: [NCSC: Die wichtigsten Tipps für mehr Sicherheit im Netz](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online)
+[^ncsc-2sv-guide]: [NCSC: Bestätigung in zwei Schritten einrichten](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa)
+[^ncsc-2sv]: [NCSC: Bestätigung in zwei Schritten einschalten](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email)
+[^apple-passcode]: [Apple Support: Das iPhone oder iPad mit einem Code verwenden](https://support.apple.com/de-de/119586)
+[^apple-update]: [Apple Support: iPhone oder iPad aktualisieren](https://support.apple.com/de-de/118575)
+[^android-update]: [Android-Hilfe: Android-Version prüfen und aktualisieren](https://support.google.com/android/answer/7680439?hl=de)
+[^android-lock]: [Android-Hilfe: Displaysperre auf einem Android-Gerät einrichten](https://support.google.com/android/answer/9079129?hl=de)
+[^ubo]: [uBlock Origin auf GitHub](https://github.com/gorhill/uBlock)
+[^mv2]: [Chrome for Developers: Zeitplan für das Ende von Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+[^ubol]: [uBlock Origin Lite auf GitHub](https://github.com/uBlockOrigin/uBOL-home)
+[^brave]: [Brave: Shields](https://brave.com/shields/)
+[^cws]: [Chrome Web Store-Hilfe: Von Apps und Erweiterungen angeforderte Berechtigungen](https://support.google.com/chrome_webstore/answer/186213?hl=de)
+[^eff]: [EFF Surveillance Self-Defense: Dein Sicherheitsplan](https://ssd.eff.org/module/your-security-plan)
+[^ftc]: [FTC: Anordnung der FTC verbietet den Datenhändlern X-Mode Social und Outlogic den Verkauf sensibler Standortdaten](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data)
+[^apple-loc]: [iPhone-Benutzerhandbuch: Geteilte Standortdaten auf dem iPhone verwalten](https://support.apple.com/de-de/guide/iphone/iph3dd5f9be/ios)
+[^android-loc]: [Android-Hilfe: Berechtigungen zur Standortermittlung für Apps verwalten](https://support.google.com/android/answer/6179507?hl=de)
+[^ec-tips]: [Email Comparison: Tipps zur E-Mail-Sicherheit](https://email-comparison.as93.net/email-security-tips)
+[^hibp-notify]: [Have I Been Pwned: Kostenlose Benachrichtigungen bei Datenlecks](https://haveibeenpwned.com/NotifyMe)
+[^hibp-faq]: [Have I Been Pwned: Häufig gestellte Fragen](https://haveibeenpwned.com/FAQs)
+[^nist]: [NIST SP 800-63B-4: Authentifikatoren](https://pages.nist.gov/800-63-4/sp800-63b/authenticators/)
+[^ncsc-expiry]: [NCSC: Passwortverwaltung für Systemverantwortliche](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach)
+[^ms-defender]: [Microsoft-Support: Mit der Windows-Sicherheit-App geschützt bleiben](https://support.microsoft.com/de-de/windows/stay-protected-with-the-windows-security-app-2ae0363d-0ada-c064-8b56-6a39afb6a963)
+[^safari-dnt]: [Apple Developer: Versionshinweise zu Safari 12.1](https://developer.apple.com/documentation/safari-release-notes/safari-12_1-release-notes)
+[^arkenfox]: [arkenfox-Wiki: Erweiterungen](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)
