@@ -1,0 +1,148 @@
+---
+title: "Protéger sa vie privée sur Internet : par où commencer"
+description: "Vie privée en ligne : les quatre choses à faire dès la première heure, trois questions pour choisir la suite et les conseils répandus à laisser de côté."
+source: "56ead93a68bb4b45"
+sha: "6c7a3b183ac589ba4226bf99e8f550eaa5ebc269"
+---
+
+<Short>
+Consacrez la première heure à quatre choses : [un gestionnaire de mots de passe](#password-manager), [la double authentification sur votre messagerie](#email-2fa), [les mises à jour automatiques et le verrouillage de l’écran](#update-and-lock) et [un seul bloqueur de contenu dans votre navigateur](#content-blocker). Servez-vous ensuite des trois questions ci-dessous pour décider de ce qui mérite encore votre temps. Vous pouvez [laisser de côté certains conseils répandus](#les-conseils-dont-vous-pouvez-vous-passer), comme changer vos mots de passe tous les deux ou trois mois.
+</Short>
+
+## Pourquoi ces quatre-là en premier
+
+Les conseils sur la vie privée se présentent généralement sous la forme d’une longue liste où chaque astuce semble aussi importante que les autres. Ce n’est pas le cas. Google affirme que la plupart des tentatives d’intrusion dans les comptes de ses utilisateurs sont automatisées et utilisent des mots de passe issus de fuites sur d’autres sites. Il estimait aussi que seul un utilisateur sur un million environ avait affaire aux groupes de pirates à gages qu’il surveillait, ceux qui se font payer pour s’introduire dans le compte d’une personne bien précise.[^g2019]
+
+Les deux premières étapes visent donc ces attaques automatisées : un mot de passe différent pour chaque compte et une seconde étape de connexion sur le compte qui permet de réinitialiser tous les autres. Les mises à jour aident à protéger vos appareils contre les logiciels malveillants,[^ncsc-updates] et un bloqueur de contenu arrête une bonne partie du pistage qui vous suit d’un site à l’autre. Quand Google a interrogé 231 experts en sécurité et 294 autres personnes en 2015, 35 % des experts citaient l’installation des mises à jour parmi leurs trois habitudes les plus importantes, contre 2 % des autres. Les experts étaient aussi trois fois plus nombreux à utiliser un gestionnaire de mots de passe pour au moins une partie de leurs comptes.[^g2015]
+
+## La première heure
+
+<Tip id="password-manager" priority="essential" effort={20} title="Adoptez un gestionnaire de mots de passe, et donnez à votre messagerie un mot de passe rien qu’à elle">
+Si vous avez utilisé le même mot de passe à plusieurs endroits, une fuite sur un seul de ces sites peut ouvrir aux pirates la porte de tous les autres. Votre messagerie compte plus que tout, car quiconque y accède peut réinitialiser les mots de passe de vos autres comptes.[^ncsc-email] Un gestionnaire de mots de passe crée un mot de passe différent pour chaque site et les retient tous à votre place, et le NCSC, l’agence britannique de cybersécurité, encourage à en utiliser un.[^ncsc-email]
+
+Le [guide sur les gestionnaires de mots de passe](/fr/guides/password-manager/) explique comment en choisir un dans la liste, y transférer vos mots de passe enregistrés et trouver pour le gestionnaire lui-même un mot de passe que vous n’oublierez pas. Si c’est trop pour aujourd’hui, l’enregistrement des mots de passe intégré à votre navigateur fait l’affaire sur vos propres appareils.[^ncsc-pm] Dans les deux cas, donnez à votre messagerie un nouveau mot de passe que vous n’utilisez nulle part ailleurs. Le NCSC suggère trois mots choisis au hasard.[^ncsc-tips]
+</Tip>
+
+<Tip id="email-2fa" priority="essential" effort={10} title="Activez la double authentification sur votre messagerie, et gardez les codes de secours">
+Avec l’<Term slug="2fa">authentification à deux facteurs</Term>, un mot de passe seul ne suffit plus pour entrer. Même un code reçu par SMS change beaucoup de choses. Quand Google en demandait un avant de laisser passer une connexion suspecte, cela suffisait à bloquer toutes les tentatives automatisées de son étude et 96 % des attaques d’hameçonnage de masse.[^g2019]
+
+Avant de terminer, vérifiez que l’adresse e-mail et le numéro de téléphone de récupération du compte sont bien ceux que vous utilisez encore, et rangez les codes de secours ailleurs que sur votre téléphone, puisqu’ils fonctionnent toujours si vous le perdez.[^ncsc-2sv-guide] Quand Google a demandé une vérification supplémentaire à des utilisateurs dans son étude, 38 % n’avaient pas leur téléphone sous la main, et 34 % ne se souvenaient pas de leur adresse e-mail de récupération.[^g2019] Passez ensuite à votre banque, puis aux boutiques en ligne où votre carte est enregistrée.[^ncsc-2sv] Ne lisez jamais un code à quelqu’un qui a pris contact avec vous, et n’approuvez jamais une connexion que vous n’avez pas lancée vous-même. Le [guide sur la double authentification](/fr/guides/two-factor/) explique quelle forme est la plus sûre, et pourquoi.
+</Tip>
+
+<Tip id="update-and-lock" priority="essential" effort={10} title="Activez les mises à jour automatiques et le verrouillage de l’écran">
+Les mises à jour corrigent des failles de sécurité, et le NCSC présente leur installation comme l’une des choses les plus importantes (et les plus rapides) que vous puissiez faire. Activez les mises à jour automatiques, pour vos applications comme pour votre téléphone, afin de ne pas avoir à y penser.[^ncsc-updates] Le verrouillage de l’écran aide à protéger les données de votre téléphone si quelqu’un d’autre met la main dessus.[^apple-passcode]
+
+<Platforms>
+<Platform name="ios">
+Pour les mises à jour, ouvrez <Path>Réglages --> Général --> Mise à jour logicielle --> MÀJ automatiques</Path> et activez « Installation automatique ». Votre iPhone les installera alors pendant la nuit, quand il est en charge et connecté au Wi-Fi, et vous préviendra avant.[^apple-update] Pour le verrouillage, ouvrez <Path>Réglages --> Face ID et code</Path> (Touch ID et code sur les iPhone plus anciens) et touchez « Activer le code ».[^apple-passcode]
+</Platform>
+<Platform name="android">
+La plupart des mises à jour du système et des correctifs de sécurité s’installent automatiquement. Pour vérifier s’il y en a une, ouvrez <Path>Paramètres --> Système --> Mises à jour logicielles</Path>.[^android-update] Pour le verrouillage, ouvrez <Path>Paramètres --> Sécurité --> Déverrouillage de l’écran</Path> et choisissez un mot de passe, l’option la plus sûre selon Google, ou un code d’au moins six chiffres. Avec un code ou un mot de passe, vos sauvegardes sont en plus chiffrées grâce au verrouillage de l’écran, ce que ne permet pas un simple balayage.[^android-lock] Les menus varient un peu d’un fabricant à l’autre.
+</Platform>
+</Platforms>
+
+Les téléphones cessent de recevoir des mises à jour au bout de quelques années, et vous pouvez vérifier en ligne si votre modèle en reçoit encore de son fabricant. Le NCSC conseille de ne pas utiliser un téléphone qui n’est plus pris en charge, mais il n’est pas nécessaire pour autant d’avoir le modèle le plus récent ou le plus cher.[^ncsc-updates]
+</Tip>
+
+<Tip id="content-blocker" priority="essential" effort={5} title="Ajoutez un seul bloqueur de contenu à votre navigateur">
+Beaucoup de sites web chargent des <Term slug="tracker">traqueurs</Term> d’autres entreprises, qui enregistrent ce que vous y faites. Un bloqueur de contenu empêche carrément le chargement de ceux qui figurent sur ses listes. <App name="uBlock Origin" /> bloque les publicités, les traqueurs et les sites malveillants, et c’est dans Firefox qu’il fonctionne le mieux, sur ordinateur comme sur Android.[^ubo] Chrome a désactivé la version complète, et Microsoft fait de même dans Edge d’ici fin 2026, si bien que sur ces deux navigateurs, il ne reste que uBlock Origin Lite, conçu pour leurs nouvelles règles.[^mv2][^ubo] C’est aussi la version Lite qui existe pour Safari.[^ubol] Brave bloque les traqueurs et les publicités avec ses propres Shields, donc si vous utilisez Brave, c’est déjà fait.[^brave]
+
+Un seul suffit. Une extension qui peut voir tous les sites que vous consultez peut lire et modifier chaque page que vous ouvrez,[^cws] si bien que chaque extension ajoutée, c’est quelqu’un de plus à qui vous devez faire confiance. Le [guide sur la confidentialité du navigateur](/fr/guides/browser-privacy/) explique quel navigateur choisir, et quels réglages valent la peine d’être modifiés ensuite.
+</Tip>
+
+## Trois questions pour décider de la suite
+
+Ce qui mérite d’être fait après la première heure dépend de vous. Le guide de l’EFF pour établir votre propre plan de sécurité pose six questions, et il vaut la peine d’être lu en entier.[^eff] Voici les trois par lesquelles nous commencerions.
+
+### Qui pourrait en vouloir à vos données, et quelles sont les chances qu’il essaie ?
+
+Pour la plupart des gens, ce sont des entreprises et des pirates. Les entreprises s’en servent pour la publicité, et les <Term slug="data-broker">courtiers en données</Term> les achètent et les revendent, parfois après les avoir collectées par l’intermédiaire d’applications tout à fait ordinaires.[^ftc] Les pirates, eux, en veulent surtout à vos comptes et à votre argent, et, du moins pour les comptes Google, ils passent le plus souvent par des outils automatisés plutôt que de viser une personne en particulier.[^g2019] Vous tenez les entreprises à distance en choisissant avec soin votre navigateur, vos applications et vos services, et en limitant ce qu’ils ont le droit de voir. Vous tenez les pirates à l’écart en verrouillant vos comptes, ce que couvrent le [guide sur la double authentification](/fr/guides/two-factor/) et le [guide sur les fuites de données](/fr/guides/after-a-data-breach/).
+
+L’EFF conseille de distinguer ce qui pourrait arriver de ce qui risque vraiment d’arriver, et de noter par écrit les menaces trop rares pour qu’on s’en inquiète.[^eff] Si c’est un gouvernement, la police ou votre employeur qui vous inquiète, cette page est trop élémentaire pour vous. Le guide Surveillance Self-Defense de l’EFF est écrit pour ces situations-là, et il part de votre propre cas.[^eff]
+
+### Que regretteriez-vous le plus de voir fuiter, ou de perdre ?
+
+Chez la plupart des gens, la messagerie arrive en tête de liste, ou presque, puisqu’elle permet de réinitialiser tout le reste.[^ncsc-email] Ensuite, cela dépend de vous : vos messages, vos déplacements, vos photos. L’EFF conseille de dresser la liste de ce que vous voulez protéger, de l’endroit où c’est conservé et des personnes qui peuvent y accéder.[^eff]
+
+### Jusqu’où êtes-vous prêt à vous compliquer la vie ?
+
+Chaque mesure a un coût, soit du temps une fois pour toutes, soit du confort au quotidien, et le plan de l’EFF vous fait mettre ce coût en balance avec ce que vous protégez.[^eff] Choisissez parmi les étapes ci-dessous celles qui correspondent à vos réponses, et laissez le reste de côté pour l’instant.
+
+## Le premier mois
+
+<Tip id="location" priority="optional" effort={10} title="Vérifiez quelles applications savent où vous êtes">
+Les endroits où vous allez peuvent révéler où vous habitez, avec qui vous passez du temps, quels médecins vous consultez et quel lieu de culte vous fréquentez.[^ftc] En 2024, la FTC, l’autorité américaine de protection des consommateurs, a accusé un courtier en données, X-Mode, d’avoir vendu des données de localisation précises qui permettaient de suivre les visites de certaines personnes dans des cliniques, des lieux de culte et des foyers pour victimes de violences conjugales. Une partie de ces données venait d’applications d’autres entreprises qui intégraient le code de X-Mode, et selon la FTC, ces applications n’expliquaient pas correctement aux gens où partait leur position. X-Mode a accepté un accord qui lui interdit de vendre des données de localisation sensibles.[^ftc]
+
+Passez vos applications en revue et demandez-vous si chacune a vraiment besoin de votre position, et si elle en a besoin quand vous ne vous servez pas de l’application. Une application qui partage votre position avec vos proches, ou qui enregistre vos sorties de course à pied, peut en avoir besoin même quand vous ne vous en servez pas. Beaucoup d’autres n’en ont aucun besoin. Désactivez la position exacte pour les applications qui n’ont pas besoin de savoir précisément où vous êtes.
+
+<Platforms>
+<Platform name="ios">
+Ouvrez <Path>Réglages --> Confidentialité et sécurité --> Service de localisation</Path>, touchez une app, puis choisissez « Jamais » ou « Lorsque l’app est active ». Sur le même écran, désactivez « Position exacte » pour les apps qui n’ont pas besoin de savoir exactement où vous êtes.[^apple-loc]
+</Platform>
+<Platform name="android">
+Ouvrez <Path>Paramètres --> Position --> Accès des applis à la position</Path>, appuyez sur une application, puis choisissez « Autoriser seulement lorsque l’appli est utilisée » ou « Ne pas autoriser ». Vous pouvez désactiver « Position exacte » sur le même écran.[^android-loc]
+</Platform>
+</Platforms>
+</Tip>
+
+<Tip id="back-up" priority="optional" effort={30} title="Sauvegardez ce que vous ne pourriez pas remplacer">
+Les téléphones se perdent, et les ordinateurs portables finissent par lâcher. Parmi ses conseils essentiels, le NCSC recommande de sauvegarder ce qui compte le plus pour vous, comme vos photos et vos documents, sur un disque externe ou dans un service cloud.[^ncsc-tips] Une fois la sauvegarde en place, ouvrez un ou deux fichiers à partir de celle-ci, pour vous assurer qu’elle fonctionne vraiment.
+</Tip>
+
+<Tip id="one-big-switch" priority="optional" effort={60} title="Quittez un grand service, à commencer par votre messagerie">
+Les pages <Swap product="gmail">Gmail</Swap> et <Swap product="whatsapp">WhatsApp</Swap> expliquent ce que chacun collecte. En quitter un prend du temps, car il faut soit modifier chaque compte qui utilise votre ancienne adresse e-mail, soit convaincre vos contacts de vous suivre : choisissez-en donc un seul, et allez au bout avant de vous attaquer à un autre. On commence généralement par la messagerie, puisque c’est là que tous vos autres comptes envoient leurs liens de réinitialisation de mot de passe.[^ncsc-email] Le [guide pour quitter Gmail](/fr/guides/leave-gmail/) vous permet de garder votre ancienne adresse active pendant la transition, et le [guide pour passer de WhatsApp à Signal](/fr/guides/leave-whatsapp/) explique comment emmener vos amis avec vous. Si c’est votre navigateur que vous voulez changer, le guide sur la confidentialité du navigateur explique dans une partie dédiée comment [quitter Chrome](/fr/guides/browser-privacy/#leave-chrome).
+</Tip>
+
+<Tip id="aliases" priority="optional" effort={10} title="Donnez à chaque nouveau compte sa propre adresse e-mail">
+Un <Term slug="email-alias">alias e-mail</Term> transfère les messages vers votre vraie boîte de réception, ce qui permet de donner à chaque site sa propre adresse. Quand l’une d’elles commence à recevoir du spam, vous savez à quel site vous l’aviez donnée, et vous pouvez désactiver cet alias sans toucher au reste. Une fuite sur un site ne révèle alors que l’alias de ce site, et non l’adresse que vous utilisez partout.[^ec-tips] Voici ceux que retient la liste :
+
+<Picks section="Mail Forwarding" level={4} />
+
+Commencez par les nouvelles inscriptions, car pour un ancien compte, il faut changer l’adresse e-mail enregistrée, ce que vous pourrez faire la prochaine fois que vous vous y connecterez. La contrepartie, c’est que le service d’alias voit passer chaque e-mail qu’il transfère, alors choisissez-en un à qui vous confieriez votre courrier.
+</Tip>
+
+## Ensuite
+
+<Tip id="breach-alerts" priority="optional" effort={5} title="Soyez prévenu quand votre adresse e-mail apparaît dans une fuite">
+<App name="Have I Been Pwned" /> vous prévient gratuitement par e-mail quand votre adresse apparaît dans une fuite dont il a connaissance.[^hibp-notify] Il ne recense qu’une petite partie de ce qui a fuité, donc ne pas recevoir d’e-mail de sa part ne veut pas dire que rien n’a fuité.[^hibp-faq] Si vous recevez une alerte, le [guide sur les fuites de données](/fr/guides/after-a-data-breach/) vous dit quoi faire, dans l’ordre. L’EFF conseille de revoir votre plan à mesure que votre situation évolue : les trois questions valent donc la peine d’être reposées après un grand changement, comme un nouvel emploi.[^eff]
+</Tip>
+
+## Les conseils dont vous pouvez vous passer
+
+En tête de liste : changer vos mots de passe tous les deux ou trois mois. Le NIST, qui rédige les règles du gouvernement américain en matière de mots de passe, demande aux services de ne pas l’imposer.[^nist] Le NCSC estime que les changements forcés font plus de mal que de bien, car les gens ont tendance à choisir une légère variante de l’ancien mot de passe, et les mots de passe volés sont de toute façon généralement utilisés tout de suite. Changez un mot de passe quand il a fuité, ou quand vous pensez que quelqu’un d’autre le connaît.[^ncsc-expiry]
+
+Inutile non plus de commencer par un antivirus. Windows intègre Microsoft Defender Antivirus, qui vous protège dès que vous allumez l’ordinateur.[^ms-defender] Dans l’enquête de Google de 2015, 42 % des non-spécialistes plaçaient l’antivirus parmi leurs trois habitudes les plus importantes, contre 7 % des experts. Les experts ne le jugeaient pas inutile, mais craignaient qu’il donne aux gens un faux sentiment de sécurité.[^g2015]
+
+Quant au VPN, tout dépend de quelques usages bien précis, et le [guide sur les VPN](/fr/guides/do-i-need-a-vpn/) vous aide à faire le point. Mieux vaut laisser Do Not Track désactivé : Apple l’a retiré de Safari parce qu’il pouvait servir à établir votre empreinte numérique.[^safari-dnt] Les extensions qui falsifient les caractéristiques de votre navigateur vous font souvent, elles aussi, davantage remarquer.[^arkenfox] Le [guide sur la confidentialité du navigateur](/fr/guides/browser-privacy/) explique ces deux points.
+
+Réglages vérifiés en novembre 2026 avec le guide d’utilisation d’iOS 27 d’Apple et l’aide Android de Google.
+
+[^g2019]: [Google Security Blog : Les règles d’hygiène de base protègent-elles vraiment les comptes contre le piratage ?](https://security.googleblog.com/2019/05/new-research-how-effective-is-basic.html) (en anglais)
+[^ncsc-updates]: [NCSC : Installez les dernières mises à jour de vos logiciels et de vos applications](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/install-the-latest-software-and-app-updates) (en anglais)
+[^g2015]: [Google Security Blog : Comment les experts en sécurité et les non-spécialistes se protègent en ligne](https://security.googleblog.com/2015/07/new-research-comparing-how-security.html) (en anglais)
+[^ncsc-email]: [NCSC : Utilisez un mot de passe solide et distinct pour votre messagerie](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/use-a-strong-and-separate-password-for-email) (en anglais)
+[^ncsc-pm]: [NCSC : Gérer vos mots de passe](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/password-managers) (en anglais)
+[^ncsc-tips]: [NCSC : Les conseils essentiels pour rester en sécurité en ligne](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online) (en anglais)
+[^ncsc-2sv-guide]: [NCSC : Configurer la validation en deux étapes](https://www.ncsc.gov.uk/guidance/setting-two-factor-authentication-2fa) (en anglais)
+[^ncsc-2sv]: [NCSC : Activez la validation en deux étapes](https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/activate-2-step-verification-on-your-email) (en anglais)
+[^apple-passcode]: [Assistance Apple : Utilisation d’un code d’accès sur votre iPhone, iPad ou iPod touch](https://support.apple.com/fr-fr/119586)
+[^apple-update]: [Assistance Apple : Mettez à jour votre iPhone ou iPad](https://support.apple.com/fr-fr/118575)
+[^android-update]: [Aide Android : Vérifier la version d’Android installée et la mettre à jour](https://support.google.com/android/answer/7680439?hl=fr)
+[^android-lock]: [Aide Android : Définir le verrouillage de l’écran sur un appareil Android](https://support.google.com/android/answer/9079129?hl=fr)
+[^ubo]: [uBlock Origin sur GitHub](https://github.com/gorhill/uBlock) (en anglais)
+[^mv2]: [Chrome for Developers : Calendrier de fin de prise en charge de Manifest V2](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline) (en anglais)
+[^ubol]: [uBlock Origin Lite sur GitHub](https://github.com/uBlockOrigin/uBOL-home) (en anglais)
+[^brave]: [Brave : Shields](https://brave.com/shields/) (en anglais)
+[^cws]: [Aide Chrome Web Store : Autorisations demandées par les applications et les extensions](https://support.google.com/chrome_webstore/answer/186213?hl=fr)
+[^eff]: [EFF Surveillance Self-Defense : Votre plan de sécurité](https://ssd.eff.org/fr/module/your-security-plan)
+[^ftc]: [FTC : Une décision de la FTC interdit au courtier en données X-Mode Social et à Outlogic de vendre des données de localisation sensibles](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data) (en anglais)
+[^apple-loc]: [Guide d’utilisation de l’iPhone : Contrôler les informations de localisation partagées sur l’iPhone](https://support.apple.com/fr-fr/guide/iphone/control-the-location-information-you-share-iph3dd5f9be/ios)
+[^android-loc]: [Aide Android : Gérer les autorisations d’accéder à la position pour les applications](https://support.google.com/android/answer/6179507?hl=fr)
+[^ec-tips]: [Email Comparison : Conseils de sécurité pour vos e-mails](https://email-comparison.as93.net/email-security-tips) (en anglais)
+[^hibp-notify]: [Have I Been Pwned : Recevoir gratuitement des alertes en cas de fuite](https://haveibeenpwned.com/NotifyMe) (en anglais)
+[^hibp-faq]: [Have I Been Pwned : Questions fréquentes](https://haveibeenpwned.com/FAQs) (en anglais)
+[^nist]: [NIST SP 800-63B-4 : Authentificateurs](https://pages.nist.gov/800-63-4/sp800-63b/authenticators/) (en anglais)
+[^ncsc-expiry]: [NCSC : La gestion des mots de passe pour les responsables de systèmes](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach) (en anglais)
+[^ms-defender]: [Assistance Microsoft : Rester protégé avec l’application Sécurité Windows](https://support.microsoft.com/fr-fr/windows/stay-protected-with-the-windows-security-app-2ae0363d-0ada-c064-8b56-6a39afb6a963)
+[^safari-dnt]: [Apple Developer : Notes de version de Safari 12.1](https://developer.apple.com/documentation/safari-release-notes/safari-12_1-release-notes) (en anglais)
+[^arkenfox]: [Wiki arkenfox : Extensions](https://github.com/arkenfox/user.js/wiki/4.1-Extensions) (en anglais)
