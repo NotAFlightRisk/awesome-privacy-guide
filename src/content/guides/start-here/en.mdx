@@ -22,7 +22,7 @@ Spend the first hour on four things: [a password manager](#password-manager), [t
 
 Privacy advice usually comes as a long list where every tip looks equally important. They aren't. Google's research with two universities found that most attempts to break into Google accounts were automated, using passwords leaked from other sites. Google estimated that only about one in a million of its users faced the paid hacking groups it tracked, which charge to break into one particular person's account.[^g2019]
 
-So the first two steps go after those automated attempts: a different password for every account, and a second step on the account that can reset all the others. Updates help protect your devices from malware,[^ncsc-updates] and a content blocker cuts down what other companies see of what you do online. When Google surveyed 231 security experts and 294 other people in 2015, 35% of the experts named installing updates as one of their top three habits, against 2% of everyone else. The experts were also three times as likely to use a password manager for at least some of their accounts.[^g2015]
+So the first two steps go after those automated attempts: a different password for every account, and a second step on the account that can reset all the others. Updates help protect your devices from malware,[^ncsc-updates] and a content blocker stops a lot of the tracking that follows you from site to site. When Google surveyed 231 security experts and 294 other people in 2015, 35% of the experts named installing updates as one of their top three habits, against 2% of everyone else. The experts were also three times as likely to use a password manager for at least some of their accounts.[^g2015]
 
 ## The first hour
 
@@ -35,7 +35,7 @@ The [password manager guide](/guides/password-manager/) covers picking one from 
 <Tip id="email-2fa" priority="essential" effort={10} title="Turn on two-factor for your email, and save the backup codes">
 With <Term slug="2fa">two-factor authentication</Term>, a password alone isn't enough to get in. Even a code sent by text helps a lot. When Google asked for one before letting a suspicious sign-in through, that alone stopped all of the automated attempts in its study and 96% of the mass phishing ones.[^g2019]
 
-When you turn it on, save the backup codes it offers somewhere other than your phone. They still work if you lose it,[^ncsc-2sv-guide] and in Google's study, 38% of people who were asked for a code didn't have their phone with them.[^g2019] Then do your bank, and shops that have your card saved.[^ncsc-2sv] Never read a code out to someone who contacted you, or approve a sign-in you didn't start. The [two-factor guide](/guides/two-factor/) says which kind is safest and why.
+Before you finish, check that the recovery email and phone number on the account are ones you still use, and save the backup codes somewhere other than your phone, since they still work if you lose it.[^ncsc-2sv-guide] When Google challenged people in its study, 38% didn't have their phone to hand, and another 34% couldn't remember their recovery email address.[^g2019] Then do your bank, and shops that have your card saved.[^ncsc-2sv] Never read a code out to someone who contacted you, or approve a sign-in you didn't start. The [two-factor guide](/guides/two-factor/) says which kind is safest and why.
 </Tip>
 
 <Tip id="update-and-lock" priority="essential" effort={10} title="Turn on automatic updates and a screen lock">
@@ -43,18 +43,18 @@ Updates fix security problems, and the NCSC calls installing them one of the mos
 
 <Platforms>
 <Platform name="ios">
-For updates, open <Path>Settings --> General --> Software Update --> Automatic Updates</Path> and turn on Automatically Install. Your iPhone then installs updates overnight, while it's charging and on Wi-Fi.[^apple-update] For the lock, open <Path>Settings --> Face ID & Passcode</Path> (Touch ID & Passcode on older iPhones) and tap Turn Passcode On.[^apple-passcode]
+For updates, open <Path>Settings --> General --> Software Update --> Automatic Updates</Path> and turn on Automatically Install. Your iPhone then installs them overnight while it's charging and on Wi-Fi, and tells you first.[^apple-update] For the lock, open <Path>Settings --> Face ID & Passcode</Path> (Touch ID & Passcode on older iPhones) and tap Turn Passcode On.[^apple-passcode]
 </Platform>
 <Platform name="android">
-Most system updates and security patches install themselves. To check for one, open <Path>Settings --> System --> Software updates</Path>.[^android-update] For the lock, open <Path>Settings --> Security --> Screen lock</Path> and pick a PIN of at least six digits, or a password, which Google says is the most secure option. Google only encrypts your phone's backups with your screen lock if it's a PIN, pattern or password.[^android-lock] The menus vary a bit between phone makers.
+Most system updates and security patches install themselves. To check for one, open <Path>Settings --> System --> Software updates</Path>.[^android-update] For the lock, open <Path>Settings --> Security --> Screen lock</Path> and pick a PIN of at least six digits, or a password, which Google says is the most secure option. A PIN or password also means your backups are encrypted with your screen lock, which a swipe doesn't do.[^android-lock] The menus vary a bit between phone makers.
 </Platform>
 </Platforms>
 
-Phones stop getting updates after a few years, and your phone maker's website says how long yours will get them for. The NCSC says to avoid using a phone that's no longer supported, though you don't need the newest or most expensive model.[^ncsc-updates]
+Phones stop getting updates after a few years, and you can check online whether your model still gets them from its maker. The NCSC says to avoid using a phone that's no longer supported, though you don't need the newest or most expensive model.[^ncsc-updates]
 </Tip>
 
 <Tip id="content-blocker" priority="essential" effort={5} title="Add one content blocker to your browser">
-Lots of websites load <Term slug="tracker">trackers</Term> from other companies, which log what you do there. A content blocker stops the ones on its lists from loading at all. <App name="uBlock Origin" /> blocks ads, trackers and malware sites.[^ubo] On Chrome, the full uBlock Origin no longer works, and uBlock Origin Lite, built for Chrome's newer rules, is what's left.[^mv2][^ubo]
+Lots of websites load <Term slug="tracker">trackers</Term> from other companies, which log what you do there. A content blocker stops the ones on its lists from loading at all. <App name="uBlock Origin" /> blocks ads, trackers and malware sites, and works in Firefox (Android included), Edge and Opera.[^ubo] On Chrome, the full version no longer works, and uBlock Origin Lite, built for Chrome's newer rules, is what's left.[^mv2] There's no Safari version, but Safari blocks third-party cookies on its own.[^webkit] Brave blocks trackers and ads with its own Shields, so if you use Brave, you've already done this one.[^brave]
 
 One is enough. An extension that can see all the websites you visit can read and change every page you open,[^cws] so each one you add is something else to trust. The [browser privacy guide](/guides/browser-privacy/) covers which browser to use, and the settings worth changing after this.
 </Tip>
@@ -65,7 +65,7 @@ What's worth doing after the first hour depends on you. EFF's guide to making a 
 
 ### Who would want your data, and how likely are they to try?
 
-For most people it's companies and criminals. Companies collect it for advertising, and some of it gets sold on to <Term slug="data-broker">data brokers</Term>.[^ftc] Criminals mostly want your accounts and your money, and at least against Google accounts, they mostly use automated tools rather than picking out one person.[^g2019] Against companies, the steps are about what you hand over: your browser, the apps on your phone and the services you use. Against criminals, they're about locking your accounts down, which the [two-factor guide](/guides/two-factor/) and the [data breach guide](/guides/after-a-data-breach/) cover.
+For most people it's companies and criminals. Companies use it for advertising, and <Term slug="data-broker">data brokers</Term> buy and sell it, sometimes after collecting it through ordinary apps.[^ftc] Criminals mostly want your accounts and your money, and at least against Google accounts, they mostly use automated tools rather than picking out one person.[^g2019] You keep companies out mostly by choosing your browser, apps and services carefully, and what they're allowed to see. You keep criminals out by locking your accounts down, which the [two-factor guide](/guides/two-factor/) and the [data breach guide](/guides/after-a-data-breach/) cover.
 
 EFF suggests separating what could happen from what's likely to, and writing down which threats are too rare to worry about.[^eff] If you're worried about a government, the police or your employer, this page is too basic for you. EFF's Surveillance Self-Defense is written for that, and it starts from your own situation.[^eff]
 
@@ -80,7 +80,7 @@ Every step costs something, either time once or convenience every day, and EFF's
 ## The first month
 
 <Tip id="location" priority="optional" effort={10} title="Check which apps can see where you are">
-Where you go can show where you live, who you spend time with, which doctors you see and where you worship.[^ftc] In 2024, the US Federal Trade Commission accused a data broker called X-Mode of selling precise location data that could track people's visits to medical clinics, places of worship and domestic abuse shelters. Some of it came from other companies' apps that had X-Mode's code built in, and the FTC said those apps didn't properly tell people where their location was going. X-Mode settled, and was banned from selling sensitive location data.[^ftc]
+Where you go can show where you live, who you spend time with, which doctors you see and where you worship.[^ftc] In 2024, the US Federal Trade Commission accused a data broker called X-Mode of selling precise location data that could track people's visits to medical clinics, places of worship and domestic abuse shelters. Some of it came from other companies' apps that had X-Mode's code built in, and the FTC said those apps didn't properly tell people where their location was going. X-Mode agreed to a settlement that bans it from selling sensitive location data.[^ftc]
 
 Go through your apps and ask whether each one needs your location at all, and whether it needs it when you're not using it. An app that shares where you are with family, or records your runs, might. Plenty of others don't need it at all. Turn precise location off for apps that don't need to know exactly where you are.
 
@@ -99,7 +99,7 @@ Phones get lost, and laptops die. The NCSC's top tips include backing up your mo
 </Tip>
 
 <Tip id="one-big-switch" priority="optional" effort={60} title="Move one big service, starting with your email">
-The <Swap product="gmail">Gmail</Swap> and <Swap product="whatsapp">WhatsApp</Swap> pages say what each one collects. Moving off one takes a while, because the accounts or people tied to it have to move too, so pick one and finish it before starting another. Email is the usual place to start, since it's where every other account sends its password resets.[^ncsc-email] The [leave Gmail guide](/guides/leave-gmail/) keeps your old address working while you move, and the [WhatsApp to Signal guide](/guides/leave-whatsapp/) is about getting your friends to come with you. If it's your browser, the browser guide has a section on [moving off Chrome](/guides/browser-privacy/#leave-chrome).
+The <Swap product="gmail">Gmail</Swap> and <Swap product="whatsapp">WhatsApp</Swap> pages say what each one collects. Moving off one takes a while, because every account that uses the address needs changing and everyone who writes to you needs telling, so pick one and finish it before starting another. Email is the usual place to start, since it's where every other account sends its password resets.[^ncsc-email] The [leave Gmail guide](/guides/leave-gmail/) keeps your old address working while you move, and the [WhatsApp to Signal guide](/guides/leave-whatsapp/) is about getting your friends to come with you. If it's your browser, the browser guide has a section on [moving off Chrome](/guides/browser-privacy/#leave-chrome).
 </Tip>
 
 <Tip id="aliases" priority="optional" effort={10} title="Give new accounts their own email address">
@@ -107,7 +107,7 @@ An <Term slug="email-alias">email alias</Term> forwards to your real inbox, so e
 
 <Picks section="Mail Forwarding" level={4} />
 
-Start with new sign-ups, since moving an old account means changing the email on it, which you can do next time you log in. The cost is that the alias service sees the email it forwards, so pick one you'd trust with your inbox.
+Start with new sign-ups, since moving an old account means changing the email on it, which you can do next time you log in. The cost is that the alias service sees every email it forwards, so pick one you'd trust with your mail.
 </Tip>
 
 ## After that
@@ -140,6 +140,8 @@ Settings checked against Apple's iOS 27 guide and Google's Android help in Novem
 [^android-lock]: [Android Help: Set screen lock on an Android device](https://support.google.com/android/answer/9079129)
 [^ubo]: [uBlock Origin on GitHub](https://github.com/gorhill/uBlock)
 [^mv2]: [Chrome for Developers: Manifest V2 support timeline](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline)
+[^webkit]: [WebKit: Full third-party cookie blocking and more](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/)
+[^brave]: [Brave: Shields](https://brave.com/shields/)
 [^cws]: [Chrome Web Store Help: Permissions requested by apps and extensions](https://support.google.com/chrome_webstore/answer/186213)
 [^eff]: [EFF Surveillance Self-Defense: Your security plan](https://ssd.eff.org/module/your-security-plan)
 [^ftc]: [FTC: FTC order prohibits data broker X-Mode Social and Outlogic from selling sensitive location data](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data)
