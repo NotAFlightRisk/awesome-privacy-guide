@@ -1,0 +1,87 @@
+---
+title: How to de-Google your life, one swap at a time
+description: Which Google services to replace first, ordered by how much work each one is, how to get your data out safely, and what's fine to keep for now.
+type: switch
+topic: basics
+products: [google-dns, google-maps, google-keep, google-meet, google-drive, google-photos, google-calendar, youtube, android]
+terms: [custom-rom, encrypted-dns]
+related: [leave-gmail, browser-privacy, start-here]
+further:
+  - url: https://android-rom-compat.peng.ly
+    label: Check which custom Android systems your phone can run
+published: 2026-11-25
+checked: 2026-11-25
+---
+
+<Short>
+Start with the swaps that take minutes: [your search engine](#search), [your browser](#browser) and [your maps app](#maps). Then move the services that hold your things one at a time, starting with [Drive and Photos](#drive-and-photos). [Gmail](#email) comes last and takes months, so keep it open while you move. You don't have to leave everything, and for whatever stays in your Google account, [turn on auto-delete](#keep-it-tidy).
+</Short>
+
+## Get a copy of everything first
+
+<Tip id="takeout" priority="essential" effort={30} title="Download your data with Google Takeout">
+Google Takeout exports your data from the Google products you use, like your email, documents, calendar, photos and YouTube videos.[^takeout] Do one export now, before you change anything, so you've got your own copy to fall back on.
+
+Choose to get the download link by email rather than adding the archive to Drive, since Drive is one of the things you're leaving. Download every file it gives you to your own computer or drive, and open a few to check they're there. Downloading doesn't delete anything from Google, and the archive may miss changes you make while it's being put together, so export again just before you delete anything.[^takeout]
+</Tip>
+
+## The quick swaps
+
+<Tip id="search" priority="essential" effort={2} title="Change your search engine">
+The <Swap product="google">Google Search</Swap> page explains what Google does with your searches. Changing the default in your browser takes a couple of minutes, and the [browser privacy guide](/guides/browser-privacy/#search-engine) has the steps and the list's picks.
+</Tip>
+
+<Tip id="browser" priority="optional" effort={30} title="Move off Chrome">
+The [browser privacy guide](/guides/browser-privacy/#leave-chrome) covers why Chrome makes the basics harder and which browsers to use instead. If Chrome has your passwords, the [password manager guide](/guides/password-manager/) gets them out safely first.
+</Tip>
+
+<Tip id="maps" priority="optional" effort={10} title="Use another maps app for everyday trips">
+When its history setting is on, Google Maps saves the places you search for and the directions you get to your Google account.[^maps-history] You don't have to delete it to start. Use one from the <Swap product="google-maps">Google Maps</Swap> page for the trips you make every week, and keep Google's for the odd search it does better, signed out, since it's when you're signed in with that setting on that it saves them.
+</Tip>
+
+<Tip id="dns" priority="optional" effort={5} title="Swap Google's DNS, if you've set it">
+If you, or whoever set up your router, pointed your devices at Google Public DNS, Google can see the names of the sites they look up. The <Swap product="google-dns">Google DNS</Swap> page lists other providers. Changing it on the router covers everything at home, while <Term slug="encrypted-dns">secure DNS</Term> in your browser only covers that browser.
+</Tip>
+
+## The bigger moves
+
+<Tip id="drive-and-photos" priority="optional" effort={120} title="Move Drive and Photos">
+The <Swap product="google-drive">Google Drive</Swap> and <Swap product="google-photos">Google Photos</Swap> pages list where you can move them, and what each one offers.
+
+Copy everything across, then check it properly before you delete anything from Google: the same folders and albums, roughly the same number of files, and the documents you can't do without opening on the new service. Anything you've shared with other people stops working for them when you delete it, so send them the new link first. Once you're sure, delete the files from Google, or remove the whole service if Google lets you, from your Google Account under <Path>Data & privacy</Path>, in Tools, at Remove data from services you no longer use. Not every product can be removed there.[^remove]
+</Tip>
+
+<Tip id="small-ones" priority="optional" effort={30} title="Move your notes and calendar, and set up calls elsewhere">
+The <Swap product="google-keep">Google Keep</Swap> and <Swap product="google-calendar">Google Calendar</Swap> pages list the alternatives, and your calendar comes out of Google in your Takeout export.[^takeout] Check that a few recurring events and reminders made it across before you delete the originals. If you're also leaving Gmail, the [leave Gmail guide](/guides/leave-gmail/#contacts-and-calendars) moves contacts and calendars together. For video calls you set up yourself, pick one from the <Swap product="google-meet">Google Meet</Swap> page.
+</Tip>
+
+## The ones that take months to finish
+
+<Tip id="email" priority="optional" effort={60} title="Leave Gmail last of the big ones">
+Email takes longest to finish, because every account you signed up for with your Gmail address sends its password resets there, and anything you log in to with Sign in with Google needs another way in set up before you go. The [leave Gmail guide](/guides/leave-gmail/) does it in order: a new provider, ideally on your own domain, forwarding while you move your accounts across, and keeping Gmail open for a year.
+</Tip>
+
+<Tip id="phone" priority="advanced" effort={120} title="Replace the system on your Android phone, if you're ready to">
+Getting Google's services off an Android phone completely means installing a different system on it, a <Term slug="custom-rom">custom ROM</Term>. The <Swap product="android">Android</Swap> page lists the options. <App name="GrapheneOS" /> only supports Google's own Pixel devices, phones sold through some US carriers can be locked so it can't be installed at all, and part of installing it wipes all the data on the phone.[^graphene] For other phones, [Android ROM Compat](https://android-rom-compat.peng.ly) shows which systems run on which models.
+
+Before you start, keep your backup codes somewhere off the phone, and work out how your authenticator app will move, since some export their codes and some mean setting each account up again (the [two-factor guide](/guides/two-factor/) covers both). Back up your photos and messages, and find out whether the apps you rely on, like your bank's, work on the system you've picked.
+</Tip>
+
+## What's fine to keep
+
+You don't have to give up YouTube to stop Google tying what you watch to your account. <App name="Invidious" /> says it shows YouTube's videos without ads or tracking, keeps your subscriptions separate from Google, and can import the ones you already have.[^invidious] Most people use it through a public server that someone else runs, and the project takes no responsibility for those servers, so whoever runs the one you pick can see what you watch.[^invidious] The <Swap product="youtube">YouTube</Swap> page lists other video sites.
+
+Keep your Google account open while old accounts still send their resets to it. If you don't use a personal account for two years, Google can delete it and everything in it, and it can delete a product's data if you don't use that product for two years (accounts from work or school aren't covered).[^inactive] So sign in, and use each part you're keeping, at least once every two years.
+
+<Tip id="keep-it-tidy" priority="optional" effort={5} title="Turn on auto-delete for what you keep">
+For anything that stays in your Google account, open your Google Account, go to <Path>Data & privacy</Path>, and under History settings, pick each history setting, select Auto-delete, and choose how long to keep it.[^delete] Google says it may keep some data longer for business or legal reasons, so auto-delete limits what's kept rather than wiping everything.[^delete] In My Ad Center, you can also turn off personalised ads, so Google stops using your activity to pick the ads you see.[^ads]
+</Tip>
+
+[^takeout]: [Google Account Help: How to download your Google data](https://support.google.com/accounts/answer/3024190)
+[^maps-history]: [Google Maps Help: Manage your Maps history](https://support.google.com/maps/answer/3137804)
+[^remove]: [Google Account Help: Remove products](https://support.google.com/accounts/answer/81987)
+[^graphene]: [GrapheneOS: Frequently asked questions](https://grapheneos.org/faq)
+[^invidious]: [Invidious on GitHub](https://github.com/iv-org/invidious)
+[^inactive]: [Google Account Help: Inactive Google Account Policy](https://support.google.com/accounts/answer/12418290)
+[^delete]: [Google Account Help: Delete your activity](https://support.google.com/accounts/answer/465)
+[^ads]: [My Ad Center Help: Customize your ads experience](https://support.google.com/My-Ad-Center-Help/answer/12155451)
