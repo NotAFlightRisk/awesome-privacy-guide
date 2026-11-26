@@ -61,15 +61,16 @@
   function move(event) {
     const all = links();
     const at = all.indexOf(document.activeElement);
+    const input = event.currentTarget.querySelector('input');
     if (event.key === 'ArrowDown' && all.length) {
       event.preventDefault();
       all[Math.min(at + 1, all.length - 1)].focus();
     } else if (event.key === 'ArrowUp' && at >= 0) {
       event.preventDefault();
-      (at ? all[at - 1] : list.closest('form').querySelector('input')).focus();
+      (at ? all[at - 1] : input).focus();
     } else if (event.key === 'Escape') {
       query = '';
-      list.closest('form').querySelector('input').focus();
+      input.focus();
     }
   }
 
