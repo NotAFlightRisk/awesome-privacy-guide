@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import StarCta from '../ui/StarCta.astro';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
-import { upstream } from '../../lib/site.js';
+import { moreApps, upstream } from '../../lib/site.js';
 import { getGuides } from '../../lib/data/guides.js';
 
 const { lang, page } = Astro.props;
@@ -26,6 +26,17 @@ const body = (block) => t(guides && block === 'translations' ? 'about.translatio
         <p>{body(block)}</p>
       </section>
     ))}
+    <section aria-labelledby="more">
+      <h2 id="more"><span aria-hidden="true">//</span> {t('about.more.title')}</h2>
+      <ul class="apps">
+        {moreApps.map((app) => (
+          <li>
+            <img src={app.logo} alt="" width="20" height="20" loading="lazy" decoding="async" />
+            <span><a href={app.url}>{app.name}</a> - {t(`apps.${app.slug}`)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   </article>
   <StarCta lang={lang} />
 </Base>
@@ -55,6 +66,30 @@ const body = (block) => t(guides && block === 'translations' ? 'about.translatio
 
     & span {
       color: var(--accent);
+    }
+  }
+
+  .apps {
+    --icon: 20px;
+    display: grid;
+    gap: var(--space-xs);
+    padding: 0;
+    list-style: none;
+
+    & li {
+      display: flex;
+      gap: var(--space-xs);
+    }
+
+    & img {
+      flex: none;
+      inline-size: var(--icon);
+      block-size: var(--icon);
+      margin-block-start: calc((1lh - var(--icon)) / 2);
+    }
+
+    & a {
+      font-weight: 600;
     }
   }
 </style>

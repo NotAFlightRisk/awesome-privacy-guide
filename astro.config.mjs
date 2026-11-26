@@ -3,7 +3,7 @@ import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
 import { satteri } from '@astrojs/markdown-satteri';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
-import { site } from './src/lib/site.js';
+import { portfolio, site } from './src/lib/site.js';
 
 const uploadMaps = Boolean(process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_URL);
 const originOf = (url) => (URL.canParse(url ?? '') ? [new URL(url).origin] : []);
@@ -19,7 +19,7 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'self'",
-        "img-src 'self' data:",
+        `img-src 'self' data: ${portfolio}`,
         "font-src 'self'",
         ["connect-src 'self'", ...pulse, ...oops].join(' '),
         "object-src 'none'",
