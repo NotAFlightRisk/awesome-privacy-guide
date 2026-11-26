@@ -11,7 +11,7 @@ import { getModel } from '../../lib/data/model.js';
 import { links } from '../../lib/routes.js';
 import { translator } from '../../lib/i18n.js';
 import { finderProps } from '../../lib/finder.js';
-import { site, upstream } from '../../lib/site.js';
+import { moreApps, site, upstream } from '../../lib/site.js';
 import { day, number, shortList } from '../../lib/format.js';
 import { pickOfTheDay } from '../../lib/discover.js';
 
@@ -148,6 +148,19 @@ const jsonLd = [
       </div>
     </section>
   )}
+
+  <section aria-labelledby="more">
+    <Heading id="more">{t('home.more')}</Heading>
+    <ul class="apps">
+      {moreApps.slice(0, 3).map((app) => (
+        <li>
+          <img src={app.logo} alt="" width="40" height="40" loading="lazy" decoding="async" />
+          <h3><a href={app.url}>{app.name}</a></h3>
+          <p>{t(`apps.${app.slug}`)}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
 </Base>
 
 <style>
@@ -420,6 +433,57 @@ const jsonLd = [
 
     & .prose {
       font-size: var(--text-sm);
+    }
+  }
+
+  .apps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-md);
+    margin-block-start: var(--space-lg);
+    padding: 0;
+    list-style: none;
+
+    & li {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-2xs) var(--space-md);
+      align-items: center;
+      padding: var(--space-lg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface-raised);
+      transition: border-color var(--quick) var(--ease);
+
+      &:hover {
+        border-color: var(--accent);
+      }
+    }
+
+    & img {
+      grid-row: span 2;
+      align-self: start;
+    }
+
+    & h3 {
+      font-size: var(--text-lg);
+    }
+
+    & a {
+      color: var(--text);
+      text-decoration: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+      }
+    }
+
+    & p {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
     }
   }
 

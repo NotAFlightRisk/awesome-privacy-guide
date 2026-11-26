@@ -39,6 +39,7 @@ home.swaps.all: All {count} apps with private alternatives
 home.pick: something you might not know about
 home.pick.more: Discover more
 home.guides.all: All the guides
+home.more: more privacy tools we've made
 
 cta.body: Every pick on this site comes from this list. It's free and kept up by volunteers, so if it's useful to you, give it a star or suggest something it's missing.
 cta.body.people: Every pick on this site comes from this list, kept up by {count} contributors. If it's useful to you, give it a star or suggest something it's missing.
@@ -211,6 +212,19 @@ about.translations.guides: Everything else in other languages is machine transla
 about.translations.body: English is the original. The other languages are machine translated with Azure Translator, so they might read a bit stiffly in places. App names are left as they are.
 about.privacy.title: your privacy here
 about.privacy.body: No cookies, no accounts and nothing stored about you. Visits are counted with a self-hosted, cookie-free Plausible, and if a page crashes, the error report goes to our own server with nothing personal in it.
+about.more.title: other things we've made
+
+apps.fineprint: VPNs graded on what they log and who's audited them, with no affiliate links
+apps.exitformat: How to take your data with you when you leave an app
+apps.android-rom-compat: Check which custom ROMs work on your Android phone
+apps.haveibeentrainedon: Find out if your writing ended up in AI training data
+apps.enshittification: A timeline of big tech making things worse, with a source for every entry
+apps.hearsay: Watch the internet's routing live on a 3D globe
+apps.security-reporting-toolbox: Tools to help you report a security vulnerability, all in one place
+apps.statusquo: All the status pages you rely on, on one board
+apps.patchcall: Security alerts for your self-hosted apps, only when there's a fix
+apps.portainer-templates-extras: Tested Portainer templates for self-hosted apps, all from one URL
+apps.git-star-ranking: See where any GitHub user, organisation or repo ranks by stars
 
 stack.title: Build your privacy toolkit
 stack.description: Pick a private browser, email, messenger, password manager, VPN and more from the Awesome Privacy list, then share or export your whole toolkit.
