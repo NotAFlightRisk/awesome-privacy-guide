@@ -4,7 +4,7 @@
 
   let { index, labels, action, big = false, fromUrl = false } = $props();
 
-  const WEIGHT = { p: 6, v: 4, s: 3, c: 2, g: 1 };
+  const WEIGHT = { p: 6, d: 5, v: 4, s: 3, c: 2, g: 1 };
   const id = `finder-${Math.random().toString(36).slice(2, 8)}`;
   const normalise = (text) =>
     text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
