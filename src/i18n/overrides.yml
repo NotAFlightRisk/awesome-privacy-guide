@@ -1086,6 +1086,7 @@ de:
   browsing: Browser
   network: Netzwerk
   basics: Grundlagen
+  devices: Geräte
   "{time} read": "{time} Lesezeit"
   Checked {date}: Geprüft am {date}
   the short answer: Kurz gesagt
@@ -2267,6 +2268,7 @@ es:
   browsing: Navegación
   network: Red
   basics: Lo básico
+  devices: Dispositivos
   "{time} read": "{time} de lectura"
   Checked {date}: Revisada el {date}
   the short answer: La respuesta corta
@@ -2397,6 +2399,7 @@ fr:
   browsing: Navigation
   network: Réseau
   basics: Les bases
+  devices: Appareils
   "{time} read": "{time} de lecture"
   Checked {date}: Vérifié le {date}
   the short answer: En bref
@@ -3574,6 +3577,7 @@ pt:
   browsing: Navegação
   network: Rede
   basics: O básico
+  devices: Dispositivos
   "{time} read": "{time} de leitura"
   Checked {date}: Conferido em {date}
   the short answer: Em resumo
@@ -4742,6 +4746,7 @@ it:
   browsing: Navigazione
   network: Rete
   basics: Le basi
+  devices: Dispositivi
   "{time} read": "{time} di lettura"
   Checked {date}: Verificata il {date}
   the short answer: In breve
@@ -5923,6 +5928,7 @@ ru:
   browsing: Браузеры
   network: Сеть
   basics: Основы
+  devices: Устройства
   "{time} read": "{time} чтения"
   Checked {date}: Проверено {date}
   the short answer: Если коротко
@@ -7130,6 +7136,7 @@ ja:
   browsing: ブラウザ
   network: ネットワーク
   basics: 基本
+  devices: デバイス
   "{time} read": "{time}で読めます"
   Checked {date}: "{date}に確認"
   the short answer: 要点
