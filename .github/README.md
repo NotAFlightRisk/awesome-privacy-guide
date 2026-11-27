@@ -3,7 +3,7 @@
   Awesome Privacy Guide
 </h1>
 <p align="center">
-<i>Private alternatives to the apps you use every day, from the Awesome Privacy list</i>
+<i>Privacy guides, alternatives and resources to help you take back control of your data</i>
 <br />
 <b>🌐 <a href="https://awesomeprivacy.peng.ly/">awesomeprivacy.peng.ly</a></b><br />
 </p>
@@ -132,18 +132,16 @@ Text codes are the weakest kind of two-factor authentication and passkeys the st
 
 ---
 
-## How the data works
+## Usage
 
-- `data/upstream/` is a copy of `awesome-privacy.yml` and the changelog, pulled by `npm run sync`
-- `data/enrich/` holds GitHub repo facts, ToS;DR grades and resized icons (the list's own, or the site's favicon if it hasn't got one), from the same script
+### How the data works
+
+- `data/upstream/` is a copy of `awesome-privacy.yml` (from [lissy93/awesome-privacy](https://github.com/lissy93/awesome-privacy)) and the changelog, pulled by `npm run sync`
+- `data/enrich/` holds GitHub repo facts, ToS;DR grades and resized icons, from the same script
 - `data/i18n/<lang>.json` caches translations by a hash of the English, so only new or changed text ever gets sent to Azure Translator
-- `data/glossary.yml` and `data/switch-from.yml` are ours - the glossary, and the sourced "why people switch" notes
+- `data/glossary.yml` and `data/switch-from.yml` are hand-maintained, including the glossary, and the sourced "why you should switch" notes
 
-The 🔄 Sync workflow runs that every morning, commits whatever moved, and deploys.
-
----
-
-## Running it
+### Running it
 
 It's a static [Astro](https://astro.build) site with a couple of [Svelte](https://svelte.dev) islands. You'll need Node 22.23.4 or newer.
 
@@ -156,13 +154,12 @@ npm test           # the tests
 npm run build      # all ~11k pages into dist/
 ```
 
-To refresh the data yourself, `GITHUB_TOKEN=... npm run sync`, then `AZURE_TRANSLATOR_KEY=... npm run translate -- --budget 50000` (it never sends more characters than the budget, and with no key it just reports what's missing).
+To refresh the data yourself, `GITHUB_TOKEN=... npm run sync`, then `AZURE_TRANSLATOR_KEY=... npm run translate -- --budget 50000`
 
----
+### Deployment
 
-## Deployment
-
-The live site is a Cloudflare Worker serving `dist/` as static assets, deployed by the 🚀 Deploy workflow on every push to `main`. It needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.
+The live site is a Cloudflare Worker serving `dist/` as static assets, deployed by the Deploy workflow on every push to `main`.
+It needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.
 
 Every release has the built site attached as `site.zip`, which runs on any static host - just unzip and serve it.
 
