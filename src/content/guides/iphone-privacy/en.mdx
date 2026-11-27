@@ -1,0 +1,85 @@
+---
+title: iPhone privacy settings worth changing, and why
+description: The iPhone settings that stop apps tracking you, keep your exact location to yourself and lock out a thief who knows your passcode, and what each costs.
+type: tips
+topic: devices
+terms: [tracker, e2ee]
+related: [start-here, browser-privacy, two-factor]
+further:
+  - url: https://digital-defense.io/checklist/mobile-devices
+    label: The full mobile devices checklist
+published: 2026-11-27
+checked: 2026-11-27
+---
+
+<Short>
+Stop apps asking to [track you](#tracking), give apps your [rough location rather than your exact one](#location), and check [Stolen Device Protection](#stolen-device) is on. Outside the UK, [Advanced Data Protection](#advanced-data-protection) puts most of your iCloud data out of Apple's reach too, as long as you set up a way back in first. [Lockdown Mode](#lockdown-mode) is for very few people, and most should leave it off.
+</Short>
+
+## Apps and ads
+
+<Tip id="tracking" priority="essential" effort={2} title="Turn off tracking requests for every app at once">
+Apps have to ask before they track what you do across other companies' apps and websites, whether that's for ads or to share with data brokers. If you say no, the app can't read your phone's advertising ID, and it isn't allowed to track you another way either, like by your email address. The app still works the same either way.[^att]
+
+To say no to all of them at once, go to <Path>Settings --> Privacy & Security --> Tracking</Path> and turn off Allow Apps to Request to Track. Every app that asks after that gets the same answer as if you'd tapped Ask App Not to Track. The same screen lists any apps you've already said yes to, and you can switch each of them off.[^att]
+</Tip>
+
+<Tip id="location" priority="essential" effort={10} title="Give apps your rough location, not your exact one">
+Location data from apps can be sold on. In 2024 the FTC banned a data broker from selling location data it had gathered through code built into other companies' apps, data that could show people's visits to clinics, places of worship and domestic abuse shelters.[^ftc]
+
+Go to <Path>Settings --> Privacy & Security --> Location Services</Path> and tap each app. Turning off Precise Location gives that app only your approximate location, which may be all it needs.[^location] If an app has no reason to know where you are, take its access away there, and change it back later if something stops working. Don't turn Location Services off altogether, though, as many important iPhone features stop working without it.[^location] When an app can use your location in the background, your iPhone reminds you now and then with a map of where it's been, which is a good moment to cut it back.[^permissions]
+
+<Path>Privacy & Security</Path> also has a page each for Contacts, Photos, Calendars, Bluetooth and more, showing which apps you've let in, and you can take that access away there too.[^permissions]
+</Tip>
+
+<Tip id="apple-ads" priority="optional" effort={2} title="Stop Apple personalising its own ads">
+Apple shows ads in the App Store, Apple News and Stocks. It can pick them using what you search for and download in the App Store and Apple News, and what you read or follow in News and Stocks.[^apple-ads] Turn off Personalized Ads in <Path>Settings --> Privacy & Security --> Apple Advertising</Path>. Apple says you may not see fewer ads, just ones that aren't based on what you do.[^apple-ads]
+</Tip>
+
+## If your phone gets stolen
+
+<Tip id="stolen-device" priority="essential" effort={2} title="Check that Stolen Device Protection is on">
+Stolen Device Protection is for a thief who has your iPhone and knows your passcode. Away from places you go a lot, like home and work, your phone asks for your face or fingerprint, with no passcode fallback, before anyone can use your saved passwords, use the payment cards saved in Safari or erase the phone. Changing your Apple Account password also means waiting an hour, then checking your face or fingerprint again, and Apple designed the wait to give you time to mark the phone as lost.[^sdp]
+
+It might be on already, so check in <Path>Settings --> Face ID & Passcode --> Stolen Device Protection</Path> (Touch ID & Passcode on phones with a home button). To use it you need a passcode, Face ID or Touch ID, Find My, [two-factor authentication](/guides/two-factor/) on your Apple Account, and Significant Locations & Routes, which is under <Path>Location Services --> System Services</Path>. It only helps if it's on before the phone goes missing, and choosing Always under Require Security Delay makes it apply at home and work too.[^sdp] Turn it off before you sell the phone or give it away, and leave yourself time, since turning it off can start the wait too.[^sdp]
+</Tip>
+
+## Your iCloud data
+
+<Tip id="advanced-data-protection" priority="optional" effort={20} title="Turn on Advanced Data Protection, if you'll keep a way back in">
+Out of the box, Apple keeps the keys to most of your iCloud data, which is how it can help you get it back. Fifteen kinds of data, like your passwords and health data, are end-to-end encrypted already.[^icloud-security] Advanced Data Protection adds <Term slug="e2ee">end-to-end encryption</Term> to most of the rest, including your backups, photos and notes, so nobody else can read them, Apple included, even if its servers are breached.[^adp] iCloud Mail, Contacts and Calendars don't get end-to-end encryption even with it on,[^icloud-security] and neither does anything you share through Shared Albums, iWork collaboration or an "anyone with the link" link.[^adp] The <Swap product="icloud">iCloud</Swap> page lists other places to keep your files.
+
+But Apple can't help you get that data back if you're locked out. Before it turns on, your iPhone has you set up a recovery contact or a recovery key. A recovery contact is someone you trust who has an Apple device, and they can't see your account, only give you a code to get back in. A recovery key is a 28-character code that you keep safe yourself, and using it also takes a trusted phone number and an Apple device. To get your data back, you'll need your recovery contact or recovery key, or the passcode or password of one of your devices. Advanced Data Protection also turns off iCloud.com in a browser, unless you approve access from one of your devices.[^adp]
+
+To turn it on, go to Settings, tap your name, then <Path>iCloud --> Advanced Data Protection --> Turn on Advanced Data Protection</Path>, and follow the steps.[^adp]
+
+<Region place="uk">
+In 2025 Apple stopped letting people in the UK turn on Advanced Data Protection, and it has said those who already had it will need to turn it off to keep using iCloud. iMessage and FaceTime are still end-to-end encrypted, and so are the 15 kinds of iCloud data that always are.[^adp-uk]
+</Region>
+</Tip>
+
+<Tip id="private-relay" priority="optional" effort={2} title="Hide your IP address from websites, if you pay for iCloud+">
+With iCloud+, iCloud Private Relay sends your browsing in Safari through two separate relays, so the websites you visit can't see your IP address or exactly where you are, and your network provider can't collect what you browse. It isn't available in every country.[^relay] Turn it on in Settings, under your name, at <Path>iCloud --> Private Relay</Path>, on each device you want it on.[^relay] For the trackers on the pages themselves, see the [browser privacy guide](/guides/browser-privacy/).
+</Tip>
+
+## Only if you might be targeted
+
+<Tip id="lockdown-mode" priority="advanced" effort={5} title="Lockdown Mode, if someone might aim spyware at you in particular">
+Apple built Lockdown Mode for the very few people who, because of who they are or what they do, might be personally targeted by highly sophisticated mercenary spyware. Apple says most people are never targeted like that.[^lockdown]
+
+Turning it on blocks most kinds of attachment in Messages, along with links and link previews. Some websites may not work properly, FaceTime calls from anyone you haven't called in the last 30 days are blocked, and shared albums disappear from Photos. Phone calls, plain texts and emergency SOS still work.[^lockdown] If you might be one of those people, update all your devices first, then turn it on in <Path>Settings --> Privacy & Security --> Lockdown Mode</Path>. Your iPad and Mac each need it turned on separately, and your paired Apple Watch gets it automatically.[^lockdown]
+</Tip>
+
+Settings checked against Apple's iOS 27 guide in November 2026.
+
+[^att]: [Apple Support: If an app asks to track your activity](https://support.apple.com/en-gb/102420)
+[^ftc]: [FTC: FTC order prohibits data broker X-Mode Social and Outlogic from selling sensitive location data](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data)
+[^location]: [iPhone User Guide: Control the location information you share on iPhone](https://support.apple.com/en-gb/guide/iphone/control-the-location-information-you-share-iph3dd5f9be/ios)
+[^permissions]: [Apple Support: About privacy and Location Services in iOS, iPadOS and watchOS](https://support.apple.com/en-gb/102515)
+[^apple-ads]: [iPhone User Guide: Control how Apple delivers advertising to you on iPhone](https://support.apple.com/en-gb/guide/iphone/control-how-apple-delivers-advertising-to-you-iphf60a6a256/ios)
+[^sdp]: [Apple Support: About Stolen Device Protection for iPhone](https://support.apple.com/en-gb/120340)
+[^icloud-security]: [Apple Support: iCloud data security overview](https://support.apple.com/en-gb/102651)
+[^adp]: [Apple Support: How to turn on Advanced Data Protection for iCloud](https://support.apple.com/en-gb/108756)
+[^adp-uk]: [Apple Support: Apple can no longer offer Advanced Data Protection in the United Kingdom to new users](https://support.apple.com/en-gb/122234)
+[^relay]: [iPhone User Guide: Protect your web browsing with iCloud Private Relay on iPhone](https://support.apple.com/en-gb/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/ios)
+[^lockdown]: [Apple Support: About Lockdown Mode](https://support.apple.com/en-gb/105120)

@@ -1,0 +1,78 @@
+---
+title: "Confidentialité iPhone : les réglages à changer, et pourquoi"
+description: "Réglages iPhone qui empêchent les apps de vous pister, cachent votre position exacte et bloquent un voleur qui connaît votre code, avec leurs contreparties."
+source: "c8f3cfc0ac211f8e"
+sha: "5acce53c2ad0207f0a95d5ce509b1f02d842143b"
+---
+
+<Short>
+Empêchez les apps de demander à [vous suivre](#tracking), donnez-leur votre [position approximative plutôt que votre position exacte](#location), et vérifiez que la [protection en cas de vol de l’appareil](#stolen-device) est activée. En dehors du Royaume-Uni, la [protection avancée des données](#advanced-data-protection) met aussi la plupart de vos données iCloud hors de portée d’Apple, à condition de prévoir d’abord un moyen de récupérer l’accès. Le [mode Isolement](#lockdown-mode) ne concerne que très peu de gens, et la plupart devraient le laisser désactivé.
+</Short>
+
+## Apps et publicités
+
+<Tip id="tracking" priority="essential" effort={2} title="Désactivez d’un coup les demandes de suivi de toutes les apps">
+Les apps doivent vous demander l’autorisation avant de suivre ce que vous faites dans les apps et sur les sites web d’autres entreprises, que ce soit pour la publicité ou pour partager ces informations avec des courtiers en données. Si vous refusez, l’app ne peut pas lire l’identifiant publicitaire de votre téléphone, et elle n’a pas non plus le droit de vous suivre par un autre moyen, par exemple à partir de votre adresse e-mail. Dans les deux cas, l’app fonctionne de la même façon.[^att]
+
+Pour toutes les refuser d’un coup, ouvrez <Path>Réglages --> Confidentialité et sécurité --> Suivi</Path> et désactivez « Autoriser les demandes de suivi des apps ». Toute app qui pose la question ensuite reçoit la même réponse que si vous aviez touché « Demander à l’app de ne pas me suivre ». Ce même écran affiche les apps auxquelles vous avez déjà dit oui, et vous pouvez leur retirer cette autorisation une par une.[^att]
+</Tip>
+
+<Tip id="location" priority="essential" effort={10} title="Donnez aux apps votre position approximative, pas votre position exacte">
+Les données de localisation collectées par les apps peuvent être revendues. En 2024, la FTC, l’autorité américaine de protection des consommateurs, a interdit à un courtier en données de vendre les données de localisation qu’il avait recueillies par le biais d’un code intégré aux apps d’autres entreprises, des données qui pouvaient révéler les visites de certaines personnes dans des cliniques, des lieux de culte et des foyers pour victimes de violences conjugales.[^ftc]
+
+Ouvrez <Path>Réglages --> Confidentialité et sécurité --> Service de localisation</Path> et touchez chaque app. Si vous désactivez « Position exacte », cette app ne reçoit plus que votre position approximative, qui est peut-être tout ce dont elle a besoin.[^location] Si une app n’a aucune raison de savoir où vous êtes, retirez-lui l’accès sur ce même écran, quitte à le lui rendre plus tard si quelque chose ne marche plus. Ne désactivez pas complètement le service de localisation pour autant, car sans lui, de nombreuses fonctionnalités importantes de l’iPhone deviennent inutilisables.[^location] Quand une app peut utiliser votre position en arrière-plan, votre iPhone vous le rappelle de temps en temps avec une carte des endroits où elle a relevé votre position, et c’est un bon moment pour réduire son accès.[^permissions]
+
+<Path>Confidentialité et sécurité</Path> compte aussi une page pour chaque catégorie (Contacts, Photos, Calendriers, Bluetooth, etc.), qui indique les apps auxquelles vous avez donné accès, et vous pouvez là aussi leur retirer cet accès.[^permissions]
+</Tip>
+
+<Tip id="apple-ads" priority="optional" effort={2} title="Empêchez Apple de personnaliser ses propres publicités">
+Apple affiche des publicités dans l’App Store, Apple News et Bourse, et peut les choisir en fonction de ce que vous recherchez et téléchargez dans l’App Store et Apple News, et de ce que vous lisez ou suivez dans Apple News et Bourse.[^apple-ads] Désactivez « Annonces personnalisées » dans <Path>Réglages --> Confidentialité et sécurité --> Publicité Apple</Path>. Apple précise que vous ne verrez pas forcément moins de publicités, mais elles ne reposeront plus sur ce que vous faites.[^apple-ads]
+</Tip>
+
+## Si votre téléphone est volé
+
+<Tip id="stolen-device" priority="essential" effort={2} title="Vérifiez que la protection en cas de vol de l’appareil est activée">
+La protection en cas de vol de l’appareil vise un voleur qui a votre iPhone en main et connaît votre code. Loin des lieux que vous fréquentez souvent, comme votre domicile ou votre lieu de travail, votre téléphone exige la reconnaissance de votre visage ou de votre empreinte digitale, sans accepter le code à la place, avant que quiconque puisse se servir de vos mots de passe enregistrés, utiliser les cartes de paiement enregistrées dans Safari ou effacer le téléphone. Pour changer le mot de passe de votre compte Apple, il faut aussi attendre une heure, puis vous identifier à nouveau par votre visage ou votre empreinte, et Apple a conçu ce délai pour vous laisser le temps de marquer le téléphone comme perdu.[^sdp]
+
+Cette protection est peut-être déjà activée, alors vérifiez dans <Path>Réglages --> Face ID et code --> Protection en cas de vol de l’appareil</Path> (Touch ID et code sur les téléphones dotés d’un bouton principal). Pour l’utiliser, il vous faut un code, Face ID ou Touch ID, la fonctionnalité Localiser, la [double authentification](/fr/guides/two-factor/) sur votre compte Apple et l’option « Lieux importants et itinéraires », qui se trouve dans <Path>Service de localisation --> Services système</Path>. Elle ne sert que si elle est activée avant que le téléphone disparaisse, et si vous choisissez « Toujours » dans la section « Exiger un délai de sécurité », elle s’applique aussi chez vous et au travail.[^sdp] Désactivez-la avant de vendre ou de donner le téléphone, et prévoyez du temps, car la désactiver peut aussi déclencher le délai.[^sdp]
+</Tip>
+
+## Vos données iCloud
+
+<Tip id="advanced-data-protection" priority="optional" effort={20} title="Activez la protection avancée des données, si vous gardez un moyen de récupérer l’accès">
+Par défaut, Apple détient les clés de la plupart de vos données iCloud, et c’est ce qui lui permet de vous aider à les récupérer. Quinze types de données, comme vos mots de passe et vos données de santé, sont déjà chiffrés de bout en bout.[^icloud-security] La protection avancée des données ajoute le <Term slug="e2ee">chiffrement de bout en bout</Term> à la plupart des autres, y compris vos sauvegardes, vos photos et vos notes, si bien que personne d’autre ne peut les lire, Apple compris, même en cas de piratage de ses serveurs.[^adp] Mail iCloud, Contacts et Calendriers ne sont pas chiffrés de bout en bout, même avec cette protection activée,[^icloud-security] pas plus que ce que vous partagez via Albums partagés ou la collaboration iWork, ou avec « toutes les personnes disposant d’un lien ».[^adp] La page <Swap product="icloud">iCloud</Swap> propose d’autres endroits où conserver vos fichiers.
+
+En revanche, Apple ne peut pas vous aider à récupérer ces données si vous perdez l’accès à votre compte. Avant que la protection avancée des données ne s’active, votre iPhone vous fait configurer un contact de récupération ou une clé de secours. Un contact de récupération est une personne de confiance qui possède un appareil Apple. Elle ne peut pas voir votre compte, elle peut seulement vous donner un code pour y accéder de nouveau. Une clé de secours est un code de 28 caractères que vous gardez vous-même en lieu sûr, et pour l’utiliser, il vous faut aussi un numéro de téléphone de confiance et un appareil Apple. Pour récupérer vos données, vous aurez besoin de votre contact de récupération ou de votre clé de secours, ou du code ou du mot de passe de l’un de vos appareils. La protection avancée des données bloque aussi l’accès à vos données sur iCloud.com dans un navigateur, sauf si vous l’autorisez depuis l’un de vos appareils.[^adp]
+
+Pour l’activer, ouvrez Réglages, touchez votre nom, puis <Path>iCloud --> Protection avancée des données --> Activer la protection avancée des données</Path>, et suivez les étapes.[^adp]
+
+<Region place="uk">
+En 2025, Apple a cessé de permettre aux utilisateurs du Royaume-Uni d’activer la protection avancée des données, et a indiqué que ceux qui l’avaient déjà devront la désactiver pour continuer à utiliser iCloud. iMessage et FaceTime restent chiffrés de bout en bout, tout comme les 15 types de données iCloud qui le sont dans tous les cas.[^adp-uk]
+</Region>
+</Tip>
+
+<Tip id="private-relay" priority="optional" effort={2} title="Cachez votre adresse IP aux sites web, si vous avez un abonnement iCloud+">
+Avec iCloud+, le relais privé iCloud fait passer votre navigation dans Safari par deux relais distincts, si bien que les sites que vous visitez ne peuvent voir ni votre adresse IP ni l’endroit exact où vous vous trouvez, et que votre opérateur ou votre fournisseur d’accès ne peut pas collecter ce que vous consultez. Il n’est pas disponible dans tous les pays.[^relay] Activez-le dans Réglages, sous votre nom, dans <Path>iCloud --> Relais privé</Path>, sur chaque appareil où vous voulez l’utiliser.[^relay] Pour les traqueurs présents sur les pages elles-mêmes, consultez le [guide sur la confidentialité du navigateur](/fr/guides/browser-privacy/).
+</Tip>
+
+## Seulement si vous risquez d’être une cible
+
+<Tip id="lockdown-mode" priority="advanced" effort={5} title="Le mode Isolement, si quelqu’un risque de vous viser personnellement avec un logiciel espion">
+Apple a conçu le mode Isolement pour les très rares personnes qui, en raison de leur identité ou de leurs activités, pourraient être personnellement ciblées par des logiciels espions mercenaires extrêmement sophistiqués. Selon Apple, la plupart des gens ne sont jamais visés de cette manière.[^lockdown]
+
+Une fois activé, le mode Isolement bloque la plupart des types de pièces jointes dans Messages, ainsi que les liens et leurs aperçus. Certains sites web risquent de ne pas fonctionner correctement, les appels FaceTime de toute personne que vous n’avez pas appelée au cours des 30 derniers jours sont bloqués, et les albums partagés disparaissent de Photos. Les appels téléphoniques, les messages qui ne contiennent que du texte et les appels d’urgence fonctionnent toujours.[^lockdown] Si vous êtes susceptible de faire partie de ces personnes, mettez d’abord à jour tous vos appareils, puis activez-le dans <Path>Réglages --> Confidentialité et sécurité --> Mode Isolement</Path>. Il faut l’activer séparément sur votre iPad et sur votre Mac, et votre Apple Watch jumelée en bénéficie automatiquement.[^lockdown]
+</Tip>
+
+Réglages vérifiés en novembre 2026 avec le guide d’utilisation d’iOS 27 d’Apple.
+
+[^att]: [Assistance Apple : Si une app vous demande de suivre votre activité](https://support.apple.com/fr-fr/102420)
+[^ftc]: [FTC : Une décision de la FTC interdit au courtier en données X-Mode Social et à Outlogic de vendre des données de localisation sensibles](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data) (en anglais)
+[^location]: [Guide d’utilisation de l’iPhone : Contrôler les informations de localisation partagées sur l’iPhone](https://support.apple.com/fr-fr/guide/iphone/control-the-location-information-you-share-iph3dd5f9be/ios)
+[^permissions]: [Assistance Apple : À propos de la confidentialité et du service de localisation sous iOS, iPadOS et watchOS](https://support.apple.com/fr-fr/102515)
+[^apple-ads]: [Guide d’utilisation de l’iPhone : Contrôler le type de publicités proposées par Apple sur l’iPhone](https://support.apple.com/fr-fr/guide/iphone/control-how-apple-delivers-advertising-to-you-iphf60a6a256/ios)
+[^sdp]: [Assistance Apple : À propos de la fonctionnalité « Protection en cas de vol de l’appareil » pour iPhone](https://support.apple.com/fr-fr/120340)
+[^icloud-security]: [Assistance Apple : Présentation de la sécurité des données iCloud](https://support.apple.com/fr-fr/102651)
+[^adp]: [Assistance Apple : Activer la protection avancée des données pour iCloud](https://support.apple.com/fr-fr/108756)
+[^adp-uk]: [Assistance Apple : Apple ne peut plus proposer la protection avancée des données aux nouveaux utilisateurs au Royaume-Uni](https://support.apple.com/en-gb/122234) (en anglais)
+[^relay]: [Guide d’utilisation de l’iPhone : Protéger la navigation sur le Web avec le relais privé iCloud sur l’iPhone](https://support.apple.com/fr-fr/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/ios)
+[^lockdown]: [Assistance Apple : À propos du mode Isolement](https://support.apple.com/fr-fr/105120)

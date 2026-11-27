@@ -255,6 +255,7 @@ guides.topic.messaging: messaging
 guides.topic.browsing: browsing
 guides.topic.network: network
 guides.topic.basics: basics
+guides.topic.devices: devices
 
 guide.read: "{time} read"
 guide.checked: Checked {date}

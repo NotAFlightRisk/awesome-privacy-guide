@@ -1,0 +1,78 @@
+---
+title: "iPhone-Datenschutz: Welche Einstellungen du ändern solltest"
+description: "iPhone-Einstellungen, die App-Tracking stoppen, deinen genauen Standort für dich behalten und Diebe aussperren, die deinen Code kennen, und ihre Haken."
+source: "c8f3cfc0ac211f8e"
+sha: "5acce53c2ad0207f0a95d5ce509b1f02d842143b"
+---
+
+<Short>
+Lass Apps gar nicht erst fragen, ob sie [dich tracken dürfen](#tracking), gib Apps [deinen ungefähren Standort statt deines genauen](#location) und prüf, ob der [Schutz für gestohlene Geräte](#stolen-device) eingeschaltet ist. Außerhalb des Vereinigten Königreichs entzieht der [erweiterte Datenschutz](#advanced-data-protection) auch die meisten deiner iCloud-Daten dem Zugriff von Apple, solange du vorher einen Weg zurück in dein Konto einrichtest. Der [Blockierungsmodus](#lockdown-mode) ist für sehr wenige Leute gedacht, und die meisten sollten ihn ausgeschaltet lassen.
+</Short>
+
+## Apps und Werbung
+
+<Tip id="tracking" priority="essential" effort={2} title="Schalte Tracking-Anfragen für alle Apps auf einmal aus">
+Apps müssen fragen, bevor sie verfolgen, was du in den Apps und auf den Websites anderer Firmen tust, egal ob für Werbung oder um es an Datenhändler weiterzugeben. Wenn du ablehnst, kann die App die Werbe-ID deines Handys nicht auslesen, und sie darf dich auch auf keinem anderen Weg tracken, etwa über deine E-Mail-Adresse. Die App funktioniert in beiden Fällen gleich.[^att]
+
+Um alle auf einmal abzulehnen, öffne <Path>Einstellungen --> Datenschutz & Sicherheit --> Tracking</Path> und schalte „Apps erlauben, Tracking anzufordern“ aus. Von da an wird jede App, die fragt, so behandelt, als hättest du auf „App-Tracking ablehnen“ getippt. Auf demselben Bildschirm stehen alle Apps, denen du es schon erlaubt hast, und du kannst es dort für jede einzeln wieder ausschalten.[^att]
+</Tip>
+
+<Tip id="location" priority="essential" effort={10} title="Gib Apps deinen ungefähren Standort, nicht deinen genauen">
+Standortdaten aus Apps können weiterverkauft werden. 2024 hat die US-Verbraucherschutzbehörde FTC einem Datenhändler verboten, Standortdaten zu verkaufen, die er über Code in den Apps anderer Firmen gesammelt hatte. Aus diesen Daten ließ sich ablesen, wer medizinische Einrichtungen, Gotteshäuser und Schutzunterkünfte für Opfer häuslicher Gewalt aufsuchte.[^ftc]
+
+Öffne <Path>Einstellungen --> Datenschutz & Sicherheit --> Ortungsdienste</Path> und tippe nacheinander auf jede App. Wenn du „Genauer Standort“ ausschaltest, bekommt die App nur deinen ungefähren Standort, und der reicht ihr vielleicht schon.[^location] Wenn eine App gar nicht wissen muss, wo du bist, nimm ihr dort den Zugriff weg, und gib ihn ihr später zurück, falls etwas nicht mehr funktioniert. Schalte die Ortungsdienste aber nicht ganz aus, denn viele wichtige Funktionen des iPhone brauchen sie.[^location] Wenn eine App deinen Standort im Hintergrund nutzen darf, weist dich dein iPhone ab und zu darauf hin und zeigt dir auf einer Karte, wo sie deinen Standort erfasst hat. Das ist ein guter Moment, ihren Zugriff einzuschränken.[^permissions]
+
+Unter <Path>Datenschutz & Sicherheit</Path> gibt es außerdem jeweils eine eigene Seite für Kontakte, Fotos, Kalender, Bluetooth und mehr. Dort siehst du, welchen Apps du Zugriff gegeben hast, und kannst ihn auch wieder entziehen.[^permissions]
+</Tip>
+
+<Tip id="apple-ads" priority="optional" effort={2} title="Verhindere, dass Apple seine eigene Werbung personalisiert">
+Apple zeigt Werbung im App Store, in Apple News und in der App „Aktien“. Apple kann sie danach auswählen, was du im App Store und in Apple News suchst und herunterlädst und was du in Apple News und „Aktien“ liest oder verfolgst.[^apple-ads] Schalte „Personalisierte Werbung“ unter <Path>Einstellungen --> Datenschutz & Sicherheit --> Apple-Werbung</Path> aus. Laut Apple siehst du dadurch nicht unbedingt weniger Werbung, sie beruht nur nicht mehr darauf, was du tust.[^apple-ads]
+</Tip>
+
+## Wenn dein Handy gestohlen wird
+
+<Tip id="stolen-device" priority="essential" effort={2} title="Prüf, ob der Schutz für gestohlene Geräte eingeschaltet ist">
+Der Schutz für gestohlene Geräte ist für den Fall gedacht, dass ein Dieb dein iPhone hat und deinen Code kennt. Wenn du mit dem Handy nicht an einem Ort bist, an dem du dich oft aufhältst, etwa zu Hause oder bei der Arbeit, muss erst dein Gesicht oder dein Fingerabdruck erkannt werden, bevor jemand deine gespeicherten Passwörter oder die in Safari gespeicherten Zahlungskarten benutzen oder das Handy löschen kann. Mit dem Code allein geht das dann nicht. Wer das Passwort deines Apple Accounts ändern will, muss außerdem eine Stunde warten und danach noch einmal mit Gesicht oder Fingerabdruck bestätigen. Apple hat diese Wartezeit eingebaut, damit du in der Zeit das Handy als verloren markieren kannst.[^sdp]
+
+Vielleicht ist er schon eingeschaltet, also sieh unter <Path>Einstellungen --> Face ID & Code --> Schutz für gestohlene Geräte</Path> nach (auf iPhones mit Home-Taste heißt es „Touch ID & Code“). Damit du ihn nutzen kannst, brauchst du einen Code, Face ID oder Touch ID, „Wo ist?“, [Zwei-Faktor-Authentifizierung](/de/ratgeber/two-factor/) für deinen Apple Account und die Option „Wichtige Orte & Routen“, die du unter <Path>Ortungsdienste --> Systemdienste</Path> findest. Er hilft nur, wenn er schon eingeschaltet ist, bevor das Handy wegkommt. Wenn du unter „Sicherheitsverzögerung erforderlich“ die Option „Immer“ wählst, gilt er auch zu Hause und bei der Arbeit.[^sdp] Schalte ihn aus, bevor du das Handy verkaufst oder verschenkst, und plan etwas Zeit dafür ein, denn auch das Ausschalten kann die Wartezeit auslösen.[^sdp]
+</Tip>
+
+## Deine iCloud-Daten
+
+<Tip id="advanced-data-protection" priority="optional" effort={20} title="Schalte den erweiterten Datenschutz ein, wenn du dir einen Weg zurück ins Konto sicherst">
+Standardmäßig hat Apple die Schlüssel zu den meisten deiner iCloud-Daten, und deshalb kann es dir helfen, sie zurückzubekommen. Fünfzehn Arten von Daten, etwa deine Passwörter und deine Gesundheitsdaten, sind schon von sich aus Ende-zu-Ende-verschlüsselt.[^icloud-security] Der erweiterte Datenschutz bringt <Term slug="e2ee">Ende-zu-Ende-Verschlüsselung</Term> für die meisten übrigen Daten, darunter deine Backups, Fotos und Notizen. Dann kann sie außer dir niemand lesen, auch Apple nicht, selbst wenn Apples Server gehackt werden.[^adp] iCloud Mail, Kontakte und Kalender sind auch mit eingeschaltetem erweitertem Datenschutz nicht Ende-zu-Ende-verschlüsselt,[^icloud-security] und dasselbe gilt für alles, was du über „Geteilte Alben“, die iWork-Zusammenarbeit oder einen Link mit der Option „Jeder mit dem Link“ teilst.[^adp] Auf der Seite zu <Swap product="icloud">iCloud</Swap> findest du andere Orte, an denen du deine Dateien aufbewahren kannst.
+
+Allerdings kann Apple dir dann nicht helfen, diese Daten zurückzubekommen, wenn du nicht mehr in dein Konto kommst. Bevor sich der erweiterte Datenschutz einschalten lässt, richtest du auf deinem iPhone einen Wiederherstellungskontakt oder einen Wiederherstellungsschlüssel ein. Ein Wiederherstellungskontakt ist jemand, dem du vertraust und der ein Apple-Gerät hat. Diese Person kann dein Konto nicht einsehen, sondern dir nur einen Code geben, mit dem du wieder reinkommst. Ein Wiederherstellungsschlüssel ist ein 28-stelliger Code, den du selbst sicher aufbewahrst, und um ihn zu benutzen, brauchst du außerdem eine vertrauenswürdige Telefonnummer und ein Apple-Gerät. Um deine Daten zurückzubekommen, brauchst du deinen Wiederherstellungskontakt oder deinen Wiederherstellungsschlüssel, oder den Code oder das Passwort eines deiner Geräte. Der erweiterte Datenschutz sperrt außerdem den Zugriff auf iCloud.com im Browser, es sei denn, du erlaubst ihn auf einem deiner Geräte.[^adp]
+
+Zum Einschalten öffne die Einstellungen, tippe auf deinen Namen und dann auf <Path>iCloud --> Erweiterter Datenschutz --> Erweiterten Datenschutz aktivieren</Path>, und folge den Anweisungen auf dem Bildschirm.[^adp]
+
+<Region place="uk">
+Seit 2025 lässt Apple Leute im Vereinigten Königreich den erweiterten Datenschutz nicht mehr einschalten. Wer ihn schon eingeschaltet hat, muss ihn laut Apple ausschalten, um iCloud weiter nutzen zu können. iMessage und FaceTime sind weiterhin Ende-zu-Ende-verschlüsselt, genau wie die 15 Arten von iCloud-Daten, bei denen das ohnehin immer so ist.[^adp-uk]
+</Region>
+</Tip>
+
+<Tip id="private-relay" priority="optional" effort={2} title="Verbirg deine IP-Adresse vor Websites, wenn du für iCloud+ bezahlst">
+Mit iCloud+ leitet iCloud Privat-Relay deinen Datenverkehr in Safari über zwei getrennte Internetrelais, sodass die Websites, die du besuchst, weder deine IP-Adresse noch deinen genauen Standort sehen können und dein Netzanbieter keine Daten darüber sammeln kann, welche Seiten du aufrufst. Privat-Relay gibt es nicht in jedem Land.[^relay] Einschalten kannst du es in den Einstellungen unter deinem Namen bei <Path>iCloud --> Privat-Relay</Path>, und zwar auf jedem Gerät, auf dem du es nutzen willst.[^relay] Um die Tracker auf den Seiten selbst geht es im [Ratgeber zum Browser-Datenschutz](/de/ratgeber/browser-privacy/).
+</Tip>
+
+## Nur wenn es jemand gezielt auf dich abgesehen haben könnte
+
+<Tip id="lockdown-mode" priority="advanced" effort={5} title="Der Blockierungsmodus, falls jemand gezielt Spyware gegen dich einsetzen könnte">
+Apple hat den Blockierungsmodus für die sehr wenigen Menschen entwickelt, die aufgrund dessen, wer sie sind oder was sie tun, persönlich ins Visier hochentwickelter Söldner-Spyware geraten könnten. Laut Apple werden die meisten Menschen nie auf diese Weise angegriffen.[^lockdown]
+
+Wenn er eingeschaltet ist, werden in der App „Nachrichten“ die meisten Arten von Anhängen blockiert, ebenso Links und Linkvorschauen. Manche Websites funktionieren vielleicht nicht richtig, FaceTime-Anrufe von allen, die du in den letzten 30 Tagen nicht angerufen hast, werden blockiert, und geteilte Alben verschwinden aus der Fotos-App. Telefonanrufe, einfache Textnachrichten und Notruf SOS funktionieren weiterhin.[^lockdown] Wenn du zu diesen Menschen gehören könntest, aktualisiere zuerst alle deine Geräte und schalte ihn dann unter <Path>Einstellungen --> Datenschutz & Sicherheit --> Blockierungsmodus</Path> ein. Auf deinem iPad und deinem Mac musst du ihn jeweils separat einschalten, und deine gekoppelte Apple Watch bekommt ihn automatisch.[^lockdown]
+</Tip>
+
+Die Einstellungen wurden im November 2026 mit Apples Anleitung zu iOS 27 abgeglichen.
+
+[^att]: [Apple Support: Wenn eine App deine Aktivitäten verfolgen möchte](https://support.apple.com/de-de/102420)
+[^ftc]: [FTC: Anordnung der FTC verbietet den Datenhändlern X-Mode Social und Outlogic den Verkauf sensibler Standortdaten](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data)
+[^location]: [iPhone-Benutzerhandbuch: Geteilte Standortdaten auf dem iPhone verwalten](https://support.apple.com/de-de/guide/iphone/control-the-location-information-you-share-iph3dd5f9be/ios)
+[^permissions]: [Apple Support: Informationen zu Datenschutz und Ortungsdiensten in iOS, iPadOS und watchOS](https://support.apple.com/de-de/102515)
+[^apple-ads]: [iPhone-Benutzerhandbuch: Verwalten, wie Apple dir auf dem iPhone Werbung anzeigt](https://support.apple.com/de-de/guide/iphone/control-how-apple-delivers-advertising-to-you-iphf60a6a256/ios)
+[^sdp]: [Apple Support: Schutz für gestohlene Geräte für das iPhone](https://support.apple.com/de-de/120340)
+[^icloud-security]: [Apple Support: Sicherheitsüberblick – iCloud-Daten](https://support.apple.com/de-de/102651)
+[^adp]: [Apple Support: So aktivierst du den erweiterten Datenschutz für iCloud](https://support.apple.com/de-de/108756)
+[^adp-uk]: [Apple Support: Apple kann neuen Nutzern im Vereinigten Königreich den erweiterten Datenschutz nicht mehr anbieten](https://support.apple.com/en-gb/122234)
+[^relay]: [iPhone-Benutzerhandbuch: Mit iCloud Privat-Relay auf dem iPhone geschützt im Internet surfen](https://support.apple.com/de-de/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/ios)
+[^lockdown]: [Apple Support: Informationen zum Blockierungsmodus](https://support.apple.com/de-de/105120)
