@@ -1,0 +1,77 @@
+---
+title: "Cómo dejar de usar Google, servicio a servicio"
+description: "Qué servicios de Google sustituir primero, según el trabajo que da cada uno, cómo sacar tus datos de forma segura y qué puedes conservar por ahora."
+---
+
+<Short>
+Empieza por los cambios que llevan unos minutos: [tu buscador](#search), [tu navegador](#browser) y [tu app de mapas](#maps). Después, cambia de uno en uno los servicios donde guardas tus cosas, empezando por [Drive y Photos](#drive-and-photos). [Gmail](#email) va al final y lleva meses, así que mantén la cuenta abierta mientras te cambias. No tienes por qué dejarlo todo, y para lo que se quede en tu Cuenta de Google, [activa la eliminación automática](#keep-it-tidy).
+</Short>
+
+## Primero, haz una copia de todo
+
+<Tip id="takeout" priority="essential" effort={30} title="Descarga tus datos con Google Takeout">
+Google Takeout exporta tus datos de los productos de Google que usas, como tus correos, documentos, calendario, fotos y videos de YouTube[^takeout]. Haz una exportación ahora, antes de cambiar nada, para tener tu propia copia por si algo sale mal.
+
+Como método de entrega, elige «Enviar vínculo de descarga por correo electrónico» en lugar de «Agregar a Drive», porque Drive es una de las cosas que vas a dejar. Descarga en tu propio equipo o en un disco externo todos los archivos que te dé Takeout, y abre unos cuantos para comprobar que tus cosas están ahí. Descargar los archivos no borra nada de Google, y puede que la exportación no recoja los cambios que hagas mientras se está preparando, así que vuelve a exportar justo antes de borrar nada[^takeout].
+</Tip>
+
+## Los cambios rápidos
+
+<Tip id="search" priority="essential" effort={2} title="Cambia tu buscador">
+La página de <Swap product="google">Google Search</Swap> explica qué hace Google con tus búsquedas. Cambiar el buscador predeterminado de tu navegador lleva un par de minutos, y la [guía de privacidad del navegador](/es/guias/browser-privacy/#search-engine) tiene los pasos y los buscadores que recomienda la lista.
+</Tip>
+
+<Tip id="browser" priority="optional" effort={30} title="Deja Chrome">
+La [guía de privacidad del navegador](/es/guias/browser-privacy/#leave-chrome) explica por qué Chrome complica lo básico y qué navegadores usar en su lugar. Si tienes tus contraseñas guardadas en Chrome, la [guía del gestor de contraseñas](/es/guias/password-manager/) explica cómo sacarlas de ahí de forma segura antes de cambiarte.
+</Tip>
+
+<Tip id="maps" priority="optional" effort={10} title="Usa otra app de mapas para los trayectos de cada día">
+Cuando tiene activado el ajuste del historial, Google Maps guarda en tu Cuenta de Google los lugares que buscas y las rutas que consultas[^maps-history]. No hace falta que borres Google Maps para empezar. Usa una de las apps de la página de <Swap product="google-maps">Google Maps</Swap> para los trayectos que haces cada semana, y reserva la de Google para alguna búsqueda suelta en la que funcione mejor. Úsala sin iniciar sesión, porque guarda esos lugares y rutas cuando tienes la sesión iniciada y ese ajuste activado.
+</Tip>
+
+<Tip id="dns" priority="optional" effort={5} title="Cambia el DNS de Google, si lo tienes configurado">
+Si tus dispositivos usan Google Public DNS porque lo configuraste tú o quien configuró tu router, Google puede ver el nombre de cada sitio que consultan. La página de <Swap product="google-dns">Google DNS</Swap> tiene otros proveedores. Si lo cambias en el router, el cambio vale para todos los dispositivos de tu casa, mientras que el <Term slug="encrypted-dns">DNS seguro</Term> del navegador solo vale para ese navegador.
+</Tip>
+
+## Los cambios más grandes
+
+<Tip id="drive-and-photos" priority="optional" effort={120} title="Cámbiate de Drive y Photos">
+Las páginas de <Swap product="google-drive">Google Drive</Swap> y <Swap product="google-photos">Google Photos</Swap> recogen adónde puedes llevarte tus cosas y qué ofrece cada opción.
+
+Cópialo todo y revísalo bien antes de borrar nada de Google: que estén las mismas carpetas y los mismos álbumes, que haya más o menos el mismo número de archivos y que los documentos de los que no puedes prescindir se abran en el nuevo servicio. Lo que hayas compartido con otras personas deja de funcionarles cuando lo borras, así que mándales antes el enlace nuevo. Cuando lo tengas claro, borra los archivos de Google o, si Google te deja, quita el servicio entero desde tu Cuenta de Google: en <Path>Datos y privacidad</Path>, en la sección Herramientas, elige «Quita datos de los servicios que ya no usas». No todos los productos se pueden quitar desde ahí[^remove].
+</Tip>
+
+<Tip id="small-ones" priority="optional" effort={30} title="Pasa tus notas y tu calendario a otro servicio, y organiza tus videollamadas en otro sitio">
+Las páginas de <Swap product="google-keep">Google Keep</Swap> y <Swap product="google-calendar">Google Calendar</Swap> tienen las alternativas, y tu calendario ya viene en la exportación de Takeout[^takeout]. Antes de borrar los originales, comprueba que han llegado bien algunos eventos recurrentes y recordatorios. Si también vas a dejar Gmail, la [guía para dejar Gmail](/es/guias/leave-gmail/#contacts-and-calendars) explica cómo pasar a la vez los contactos y los calendarios. Para las videollamadas que organizas tú, elige una opción de la página de <Swap product="google-meet">Google Meet</Swap>.
+</Tip>
+
+## Los cambios que tardan meses en terminarse
+
+<Tip id="email" priority="optional" effort={60} title="De los cambios grandes, deja Gmail para el final">
+El correo es lo que más tarda en completarse, porque todas las cuentas que abriste con tu dirección de Gmail envían ahí los correos para restablecer la contraseña, y en los sitios en los que inicias sesión con «Acceder con Google» tienes que configurar otra forma de entrar antes de irte. La [guía para dejar Gmail](/es/guias/leave-gmail/) lo explica por orden: elegir un proveedor nuevo, a ser posible con tu propio dominio, reenviar el correo mientras pasas tus cuentas a la dirección nueva y mantener Gmail abierto durante un año.
+</Tip>
+
+<Tip id="phone" priority="advanced" effort={120} title="Cambia el sistema de tu teléfono Android, si te animas">
+Para quitar del todo los servicios de Google de un teléfono Android, hay que instalarle otro sistema, una <Term slug="custom-rom">ROM personalizada</Term>. La página de <Swap product="android">Android</Swap> explica las opciones. <App name="GrapheneOS" /> solo es compatible con los Pixel, los teléfonos de la propia Google. Los que se venden a través de algunas operadoras de Estados Unidos pueden estar bloqueados de forma que no se pueda instalar GrapheneOS en absoluto, y uno de los pasos de la instalación borra todos los datos del teléfono[^graphene]. Para otros teléfonos, [Android ROM Compat](https://android-rom-compat.peng.ly) muestra qué sistemas funcionan en cada modelo.
+
+Antes de empezar, guarda tus códigos de recuperación en algún sitio que no sea el teléfono y averigua cómo vas a pasar los códigos de tu app de autenticación, porque algunas exportan sus códigos y con otras hay que volver a configurar cada cuenta (la [guía de autenticación de dos factores](/es/guias/two-factor/) explica los dos casos). Haz una copia de seguridad de tus fotos y tus mensajes, y comprueba si las apps de las que dependes, como la de tu banco, funcionan en el sistema que has elegido.
+</Tip>
+
+## Lo que puedes conservar
+
+No hace falta que renuncies a YouTube para que Google deje de vincular lo que ves con tu cuenta. <App name="Invidious" /> dice que muestra los videos de YouTube sin anuncios ni rastreo, que mantiene tus suscripciones separadas de Google y que puede importar las que ya tienes[^invidious]. La mayoría de la gente lo usa a través de un servidor público que gestiona otra persona, y el proyecto no se hace responsable de esos servidores, así que quien gestione el que elijas puede ver qué miras[^invidious]. En la página de <Swap product="youtube">YouTube</Swap> encontrarás otros sitios de videos.
+
+Mantén abierta tu Cuenta de Google mientras tus cuentas antiguas sigan enviando ahí los correos para restablecer la contraseña. Si no usas una cuenta personal durante dos años, Google puede borrarla con todo lo que contiene, y también puede borrar los datos de un producto si no usas ese producto durante dos años (esto no se aplica a las cuentas del trabajo ni del centro de estudios)[^inactive]. Así que inicia sesión, y usa cada servicio que vayas a conservar, al menos una vez cada dos años.
+
+<Tip id="keep-it-tidy" priority="optional" effort={5} title="Activa la eliminación automática en lo que conserves">
+Para todo lo que se quede en tu cuenta, abre tu Cuenta de Google, ve a <Path>Datos y privacidad</Path> y, en Configuración del historial, elige cada ajuste del historial, selecciona Eliminación automática y decide cuánto tiempo quieres conservarlo[^delete]. Google dice que puede conservar algunos datos durante más tiempo por motivos comerciales o legales, así que la eliminación automática limita lo que se guarda, pero no lo borra todo[^delete]. En Mi centro de anuncios también puedes desactivar los anuncios personalizados, para que Google deje de usar tu actividad al elegir qué anuncios te muestra[^ads].
+</Tip>
+
+[^takeout]: [Ayuda de Cuenta de Google: Cómo descargar tus datos de Google](https://support.google.com/accounts/answer/3024190?hl=es-419)
+[^maps-history]: [Ayuda de Google Maps: Administra tu historial de Google Maps](https://support.google.com/maps/answer/3137804?hl=es-419)
+[^remove]: [Ayuda de Cuenta de Google: Quitar productos](https://support.google.com/accounts/answer/81987?hl=es-419)
+[^graphene]: [GrapheneOS: Preguntas frecuentes](https://grapheneos.org/faq)
+[^invidious]: [Invidious en GitHub](https://github.com/iv-org/invidious)
+[^inactive]: [Ayuda de Cuenta de Google: Política de Cuentas de Google Inactivas](https://support.google.com/accounts/answer/12418290?hl=es-419)
+[^delete]: [Ayuda de Cuenta de Google: Cómo borrar tu actividad](https://support.google.com/accounts/answer/465?hl=es-419)
+[^ads]: [Ayuda de Mi centro de anuncios: Cómo customizar tu experiencia de anuncios](https://support.google.com/My-Ad-Center-Help/answer/12155451?hl=es-419)

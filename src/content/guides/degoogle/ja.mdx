@@ -1,0 +1,77 @@
+---
+title: "脱Googleの進め方：手間の少ないサービスから1つずつ乗り換える"
+description: "脱Googleはどこから始める？乗り換えるサービスを手間の少ない順に紹介し、Google Takeoutでデータを安全に取り出す方法と、当面は使い続けてもかまわないものもまとめました。"
+---
+
+<Short>
+まずは数分で済む乗り換えから始めましょう。[検索エンジン](#search)、[ブラウザ](#browser)、[地図アプリ](#maps)です。次に、自分のデータを預けているサービスを1つずつ移していきます。最初は[Google DriveとGoogle Photos](#drive-and-photos)です。[Gmail](#email)は最後で、終わるまでに数か月かかるので、移行中も削除せずに残しておいてください。すべてをやめる必要はありません。Googleアカウントに残すものは、[自動削除をオンにしておきましょう](#keep-it-tidy)。
+</Short>
+
+## まずはすべてのコピーを取る
+
+<Tip id="takeout" priority="essential" effort={30} title="Google Takeoutでデータをダウンロードする">
+Google Takeoutを使うと、メールやドキュメント、カレンダー、写真、YouTubeの動画など、使っているGoogleのサービスのデータをエクスポートできます[^takeout]。何かを変える前に、まず1回エクスポートしておきましょう。そうすれば、いざというときに頼れる自分のコピーが手元に残ります。
+
+配信方法は「Google ドライブに追加」ではなく「ダウンロード リンクをメールで送信」を選んでください。Google Driveも、これから離れるサービスの1つだからです。用意されたファイルはすべて自分のパソコンや外付けドライブにダウンロードし、いくつか開いて、ちゃんと中身が入っているか確かめましょう。ダウンロードしても、Googleのデータは何も削除されません。また、アーカイブが作成されているあいだに加えた変更は含まれないことがあるので、何かを削除する直前にもう一度エクスポートしてください[^takeout]。
+</Tip>
+
+## すぐに済む乗り換え
+
+<Tip id="search" priority="essential" effort={2} title="検索エンジンを変える">
+Googleが検索内容をどう扱っているかは、<Swap product="google">Google Search</Swap>のページで説明しています。ブラウザの既定の検索エンジンを変えるのは数分で済みます。手順とリストのおすすめは、[ブラウザのプライバシーガイド](/ja/guides/browser-privacy/#search-engine)にあります。
+</Tip>
+
+<Tip id="browser" priority="optional" effort={30} title="Chromeから乗り換える">
+Chromeだと基本的な対策がなぜやりにくいのか、代わりにどのブラウザを使えばいいのかは、[ブラウザのプライバシーガイド](/ja/guides/browser-privacy/#leave-chrome)で説明しています。Chromeにパスワードを保存しているなら、先に[パスワードマネージャーのガイド](/ja/guides/password-manager/)を見て、安全に取り出しておきましょう。
+</Tip>
+
+<Tip id="maps" priority="optional" effort={10} title="普段の移動には別の地図アプリを使う">
+履歴の設定がオンになっていると、Google Mapsは検索した場所や調べたルートをGoogleアカウントに保存します[^maps-history]。最初からGoogle Mapsのアプリを消す必要はありません。毎週のように出かける場所には<Swap product="google-maps">Google Maps</Swap>のページにあるアプリを使い、Googleのほうが得意な検索をたまにするときだけ、ログアウトした状態でGoogle Mapsを使いましょう。履歴が保存されるのは、その設定がオンのままログインしているときだからです。
+</Tip>
+
+<Tip id="dns" priority="optional" effort={5} title="GoogleのDNSを設定しているなら変える">
+あなた自身やルーターを設定した人が、デバイスのDNSをGoogle Public DNSにしている場合、Googleにはそのデバイスが問い合わせるサイトの名前が見えます。ほかのDNSプロバイダーは<Swap product="google-dns">Google DNS</Swap>のページで紹介しています。ルーターで変えれば家の中のすべてのデバイスに効きますが、ブラウザの<Term slug="encrypted-dns">セキュアDNS</Term>が効くのはそのブラウザだけです。
+</Tip>
+
+## 大がかりな乗り換え
+
+<Tip id="drive-and-photos" priority="optional" effort={120} title="Google DriveとGoogle Photosを移す">
+移行先の候補とそれぞれの特徴は、<Swap product="google-drive">Google Drive</Swap>と<Swap product="google-photos">Google Photos</Swap>のページにまとめています。
+
+すべてを移行先にコピーしたら、Googleから何かを削除する前にきちんと確認しましょう。フォルダとアルバムが同じようにそろっているか、ファイルの数がだいたい同じか、なくては困る書類が新しいサービスで開けるかを確かめます。ほかの人と共有しているものは、削除すると相手も開けなくなるので、先に新しいリンクを送っておいてください。問題がないと確信できたら、Googleにあるファイルを削除します。Googleが対応していれば、サービスごと削除することもできます。その場合は、Googleアカウントの<Path>データとプライバシー</Path>を開き、「ツール」セクションの「使用しなくなったサービスからデータを削除する」を選びます。ただし、ここですべてのサービスを削除できるわけではありません[^remove]。
+</Tip>
+
+<Tip id="small-ones" priority="optional" effort={30} title="メモとカレンダーを移し、ビデオ通話も別のサービスにする">
+代わりのサービスは<Swap product="google-keep">Google Keep</Swap>と<Swap product="google-calendar">Google Calendar</Swap>のページから選べます。カレンダーは、Takeoutでエクスポートしたデータに含まれています[^takeout]。Googleにある元のデータを削除する前に、繰り返しの予定やリマインダーをいくつか選んで、ちゃんと移っているか確かめてください。Gmailからも乗り換えるなら、連絡先とカレンダーをまとめて移す方法を[Gmailから乗り換えるガイド](/ja/guides/leave-gmail/#contacts-and-calendars)で説明しています。自分が主催するビデオ通話には、<Swap product="google-meet">Google Meet</Swap>のページから1つ選びましょう。
+</Tip>
+
+## 終わるまでに数か月かかるもの
+
+<Tip id="email" priority="optional" effort={60} title="大きな乗り換えの最後はGmail">
+いちばん時間がかかるのはメールです。Gmailのアドレスで登録したアカウントからは、パスワード再設定のメールがすべてGmailに届きますし、「Google でログイン」でログインしているサービスには、やめる前に別のログイン方法を用意しておく必要があるからです。[Gmailから乗り換えるガイド](/ja/guides/leave-gmail/)の手順は次のとおりです。新しいメールサービスを（できれば自分のドメインで）使い始め、アカウントを移しているあいだはGmailから転送し、Gmailは1年間残しておきます。
+</Tip>
+
+<Tip id="phone" priority="advanced" effort={120} title="準備ができたら、Androidスマホのシステムを入れ替える">
+AndroidスマホからGoogleのサービスを完全に取り除くには、別のシステム、つまり<Term slug="custom-rom">カスタムROM</Term>をインストールする必要があります。どんなシステムがあるかは<Swap product="android">Android</Swap>のページを見てください。<App name="GrapheneOS" />が対応しているのはGoogle自身のPixelだけです。米国の一部の携帯電話会社で販売されたスマホは、そもそもインストールできないようにロックされていることがあります。また、インストールの途中で、スマホのデータはすべて消去されます[^graphene]。ほかのスマホなら、どの機種でどのシステムが動くかを[Android ROM Compat](https://android-rom-compat.peng.ly)で確認できます。
+
+始める前に、バックアップコードをスマホ以外の場所に保管し、認証アプリをどう移すかを決めておきましょう。コードをエクスポートできるアプリもあれば、アカウントごとに設定し直さなければならないアプリもあります（どちらの場合も[2段階認証のガイド](/ja/guides/two-factor/)で説明しています）。写真とメッセージをバックアップし、自分が選んだシステムで、銀行のアプリなどなくては困るアプリが動くかどうかも調べておいてください。
+</Tip>
+
+## 残しておいてもいいもの
+
+見た動画をGoogleがアカウントと結びつけないようにするために、YouTubeをやめる必要はありません。<App name="Invidious" />は、YouTubeの動画を広告もトラッキングもなしで表示し、チャンネル登録をGoogleとは切り離して保存でき、今の登録もインポートできるとしています[^invidious]。ほとんどの人は誰かが運営している公開サーバーを通じて使いますが、プロジェクトはそうしたサーバーに責任を負わないので、選んだサーバーの運営者には、あなたが何を見ているかがわかります[^invidious]。ほかの動画サイトは<Swap product="youtube">YouTube</Swap>のページにあります。
+
+古いアカウントのパスワード再設定のメールがまだ届くうちは、Googleアカウントを削除しないでください。個人のアカウントを2年間使わないでいると、Googleはアカウントとその中身をすべて削除することがあります。また、あるサービスを2年間使わなければ、そのサービスのデータが削除されることもあります（職場や学校のアカウントは対象外です）[^inactive]。少なくとも2年に1回はログインして、残しているサービスをそれぞれ使うようにしましょう。
+
+<Tip id="keep-it-tidy" priority="optional" effort={5} title="残すものは自動削除をオンにする">
+Googleアカウントに残すデータは、アカウントを開いて<Path>データとプライバシー</Path>に進み、「履歴の設定」にある項目を1つずつ開いて、「自動削除」から保存する期間を選びます[^delete]。Googleは、ビジネス上や法律上の理由で、一部のデータを設定した期間より長く保存することがあるとしています。つまり自動削除は、保存されるものを減らすだけで、すべてを消すわけではありません[^delete]。また、マイ アド センターでパーソナライズド広告をオフにすることもできます。そうすれば、Googleはあなたのアクティビティをもとに表示する広告を選ばなくなります[^ads]。
+</Tip>
+
+[^takeout]: [Google アカウント ヘルプ：Google データをダウンロードする方法](https://support.google.com/accounts/answer/3024190?hl=ja)
+[^maps-history]: [マップ ヘルプ：マップ履歴を管理する](https://support.google.com/maps/answer/3137804?hl=ja)
+[^remove]: [Google アカウント ヘルプ：サービスの削除](https://support.google.com/accounts/answer/81987?hl=ja)
+[^graphene]: [GrapheneOS：よくある質問](https://grapheneos.org/faq)
+[^invidious]: [GitHubのInvidious](https://github.com/iv-org/invidious)
+[^inactive]: [Google アカウント ヘルプ：無効な Google アカウントに関するポリシー](https://support.google.com/accounts/answer/12418290?hl=ja)
+[^delete]: [Google アカウント ヘルプ：アクティビティを削除する](https://support.google.com/accounts/answer/465?hl=ja)
+[^ads]: [マイ アド センター ヘルプ：広告エクスペリエンスをカスタマイズする](https://support.google.com/My-Ad-Center-Help/answer/12155451?hl=ja)
