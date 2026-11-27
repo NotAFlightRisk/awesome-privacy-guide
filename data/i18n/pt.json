@@ -566,6 +566,7 @@
   "725533938e89fcde": "<p>Gerenciador de senhas completo e de código aberto com sincronização na nuvem. Bitwarden é\nfácil de usar, com interface limpa e aplicativos clientes para desktop, web e mobile. Veja\ntambém <a href=\"https://github.com/dani-garcia/vaultwarden\" rel=\"noopener\">Vaultwarden</a>, um auto-hospedado, \nImplementação Rust do servidor Bitwarden e compatível com <a href=\"https://bitwarden.com/download/\" rel=\"noopener\">upstream\nBitwarden clientes</a>.</p>",
   "725f6404b1c4a1a7": "Descubra se sua escrita acabou em dados de treinamento de IA",
   "72677028b4d0d41a": "Tente",
+  "728190e74db38b00": "Dispositivos",
   "728663ce4456600f": "Números de Telefone Virtuais",
   "72a5de876844626a": "<p>Sincronização simples e eficiente de favoritos usando NextCloud favoritos, um servidor WebDAV (local ou remoto)\nou apenas uma pasta local via LoFloccus. Extensões de navegador disponíveis para Chrome, Firefox e Edge.</p>",
   "72c281d02148aec7": "Rodar um app em um espaço isolado com acesso limitado ao restante do seu sistema, então um app ruim ou hackeado só pode causar um certo número de danos.",

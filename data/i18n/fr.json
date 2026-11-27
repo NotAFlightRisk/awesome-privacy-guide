@@ -566,6 +566,7 @@
   "725533938e89fcde": "<p>Gestionnaire de mots de passe open source complet avec synchronisation cloud. Bitwarden est\nfacile à utiliser avec une interface utilisateur propre et des applications client pour ordinateur, web et mobile. Voir\naussi <a href=\"https://github.com/dani-garcia/vaultwarden\" rel=\"noopener\">Vaultwarden</a>, un auto-hébergé, \nImplémentation Rust du serveur Bitwarden compatible avec <a href=\"https://bitwarden.com/download/\" rel=\"noopener\">l’amont\nBitwarden clients</a>.</p>",
   "725f6404b1c4a1a7": "Découvrez si votre écriture a fini dans les données d’entraînement de l’IA",
   "72677028b4d0d41a": "Essaie",
+  "728190e74db38b00": "Appareils",
   "728663ce4456600f": "Numéros de téléphone virtuels",
   "72a5de876844626a": "<p>Synchronisation simple et efficace des favoris en utilisant soit NextCloud favoris, soit un serveur WebDAV (local ou distant)\nou simplement un dossier local via LoFloccus. Extensions de navigateur disponibles pour Chrome, Firefox et Edge.</p>",
   "72c281d02148aec7": "Faire tourner une application dans un espace fermé avec un accès limité au reste de votre système, donc une application mauvaise ou piratée ne peut causer qu’une certaine quantité de dégâts.",
