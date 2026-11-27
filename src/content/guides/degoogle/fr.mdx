@@ -1,0 +1,79 @@
+---
+title: "Dégoogliser sa vie : se passer de Google, service par service"
+description: "Quels services Google remplacer d’abord, du plus rapide au plus long, comment récupérer vos données sans risque et quoi garder pour l’instant."
+source: "5fef48020d8ea8d8"
+sha: "7631ebf9391797cd3d1563e78e9b301dbcb147d6"
+---
+
+<Short>
+Commencez par les changements qui prennent quelques minutes : [votre moteur de recherche](#search), [votre navigateur](#browser) et [votre application GPS](#maps). Quittez ensuite, un par un, les services qui stockent vos données, en commençant par [Drive et Photos](#drive-and-photos). [Gmail](#email) vient en dernier et prend des mois, alors gardez-le ouvert pendant le déménagement. Vous n’êtes pas obligé de tout quitter, et pour tout ce qui reste dans votre compte Google, [activez la suppression automatique](#keep-it-tidy).
+</Short>
+
+## Commencez par tout sauvegarder
+
+<Tip id="takeout" priority="essential" effort={30} title="Téléchargez vos données avec Google Takeout">
+Google Takeout exporte vos données depuis les produits Google que vous utilisez, comme vos e-mails, vos documents, votre agenda, vos photos et vos vidéos YouTube.[^takeout] Faites un premier export dès maintenant, avant de changer quoi que ce soit, pour avoir votre propre copie sous la main en cas de problème.
+
+Comme mode d’envoi, choisissez « Envoyer le lien de téléchargement par e-mail » plutôt que « Ajouter à Drive », puisque Drive fait partie de ce que vous quittez. Téléchargez chacun des fichiers proposés sur votre propre ordinateur ou sur un disque externe, et ouvrez-en quelques-uns pour vérifier que vos données y sont bien. Le téléchargement ne supprime rien chez Google, et l’archive peut ne pas inclure les modifications que vous faites pendant sa préparation, alors refaites un export juste avant de commencer à supprimer.[^takeout]
+</Tip>
+
+## Les changements rapides
+
+<Tip id="search" priority="essential" effort={2} title="Changez de moteur de recherche">
+La page <Swap product="google">Recherche Google</Swap> explique ce que Google fait de vos recherches. Changer le moteur par défaut de votre navigateur prend deux minutes, et le [guide sur la confidentialité du navigateur](/fr/guides/browser-privacy/#search-engine) donne la marche à suivre et les moteurs retenus par la liste.
+</Tip>
+
+<Tip id="browser" priority="optional" effort={30} title="Quittez Chrome">
+Le [guide sur la confidentialité du navigateur](/fr/guides/browser-privacy/#leave-chrome) explique pourquoi Chrome complique les étapes de base, et quels navigateurs utiliser à la place. Si Chrome garde vos mots de passe, le [guide sur les gestionnaires de mots de passe](/fr/guides/password-manager/) vous aide d’abord à les récupérer sans risque.
+</Tip>
+
+<Tip id="maps" priority="optional" effort={10} title="Utilisez une autre application GPS pour vos trajets quotidiens">
+Quand son paramètre d’historique est activé, Google Maps enregistre dans votre compte Google les lieux que vous recherchez et les itinéraires que vous demandez.[^maps-history] Inutile de supprimer Google Maps pour commencer. Pour les trajets que vous faites chaque semaine, prenez l’une des alternatives présentées sur la page <Swap product="google-maps">Google Maps</Swap>, et gardez l’application de Google, sans vous connecter, pour les rares recherches où elle s’en sort mieux : c’est quand vous êtes connecté avec ce paramètre activé qu’elle les enregistre.
+</Tip>
+
+<Tip id="dns" priority="optional" effort={5} title="Remplacez le DNS de Google, si vous l’avez configuré">
+Si vous avez réglé vos appareils sur Google Public DNS, ou si la personne qui a installé votre box ou votre routeur l’a fait, Google peut voir le nom de chaque site dont ils demandent l’adresse. La page <Swap product="google-dns">Google DNS</Swap> présente d’autres fournisseurs. Changer de DNS sur la box ou le routeur couvre tous les appareils de la maison, alors que le <Term slug="encrypted-dns">DNS sécurisé</Term> de votre navigateur ne couvre que ce navigateur.
+</Tip>
+
+## Les plus gros déménagements
+
+<Tip id="drive-and-photos" priority="optional" effort={120} title="Quittez Drive et Photos">
+Les pages <Swap product="google-drive">Google Drive</Swap> et <Swap product="google-photos">Google Photos</Swap> indiquent où vous pouvez les transférer, et ce que propose chacune des alternatives.
+
+Copiez tout, puis vérifiez soigneusement avant de supprimer quoi que ce soit chez Google : vous devez retrouver les mêmes dossiers et les mêmes albums, à peu près le même nombre de fichiers, et les documents dont vous ne pouvez pas vous passer doivent s’ouvrir sur le nouveau service. Les personnes avec qui vous avez partagé quelque chose n’y auront plus accès une fois que vous l’aurez supprimé, alors envoyez-leur d’abord le nouveau lien. Une fois que vous en êtes sûr, supprimez les fichiers chez Google, ou supprimez le service tout entier si Google le permet : dans votre compte Google, sous <Path>Données et confidentialité</Path>, dans la section « Outils », via « Supprimer les données des services que vous n’utilisez plus ». Tous les produits ne peuvent pas être supprimés à cet endroit.[^remove]
+</Tip>
+
+<Tip id="small-ones" priority="optional" effort={30} title="Transférez vos notes et votre agenda, et organisez vos appels ailleurs">
+Les pages <Swap product="google-keep">Google Keep</Swap> et <Swap product="google-calendar">Google Agenda</Swap> présentent les alternatives, et votre export Takeout contient déjà votre agenda.[^takeout] Vérifiez que quelques événements récurrents et rappels ont bien suivi avant de supprimer les originaux. Si vous quittez aussi Gmail, le [guide pour quitter Gmail](/fr/guides/leave-gmail/#contacts-and-calendars) explique comment emporter contacts et agendas en une seule fois. Pour les appels vidéo que vous organisez vous-même, choisissez un service sur la page <Swap product="google-meet">Google Meet</Swap>.
+</Tip>
+
+## Les déménagements qui s’étalent sur des mois
+
+<Tip id="email" priority="optional" effort={60} title="Quittez Gmail en dernier, après les autres gros services">
+C’est la messagerie qui prend le plus de temps, car chaque compte créé avec votre adresse Gmail y envoie ses e-mails de réinitialisation de mot de passe, et chaque site ou application où vous utilisez « Se connecter avec Google » a besoin d’un autre moyen de connexion, à mettre en place avant de partir. Le [guide pour quitter Gmail](/fr/guides/leave-gmail/) suit les étapes dans l’ordre : une nouvelle messagerie, idéalement sur votre propre nom de domaine, le transfert des e-mails pendant que vous changez d’adresse sur vos comptes, et un compte Gmail que vous gardez ouvert pendant un an.
+</Tip>
+
+<Tip id="phone" priority="advanced" effort={120} title="Remplacez le système de votre téléphone Android, si vous vous sentez prêt">
+Pour débarrasser complètement un téléphone Android des services de Google, il faut y installer un autre système, une <Term slug="custom-rom">ROM custom</Term>. La page <Swap product="android">Android</Swap> présente les options. <App name="GrapheneOS" /> ne prend en charge que les Pixel de Google, les téléphones vendus par certains opérateurs américains peuvent être verrouillés de sorte qu’il soit impossible d’y installer GrapheneOS, et l’une des étapes de l’installation efface toutes les données du téléphone.[^graphene] Pour les autres téléphones, [Android ROM Compat](https://android-rom-compat.peng.ly) indique quels systèmes fonctionnent sur quels modèles.
+
+Avant de commencer, rangez vos codes de secours ailleurs que sur le téléphone, et prévoyez comment transférer votre application d’authentification : certaines exportent leurs codes, d’autres vous obligent à reconfigurer chaque compte (le [guide sur la double authentification](/fr/guides/two-factor/) explique les deux cas). Sauvegardez vos photos et vos messages, et vérifiez si les applications dont vous avez besoin, comme celle de votre banque, fonctionnent sur le système choisi.
+</Tip>
+
+## Ce que vous pouvez garder
+
+Pas besoin de renoncer à YouTube pour que Google cesse de relier ce que vous regardez à votre compte. <App name="Invidious" /> indique qu’il affiche les vidéos de YouTube sans publicité ni pistage, qu’il garde vos abonnements à l’écart de Google et qu’il peut importer ceux que vous avez déjà.[^invidious] La plupart des gens l’utilisent via un serveur public géré par quelqu’un d’autre, et le projet décline toute responsabilité pour ces serveurs, si bien que la personne qui gère celui que vous choisissez peut voir ce que vous regardez.[^invidious] La page <Swap product="youtube">YouTube</Swap> présente d’autres sites de vidéos.
+
+Gardez votre compte Google ouvert tant que d’anciens comptes y envoient encore leurs e-mails de réinitialisation. Si vous n’utilisez pas un compte personnel pendant deux ans, Google peut le supprimer avec tout ce qu’il contient, et il peut supprimer les données d’un produit si vous ne vous servez pas de ce produit pendant deux ans (les comptes professionnels ou scolaires ne sont pas concernés).[^inactive] Connectez-vous donc, et utilisez chaque service que vous gardez, au moins une fois tous les deux ans.
+
+<Tip id="keep-it-tidy" priority="optional" effort={5} title="Activez la suppression automatique pour ce que vous gardez">
+Pour tout ce que vous laissez chez Google, ouvrez votre compte Google, allez dans <Path>Données et confidentialité</Path> et, sous « Paramètres de l’historique », choisissez chaque paramètre d’historique, sélectionnez « Suppression automatique » et indiquez combien de temps conserver les données.[^delete] Google précise qu’il peut conserver certaines données plus longtemps pour des raisons commerciales ou juridiques : la suppression automatique limite ce qui est conservé, mais n’efface pas tout.[^delete] Dans Mes préférences publicitaires, vous pouvez aussi désactiver les annonces personnalisées, afin que Google n’utilise plus votre activité pour choisir les annonces que vous voyez.[^ads]
+</Tip>
+
+[^takeout]: [Aide Compte Google : Comment télécharger vos données Google](https://support.google.com/accounts/answer/3024190?hl=fr)
+[^maps-history]: [Aide Google Maps : Gérer votre historique Maps](https://support.google.com/maps/answer/3137804?hl=fr)
+[^remove]: [Aide Compte Google : Supprimer des produits](https://support.google.com/accounts/answer/81987?hl=fr)
+[^graphene]: [GrapheneOS : Questions fréquentes](https://grapheneos.org/faq) (en anglais)
+[^invidious]: [Invidious sur GitHub](https://github.com/iv-org/invidious) (en anglais)
+[^inactive]: [Aide Compte Google : Règle concernant les comptes Google inactifs](https://support.google.com/accounts/answer/12418290?hl=fr)
+[^delete]: [Aide Compte Google : Supprimer vos activités](https://support.google.com/accounts/answer/465?hl=fr)
+[^ads]: [Aide Mes préférences publicitaires : Personnaliser votre expérience publicitaire](https://support.google.com/My-Ad-Center-Help/answer/12155451?hl=fr)
