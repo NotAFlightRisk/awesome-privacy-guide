@@ -1,0 +1,78 @@
+---
+title: "Impostazioni privacy dell'iPhone: quali cambiare e perché"
+description: "Le impostazioni dell'iPhone che bloccano il tracciamento, tengono per te la posizione esatta e fermano un ladro che conosce il codice, e a cosa rinunci con ognuna."
+source: "c8f3cfc0ac211f8e"
+sha: "5acce53c2ad0207f0a95d5ce509b1f02d842143b"
+---
+
+<Short>
+Impedisci alle app di chiederti il permesso di [tracciarti](#tracking), dai alle app la tua [posizione approssimativa invece di quella esatta](#location) e controlla che la [Protezione del dispositivo rubato](#stolen-device) sia attiva. Se non sei nel Regno Unito, la [protezione avanzata dei dati](#advanced-data-protection) mette fuori dalla portata di Apple anche la maggior parte dei tuoi dati di iCloud, purché prima ti prepari un modo per rientrare. La [modalità di isolamento](#lockdown-mode) serve a pochissime persone, e la maggior parte dovrebbe lasciarla disattivata.
+</Short>
+
+## App e pubblicità
+
+<Tip id="tracking" priority="essential" effort={2} title="Disattiva le richieste di tracciamento per tutte le app in un colpo solo">
+Le app devono chiederti il permesso prima di tracciare quello che fai nelle app e sui siti di altre aziende, che sia per la pubblicità o per condividerlo con i data broker. Se dici di no, l'app non può leggere l'identificativo pubblicitario del telefono, e non le è consentito nemmeno tracciarti in un altro modo, per esempio tramite il tuo indirizzo email. In entrambi i casi l'app funziona allo stesso modo.[^att]
+
+Per dire di no a tutte in una volta, apri <Path>Impostazioni --> Privacy e sicurezza --> Tracciamento</Path> e disattiva «Richiesta tracciamento attività». Da quel momento, ogni app che te lo chiede riceve la stessa risposta che avrebbe se toccassi «Non tracciarmi». Nella stessa schermata trovi le eventuali app a cui hai già detto di sì, e puoi togliere il permesso a ognuna.[^att]
+</Tip>
+
+<Tip id="location" priority="essential" effort={10} title="Dai alle app la tua posizione approssimativa, non quella esatta">
+I dati sulla posizione raccolti dalle app possono essere rivenduti. Nel 2024 la FTC, l'autorità statunitense per la tutela dei consumatori, ha vietato a un data broker di vendere i dati di localizzazione che aveva raccolto tramite codice integrato nelle app di altre aziende, dati che potevano rivelare le visite delle persone a strutture sanitarie, luoghi di culto e case rifugio per chi subisce violenza domestica.[^ftc]
+
+Apri <Path>Impostazioni --> Privacy e sicurezza --> Localizzazione</Path> e tocca un'app alla volta. Se disattivi «Posizione esatta», quell'app riceve solo la tua posizione approssimativa, che potrebbe essere tutto quello che le serve.[^location] Se un'app non ha motivo di sapere dove sei, toglile l'accesso da lì, e ridaglielo più avanti se qualcosa smette di funzionare. Non disattivare del tutto la Localizzazione, però, perché senza Localizzazione molte funzioni importanti dell'iPhone smettono di funzionare.[^location] Quando un'app può usare la tua posizione in background, ogni tanto l'iPhone te lo ricorda con una mappa dei posti in cui l'app ha usato la tua posizione, ed è un buon momento per ridurle l'accesso.[^permissions]
+
+In <Path>Privacy e sicurezza</Path> c'è anche una pagina per ciascuna voce, come Contatti, Foto, Calendari e Bluetooth, che mostra a quali app hai dato accesso, e anche lì puoi toglierlo.[^permissions]
+</Tip>
+
+<Tip id="apple-ads" priority="optional" effort={2} title="Impedisci ad Apple di personalizzare i suoi annunci">
+Apple mostra annunci nell'App Store, in Apple News e in Borsa. Può sceglierli in base a quello che cerchi e scarichi nell'App Store e in Apple News, e a quello che leggi o segui in News e in Borsa.[^apple-ads] Disattiva «Annunci personalizzati» in <Path>Impostazioni --> Privacy e sicurezza --> Pubblicità Apple</Path>. Apple dice che il numero di annunci potrebbe non diminuire, ma non saranno più basati su quello che fai.[^apple-ads]
+</Tip>
+
+## Se ti rubano il telefono
+
+<Tip id="stolen-device" priority="essential" effort={2} title="Controlla che la Protezione del dispositivo rubato sia attiva">
+La Protezione del dispositivo rubato è pensata per quando un ladro ha il tuo iPhone e conosce il tuo codice. Lontano dai posti in cui vai spesso, come casa e lavoro, serve il riconoscimento del volto o dell'impronta per usare le password salvate o le carte di pagamento salvate in Safari, o per cancellare tutto il contenuto del telefono, e il codice non può sostituirlo. Per cambiare la password dell'Account Apple, inoltre, bisogna aspettare un'ora e poi farsi riconoscere di nuovo con il volto o l'impronta, e Apple ha previsto questa attesa per darti il tempo di contrassegnare il telefono come smarrito.[^sdp]
+
+Potrebbe essere già attiva, quindi controlla in <Path>Impostazioni --> Face ID e codice --> Protezione del dispositivo rubato</Path> (Touch ID e codice sui telefoni con il tasto Home). Per usarla ti servono un codice, Face ID o Touch ID, «Dov'è», l'[autenticazione a due fattori](/it/guide/two-factor/) sull'Account Apple e «Luoghi frequenti e itinerari», che si trova in <Path>Localizzazione --> Servizi di sistema</Path>. Ti protegge solo se è già attiva prima che il telefono sparisca, e se scegli «Sempre» in «Richiedi ritardo di sicurezza» vale anche a casa e al lavoro.[^sdp] Disattivala prima di vendere o regalare il telefono, e fallo con un po' di anticipo, perché anche disattivarla può far partire l'attesa.[^sdp]
+</Tip>
+
+## I tuoi dati su iCloud
+
+<Tip id="advanced-data-protection" priority="optional" effort={20} title="Attiva la protezione avanzata dei dati, se ti assicuri un modo per rientrare">
+Di serie, Apple conserva le chiavi della maggior parte dei tuoi dati di iCloud, ed è per questo che può aiutarti a recuperarli. Quindici tipi di dati, come le password e i dati sulla salute, sono già protetti con la crittografia end-to-end.[^icloud-security] La protezione avanzata dei dati aggiunge la <Term slug="e2ee">crittografia end-to-end</Term> a gran parte del resto, compresi backup, foto e note, così nessun altro può leggerli, nemmeno Apple, anche se i suoi server subiscono una violazione.[^adp] Mail di iCloud, Contatti e Calendari non hanno la crittografia end-to-end nemmeno con la protezione attiva,[^icloud-security] e lo stesso vale per quello che condividi con Album condivisi, con la collaborazione di iWork o con un link impostato su «Chiunque abbia il link».[^adp] La pagina su <Swap product="icloud">iCloud</Swap> elenca altri posti in cui tenere i tuoi file.
+
+Se però perdi l'accesso, Apple non può aiutarti a recuperare quei dati. Prima che la protezione si attivi, l'iPhone ti fa configurare un contatto di recupero o una chiave di recupero. Un contatto di recupero è una persona di fiducia con un dispositivo Apple: non può vedere il tuo account, può solo darti un codice per rientrare. Una chiave di recupero è un codice di 28 caratteri che custodisci tu, e per usarla servono anche un numero di telefono attendibile e un dispositivo Apple. Per recuperare i tuoi dati ti servirà il contatto di recupero o la chiave di recupero, oppure il codice o la password di uno dei tuoi dispositivi. La protezione avanzata dei dati disattiva anche l'accesso a iCloud.com dal browser, a meno che tu non lo approvi da uno dei tuoi dispositivi.[^adp]
+
+Per attivarla, apri Impostazioni, tocca il tuo nome, poi <Path>iCloud --> Protezione avanzata dati --> Attiva la protezione avanzata dei dati</Path> e segui i passaggi.[^adp]
+
+<Region place="uk">
+Nel 2025 Apple ha smesso di permettere a chi si trova nel Regno Unito di attivare la protezione avanzata dei dati, e ha detto che chi l'aveva già attiva dovrà disattivarla per continuare a usare iCloud. iMessage e FaceTime restano protetti con la crittografia end-to-end, e così anche i 15 tipi di dati di iCloud che lo sono sempre.[^adp-uk]
+</Region>
+</Tip>
+
+<Tip id="private-relay" priority="optional" effort={2} title="Nascondi il tuo indirizzo IP ai siti, se hai un abbonamento a iCloud+">
+Con iCloud+, il Relay privato di iCloud fa passare la tua navigazione in Safari attraverso due relay separati, così i siti che visiti non possono vedere il tuo indirizzo IP né sapere esattamente dove ti trovi, e chi ti fornisce la connessione non può raccogliere i dati sulla tua navigazione. Non è disponibile in tutti i paesi.[^relay] Attivalo su ogni dispositivo su cui ti serve: apri Impostazioni, tocca il tuo nome e vai in <Path>iCloud --> Relay privato</Path>.[^relay] Per i tracker presenti nelle pagine stesse, leggi la [guida alla privacy del browser](/it/guide/browser-privacy/).
+</Tip>
+
+## Solo se rischi un attacco mirato
+
+<Tip id="lockdown-mode" priority="advanced" effort={5} title="La modalità di isolamento, se rischi che qualcuno usi uno spyware proprio contro di te">
+Apple ha creato la modalità di isolamento per le pochissime persone che, per chi sono o per quello che fanno, potrebbero essere prese di mira personalmente da spyware mercenari estremamente sofisticati. Apple dice che la maggior parte delle persone non subisce mai attacchi del genere.[^lockdown]
+
+Attivarla blocca la maggior parte dei tipi di allegato in Messaggi, insieme ai link e alle anteprime dei link. Alcuni siti web potrebbero non funzionare bene, le chiamate FaceTime da chi non hai chiamato negli ultimi 30 giorni vengono bloccate e gli album condivisi spariscono da Foto. Le telefonate, i messaggi di solo testo e SOS emergenze continuano a funzionare.[^lockdown] Se c'è la possibilità che tu sia tra quelle persone, prima aggiorna tutti i tuoi dispositivi, poi attivala in <Path>Impostazioni --> Privacy e sicurezza --> Modalità di isolamento</Path>. Sul tuo iPad e sul tuo Mac va attivata separatamente, mentre sull'Apple Watch abbinato si attiva da sola.[^lockdown]
+</Tip>
+
+Impostazioni verificate sulla guida di Apple per iOS 27 a novembre 2026.
+
+[^att]: [Supporto Apple: Se un'app chiede di tracciare le tue attività](https://support.apple.com/it-it/102420)
+[^ftc]: [FTC: un'ordinanza della FTC vieta al data broker X-Mode Social e a Outlogic di vendere dati di localizzazione sensibili](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data)
+[^location]: [Manuale utente di iPhone: Controllare le informazioni sulla posizione durante la condivisione su iPhone](https://support.apple.com/it-it/guide/iphone/control-the-location-information-you-share-iph3dd5f9be/ios)
+[^permissions]: [Supporto Apple: Informazioni sulla privacy e sulla funzione Localizzazione in iOS, iPadOS e watchOS](https://support.apple.com/it-it/102515)
+[^apple-ads]: [Manuale utente di iPhone: Controllare come Apple ti mostra la pubblicità su iPhone](https://support.apple.com/it-it/guide/iphone/control-how-apple-delivers-advertising-to-you-iphf60a6a256/ios)
+[^sdp]: [Supporto Apple: Informazioni su Protezione del dispositivo rubato per iPhone](https://support.apple.com/it-it/120340)
+[^icloud-security]: [Supporto Apple: Panoramica sulla sicurezza dei dati di iCloud](https://support.apple.com/it-it/102651)
+[^adp]: [Supporto Apple: Come attivare la protezione avanzata dei dati per iCloud](https://support.apple.com/it-it/108756)
+[^adp-uk]: [Supporto Apple: Apple non può più offrire la protezione avanzata dei dati ai nuovi utenti nel Regno Unito](https://support.apple.com/en-gb/122234)
+[^relay]: [Manuale utente di iPhone: Proteggere la navigazione web con Relay privato di iCloud su iPhone](https://support.apple.com/it-it/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/ios)
+[^lockdown]: [Supporto Apple: Informazioni sulla modalità di isolamento](https://support.apple.com/it-it/105120)
