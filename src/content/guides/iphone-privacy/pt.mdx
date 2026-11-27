@@ -1,0 +1,76 @@
+---
+title: "Privacidade no iPhone: quais ajustes mudar e por quê"
+description: "Os ajustes do iPhone que impedem os apps de rastrear você, escondem a sua localização exata e barram um ladrão que sabe o seu código, e o preço de cada um."
+---
+
+<Short>
+Impeça os apps de pedir para [rastrear você](#tracking), dê aos apps a sua [localização aproximada em vez da exata](#location) e confira se a [Proteção de Dispositivo Roubado](#stolen-device) está ativada. Fora do Reino Unido, a [Proteção Avançada de Dados](#advanced-data-protection) também deixa a maior parte dos seus dados do iCloud fora do alcance da Apple, desde que você configure antes um jeito de recuperar o acesso. O [Modo de Isolamento](#lockdown-mode) é para pouquíssimas pessoas, e a maioria deve deixá-lo desativado.
+</Short>
+
+## Apps e anúncios
+
+<Tip id="tracking" priority="essential" effort={2} title="Desative de uma vez os pedidos de rastreamento de todos os apps">
+Os apps precisam pedir permissão antes de rastrear o que você faz nos apps e sites de outras empresas, seja para mostrar anúncios, seja para compartilhar com corretores de dados. Se você disser não, o app não consegue ler o identificador de publicidade do seu celular e também não tem permissão para rastrear você de outro jeito, como pelo seu endereço de e-mail. O app continua funcionando do mesmo jeito nos dois casos.[^att]
+
+Para dizer não a todos de uma vez, abra <Path>Ajustes --> Privacidade e Segurança --> Rastreamento</Path> e desative “Permitir Solicitações”. Daí em diante, todo app que pedir recebe a mesma resposta que receberia se você tivesse tocado em “Pedir ao App para Não Rastrear”. A mesma tela lista os apps para os quais você já disse sim, e dá para desativar cada um deles.[^att]
+</Tip>
+
+<Tip id="location" priority="essential" effort={10} title="Dê aos apps a sua localização aproximada, não a exata">
+Os dados de localização coletados por apps podem ser revendidos. Em 2024, a FTC, a agência americana de defesa do consumidor, proibiu uma corretora de dados de vender os dados de localização que ela tinha reunido por meio de código embutido em apps de outras empresas, dados que podiam mostrar as visitas das pessoas a clínicas, locais de culto e abrigos para vítimas de violência doméstica.[^ftc]
+
+Abra <Path>Ajustes --> Privacidade e Segurança --> Serviços de Localização</Path> e toque em cada app. Desativar “Localização Precisa” deixa esse app só com a sua localização aproximada, que pode ser tudo de que ele precisa.[^location] Se um app não tem motivo para saber onde você está, tire o acesso dele ali mesmo e volte atrás depois, se alguma coisa parar de funcionar. Mas não desative os Serviços de Localização por completo, já que muitos recursos importantes do iPhone param de funcionar sem eles.[^location] Quando um app pode usar a sua localização em segundo plano, o iPhone lembra você de vez em quando com um mapa dos lugares em que o app acessou a sua localização, e essa é uma boa hora para diminuir o acesso dele.[^permissions]
+
+Em <Path>Privacidade e Segurança</Path> também há uma página para Contatos, Fotos, Calendários, Bluetooth e outros, cada uma mostrando a quais apps você deu acesso, e dá para tirar esse acesso ali também.[^permissions]
+</Tip>
+
+<Tip id="apple-ads" priority="optional" effort={2} title="Impeça a Apple de personalizar os próprios anúncios">
+A Apple mostra anúncios na App Store, no Apple News e no Stocks. Ela pode escolhê-los com base no que você pesquisa e baixa na App Store e no Apple News, e no que você lê ou segue no News e no Stocks.[^apple-ads] Desative “Anúncios Personalizados” em <Path>Ajustes --> Privacidade e Segurança --> Publicidade da Apple</Path>. A Apple diz que talvez você não passe a ver menos anúncios, só anúncios que não se baseiam no que você faz.[^apple-ads]
+</Tip>
+
+## Se o seu celular for roubado
+
+<Tip id="stolen-device" priority="essential" effort={2} title="Confira se a Proteção de Dispositivo Roubado está ativada">
+A Proteção de Dispositivo Roubado é para quando um ladrão está com o seu iPhone e sabe o seu código. Longe dos lugares aonde você vai com frequência, como a sua casa e o trabalho, o celular pede o seu rosto ou a sua digital, sem a opção de usar o código no lugar, antes que alguém possa usar as suas senhas salvas, usar os cartões de pagamento salvos no Safari ou apagar o celular. Trocar a senha da Conta Apple também exige esperar uma hora e depois confirmar o rosto ou a digital de novo, e a Apple criou essa espera para você ter tempo de marcar o celular como perdido.[^sdp]
+
+Talvez ela já esteja ativada, então confira em <Path>Ajustes --> Face ID e Código --> Proteção de Dispositivo Roubado</Path> (“Touch ID e Código” nos celulares com botão de Início). Para usá-la, você precisa de um código, do Face ID ou do Touch ID, do Buscar, da [verificação em duas etapas](/pt/guias/two-factor/) na sua Conta Apple e de “Locais e Rotas Importantes”, que fica em <Path>Serviços de Localização --> Serviços do Sistema</Path>. Ela só ajuda se estiver ativada antes de o celular sumir, e escolher “Sempre” em “Exigir adiamento de segurança” faz com que ela funcione também em casa e no trabalho.[^sdp] Desative-a antes de vender ou dar o celular para alguém, e não deixe isso para a última hora, já que desativá-la também pode iniciar a espera.[^sdp]
+</Tip>
+
+## Os seus dados do iCloud
+
+<Tip id="advanced-data-protection" priority="optional" effort={20} title="Ative a Proteção Avançada de Dados, se for manter um jeito de recuperar o acesso">
+Por padrão, a Apple guarda as chaves da maior parte dos seus dados do iCloud, e é por isso que ela consegue ajudar você a recuperá-los. Quinze tipos de dados, como as suas senhas e os seus dados de saúde, já são criptografados de ponta a ponta.[^icloud-security] A Proteção Avançada de Dados acrescenta <Term slug="e2ee">criptografia de ponta a ponta</Term> à maior parte do resto, incluindo os seus backups, fotos e notas, para que ninguém mais consiga lê-los, nem a Apple, mesmo que os servidores dela sejam invadidos.[^adp] O Mail, os Contatos e os Calendários do iCloud não ganham criptografia de ponta a ponta nem com ela ativada,[^icloud-security] e o mesmo vale para tudo o que você compartilha pelos Álbuns Compartilhados, pela colaboração do iWork ou por um link do tipo “qualquer pessoa com o link”.[^adp] A página do <Swap product="icloud">iCloud</Swap> lista outros lugares para guardar os seus arquivos.
+
+Só que a Apple não consegue ajudar você a recuperar esses dados se você perder o acesso. Antes de ativar a proteção, o iPhone pede que você configure um contato de recuperação ou uma Chave Reserva. O contato de recuperação é alguém de confiança que tem um dispositivo Apple, e essa pessoa não consegue ver a sua conta, só passar para você um código para voltar a entrar. A Chave Reserva é um código de 28 caracteres que você guarda num lugar seguro por conta própria, e para usá-la você também precisa de um número de telefone confiável e de um dispositivo Apple. Para recuperar os seus dados, você vai precisar de um desses dois, ou do código ou da senha de um dos seus dispositivos. A proteção também desativa o iCloud.com no navegador, a menos que você aprove o acesso num dos seus dispositivos.[^adp]
+
+Para ativar, abra Ajustes, toque no seu nome e depois em <Path>iCloud --> Proteção Avançada de Dados --> Ativar a Proteção Avançada de Dados</Path> e siga os passos.[^adp]
+
+<Region place="uk">
+Em 2025, a Apple deixou de permitir que pessoas no Reino Unido ativassem a Proteção Avançada de Dados e disse que quem já tinha a proteção ativada vai precisar desativá-la para continuar usando o iCloud. O iMessage e o FaceTime continuam com criptografia de ponta a ponta, assim como os 15 tipos de dados do iCloud que sempre têm essa criptografia.[^adp-uk]
+</Region>
+</Tip>
+
+<Tip id="private-relay" priority="optional" effort={2} title="Esconda o seu endereço IP dos sites, se você paga o iCloud+">
+Com o iCloud+, a Retransmissão Privada do iCloud manda a sua navegação no Safari por dois servidores intermediários separados, então os sites que você visita não conseguem ver o seu endereço IP nem onde você está exatamente, e o seu provedor de rede não consegue coletar o que você acessa. Ela não está disponível em todos os países.[^relay] Ative-a em cada dispositivo em que quiser usá-la, em Ajustes, tocando no seu nome e depois em <Path>iCloud --> Retransmissão Privada</Path>.[^relay] Para os rastreadores das próprias páginas, veja o [guia de privacidade no navegador](/pt/guias/browser-privacy/).
+</Tip>
+
+## Só se você puder ser um alvo
+
+<Tip id="lockdown-mode" priority="advanced" effort={5} title="Modo de Isolamento, se alguém puder usar spyware contra você em particular">
+A Apple criou o Modo de Isolamento para as pouquíssimas pessoas que, por causa de quem são ou do que fazem, podem ser alvo pessoal de spyware mercenário altamente sofisticado. A Apple diz que a maioria das pessoas nunca é alvo de algo assim.[^lockdown]
+
+Com ele ativado, a maioria dos tipos de anexo no app Mensagens fica bloqueada, junto com links e pré-visualizações de links. Alguns sites podem não funcionar direito, as chamadas do FaceTime de quem você não chamou nos últimos 30 dias são bloqueadas, e os álbuns compartilhados somem do app Fotos. As ligações telefônicas, as mensagens de texto comuns e o SOS de Emergência continuam funcionando.[^lockdown] Se você pode estar entre essas pessoas, atualize primeiro todos os seus dispositivos e depois ative o modo em <Path>Ajustes --> Privacidade e Segurança --> Modo de Isolamento</Path>. No iPad e no Mac, é preciso ativá-lo separadamente em cada um, e o Apple Watch emparelhado recebe o modo automaticamente.[^lockdown]
+</Tip>
+
+Configurações conferidas em novembro de 2026 com o manual do iOS 27 da Apple.
+
+[^att]: [Suporte da Apple: Se um app pedir para rastrear sua atividade](https://support.apple.com/pt-br/102420)
+[^ftc]: [FTC: Ordem da FTC proíbe as corretoras de dados X-Mode Social e Outlogic de vender dados de localização sensíveis](https://www.ftc.gov/news-events/news/press-releases/2024/01/ftc-order-prohibits-data-broker-x-mode-social-outlogic-selling-sensitive-location-data)
+[^location]: [Manual de Uso do iPhone: Controle as informações de localização compartilhadas no iPhone](https://support.apple.com/pt-br/guide/iphone/control-the-location-information-you-share-iph3dd5f9be/ios)
+[^permissions]: [Suporte da Apple: Sobre a privacidade e os Serviços de Localização no iOS, iPadOS e watchOS](https://support.apple.com/pt-br/102515)
+[^apple-ads]: [Manual de Uso do iPhone: Controle como a Apple exibe publicidade para você no iPhone](https://support.apple.com/pt-br/guide/iphone/control-how-apple-delivers-advertising-to-you-iphf60a6a256/ios)
+[^sdp]: [Suporte da Apple: Sobre a Proteção de Dispositivo Roubado para iPhone](https://support.apple.com/pt-br/120340)
+[^icloud-security]: [Suporte da Apple: Visão geral da segurança de dados do iCloud](https://support.apple.com/pt-br/102651)
+[^adp]: [Suporte da Apple: Como ativar a Proteção Avançada de Dados do iCloud](https://support.apple.com/pt-br/108756)
+[^adp-uk]: [Suporte da Apple: A Apple não pode mais oferecer a Proteção Avançada de Dados a novos usuários no Reino Unido](https://support.apple.com/en-gb/122234)
+[^relay]: [Manual de Uso do iPhone: Proteja a sua navegação na web com a Retransmissão Privada do iCloud no iPhone](https://support.apple.com/pt-br/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/ios)
+[^lockdown]: [Suporte da Apple: Sobre o Modo de Isolamento](https://support.apple.com/pt-br/105120)
