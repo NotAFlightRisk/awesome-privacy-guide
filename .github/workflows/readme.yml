@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'src/content/guides/**'
-      - 'src/lib/data/guides.js'
+      - 'data/**'
+      - 'src/**'
       - 'scripts/readme.js'
   workflow_dispatch:
 

@@ -27,15 +27,8 @@ jobs:
     env:
       HAS_BOT: ${{ secrets.BOT_PRIVATE_KEY != '' }}
     outputs:
-      bot: ${{ steps.bot.outcome }}
+      bot-push: ${{ steps.commit.outputs.bot-push }}
     steps:
-      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
-        id: bot
-        if: env.HAS_BOT == 'true'
-        with:
-          client-id: Iv23liPIG7E12UlaQMaD
-          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
-          permission-contents: write
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
@@ -54,7 +47,15 @@ jobs:
           AZURE_TRANSLATOR_KEY: ${{ secrets.AZURE_TRANSLATOR_KEY }}
           AZURE_TRANSLATOR_REGION: ${{ vars.AZURE_TRANSLATOR_REGION }}
           BUDGET: ${{ inputs.budget || '15000' }}
+      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        id: bot
+        if: env.HAS_BOT == 'true'
+        with:
+          client-id: Iv23liPIG7E12UlaQMaD
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+          permission-contents: write
       - name: Commit what moved
+        id: commit
         env:
           TOKEN: ${{ steps.bot.outputs.token || github.token }}
         run: |
@@ -72,12 +73,13 @@ jobs:
           fi
           git commit -m "chore(data): sync with awesome-privacy"
           git push "https://x-access-token:$TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:main
+          echo "bot-push=$HAS_BOT" >> "$GITHUB_OUTPUT"
           git diff --stat HEAD~1 | tail -n1 >> "$GITHUB_STEP_SUMMARY"
 
   deploy:
     name: 🚀 Deploy
     needs: sync
-    if: needs.sync.outputs.bot != 'success'
+    if: needs.sync.outputs.bot-push != 'true'
     permissions:
       contents: read
     uses: ./.github/workflows/deploy.yml # zizmor: ignore[self-repository] actionlint can't read $/ yet

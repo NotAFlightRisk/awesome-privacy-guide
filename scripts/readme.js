@@ -26,7 +26,7 @@ const escape = (text) => text.replace(/[&<>"$]/g, (char) => `&#${char.charCodeAt
 const date = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeZone: 'UTC' });
 const groupOf = (guide) => (guide.slug === 'start-here' ? 'start' : guide.type);
 const href = (guide, lang) => site.url + links(lang).guide(guide);
-const img = (src, width, alt) => `<img src="${src}" width="${width}" alt="${alt}">`;
+const img = (src, width, alt) => `<img src="${src}" width="${width}" alt="${escape(alt)}">`;
 const flag = (code) => `https://flagcdn.com/40x30/${FLAGS[code] ?? code}.png`;
 
 const flags = (guide) =>
@@ -51,12 +51,12 @@ function row(guide) {
   return [
     '<tr>',
     '<td width="260" valign="top">',
-    `<a href="${link}">${img(card, 260, escape(title))}</a>`,
+    `<a href="${link}">${img(card, 260, title)}</a>`,
     '</td>',
     '<td valign="top">',
     `<a href="${link}"><b>${escape(title)}</b></a><br>`,
     `${escape(description)}<br>`,
-    `<sub>${meta.join(' · ')}</sub><br>`,
+    `<sub>${escape(meta.join(' · '))}</sub><br>`,
     ...flags(guide),
     '</td>',
     '</tr>',
