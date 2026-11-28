@@ -6,6 +6,7 @@ import sharp from 'sharp';
 import { parse } from 'yaml';
 import { iconSources } from '../src/lib/data/icons.js';
 import { dataPath, readEnrich } from '../src/lib/data/load.js';
+import { repoPath } from '../src/lib/data/model.js';
 import { log, summary } from './lib/log.js';
 
 const RAW = 'https://raw.githubusercontent.com/lissy93/awesome-privacy/main';
@@ -76,7 +77,7 @@ async function graphql(query, token) {
 }
 
 async function github(list, token) {
-  const repos = [...new Set(servicesOf(list).map((svc) => svc.github?.trim()))].filter((slug) =>
+  const repos = [...new Set(servicesOf(list).map((svc) => repoPath(svc.github)))].filter((slug) =>
     /^[\w.-]+\/[\w.-]+$/.test(slug ?? ''),
   );
   const previous = readEnrich('github');
