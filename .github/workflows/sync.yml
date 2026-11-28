@@ -24,8 +24,21 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      HAS_BOT: ${{ secrets.BOT_PRIVATE_KEY != '' }}
+    outputs:
+      bot: ${{ steps.bot.outcome }}
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7 # zizmor: ignore[artipacked] this job pushes the data commit
+      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        id: bot
+        if: env.HAS_BOT == 'true'
+        with:
+          client-id: Iv23liPIG7E12UlaQMaD
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+          permission-contents: write
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: 22
@@ -42,21 +55,29 @@ jobs:
           AZURE_TRANSLATOR_REGION: ${{ vars.AZURE_TRANSLATOR_REGION }}
           BUDGET: ${{ inputs.budget || '15000' }}
       - name: Commit what moved
+        env:
+          TOKEN: ${{ steps.bot.outputs.token || github.token }}
         run: |
           git add data public/icons
           if git diff --cached --quiet; then
             echo "Nothing new upstream" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ "$HAS_BOT" = true ]; then
+            git config user.name "notaflightrisk[bot]"
+            git config user.email "357864854+notaflightrisk[bot]@users.noreply.github.com"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          fi
           git commit -m "chore(data): sync with awesome-privacy"
-          git push origin HEAD:main
+          git push "https://x-access-token:$TOKEN@github.com/$GITHUB_REPOSITORY.git" HEAD:main
           git diff --stat HEAD~1 | tail -n1 >> "$GITHUB_STEP_SUMMARY"
 
   deploy:
     name: 🚀 Deploy
     needs: sync
+    if: needs.sync.outputs.bot != 'success'
     permissions:
       contents: read
     uses: ./.github/workflows/deploy.yml # zizmor: ignore[self-repository] actionlint can't read $/ yet
