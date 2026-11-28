@@ -120,6 +120,12 @@ code {
   }
 }
 
+/* Controls that wait on a script ship with `hidden`, so keep them hidden
+   even when their own styles set a display */
+[hidden] {
+  display: none !important;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
