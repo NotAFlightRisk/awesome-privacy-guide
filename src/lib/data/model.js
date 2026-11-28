@@ -20,9 +20,14 @@ export const COMPARE_DEPTH = 6;
 
 const hostOf = (url) => new URL(url).hostname.replace(/^www\./, '');
 
+/** Repos come as owner/name or a full URL, so strip them back to the path */
+export const repoPath = (value) =>
+  value?.trim().replace(/^https?:\/\/(www\.)?(github\.com|codeberg\.org)\//i, '').replace(/\/+$/, '');
+
 const repoOf = ({ github, codeberg, git }) => {
-  if (github) return { host: 'GitHub', name: github, url: `https://github.com/${github}` };
-  if (codeberg) return { host: 'Codeberg', name: codeberg, url: `https://codeberg.org/${codeberg}` };
+  const name = repoPath(github || codeberg);
+  if (github) return { host: 'GitHub', name, url: `https://github.com/${name}` };
+  if (codeberg) return { host: 'Codeberg', name, url: `https://codeberg.org/${name}` };
   if (git && URL.canParse(git)) return { host: hostOf(git), name: hostOf(git), url: git };
 };
 
@@ -36,7 +41,7 @@ function platformsOf({ followWith = '', androidApp, iosApp }) {
 
 function toService(raw, section, index, enrich) {
   const repo = repoOf(raw);
-  const github = raw.github && enrich.github[raw.github.toLowerCase()];
+  const github = raw.github && enrich.github[repoPath(raw.github).toLowerCase()];
   const tosdr = raw.tosdrId && enrich.tosdr[raw.tosdrId];
   return {
     kind: 'service',
